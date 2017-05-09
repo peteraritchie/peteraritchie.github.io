@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: Resetting Build Number in Appveyor
 date: 2017-05-09 14:32:00 -0500
