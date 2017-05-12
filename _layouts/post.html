@@ -15,19 +15,19 @@ layout: default
   <div class="post-content container" itemprop="articleBody">
     {{ content }}
   </div>
-    {% if page.categories.size > 0 %}
+{% if page.categories.size > 0 %}
     {% capture categories_content %} with <span class="icon-price-category{% if page.categories.size > 1 %}s{% endif %}"></span>: {% endcapture %}
     {% for post_category in page.categories %}
-    {% assign category = site.my_categories | where: "slug", post_category %}
-    {% if category %}
-    {% assign category = category[0] %}
-    {% capture categories_content_temp %}{{ categories_content }}<a href="{{ category.url }}">{{ category.name }}</a>{% if forloop.last == false %}, {% endif %}{% endcapture %}
-    {% assign categories_content = categories_content_temp %}
-    {% endif %}
+        {% assign category = site.my_categories | where: "slug", post_category %}
+        {% if category %}
+            {% assign category = category[0] %}
+            {% capture categories_content_temp %}{{ categories_content }}<a href="{{ category.url }}">{{ category.name }}</a>{% if forloop.last == false %}, {% endif %}{% endcapture %}
+            {% assign categories_content = categories_content_temp %}
+        {% endif %}
     {% endfor %}
-    {% endif %}
+{% endif %}
 
     <p class="m-t-3 text-muted font-italic">
-        <small>{% endif %}{{ categories_content }}</small>
+        <small>{{ categories_content }}</small>
     </p>
 </article>
