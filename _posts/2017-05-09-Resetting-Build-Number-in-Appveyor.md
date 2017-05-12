@@ -2,7 +2,7 @@
 layout: post
 title: Resetting Build Number in Appveyor
 date: 2017-05-09 14:32:00 -0500
-categories: Appveyor CI
+categories: ['Appveyor CI']
 comments: true
 ---
 # Resetting Build Number in Appveyor
