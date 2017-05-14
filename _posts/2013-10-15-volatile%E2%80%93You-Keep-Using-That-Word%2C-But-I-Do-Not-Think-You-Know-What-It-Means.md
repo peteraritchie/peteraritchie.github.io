@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "volatile–You Keep Using That Word, But I Do Not Think You Know What It Means"
+redirect_from: "/2013/10/15/volatileyou-keep-using-that-word-but-i-do-not-think-you-know-what-it-means/"
 date:   2013-10-14 12:00:00 -0600
 categories: ['C/C++', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Win32']
 tags:

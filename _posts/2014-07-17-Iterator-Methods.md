@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Iterator Methods"
+redirect_from: "/2014/07/17/iterator-methods/"
 date:   2014-07-16 12:00:00 -0600
 categories: ['.NET Development', 'C#']
 tags:

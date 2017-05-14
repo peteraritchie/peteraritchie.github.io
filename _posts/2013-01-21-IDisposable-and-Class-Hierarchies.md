@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "IDisposable and Class Hierarchies"
+redirect_from: "/2013/01/21/idisposable-and-class-hierarchies/"
 date:   2013-01-20 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development Guidance']
 tags:

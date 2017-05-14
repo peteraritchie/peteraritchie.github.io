@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "async/await Tips"
+redirect_from: "/2013/02/13/asyncawait-tips/"
 date:   2013-02-12 19:00:00 -0500
 categories: ['.NET 4.5', 'async', 'C#', 'C# 5', 'Visual Studio 2012']
 tags:

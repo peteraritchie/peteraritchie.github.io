@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dispose Pattern and “Set large fields to null”
+redirect_from: "/2012/04/27/dispose-pattern-and-set-large-fields-to-null/"
 date:   2012-04-25 12:00:00 -0600
 categories: ['.NET 4.0', 'C#', 'DevCenterPost', 'Pontification']
 tags:

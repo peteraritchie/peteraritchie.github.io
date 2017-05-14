@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Theoretical technology speed limits"
+redirect_from: "/2014/02/22/theoretical-technology-speed-limits/"
 date:   2014-02-21 19:00:00 -0500
 categories: ['Non-development', 'Random']
 tags:

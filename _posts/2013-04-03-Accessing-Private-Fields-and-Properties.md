@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Accessing Private Fields and Properties"
+redirect_from: "/2013/04/03/accessing-private-fields-and-properties/"
 date:   2013-04-02 12:00:00 -0600
 categories: ['.NET 4.0', '.NET Development', 'C#', 'Productivity Extensions']
 tags:

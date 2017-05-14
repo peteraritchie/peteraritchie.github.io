@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Developer Fitness"
+redirect_from: "/2012/11/05/developer-fitness/"
 date:   2012-11-04 19:00:00 -0500
 categories: ['health/fitness', 'Non-development']
 tags:

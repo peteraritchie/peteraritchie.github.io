@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "On performance of immutable collections"
+redirect_from: "/2014/04/20/on-performance-of-immutable-collections/"
 date:   2014-04-19 12:00:00 -0600
 categories: ['Multithreaded']
 tags:

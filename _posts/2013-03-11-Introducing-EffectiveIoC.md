@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Introducing EffectiveIoC"
+redirect_from: "/2013/03/11/introducing-effectiveioc/"
 date:   2013-03-10 12:00:00 -0600
 categories: ['.NET 4.0', '.NET 4.5', '.NET Development', 'C#', 'EffectiveIoC']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Writing Unit Tests is Hard, Because…
+redirect_from: "/2015/03/10/writing-unit-tests-is-hard-because/"
 date:   2015-03-09 12:00:00 -0600
 categories: ['Uncategorized']
 tags:

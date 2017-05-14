@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Visual Studio, run as Administrator"
+redirect_from: "/2013/04/17/visual-studio-run-as-administrator/"
 date:   2013-04-16 12:00:00 -0600
 categories: ['.NET Development', 'Visual Studio 2012']
 tags:

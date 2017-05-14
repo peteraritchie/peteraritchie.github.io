@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Thread synchronization of atomic invariants in .NET 4.5 clarifications"
+redirect_from: "/2012/09/10/thread-synchronization-of-atomic-invariants-in-net-4-5-clarifications/"
 date:   2012-09-09 12:00:00 -0600
 categories: ['.NET 4.5', '.NET Development', 'Concurrency', 'DevCenterPost', 'Multithreaded', 'Software Development Guidance']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Introduction to messaging primitives"
+redirect_from: "/2016/09/30/introduction-to-messaging-primitives/"
 date:   2016-09-29 12:00:00 -0600
 categories: ['.NET Development', 'Message-oriented', 'Software Development']
 tags:

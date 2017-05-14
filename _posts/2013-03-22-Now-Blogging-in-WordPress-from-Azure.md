@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Now Blogging in WordPress from Azure"
+redirect_from: "/2013/03/22/now-blogging-in-wordpress-from-azure-2/"
 date:   2013-03-21 12:00:00 -0600
 categories: ['Azure', 'Random']
 tags:

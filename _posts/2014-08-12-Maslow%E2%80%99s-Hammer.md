@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Maslow’s Hammer"
+redirect_from: "/2014/08/12/maslows-hammer/"
 date:   2014-08-11 12:00:00 -0600
 categories: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Tips']
 tags:

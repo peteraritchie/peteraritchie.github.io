@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Automated Testing Isn’t Just for Business Logic"
+redirect_from: "/2012/05/25/automated-testing-isnt-just-for-business-logic/"
 date:   2012-05-24 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'TDD', 'Unit Testing']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Bye bye, eBay"
+redirect_from: "/2014/05/25/bye-bye-ebay/"
 date:   2014-05-24 12:00:00 -0600
 categories: ['Security']
 tags:

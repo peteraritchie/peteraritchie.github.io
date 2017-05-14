@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Heartbleed: Caveat Emptor"
+redirect_from: "/2014/04/18/heartbleed-caveat-emptor/"
 date:   2014-04-17 12:00:00 -0600
 categories: ['Heartbleed', 'Security']
 tags:

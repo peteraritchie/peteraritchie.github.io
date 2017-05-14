@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Win a free copy of Visual Studio 2010 Best Practices"
+redirect_from: "/2012/09/25/win-a-free-copy-of-visual-studio-2010-best-practices/"
 date:   2012-09-24 12:00:00 -0600
 categories: ['Visual Studio 2010', 'Visual studio 2010 Best Practices']
 tags:

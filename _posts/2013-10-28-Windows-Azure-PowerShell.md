@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Windows Azure PowerShell"
+redirect_from: "/2013/10/29/windows-azure-powershell/"
 date:   2013-10-27 12:00:00 -0600
 categories: ['Uncategorized']
 tags:

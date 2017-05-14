@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Unable to resolve reference refs/remotes/origin/master"
+redirect_from: "/2014/02/27/unable-to-resolve-reference-refsremotesoriginmaster/"
 date:   2014-02-26 19:00:00 -0500
 categories: ['GIT', 'Software Development']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Windows Store production mill"
+redirect_from: "/2014/04/30/windows-store-production-mill/"
 date:   2014-04-29 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Tips', 'Windows Store', 'XAML']
 tags:

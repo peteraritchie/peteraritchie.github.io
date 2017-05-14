@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Was Patching XP the wrong choice?
+redirect_from: "/2014/05/02/was-patching-xp-the-wrong-choice/"
 date:   2014-05-01 12:00:00 -0600
 categories: ['Non-development', 'Pontification']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "SkyDrive tip: extracting text from an image"
+redirect_from: "/2014/01/28/skydrive-tip-extracting-text-from-an-image/"
 date:   2014-01-27 19:00:00 -0500
 categories: ['Non-development', 'Random', 'SkyDrive']
 tags:

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Dreaded Re-write"
+redirect_from: "/2015/02/22/the-dreaded-re-write/"
 date:   2015-02-21 19:00:00 -0500
 categories: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development Guidance', 'Software Development Practices']
 tags:

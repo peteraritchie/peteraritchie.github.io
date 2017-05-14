@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Rat-hole of Object-oriented Mapping"
+redirect_from: "/2012/02/10/the-rat-hole-of-object-oriented-mapping/"
 date:   2012-02-09 19:00:00 -0500
 categories: ['.NET Development', 'Architecture', 'Code Smells', 'Design/Coding Guidance', 'Patterns', 'Pontification', 'Software Development', 'Software Development Guidance']
 tags:

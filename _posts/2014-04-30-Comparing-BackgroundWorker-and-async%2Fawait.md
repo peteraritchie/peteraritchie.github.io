@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Comparing BackgroundWorker and async/await"
+redirect_from: "/2014/04/30/comparing-backgroundworker-and-asyncawait/"
 date:   2014-04-29 12:00:00 -0600
 categories: ['Software Development']
 tags:
