@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How Hard Could It Be Indeed: Another sub-standard web site.
-date: 2008-06-01 20:00:00 -0400
+date:   2008-06-01 12:00:00 -0600
 categories: ['Poor UI']
 tags:
 - msmvps

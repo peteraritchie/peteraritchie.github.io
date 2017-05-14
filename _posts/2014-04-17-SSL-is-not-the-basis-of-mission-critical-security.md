@@ -1,7 +1,7 @@
 ---
 layout: post
-title: SSL is not the basis of mission critical security
-date: 2014-04-16 20:00:00 -0400
+title:  "SSL is not the basis of mission critical security"
+date:   2014-04-16 12:00:00 -0600
 categories: ['Heartbleed', 'Security', 'Uncategorized']
 tags:
 - msmvps

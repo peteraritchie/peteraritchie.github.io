@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Hosted MongoDB
-date: 2011-05-21 20:00:00 -0400
+title:  "Hosted MongoDB"
+date:   2011-05-21 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

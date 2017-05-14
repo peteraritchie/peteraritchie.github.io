@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Maxim’s of Object-Oriented Design – Layers
-date: 2008-02-05 19:00:00 -0500
+title:  "Maxim’s of Object-Oriented Design – Layers"
+date:   2008-02-05 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

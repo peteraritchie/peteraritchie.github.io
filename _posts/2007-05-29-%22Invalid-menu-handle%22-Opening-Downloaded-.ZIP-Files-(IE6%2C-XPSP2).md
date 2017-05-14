@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Invalid menu handle" Opening Downloaded .ZIP Files (IE6, XPSP2)
-date: 2007-05-28 20:00:00 -0400
+date:   2007-05-28 12:00:00 -0600
 categories: ['Non-development']
 tags:
 - msmvps

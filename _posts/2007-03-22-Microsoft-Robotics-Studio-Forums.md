@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Microsoft Robotics Studio Forums
-date: 2007-03-21 20:00:00 -0400
+title:  "Microsoft Robotics Studio Forums"
+date:   2007-03-21 12:00:00 -0600
 categories: ['New Forums']
 tags:
 - msmvps

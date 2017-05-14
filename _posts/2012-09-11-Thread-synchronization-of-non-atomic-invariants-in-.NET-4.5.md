@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Thread synchronization of non-atomic invariants in .NET 4.5
-date: 2012-09-10 20:00:00 -0400
+title:  "Thread synchronization of non-atomic invariants in .NET 4.5"
+date:   2012-09-10 12:00:00 -0600
 categories: ['.NET 4.5', '.NET Development', 'C#', 'Concurrency', 'Design/Coding Guidance', 'DevCenterPost', 'Multithreaded', 'Software Development Guidance', 'Visual Studio 2012']
 tags:
 - msmvps

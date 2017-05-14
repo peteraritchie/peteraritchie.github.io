@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Working with Resharper’s External Annotation XML Files
-date: 2008-07-20 20:00:00 -0400
+title:  "Working with Resharper’s External Annotation XML Files"
+date:   2008-07-20 12:00:00 -0600
 categories: ['.NET Development', 'Resharper', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

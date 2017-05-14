@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Software Design and First Principles–Part 0: Concepts of Object Orientation
-date: 2012-02-22 19:00:00 -0500
+title:  "Software Design and First Principles–Part 0: Concepts of Object Orientation"
+date:   2012-02-22 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Software Development Guidance', 'Software Development Principles', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

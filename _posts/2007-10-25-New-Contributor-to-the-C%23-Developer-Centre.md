@@ -1,7 +1,7 @@
 ---
 layout: post
-title: New Contributor to the C# Developer Centre
-date: 2007-10-24 20:00:00 -0400
+title:  "New Contributor to the C# Developer Centre"
+date:   2007-10-24 12:00:00 -0600
 categories: ['C# 3.0', 'C# Nugget', 'Visual Studio 2008']
 tags:
 - msmvps

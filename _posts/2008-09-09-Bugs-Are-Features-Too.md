@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Bugs Are Features Too
-date: 2008-09-08 20:00:00 -0400
+title:  "Bugs Are Features Too"
+date:   2008-09-08 12:00:00 -0600
 categories: ['Microsoft', 'Product Bugs', 'Software Development', 'Visual Studio 2005', 'Visual Studio 2008']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Time to replace UPS batteries…
-date: 2006-08-05 20:00:00 -0400
+date:   2006-08-05 12:00:00 -0600
 categories: ['Humourous', 'Non-development']
 tags:
 - msmvps

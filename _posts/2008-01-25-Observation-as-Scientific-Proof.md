@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Observation as Scientific Proof
-date: 2008-01-24 19:00:00 -0500
+title:  "Observation as Scientific Proof"
+date:   2008-01-24 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

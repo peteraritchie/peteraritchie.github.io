@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Microsoft Open Source Lab
-date: 2007-03-14 20:00:00 -0400
+title:  "Microsoft Open Source Lab"
+date:   2007-03-14 12:00:00 -0600
 categories: ['Microsoft', 'Open Source']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reports of my death have been greatly exaggerated."
-date: 2007-04-10 20:00:00 -0400
+date:   2007-04-10 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

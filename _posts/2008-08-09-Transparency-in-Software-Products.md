@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Transparency in Software Products
-date: 2008-08-08 20:00:00 -0400
+title:  "Transparency in Software Products"
+date:   2008-08-08 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

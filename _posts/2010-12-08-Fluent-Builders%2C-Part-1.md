@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Fluent Builders, Part 1
-date: 2010-12-07 19:00:00 -0500
+title:  "Fluent Builders, Part 1"
+date:   2010-12-07 19:00:00 -0500
 categories: ['.NET 4.0', '.NET Development', 'C#', 'C# 4', 'Patterns', 'Software Development']
 tags:
 - msmvps

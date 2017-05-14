@@ -1,7 +1,7 @@
 ---
 layout: post
-title: More Windows SDK Functions That Are Not Safe
-date: 2006-09-26 20:00:00 -0400
+title:  "More Windows SDK Functions That Are Not Safe"
+date:   2006-09-26 12:00:00 -0600
 categories: ['Software Development']
 tags:
 - msmvps

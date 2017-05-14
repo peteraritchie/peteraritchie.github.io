@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Dispose Pattern as an anti-pattern
-date: 2013-01-19 19:00:00 -0500
+title:  "The Dispose Pattern as an anti-pattern"
+date:   2013-01-19 19:00:00 -0500
 categories: ['.NET Development', 'AntiPattern', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance']
 tags:
 - msmvps

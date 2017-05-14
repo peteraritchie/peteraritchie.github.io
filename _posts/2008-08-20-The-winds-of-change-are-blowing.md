@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The winds of change are blowing
-date: 2008-08-19 20:00:00 -0400
+title:  "The winds of change are blowing"
+date:   2008-08-19 12:00:00 -0600
 categories: ['ALT.NET', 'Design/Coding Guidance', 'Kaikaku', 'Kaizen', 'Software Development']
 tags:
 - msmvps

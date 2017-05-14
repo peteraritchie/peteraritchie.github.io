@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Becoming a Visual Studio Jedi Part 1
-date: 2008-09-01 20:00:00 -0400
+title:  "Becoming a Visual Studio Jedi Part 1"
+date:   2008-09-01 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

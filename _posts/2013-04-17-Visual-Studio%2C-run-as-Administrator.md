@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio, run as Administrator
-date: 2013-04-16 20:00:00 -0400
+title:  "Visual Studio, run as Administrator"
+date:   2013-04-16 12:00:00 -0600
 categories: ['.NET Development', 'Visual Studio 2012']
 tags:
 - msmvps

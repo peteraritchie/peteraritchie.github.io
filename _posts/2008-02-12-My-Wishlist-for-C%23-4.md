@@ -1,7 +1,7 @@
 ---
 layout: post
-title: My Wishlist for C# 4
-date: 2008-02-11 19:00:00 -0500
+title:  "My Wishlist for C# 4"
+date:   2008-02-11 19:00:00 -0500
 categories: ['C#', 'C# 4', 'Pontification']
 tags:
 - msmvps

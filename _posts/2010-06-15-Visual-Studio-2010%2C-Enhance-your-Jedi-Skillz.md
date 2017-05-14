@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio 2010, Enhance your Jedi Skillz
-date: 2010-06-14 20:00:00 -0400
+title:  "Visual Studio 2010, Enhance your Jedi Skillz"
+date:   2010-06-14 12:00:00 -0600
 categories: ['.NET Development', 'DevCenterPost', 'Software Development', 'Visual Studio 2010']
 tags:
 - msmvps

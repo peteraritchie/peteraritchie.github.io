@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Multi-platform Testing
-date: 2008-07-14 20:00:00 -0400
+title:  "Multi-platform Testing"
+date:   2008-07-14 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Ottawa Speaker’s Idol Nov. 2nd at DevTeach Ottawa
-date: 2011-10-04 20:00:00 -0400
+title:  "Ottawa Speaker’s Idol Nov. 2nd at DevTeach Ottawa"
+date:   2011-10-04 12:00:00 -0600
 categories: ['DevTeach', 'DevTeach YOW 2011']
 tags:
 - msmvps

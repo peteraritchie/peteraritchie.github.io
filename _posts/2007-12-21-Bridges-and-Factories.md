@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Bridges and Factories
-date: 2007-12-20 19:00:00 -0500
+title:  "Bridges and Factories"
+date:   2007-12-20 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Patterns']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Avoid the volatile Modifier
-date: 2012-01-24 19:00:00 -0500
+title:  "Avoid the volatile Modifier"
+date:   2012-01-24 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Multithreaded', 'Software Development', 'Software Development Guidance', 'Visual Studio']
 tags:
 - msmvps
@@ -10,7 +10,7 @@ tags:
 
 # Avoid the volatile Modifier
 
-[Update: 25-Jan-12 5:45 pm; fixed typo]
+[Update:   25-Jan-12 5:45 pm; fixed typo]
 
 I was reminded recently of the misconceptions of the volatile modifier in C#, and I'd thought I'd pass along the recommendations of other's that is tantamount to "avoid the volatile modifier".  The volatile modifier in C# "indicates that a field might be modified by multiple threads that are executing at the same time" [1].
 

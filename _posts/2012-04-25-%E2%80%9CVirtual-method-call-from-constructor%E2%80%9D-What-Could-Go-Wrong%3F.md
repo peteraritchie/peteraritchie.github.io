@@ -1,7 +1,7 @@
 ---
 layout: post
 title: “Virtual method call from constructor” What Could Go Wrong?
-date: 2012-04-24 20:00:00 -0400
+date:   2012-04-24 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Code Analysis/FxCop Warning Resolutions', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio']
 tags:
 - msmvps

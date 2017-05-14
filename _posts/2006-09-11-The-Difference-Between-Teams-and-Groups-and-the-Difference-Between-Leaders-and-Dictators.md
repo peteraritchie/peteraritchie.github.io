@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Difference Between Teams and Groups and the Difference Between Leaders and Dictators
-date: 2006-09-10 20:00:00 -0400
+title:  "The Difference Between Teams and Groups and the Difference Between Leaders and Dictators"
+date:   2006-09-10 12:00:00 -0600
 categories: ['Software Development']
 tags:
 - msmvps

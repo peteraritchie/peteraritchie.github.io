@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New warning CS0809 in C# 3 (Visual Studio 2008)
-date: 2007-11-25 19:00:00 -0500
+date:   2007-11-25 19:00:00 -0500
 categories: ['.NET 3.5', 'C#', 'C# 3.0', 'C# 3.0 Breaking Changes', 'Design/Coding Guidance', 'Visual Studio 2008']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Nested Types
-date: 2008-07-14 20:00:00 -0400
+title:  "Nested Types"
+date:   2008-07-14 12:00:00 -0600
 categories: ['.NET 3.5', '.NET Development', 'Asynchronous Programming Model (APM)', 'C#', 'C# 3.0', 'Design/Coding Guidance', 'Software Development', 'TCP', 'Visual Studio 2008']
 tags:
 - msmvps

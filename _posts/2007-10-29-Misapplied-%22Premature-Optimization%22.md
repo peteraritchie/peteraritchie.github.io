@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Misapplied "Premature Optimization"
-date: 2007-10-28 20:00:00 -0400
+date:   2007-10-28 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

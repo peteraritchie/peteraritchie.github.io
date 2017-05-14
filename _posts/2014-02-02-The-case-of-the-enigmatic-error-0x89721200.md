@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The case of the enigmatic error 0x89721200
-date: 2014-02-01 19:00:00 -0500
+title:  "The case of the enigmatic error 0x89721200"
+date:   2014-02-01 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Visaul Studio 2013', 'Windows Phone', 'Windows Phone 8.0']
 tags:
 - msmvps

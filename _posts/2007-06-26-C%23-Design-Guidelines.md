@@ -1,7 +1,7 @@
 ---
 layout: post
-title: C# Design Guidelines
-date: 2007-06-25 20:00:00 -0400
+title:  "C# Design Guidelines"
+date:   2007-06-25 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

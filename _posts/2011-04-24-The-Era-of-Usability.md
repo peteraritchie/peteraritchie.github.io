@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Era of Usability
-date: 2011-04-23 20:00:00 -0400
+title:  "The Era of Usability"
+date:   2011-04-23 12:00:00 -0600
 categories: ['General', 'Non-development', 'Pontification', 'Software', 'Usability']
 tags:
 - msmvps

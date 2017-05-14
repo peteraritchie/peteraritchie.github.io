@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Entity Framework Petition of Vote of Non Confidence
-date: 2008-06-24 20:00:00 -0400
+title:  "Entity Framework Petition of Vote of Non Confidence"
+date:   2008-06-24 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Microsoft', 'Software Development']
 tags:
 - msmvps

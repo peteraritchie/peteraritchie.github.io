@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pot to Kettle: "You’re Black"
-date: 2006-09-28 20:00:00 -0400
+date:   2006-09-28 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

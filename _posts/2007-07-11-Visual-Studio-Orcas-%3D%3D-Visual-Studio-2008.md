@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio Orcas == Visual Studio 2008
-date: 2007-07-10 20:00:00 -0400
+title:  "Visual Studio Orcas == Visual Studio 2008"
+date:   2007-07-10 12:00:00 -0600
 categories: ['Visual Studio Orcas']
 tags:
 - msmvps

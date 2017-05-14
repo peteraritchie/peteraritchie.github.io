@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Sudden "…you must have Terminal Server User Access permissions on this computer." Error.
-date: 2007-02-02 19:00:00 -0500
+date:   2007-02-02 19:00:00 -0500
 categories: ['Small Business Server 2003 R2', 'Software Development', 'Team Foundation Server']
 tags:
 - msmvps

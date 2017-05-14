@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The case of the not-so-useful XBF error
-date: 2014-03-22 20:00:00 -0400
+title:  "The case of the not-so-useful XBF error"
+date:   2014-03-22 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Windows Store', 'XAML']
 tags:
 - msmvps

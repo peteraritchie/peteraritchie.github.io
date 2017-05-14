@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Object is currently in use elsewhere" error.
-date: 2008-01-27 19:00:00 -0500
+date:   2008-01-27 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'DevCenterPost', 'WinForms']
 tags:
 - msmvps

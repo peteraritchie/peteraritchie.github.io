@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Accessing Private Fields and Properties
-date: 2013-04-02 20:00:00 -0400
+title:  "Accessing Private Fields and Properties"
+date:   2013-04-02 12:00:00 -0600
 categories: ['.NET 4.0', '.NET Development', 'C#', 'Productivity Extensions']
 tags:
 - msmvps

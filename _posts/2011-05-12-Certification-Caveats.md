@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Certification Caveats
-date: 2011-05-11 20:00:00 -0400
+title:  "Certification Caveats"
+date:   2011-05-11 12:00:00 -0600
 categories: ['Opinion', 'Rant']
 tags:
 - msmvps

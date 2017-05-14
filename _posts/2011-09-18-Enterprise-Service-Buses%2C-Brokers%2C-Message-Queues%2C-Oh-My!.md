@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Enterprise Service Buses, Brokers, Message Queues, Oh My!
-date: 2011-09-17 20:00:00 -0400
+date:   2011-09-17 12:00:00 -0600
 categories: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Writing Solid Code
-date: 2006-10-15 20:00:00 -0400
+title:  "Writing Solid Code"
+date:   2006-10-15 12:00:00 -0600
 categories: ['C#', 'C++', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

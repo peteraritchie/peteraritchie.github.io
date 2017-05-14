@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio 2008 Managed Code Analysis
-date: 2007-08-26 20:00:00 -0400
+title:  "Visual Studio 2008 Managed Code Analysis"
+date:   2007-08-26 12:00:00 -0600
 categories: ['Visual Studio 2008']
 tags:
 - msmvps

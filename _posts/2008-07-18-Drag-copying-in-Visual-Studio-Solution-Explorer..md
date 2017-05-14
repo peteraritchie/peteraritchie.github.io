@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Drag-copying in Visual Studio Solution Explorer.
-date: 2008-07-17 20:00:00 -0400
+date:   2008-07-17 12:00:00 -0600
 categories: ['.NET 3.5', '.NET Development', 'Poor UI', 'Product Bugs', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New Warning CS1060 in C# 3 (Visual Studio 2008)
-date: 2007-12-08 19:00:00 -0500
+date:   2007-12-08 19:00:00 -0500
 categories: ['.NET 3.5', '.NET Development', 'C# 3.0 Breaking Changes', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

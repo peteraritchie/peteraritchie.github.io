@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Software Process and Reduction of Quality
-date: 2008-09-03 20:00:00 -0400
+title:  "Software Process and Reduction of Quality"
+date:   2008-09-03 12:00:00 -0600
 categories: ['General', 'Software Development']
 tags:
 - msmvps

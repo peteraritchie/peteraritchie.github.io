@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Oww, my brain hurts.  Extension methods *will* cause me grief.
-date: 2007-05-30 20:00:00 -0400
+date:   2007-05-30 12:00:00 -0600
 categories: ['.NET 3.x', '.NET Development', 'C#']
 tags:
 - msmvps

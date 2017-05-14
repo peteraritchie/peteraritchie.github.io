@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The TeamCity Database Migration Documenation Could Use Some Work
-date: 2011-11-30 19:00:00 -0500
+title:  "The TeamCity Database Migration Documenation Could Use Some Work"
+date:   2011-11-30 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

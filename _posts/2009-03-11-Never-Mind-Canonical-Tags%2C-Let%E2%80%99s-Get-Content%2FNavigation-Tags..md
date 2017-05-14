@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Never Mind Canonical Tags, Let’s Get Content/Navigation Tags.
-date: 2009-03-10 20:00:00 -0400
+date:   2009-03-10 12:00:00 -0600
 categories: ['Non-development', 'Pontification']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Sortable Value Type Code Snippet
-date: 2006-03-24 19:00:00 -0500
+title:  "Sortable Value Type Code Snippet"
+date:   2006-03-24 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Software Development']
 tags:
 - msmvps

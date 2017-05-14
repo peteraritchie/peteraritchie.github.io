@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Guest Blogging on Microsoft Canada Developer Connection
-date: 2007-02-12 19:00:00 -0500
+title:  "Guest Blogging on Microsoft Canada Developer Connection"
+date:   2007-02-12 19:00:00 -0500
 categories: ['C#']
 tags:
 - msmvps

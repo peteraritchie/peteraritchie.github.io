@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ITSWITCH #1: Answer
-date: 2008-07-27 20:00:00 -0400
+title:  "ITSWITCH #1: Answer"
+date:   2008-07-27 12:00:00 -0600
 categories: ['.NET 2.0', '.NET Development', 'C#', 'Design/Coding Guidance', 'ITSWITCH Answer', 'Pop Quiz', 'Software Development']
 tags:
 - msmvps

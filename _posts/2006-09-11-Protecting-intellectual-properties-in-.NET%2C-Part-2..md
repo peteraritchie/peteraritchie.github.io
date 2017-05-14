@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Protecting intellectual properties in .NET, Part 2.
-date: 2006-09-10 20:00:00 -0400
+date:   2006-09-10 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

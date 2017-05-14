@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Working with Children
-date: 2009-04-16 20:00:00 -0400
+title:  "Working with Children"
+date:   2009-04-16 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

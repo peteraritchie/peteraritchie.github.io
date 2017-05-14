@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Microsoft Techdays 2008
-date: 2008-11-02 19:00:00 -0500
+title:  "Microsoft Techdays 2008"
+date:   2008-11-02 19:00:00 -0500
 categories: ['techdays2008']
 tags:
 - msmvps

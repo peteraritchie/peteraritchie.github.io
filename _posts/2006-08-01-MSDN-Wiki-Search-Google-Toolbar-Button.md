@@ -1,7 +1,7 @@
 ---
 layout: post
-title: MSDN Wiki Search Google Toolbar Button
-date: 2006-07-31 20:00:00 -0400
+title:  "MSDN Wiki Search Google Toolbar Button"
+date:   2006-07-31 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Long Paths and .NET
-date: 2014-07-22 20:00:00 -0400
+title:  "Long Paths and .NET"
+date:   2014-07-22 12:00:00 -0600
 categories: ['.NET 4.5', '.NET Development', 'C#', 'LongPath', 'Open Source', 'Software Development']
 tags:
 - msmvps

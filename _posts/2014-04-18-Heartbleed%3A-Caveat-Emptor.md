@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Heartbleed: Caveat Emptor
-date: 2014-04-17 20:00:00 -0400
+title:  "Heartbleed: Caveat Emptor"
+date:   2014-04-17 12:00:00 -0600
 categories: ['Heartbleed', 'Security']
 tags:
 - msmvps

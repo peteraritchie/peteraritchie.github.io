@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Introduction to messaging primitives
-date: 2016-09-29 20:00:00 -0400
+title:  "Introduction to messaging primitives"
+date:   2016-09-29 12:00:00 -0600
 categories: ['.NET Development', 'Message-oriented', 'Software Development']
 tags:
 - msmvps

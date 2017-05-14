@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Performance Implications of try/catch/finally, Part Two
-date: 2007-07-11 20:00:00 -0400
+title:  "Performance Implications of try/catch/finally, Part Two"
+date:   2007-07-11 12:00:00 -0600
 categories: ['.NET 2.0', '.NET Development', 'C#', 'Design/Coding Guidance']
 tags:
 - msmvps

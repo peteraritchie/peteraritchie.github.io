@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Community
-date: 2007-03-18 20:00:00 -0400
+title:  "Community"
+date:   2007-03-18 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

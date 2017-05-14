@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Trace to output window without adding code.
-date: 2008-06-12 20:00:00 -0400
+date:   2008-06-12 12:00:00 -0600
 categories: ['Interesting Find', 'Visual Studio 2005', 'Visual Studio 2008']
 tags:
 - msmvps

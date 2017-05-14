@@ -1,7 +1,7 @@
 ---
 layout: post
-title: visual studio jedi 2
-date: 2008-11-13 19:00:00 -0500
+title:  "visual studio jedi 2"
+date:   2008-11-13 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Law of Reversibility of Attributes
-date: 2008-08-12 20:00:00 -0400
+title:  "Law of Reversibility of Attributes"
+date:   2008-08-12 12:00:00 -0600
 categories: ['Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

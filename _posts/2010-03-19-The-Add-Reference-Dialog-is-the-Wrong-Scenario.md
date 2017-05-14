@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Add Reference Dialog is the Wrong Scenario
-date: 2010-03-18 20:00:00 -0400
+title:  "The Add Reference Dialog is the Wrong Scenario"
+date:   2010-03-18 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

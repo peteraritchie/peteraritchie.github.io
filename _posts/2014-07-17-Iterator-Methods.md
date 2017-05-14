@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Iterator Methods
-date: 2014-07-16 20:00:00 -0400
+title:  "Iterator Methods"
+date:   2014-07-16 12:00:00 -0600
 categories: ['.NET Development', 'C#']
 tags:
 - msmvps

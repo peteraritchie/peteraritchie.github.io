@@ -1,7 +1,7 @@
 ---
 layout: post
-title: The Difference between an Anti-Pattern and a Code Smell
-date: 2010-02-02 19:00:00 -0500
+title:  "The Difference between an Anti-Pattern and a Code Smell"
+date:   2010-02-02 19:00:00 -0500
 categories: ['AntiPattern', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Generating Windows Phone and Windows Store application images–the vector version
-date: 2014-02-22 19:00:00 -0500
+title:  "Generating Windows Phone and Windows Store application images–the vector version"
+date:   2014-02-22 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Windows Phone 8.0', 'Windows Store']
 tags:
 - msmvps

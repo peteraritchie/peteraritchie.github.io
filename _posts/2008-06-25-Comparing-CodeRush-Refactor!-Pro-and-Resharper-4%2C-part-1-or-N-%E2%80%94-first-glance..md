@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N — first glance.
-date: 2008-06-24 20:00:00 -0400
+date:   2008-06-24 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'CodeRush Refactor! Pro', 'EffectiveIoC', 'Resharper', 'Software Development']
 tags:
 - msmvps

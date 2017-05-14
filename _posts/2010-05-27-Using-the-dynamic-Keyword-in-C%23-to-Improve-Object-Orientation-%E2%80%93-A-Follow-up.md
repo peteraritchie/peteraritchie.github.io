@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Using the dynamic Keyword in C# to Improve Object Orientation – A Follow-up
-date: 2010-05-26 20:00:00 -0400
+title:  "Using the dynamic Keyword in C# to Improve Object Orientation – A Follow-up"
+date:   2010-05-26 12:00:00 -0600
 categories: ['.NET 4.0', 'C#', 'C# 4.0', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development', 'Visual Studio 2010']
 tags:
 - msmvps

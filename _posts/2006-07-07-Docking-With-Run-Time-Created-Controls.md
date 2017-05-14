@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Docking With Run-Time-Created Controls
-date: 2006-07-06 20:00:00 -0400
+title:  "Docking With Run-Time-Created Controls"
+date:   2006-07-06 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Software Development', 'WinForms']
 tags:
 - msmvps

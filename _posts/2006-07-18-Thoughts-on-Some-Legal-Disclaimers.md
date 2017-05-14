@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Thoughts on Some Legal Disclaimers
-date: 2006-07-17 20:00:00 -0400
+title:  "Thoughts on Some Legal Disclaimers"
+date:   2006-07-17 12:00:00 -0600
 categories: ['Non-development']
 tags:
 - msmvps

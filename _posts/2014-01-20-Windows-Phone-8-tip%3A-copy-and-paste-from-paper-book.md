@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Windows Phone 8 tip: copy and paste from paper book
-date: 2014-01-19 19:00:00 -0500
+title:  "Windows Phone 8 tip: copy and paste from paper book"
+date:   2014-01-19 19:00:00 -0500
 categories: ['Mobile', 'Non-development']
 tags:
 - msmvps

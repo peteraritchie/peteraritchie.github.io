@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Windows Live Messenger Virus Scanner Settings
-date: 2007-03-21 20:00:00 -0400
+title:  "Windows Live Messenger Virus Scanner Settings"
+date:   2007-03-21 12:00:00 -0600
 categories: ['Non-development']
 tags:
 - msmvps

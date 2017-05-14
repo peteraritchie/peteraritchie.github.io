@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Exception Logging
-date: 2007-07-31 20:00:00 -0400
+title:  "Exception Logging"
+date:   2007-07-31 12:00:00 -0600
 categories: ['C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

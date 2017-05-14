@@ -1,7 +1,7 @@
 ---
 layout: post
-title: House of Cards Design Anti-pattern
-date: 2009-01-26 19:00:00 -0500
+title:  "House of Cards Design Anti-pattern"
+date:   2009-01-26 19:00:00 -0500
 categories: ['AntiPattern', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

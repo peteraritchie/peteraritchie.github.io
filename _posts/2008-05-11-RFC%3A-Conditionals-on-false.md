@@ -1,7 +1,7 @@
 ---
 layout: post
-title: RFC: Conditionals on false
-date: 2008-05-10 20:00:00 -0400
+title:  "RFC: Conditionals on false"
+date:   2008-05-10 12:00:00 -0600
 categories: ['C#', 'Reader Questions']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Extra Features: One of the Lean 7 Wastes of Software
-date: 2008-08-17 20:00:00 -0400
+title:  "Extra Features: One of the Lean 7 Wastes of Software"
+date:   2008-08-17 12:00:00 -0600
 categories: ['Lean', 'Software Development']
 tags:
 - msmvps

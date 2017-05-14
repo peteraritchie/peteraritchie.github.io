@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Getting the most out of Reflector
-date: 2008-08-07 20:00:00 -0400
+title:  "Getting the most out of Reflector"
+date:   2008-08-07 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

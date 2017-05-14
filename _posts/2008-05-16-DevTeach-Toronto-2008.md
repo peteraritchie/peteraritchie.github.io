@@ -1,7 +1,7 @@
 ---
 layout: post
-title: DevTeach Toronto 2008
-date: 2008-05-15 20:00:00 -0400
+title:  "DevTeach Toronto 2008"
+date:   2008-05-15 12:00:00 -0600
 categories: ['.NET Development', 'DevTeach']
 tags:
 - msmvps

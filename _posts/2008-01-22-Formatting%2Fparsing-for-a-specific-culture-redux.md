@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Formatting/parsing for a specific culture redux
-date: 2008-01-21 19:00:00 -0500
+title:  "Formatting/parsing for a specific culture redux"
+date:   2008-01-21 19:00:00 -0500
 categories: ['.NET 2.0', '.NET Development', 'C#', 'DevCenterPost', 'Framework Bug']
 tags:
 - msmvps

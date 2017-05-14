@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Sandcastle Source Code Published
-date: 2008-07-01 20:00:00 -0400
+title:  "Sandcastle Source Code Published"
+date:   2008-07-01 12:00:00 -0600
 categories: ['.NET Development', 'Interesting Find', 'Open Source', 'Software Development']
 tags:
 - msmvps

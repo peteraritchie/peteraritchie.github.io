@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Win a free copy of Visual Studio 2010 Best Practices
-date: 2012-09-24 20:00:00 -0400
+title:  "Win a free copy of Visual Studio 2010 Best Practices"
+date:   2012-09-24 12:00:00 -0600
 categories: ['Visual Studio 2010', 'Visual studio 2010 Best Practices']
 tags:
 - msmvps

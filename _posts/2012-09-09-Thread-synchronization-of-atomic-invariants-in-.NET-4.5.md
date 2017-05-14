@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Thread synchronization of atomic invariants in .NET 4.5
-date: 2012-09-08 20:00:00 -0400
+title:  "Thread synchronization of atomic invariants in .NET 4.5"
+date:   2012-09-08 12:00:00 -0600
 categories: ['.NET 4.5', '.NET Development', 'C#', 'Concurrency', 'DevCenterPost', 'Multithreaded', 'Software Development Guidance']
 tags:
 - msmvps

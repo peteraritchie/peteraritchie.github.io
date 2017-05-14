@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Closure Tip
-date: 2008-10-26 20:00:00 -0400
+title:  "Closure Tip"
+date:   2008-10-26 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

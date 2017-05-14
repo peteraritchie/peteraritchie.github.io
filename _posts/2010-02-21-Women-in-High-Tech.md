@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Women in High Tech
-date: 2010-02-20 19:00:00 -0500
+title:  "Women in High Tech"
+date:   2010-02-20 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

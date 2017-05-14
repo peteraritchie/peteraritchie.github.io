@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Testing Strategies Involving Async Functions
-date: 2010-11-03 20:00:00 -0400
+title:  "Testing Strategies Involving Async Functions"
+date:   2010-11-03 12:00:00 -0600
 categories: ['.NET Development', 'Async Functions', 'C# 5', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'TDD', 'Unit Testing']
 tags:
 - msmvps

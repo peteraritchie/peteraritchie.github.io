@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Licences for Microsoft products
-date: 2008-03-27 20:00:00 -0400
+title:  "Licences for Microsoft products"
+date:   2008-03-27 12:00:00 -0600
 categories: ['.NET Development', 'C#']
 tags:
 - msmvps

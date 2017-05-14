@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Software Design Priniples and Terminology
-date: 2007-06-11 20:00:00 -0400
+title:  "Software Design Priniples and Terminology"
+date:   2007-06-11 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

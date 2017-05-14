@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CoDe Magazine Article.
-date: 2008-02-03 19:00:00 -0500
+date:   2008-02-03 19:00:00 -0500
 categories: ['.NET 3.5', '.NET Development', 'C# 3.0']
 tags:
 - msmvps

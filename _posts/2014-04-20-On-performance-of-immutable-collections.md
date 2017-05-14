@@ -1,7 +1,7 @@
 ---
 layout: post
-title: On performance of immutable collections
-date: 2014-04-19 20:00:00 -0400
+title:  "On performance of immutable collections"
+date:   2014-04-19 12:00:00 -0600
 categories: ['Multithreaded']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio 2010 Best Practices published
-date: 2012-08-24 20:00:00 -0400
+title:  "Visual Studio 2010 Best Practices published"
+date:   2012-08-24 12:00:00 -0600
 categories: ['C#', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles', 'Visual Studio 2010', 'Visual Studio 2010 Best Practices', 'Visual studio 2010 Best Practices']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Best Practices
-date: 2010-06-13 20:00:00 -0400
+title:  "Best Practices"
+date:   2010-06-13 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

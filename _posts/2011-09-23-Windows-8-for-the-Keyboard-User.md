@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Windows 8 for the Keyboard User
-date: 2011-09-22 20:00:00 -0400
+title:  "Windows 8 for the Keyboard User"
+date:   2011-09-22 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

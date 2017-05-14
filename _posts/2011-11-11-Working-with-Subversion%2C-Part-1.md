@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Working with Subversion, Part 1
-date: 2011-11-10 19:00:00 -0500
+title:  "Working with Subversion, Part 1"
+date:   2011-11-10 19:00:00 -0500
 categories: ['General', 'SCC', 'Software Development', 'Software Development Workflow', 'Subversion', 'SVN']
 tags:
 - msmvps

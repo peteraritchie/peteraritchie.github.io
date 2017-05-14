@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Unable To Step Into .NET Source
-date: 2008-11-23 19:00:00 -0500
+title:  "Unable To Step Into .NET Source"
+date:   2008-11-23 19:00:00 -0500
 categories: ['.NET Development', 'Visual Studio 2008', 'Visual Studio 2008 SP1']
 tags:
 - msmvps

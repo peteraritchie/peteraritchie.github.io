@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Playing with LINQ
-date: 2008-02-07 19:00:00 -0500
+title:  "Playing with LINQ"
+date:   2008-02-07 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

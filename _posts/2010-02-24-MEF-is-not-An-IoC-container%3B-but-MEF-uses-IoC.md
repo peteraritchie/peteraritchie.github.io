@@ -1,7 +1,7 @@
 ---
 layout: post
-title: MEF is not An IoC container; but MEF uses IoC
-date: 2010-02-23 19:00:00 -0500
+title:  "MEF is not An IoC container; but MEF uses IoC"
+date:   2010-02-23 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

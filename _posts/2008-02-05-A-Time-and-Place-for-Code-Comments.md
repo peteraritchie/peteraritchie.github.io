@@ -1,7 +1,7 @@
 ---
 layout: post
-title: A Time and Place for Code Comments
-date: 2008-02-04 19:00:00 -0500
+title:  "A Time and Place for Code Comments"
+date:   2008-02-04 19:00:00 -0500
 categories: ['C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Not Knowing Why Something is Better or Worse Means You Believe it’s Magic
-date: 2008-02-05 19:00:00 -0500
+title:  "Not Knowing Why Something is Better or Worse Means You Believe it’s Magic"
+date:   2008-02-05 19:00:00 -0500
 categories: ['Software Development']
 tags:
 - msmvps

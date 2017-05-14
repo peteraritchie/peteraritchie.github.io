@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Location of unit tests.
-date: 2008-08-19 20:00:00 -0400
+date:   2008-08-19 12:00:00 -0600
 categories: ['.NET Development', 'Design/Coding Guidance', 'General', 'Pontification', 'TDD']
 tags:
 - msmvps

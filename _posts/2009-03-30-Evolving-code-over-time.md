@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Evolving code over time
-date: 2009-03-29 20:00:00 -0400
+title:  "Evolving code over time"
+date:   2009-03-29 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

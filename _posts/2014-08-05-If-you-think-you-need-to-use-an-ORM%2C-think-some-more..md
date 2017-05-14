@@ -1,7 +1,7 @@
 ---
 layout: post
 title: If you think you need to use an ORM, think some more.
-date: 2014-08-04 20:00:00 -0400
+date:   2014-08-04 12:00:00 -0600
 categories: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance']
 tags:
 - msmvps

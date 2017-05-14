@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio 2005 Clean doesn’t clean everything
-date: 2006-11-15 19:00:00 -0500
+title:  "Visual Studio 2005 Clean doesn’t clean everything"
+date:   2006-11-15 19:00:00 -0500
 categories: ['C#', 'Visual Studio 2005']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Formatting/parsing for a specific culture
-date: 2007-12-26 19:00:00 -0500
+title:  "Formatting/parsing for a specific culture"
+date:   2007-12-26 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'DevCenterPost']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Was Patching XP the wrong choice?
-date: 2014-05-01 20:00:00 -0400
+date:   2014-05-01 12:00:00 -0600
 categories: ['Non-development', 'Pontification']
 tags:
 - msmvps

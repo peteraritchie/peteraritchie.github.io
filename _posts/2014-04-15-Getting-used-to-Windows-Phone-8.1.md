@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Getting used to Windows Phone 8.1
-date: 2014-04-14 20:00:00 -0400
+title:  "Getting used to Windows Phone 8.1"
+date:   2014-04-14 12:00:00 -0600
 categories: ['Windows Phone', 'Windows Phone 8.1']
 tags:
 - msmvps

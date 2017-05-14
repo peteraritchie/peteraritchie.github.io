@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Writing Unit Tests is Hard, Because…
-date: 2015-03-09 20:00:00 -0400
+date:   2015-03-09 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

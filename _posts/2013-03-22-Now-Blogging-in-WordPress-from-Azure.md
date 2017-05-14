@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Now Blogging in WordPress from Azure
-date: 2013-03-21 20:00:00 -0400
+title:  "Now Blogging in WordPress from Azure"
+date:   2013-03-21 12:00:00 -0600
 categories: ['Azure', 'Random']
 tags:
 - msmvps

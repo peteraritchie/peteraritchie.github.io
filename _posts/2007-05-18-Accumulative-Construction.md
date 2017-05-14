@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Accumulative Construction
-date: 2007-05-17 20:00:00 -0400
+title:  "Accumulative Construction"
+date:   2007-05-17 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

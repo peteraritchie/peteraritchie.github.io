@@ -1,7 +1,7 @@
 ---
 layout: post
-title: DataGridViewColumn.Frozen
-date: 2008-08-10 20:00:00 -0400
+title:  "DataGridViewColumn.Frozen"
+date:   2008-08-10 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

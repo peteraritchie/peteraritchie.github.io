@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Getting the most of Windows Phone 8.1 keyboard
-date: 2014-04-28 20:00:00 -0400
+title:  "Getting the most of Windows Phone 8.1 keyboard"
+date:   2014-04-28 12:00:00 -0600
 categories: ['Windows Phone 8.1']
 tags:
 - msmvps

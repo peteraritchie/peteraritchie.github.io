@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Platform Developer Creativity
-date: 2010-04-09 20:00:00 -0400
+title:  "Platform Developer Creativity"
+date:   2010-04-09 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

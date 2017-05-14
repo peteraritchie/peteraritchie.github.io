@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Getting Started Unit Testing with nUnit
-date: 2010-04-17 20:00:00 -0400
+title:  "Getting Started Unit Testing with nUnit"
+date:   2010-04-17 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

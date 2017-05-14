@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Why Fundamentals are Important to Microsoft’s Bottom-line
-date: 2009-07-22 20:00:00 -0400
+title:  "Why Fundamentals are Important to Microsoft’s Bottom-line"
+date:   2009-07-22 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

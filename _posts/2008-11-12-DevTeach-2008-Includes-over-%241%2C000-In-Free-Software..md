@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DevTeach 2008 Includes over $1,000 In Free Software.
-date: 2008-11-11 19:00:00 -0500
+date:   2008-11-11 19:00:00 -0500
 categories: ['.NET Development', 'DevTeach YUL 2008']
 tags:
 - msmvps

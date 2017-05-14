@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Visual Studio Revert-to-saved macros
-date: 2006-07-26 20:00:00 -0400
+title:  "Visual Studio Revert-to-saved macros"
+date:   2006-07-26 12:00:00 -0600
 categories: ['.NET Development', 'Visual Studio 2005']
 tags:
 - msmvps

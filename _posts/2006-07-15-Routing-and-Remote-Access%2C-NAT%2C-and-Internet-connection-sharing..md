@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Routing and Remote Access, NAT, and Internet connection sharing.
-date: 2006-07-14 20:00:00 -0400
+date:   2006-07-14 12:00:00 -0600
 categories: ['General']
 tags:
 - msmvps

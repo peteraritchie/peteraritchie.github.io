@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Add Visual Studio 2005 Intermediate Files to Windows Disk Cleanup
-date: 2006-10-01 20:00:00 -0400
+title:  "Add Visual Studio 2005 Intermediate Files to Windows Disk Cleanup"
+date:   2006-10-01 12:00:00 -0600
 categories: ['Visual Studio 2005']
 tags:
 - msmvps

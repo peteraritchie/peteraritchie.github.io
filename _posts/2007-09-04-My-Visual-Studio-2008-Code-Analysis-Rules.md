@@ -1,7 +1,7 @@
 ---
 layout: post
-title: My Visual Studio 2008 Code Analysis Rules
-date: 2007-09-03 20:00:00 -0400
+title:  "My Visual Studio 2008 Code Analysis Rules"
+date:   2007-09-03 12:00:00 -0600
 categories: ['Code Analysis Rules', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Principles of Software Development Productivity
-date: 2010-04-25 20:00:00 -0400
+title:  "Principles of Software Development Productivity"
+date:   2010-04-25 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
 - msmvps

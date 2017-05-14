@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Fundamentals of OOD, Part 2 – Encapsulation Scope
-date: 2008-05-07 20:00:00 -0400
+title:  "Fundamentals of OOD, Part 2 – Encapsulation Scope"
+date:   2008-05-07 12:00:00 -0600
 categories: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development']
 tags:
 - msmvps
