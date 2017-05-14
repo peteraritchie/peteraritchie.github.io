@@ -6,7 +6,6 @@ date:   2015-03-09 12:00:00 -0600
 categories: ['Uncategorized']
 tags:
  - msmvps
-redirect_from: /?p=2391
 ---
 [Source](http://pr-blog.azurewebsites.net/2015/03/10/writing-unit-tests-is-hard-because/ "Permalink to Writing Unit Tests is Hard, Because…")
 
