@@ -62,26 +62,6 @@ baseurl: ""
 
 permalink: /:title/
 
-defaults:
-  -
-    scope:
-      path: ""
-      type: pages
-    values:
-      layout: page
-  -
-    scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-  -
-    scope:
-      path: ""
-      type: my_categories
-    values:
-      layout: blog_by_category
-
 # The release of Jekyll Now that you're using
 version: v1.2.0
 
