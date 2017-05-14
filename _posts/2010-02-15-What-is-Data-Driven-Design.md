@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What is Data-Driven Design
+date: 2010-02-14 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

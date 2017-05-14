@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DataContractSerializer.ReadObject is easily confused.
+date: 2009-04-28 20:00:00 -0400
 categories: ['.NET 3.5', 'C#', 'WCF']
 tags:
 - msmvps

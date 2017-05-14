@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Layers in Visual Studio 2010
+date: 2010-05-07 20:00:00 -0400
 categories: ['DevCenterPost']
 tags:
 - msmvps

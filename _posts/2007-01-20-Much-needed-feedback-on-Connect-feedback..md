@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Much needed feedback on Connect feedback.
+date: 2007-01-19 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Visual Studio 2005']
 tags:
 - msmvps

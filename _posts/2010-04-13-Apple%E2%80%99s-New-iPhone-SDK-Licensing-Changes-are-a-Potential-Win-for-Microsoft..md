@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Apple’s New iPhone SDK Licensing Changes are a Potential Win for Microsoft.
+date: 2010-04-12 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

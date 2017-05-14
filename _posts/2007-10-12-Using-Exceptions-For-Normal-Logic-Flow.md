@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using Exceptions For Normal Logic Flow
+date: 2007-10-11 20:00:00 -0400
 categories: ['.NET 2.0', '.NET Development', 'C#', 'Rant']
 tags:
 - msmvps

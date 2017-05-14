@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactoring with Visual Studio 2010
+date: 2010-05-16 20:00:00 -0400
 categories: ['.NET Development', 'C#', 'Refactoring with Visual Studio 2010', 'Visual Studio 2010']
 tags:
 - msmvps

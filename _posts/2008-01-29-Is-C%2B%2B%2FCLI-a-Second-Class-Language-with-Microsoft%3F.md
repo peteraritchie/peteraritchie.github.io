@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Is C++/CLI a Second Class Language with Microsoft?
+date: 2008-01-28 19:00:00 -0500
 categories: ['C++/CLI', 'Pontification', 'Software Development', 'Visual Studio 2008']
 tags:
 - msmvps

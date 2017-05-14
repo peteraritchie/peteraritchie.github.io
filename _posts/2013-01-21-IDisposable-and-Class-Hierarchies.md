@@ -1,6 +1,7 @@
 ---
 layout: post
 title: IDisposable and Class Hierarchies
+date: 2013-01-20 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development Guidance']
 tags:
 - msmvps

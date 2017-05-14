@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Message-oriented Architectures (Updated)
+date: 2011-07-13 20:00:00 -0400
 categories: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development']
 tags:
 - msmvps

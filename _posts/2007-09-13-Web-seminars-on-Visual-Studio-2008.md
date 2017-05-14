@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Web seminars on Visual Studio 2008
+date: 2007-09-12 20:00:00 -0400
 categories: ['Visual Studio 2008']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Schedule at Least a Three Hours When Installing Visual Studio 2005 Service Pack 1 Beta
+date: 2006-09-26 20:00:00 -0400
 categories: ['Visual Studio 2005']
 tags:
 - msmvps

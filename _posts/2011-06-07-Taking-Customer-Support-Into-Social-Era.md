@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Taking Customer Support Into Social Era
+date: 2011-06-06 20:00:00 -0400
 categories: ['Non-development', 'Pontification']
 tags:
 - msmvps

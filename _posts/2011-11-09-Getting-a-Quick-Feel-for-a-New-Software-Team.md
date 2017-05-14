@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting a Quick Feel for a New Software Team
+date: 2011-11-08 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

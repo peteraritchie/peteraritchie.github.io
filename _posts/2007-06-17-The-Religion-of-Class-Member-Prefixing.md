@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Religion of Class Member Prefixing
+date: 2007-06-16 20:00:00 -0400
 categories: ['C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

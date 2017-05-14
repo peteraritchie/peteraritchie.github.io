@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using Toolbox for Code Snippets in Visual Studio 2005
+date: 2006-10-12 20:00:00 -0400
 categories: ['Interesting Find', 'Software Development', 'Visual Studio 2005']
 tags:
 - msmvps

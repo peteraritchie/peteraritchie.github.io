@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Windows 8, What Does It Mean to Me?
+date: 2011-09-18 20:00:00 -0400
 categories: ['DevCenterPost', 'Software Development', 'Visual Studio 2011', 'Visual Studio vNext', 'Windows 8']
 tags:
 - msmvps

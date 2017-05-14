@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Comparing BackgroundWorker and async/await
+date: 2014-04-29 20:00:00 -0400
 categories: ['Software Development']
 tags:
 - msmvps

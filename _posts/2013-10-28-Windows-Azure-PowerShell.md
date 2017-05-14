@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Windows Azure PowerShell
+date: 2013-10-27 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

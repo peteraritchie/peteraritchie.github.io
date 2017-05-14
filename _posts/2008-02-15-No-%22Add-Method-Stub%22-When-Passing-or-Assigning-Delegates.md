@@ -1,6 +1,7 @@
 ---
 layout: post
 title: No "Add Method Stub" When Passing or Assigning Delegates
+date: 2008-02-14 19:00:00 -0500
 categories: ['.NET Development', 'Product Bugs', 'Visual Studio 2005', 'Visual Studio 2008']
 tags:
 - msmvps

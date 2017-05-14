@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Developing Windows Services in Visual Studio
+date: 2011-02-08 19:00:00 -0500
 categories: ['C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: IS prolific use of inheritance a sign of a poorly design program?
+date: 2008-08-13 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

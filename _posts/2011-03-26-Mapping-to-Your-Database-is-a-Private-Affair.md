@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mapping to Your Database is a Private Affair
+date: 2011-03-25 20:00:00 -0400
 categories: ['Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'WCF']
 tags:
 - msmvps

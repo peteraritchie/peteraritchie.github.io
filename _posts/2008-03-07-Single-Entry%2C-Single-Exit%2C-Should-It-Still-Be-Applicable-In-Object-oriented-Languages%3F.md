@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Single-Entry, Single-Exit, Should It Still Be Applicable In Object-oriented Languages?
+date: 2008-03-06 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development']
 tags:
 - msmvps

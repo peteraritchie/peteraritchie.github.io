@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Fundamentals of OOD Part 3: Method Cohesion
+date: 2008-06-09 20:00:00 -0400
 categories: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'OOD', 'Software Development']
 tags:
 - msmvps

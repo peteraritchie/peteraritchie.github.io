@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Trials and Tribulations of DataGridView, Column Selections, and Sorting
+date: 2008-08-25 20:00:00 -0400
 categories: ['.NET 3.5', '.NET Development', 'C#', 'Connect Issue', 'Framework Bug', 'Software Development', 'Visual Studio 2008 SP1']
 tags:
 - msmvps

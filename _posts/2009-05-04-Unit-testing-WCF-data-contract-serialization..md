@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Unit testing WCF data contract serialization.
+date: 2009-05-03 20:00:00 -0400
 categories: ['C#', 'WCF']
 tags:
 - msmvps

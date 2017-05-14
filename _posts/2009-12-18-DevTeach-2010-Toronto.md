@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DevTeach 2010 Toronto
+date: 2009-12-17 19:00:00 -0500
 categories: ['DevTeach YYZ 2010 Toronto']
 tags:
 - msmvps

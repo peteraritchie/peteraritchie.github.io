@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Who’s Referencing Whom?
+date: 2007-10-11 20:00:00 -0400
 categories: ['.NET 2.0', '.NET Development', 'Debugging', 'Visual Studio 2005']
 tags:
 - msmvps

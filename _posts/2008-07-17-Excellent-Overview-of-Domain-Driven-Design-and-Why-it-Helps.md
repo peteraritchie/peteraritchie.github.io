@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Excellent Overview of Domain-Driven Design and Why it Helps
+date: 2008-07-16 20:00:00 -0400
 categories: ['DDD', 'OOD', 'Software Development']
 tags:
 - msmvps

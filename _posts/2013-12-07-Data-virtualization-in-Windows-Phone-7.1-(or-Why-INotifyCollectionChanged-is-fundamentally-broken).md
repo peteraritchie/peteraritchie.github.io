@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)
+date: 2013-12-06 19:00:00 -0500
 categories: ['C#', 'Software Development Guidance', 'Visual Studio 2010', 'Windows Phone', 'Windows Phone 7.1']
 tags:
 - msmvps

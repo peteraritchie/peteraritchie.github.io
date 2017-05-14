@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Subtle Differences Between Events and Commands in a Message-oriented System
+date: 2013-07-10 20:00:00 -0400
 categories: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance']
 tags:
 - msmvps

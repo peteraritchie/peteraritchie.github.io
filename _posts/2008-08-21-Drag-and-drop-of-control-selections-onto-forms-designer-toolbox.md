@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Drag and drop of control selections onto forms designer toolbox
+date: 2008-08-20 20:00:00 -0400
 categories: ['Connect Suggestion', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio vNext']
 tags:
 - msmvps

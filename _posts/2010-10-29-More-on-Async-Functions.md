@@ -1,6 +1,7 @@
 ---
 layout: post
 title: More on Async Functions
+date: 2010-10-28 20:00:00 -0400
 categories: ['Async Functions', 'C#', 'C# 5', 'DevCenterPost', 'Visual Studio vNext']
 tags:
 - msmvps

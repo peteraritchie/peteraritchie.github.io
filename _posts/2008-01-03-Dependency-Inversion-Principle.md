@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dependency Inversion Principle
+date: 2008-01-02 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Visual Studio 2005 Service Pack 1 Beta
+date: 2006-10-09 20:00:00 -0400
 categories: ['Visual Studio 2005', 'Visual Studio 2005 Service Pack 1 Beta']
 tags:
 - msmvps

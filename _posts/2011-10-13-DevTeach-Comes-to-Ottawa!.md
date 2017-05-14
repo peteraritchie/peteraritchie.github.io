@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DevTeach Comes to Ottawa!
+date: 2011-10-12 20:00:00 -0400
 categories: ['DevTeach', 'DevTeach YOW 2011', 'Software Development']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TechDays Canada 2009 Developer Foundations Call For Speakers
+date: 2009-08-23 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

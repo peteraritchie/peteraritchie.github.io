@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DevTeach 2009 Vancouver
+date: 2009-03-25 20:00:00 -0400
 categories: ['.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET Development', 'C#', 'C# 3.0', 'DDD', 'Design/Coding Guidance', 'DevTeach', 'Software Development', 'Software Development Guidance', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Avoid the volatile Modifier
+date: 2012-01-24 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Multithreaded', 'Software Development', 'Software Development Guidance', 'Visual Studio']
 tags:
 - msmvps

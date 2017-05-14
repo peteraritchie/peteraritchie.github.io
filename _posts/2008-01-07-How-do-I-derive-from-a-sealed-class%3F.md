@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How do I derive from a sealed class?
+date: 2008-01-06 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

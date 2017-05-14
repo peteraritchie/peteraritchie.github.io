@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Deep Dive on Closure Pitfalls
+date: 2010-11-02 20:00:00 -0400
 categories: ['.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET 4.0', '.NET Development', 'C#', 'C# 3.0', 'C# 4', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance']
 tags:
 - msmvps

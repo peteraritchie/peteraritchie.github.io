@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Persisting Azure Mobile Services authentication tokens and handling expiry
+date: 2013-10-23 20:00:00 -0400
 categories: ['.NET Development', 'Azure', 'Azure Mobile Services', 'C#', 'Mobile', 'Visaul Studio 2013', 'Visual Studio 2010', 'Windows Phone', 'Windows Phone 7.1']
 tags:
 - msmvps

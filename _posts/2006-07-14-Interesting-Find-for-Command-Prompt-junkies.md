@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Interesting Find for Command Prompt junkies
+date: 2006-07-13 20:00:00 -0400
 categories: ['Interesting Find']
 tags:
 - msmvps

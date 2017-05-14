@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Developing with Source Code Control Best Practices Part 1
+date: 2008-10-17 20:00:00 -0400
 categories: ['Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

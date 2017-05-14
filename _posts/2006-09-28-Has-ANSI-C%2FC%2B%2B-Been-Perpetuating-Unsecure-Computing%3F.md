@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Has ANSI C/C++ Been Perpetuating Unsecure Computing?
+date: 2006-09-27 20:00:00 -0400
 categories: ['C++', 'Software Development']
 tags:
 - msmvps

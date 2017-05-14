@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Save CBitmap to File
+date: 2006-09-24 20:00:00 -0400
 categories: ['C++', 'MFC', 'Software Development']
 tags:
 - msmvps

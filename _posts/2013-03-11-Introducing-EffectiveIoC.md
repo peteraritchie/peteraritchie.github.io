@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introducing EffectiveIoC
+date: 2013-03-10 20:00:00 -0400
 categories: ['.NET 4.0', '.NET 4.5', '.NET Development', 'C#', 'EffectiveIoC']
 tags:
 - msmvps

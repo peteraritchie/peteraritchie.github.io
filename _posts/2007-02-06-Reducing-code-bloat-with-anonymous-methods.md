@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Reducing code-bloat with anonymous methods
+date: 2007-02-05 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

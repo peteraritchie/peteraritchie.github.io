@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pass-through Constructors
+date: 2008-11-20 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Definition', 'Software Development']
 tags:
 - msmvps

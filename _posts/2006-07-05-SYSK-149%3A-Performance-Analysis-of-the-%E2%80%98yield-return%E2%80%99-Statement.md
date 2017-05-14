@@ -1,6 +1,7 @@
 ---
 layout: post
 title: SYSK 149: Performance Analysis of the ‘yield return’ Statement
+date: 2006-07-04 20:00:00 -0400
 categories: ['C#', 'C# Nugget', 'Software Development']
 tags:
 - msmvps

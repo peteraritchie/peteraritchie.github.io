@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What Code Comments are Not For.
+date: 2012-01-29 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

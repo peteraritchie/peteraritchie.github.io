@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Resharper Isn’t Always Smart
+date: 2008-03-30 20:00:00 -0400
 categories: ['C#', 'Product Bugs', 'Resharper']
 tags:
 - msmvps

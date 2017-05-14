@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Performance Implications of try/catch/finally
+date: 2007-06-21 20:00:00 -0400
 categories: ['.NET 2.0', '.NET Development', 'C#', 'Design/Coding Guidance']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dogfooding
+date: 2006-11-15 19:00:00 -0500
 categories: ['Non-development']
 tags:
 - msmvps

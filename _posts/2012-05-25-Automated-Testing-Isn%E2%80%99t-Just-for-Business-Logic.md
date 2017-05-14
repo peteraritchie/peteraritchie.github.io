@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Automated Testing Isn’t Just for Business Logic
+date: 2012-05-24 20:00:00 -0400
 categories: ['.NET Development', 'C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'TDD', 'Unit Testing']
 tags:
 - msmvps

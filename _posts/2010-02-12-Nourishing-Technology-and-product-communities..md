@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Nourishing Technology and product communities.
+date: 2010-02-11 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

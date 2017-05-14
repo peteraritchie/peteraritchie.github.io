@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Flaws in the Microsoft Connect Process
+date: 2010-04-14 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Seam expansion
+date: 2015-02-16 19:00:00 -0500
 categories: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Software Development Principles']
 tags:
 - msmvps

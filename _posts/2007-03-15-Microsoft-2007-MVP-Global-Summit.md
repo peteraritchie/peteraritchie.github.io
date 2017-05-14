@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Microsoft 2007 MVP Global Summit
+date: 2007-03-14 20:00:00 -0400
 categories: ['MVP']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: volatile–You Keep Using That Word, But I Do Not Think You Know What It Means
+date: 2013-10-14 20:00:00 -0400
 categories: ['C/C++', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Win32']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Unified Field Theory, is it Possible?
+date: 2007-04-07 20:00:00 -0400
 categories: ['Pontification', 'Software Development']
 tags:
 - msmvps

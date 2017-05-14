@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Leave predicting to meteorologists and fortune-tellers
+date: 2012-11-24 19:00:00 -0500
 categories: ['Design/Coding Guidance', 'Software Development', 'Software Development Guidance']
 tags:
 - msmvps

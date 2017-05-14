@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Maslow’s Hammer
+date: 2014-08-11 20:00:00 -0400
 categories: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Tips']
 tags:
 - msmvps

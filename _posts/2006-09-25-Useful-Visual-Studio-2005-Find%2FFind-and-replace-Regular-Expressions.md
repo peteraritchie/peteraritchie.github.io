@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Useful Visual Studio 2005 Find/Find-and-replace Regular Expressions
+date: 2006-09-24 20:00:00 -0400
 categories: ['Visual Studio 2005']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A New Asynchronicity Awaits You
+date: 2010-10-26 20:00:00 -0400
 categories: ['C#', 'DevCenterPost', 'Software Development', 'Visual Studio vNext']
 tags:
 - msmvps

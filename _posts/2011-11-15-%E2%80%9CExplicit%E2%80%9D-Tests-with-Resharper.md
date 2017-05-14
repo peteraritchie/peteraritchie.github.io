@@ -1,6 +1,7 @@
 ---
 layout: post
 title: “Explicit” Tests with Resharper
+date: 2011-11-14 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Software Development Workflow', 'Unit Testing', 'Visual Studio', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Received Microsoft MVP Award in C# Again
+date: 2008-07-01 20:00:00 -0400
 categories: ['Microsoft', 'MVP']
 tags:
 - msmvps

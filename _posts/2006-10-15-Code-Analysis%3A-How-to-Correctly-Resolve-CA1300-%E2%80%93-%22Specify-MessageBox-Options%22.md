@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Code Analysis: How to Correctly Resolve CA1300 – "Specify MessageBox Options"
+date: 2006-10-14 20:00:00 -0400
 categories: ['C#', 'Code Analysis/FxCop Warning Resolutions', 'Visual Studio 2005']
 tags:
 - msmvps

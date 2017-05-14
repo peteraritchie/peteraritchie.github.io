@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Unbind a Visual Studio 2010 Solution from Source Code Control
+date: 2010-12-10 19:00:00 -0500
 categories: ['.NET Development', 'DevCenterPost', 'Software Development', 'Visual Studio 2010']
 tags:
 - msmvps

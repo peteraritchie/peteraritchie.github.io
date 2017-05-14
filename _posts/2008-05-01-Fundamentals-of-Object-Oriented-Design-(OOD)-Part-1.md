@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Fundamentals of Object-Oriented Design (OOD) Part 1
+date: 2008-04-30 20:00:00 -0400
 categories: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development']
 tags:
 - msmvps

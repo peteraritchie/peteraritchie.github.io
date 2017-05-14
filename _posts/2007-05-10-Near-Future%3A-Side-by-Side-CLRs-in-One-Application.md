@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Near Future: Side by Side CLRs in One Application
+date: 2007-05-09 20:00:00 -0400
 categories: ['.NET 3.x', '.NET Development', 'SilverLight']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Testing framework assumptions
+date: 2014-07-04 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Windows XP Professional EULA
+date: 2008-03-27 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Effective Blogger
+date: 2014-03-26 20:00:00 -0400
 categories: ['Apps', 'Windows Store']
 tags:
 - msmvps

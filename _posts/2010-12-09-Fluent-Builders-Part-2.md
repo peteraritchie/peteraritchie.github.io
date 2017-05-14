@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Fluent Builders Part 2
+date: 2010-12-08 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

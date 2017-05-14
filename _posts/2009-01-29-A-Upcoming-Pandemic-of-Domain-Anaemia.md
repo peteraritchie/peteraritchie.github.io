@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A Upcoming Pandemic of Domain Anaemia
+date: 2009-01-28 19:00:00 -0500
 categories: ['.NET Development', 'ALT.NET', 'AntiPattern', 'DDD', 'Design/Coding Guidance', 'Microsoft', 'Microsoft Patterns and Practices', 'OOD', 'Patterns', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices']
 tags:
 - msmvps

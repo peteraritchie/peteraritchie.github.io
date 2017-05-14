@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dependency Injection
+date: 2013-03-07 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Patterns', 'Software Development']
 tags:
 - msmvps

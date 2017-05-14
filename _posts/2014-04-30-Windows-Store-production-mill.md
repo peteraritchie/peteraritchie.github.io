@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Windows Store production mill
+date: 2014-04-29 20:00:00 -0400
 categories: ['.NET Development', 'C#', 'Tips', 'Windows Store', 'XAML']
 tags:
 - msmvps

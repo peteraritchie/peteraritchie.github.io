@@ -1,6 +1,7 @@
 ---
 layout: post
 title: It’s More Than Syntax
+date: 2009-01-28 19:00:00 -0500
 categories: ['Software Development']
 tags:
 - msmvps

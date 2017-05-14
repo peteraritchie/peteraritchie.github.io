@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dispose Pattern and “Set large fields to null”
+date: 2012-04-25 20:00:00 -0400
 categories: ['.NET 4.0', 'C#', 'DevCenterPost', 'Pontification']
 tags:
 - msmvps

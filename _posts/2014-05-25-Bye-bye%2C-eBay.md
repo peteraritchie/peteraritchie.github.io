@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Bye bye, eBay
+date: 2014-05-24 20:00:00 -0400
 categories: ['Security']
 tags:
 - msmvps

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Writing Libraries with Visual C++
+date: 2006-10-11 20:00:00 -0400
 categories: ['Uncategorized']
 tags:
 - msmvps

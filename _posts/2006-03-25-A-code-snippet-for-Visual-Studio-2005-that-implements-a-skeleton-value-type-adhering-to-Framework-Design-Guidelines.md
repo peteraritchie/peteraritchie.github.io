@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A code snippet for Visual Studio 2005 that implements a skeleton value type adhering to Framework Design Guidelines
+date: 2006-03-24 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Patterns']
 tags:
 - msmvps

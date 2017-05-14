@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Upcoming C# 3 Guidance From Microsoft
+date: 2008-03-12 20:00:00 -0400
 categories: ['.NET 3.5', '.NET Development', 'C# 3.0', 'Design/Coding Guidance', 'DevCenterPost']
 tags:
 - msmvps

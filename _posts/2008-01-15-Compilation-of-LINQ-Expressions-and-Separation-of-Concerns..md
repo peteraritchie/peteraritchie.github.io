@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Compilation of LINQ Expressions and Separation of Concerns.
+date: 2008-01-14 19:00:00 -0500
 categories: ['Uncategorized']
 tags:
 - msmvps

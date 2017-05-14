@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What do the icons on your Windows Phone 8.1 mean?
+date: 2014-04-28 20:00:00 -0400
 categories: ['Windows Phone 8.1']
 tags:
 - msmvps

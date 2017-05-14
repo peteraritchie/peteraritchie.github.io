@@ -1,6 +1,7 @@
 ---
 layout: post
 title: If You’re Using “#if DEBUG”, You’re Doing it Wrong
+date: 2011-11-23 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Code Contracts', 'DbC', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles']
 tags:
 - msmvps
