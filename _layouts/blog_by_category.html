@@ -1,10 +1,14 @@
----
 layout: default
 ---
 
 {% capture page_subtitle %}Articles by category{% endcapture %}
 
-{% include title_header.html title=page.name subtitle=page_subtitle %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="post-title-main" itemprop="name headline">{{ page.title }}</h1>
+        <p class="post-meta">{% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{% if page.author %}{{ page.author }}{% else %}Peter Ritchie{% endif %}</span></span></p>
+    </div>
+</div>
 
 <div class="text-justify">
     {% if site.categories[page.slug] %}
