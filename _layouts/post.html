@@ -8,7 +8,7 @@ layout: default
       <p class="post-meta">{% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{% if page.author %}{{ page.author }}{% else %}Peter Ritchie{% endif %}</span></span></p>
     </div>
 </div>
-
+<!-- id: {{ page.id }} url: {{ page.url }}  -->
   <div class="post-content container" itemprop="articleBody">
     {{ content }}
       {% if page.categories.size > 0 %}
