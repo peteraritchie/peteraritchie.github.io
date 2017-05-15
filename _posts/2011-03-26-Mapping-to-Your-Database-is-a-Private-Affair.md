@@ -24,5 +24,5 @@ So, classes that map to/from the data effectively should be implementation detai
 
 I find it amusing to see all the examples of things like using your LINQ to SQL or LINQ to Entities classes in WCF interfaces.  The examples are simple and often work; but once you try to do that in a complex system quickly realize you're down a rat hole with really only one way out.  Do yourself a favour and completely abstract your implementation details from your internally accessible interfaces; you'll thank yourself.
 
-[1]: http://lynk.at/gd9MfW
+[1]: http://bitly.com/gd9MfW
 

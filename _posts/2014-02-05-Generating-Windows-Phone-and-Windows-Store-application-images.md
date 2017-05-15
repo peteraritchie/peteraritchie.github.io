@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Generating Windows Phone and Windows Store application images"
+redirect_from: "/2014/02/05/generating-windows-phone-and-windows-store-application-images/"
 date:   2014-02-04 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Windows Phone 8.0', 'Windows Store']
 tags:
@@ -30,5 +31,5 @@ And it's much the same with Windows Phone 8, with more non-square icons.
 
 I haven't detailed anything on the Windows Phone 7.x side of things since this seems to be fairly unsupported at multiple levels.  If there's interest, I can detail that as well.
 
-[1]: http://lynk.at/1bltGeu "http://msdn.microsoft.com/en-us/library/windows/apps/hh846296.aspx"
+[1]: http://bitly.com/1bltGeu "http://msdn.microsoft.com/en-us/library/windows/apps/hh846296.aspx"
 

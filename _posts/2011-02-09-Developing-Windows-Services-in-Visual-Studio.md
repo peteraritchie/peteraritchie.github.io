@@ -16,7 +16,7 @@ The stuff that I find that isn't well understood is how to debug and deploy thes
 
 First off, debugging.  A service is just an executable that is started up by the Windows service manager.  From a native application standpoint, it has some entry points in it that the service manager looks for and invokes.  From a managed standpoint, it's basically an object that is instantiated and given to System.ServiceProcess.ServiceBase.Run to get the service running.  Of course, the actual execution of service must be in the context of the service manager in order for ServiceBase to hook into it an tell it what to do.  So, simply running a service EXE will spit out a message about not being able to be run from the command-line or a debugger.  Ugh, shot down pretty quickly.
 
-In it's default state, you can simply install the service, start it, and attach a debugger to it (<http://lynk.at/hIZu9w>).  This, of course, is a pain if what you want to debug doesn't need to be running in the service manager context.  What I've been doing with services for quite a while now is use a simple trick of deciding in Main whether to call ServiceBase or call my OnStart override directly.  This is based on tips like <http://www.codeproject.com/KB/dotnet/DebugWinServices.aspx> or <http://stackoverflow.com/questions/125964/easier-way-to-start-debugging-a-windows-service-in-c>
+In it's default state, you can simply install the service, start it, and attach a debugger to it (<http://bitly.com/hIZu9w>).  This, of course, is a pain if what you want to debug doesn't need to be running in the service manager context.  What I've been doing with services for quite a while now is use a simple trick of deciding in Main whether to call ServiceBase or call my OnStart override directly.  This is based on tips like <http://www.codeproject.com/KB/dotnet/DebugWinServices.aspx> or <http://stackoverflow.com/questions/125964/easier-way-to-start-debugging-a-windows-service-in-c>
 
 This little trick is basically adding a couple of lines to Main, and a couple of methods to your ServiceBase-derived class and you're done!  In your ServiceBase class, add two methods: InteractiveStart and InteractiveStop.  Each of these methods simply call OnStart and OnStop, respectively.  OnStart and OnStop are protected overrides, so the InteractiveStart and InteractiveStop let us gain access to them from outside the class.  For example:
     
@@ -67,7 +67,7 @@ Now that life's easier with the ability to easily debug a Windows service; what 
 
 installutil /username=".MonitorServiceAccount" " MonitoringService.exe
 
-Try "installUtil MyService.exe /?" sometime to see all the options available to you, including password and username, ala _Additional Installer Options_ at [http://lynk.at/hNsK1R ][2]
+Try "installUtil MyService.exe /?" sometime to see all the options available to you, including password and username, ala _Additional Installer Options_ at [http://bitly.com/hNsK1R ][2]
 
 Of course, you have to run these from a command line in Administrative mode if you're using Vista/7/2008 and need to make sure the account has rights to_ run as a service_.
 
@@ -80,6 +80,6 @@ Hope this helps!
 
 [EDIT: added the Console.ReadLine mentioned by Stefan]
 
-[1]: http://lynk.at/g4l2UA
-[2]: http://lynk.at/hNsK1R "http://lynk.at/hNsK1R "
+[1]: http://bitly.com/g4l2UA
+[2]: http://bitly.com/hNsK1R "http://bitly.com/hNsK1R "
 

@@ -6,6 +6,7 @@ date:   2014-04-29 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Tips', 'Windows Store', 'XAML']
 tags:
 - msmvps
+disqus_id: "1921 http://blog.peterritchie.com/?p=1921"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/30/windows-store-production-mill/ "Permalink to Windows Store production mill")
 

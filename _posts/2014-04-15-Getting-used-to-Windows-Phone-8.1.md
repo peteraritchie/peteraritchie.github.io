@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Getting used to Windows Phone 8.1"
+redirect_from: "/2014/04/15/getting-used-to-windows-phone-8-1/"
 date:   2014-04-14 12:00:00 -0600
 categories: ['Windows Phone', 'Windows Phone 8.1']
 tags:
@@ -45,5 +46,5 @@ Composed with [Effective Blogger for Windows Store][4]
 [1]: http://pr-blog.azurewebsites.net/wp-content/uploads/2014/04/WP_20140415.png
 [2]: http://pr-blog.azurewebsites.net/wp-content/uploads/2014/04/BlRxRqaIAAAK7wO.jpg
 [3]: http://pr-blog.azurewebsites.net/wp-content/uploads/2014/04/WP_20140415-1.png
-[4]: http://lynk.at/1jZ31NL
+[4]: http://bitly.com/1jZ31NL
 

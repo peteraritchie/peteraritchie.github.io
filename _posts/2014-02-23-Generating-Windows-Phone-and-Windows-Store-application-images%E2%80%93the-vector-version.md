@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Generating Windows Phone and Windows Store application images–the vector version"
+redirect_from: "/2014/02/24/generating-windows-phone-and-windows-store-application-imagesthe-vector-version/"
 date:   2014-02-22 19:00:00 -0500
 categories: ['.NET Development', 'Software Development', 'Windows Phone 8.0', 'Windows Store']
 tags:
@@ -32,7 +33,7 @@ Both of which presume that both ImageMagick and Inkscape are in your path.
 
 If you feel like doing the same in a PowerScript, feel free to post a comment so other can benefit.
 
-[1]: http://lynk.at/1k110wt
+[1]: http://bitly.com/1k110wt
 [2]: https://twitter.com/devhammer
-[3]: http://lynk.at/1k3WH6U
+[3]: http://bitly.com/1k3WH6U
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Testing framework assumptions"
+redirect_from: "/2014/07/05/testing-framework-assumptions/"
 date:   2014-07-04 12:00:00 -0600
 categories: ['Uncategorized']
 tags:

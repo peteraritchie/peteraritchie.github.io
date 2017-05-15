@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Effective Blogger"
+redirect_from: "/2014/03/27/effective-blogger/"
 date:   2014-03-26 12:00:00 -0600
 categories: ['Apps', 'Windows Store']
 tags:
@@ -43,7 +44,7 @@ This entry was posted in [Apps][5], [Windows Store][6] by [PeterRitchie][7]. Boo
 
 [1]: http://pr-blog.azurewebsites.net/2014/03/23/the-case-of-the-not-so-useful-xbf-error/
 [2]: http://pr-blog.azurewebsites.net/2014/04/15/getting-used-to-windows-phone-8-1/
-[3]: http://lynk.at/1hgnhH7
+[3]: http://bitly.com/1hgnhH7
 [4]: http://example.com
 [5]: http://pr-blog.azurewebsites.net/category/apps/
 [6]: http://pr-blog.azurewebsites.net/category/windows-store/

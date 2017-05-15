@@ -1,10 +1,12 @@
 ---
 layout: post
 title:  "Long Paths and .NET"
+redirect_from: "/2014/07/23/long-paths-and-net/"
 date:   2014-07-22 12:00:00 -0600
 categories: ['.NET 4.5', '.NET Development', 'C#', 'LongPath', 'Open Source', 'Software Development']
 tags:
 - msmvps
+disqus_id: "2121 http://blog.peterritchie.com/?p=2121"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/07/23/long-paths-and-net/ "Permalink to Long Paths and .NET")
 
@@ -44,6 +46,6 @@ Enjoy!
 [2]: http://referencesource.microsoft.com/#mscorlib/system/io/longpath.cs
 [3]: http://referencesource.microsoft.com/#mscorlib/system/io/longpath.cs#734b3020e7ff04fe#references
 [4]: http://referencesource.microsoft.com/#mscorlib/system/io/longpath.cs#ed4ae27b0c89bf61#references
-[5]: http://lynk.at/UrdLZq
-[6]: http://lynk.at/1qAplAD
+[5]: http://bitly.com/UrdLZq
+[6]: http://bitly.com/1qAplAD
 

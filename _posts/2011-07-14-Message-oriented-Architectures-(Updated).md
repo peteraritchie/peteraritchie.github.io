@@ -126,6 +126,6 @@ Standards have come a long way recently, but—depending on your choice of imple
 
 [CQRS][2]
 
-[1]: http://lynk.at/jwpzkl
+[1]: http://bitly.com/jwpzkl
 [2]: http://cqrsinfo.com/
 

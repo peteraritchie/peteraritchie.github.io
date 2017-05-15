@@ -6,6 +6,7 @@ date:   2014-04-28 12:00:00 -0600
 categories: ['Windows Phone 8.1']
 tags:
 - msmvps
+disqus_id: "1741 http://blog.peterritchie.com/?p=1741"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/29/getting-the-most-of-windows-phone-8-1-keyboard/ "Permalink to Getting the most of Windows Phone 8.1 keyboard")
 
