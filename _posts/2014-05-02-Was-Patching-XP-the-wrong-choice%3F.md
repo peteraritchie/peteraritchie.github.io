@@ -6,7 +6,7 @@ date:   2014-05-01 12:00:00 -0600
 categories: ['Non-development', 'Pontification']
 tags:
 - msmvps
-disqus_id: /Was-Patching-XP-the-wrong-choice%3F
+disqus_id: /Was-Patching-XP-the-wrong-choice?
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/05/02/was-patching-xp-the-wrong-choice/ "Permalink to Was Patching XP the wrong choice?")
 
