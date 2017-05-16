@@ -13,7 +13,12 @@
 {% else %}
   <meta content="website" property="og:type">
 {% endif %}
-<!-- ses:{{ site.excerpt_separator }}:ses pe:{{ page.excerpt }}:pe -->
+    <!-- ses:{{ site.excerpt_separator }}:ses pe:{{ page.excerpt }}:pe 
+    {%if site.excerpt_separator == "" %}
+        yes
+    {% endif %}
+    
+        -->
 {% if page.description %}
   <meta content="{{ page.description }}" property="og:description">
 {% else %}
