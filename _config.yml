@@ -8,7 +8,7 @@ title: Peter Ritchie
 name: Peter Ritchie
 
 # turn off automatic excerpt generation
-excerpt_separator: nil
+excerpt_separator: ""
 
 collections:
   my_categories:
