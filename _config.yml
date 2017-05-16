@@ -7,6 +7,9 @@ theme: jekyll-theme-slate
 title: Peter Ritchie
 name: Peter Ritchie
 
+# turn off automatic excerpt generation
+excerpt_separator: nil
+
 collections:
   my_categories:
     output: true
