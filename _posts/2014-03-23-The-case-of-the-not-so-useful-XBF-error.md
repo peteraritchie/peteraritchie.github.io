@@ -6,6 +6,7 @@ date:   2014-03-22 12:00:00 -0600
 categories: ['.NET Development', 'C#', 'Windows Store', 'XAML']
 tags:
 - msmvps
+disqus_id: "1471 http://blog.peterritchie.com/?p=1471"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/03/23/the-case-of-the-not-so-useful-xbf-error/ "Permalink to The case of the not-so-useful XBF error")
 

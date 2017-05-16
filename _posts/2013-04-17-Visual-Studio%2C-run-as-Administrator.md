@@ -6,6 +6,7 @@ date:   2013-04-16 12:00:00 -0600
 categories: ['.NET Development', 'Visual Studio 2012']
 tags:
 - msmvps
+disqus_id: "821 http://blog.peterritchie.com/?p=821"
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/04/17/visual-studio-run-as-administrator/ "Permalink to Visual Studio, run as Administrator")
 

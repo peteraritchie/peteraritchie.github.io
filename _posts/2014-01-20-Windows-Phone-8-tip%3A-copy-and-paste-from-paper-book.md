@@ -6,6 +6,7 @@ date:   2014-01-19 19:00:00 -0500
 categories: ['Mobile', 'Non-development']
 tags:
 - msmvps
+disqus_id: "1221 http://blog.peterritchie.com/?p=1221"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/01/20/windows-phone-8-tip-copy-and-paste-from-paper-book/ "Permalink to Windows Phone 8 tip: copy and paste from paper book")
 

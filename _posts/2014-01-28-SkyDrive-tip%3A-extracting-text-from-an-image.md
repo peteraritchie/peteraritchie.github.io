@@ -6,6 +6,7 @@ date:   2014-01-27 19:00:00 -0500
 categories: ['Non-development', 'Random', 'SkyDrive']
 tags:
 - msmvps
+disqus_id: "1271 http://blog.peterritchie.com/?p=1271"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/01/28/skydrive-tip-extracting-text-from-an-image/ "Permalink to SkyDrive tip: extracting text from an image")
 

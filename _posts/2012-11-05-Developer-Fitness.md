@@ -6,6 +6,7 @@ date:   2012-11-04 19:00:00 -0500
 categories: ['health/fitness', 'Non-development']
 tags:
 - msmvps
+disqus_id: "151 http://pri-blog.azurewebsites.net/?p=151"
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/11/05/developer-fitness/ "Permalink to Developer Fitness")
 

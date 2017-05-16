@@ -6,6 +6,7 @@ date:   2013-03-07 19:00:00 -0500
 categories: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Patterns', 'Software Development']
 tags:
 - msmvps
+disqus_id: "71 http://pri-blog.azurewebsites.net/?p=71"
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/ "Permalink to Dependency Injection")
 

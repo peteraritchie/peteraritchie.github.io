@@ -6,6 +6,7 @@ date:   2014-02-26 19:00:00 -0500
 categories: ['GIT', 'Software Development']
 tags:
 - msmvps
+disqus_id: "1431 http://blog.peterritchie.com/?p=1431"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/27/unable-to-resolve-reference-refsremotesoriginmaster/ "Permalink to Unable to resolve reference refs/remotes/origin/master")
 

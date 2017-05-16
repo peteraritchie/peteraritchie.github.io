@@ -6,6 +6,7 @@ date:   2013-07-10 12:00:00 -0600
 categories: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance']
 tags:
 - msmvps
+disqus_id: "1041 http://blog.peterritchie.com/?p=1041"
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/07/11/the-subtle-differences-between-events-and-commands-in-a-message-oriented-system/ "Permalink to The Subtle Differences Between Events and Commands in a Message-oriented System")
 
