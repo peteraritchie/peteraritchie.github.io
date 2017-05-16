@@ -1,4 +1,4 @@
-<head>
+﻿<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +13,7 @@
 {% else %}
   <meta content="website" property="og:type">
 {% endif %}
+<!-- ses:{{ site.excerpt_separator }}:ses pe:{{ page.excerpt }}:pe -->
 {% if page.description %}
   <meta content="{{ page.description }}" property="og:description">
 {% else %}
