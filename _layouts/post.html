@@ -9,7 +9,7 @@ layout: default
     </div>
 </div>
 <!-- id: {{ page.id }} url: {{ page.url }}  -->
-  <div class="post-content container" itemprop="articleBody">
+  <div class="post-content markdown-body" itemprop="articleBody">
     {{ content }}
       {% if page.categories.size > 0 %}
       {% capture categories_content %} with <span class="icon-price-category{% if page.categories.size > 1 %}s{% endif %}"></span>: {% endcapture %}
