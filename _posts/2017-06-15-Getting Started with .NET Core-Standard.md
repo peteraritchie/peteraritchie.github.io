@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting Started with .NET Core/Standard
-date: 2017-06-07 14:32:00 -0500
+date: 2017-06-16 23:32:00 -0500
 categories: ['Intro', '.NET Core', '.NET Standard']
 comments: true
 excerpt: "Some useful tidbits to migrating to .NET Core/Standard from the trenches"
