@@ -65,6 +65,7 @@ This method means that the one project is built for each framework and all the f
     .NET Standard 1.6    --> NETSTANDARD1_6 
 
 For example:
+
 	#if (NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
 
 		public static Task ConnectAsync(this TcpClient tcpClient, EndPoint endPoint)
