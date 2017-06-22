@@ -89,7 +89,6 @@ defaults:
 version: v1.2.0
 
 markdown: kramdown
-highlighter: pygments
 
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
