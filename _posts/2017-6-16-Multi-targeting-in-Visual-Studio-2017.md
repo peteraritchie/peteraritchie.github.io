@@ -27,7 +27,7 @@ Then Nuget just packages things properly.
 
 This works, but realistically it's quite a bit of work.  Over time you get more and more projects, and if you have lots of files, you have more and more files in Solution Explorer and performance seems to suffer.
 
-Fortunately, I've found that there's a much better way in Visual Studio 2017 and the new csproj files: via the [TargetFrameworks] element.  There does not seem to be support for this in the Visual Studio UI yet, so you have to manually edit your csproj to add support for multiple frameworks; but that's easy with the new csproj files because you can simply edit them in Visual Studio 2017 (right-click project in Solution Explorer and select **Edit**).  Once there, simply rename the `TargetFramework` element to `TargetFrameworks` (note the 's' suffix).  For example if you create a .NET Standard class library, the csproj will contain the following:
+Fortunately, I've found that there's a much better way in Visual Studio 2017 and the new csproj files: via the [TargetFrameworks] element.  There does not seem to be support for this in the Visual Studio UI yet, so you have to manually edit your csproj to add support for multiple frameworks; but that's easy with the new csproj files because you can simply edit them in Visual Studio 2017 (right-click project in Solution Explorer and select **Edit**).  Once there, simply rename the `TargetFramework` element to `TargetFrameworks` (note the 's' suffix).  For example, if you create a .NET Standard class library, the csproj will contain the following:
 
     <Project Sdk="Microsoft.NET.Sdk">
  
@@ -43,9 +43,9 @@ to support .NET Standard 1.3 *and* .NET 4.6.2, change that to the following:
         <TargetFrameworks>netstandard1.3;net462</TargetFrameworks>
     <!-- ... -->
 
-Note the use of semicolons to separate framework monikors.
+Note the use of semicolons to separate framework monikers.
 
-This method means that the one project is built for each framework and all the files are shared amongst those builds.  This means you have to resort to compile-time constants to signify framework-specific code.  Fortunately Visual Studio (or really the build system) knows about our multi-targeting, so it automatically provides compile-time constants.  The following table shows current compile-time constants (and the convention it uses, for future framework verions :) ):
+This method means that the one project is built for each framework and all the files are shared amongst those builds.  This means you have to resort to compile-time constants to signify framework-specific code.  Fortunately Visual Studio (or really the build system) knows about our multi-targeting, so it automatically provides compile-time constants.  The following table shows current compile-time constants (and the convention it uses, for future framework versions :) ):
 
     .NET Framework 2.0   --> NET20
     .NET Framework 3.5   --> NET35
@@ -77,6 +77,10 @@ For example:
 To edit code in the context of a particular framework (and thus have the particular compile-time constants defined) you can select the file projects dropdown to show the file in the compiler context of the target:
 
 ![file projects dropdown]({{ site.url }}/assets/file projects dropdown.png)
+
+Now when you build the project it will create a binary for each target platform (within the bin directory under Debug/Release and subdirectories by target name like "net45").
+
+With a .NET Standard project in Visual Studio you can also have it create the Nuget package during build.  Since the project builds the nuget, you enter all the package information in the project settings.  And, of course, this means it builds a package with all the target binaries, not just one so you don't need to create a nuspec, nor edit it, more create a convention-based directory structure with the binaries for all the target frameworks you support.
 
 ### Caveats
 As mentioned earlier, VS doesn't support multi-targeting like this right in the UI (other than the file projects dropdown to view the file in the compiler context of the target) so it can be tedious editing the csproj manually to change configuration like references etc.
