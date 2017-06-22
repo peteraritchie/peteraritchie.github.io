@@ -93,7 +93,7 @@ highlighter: pygments
 redcarpet:
   extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "fenced_code_blocks", "with_toc_data"]
 
-`# Jekyll 3 now only supports Kramdown for Markdown
+# Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
