@@ -86,4 +86,4 @@ With a .NET Standard project in Visual Studio you can also have it create the Nu
 ### Caveats
 As mentioned earlier, VS doesn't support multi-targeting like this right in the UI (other than the file projects dropdown to view the file in the compiler context of the target) so it can be tedious editing the csproj manually to change configuration like references etc.
 
-[TargetFrameworks](https://docs.microsoft.com/en-us/dotnet/core/tutorials/libraries)
+[TargetFrameworks]: https://docs.microsoft.com/en-us/dotnet/core/tutorials/libraries
