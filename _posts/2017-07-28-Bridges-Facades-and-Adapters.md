@@ -4,26 +4,26 @@ title: Bridges, Facades, and Adapters
 date: 2017-07-28 23:32:00 -0500
 categories: ['Software', 'Patterns']
 comments: true
-excerpt: "Avoiding confusiong when dealing with the structural patterns Bridge, Façade, and Adapter."
+excerpt: "Avoiding confusiong when dealing with the structural patterns Bridge, FaÃ§ade, and Adapter."
 ---
 # Bridges, Facades, and Adapters
-I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and Façade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.
+I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and FaÃ§ade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.
 
-[Bridge], [Adapter], and [Façade] are similar: they are all about providing a more useful interface.  How and why they produce those interfaces are very different.
+[Bridge], [Adapter], and [FaÃ§ade] are similar: they are all about providing a more useful interface.  How and why they produce those interfaces are very different.
 
 Let's first look at some of the principles behind each pattern.
 
 ## Principles
 *Bridge*: to decouple an abstraction from its implementations so that they can vary independently.
 
-*Façade*: provide a simplified interface to a larger body of code.
+*FaÃ§ade*: provide a simplified interface to a larger body of code.
 
 *Adapter*: allows incompatible interfaces to work together by wrapping an already existing interface.
 
 ## Subtleties
 *Bridge*: Bridge is about decoupling an abstraction from its implementations.  This means it provides an abstraction to an abstraction; or in other words it's about the interaction of three things.
 
-*Façade*: Façade is about providing a simpler abstraction to an existing interface.  This means it provides an abstraction to  set of interfaces
+*FaÃ§ade*: FaÃ§ade is about providing a simpler abstraction to an existing interface.  This means it provides an abstraction to  set of interfaces
 
 *Adapter*: Adapter is about providing an interface that accepts existing data formats to translate to other formats used by another interface.
 
@@ -37,10 +37,10 @@ var result = ExternalInterface(AdaptToExternal(internalData));
 ### Possible Adapter Pattern Specializations
 [Mapper] ([Object-Relational] aka ORM, [Data Access Object] aka DAO), [ActiveRecord].
 
-## Façade Deep Dive
-A Façade at it's simplest can act like an Adapter but it provides an abstraction to an interface rather than data: a simple pass-through Façade that performs some adaption.  An Adapter pattern could be used in a Façade or Bridge, but the Adapter pattern would be implemented independently from the implementation of either of other two.  e.g. some sort of Adapter class or method would exist regardless of the Façade or Bridge implementation.  At its most complex, a Façade is a managed workflow or a process that integrates several independent interfaces along with state to provide a new, simpler interface.  i.e. a Façade can abstract behavior while being a structural pattern.  It's a one-to-many relationship between interfaces.  At the heart of both. the Bridge and the Adapter is to provide a more useful (better) interface, which is common to Façade, but it's the purpose of that new interface that distinguishes it as one pattern or another.
+## FaÃ§ade Deep Dive
+A FaÃ§ade at it's simplest can act like an Adapter but it provides an abstraction to an interface rather than data: a simple pass-through FaÃ§ade that performs some adaption.  An Adapter pattern could be used in a FaÃ§ade or Bridge, but the Adapter pattern would be implemented independently from the implementation of either of other two.  e.g. some sort of Adapter class or method would exist regardless of the FaÃ§ade or Bridge implementation.  At its most complex, a FaÃ§ade is a managed workflow or a process that integrates several independent interfaces along with state to provide a new, simpler interface.  i.e. a FaÃ§ade can abstract behavior while being a structural pattern.  It's a one-to-many relationship between interfaces.  At the heart of both. the Bridge and the Adapter is to provide a more useful (better) interface, which is common to FaÃ§ade, but it's the purpose of that new interface that distinguishes it as one pattern or another.
 
-We often think of these patterns are the interface or class level; but they're applicable more broadly. Extension methods, for instance, can be a good example of a Façade implementation.  The following extension method is from Productivity Extensions:
+We often think of these patterns are the interface or class level; but they're applicable more broadly. Extension methods, for instance, can be a good example of a FaÃ§ade implementation.  The following extension method is from Productivity Extensions:
 ```csharp
 public static bool ReferencesMethod<T>(this Type sourceType, Expression<Action<T>> func)
 {
@@ -111,10 +111,10 @@ public static bool ReferencesMethod<T>(this Type sourceType, Expression<Action<T
 	return false;
 }
 ```
-Obviously, the interfaces are there to figure out if a particular method is referenced within a type, but `ReferencesMethod` provides a more convenient interface (a façade).
+Obviously, the interfaces are there to figure out if a particular method is referenced within a type, but `ReferencesMethod` provides a more convenient interface (a faÃ§ade).
 
 ## Bridge Deep Dive
-The Bridge provides a third interface (abstraction) so that one known interface never needs to be coupled to by a future unknown interface.  A Bridge is very useful in some languages/frameworks to provide compile-time independence between two implementations.  You often want a bidirectional independence in Bridges and as such the interfaces are often in their own link-time unit (class library).  The code that uses the Bridge is decoupled from and implementation of the a Bridge as well as whatever the Bridge is bridging to (so bridge implementations and what they bridge to can be implementated after the fact).  Façade is used when defining what is being bridged to because Bridge is used to abstract multiple implementations and often need that Façade interface to provide a better (consistent) interface.
+The Bridge provides a third interface (abstraction) so that one known interface never needs to be coupled to by a future unknown interface.  A Bridge is very useful in some languages/frameworks to provide compile-time independence between two implementations.  You often want a bidirectional independence in Bridges and as such the interfaces are often in their own link-time unit (class library).  The code that uses the Bridge is decoupled from and implementation of the a Bridge as well as whatever the Bridge is bridging to (so bridge implementations and what they bridge to can be implementated after the fact).  FaÃ§ade is used when defining what is being bridged to because Bridge is used to abstract multiple implementations and often need that FaÃ§ade interface to provide a better (consistent) interface.
 
 For me, an example really helps my understanding.  Here are some example interfaces to support a Bridge pattern (the Abstraction and Implementor from the pattern):
 ```csharp
@@ -210,7 +210,7 @@ namespace Microsoft
 [PImpl], Driver, [Mediator]
 
 ## Final Thoughts
-An important thing to remember is the category of the pattern.  Adapter, Façade, and Bridge are structural patterns.  Their intention is to provide benefits to the structure of a body software through composition.  Another category of patterns is behavioral; which attempt to improve cohesion by separating responsibilities through composition.  The mediator pattern may structurally be a Bridge pattern but its use is to achieve a separation of communication behavior responsibilities.  i.e. certain structural considerations are needed to obtain separation of responsibilities: to implement cohesive mediation behavior, you may need a Bridge structure.
+An important thing to remember is the category of the pattern.  Adapter, FaÃ§ade, and Bridge are structural patterns.  Their intention is to provide benefits to the structure of a body software through composition.  Another category of patterns is behavioral; which attempt to improve cohesion by separating responsibilities through composition.  The mediator pattern may structurally be a Bridge pattern but its use is to achieve a separation of communication behavior responsibilities.  i.e. certain structural considerations are needed to obtain separation of responsibilities: to implement cohesive mediation behavior, you may need a Bridge structure.
 
 [PImpl]: http://wiki.c2.com/?PimplIdiom
 [Mediator]: https://en.wikipedia.org/wiki/Mediator_pattern
@@ -220,4 +220,4 @@ An important thing to remember is the category of the pattern.  Adapter, Façade,
 [ActiveRecord]: https://en.wikipedia.org/wiki/Active_record_pattern
 [Bridge]: https://en.wikipedia.org/wiki/Bridge_pattern
 [Adapter]: https://en.wikipedia.org/wiki/Adapter_pattern
-[Façade]: https://en.wikipedia.org/wiki/Facade_pattern
+[FaÃ§ade]: https://en.wikipedia.org/wiki/Facade_pattern
