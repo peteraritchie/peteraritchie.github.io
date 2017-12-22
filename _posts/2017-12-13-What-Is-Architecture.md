@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Comments in Markdown
-date: 2017-12-13 23:32:00 -0500
+title: What Is Architecture
+date: 2017-12-21 23:32:00 -0500
 categories: ['Odds', 'Hacks', 'Markdown']
 comments: true
 excerpt: "Hacks for putting comments into markdown that won't appear when rendered."
