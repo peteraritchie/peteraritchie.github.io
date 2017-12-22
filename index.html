@@ -33,7 +33,7 @@ layout: default
                 </span>
                 <span class="categories-on">
                     {% for category in post.categories%}
-                    {% for category in site.data.categories %}{% if post.category == category.slug %}{{ category.name }}{% endif %}{% endfor %}{% if forloop.last %}{% else %},&nbsp;{% endif %}
+                    {% for category in site.data.categories %}{% if post.category == category.slug %}<a href="{{ category.url }}">{{ category.name }}</a>{% endif %}{% endfor %}{% if forloop.last %}{% else %},&nbsp;{% endif %}
                     {% endfor %}
                 </span>
             </div>
