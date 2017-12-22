@@ -1,0 +1,11 @@
+## Logging
+- define
+- informational
+- debug
+## Auditing
+- define
+- information
+## Monitoring
+- define
+- errors
+- stats

@@ -2,7 +2,7 @@
 layout: post
 title: What Is Architecture
 date: 2017-12-21 23:32:00 -0500
-categories: ['Architecture']
+categories: ['Architecture', 'Software Development']
 comments: true
 excerpt: "Digging a little deeper into architectural concepts and details."
 ---
