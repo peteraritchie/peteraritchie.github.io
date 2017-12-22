@@ -2,9 +2,9 @@
 layout: post
 title: What Is Architecture
 date: 2017-12-21 23:32:00 -0500
-categories: ['Odds', 'Hacks', 'Markdown']
+categories: ['Architecture', 'Software Development']
 comments: true
-excerpt: "Hacks for putting comments into markdown that won't appear when rendered."
+excerpt: "Digging a little deeper into architectural concepts and details."
 ---
 # What Is Architecture
 Getting someone to explain architecture is sometimes like asking them what *disinterested* means or whether *irregardless* is a word. The number of answers you get from people has a complexity O(n log n) to the number of people you ask.
