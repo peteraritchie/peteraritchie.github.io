@@ -1,11 +1,11 @@
-—-
+---
 layout: post
 title: Mapping a Domain Model to RESTful
 date: 2017-12-29 23:32:00 -0500
 categories: ['Design', 'API', 'Guidance', 'RESTful']
 comments: true
 excerpt: "Looking into one technique to provide access to a domain model (behavior) via a RESTful API."
-—-
+---
 # Mapping a Domain Model to RESTful
 
 In the Object-Oriented discipline, an *object* **is the bundling of data and behavior**.  Martin Fowler defined the First Law of Distributed Objects.  That law states "**Don't distribute your objects**".
