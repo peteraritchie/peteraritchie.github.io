@@ -11,7 +11,7 @@ excerpt: "How do you not lose sight of innovation, recognizing it, and cultivati
 
 > For our purposes, let’s define it as a &ldquo;big new&rdquo; for your business or a &ldquo;big different&rdquo; in how you operate your business.
 
-&horbar;&nbsp;[https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd](https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd)
+&#8213;&nbsp;[https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd](https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd)
 
 ## What is innovation and innovating
 
@@ -19,13 +19,13 @@ Innovation is
 
 > The act of innovating
 
-&horbar;&nbsp;[https://web.archive.org/web/20170215125906/https://en.wiktionary.org/wiki/innovation](https://web.archive.org/web/20170215125906/https:/en.wiktionary.org/wiki/innovation)
+&#8213;&nbsp;[https://web.archive.org/web/20170215125906/https://en.wiktionary.org/wiki/innovation](https://web.archive.org/web/20170215125906/https:/en.wiktionary.org/wiki/innovation)
 
 Innovating is, of course, being innovative or:
 
 > To begin or introduce (something new) for the first time.
 
-&horbar;[https://www.thefreedictionary.com/innovating](https://www.thefreedictionary.com/innovating)
+&#8213;[https://www.thefreedictionary.com/innovating](https://www.thefreedictionary.com/innovating)
 
 All fine and satisfies pedantry, but what does innovation really mean? If it's truly *something new* or the *first time* then that means it occured through *ideation*, *exploration*, and *experimentation*.
 
