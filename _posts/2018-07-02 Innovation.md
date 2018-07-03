@@ -1,4 +1,4 @@
----
+ï»¿---
 layout: post
 title: Innovation
 date: 2018-07-02 23:58:00 -0500
@@ -9,7 +9,7 @@ excerpt: "How do you not lose sight of innovation, recognizing it, and cultivati
 # Innovation
 ## What is innovative?
 
-> For our purposes, let’s define it as a &ldquo;big new&rdquo; for your business or a &ldquo;big different&rdquo; in how you operate your business.
+> For our purposes, letâ€™s define it as a &ldquo;big new&rdquo; for your business or a &ldquo;big different&rdquo; in how you operate your business.
 
 &horbar;&nbsp;[https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd](https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd)
 
@@ -53,7 +53,7 @@ Promoting critical thinking goes a long way to combating confirmation bias.
 
 ### Promote critical thinking
 
-It may sound obvious but people get better at a skill with training. If you have a set of critical thinkers and have been innovating, that's one thing. If you want to innovate, the right training is essential to purposefully achieving that. Innovation requires good critical thinking skills—not taking things at face value but objectively analyzing and evaluating to form a judgement. A systematic approach to understanding something, focusing on delivering the understanding and not viewing un-forecasted understanding as "failures".
+It may sound obvious but people get better at a skill with training. If you have a set of critical thinkers and have been innovating, that's one thing. If you want to innovate, the right training is essential to purposefully achieving that. Innovation requires good critical thinking skillsâ€”not taking things at face value but objectively analyzing and evaluating to form a judgement. A systematic approach to understanding something, focusing on delivering the understanding and not viewing un-forecasted understanding as "failures".
 
 ### Segregate it
 
