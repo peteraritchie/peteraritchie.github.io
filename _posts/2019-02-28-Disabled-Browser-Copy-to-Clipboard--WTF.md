@@ -8,7 +8,7 @@ excerpt: "Re-enable copy-to clipboard on those annoying websites!"
 ---
 
 # Disabled Browser Copy-to-Clipboard: WTF?
-Seroiusly, web sites that disable copy-to-clipboard?  What do they think they are protecting?  It's very annoying.
+Seriously, web sites that disable copy-to-clipboard?  What do they think they are protecting?  It's very annoying.
  
 The way they actually do that is to override the default `oncopy` event handler. But, you know what?  With browsers (at least Chrome), 
 you can actually modify the document in real-time and remove that new handler.  Better yet, you can create a 
