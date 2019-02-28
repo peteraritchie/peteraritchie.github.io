@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 title: Disabled Browser Copy to Clipboard: WTF
 date: 2019-02-28
