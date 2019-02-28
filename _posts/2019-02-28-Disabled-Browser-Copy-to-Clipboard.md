@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Disabled Browser Copy-to-Clipboard: WTF?
+title: "Disabled Browser Copy-to-Clipboard: WTF?"
 date: 2019-02-28
 categories: ['Life Hacks']
 comments: true
