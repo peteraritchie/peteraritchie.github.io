@@ -1,7 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 #
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 
 # Name of your site (displayed in the header)
 title: Peter Ritchie
@@ -35,7 +35,7 @@ footer-links:
   instagram:
   linkedin:
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: rss # just type anything here for a working RSS icon
   twitter: peterritchie
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
@@ -44,7 +44,7 @@ footer-links:
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
-disqus:
+disqus: peterritchiesblog
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
@@ -117,3 +117,4 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - _index.xhtml
