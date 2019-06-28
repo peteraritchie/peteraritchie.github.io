@@ -1,10 +1,10 @@
 ---
 layout: post
-title: ""
+title: "Thoughts on Web Services, REST APIs, and Message Structure"
 date: 2019-04-02
 categories: ['Standards', 'REST', 'Versioning']
 comments: true
-excerpt: ""
+excerpt: "REST implies (expects?) a certain structure to requests and responses, let's see why and how to embrace it."
 ---
 # Thoughts on Web Services, REST APIs, and Message Structure
 ## Part 1: HTTP
