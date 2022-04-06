@@ -1,0 +1,185 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Resharper Isn&#x2019;t Always Smart</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Resharper Isn&#x2019;t Always Smart</h2>
+            <p><em>Published on Monday, March 31, 2008</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/March-2008" class="button small">March 2008</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Product-Bugs" class="button small">Product Bugs</a>
+                <a role="button" href="/tags/Resharper" class="button small">Resharper</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/03/31/resharper-isn-t-always-smart/" title="Permalink to Resharper Isn’t Always Smart">Source</a></p>
+<h1 id="resharper-isnt-always-smart">Resharper Isn’t Always Smart</h1>
+<p>I was writing some code today, essentially like this:</p>
+<p>public class MyClass</p>
+<p>{</p>
+<p>private int value;</p>
+<p>public MyClass(int value)</p>
+<p>{</p>
+<p>this.value = value;</p>
+<p>}</p>
+<p>public static bool operator==(MyClass left, MyClass right)</p>
+<p>{</p>
+<p>return left.value == right.value;</p>
+<p>}</p>
+<p>public static bool operator !=(MyClass left, MyClass right)</p>
+<p>{</p>
+<p>return !(left == right);</p>
+<p>}</p>
+<p>}</p>
+<p>//…</p>
+<p>MyClass myClass1 = new MyClass(1);</p>
+<p>MyClass myClass2 = new MyClass(1);</p>
+<p>if((Object)myClass1 != (Object)myClass2) // &quot;Type cast is reundant&quot;</p>
+<p>{</p>
+<p>Console.WriteLine(&quot;not equal&quot;);</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>Console.WriteLine(&quot;equal&quot;);</p>
+<p>}</p>
+<p>…whereResharper warned that both the casts to Object were redundant and offered a &quot;Quick-fix&quot; (red light bulb) to &quot;Remove cast&quot;. Well, doing that to one of the casts results in a compile error so you have to manually change the other; but what it's suggesting is this:</p>
+<p>if(myClass1 != myClass2)</p>
+<p>This completely changes the output of my application from &quot;not equal&quot; to&quot;equal&quot;. WhatResharperdoesn't know (or doesn't care to check)is that removing those casts switches from a reference comparison to a value comparisonand mayhave different results. What I wrote with the original code was to test if the two referencesreferenced the same object. The default behaviour of a class is to do a reference check; but I've overloadedoperator== (and operator!=) to perform a value comparison (I've left out the lovelybits that trulygives MyClass value semantics for clarity).</p>
+<p>So, when Resharper offers to change your code, be sure you know side-effects of that change before you let it do it. You could introduce a nasty bug.</p>
+<p><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fmsmvps.com%2fblogs%2fpeterritchie%2farchive%2f2008%2f03%2f31%2fresharper-isn-t-always-smart.aspx" class="img-fluid" alt="kick it on DotNetKicks.com" /></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Resharper-Isn%E2%80%99t-Always-Smart'
+    'Resharper Isn&#x2019;t Always Smart'
+    'http://blog.peterritchie.com/posts/Resharper-Isn%E2%80%99t-Always-Smart'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('3/31/2008');
+    console.info('Resharper-Isn%E2%80%99t-Always-Smart');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Resharper Isn&#x2019;t Always Smart';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Resharper-Isn%E2%80%99t-Always-Smart';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Resharper-Isn%E2%80%99t-Always-Smart';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

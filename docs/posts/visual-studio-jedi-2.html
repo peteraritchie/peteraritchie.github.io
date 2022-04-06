@@ -1,0 +1,176 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - visual studio jedi 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>visual studio jedi 2</h2>
+            <p><em>Published on Friday, November 14, 2008</em></p>
+                    <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/November-2008" class="button small">November 2008</a>
+                <a role="button" href="/tags/Uncategorized" class="button small">Uncategorized</a>
+                <a role="button" href="/tags/Visual-Studio-2008" class="button small">Visual Studio 2008</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/11/14/visual-studio-jedi-2/" title="Permalink to visual studio jedi 2">Source</a></p>
+<h1 id="visual-studio-jedi-2">visual studio jedi 2</h1>
+<p><strong>Project Naming</strong><br />
+When you create a project that project name is also the name of the namespace. If you want a particular namespace, enter it with the project name. If you don't want your binary to contain that namespace, it's easier to rename that in the project properties Build tab than it is to change the default namespace, edit the class files, rename the project, rename folders, etc.</p>
+<p>**Solution Naming<br />
+**When creating solutions it's often best to name the solution differently than the project that you're creating. When I create a project it will be contained within a solution. Once that solution is created I will always want to add sibling projects to that solution (like a test project, a front-end (or back-end) Project, a domain/model project, infrastructure project, etc.). When I create the project and accept the name of the project as also the name of the solution it can be a bit confusing. For example, if I want to create an n-layer Invoicing application I may need an invoicing front-end application, in which case I may create a project named PRI.InvoicingFrontEnd. To support that front-end I will have a infrastructure layer project (repositories, application services, etc.), a domain layer project, and a test project. As projects within a &quot;PRI.InvoicingFrontEnd&quot; this doesn't really make sense. So, for my solution name I won't accept the same name as the project and enter something more sensible and that doesn't include namespaces. In this case, &quot;Invoicing&quot;.</p>
+<p><strong>Repetitive tasks</strong><br />
+Some repetitive tasks are easy to accomplish in Visual Studio. For example, if I wanted to replace the string &quot;wish&quot; with &quot;want&quot; I'd simply to a project/solution-wide search and replace.</p>
+<p>Some repetitive tasks are not so easy. For example, if I want a search and replace that involves replacing multiple lines, search and replace doesn't work.</p>
+<p><strong>Rectangular Selections is your friend</strong><br />
+Many times you have rows of text that you want to incorporate into code. Sometimes the text is outside the source code, sometimes its not. An example may be a list of identifier names in a specification. Sometimes this text is a single column of text that you can just paste into a CS file and search/replace with commas to create a enum. Sometimes this text is a single column in a multi-column textual table. This is easy to extract into code without having to come up with a complex regular expression. Let's say we have tabular text like this:</p>
+<p>Name Priority</p>
+<p>public enum Keys<br />
+{<br />
+A = 65,<br />
+Add = 107,<br />
+Alt = 262144,<br />
+Apps = 93,<br />
+Attn = 246,<br />
+B = 66,<br />
+Back = 8,<br />
+//…<br />
+Y = 89,<br />
+Z = 90,<br />
+Zoom = 251<br />
+}</p>
+<p>Rather than</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'visual-studio-jedi-2'
+    'visual studio jedi 2'
+    'http://blog.peterritchie.com/posts/visual-studio-jedi-2'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/14/2008');
+    console.info('visual-studio-jedi-2');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'visual studio jedi 2';
+    var disqus_url = 'http://blog.peterritchie.com/posts/visual-studio-jedi-2';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'visual-studio-jedi-2';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

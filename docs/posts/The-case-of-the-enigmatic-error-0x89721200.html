@@ -1,0 +1,162 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - The case of the enigmatic error 0x89721200</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>The case of the enigmatic error 0x89721200</h2>
+            <p><em>Published on Sunday, February 2, 2014</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/February-2014" class="button small">February 2014</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Visaul-Studio-2013" class="button small">Visaul Studio 2013</a>
+                <a role="button" href="/tags/Windows-Phone" class="button small">Windows Phone</a>
+                <a role="button" href="/tags/Windows-Phone-80" class="button small">Windows Phone 8.0</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/02/02/the-case-of-the-enigmatic-error-0x89721200/" title="Permalink to The case of the enigmatic error 0x89721200">Source</a></p>
+<h1 id="the-case-of-the-enigmatic-error-0x89721200">The case of the enigmatic error 0x89721200</h1>
+<p>I do Windows Phone development here and there in my spare time. This consists of both Windows 7.x development and Windows 8 (hopefully Windows 8.x sometime soon <img src="http://pr-blog.azurewebsites.net/wp-content/uploads/2014/02/wlEmoticon-winkingsmile.png" class="img-fluid" alt="Winking smile" />). I often go a few days between working on Windows Phone apps. Today I got back into working on some Windows 8 apps (starting with a small fix to an app I have in the store.</p>
+<p>Much to my annoyance when I tried to debug the app that I wanted to fix I got an error deploying and the only hint was error 0x89721200. Out of the gate, working with <em>just</em> a COM error (that's what I call 32-bit hex error codes) is a less than pleasant experience. Having a closer look, where I would usually have the option of picking &quot;Device&quot; or &quot;Emulator *&quot;, I only had &quot;Start&quot;. It had been a while, so I couldn't think of any one thing that could have been the culprit. I had begun a port over to Windows 8, I had installed VS 2013 Update 1, I had installed Update 3 of Windows Phone 8 Emulators, etc. etc.</p>
+<p>A quick internet search really didn't find much. There were a couple of threads about SDK and Windows region language/location information and how that needed to be in sync; but all of that seemed to be in sync. Which really left me with absolutely nothing to go on (the fact that someone could create/allocate an error code and <strong>not document it or support it</strong> being aside at the moment). I had already done some work and deployed several Windows Phone 8 apps—so, I know my basic configuration was sound. Without anything to do on and any for of instant support (posting to the same forums that didn't resolve other people's 0x89721200 didn't seem like a productive avenue), I knew one option was to simply re-pave Visual Studio and the related SDKs.</p>
+<p>Not wanting to really re-pave, I decided I'd try a repair install of Visual Studio. I don't think any repair install had really done me any good in the past, but it was free (free as in time, that I could spend getting a beer then coming back). Well, unfortunately that didn't help—other than to re-align the electrons on the reboot. I did have a beer now, to that was good; but unrelated.</p>
+<p>Grasping at straws I decided I go look at any of the SDKs that were there and try repair install of those. I started with a recent update I installed Windows Phone 8 Emulators Update 3…</p>
+<h2 id="tldr">TL;DR</h2>
+<p>Well, low-and-behold, that actually fixed the problem—<strong>repair install of Windows Phone 8 Emulators Update 3 got rid of my 0x89721200 errors!</strong> I cannot confirm that it was <em>only repair install of Windows Phone 8 Emulators Update 3</em> as I first repair-installed Visual Studio 2013. I also re-installed Visual Studio 2013 Update 1 and still did not get any 0x89721200 errors</p>
+<p>If you find you're in the same boat I was, try that first.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'The-case-of-the-enigmatic-error-0x89721200'
+    'The case of the enigmatic error 0x89721200'
+    'http://blog.peterritchie.com/posts/The-case-of-the-enigmatic-error-0x89721200'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/2/2014');
+    console.info('The-case-of-the-enigmatic-error-0x89721200');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'The case of the enigmatic error 0x89721200';
+    var disqus_url = 'http://blog.peterritchie.com/posts/The-case-of-the-enigmatic-error-0x89721200';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'The-case-of-the-enigmatic-error-0x89721200';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

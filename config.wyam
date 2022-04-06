@@ -1,0 +1,11 @@
+#recipe Blog
+
+// Customize your settings and add new ones here
+Settings[Keys.Host] = "blog.peterritchie.com";
+Settings[BlogKeys.IncludeDateInPostPath] = false; //
+Settings[BlogKeys.Title] = "Peter Ritchie's Blog";
+Settings[BlogKeys.Description] = "Peter Ritchie";
+Settings[BlogKeys.Intro] = "IT Architecture Expert";
+Settings[BlogKeys.RssPath] = "feed.xml";
+
+// Add any pipeline customizations here

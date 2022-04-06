@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 
-date: 
+'date: '
 categories: ['.NET', 'ASP.NET', '.NET Core', 'ASP.NET Core', 'Guidance', 'Visual Studio']
 comments: true
 excerpt: ""

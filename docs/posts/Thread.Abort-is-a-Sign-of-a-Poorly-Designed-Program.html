@@ -1,0 +1,186 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Thread.Abort is a Sign of a Poorly Designed Program</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Thread.Abort is a Sign of a Poorly Designed Program</h2>
+            <p><em>Published on Wednesday, August 22, 2007</em></p>
+                    <a role="button" href="/tags/NET-20" class="button small">.NET 2.0</a>
+                <a role="button" href="/tags/August-2007" class="button small">August 2007</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/08/22/thead-abort-is-a-sign-of-a-poorly-designed-program/" title="Permalink to Thread.Abort is a Sign of a Poorly Designed Program">Source</a></p>
+<h1 id="thread.abort-is-a-sign-of-a-poorly-designed-program">Thread.Abort is a Sign of a Poorly Designed Program</h1>
+<p>Continuing the theme of <a href="http://msmvps.com/blogs/peterritchie/archive/2007/04/26/thread-sleep-is-a-sign-of-a-poorly-designed-program.aspx">Thead.Sleep is a sign of a poorly designed program</a>, I've been meaning to provide similar detail on Thread.Abort and not just allude to it in other posts like <a href="http://msmvps.com/blogs/peterritchie/archive/2006/10/13/_2700_System.Threading.Thread.Suspend_280029002700_-is-obsolete_3A00_-_2700_Thread.Suspend-has-been-deprecated_2E002E002E00_.aspx">'System.Threading.Thread.Suspend() is obsolete: 'Thread.Suspend has been deprecated…</a>.</p>
+<p>Many of the concepts I've discussed regarding Thread.Suspend also apply to Thread.Abort, and in much the same way that the ability to terminate a thread has existed for so long that the concept has remained ubiquitous when dealing with threads and it just keeps getting implemented without thought. Thread.Abort is far more unsafe than Thread.Suspend; but, unfortunately Thread.Abort has yet to be deprecated.</p>
+<p>Unlike Thread.Suspend, Thread.Abort stops your thread and it can't continue afterwards. In the same vein as Thread.Suspend, Thread.Abort doesn't know anything about your thread, and ifyour thread isn't in a try blockthat handles ThreadAbortException, it just stops it where it is, which may be in the middle of updating a complex invariant. This means the threadcan't continue where the left off like Thread.Suspend and Thread.Resume and can never get that invariant out of that corrupt state (and nothing else can, it has no idea where that thread left off).</p>
+<p>Thread.Abort isn't a full-blown terminate; it does cause all finally blocks that it knows about to execute before your thread is stopped and won't terminate your thread while it's in a catch or finally block.</p>
+<p>There's several concepts that go along with Thread.Abort. One I've already mentioned, the ThreadAbortException exception. Catching ThreadAbortException is conceptually cooperative thread termination. My issue with catching ThreadAbortException is that you're essentially using exceptions for normal flow of logic; which I don't agree with. The other concept is critical regions. You might think that wrapping critical code with Thread.BeginCritcalRegion and Thread.EndCriticalRegion will mean your thread won't be aborted while it's executing that code. Unfortunately, the .NET Framework doesn't really us Begin/EndCriticalRegion for anything. But, that's also not the intention, the intention is to signify to the runtime (currently only SQL Server vNext, I believe, uses that information) that should a Thread.Abort be called on that thread, or an unhandled exception occur, corruption has occurred and it should simply unload the thread'sAppDomain.</p>
+<p>But, the concept of interrupting the thread in the middle of something is really why you should never use Thread.Abort. It's one thing to interrupt you own code, but Thread.Abort actually as the potential to interrupt lock statements and cause locks not to be unlocked. As <a href="http://www.bluebytesoftware.com/blog/2007/01/30/MonitorEnterThreadAbortsAndOrphanedLocks.aspx">Joe Duffy points out</a>, there's a check when running code on the x86 that makes sure Thread.Abort can't interrupt between a call to Monitor.Enter when it is adjacent to a protected region. But, on current 64-bit JITs this check does not exist and a thread can be aborted between the call to Monitor.Enter and the start of the protected region.</p>
+<p>Unfortunately, the x86 is not entirely immune. In the C# compiler, when optimizations are turned off, it emits no-ops in various places. I can't really confirm why, but the prevalent theory is to allow the Visual Debugger to put breakpoints on source code that otherwise wouldn't have corresponding IL. (like the start brace, for example). Unfortunately there's a bug in the generation of that IL that means Thread.Abort can cause locks not to be unreleased.</p>
+<p>Eric Lippert <a href="http://blogs.msdn.com/ericlippert/archive/2007/08/17/subtleties-of-c-il-codegen.aspx">recently provided some of the detail of the bug</a> on his blog. But, essentially, this is what the C# compiler generates for IL code for the lock statement:<br />
+call void [mscorlib]System.Threading.Monitor<span>Enter(object)<br />
+Hole:nop<br />
+StartTry:nop<br />
+ldstr &quot;in lock&quot;<br />
+call void [mscorlib]System.Console</span>WriteLine(string)<br />
+nop<br />
+nop<br />
+leave.s EndFinally<br />
+EndTry:ldloc.0<br />
+call void [mscorlib]System.Threading.Monitor::Exit(object)<br />
+nop<br />
+endfinally<br />
+EndFinally:nop<br />
+ret<br />
+.try StartTry to EntTry finally handler EndTry to EndFinally</p>
+<p>Which is emitted(from both .NET 2.0 and .NET 3.5 Beta 2) for the compilationof the following:</p>
+<p>lock (locker)</p>
+<p>{</p>
+<pre><code>Console.WriteLine(&quot;in lock&quot;);
+</code></pre>
+<p>}</p>
+<p>This means the lock is acquired (call to Monitor.Enter) and a nop (at Hole) is executed before the start of the protected region (try block). This means there's an instruction after the acquisition of the lock that isn't in the try block. It's at that point if Thread.Abort were called, the finally block would never get executed and the lock would not be released. Likely this would result in deadlocks because nothing can ever release that lock now.</p>
+<p>If you never use Thread.Abort, this issue doesn't affect you. But, it really just provides another good reason why people keep saying <a href="http://tdanecker.blogspot.com/2007/08/do-never-ever-use-threadabort.html">you should never use Thread.Abort</a>.</p>
+<p>In <a href="http://msmvps.com/blogs/peterritchie/archive/2006/10/13/_2700_System.Threading.Thread.Suspend_280029002700_-is-obsolete_3A00_-_2700_Thread.Suspend-has-been-deprecated_2E002E002E00_.aspx">'System.Threading.Thread.Suspend() is obsolete: 'Thread.Suspend has been deprecated…</a>. I provide an example of cooperatively terminating a thread, if you're interested in terminating your thread without using Thread.Abort.</p>
+<p>Like catching Exception, there is an instance when Thread.Abort can be safely used: when you're terminating your application. If you're terminating your application and you know you have a foreground thread running and it's not responding, Thread.Abort can safely be used to ensure your application terminates bcause you're shutting down and not using any existing invariants or locks.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Thread.Abort-is-a-Sign-of-a-Poorly-Designed-Program'
+    'Thread.Abort is a Sign of a Poorly Designed Program'
+    'http://blog.peterritchie.com/posts/Thread.Abort-is-a-Sign-of-a-Poorly-Designed-Program'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/22/2007');
+    console.info('Thread.Abort-is-a-Sign-of-a-Poorly-Designed-Program');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Thread.Abort is a Sign of a Poorly Designed Program';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Thread.Abort-is-a-Sign-of-a-Poorly-Designed-Program';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Thread.Abort-is-a-Sign-of-a-Poorly-Designed-Program';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

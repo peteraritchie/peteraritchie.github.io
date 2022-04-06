@@ -1,0 +1,159 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Testing framework assumptions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Testing framework assumptions</h2>
+            <p><em>Published on Saturday, July 5, 2014</em></p>
+                    <a role="button" href="/tags/July-2014" class="button small">July 2014</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Uncategorized" class="button small">Uncategorized</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/07/05/testing-framework-assumptions/" title="Permalink to Testing framework assumptions">Source</a></p>
+<h1 id="testing-framework-assumptions">Testing framework assumptions</h1>
+<p>Back in the day (before there were unit testing tools), when I wanted to prototype (i.e. test my assumptions) how I would use a framework for certain things, I would perform some experimental development with the creation of a test application. This would sometimes be a WinForms app, or sometimes a console app; but the type really doesn't matter. What matters was that <em>how</em> I was going to use a given framework (.NET Framework for example) was prototyped and validated before I got to far into certain parts of development.</p>
+<p>One problem with doing that was that the application was largely throw-away and while that gave <em>me</em> the knowledge that could be used within the production application, it was lost on any other team members. And in some cases they may be performing the same work in isolation.</p>
+<h2 id="unit-testing-tools">Unit Testing Tools</h2>
+<p>Enter unit testing tools. At a philosophical level unit testing tools are just for <strong>unit tests</strong>. A unit test tests the smallest testable unit of code (typically a method) that given outputs or side-effects occur with given inputs. But, we can think of them more broadly than that. Unit testing tools are effective ways of performing any automated testing and we can expand out use of these tools to do much more than just <em>unit</em> testing.</p>
+<p>Nowadays all my prototyping is typically done in a unit testing tool. I can simply churn out a new test method to prototype almost any bit of code. It allows me to invoke that code whenever I want either manually or automatically. I can evolve that code from under test to in production by refactoring to other classes, etc.</p>
+<p>Some may say this is a form of TDD, but it's more than that. I can create blocks of code that I want to prototype without any assertions just to get a basic understanding of code that I will need in production. Once I'm done prototyping, I can either add assertions or refactor the code into production classes then evolve the test method or create new ones. Or, I can simply leave the test method alone as a means of documenting the prototype and it can live with the code in source code control.</p>
+<p>For example, I may need to use MessageQueue in a specific way. I can create a test method to prototype that usage and verify it through compilation and execution:</p>
+<p>Of course, with the ability to constantly verify assertions, this type of prototype code can explicitly detail <em>why</em> the code does what it does; but, sometimes it's just a convenient place to keep sample code related to a project. In cases like this, I may add a category to the test method so that I can wire it off from automated test runs. For example, if I just want sample code on how to use a particular API in a framework, I may add an &quot;Infrastructure&quot; category:</p>
+<p>One of the first things I do when I create a new solution in Visual Studio is to add a test project and I live in there most of the time prototyping and experimenting quickly and easily. I encourage you to make use of your unit testing tools for as many things as possible.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Testing-framework-assumptions'
+    'Testing framework assumptions'
+    'http://blog.peterritchie.com/posts/Testing-framework-assumptions'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/5/2014');
+    console.info('Testing-framework-assumptions');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Testing framework assumptions';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Testing-framework-assumptions';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Testing-framework-assumptions';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

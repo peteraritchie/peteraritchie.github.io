@@ -1,0 +1,182 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - volatile&#x2013;You Keep Using That Word, But I Do Not Think You Know What It Means</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>volatile&#x2013;You Keep Using That Word, But I Do Not Think You Know What It Means</h2>
+            <p><em>Published on Tuesday, October 15, 2013</em></p>
+                    <a role="button" href="/tags/C/C&#x2B;&#x2B;" class="button small">C/C&#x2B;&#x2B;</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/October-2013" class="button small">October 2013</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+                <a role="button" href="/tags/Win32" class="button small">Win32</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/10/15/volatileyou-keep-using-that-word-but-i-do-not-think-you-know-what-it-means/" title="Permalink to volatile–You Keep Using That Word, But I Do Not Think You Know What It Means">Source</a></p>
+<h1 id="volatileyou-keep-using-that-word-but-i-do-not-think-you-know-what-it-means">volatile–You Keep Using That Word, But I Do Not Think You Know What It Means</h1>
+<p>Princess Bride has some of the best quotes… But, more to the topic; I've been bitten by people using volatile in code that I've had to work with. In fact, I think I've been bitten by every single use of volatile at least once. Why? As Inigo Montoya says &quot;You keep using that word. But I do not think you know what it means&quot;. Computer languages have their unique misunderstandings, but volatile seems global. I'm mentioned it before in a narrower context, but I keep having to fix its usage and felt there to be benefit to mentioning it again in a different context—despite inviting criticisms that will likely result.</p>
+<p>volatile stems from C. It was added well before multi-core processors were affordable or even prevalent. It was also added well before multi-threading became realistically available in C. Simple induction should quickly bring you to the conclusion that volatile has nothing to do with multi-threading and concurrency. And while &quot;volatile&quot; might not have been the best choice of words given what we know now, hindsight is 20/20.</p>
+<p>Unfortunately there is a lot (and I mean <strong>a lot</strong>) of misinformation about volatile and concurrency. Almost every venue you look you'll see comments like</p>
+<blockquote class="blockquote">
+<p>[volatile is] intended to be used in conjunction with variables that are accessed and modified in different threads.</p>
+</blockquote>
+<p>In terms of C/C++, volatile has some specific mandates. As detailed by the standards committee [1]:</p>
+<ul>
+<li>Consistency of memory mapped devices,</li>
+<li>Consistency of variables used between setjmp and longjmp</li>
+<li>Consistency of sig_atomic_t variables in signal handlers</li>
+</ul>
+<p>All of these mandates apply to single-thread scenarios and the second two deal with asynchronous execution (i.e. the order of execution is not determined at compile-time). volatile only tells the compiler not to optimize use of a particular variable—it does not make its access atomic and it does not make its access any more thread-safe than any other access to memory the compiler generates. It only tells the compiler that a read to, or a write from, that variable should always results in a memory access, in the order in which it was written. This prevents <em>reordering</em>, but only by the compiler.</p>
+<h2 id="but-strong-memory-models">But, Strong Memory Models!</h2>
+<p>This has to be the biggest logical fallacy in software engineering. The fact that on a strong memory model architecture (like x86) that volatile <em>fixes</em> bugs in multi-threaded code is simply an accident. Yes, you want variable accesses to be deterministic memory accesses when that variable is shared across threads, but you also want to ensure atomicity as well as cache coherency. volatile does neither of these things (the variable access <strong>was already atomic</strong> and some level of cache coherency already existed). So, in effect, use of volatile to &quot;fix&quot; this bugs really only fixed one of three potential bugs—that is, you're getting beneficial side-effects for an unintended reason.</p>
+<p>The fact that volatile gives you beneficial side-effects only under certain memory model is more proof that volatile does not mean what you think it means.</p>
+<h2 id="deterministic-memory-access">Deterministic Memory Access</h2>
+<p>&quot;memory&quot; is a funny thing with multi-core processors. Direct memory access is expensive and if a processor can avoid it (i.e. use a cache) and thus improves the effective speed of the processor). While a &quot;write&quot; to memory on one core really does mean a write to memory, another core may not see it because it reads from its cache. This is especially true of re-ordering. I know of no multi-core processor that does not have re-ordering gotchas with regard to memory access (even x86[1]).</p>
+<p>Deterministic memory access should be, well, deterministic right? You need to know that a read/write to a variable is really a memory access. But, do you need it <strong>all the time</strong>? Likely not. You are not accessing a piece of mapped memory that must <strong>always</strong> occur, you want to make sure that what you do to a variable is visible to other threads—when it <em>needs</em> to be visible. That is, the result of the use of any variable is a multi-step process (e.g. it's read and an action is performed based on the value it had <em>in the past</em>). You almost always need the value to be visible only at specific times—&quot;communicating&quot; across threads is collaborative and deterministic. volatile doesn't do this for you, it makes it <em>visible</em> (caveat is that it might be reordered even on x86) <em>all the time</em>. We use compilers for a reason, let them do what they're good at.</p>
+<h2 id="atomicity">Atomicity</h2>
+<p>You can't apply volatile on types that aren't already atomically accessed (another hint that volatile does not mean what you think it means). So, what do you do for atomicity? This, of course is platform dependant (yet another hint). On Windows, this likely depends on what you're doing. You can only really share variables within a single memory space (process), so using intra-process synchronization is your best bet here (despite all inter-process synchronization having the same side-effect). For example:</p>
+<p>Other intra-process synchronization techniques can also be used, like Interlocked*, reader/writer locks, etc. But, they're generally optimizations and should be used only after analysis and critical thinking.</p>
+<h2 id="volatile-and-cc">volatile and C/C++</h2>
+<p>In fact, the standards committee's position on whether volatile should <em>expand</em> to include atomicity and thread visibility (because, hint, it doesn't) is that volatile will <strong>not expand</strong> to include atomicity and thread visibility[2].</p>
+<h2 id="volatile-outside-of-cc">volatile outside of C/C++</h2>
+<p>In terms of managed languages like C+ and Java, volatile suffers from these past mandates. In C# volatile does actually mean acquire and release semantics—which really just pushes a strong memory model regardless of platform that runs the application. This results, effectively, in making C# volatile the same as C volatile. Not that that is a bad thing, but there's no such thing as setjmp/longjmp, sig_atomic_t/signals, or memory mapping (at least in the device context) in .NET. In fact, the more I have to deal with volatile in any context the more I truly believe volatile should never had been added to C#—it's addition was clearly based on the misconception that volatile in C relates to thread-safety/concurrency (even if that misconception might be indirect via Java).</p>
+<p>[1] <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2016.html">http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2016.html</a></p>
+<p>[2] <a href="http://bartoszmilewski.com/2008/11/05/who-ordered-memory-fences-on-an-x86/">http://bartoszmilewski.com/2008/11/05/who-ordered-memory-fences-on-an-x86/</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'volatile%E2%80%93You-Keep-Using-That-Word%2C-But-I-Do-Not-Think-You-Know-What-It-Means'
+    'volatile&#x2013;You Keep Using That Word, But I Do Not Think You Know What It Means'
+    'http://blog.peterritchie.com/posts/volatile%E2%80%93You-Keep-Using-That-Word%2C-But-I-Do-Not-Think-You-Know-What-It-Means'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/15/2013');
+    console.info('volatile%E2%80%93You-Keep-Using-That-Word%2C-But-I-Do-Not-Think-You-Know-What-It-Means');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'volatile&#x2013;You Keep Using That Word, But I Do Not Think You Know What It Means';
+    var disqus_url = 'http://blog.peterritchie.com/posts/volatile%E2%80%93You-Keep-Using-That-Word%2C-But-I-Do-Not-Think-You-Know-What-It-Means';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'volatile%E2%80%93You-Keep-Using-That-Word%2C-But-I-Do-Not-Think-You-Know-What-It-Means';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

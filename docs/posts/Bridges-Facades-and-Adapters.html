@@ -1,0 +1,328 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Bridges, Facades, and Adapters</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Bridges, Facades, and Adapters</h2>
+            <p><em>Published on Friday, July 28, 2017</em></p>
+                    <a role="button" href="/tags/July-2017" class="button small">July 2017</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p>I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and Façade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.</p>
+<p><a href="https://en.wikipedia.org/wiki/Bridge_pattern">Bridge</a>, <a href="https://en.wikipedia.org/wiki/Adapter_pattern">Adapter</a>, and <a href="https://en.wikipedia.org/wiki/Facade_pattern">Façade</a> are similar: they are all about providing a more useful interface.  How and why they produce those interfaces are very different.</p>
+<p>Let's first look at some of the principles behind each pattern.</p>
+<h2 id="principles">Principles</h2>
+<p><em>Bridge</em>: to decouple an abstraction from its implementations so that they can vary independently.</p>
+<p><em>Façade</em>: provide a simplified interface to a larger body of code.</p>
+<p><em>Adapter</em>: allows incompatible interfaces to work together by wrapping an already existing interface.</p>
+<h2 id="subtleties">Subtleties</h2>
+<p><em>Bridge</em>: Bridge is about decoupling an abstraction from its implementations.  This means it provides an abstraction to an abstraction; or in other words it's about the interaction of three things.</p>
+<p><em>Façade</em>: Façade is about providing a simpler abstraction to an existing interface.  This means it provides an abstraction to  set of interfaces</p>
+<p><em>Adapter</em>: Adapter is about providing an interface that accepts existing data formats to translate to other formats used by another interface.</p>
+<h2 id="adapter-deep-dive">Adapter Deep Dive</h2>
+<p>An an Adapter is effectively a function or a transformation.  It transforms one set of data compatible with a known interface into a set of data compatible with another known interface. At its most complex, it's still only dealing with transformation/mapping--providing an abstraction to <em>how to transform</em> data, not an abstraction from the data.  It's a one-to-one relationship between two interfaces that existed before the Adapter.  If we viewed it in a method calling context: something like this:</p>
+<pre><code class="language-csharp">var result = ExternalInterface(AdaptToExternal(internalData));
+</code></pre>
+<h3 id="possible-adapter-pattern-specializations">Possible Adapter Pattern Specializations</h3>
+<p><a href="https://en.wikipedia.org/wiki/Data_mapper_pattern">Mapper</a> (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Object-Relational</a> aka ORM, <a href="https://en.wikipedia.org/wiki/Data_access_object">Data Access Object</a> aka DAO), <a href="https://en.wikipedia.org/wiki/Active_record_pattern">ActiveRecord</a>.</p>
+<h2 id="facade-deep-dive">Façade Deep Dive</h2>
+<p>A Façade at it's simplest can act like an Adapter but it provides an abstraction to an interface rather than data: a simple pass-through Façade that performs some adaption.  An Adapter pattern could be used in a Façade or Bridge, but the Adapter pattern would be implemented independently from the implementation of either of other two.  e.g. some sort of Adapter class or method would exist regardless of the Façade or Bridge implementation.  At its most complex, a Façade is a managed workflow or a process that integrates several independent interfaces along with state to provide a new, simpler interface.  i.e. a Façade can abstract behavior while being a structural pattern.  It's a one-to-many relationship between interfaces.  At the heart of both. the Bridge and the Adapter is to provide a more useful (better) interface, which is common to Façade, but it's the purpose of that new interface that distinguishes it as one pattern or another.</p>
+<p>We often think of these patterns are the interface or class level; but they're applicable more broadly. Extension methods, for instance, can be a good example of a Façade implementation.  The following extension method is from Productivity Extensions:</p>
+<pre><code class="language-csharp">public static bool ReferencesMethod&lt;T&gt;(this Type sourceType, Expression&lt;Action&lt;T&gt;&gt; func)
+{
+	if (sourceType == null)
+	{
+		throw new ArgumentNullException(nameof(sourceType));
+	}
+
+	if (func == null)
+	{
+		throw new ArgumentNullException(nameof(func));
+	}
+
+	var methodCallExpression = func.Body as MethodCallExpression;
+	if (methodCallExpression == null)
+	{
+		return false;
+	}
+
+	MethodInfo memberInfo = methodCallExpression.Method;
+	MethodInfo getTypeMethodInfo = typeof(object).GetMethods().Single(x =&gt; x.Name == &quot;GetType&quot;); // &amp;&amp; x.GetParameters().Count() == 0 &amp;&amp; x.ReflectedType == typeof(Object));
+	bool getTypeCall = memberInfo == getTypeMethodInfo;
+
+	foreach (var methodInfo in sourceType.GetMethods())
+	{
+		var methodBody = methodInfo.GetMethodBody();
+		if (methodBody == null)
+		{
+			continue;
+		}
+
+		var il = methodBody.GetILAsByteArray();
+		IEnumerable&lt;IlInstruction&gt; instructions = GetMethodInstructions(methodInfo, sourceType.Module, il);
+
+		for (int i = 0; i &lt; instructions.Count(); ++i)
+		{
+			var instruction = instructions.ElementAt(i);
+			if (getTypeCall &amp;&amp; instruction.Code == OpCodes.Ldtoken &amp;&amp; i &lt; instructions.Count() &amp;&amp; instructions.ElementAt(i + 1).Code == OpCodes.Call)
+			{
+				var calledMethodInfo = instructions.ElementAt(i + 1).Operand as MethodInfo;
+				if (calledMethodInfo == null)
+				{
+					continue;
+				}
+
+				if (calledMethodInfo == typeof(Type).GetMethods().Single(x =&gt; x.Name == &quot;GetTypeFromHandle&quot;))
+				{
+					return true;
+				}
+			}
+
+			if (instruction.Code == OpCodes.Call || instruction.Code == OpCodes.Callvirt)
+			{
+				var calledMethodInfo = instruction.Operand as MethodInfo;
+				if (calledMethodInfo == null)
+				{
+					continue;
+				}
+
+				if (calledMethodInfo == memberInfo)
+				{
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
+}
+</code></pre>
+<p>Obviously, the interfaces are there to figure out if a particular method is referenced within a type, but <code>ReferencesMethod</code> provides a more convenient interface (a façade).</p>
+<h2 id="bridge-deep-dive">Bridge Deep Dive</h2>
+<p>The Bridge provides a third interface (abstraction) so that one known interface never needs to be coupled to by a future unknown interface.  A Bridge is very useful in some languages/frameworks to provide compile-time independence between two implementations.  You often want a bidirectional independence in Bridges and as such the interfaces are often in their own link-time unit (class library).  The code that uses the Bridge is decoupled from and implementation of the a Bridge as well as whatever the Bridge is bridging to (so bridge implementations and what they bridge to can be implementated after the fact).  Façade is used when defining what is being bridged to because Bridge is used to abstract multiple implementations and often need that Façade interface to provide a better (consistent) interface.</p>
+<p>For me, an example really helps my understanding.  Here are some example interfaces to support a Bridge pattern (the Abstraction and Implementor from the pattern):</p>
+<pre><code class="language-csharp">namespace Primitives
+{
+    public interface IShapeBridgeAbstraction
+    {
+        void Draw();
+    }
+
+    public interface IGraphicalViewBridgeImplementor
+    {
+        void DrawCircle(double x, double y, double radius);
+    }
+}
+</code></pre>
+<p>Then, implementations of those interfaces provided by another party (vendor?):</p>
+<pre><code class="language-csharp">namespace VendorX
+{
+    using Primitives;
+
+    public class GraphicalViewBridgeConcreteImplementor : IGraphicalViewBridgeImplementor
+    {
+        void DrawCircle(double x, double y, double radius);
+    }
+
+    public class CircleShapeBridgeRefinedAbstraction : IShapeBridgeAbstraction
+    {
+        double x, y, radius;
+        IGraphicalViewBridgeImplementor view;
+        public void CircleShapeBridgeRefinedAbstraction(double x, double y, double radius, IGraphicalViewBridgeImplementor view)
+        {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.view = view;
+        }
+
+        public void Draw()
+        {
+            view.DrawCircle(x, y, radius);
+        }
+    }
+}
+</code></pre>
+<p>Or, to get away from the pattern-parlance:</p>
+<pre><code class="language-csharp">namespace Primitives
+{
+    public interface IShape
+    {
+        void Draw();
+    }
+
+    public interface IGraphicalView
+    {
+        void DrawCircle(double x, double y, double radius);
+    }
+}
+</code></pre>
+<p>And:</p>
+<pre><code class="language-csharp">namespace Microsoft
+{
+    using Primitives;
+
+    public class WinFormsGraphicalView : IGraphicalView
+    {
+        void DrawCircle(double x, double y, double radius);
+    }
+
+    public class WinFormsCircleShape : IShape
+    {
+        double x, y, radius;
+        IGraphicalView view;
+        public void WinFormsCircleShape(double x, double y, double radius, IGraphicalView view)
+        {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.view = view;
+        }
+
+        public void Draw()
+        {
+            view.DrawCircle(x, y, radius);
+        }
+    }
+}
+</code></pre>
+<h3 id="possible-bridge-pattern-specializations">Possible Bridge Pattern Specializations</h3>
+<p><a href="http://wiki.c2.com/?PimplIdiom">PImpl</a>, Driver, <a href="https://en.wikipedia.org/wiki/Mediator_pattern">Mediator</a></p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>An important thing to remember is the category of the pattern.  Adapter, Façade, and Bridge are structural patterns.  Their intention is to provide benefits to the structure of a body software through composition.  Another category of patterns is behavioral; which attempt to improve cohesion by separating responsibilities through composition.  The mediator pattern may structurally be a Bridge pattern but its use is to achieve a separation of communication behavior responsibilities.  i.e. certain structural considerations are needed to obtain separation of responsibilities: to implement cohesive mediation behavior, you may need a Bridge structure.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Bridges-Facades-and-Adapters'
+    'Bridges, Facades, and Adapters'
+    'http://blog.peterritchie.com/posts/Bridges-Facades-and-Adapters'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/28/2017');
+    console.info('Bridges-Facades-and-Adapters');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Bridges, Facades, and Adapters';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Bridges-Facades-and-Adapters';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Bridges-Facades-and-Adapters';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

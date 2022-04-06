@@ -1,0 +1,158 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Never Mind Canonical Tags, Let&#x2019;s Get Content/Navigation Tags.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Never Mind Canonical Tags, Let&#x2019;s Get Content/Navigation Tags.</h2>
+            <p><em>Published on Wednesday, March 11, 2009</em></p>
+                    <a role="button" href="/tags/March-2009" class="button small">March 2009</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Non-development" class="button small">Non-development</a>
+                <a role="button" href="/tags/Pontification" class="button small">Pontification</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2009/03/11/never-mind-canonical-tags-let-s-get-content-navigation-tags/" title="Permalink to Never Mind Canonical Tags, Let’s Get Content/Navigation Tags.">Source</a></p>
+<h1 id="never-mind-canonical-tags-lets-get-contentnavigation-tags">Never Mind Canonical Tags, Let’s Get Content/Navigation Tags.</h1>
+<p><a href="http://www.appscout.com/2009/02/google_microsoft_yahoo_create.php">http://www.appscout.com/2009/02/google_microsoft_yahoo_create.php</a>describes that Microsoft, Yahoo, and Google have agreed on a &quot;canonical tag&quot;. This tag basically allows a web site owner to tell search sites where the main page of a site is, regardless of the URL.</p>
+<p>This is fine, but it only reduces duplicate results. It does nothing for incorrect results.</p>
+<p>Google's algorithm bases its results on content and voting (either explicit or implict), among other things. The longer content is around the more accurate Google is with results. New links suffer from not having any of this meta data to help Google rank the content in the results.</p>
+<p>Many sites include &quot;content&quot; and &quot;navigation&quot;. Navigation deals with allowing the user to browse around the site or to other sites. One popular navigation technique is to use tags to group/link to other content. The way all the major search sites work is to simply index all the text on a site and hits to any of those keywords results in a match. This is obviously useful but it skews the results.</p>
+<p>This becomes more apparent when you start using services like Google Alerts. Google Alerts sends you an email when a new page is found with keywords that match your criteria. A problem occurs with sites with navigational text where Google sends you notices of new pages on those sites even though the real content doesn't match your critera. For example, let's say I create a Google alert for managed-extensibility-framework in the hopes of getting notification of new pages that relate to MEF. This starts to fall apart with sites like devtopics.com where each and every page contains the text &quot;Managed Extensibility Framework&quot; as one of the sites tags. This means every new page on devtopics.com is included in the alerts regardless of whether that page really relates to MEF.</p>
+<p>There was an up-and-coming search provider (that never made it) several years ago that did recognize a content/non-content tag that could provide more accurate results in these circumstances; but there isn't one that is recognized by any of the major search sites. I think it's about time that web site designers could inform search sites about what is and isn't content on their site.</p>
+<p>The alternative is for web site designers to look at the user agent HTTP header field and present only content when the Google agent is looking at the site.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Never-Mind-Canonical-Tags%2C-Let%E2%80%99s-Get-Content%2FNavigation-Tags.'
+    'Never Mind Canonical Tags, Let&#x2019;s Get Content/Navigation Tags.'
+    'http://blog.peterritchie.com/posts/Never-Mind-Canonical-Tags%2C-Let%E2%80%99s-Get-Content%2FNavigation-Tags.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('3/11/2009');
+    console.info('Never-Mind-Canonical-Tags%2C-Let%E2%80%99s-Get-Content%2FNavigation-Tags.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Never Mind Canonical Tags, Let&#x2019;s Get Content/Navigation Tags.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Never-Mind-Canonical-Tags%2C-Let%E2%80%99s-Get-Content%2FNavigation-Tags.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Never-Mind-Canonical-Tags%2C-Let%E2%80%99s-Get-Content%2FNavigation-Tags.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

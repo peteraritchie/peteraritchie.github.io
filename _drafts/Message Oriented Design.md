@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Message Oriented Design
-date: 2017-12-02 23:32:00 -0500
+title: 'Message Oriented Design'
 categories: ['Design']
 comments: true
 excerpt: "Using Message Orientation to increase maintainability by increasing loose coupling."

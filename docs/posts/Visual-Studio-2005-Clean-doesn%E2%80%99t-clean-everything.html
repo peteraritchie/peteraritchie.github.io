@@ -1,0 +1,271 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Visual Studio 2005 Clean doesn&#x2019;t clean everything</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Visual Studio 2005 Clean doesn&#x2019;t clean everything</h2>
+            <p><em>Published on Thursday, November 16, 2006</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/November-2006" class="button small">November 2006</a>
+                <a role="button" href="/tags/Visual-Studio-2005" class="button small">Visual Studio 2005</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2006/11/16/visual-studio-2005-clean-doesn-t-clean-everything/" title="Permalink to Visual Studio 2005 Clean doesn’t clean everything">Source</a></p>
+<h1 id="visual-studio-2005-clean-doesnt-clean-everything">Visual Studio 2005 Clean doesn’t clean everything</h1>
+<p>I noticed a while ago that when I clean a project in Visual Studio 2005 that has <em>XML documentation file</em> enabled the XML file isn't removed. There's an issue logged about files that don't get deleted on Clean on Microsoft Connect <a href="https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=196887">Clean does not remove all files from the build directory</a>. Unfortunately this issue also mentions the vshost files that usually appear in the project build directory for projects that output an EXE. This has caused this issue to be resolved By Design because of this, with a note that the XML file not being deleted is a bug.</p>
+<p>I've been meaning to fiddle around with the Visual Studio 2005 events anyway, so I thought I'd simply write a build done event handler (as the Clean command actually raises this event with vsBuildAction.vsBuildActionClean. I gathered from the issue details this only occurs in CSharp, so the following macro does the trick for CSharp projects either in the root of a solution or within Solution folders:</p>
+<p>Private ActiveProject As [Project]</p>
+<p>' don't know why these don't exist in the Constants class…</p>
+<p FAE04EC0-301F-11D3-BF4B-00C04F79EFBC="">Private Const vsProjectKindCSharp As String = &quot;&quot;</p>
+<p F184B08F-C81C-45F6-A57F-5ABD9991F28F="">Private Const vsProjectKindVisualBasic As String = &quot;&quot;</p>
+<p>Private Const vsProjectKindCPlusPlus As String = &quot;{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}&quot;</p>
+<p E6FDF86B-F3D1-11D4-8576-0002A516ECE8="">Private Const vsProjectKindJSharp As String = &quot;&quot;</p>
+<p E24C65DC-7377-472b-9ABA-BC803B73C61A="">Private Const vsProjectKindWeb As String = &quot;&quot;</p>
+<p>' &lt;revision name=&quot;Peter Ritchie&quot; date=&quot;16-Nov-06″&gt;Created&lt;/&gt;</p>
+<p>Private Sub BuildEvents_OnBuildBegin(ByVal Scope As EnvDTE.vsBuildScope, ByVal Action As EnvDTE.vsBuildAction) Handles BuildEvents.OnBuildBegin</p>
+<p>ActiveProject = Nothing</p>
+<p>If (Action = vsBuildAction.vsBuildActionClean) Then</p>
+<p>If (Scope = vsBuildScope.vsBuildScopeProject) Then</p>
+<pre><code>' keep track of the currently selected item in the solution explorer
+
+' we only support one selected project
+
+Dim solutionExplorer As UIHierarchy
+
+solutionExplorer = DTE.Windows.Item(Constants.vsext_wk_SProjectWindow).Object()
+
+If Not solutionExplorer Is Nothing Then
+
+ Dim items As Array = solutionExplorer.SelectedItems
+
+ If (items.GetLength(0) &gt; 0) Then
+
+  ActiveProject = TryCast(items.GetValue(0).Object(), Project) ' todo
+
+ End If
+
+End If
+</code></pre>
+<p>End If</p>
+<p>End If</p>
+<p>End Sub</p>
+<p>' &lt;revision name=&quot;Peter Ritchie&quot; date=&quot;16-Nov-06″&gt;Created&lt;/&gt;</p>
+<p>Private Sub BuildEvents_OnBuildDone(ByVal Scope As EnvDTE.vsBuildScope, ByVal Action As EnvDTE.vsBuildAction) Handles BuildEvents.OnBuildDone</p>
+<p>Try</p>
+<p>If (Action = vsBuildAction.vsBuildActionClean) Then</p>
+<pre><code>If (Scope = vsBuildScope.vsBuildScopeProject) Then
+
+ If (Not ActiveProject Is Nothing) Then
+
+  CleanProject(ActiveProject)
+
+ End If
+
+ElseIf (Scope = vsBuildScope.vsBuildScopeSolution) Then
+
+ Dim project As Project
+
+ For Each project In DTE.Solution.Projects
+
+  CleanProject(project)
+
+ Next
+
+End If
+</code></pre>
+<p>End If</p>
+<p>Finally</p>
+<p>ActiveProject = Nothing</p>
+<p>End Try</p>
+<p>End Sub</p>
+<p>' &lt;revision name=&quot;Peter Ritchie&quot; date=&quot;16-Nov-06″&gt;Created&lt;/&gt;</p>
+<p>Private Sub CleanProject(ByRef project As Project)</p>
+<p>If Not project Is Nothing Then</p>
+<p>' we only support CSharp projects at this time.</p>
+<p>If (project.Kind = vsProjectKindCSharp) Then</p>
+<pre><code>Dim projectPath As String = project.Properties.Item(&quot;FullPath&quot;).Value
+
+Dim configuration As Configuration
+
+configuration = project.ConfigurationManager.ActiveConfiguration
+
+Dim fullOutputPath As String = projectPath &amp; configuration.Properties.Item(&quot;OutputPath&quot;).Value
+
+Dim documentationFilePath As String = configuration.Properties.Item(&quot;DocumentationFile&quot;).Value
+
+'MsgWin(&quot;Checking xml file path for &quot; &amp; project.Name)
+
+If (Not documentatinoFilePath Is Nothing) And Len(documentationFileName) &gt; 0 Then
+
+ Dim fullDocumentationFilePath = projectPath &amp; documentationFilePath
+
+ 'MsgWin(&quot;xml path: &quot;&quot;&quot; &amp; fullDocumentationFilePath &amp; &quot;&quot;&quot;&quot;)
+
+ Dim fs As New FileIO.FileSystem
+
+ If (fs.FileExists(fullDocumentationFilePath)) Then
+
+  fs.DeleteFile(fullDocumentationFilePath)
+
+ End If
+
+End If
+</code></pre>
+<p>ElseIf project.Kind = Constants.vsProjectKindSolutionItems Then</p>
+<pre><code>' each solution items project contains a collection
+
+' of project item solutions items for which we want the SubProject
+
+Dim projectItem As ProjectItem
+
+For Each projectItem In project.ProjectItems
+
+ If projectItem.Kind = Constants.vsProjectItemKindSolutionItems Then
+
+  CleanProject(projectItem.SubProject)
+
+ End If
+
+Next
+</code></pre>
+<p>End If</p>
+<p>End If</p>
+<p>End Sub</p>
+<p>This macro supports solution clean and single project clean (not multi-select project clean). If you find there are other files you want wiped when you clean, simply add them in the CleanProject subroutine.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything'
+    'Visual Studio 2005 Clean doesn&#x2019;t clean everything'
+    'http://blog.peterritchie.com/posts/Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/16/2006');
+    console.info('Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Visual Studio 2005 Clean doesn&#x2019;t clean everything';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

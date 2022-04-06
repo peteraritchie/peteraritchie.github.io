@@ -1,0 +1,164 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Generating Windows Phone and Windows Store application images&#x2013;the vector version</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Generating Windows Phone and Windows Store application images&#x2013;the vector version</h2>
+            <p><em>Published on Sunday, February 23, 2014</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/February-2014" class="button small">February 2014</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Windows-Phone-80" class="button small">Windows Phone 8.0</a>
+                <a role="button" href="/tags/Windows-Store" class="button small">Windows Store</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/02/24/generating-windows-phone-and-windows-store-application-imagesthe-vector-version/" title="Permalink to Generating Windows Phone and Windows Store application images–the vector version">Source</a></p>
+<h1 id="generating-windows-phone-and-windows-store-application-imagesthe-vector-version">Generating Windows Phone and Windows Store application images–the vector version</h1>
+<p>In a prior <a href="http://bitly.com/1k110wt">post</a> I detail how you can generate the bitmaps required for both Windows Store and Windows Phone app submissions by scripting the resizing a single source bitmap.</p>
+<p>As Andrew Duthie (<a href="https://twitter.com/devhammer">&#64;devhammer</a>) quite righly pointed out, scaling a vector image would provide better fidelity in the final scaled bitmaps. Andrew gave an example of using Inkscape (both free and open-sourced) as a vector image editor.</p>
+<p>I knew vector images are, of course, better for scaling; but I had never really gotten into using vector images. Andrew's response was the motivation I needed to get into it.</p>
+<p><a href="http://bitly.com/1k3WH6U">Inkscape</a> (also available on Chocolatey as Inkscape ) is fairly easy to use, and there are lots of open vector images to base a new image from. But, I won't get into to many details of using Inkscape. Inkscape <em>does</em> provide an ability to script it (via batch files or PowerScript) in terms of exporting to a bitmap file. So, we can expand what I posted before to automate the generation of application bitmaps for both Windows Store and Windows Phone from a vector image source to generate better looking application bitmaps.</p>
+<p>The Inkscape.exe supports many command-line options, the one we're interested in is export-png. This command exports the vector image (SVG in my examples) to a PNG file. There's a bit of prep-work involved to be to do this easily and reliably. For the images we're interested in, for the most part they are square. So, we can set the properties of the Inkscape document to have equal page width and height (File/Document Properties). It really doesn't matter what width you pick with vector images; but I used 5 in by 5 in because of the default scaling—which made it visually easy to work with. You can then create the vector image within the page rectangle (centred, or however you need it) and save your image (SVG in my examples). Once saved you can use the export-png command to export to png.</p>
+<p>I could not find a way to export to non-square bitmaps without skewing the image and making it look horrible, so I used ImageMagick again to post-process the generated PNG to change the canvas width or height (in the same way I did in the prior post).</p>
+<p>So, to create Windows Store images from a single vector image, I used this:</p>
+<p>In my case, I'm basing my images from a source SVG file named CumulusNotes.svg.</p>
+<p>To create Windows Phone images from a single vector image, I used this:</p>
+<p>Both of which presume that both ImageMagick and Inkscape are in your path.</p>
+<p>If you feel like doing the same in a PowerScript, feel free to post a comment so other can benefit.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Generating-Windows-Phone-and-Windows-Store-application-images%E2%80%93the-vector-version'
+    'Generating Windows Phone and Windows Store application images&#x2013;the vector version'
+    'http://blog.peterritchie.com/posts/Generating-Windows-Phone-and-Windows-Store-application-images%E2%80%93the-vector-version'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/23/2014');
+    console.info('Generating-Windows-Phone-and-Windows-Store-application-images%E2%80%93the-vector-version');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Generating Windows Phone and Windows Store application images&#x2013;the vector version';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Generating-Windows-Phone-and-Windows-Store-application-images%E2%80%93the-vector-version';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Generating-Windows-Phone-and-Windows-Store-application-images%E2%80%93the-vector-version';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

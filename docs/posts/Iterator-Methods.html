@@ -1,0 +1,164 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Iterator Methods</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Iterator Methods</h2>
+            <p><em>Published on Thursday, July 17, 2014</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/July-2014" class="button small">July 2014</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/07/17/iterator-methods/" title="Permalink to Iterator Methods">Source</a></p>
+<h1 id="iterator-methods">Iterator Methods</h1>
+<p>Despite being around a while, I find that <strong>Iterator Methods</strong> haven't gotten nearly as much attention they deserve and aren't as understood maybe as they should be. So, I thought I devote a post to Iterator Methods.</p>
+<p>MSDN documents an Iterator Method is a method that performs a custom iteration over a collection and also uses the yield keyword. I don't think given C#'s evolution since yield was introduced that such a narrow definition is necessary. I'd expand that definition to detail a method that returns a deferred enumerable.</p>
+<p>A typical example of an iterator method:</p>
+<p>This is a simple iterator method with a compile-time sequence of numbers that we want to be able to <em>iterate</em>. While you might think this is the same as the following:</p>
+<p>…it's much more powerful than that. Returning a collection instance requires that the entire collection be allocated <em>in memory</em> and that each element <em>actually exist when the iterator method is called</em>. The second part is one of the most interesting things that iterator methods offer, <em>deferred execution</em>. You can get that sort of thing with LINQ, but you can write your own deferred execution without having to hand-write a complex <code>IEnumerable</code><T> implementation. (I say &quot;hand-write&quot; because the compiler writes one for you).</p>
+<p>For example, I wrote long ago about using an iterator method to return an <code>IEnumerable</code> to iterate <em>all future key presses</em>. Something like this:</p>
+<p>This creates an infinite <code>IEnumerable&lt;char&gt;</code> that effectively contains data from the future. Something you couldn't possibly do with a collection type instance.</p>
+<p>This is a fairly pedantic example, but it shows the power of what you can do with iterator methods.</p>
+<p>MSDN describes these types of methods as performing a custom iterator over a collection; here's an example:</p>
+<p>Now, pay attention to the possibility here and not the fact that LINQ to Objects could do the same thing. But, again, why limit &quot;Iterator Methods&quot; to something that uses yield return. I would still consider this an Iterator Method:</p>
+<p>If the incoming <code>IEnumerable</code> was deferred, so too would this method.</p>
+<p>Iterator methods allow you to operate at the element level rather than at the sequence level. They allow you to process a sequence without having to know about, or even have in-memory, the entire sequence. This offers a composability that Bill Wagner describes in much more detail in <em>More Effective C#</em> (Item 17). Suffice it to say, it allows you to decouple processing a sequence from the storage model used to store that sequence (or the fact that <em>no</em> storage model for the &quot;sequence&quot; may exist). This offers huge gains in the ability to process large quantities of data more-or-less independently from the amount of memory we have at our disposal.</p>
+<p>In a future post I hope to get into a specific case of where iterator methods can provide easy ways of dealing with sequences that would otherwise be limited by memory.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Iterator-Methods'
+    'Iterator Methods'
+    'http://blog.peterritchie.com/posts/Iterator-Methods'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/17/2014');
+    console.info('Iterator-Methods');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Iterator Methods';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Iterator-Methods';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Iterator-Methods';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

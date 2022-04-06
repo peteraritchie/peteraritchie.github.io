@@ -1,0 +1,152 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Resetting Build Number in Appveyor</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Resetting Build Number in Appveyor</h2>
+            <p><em>Published on Tuesday, May 9, 2017</em></p>
+                    <a role="button" href="/tags/May-2017" class="button small">May 2017</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p>I've been using <a href="http://ci.appveyor.com">AppVeyor</a> for a while now to be my CI platform of choice for my OSS projects.  It's like any other tool.  It works, and does a lot of things very well.  I recently bumped some major version numbers up and realized that some things AppVeyor was automating weren't completely automated.</p>
+<p>Build numbers.  AppVeyor takes on the burden of incrementing a build number for you (and updating your AssemblyInfo and Nuget info, if you want).  Unfortunately that's all it does automatically with the build number.  If I change my version number (e.g. from 1.0 to 2.0) then the build number does not reset to zero but continues on with the next version (so I go from 1.0.34 to 2.0.35).  Not what I was expecting.  Not that big a deal; but when it also publishes Nuget packages; kinda leaves you stuck at contining on from that point.</p>
+<p>I've seen a <a href="http://help.appveyor.com/discussions/problems/311-reset-the-build-number-automatically-yml">couple</a> <a href="http://help.appveyor.com/discussions/suggestions/730-support-next-build-number-0-zero">threads</a> on the topic, but the result always seemed to get pointed to the API to reset the build number.  I kinda think this violated the Principle of Least Surprise, so I decided to dig in a bit to avoid the surprise the future.</p>
+<p>The problem turned out to be fairly easy to solve (easier if you're an expert in PowerShell).  Basically, the way I approached it was to add a script in the <em>Init script</em> section of the configuration to get the last build version via the <a href="https://www.appveyor.com/docs/api/projects-builds/#get-project-last-build">API</a> and compare the components of that version to the current build verison found in the <a href="https://www.appveyor.com/docs/environment-variables/">environment</a>.</p>
+<p>This is the result:</p>
+<script src="https://gist.github.com/peteraritchie/3643ba729e20d5d0b1b2f817ed00ce6b.js"></script>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Resetting-Build-Number-in-Appveyor'
+    'Resetting Build Number in Appveyor'
+    'http://blog.peterritchie.com/posts/Resetting-Build-Number-in-Appveyor'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/9/2017');
+    console.info('Resetting-Build-Number-in-Appveyor');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Resetting Build Number in Appveyor';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Resetting-Build-Number-in-Appveyor';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Resetting-Build-Number-in-Appveyor';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

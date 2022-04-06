@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Supporting Structured Dynamic Configuration in ASP.NET Core appsettings
-date: 
+title: 'Supporting Structured Dynamic Configuration in ASP.NET Core appsettings'
 categories: ['.NET', 'ASP.NET', '.NET Core', 'ASP.NET Core', 'Guidance', 'Visual Studio']
 comments: true
 excerpt: ""

@@ -1,0 +1,159 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Accessing Private Fields and Properties</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Accessing Private Fields and Properties</h2>
+            <p><em>Published on Wednesday, April 3, 2013</em></p>
+                    <a role="button" href="/tags/NET-40" class="button small">.NET 4.0</a>
+                <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/April-2013" class="button small">April 2013</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Productivity-Extensions" class="button small">Productivity Extensions</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/04/03/accessing-private-fields-and-properties/" title="Permalink to Accessing Private Fields and Properties">Source</a></p>
+<h1 id="accessing-private-fields-and-properties">Accessing Private Fields and Properties</h1>
+<p>In Visual Studio 2010 there used to be the ability to generate a test from a class or method. This process would generate some magic classes that would allow you to access private members of the class under test. There was some apparent controversy to doing this with regard to how much work goes into support in (or some other reasons) so it wasn't included from the default context menu in Visual Studio 2012.</p>
+<p>I rarely want to test classes' private members for various reasons, so I never really made a habit of using this feature (in fact, I don't think I remember using it once)—I tend to design for composition (and get testability for <em>free</em>). But, there are times when it's useful. But, having Visual Studio generate some magic assembly that facilitates this (e.g. do you know how to regenerate this assembly if you want to test another, new, private member?) doesn't give me a warm and fuzzy feeling, I prefer to be explicit.</p>
+<p>I had an instance where it was more logical for me to test a private member than it was for me to make that private member public. It's no big surprise <em>how</em> to get at private members in the instance of at class: <strong>reflection</strong>. Privates are private for a reason, so there's nothing in the framework that directly facilitates this. To explicitly do what I needed to do I added a few methods to <a href="http://bit.ly/PDsKcs">Productivity Extensions</a> (available on NuGet: Install-Package ProductivityExtensions): GetPrivateFieldValue, SetPrivateFieldValue, GetPrivatePropertyValue, and SetPrivatePropertyValue. (The setters were just for completeness, use at your own risk).</p>
+<p>For example, I was creating an IAsyncResult implementation that lazily-created the WaitHandle. For this lazy-creation to occur, the create had to occur when the IAsyncResult.AsyncWaitHandle property getter was first called. For me to write a test to verify that if I hadn't called AsyncWaitHandle and that the WaitHandle wasn't created (or was null), I needed something other than using the property getter. It would be unwise to create another public property or field to get at the WaitHandle because that could cause the implementation to get incorrectly used and lead to bugs. This is effectively the test I wrote:</p>
+<p>In the then_unobserved_waithandle_field_is_null test I use the GetPrivateFieldValue<WaitHandle> extension method (which you can get by adding (using PRI.ProductivityExtensions.ReflectionExtensions;after adding a reference to ProductivityExtensions) telling it that I'm asking for a field type of WaitHandle and that the name of the field is &quot;asyncWaitHandle&quot;. This test verifies that the field is null without causing the side effect of calling the property getter.</p>
+<p>Use at you own risk. I recommend limiting only to unit tests.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Accessing-Private-Fields-and-Properties'
+    'Accessing Private Fields and Properties'
+    'http://blog.peterritchie.com/posts/Accessing-Private-Fields-and-Properties'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('4/3/2013');
+    console.info('Accessing-Private-Fields-and-Properties');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Accessing Private Fields and Properties';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Accessing-Private-Fields-and-Properties';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Accessing-Private-Fields-and-Properties';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

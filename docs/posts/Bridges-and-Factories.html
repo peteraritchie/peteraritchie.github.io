@@ -1,0 +1,197 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Bridges and Factories</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Bridges and Factories</h2>
+            <p><em>Published on Friday, December 21, 2007</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/December-2007" class="button small">December 2007</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Patterns" class="button small">Patterns</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/21/bridges-and-factories/" title="Permalink to Bridges and Factories">Source</a></p>
+<h1 id="bridges-and-factories">Bridges and Factories</h1>
+<p>In my <a href="http://msmvps.com/blogs/peterritchie/archive/2007/12/13/dependancy-injection.aspx">previous post</a>, I talked about Dependency Injection (DI). Oneimplementationof DI is using interface-oriented design to abstract a class from an injected dependency via an interface. This is one possible implementation of the Bridge pattern. Depending only upon an interface and classes to implement that interface opens up some very interesting possibilities.</p>
+<p>The tried-and-truemeans of creating an object is to simply directly use it's constructor, for example:</p>
+<pre><code>  IPerson person = new Employee(&quot;Peter&quot;, &quot;Ritchie&quot;);
+</code></pre>
+<p>This is nice and simple; but we're still coupled to Employee despite using an IPerson object thereafter. The above code hasn't truly eliminated the dependency upon the Employee class.Moving all that type of logic to a single method encapsulates the logic into one, reusable, place. This is the Factory pattern, for example:</p>
+<pre><code>  person = Person.Create(&quot;Peter&quot;, &quot;Ritchie&quot;);
+</code></pre>
+<p>The Create method, a &quot;Factory Method&quot; on a concrete (likely static) class Person,would know how to create an IPerson object. At this point using a IPerson object is completely abstracted from a specificconcrete typeand its creation.</p>
+<pre><code>  InviteToMeeting(person);
+</code></pre>
+<p>InviteToMeeting is completely independent of the concrete type implementing IPerson (and it can actually be a private type) and how it was created or where it came from. This abstraction leaves IPerson objects free to be created however they need to be. The benefits of Dependency Injection, Bridge, and Factory patternsare synergistic–together they offer more than if they were apart. In the above example they're created as Employee objects; but because their creation is completely encapsulated it could also be affected by policy. Policy that clients of the factory would have no dependency upon.</p>
+<p>In the simplest case Person.Create could always just create Employee objects; but because creation is hidden from the client the factory method could use other logic to decide what classes to use. Person.Create could be implemented this way:</p>
+<pre><code> public static IPerson Create ( String firstName, String lastName )
+
+
+ {
+
+
+  if (Configuration.IsAdministrator)
+
+
+  {
+
+
+   return new Employee(firstName, lastName);
+
+
+  }
+
+
+  else
+
+
+  {
+
+
+   return new Subordinate(firstName, lastName);
+
+
+  }
+
+
+ }
+</code></pre>
+<p>Now we're injecting policy into the creation process. Somewhere, likelynot in source code,whether the current user is running as an administrator. This state is used in a policy to decide what type of IPerson object to create.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Bridges-and-Factories'
+    'Bridges and Factories'
+    'http://blog.peterritchie.com/posts/Bridges-and-Factories'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/21/2007');
+    console.info('Bridges-and-Factories');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Bridges and Factories';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Bridges-and-Factories';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Bridges-and-Factories';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

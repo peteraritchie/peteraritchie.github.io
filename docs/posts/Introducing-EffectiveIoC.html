@@ -1,0 +1,164 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Introducing EffectiveIoC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Introducing EffectiveIoC</h2>
+            <p><em>Published on Monday, March 11, 2013</em></p>
+                    <a role="button" href="/tags/NET-40" class="button small">.NET 4.0</a>
+                <a role="button" href="/tags/NET-45" class="button small">.NET 4.5</a>
+                <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/EffectiveIoC" class="button small">EffectiveIoC</a>
+                <a role="button" href="/tags/March-2013" class="button small">March 2013</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2013/03/11/introducing-effectiveioc/" title="Permalink to Introducing EffectiveIoC">Source</a></p>
+<h1 id="introducing-effectiveioc">Introducing EffectiveIoC</h1>
+<p>Last week I <a href="https://twitter.com/peterritchie">tweeted</a> a few times about writing an IoC container in less than 60 lines of code. I also <a href="http://bit.ly/Zm1vIM">blogged</a> about how I thought the average IoC container was overly complex and didn't promote DI-friendliness.</p>
+<p>Well, EffectiveIoC is the result of that short spike. The core ended up being about 60 lines of code (supported type mappings—including open and closed generics—and app.config mappings). I felt a minimum viable IoC container needed a little more than that, so I've also included programmatic configuration and support for instances (effectively singletons). I've also thrown in the ability to map an action to a type to do whatever you want when the type is resolved. Without all the friendly API, it works out to be about 80-90 lines of code.</p>
+<h2 id="why">Why?</h2>
+<p>Well, the project page sums this up nicely. For the most part, I wanted something that promoted DI-friendly design—which, from my point of view, is constructor injection. So, EffectiveIoC is very simple. It supports mapping one type to another (the <em>from</em> type must be assignable to the <em>to</em> type) and registering of instances by name (key). Registering type mappings can be done in app.config:</p>
+<p>or in code:</p>
+<p>And type instances can be resolved like this:</p>
+<p>Instances can also be registered. In config this can be done like this:</p>
+<p>Or in code, like this:</p>
+<p>Instances can be resolved by name as follows:</p>
+<p>For more information and to view the source, see the GitHub project site: <a href="http://bit.ly/WEo1xY" title="https://github.com/peteraritchie/effectiveioc">https://github.com/peteraritchie/effectiveioc</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Introducing-EffectiveIoC'
+    'Introducing EffectiveIoC'
+    'http://blog.peterritchie.com/posts/Introducing-EffectiveIoC'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('3/11/2013');
+    console.info('Introducing-EffectiveIoC');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Introducing EffectiveIoC';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Introducing-EffectiveIoC';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Introducing-EffectiveIoC';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

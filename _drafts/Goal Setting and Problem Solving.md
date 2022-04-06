@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Goal Setting and Problem Solving
-date: 2108-09-13
+title: 'Goal Setting and Problem Solving'
 categories: ['Analysis', 'Quality Assurance', 'Guidance', 'Process Improvement']
 comments: true
 excerpt: ""

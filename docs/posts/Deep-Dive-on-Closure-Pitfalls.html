@@ -1,0 +1,248 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Deep Dive on Closure Pitfalls</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Deep Dive on Closure Pitfalls</h2>
+            <p><em>Published on Wednesday, November 3, 2010</em></p>
+                    <a role="button" href="/tags/NET-20" class="button small">.NET 2.0</a>
+                <a role="button" href="/tags/NET-35" class="button small">.NET 3.5</a>
+                <a role="button" href="/tags/NET-3x" class="button small">.NET 3.x</a>
+                <a role="button" href="/tags/NET-40" class="button small">.NET 4.0</a>
+                <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/C%23-30" class="button small">C# 3.0</a>
+                <a role="button" href="/tags/C%23-4" class="button small">C# 4</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/DevCenterPost" class="button small">DevCenterPost</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/November-2010" class="button small">November 2010</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2010/11/03/deep-dive-on-closure-pitfals/" title="Permalink to Deep Dive on Closure Pitfalls">Source</a></p>
+<h1 id="deep-dive-on-closure-pitfalls">Deep Dive on Closure Pitfalls</h1>
+<p>I've <a href="http://blogs.msmvps.com/blogs/peterritchie/archive/2008/10/27/closure-tip.aspx">blogged about closures in C# and their pitfalls</a> before. I keep seeing problems with closures–more now that lambdas expressions and statements (&quot;lambdas&quot;)are becoming more widespread–even with experienced developers. So, I'd thought i'd post about some of the details surrounding where the C# compiler generates closures in the hopes that people will recognize more where they write code that creates a closure and its context.</p>
+<p>The C# language spec does not refer specifically to &quot;closures&quot;, with regard to capturing state for anonymous methods (including lambdas)–it refers to &quot;outer variables&quot; and &quot;captured outer variables&quot;. The captured outer variables for a specific anonymous method are the &quot;closure&quot;.</p>
+<p>The compiler captures the state of variables within the local scope of the anonymous method in a compiler-generated class. The compiler effectively also captures the declaration scope of the state within the closure. If a variable is declared outside the local scope, that is echoed in the use of that closure. If the variable is declared within the local scope, that is captured in use of the closure. So, an anonymous method that uses state (a variable) declared outside the local scope of the anonymous method, the compiler will generate a closure use that closure so that variable is only instantiated once. For example:</p>
+<pre><code>	ICollection&lt;Func&lt;string&gt;&gt;Funcs=newList&lt;Func&lt;string&gt;&gt;();  
+String[]texts=newString[]{&quot;one&quot;,&quot;two&quot;,&quot;three&quot;};  
+foreach(Stringtextintexts)  
+{  
+		Funcs.Add(delegate{returntext;});  
+	}  
+</code></pre>
+<p>We have an anonymous method used within the local scope of the body of the foreach loop. The anonymous method uses the text variable declared outside the scope of the foreach loop. The compiler generates a class to contain the stateand the code that uses that state(i.e. the anonymous method)–otherwise the highlighted code–and make use of that generated class.For example:</p>
+<pre><code>	Closure closure=newClosure();  
+for(inti=0;i&lt;texts.Length;++i)  
+{  
+closure.text=texts[i];  
+Funcs.Add(newFunc&lt;string&gt;(closure.Func));  
+}  
+</code></pre>
+<p>The compiler-generated class may look something like this:</p>
+<pre><code>	internalclassClosure  
+{  
+publicstringtext;  
+publicstringFunc()  
+{  
+returntext;  
+}  
+}  
+</code></pre>
+<p>The compiler instantiates thatclass outside the generated for loop (because there is no &quot;foreach&quot; loop in .NETIL–what we see here for generated code is a C# view of IL)to match the single declaration of the text variable (as the body of the foreach loop sees it). So, as we can tell from this code, each of these Func delegates are accessing the same variable. So, if we invoked each of those delegate, they would all return &quot;three&quot;. While the code <em>looks</em> like each Func delegate is dealing with a different value (&quot;one&quot;, then &quot;two&quot;, then &quot;three&quot;); it's not and you've probably got a logic error with this code.</p>
+<p>So, as I pointed out in a previous post, we get around the problem by bringing the value from the outer scope into the inner scope of the anonymous method. For example:</p>
+<pre><code>	foreach(Stringtextintexts)  
+{  
+		vartemp=text;  
+Funcs.Add(delegate{returntemp;});  
+	}  
+</code></pre>
+<p>Now, the compiler needs to generate a class to model this local scope–or the highlighted code. This local scope includes the creation of an object and assigning it a specific value. So, what the compiler generates now would be similar to the following:</p>
+<pre><code>	for(inti=0;i&lt;texts.Length;++i)  
+{  
+Closureclosure=newClosure();  
+closure.temp=texts[i];  
+Funcs.Add(newFunc&lt;string&gt;(closure.Func));  
+}  
+</code></pre>
+<p>With a closure class similar to:</p>
+<pre><code>	privateclassClosure  
+{  
+publicstringtemp;  
+publicstringFunc()  
+{  
+returntemp;  
+}  
+}  
+</code></pre>
+<p>As we can see here, the compiler is nowinstantiating aClosure class once for each iteration of the loop, assigning a specific value to the temp field, then passing a delegate to the Func instance method to a new <code>Func&lt;T&gt;</code> delegate. Now, if we invoke each of our Func delegates we get what we expect &quot;one&quot;, then &quot;two&quot;, then &quot;three&quot;.</p>
+<p>I've specifically chosen deferred execution in these examples to separate parallel processing and what's going on. The same issue occurs when we use anonymous delegates with multiple threads.For example:</p>
+<pre><code>	vartexts=new[]{&quot;one&quot;,&quot;two&quot;,&quot;three&quot;};  
+foreach(vartextintexts)  
+{  
+ThreadPool.QueueUserWorkItem(v=&gt;Trace.WriteLine(text));  
+}  
+</code></pre>
+<p>This anonymous method (as a lambda) would generate code similar to:</p>
+<pre><code>	Closureclosure=newClosure();  
+for(inti=0;i&lt;texts.Length;++i)  
+{  
+closure.text=texts[i];  
+ThreadPool.QueueUserWorkItem(newWaitCallBack(closure.WaitCallback));  
+}  
+</code></pre>
+<p>As you can see, each thread is actually dealing with a single variable (Closure.text). At worst casewhen each thread runs, it outputs &quot;three&quot;–otherwise it's undefined what you'll see. We fix that the same way we did previously by adding a variable into the local scope:</p>
+<pre><code>	foreach(vartextintexts)  
+{  
+vartemp=text;  
+ThreadPool.QueueUserWorkItem(v=&gt;Trace.WriteLine(temp));  
+}  
+</code></pre>
+<p>This then generates something like this:</p>
+<pre><code>	for(inti=0;i&lt;texts.Length;++i)  
+{  
+Closureclosure=newClosure();  
+closure.temp=texts[i];  
+ThreadPool.QueueUserWorkItem(newWaitCallback(closure.WaitCallback));  
+}  
+</code></pre>
+<p>This means each thread is operating on an independent variable (the Closure.temp field of each instance of Closure that was instantiated).</p>
+<p>I hope this makes it more clear what the compiler is doing when you use anonymous methods (including Lambdas).</p>
+<p><img src="http://dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%253a%252f%252fmsmvps.com%252fblogs%252fpeterritchie%252farchive%252f2010%252f11%252f03%252fdeep-dive-on-closure-pitfals.aspx" class="img-fluid" alt="kick it on DotNetKicks.com" /></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Deep-Dive-on-Closure-Pitfalls'
+    'Deep Dive on Closure Pitfalls'
+    'http://blog.peterritchie.com/posts/Deep-Dive-on-Closure-Pitfalls'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/3/2010');
+    console.info('Deep-Dive-on-Closure-Pitfalls');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Deep Dive on Closure Pitfalls';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Deep-Dive-on-Closure-Pitfalls';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Deep-Dive-on-Closure-Pitfalls';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

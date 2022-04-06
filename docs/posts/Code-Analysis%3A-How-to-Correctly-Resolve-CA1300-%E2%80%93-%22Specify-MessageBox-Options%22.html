@@ -1,0 +1,817 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Code Analysis: How to Correctly Resolve CA1300 &#x2013; &quot;Specify MessageBox Options&quot;</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Code Analysis: How to Correctly Resolve CA1300 &#x2013; &quot;Specify MessageBox Options&quot;</h2>
+            <p><em>Published on Sunday, October 15, 2006</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/Code-Analysis/FxCop-Warning-Resolutions" class="button small">Code Analysis/FxCop Warning Resolutions</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/October-2006" class="button small">October 2006</a>
+                <a role="button" href="/tags/Visual-Studio-2005" class="button small">Visual Studio 2005</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p>[Source](<a href="http://blogs.msmvps.com/peterritchie/2006/10/15/code-analysis-how-to-correctly-resolve-ca1300-specify-messagebox-options/">http://blogs.msmvps.com/peterritchie/2006/10/15/code-analysis-how-to-correctly-resolve-ca1300-specify-messagebox-options/</a> &quot;Permalink to Code Analysis: How to Correctly Resolve CA1300 – &quot;Specify MessageBox Options&quot;&quot;)</p>
+<h1 id="code-analysis-how-to-correctly-resolve-ca1300-specify-messagebox-options">Code Analysis: How to Correctly Resolve CA1300 – &quot;Specify MessageBox Options&quot;</h1>
+<p>This is the first installment of what I hope to be many short bits of guidance about correctly resolving some of the more complex warnings coming out of FxCop and Code Analysis.</p>
+<p>The CA1300 warning is specifically about the right-to-leftor left-to-right reading order of a message box. The documentation for the warning alludes that a message box doesn't automatically inherit the containing form's reading order or the reading order from the user's current culture. Although, I can't find any documentation that confirms either.</p>
+<p>In any case, this is a rather complex warning to resolve, youpossibly have to traverse the form's lineage (when reading order is inherited) to find the reading order setting. The example fix in the documentation basically puts this logic in the code that calls MessageBox.Show. This is very un-resuable and couples the logic not only to the containing class but to the method it's contained within. My solution attempts to allow resolution of CA1300 with as little coupling as possible and little or no changes to existing code.</p>
+<p>My solution is obviously going to implement the extra logic in a new class; but I'll be implementing in a way where you don't have to change your existing calls to MessageBox.Show. My resolution extends the Form class and provides a MessageBox property that is implemented with a protected nested class that provides Show methods with all the same signatures as System.Windows.Forms.MessageBox.Show. The only requirement to using this class is that you haven't explicitly used the full namespace when calling MessageBox.Show, like 'System.Windows.Forms.MessageBox.Show(&quot;text&quot;, &quot;caption&quot;)'.</p>
+<p>The following is the class that extends Form using a protected class to implement a MessageBox property to redirect calls to MessageBox.Show–which eventually creates the appopriate MessageBoxOptions value and delegates to System.Windows.Forms.MessageBox.Show.</p>
+<p>namespace PRI.Windows.Forms</p>
+<p>{</p>
+<p>public class RtlAwareForm : Form</p>
+<p>{</p>
+<p>private MessageBoxProxy messageBoxProxy;</p>
+<p>protected MessageBoxProxy MessageBox</p>
+<p>{</p>
+<p>get</p>
+<p>{</p>
+<pre><code>return messageBoxProxy;
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>public RtlAwareForm ( )</p>
+<p>{</p>
+<p>messageBoxProxy = new MessageBoxProxy(this);</p>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Design&quot;,</p>
+<p>&quot;CA1034:NestedTypesShouldNotBeVisible&quot;)]</p>
+<p>protected class MessageBoxProxy</p>
+<p>{</p>
+<p>private Control parent;</p>
+<p>public MessageBoxProxy (Control parent)</p>
+<p>{</p>
+<pre><code>this.parent = parent;
+</code></pre>
+<p>}</p>
+<p>private static Boolean IsRightToLeft ( Control control )</p>
+<p>{</p>
+<pre><code>if (control.RightToLeft == RightToLeft.Inherit)
+
+{
+
+ Control parent = control.Parent;
+
+ while (parent != null)
+
+ {
+
+  if (parent.RightToLeft != RightToLeft.Inherit)
+
+  {
+
+   return parent.RightToLeft == RightToLeft.Yes;
+
+  }
+
+ }
+
+ return CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
+
+}
+
+else
+
+{
+
+ return control.RightToLeft == RightToLeft.Yes;
+
+}
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text )</p>
+<p>{</p>
+<pre><code>return Show(text,
+
+ string.Empty,
+
+ MessageBoxButtons.OK,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text, string caption )</p>
+<p>{</p>
+<pre><code>return Show(text,
+
+ caption,
+
+ MessageBoxButtons.OK,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons )
+</code></pre>
+<p>{</p>
+<pre><code>return Show(text,
+
+ caption,
+
+ buttons,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon )
+</code></pre>
+<p>{</p>
+<pre><code>return Show(text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( String text,</p>
+<pre><code>String caption,
+
+MessageBoxButtons messageBoxButtons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton )
+</code></pre>
+<p>{</p>
+<pre><code>MessageBoxOptions options =
+
+ IsRightToLeft(parent) ?
+
+  MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading : 0;
+
+
+
+return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ messageBoxButtons,
+
+ icon,
+
+ defaultButton,
+
+ options);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( IWin32Window owner, string text )</p>
+<p>{</p>
+<pre><code>return Show(owner,
+
+ text,
+
+ string.Empty,
+
+ MessageBoxButtons.OK,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( IWin32Window owner, string text, string caption )</p>
+<p>{</p>
+<pre><code>return Show(owner,
+
+ text,
+
+ caption,
+
+ MessageBoxButtons.OK,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons )
+</code></pre>
+<p>{</p>
+<pre><code>return Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ MessageBoxIcon.None,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon )
+</code></pre>
+<p>{</p>
+<pre><code>return Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ MessageBoxDefaultButton.Button1);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton )
+</code></pre>
+<p>{</p>
+<pre><code>MessageBoxOptions options = parent != owner ?
+
+ 0 : (IsRightToLeft(parent) ?
+
+  MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading : 0);
+
+
+
+return System.Windows.Forms.MessageBox.Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption, MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+bool displayHelpButton )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ displayHelpButton);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+string keyword )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ keyword);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+HelpNavigator navigator )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ navigator);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath )
+</code></pre>
+<p>{</p>
+<pre><code>return Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath);
+</code></pre>
+<p>}</p>
+<p>public DialogResult Show ( string text,</p>
+<pre><code>string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+HelpNavigator navigator,
+
+object param )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(parent,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ navigator,
+
+ param);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+string keyword )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ keyword);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+HelpNavigator navigator )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ navigator);
+</code></pre>
+<p>}</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;Microsoft.Performance&quot;,</p>
+<pre><code>&quot;CA1822:MarkMembersAsStatic&quot;)]
+</code></pre>
+<p>public DialogResult Show ( IWin32Window owner,</p>
+<pre><code>string text,
+
+string caption,
+
+MessageBoxButtons buttons,
+
+MessageBoxIcon icon,
+
+MessageBoxDefaultButton defaultButton,
+
+MessageBoxOptions options,
+
+string helpFilePath,
+
+HelpNavigator navigator,
+
+object param )
+</code></pre>
+<p>{</p>
+<pre><code>return System.Windows.Forms.MessageBox.Show(owner,
+
+ text,
+
+ caption,
+
+ buttons,
+
+ icon,
+
+ defaultButton,
+
+ options,
+
+ helpFilePath,
+
+ navigator,
+
+ param);
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>I've attached a non-web-sitefriendly version of the class in the attachements, that includes more comments andless line breaks.</p>
+<p>Now, the only change to the original code to resolve the warnings is the addition of a using namespace directive and a change to the form's base class (and in this example, a change to the CodeAnalysis suppression):</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Code-Analysis%3A-How-to-Correctly-Resolve-CA1300-%E2%80%93-%22Specify-MessageBox-Options%22'
+    'Code Analysis: How to Correctly Resolve CA1300 &#x2013; &quot;Specify MessageBox Options&quot;'
+    'http://blog.peterritchie.com/posts/Code-Analysis%3A-How-to-Correctly-Resolve-CA1300-%E2%80%93-%22Specify-MessageBox-Options%22'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/15/2006');
+    console.info('Code-Analysis%3A-How-to-Correctly-Resolve-CA1300-%E2%80%93-%22Specify-MessageBox-Options%22');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Code Analysis: How to Correctly Resolve CA1300 &#x2013; &quot;Specify MessageBox Options&quot;';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Code-Analysis%3A-How-to-Correctly-Resolve-CA1300-%E2%80%93-%22Specify-MessageBox-Options%22';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Code-Analysis%3A-How-to-Correctly-Resolve-CA1300-%E2%80%93-%22Specify-MessageBox-Options%22';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

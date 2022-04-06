@@ -1,0 +1,181 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - What Is Architecture</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>What Is Architecture</h2>
+            <p><em>Published on Thursday, December 21, 2017</em></p>
+                    <a role="button" href="/tags/December-2017" class="button small">December 2017</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p>Getting someone to explain architecture is sometimes like asking them what <em>disinterested</em> means or whether <em>irregardless</em> is a word. The number of answers you get from people has a complexity O(n log n) to the number of people you ask.</p>
+<p>Architecture is defined as:</p>
+<blockquote class="blockquote">
+<p>The fundamental organization of a system, embodied in its components, their relationships to each other and the environment, and the principles governing its design and evolution. (<a href="http://standards.ieee.org/findstds/standard/1471-2000.html">ANSI/IEEE 1471-2000</a>)</p>
+</blockquote>
+<p>or</p>
+<blockquote class="blockquote">
+<p>The structure of components, their interrelationships, and the principles and guidelines governing their design and evolution over time. (<a href="http://www.opengroup.org/public/arch/p1/togaf_faq.htm">TOGAF</a>)</p>
+</blockquote>
+<p>One thing that is very subtle about these definitions is the aspect about &quot;design and evolution&quot; especially regarding &quot;over time&quot;.</p>
+<p>Architecture is the fundamental component granularity of a system and the component structure, the interrelationships of those components, and the principles governing the lower-level design and evolution from initiation or conception of a system.</p>
+<p>This means the architecture applies before many of the <em>logical</em> design decisions can be made. Architecture considers the high-level <em>concepts</em>, <em>philosophies</em>, and <em>principles</em> (e.g. domain topics, vision, patterns) that would go into the lower-level design.  The subtlety here is that these are the basis of the logical decisions (which type of database, what format data might be in, algorithms, which language is most appropriate, etc.).</p>
+<blockquote class="blockquote">
+<p>Before getting too much further, we should dig into <em>Conceptual v Logical</em>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Generally accepted design principles involve understanding the concepts of the real-world domain (or &quot;business&quot;), it's processes, what decisions are made, the workflow, expectations, results, etc.  Those are the <em>concepts</em> of the domain.  i.e. that is <em>conceptual information</em> as it relates to an implementation.  That conceptual information allows us (through analysis) to discover and evaluate <em>logical</em> solutions or automation techniques.  The logical information builds a potential model to guide the logical implementation.  That logical model would not be possible (or would not be accurate) without collecting and understanding the concepts and formulating/describing a conceptual model.</p>
+</blockquote>
+<p>If architecture is that much before those logical decisions can be made, what goes into deciding upon an architecture?  Over-and-above the principles, philosophies, and generally acceptable practices; much of what governs how something is architected involves the quality attributes required of the solution.  Quality attributes are often called non-functional requirements (you may be able to guess my preference).  There are lots of quality attributes that impact an architecture.  Also, many of these attributes can be (or have been) decided upon before lower-level functional details.  I could go on about each attribute like availability, disaster recovery, fault tolerance, performance, reporting, maintainability, etc.; but that's an entire series of posts.  Many of these attributes are necessary or known <em>despite</em> the functional requirements.  An architecture needs to take these things into consideration to be correct. (A design realizes those considerations, or should)</p>
+<p>Some of the confusion of what architecture is may come from the fact that not all software is written from the very beginning.  Iterative changes to software also mean iterative changes to architecture.  Those changes to architecture are done with a greater knowledge of logical and implementation details and thus a higher risk of becoming influenced by logical details, or have them leak into the architecture such that they may be hard to differentiate between the two.</p>
+<p>So, in terms of software that changes iteratively (is there any other kind?), how can we ensure the vision of the architecture remains visionary and influences the iterative changes of software from a high-level aspect? Now that we have a clearer understanding of the level and point of view of the architecture we can better keep conceptual concerns in the architecture and logical concerns lower in the design and implementation. Also knowing that architecture componentizes conceptually and makes many decisions on relationships between components based on quality attributes, we can make informed determinations between architectural changes and design/implementation changes.</p>
+<p>Sometimes the architecture cannot be finalized until a great amount of understanding of a solution.  Even though the software may not be implemented (and thus incrementing) that understanding can negatively influence what should be architectural decisions.  For example, what does a REST API <em>actually</em> model?  With a deep understanding of a solution (like data may be stored in a relational database with specific table names) that understanding can result in interfaces overly-coupled to the implementation.  This can manifest in interfaces that are not based on conceptual information but on logical information.  For example, when we know there's really a database implementation detail and a &quot;resource&quot; may be a row in the database, it can become hard to differentiate POST/GET/PUT/PATCH/DELETE from CREATE/READ/UPDATE/DELETE because those are the logical details of the database.</p>
+<p>A related area, and a personal peeve, is when &quot;MVC&quot; applications are really &quot;C&quot; applications.  In these applications there is <em>really</em> no distinct conceptual information (i.e. a model) and everything is effectively muddled together in the controller (or <em>big ball of mud</em>).  In an MVC application the model is conceptual to <em>model</em> the domain (i.e. the domain we need to understand to initiate or conceive of a project/product) and the view is a <em>view</em> of that model based on the behavioral concepts the application is solving for or UI technical details.</p>
+<h2 id="being-successful">Being Successful</h2>
+<h3 id="understand-architectural-boundaries">Understand Architectural Boundaries</h3>
+<p>It's important to understand from a general point of view, where architecture can start (what it more-or-less depends upon) and end (or when it influences other things).  Much of software development is imperial, so also an understanding of what architecture means in a product/project context also contributes a better understanding of where things do and do not fit into &quot;architecture&quot;.</p>
+<h3 id="understand-boundaries-should-involve-only-concepts">Understand Boundaries Should Involve Only Concepts</h3>
+<p>An architecture (a.k.a. a <em>good</em> architecture) considers the <em>conceptual</em> to discover the <em>logical</em>.  It's important to understand that despite architectural evolution in-step with software evolution that only conceptual information should live in the &quot;architecture&quot; and that there isn't one description/specification to fit architecture <em>and</em> design (describing the concepts is different from specifying the logical details).</p>
+<h3 id="understand-conceptual-from-logical">Understand Conceptual from Logical</h3>
+<p>An architecture describes those conceptual details, how they're componentized, and their type of relationships.  That should ultimately influence the design, not the other way around.  If you're evolving a complex system over time, make sure you understand the conceptual information (i.e. the domain, its vocabulary, processes--independent of whether it's automated within software) and the logical (how it is or may be automated with software).</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF© Version 9.1</a></li>
+<li><a href="http://www.zachman.com/about-the-zachman-framework">The Zachman Framework 3.0</a></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'What-Is-Architecture'
+    'What Is Architecture'
+    'http://blog.peterritchie.com/posts/What-Is-Architecture'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/21/2017');
+    console.info('What-Is-Architecture');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'What Is Architecture';
+    var disqus_url = 'http://blog.peterritchie.com/posts/What-Is-Architecture';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'What-Is-Architecture';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,167 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - The Subtle Differences Between Events and Commands in a Message-oriented System</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>The Subtle Differences Between Events and Commands in a Message-oriented System</h2>
+            <p><em>Published on Thursday, July 11, 2013</em></p>
+                    <a role="button" href="/tags/Architecture" class="button small">Architecture</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/July-2013" class="button small">July 2013</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Patterns" class="button small">Patterns</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/07/11/the-subtle-differences-between-events-and-commands-in-a-message-oriented-system/" title="Permalink to The Subtle Differences Between Events and Commands in a Message-oriented System">Source</a></p>
+<h1 id="the-subtle-differences-between-events-and-commands-in-a-message-oriented-system">The Subtle Differences Between Events and Commands in a Message-oriented System</h1>
+<p><img src="http://www.eaipatterns.com/img/MessageChannelSolution.gif" class="img-fluid" alt="" />There's a common misconception I see in message-oriented software and discussions of such. That is with the role of commands versus events.</p>
+<p>There are two basic message channel types: one-to-many and one-to-one. These are encapsulated in a couple of messaging patterns: publish-subscribe channel and point-to-point channel, respectively.</p>
+<p>In any messaging system, what applications do are to &quot;send&quot; and &quot;receive&quot; messages. Semantics come into play when you start to focus the intent of your system and your messages. Semantically, you only &quot;send&quot; to point-to-point channels and &quot;publish&quot; to publish-subscribe channels. Sometimes you semantically &quot;publish&quot; to a &quot;topic&quot; in a channel; but you still &quot;publish&quot;</p>
+<p>Messages, commands, and events are much like vegetables and fruits. A fruit is a type of vegetable but not all vegetables are fruits: commands and events are messages, but not all messages are commands and not all messages are events.</p>
+<p>This relationship is mirrored by commands and events. You &quot;send&quot; messages and you &quot;publish&quot; events. This implies that commands only go over point-to-point channels, and events only go over publish-subscribe channels. The relationship of event to message means that you can send an event on a point-to-point channel, but never publish a command over a publish-subscribe channel.</p>
+<p>Gregor Hohpe is reasonably clear on these patterns in Enterprise Integration Patterns when he says &quot;The Publisher-Subscriber pattern [POSA] expands upon Observer by adding the notion of an event channel for communicating event notifications&quot; Where [POSA] is &quot;Pattern-Oriented Software Architecture&quot; that also details an &quot;event channel&quot; when discussing publishers and subscribers.</p>
+<p>In addition, Martin Fowler studies events and compares then briefly to commands and details &quot;…broadcasting events to everyone who may be interested but sending commands only [to] a specific receiver&quot; <a href="http://bit.ly/13DEN43">http://bit.ly/13DEN43</a></p>
+<p>There are other references that detail these subtleties, e.g. <a href="http://bit.ly/1aejlBD">http://bit.ly/1aejlBD</a>.</p>
+<p>Command messages are implementations of the Command Pattern–which is a means of encapsulating the parameters of a method/function. The command object is given directly to a single invoker object. The object that gives the command object to the invoker is decoupled from the actual method/function; but the command object is coupled to receiver object. i.e. in order to create a command object, the invoker and receiver objects must exist.</p>
+<p>Publish-subscribe is an implementation of the Observer Pattern–which is a means of decoupling observers from publishers of notifications. To have an expectation of receipt and specific processing (i.e. a Command) is a level of coupling that Observer specifically avoids.</p>
+<p>It's important to understand these subtleties because patterns are effectively a lexicon, each of which has specific meaning. When you use a lexicon of context or with the wrong meaning, you're defeating one of the main purposes of patterns and thus introduces confusion where you're trying specifically to avoid it.</p>
+<p>To sum up, a command is sent to a particular receiver and a publisher simply publishes events. In pub/sub, who receives the events is handled by the channel, not by the publisher.</p>
+<p>[image source: <a href="http://www.eaipatterns.com/MessageChannel.html">http://www.eaipatterns.com/MessageChannel.html</a>]</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'The-Subtle-Differences-Between-Events-and-Commands-in-a-Message-oriented-System'
+    'The Subtle Differences Between Events and Commands in a Message-oriented System'
+    'http://blog.peterritchie.com/posts/The-Subtle-Differences-Between-Events-and-Commands-in-a-Message-oriented-System'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/11/2013');
+    console.info('The-Subtle-Differences-Between-Events-and-Commands-in-a-Message-oriented-System');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'The Subtle Differences Between Events and Commands in a Message-oriented System';
+    var disqus_url = 'http://blog.peterritchie.com/posts/The-Subtle-Differences-Between-Events-and-Commands-in-a-Message-oriented-System';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'The-Subtle-Differences-Between-Events-and-Commands-in-a-Message-oriented-System';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

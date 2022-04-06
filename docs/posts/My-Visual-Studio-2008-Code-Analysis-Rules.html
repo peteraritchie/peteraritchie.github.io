@@ -1,0 +1,254 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - My Visual Studio 2008 Code Analysis Rules</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>My Visual Studio 2008 Code Analysis Rules</h2>
+            <p><em>Published on Tuesday, September 4, 2007</em></p>
+                    <a role="button" href="/tags/Code-Analysis-Rules" class="button small">Code Analysis Rules</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/September-2007" class="button small">September 2007</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Visual-Studio-2008" class="button small">Visual Studio 2008</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/09/04/my-visual-studio-2008-code-analysis-rules/" title="Permalink to My Visual Studio 2008 Code Analysis Rules">Source</a></p>
+<h1 id="my-visual-studio-2008-code-analysis-rules">My Visual Studio 2008 Code Analysis Rules</h1>
+<p>Although a couple of suggestion for changes to existing rules seem to have made it into Visual Studio 2008 Beta 2, unfortunately, none of my suggestions for new Code Analysis rules made it into Orcas Beta 2 (and thus likely not in RTM).</p>
+<p>I was holding off on writing my own rules waiting for a stable SDK because I didn't really want to write several different versions of the same rule. But, unfortunately that also wasn't in the cards for Orcas, so I've begun writing a few rules for Visual Studio 2008 that I feel are important.</p>
+<p>Some of the rules I've suggested over the years that I've implemented in this Code Analysis add-in are:<br />
+<strong>DoNotUseCurrentUICultureAsIFormatProviderArgument</strong><br />
+I've blogged about issues using CurrentUICulture for formatting and parsing methods (i.e. as an<code>IFormatProvider</code>argument) in the past. The issue is that CurrentUICulture can be assigned a neutral or a specific culture but formatting and parsing requires a specific culture. A neutral culture is one that only specifies language and not region or country. Region and country define the formatting specifications. Using a neutral culture, although syntactically correct, as an<code>IFormatProvider</code>argument will result in an exception.</p>
+<p><strong>DoNotLockOnOPubliclyVisibleObjects</strong><br />
+This guideline is from from the MSDN documentation (in various places, see <a href="http://msdn2.microsoft.com/en-us/library/c5kehkcz(vs.80).aspx">http://msdn2.microsoft.com/en-us/library/c5kehkcz(vs.80).aspx</a> for one). Code Analysis already checks for locks on typeof but it doesn't check for locks on this or other public members. DoNotLockOnOPubliclyVisibleObjects checks for lock on &quot;this&quot; (or SyncLock on &quot;Me&quot;) as well as direct use of Monitor.Enter/Exit.</p>
+<p>I've created some rules for checking some of the issues I've blogged about in the past:<br />
+<strong>DoNotUseThreadAbort</strong><br />
+<strong>DoNotUseThreadSleep</strong><br />
+<strong>DoNotUsesleepWithZeroArgument</strong><br />
+…I won't flog that horse more than it's already been flogged…</p>
+<p>I created one of many (I hope) C#3/VB9 rules:<br />
+<strong>AvoidExtensionMethodsThatDuplicateInstanceMethods</strong><br />
+In Visual C# Orcas you can write an extension method that has the same signature as an instance method. With the method resolution rules in C# this extension method will never get called; but no warning is issued to that effect. For example:</p>
+<blockquote class="blockquote">
+</blockquote>
+<blockquote class="blockquote">
+<p>using System;</p>
+<p>using ArrayExtensions;</p>
+<p>namespace Application</p>
+<p>{</p>
+<p>class Program</p>
+<p>{</p>
+<p>static void Main ( string[] args )</p>
+<p>{</p>
+<p>int[] arr = new int[10];</p>
+<p>arr.SetValue(10, 0);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>namespace ArrayExtensions</p>
+<p>{</p>
+<p>internal static class Extensions</p>
+<p>{</p>
+<p>public static void SetValue ( this Array array, object value, int index )</p>
+<p>{</p>
+<p>array.SetValue(value, index);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+<p>No warning is given that Extensions.SetValue can never be called as anextension method.</p>
+<p>On much the same lines as AvoidExtensionMethodsThatDuplicateInstanceMethods I've also added:<br />
+**DoNotRecursivelyReferenceProperty<br />
+**Rather than requesting either of these be added to Code Analysis I'd recommend these checks actually be performed by the compiler (as I have with recursively calling a property). In the meantime, these rules can be flagged as errors in Visual Studio. Syntactically in C# there's nothing wrong with calling a property from itself. This, of course, will result in a StackOverflowException and your application's termination because of the infinite recursion–without warning or error. With DoNotRecursivelyReferenceProperty, there isn't enough metadata to efficiently distinguish between directly calling an object's property from itself or calling another object's property from the same property, so this rule will be raised on code like this:</p>
+<p>class Entity</p>
+<p>{</p>
+<p>private Entity otherEntity;</p>
+<p>private string text;</p>
+<p>String Text</p>
+<p>{</p>
+<p>get</p>
+<p>{</p>
+<pre><code>if (otherEntity != null)
+
+{
+
+ return otherEntity.Text;
+
+}
+
+else
+
+{
+
+ return this.text;
+
+}
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>//…</p>
+<p>}</p>
+<p>I don't think this is a bad thing. For one thing it's an unlikely scenario; and another, there's no way to tell if the code might get hit by an infinite recursion(otherEntity could be assigned &quot;this&quot;). In the unlikely event this scenario is legit (i.e. you're checking to make sure the object is not &quot;this&quot;) then you can simply add a suppression for this rule where appropriate. For example:</p>
+<p>[System.Diagnostics.CodeAnalysis.SuppressMessage(&quot;PRI.Design&quot;, &quot;PRICA1001:DoNotRecursivelyReferenceProperty&quot;)]</p>
+<p>String Text</p>
+<p>{</p>
+<p>get</p>
+<p>{</p>
+<pre><code>if (otherEntity != null)
+
+{
+
+ return otherEntity.Text;
+
+}
+
+else
+
+{
+
+ return this.text;
+
+}
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p><strong>Download</strong></p>
+<p>The add-ins may be downloaded from here: <a href="http://www.peterritchie.com/Hamlet/Downloads/105.aspx">http://www.peterritchie.com/Hamlet/Downloads/105.aspx</a></p>
+<p><strong>Deployment</strong><br />
+After exiting all instances of Visual Studio 2008 Beta 2, simply unzip the contents to&quot;C:Program FilesMicrosoft Visual Studio 9.0Team ToolsStatic Analysis ToolsFxCopRules&quot; and re-load Visual Studio.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'My-Visual-Studio-2008-Code-Analysis-Rules'
+    'My Visual Studio 2008 Code Analysis Rules'
+    'http://blog.peterritchie.com/posts/My-Visual-Studio-2008-Code-Analysis-Rules'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('9/4/2007');
+    console.info('My-Visual-Studio-2008-Code-Analysis-Rules');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'My Visual Studio 2008 Code Analysis Rules';
+    var disqus_url = 'http://blog.peterritchie.com/posts/My-Visual-Studio-2008-Code-Analysis-Rules';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'My-Visual-Studio-2008-Code-Analysis-Rules';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

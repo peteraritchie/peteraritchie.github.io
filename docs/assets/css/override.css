@@ -1,0 +1,15 @@
+@media only screen and (min-width: 768px) {
+    .intro-header .site-heading,
+    .intro-header .post-heading/*,
+    .intro-header .page-heading */
+    {
+        padding: 3em 0 1em 0;
+    }
+    .intro-header {
+        margin: 0;
+    }
+}
+
+footer {
+    padding: 0;
+}

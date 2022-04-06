@@ -1,0 +1,180 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)</h2>
+            <p><em>Published on Saturday, December 7, 2013</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/December-2013" class="button small">December 2013</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+                <a role="button" href="/tags/Visual-Studio-2010" class="button small">Visual Studio 2010</a>
+                <a role="button" href="/tags/Windows-Phone" class="button small">Windows Phone</a>
+                <a role="button" href="/tags/Windows-Phone-71" class="button small">Windows Phone 7.1</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/12/07/data-virtualization-in-windows-phone-7-1-or-why-inotifycollectionchanged-is-fundamentally-broken/" title="Permalink to Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)">Source</a></p>
+<h1 id="data-virtualization-in-windows-phone-7.1-or-why-inotifycollectionchanged-is-fundamentally-broken">Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)</h1>
+<p>| ----- |
+| <img src="http://hypnosthlm.se/wordpress/wp-content/uploads/2012/01/berg1.jpg" class="img-fluid" alt="" /> |  I'm no stranger to data and UI virtualization. I've done a lot of work with UIs that model a much larger set of data—as set of data that couldn't possibly fit in memory or the details of which weren't yet available to display. This was in WinForms and Win32—and it was fairly straight forward. I'm not going to detail how easy that was via examples, but will concede welcome that XAML should be <em>different</em> to how it <em>used to be done</em>. This isn't a <em>get off my lawn</em> moment, or <em>who moved by cheese</em> moment. |</p>
+<p>One caveat/disclosure: I started this on Windows Phone 7.x and have yet to implement this in any other XAML framework. I've researched some of the same areas in other XAML frameworks but can't <em>really</em> confirm the same issues really do exist on the other XAML frameworks (yet) despite no significant observed design/implementation differences between the frameworks in certain areas.</p>
+<h2 id="what-is-data-virtualization-and-why-am-i-doing-it">What is data virtualization and why am I doing it?</h2>
+<p>First, some context: data virtualization is the practice of making a data set act smaller that it really is. For example, I may have a data set that is 10000 elements but I may have a UI that can only have 10-25 visible at a time. There's not good reason to have to retrieve and store 10000 elements in this scenario. We would like to tell and item control the maximum number of items but provide only some of those items on demand. Sometimes this is referred to as &quot;paging&quot;. I felt this was important to start with because of the complete lack of information about how this can be done successfully on Windows Phone 7.1 (I assume it's similar on 8; but have to confirm—and expect the &quot;best practice&quot; to be different than 7.1 [e.g. LongListSelector instead of ListBox] but also expect lack of information because I didn't find anything trying to implement it in 7.1).</p>
+<p>Why do I feel this is important? Well, Windows Phone is a very scaled-down platform. 7.1 supports only a single processor and 8 supports as little as 512 MB of memory. Resource usage needs to be very calculated and usage needs to take the principle of little-as-possible. Certification requirements are such that responsiveness factors into whether your app can even be allowed into the Store. &quot;Out of the box&quot; and the overwhelming documentation on items controls are the use of collections that implement IEnumerable—which means the items control will enumerate every single item in the collection before it even displays anything on the screen. With a sufficiently large data set, this could take a noticeable amount of time and have your app fail certification. Given there's no physical limit to the number of elements an <code>IEnumerable</code> can enumerate, you would think data virtualization would be front-and-centre with Windows Phone and that work would be required to avoid data virtualization. Alas, that's not the case.</p>
+<p>There are examples of &quot;data virtualization&quot; out there and at first blush it's not really that complicated. You really just have to implement <code>IList</code> (but <em>only</em> <code>IList</code>) and &quot;virtualization&quot; is magically supported. ListBox and other items controls detail that &quot;UI and data virtualization&quot; are supported, but don't do enough to detail where and how. In fact there seems to be conflicting information like &quot;<a href="http://msdn.microsoft.com/en-us/library/cc716879(v=vs.110).aspx">Currently, no WPF controls offer built-in support for data virtualization.</a>&quot; and &quot;<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.controls.longlistselector(v=vs.105).aspx">[LongListSelector] supports full data and UI virtualization</a>&quot;. But, the examples are pedantic to the point of being irresponsible.</p>
+<h2 id="first-what-to-avoid">First, what to avoid</h2>
+<p>I think it's important to start with why INotifyCollectionChanged is fundamentally broken so you don't go down the same rat hole I did (despite the fact that I effectively succeeded—I'm sure others have not). When you think of data virtualization you probably think that at least chunks of data will be retrieved after an items control is displayed and that retrieving that data will be non-trivial and something you should avoid doing on the UI thread. (<strong>the only examples of &quot;data virtualization&quot; I could find don't make this assumption and do all the work on the UI thread</strong>). Once you think that your data retrieval will be asynchronous and that you're providing chunks of data at a time (&quot;paging&quot;) then you quickly realize that the best way to do this is with data binding and &quot;observable collections&quot;. I quote &quot;observable collections&quot; because ObservableCollection<T> implements Collection<T> and thus doesn't support the &quot;data virtualization&quot; that Windows Phone 7 supports (i.e. it will be enumerated from beginning to end before it is displayed destroying memory usage and responsiveness). As I said, I encountered this on Windows Phone, but there are also problems with INotifyCollectionChanged in WPF—see the references at the end for more details.</p>
+<h2 id="implementing-data-virtualization">Implementing data virtualization</h2>
+<p>This leaves you with implementing INotifyCollectionChanged to support data virtualization. This unfortunately is a minefield of poor design and Liskov Substitution Principle (LSP) violations. To support data virtualization you also must implement <code>IList</code>. <code>IList</code> <em>derives</em> from <code>IEnumerable</code> so you have to implement the <code>IEnumerable</code> members but they shouldn't be used and thus you don't have to implement them (i.e. throw NotImplementedException and violate LSP). The important <code>IList</code> members to implement are IndexOf and the indexer (this[int index]). For example:</p>
+<p>Of course, the control does not know the data source is off getting a page-worth of data, so it's going to continue on calling the indexer asking for more items to display after the first item in a page—so you have to keep track of what's currently being requested and to not ask for that page again (see sample below). If you want to abstract the retrieval of the data from the data source, you can use a delegate that will be called to get a page. While the real data is being retrieved, it's useful to display a place holder—which would likely also be best being decoupled from the data source (e.g. a delegate). And, I'm choosing the implement the storage of the retrieved data in a dictionary. For example:</p>
+<p>To notify the bound control of after-the-fact changes (e.g. new chunks or pages of data that have been retrieved after the control's initial display) you need to deal with INotifyCollectionChanged.CollectionChanged and the poorly designed NotifyCollectionChangedEventArgs class. NotifyCollectionChangedEventArgs supports four types of collection changed actions: Replace, Reset, Remove, and Add; but the class does not provide an interface that guides your towards success or follow the principle of least astonishment. For example, it has three constructors, all of which take an action type; but two of the constructors <strong>only accept</strong> <strong>one NotifyCollectionChangedAction value</strong> and run-time and the other <strong>only accepts two</strong> (far from intuitive and not an interface the guides you towards success).</p>
+<p>To reiterate: what we're trying to achieve here is a &quot;fixed size&quot; collection whose data is retrieved over time, on demand, in chunks. You could also have a data virtualization scenarios where the end count of elements wasn't known; but I find modeling this in UIs to be cumbersome and prone to problems—so, I avoid it.</p>
+<p>Silverlight for Windows Phone supports only notification of changes to single items in the collection. If you're getting &quot;pages&quot; of data, you have to tell the control about each individual item at a time (or twice, as the case may be). Despite NotifyCollectionChangedAction.NewItems and OldItems being of type <code>IList</code> and there being a NewStartingIndex <em>and</em> OldStartingIndex properties, they are read-only properties and there is no way to construct a NotifyCollectionChangedAction object with anything but a single OldItem, NewItem or any way to initialize NewStartingIndex <em>and</em> OldStartingIndex in any single particular instance.</p>
+<p>So, with the mindset that we're going to get data and notify the control that data has been retrieved you'd think that we'd perform that notification under the guise of &quot;replacing&quot; the data (i.e. we've told the control we have a fixed size data set and that we now have data for an arbitrary item, &quot;replacing&quot; what it had before). But, for the life of me, I could not get a ListBox to do anything but throw exceptions when using NotifyCollectionChangedAction.Replace. I tried using Reset whenever new data was available, but unsurprisingly that cause the ListBox to scroll back up to the top. The <strong>only way I could get it to work</strong> was to perform two notifications <strong>Remove then Add</strong>. For example:</p>
+<p>Fortunately the easy part is the XAML, you can use the built-in ListBox type with tried-and-true data templates:</p>
+<p>So, a quick recipe for implementing data virtualization in Windows Phone 7.1:</p>
+<ol>
+<li>Use built-in items containers like ListBox.</li>
+<li>Don't use <code>ObservableCollection&lt;T&gt;</code>, implement <code>IList</code> and INotifyCollectionChanged.</li>
+<li>Don't use NotifyCollectionChangedAction.Replace in your CollectionChanged event invocator, use NotifyCollectionChangedAction.Remove then Add.</li>
+<li>Ensure your event invocator executes on the UI thread (not specific to this recipe, but good to keep in mind).</li>
+</ol>
+<p>For complete source and a working VS 2010 solution, see <a href="https://github.com/peteraritchie/WPVirtualizingDataTest">https://github.com/peteraritchie/WPVirtualizingDataTest</a></p>
+<p>Other references RE NotifyCollectionChangedEventArgs:</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Data-virtualization-in-Windows-Phone-7.1-(or-Why-INotifyCollectionChanged-is-fundamentally-broken)'
+    'Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)'
+    'http://blog.peterritchie.com/posts/Data-virtualization-in-Windows-Phone-7.1-(or-Why-INotifyCollectionChanged-is-fundamentally-broken)'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/7/2013');
+    console.info('Data-virtualization-in-Windows-Phone-7.1-(or-Why-INotifyCollectionChanged-is-fundamentally-broken)');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Data virtualization in Windows Phone 7.1 (or Why INotifyCollectionChanged is fundamentally broken)';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Data-virtualization-in-Windows-Phone-7.1-(or-Why-INotifyCollectionChanged-is-fundamentally-broken)';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Data-virtualization-in-Windows-Phone-7.1-(or-Why-INotifyCollectionChanged-is-fundamentally-broken)';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,168 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N &#x2014; first glance.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N &#x2014; first glance.</h2>
+            <p><em>Published on Wednesday, June 25, 2008</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/CodeRush-Refactor!-Pro" class="button small">CodeRush Refactor! Pro</a>
+                <a role="button" href="/tags/EffectiveIoC" class="button small">EffectiveIoC</a>
+                <a role="button" href="/tags/June-2008" class="button small">June 2008</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Resharper" class="button small">Resharper</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/06/25/comparing-coderush-refactor-pro-and-resharper-4-part-1-or-n-first-glance/" title="Permalink to Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N — first glance.">Source</a></p>
+<h1 id="comparing-coderush-refactor-pro-and-resharper-4-part-1-or-n-first-glance">Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N — first glance.</h1>
+<p>**Metadata view of code in referenced assemblies<br />
+**This is a big one for me. For whatever reason, Refactor 4 (and prior) completely disables this and sends you to the Object Browser instead. You get metadata view with CodeRush Refactor! Pro.</p>
+<p>**Keyboard layout<br />
+**As you might imagine, CodeRush Refactor! Pro and Resharper had completely different keyboard layouts. So, if you're used to R# then Refactor! Pro will take a bit of getting used to.</p>
+<p>One thing I don't like with the default Refactor! Pro keyboard layout, is they've replaced Ctrl-. with Quick Navigation. I use Ctrl-. (instead of Shift-Alt-F10 to get at the smart-tag menu). Shift-Alt-F10 for smart-tag menu seems more common; so I'll have to get use to Shift-Alt-F10.</p>
+<p>**Refactor! Pro's Editor enhancements<br />
+**R# doesn't change to how the editor looks as much as CodeRush Refactor! Pro. It has the Marker Bar, error/warning/info colouring, and action light-bulbs. Refactor! Pro with CodeRush has many more, like region painting, flow-break evaluation, Visibility Icons, structural highlighting,etc.</p>
+<p>**Real-time analysis<br />
+**Both R# and CodeRush Refactor! Pro do real-time code analysis. R# has text colouring and the right-hand marker bar. CodeRush Refactor Pro has a marker bar on both the left and the right. The left marker bar in CodeRush Refactor! Pro highlights issues for each line, and the right (as does R#) shows a file-wide view of issues. I find the R# marker bar sometimes doesn't align with the scroll bar so that an issue may be beside the scroll-bar in the marker bar but is actually scrolled off the screen. CodeRush Refactor Pro doesn't do that and in fact shows the visible portion of the document in its marker bar. i.e. the marker bar is beside the Visual Studio Indicator Margin (where the breakpoint bullets appear).</p>
+<p>**Refactorings<br />
+**They both have many of the same refactorings. When it comes to non-refactorings the two sometimes approach things differently. For example R# deals with adding members to a class through &quot;Generate Code&quot; list; whereas CodeRush Refactor Pro uses templates. E.g. in R#, to add a constructor you hit Alt-Ins and select Constructor. With Refactor you simply enter &quot;cc &quot;(that 'c', 'c', space).</p>
+<p><strong>Smart-Tags</strong><br />
+Both approach smart-tags slightly differently. With R# they use the actions light-bulb at the left margin. This includes fixes for warnings, errors, plus refactorings, but doesn't include code generation options. CodeRush Refactor Pro uses an ellipsis-like icon that appears right at the site of the potential refactoring. Code Refactor Pro is a richer experience. It will show you the result of a refactoring with arrows showing where things will move, red strike-out showing what will be removed, and highlights for things that will be changed/renamed.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Comparing-CodeRush-Refactor!-Pro-and-Resharper-4%2C-part-1-or-N-%E2%80%94-first-glance.'
+    'Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N &#x2014; first glance.'
+    'http://blog.peterritchie.com/posts/Comparing-CodeRush-Refactor!-Pro-and-Resharper-4%2C-part-1-or-N-%E2%80%94-first-glance.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('6/25/2008');
+    console.info('Comparing-CodeRush-Refactor!-Pro-and-Resharper-4%2C-part-1-or-N-%E2%80%94-first-glance.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N &#x2014; first glance.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Comparing-CodeRush-Refactor!-Pro-and-Resharper-4%2C-part-1-or-N-%E2%80%94-first-glance.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Comparing-CodeRush-Refactor!-Pro-and-Resharper-4%2C-part-1-or-N-%E2%80%94-first-glance.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,161 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Mapping to Your Database is a Private Affair</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Mapping to Your Database is a Private Affair</h2>
+            <p><em>Published on Saturday, March 26, 2011</em></p>
+                    <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/March-2011" class="button small">March 2011</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Patterns" class="button small">Patterns</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+                <a role="button" href="/tags/WCF" class="button small">WCF</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2011/03/26/mapping-to-your-database-is-a-private-affair/" title="Permalink to Mapping to Your Database is a Private Affair">Source</a></p>
+<h1 id="mapping-to-your-database-is-a-private-affair">Mapping to Your Database is a Private Affair</h1>
+<p>Your mapping to your database is generally coupled to the design of the data and the mapping provider's ability to implement a relational or non-relational model. This means your ORM influences the design of your mapped classes and/or the design of system that uses these mapped classes. i.e. your design can be limited in certain aspects by how the mapper is implemented.</p>
+<p>Because of these idiosyncrasies, your choice of ORM becomes an implementation detail; so, you want to keep any of its details and generated classes out of your interfaces. You want to keep your ORM's classes and the classes it generates private.</p>
+<p>This may sound inconsequential, but there are some very real examples of how the limits of your choice of mapping framework can adversely affect your external interfaces. Let's look at some specific cases of this.</p>
+<p>WCF supports data contracts and collection types. But, because of the nature of WCF and SOAP, <a href="http://bitly.com/gd9MfW">it deals with serializing collections in a specific way</a>. If you have an entity class with a collection property on it, it may be perfectly acceptable to be able to add objects to that collection and expect them to make their way back into the database. But, what does that mean for some entity that's been serialized over the wire to another remote computer that doesn't have access to your database? It means the entity you publish over WCF has a different behaviour that those local to (presumably) the server. But, you don't want to modify your entity to work in a different way <em>just for your WCF interface</em>. You've published an interface to the outside world, clients are using it and you realise you need to make a change to your database. Opps, can't it's tightly coupled to your WCF interface; if you change your database and regenerate your entities you interface will change; breaking all your clients.</p>
+<p>It works the other way around too. If you want to publish types over WCF, you have to annotate them, potentially, with all sorts of things to get them to serialize the way you want them to. The simplest is DataContractAttribute and DataMemberAttribute; but, could get more complex with things like IExtensibleObject, things like DataContractSerializer versus XmlSerializer, etc. Then there's things like versioning… Do you really want to add all these annotations to code generated by your mapper? In some cases you can't annotate them.</p>
+<p>So, classes that map to/from the data effectively should be implementation details of your system; they should be private to your data layer; but, then how do we detail transferring data from our domain to the outside world? The Facade pattern and the Data Transfer Object pattern are a perfect solution to this. Your WCF interface is effectively a facade—an interface (usually simplified) to a different body of code—or a type of view to your model. When you have to provide complex data structures in your interface (i.e., other than base types) use Data Transfer Objects (DTOs) to wrap them in. Should the body of code that the facade wraps needs to change, simply modify the code that generates the DTOs. (I almost always get this question next: &quot;What if the change means I can no longer produce the same DTO?&quot;. Well, then you'll have to decide if you should violate your contract and break all your clients, or find a way to make it work.)</p>
+<p>I find it amusing to see all the examples of things like using your LINQ to SQL or LINQ to Entities classes in WCF interfaces. The examples are simple and often work; but once you try to do that in a complex system quickly realize you're down a rat hole with really only one way out. Do yourself a favour and completely abstract your implementation details from your internally accessible interfaces; you'll thank yourself.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Mapping-to-Your-Database-is-a-Private-Affair'
+    'Mapping to Your Database is a Private Affair'
+    'http://blog.peterritchie.com/posts/Mapping-to-Your-Database-is-a-Private-Affair'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('3/26/2011');
+    console.info('Mapping-to-Your-Database-is-a-Private-Affair');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Mapping to Your Database is a Private Affair';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Mapping-to-Your-Database-is-a-Private-Affair';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Mapping-to-Your-Database-is-a-Private-Affair';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

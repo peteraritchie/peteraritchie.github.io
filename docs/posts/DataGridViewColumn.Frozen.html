@@ -1,0 +1,185 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - DataGridViewColumn.Frozen</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>DataGridViewColumn.Frozen</h2>
+            <p><em>Published on Monday, August 11, 2008</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/August-2008" class="button small">August 2008</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/08/11/datagridviewcolumn-frozen/" title="Permalink to DataGridViewColumn.Frozen">Source</a></p>
+<h1 id="datagridviewcolumn.frozen">DataGridViewColumn.Frozen</h1>
+<p><a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.datagridviewcolumn.frozen(VS.80).aspx">DataGridViewColumn.Frozen</a> is documented as &quot;When a column is frozen, all the columns to its left (or to its right in right-to-left languages) are frozen as well.&quot;</p>
+<p>Which is nice until you think of the consequences. The consequences being that freezing a column and all columns to the left is performed with a single assignment of true to the Frozen property of that column; but to unfreeze is not the opposite (a assignment of false to the Frozen property of that column). No, you must unfreeze each of those columns to the left. This can be done by manually unfreezing each column, or by unfreezing column 0.</p>
+<p>This means that column.Frozen = false is not the opposite of column.Frozen = true—resulting in unbalanced reversible side-effects.</p>
+<p>Neither of the techniques to &quot;unfreeze&quot; the column that was frozen is intuitive; but unfortunately this interface is not &quot;intention revealing&quot;. You're not just setting the Frozen property of a column, you're setting the frozen property of that column and all the columns to the left.</p>
+<p>Greg Young recently commented (I don't remember where) about writing classes without <em>any</em> properties. This approach would have helped here. What Greg is alluding to is to recognize behaviour rather than shape. Freezing the current column and all columns to the left is a behaviour, not an attribute; and it should be modeled as a method rather than a property.</p>
+<p>At any rate, if you have a DataGridView on your form, you may be interested in using these methods instead:</p>
+<pre><code> private void FreezeAtColumn(int value)
+
+
+ {
+
+
+ dataGridView.Columns[value].Frozen = true;
+
+
+ }
+
+
+
+
+
+ private void UnfreezeColumns()
+
+
+ {
+
+
+ dataGridView.Columns[0].Frozen = false;
+
+
+ }
+</code></pre>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'DataGridViewColumn.Frozen'
+    'DataGridViewColumn.Frozen'
+    'http://blog.peterritchie.com/posts/DataGridViewColumn.Frozen'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/11/2008');
+    console.info('DataGridViewColumn.Frozen');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'DataGridViewColumn.Frozen';
+    var disqus_url = 'http://blog.peterritchie.com/posts/DataGridViewColumn.Frozen';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'DataGridViewColumn.Frozen';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,162 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Math.Round(value) does to-even rounding</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Math.Round(value) does to-even rounding</h2>
+            <p><em>Published on Monday, May 26, 2014</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/May-2014" class="button small">May 2014</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/05/26/math-roundvalue-does-to-even-rounding/" title="Permalink to Math.Round(value) does to-even rounding">Source</a></p>
+<h1 id="math.roundvalue-does-to-even-rounding">Math.Round(value) does to-even rounding</h1>
+<p>Take this example:</p>
+<p>Which results in this:</p>
+<p>With the first 5 it rounded down, and with the second 5 it rounded up. &quot;Wait, what?! Why the heck does it do that&quot; has been the question (in not so many words) for a long time… For many people this is surprising. The default behaviour of Math.Round is the do &quot;to-even rounding&quot;.</p>
+<p>To-even rounding means that when a number is halfway between two others, it is rounded toward the nearest even number. This is a form of &quot;<a href="http://en.wikipedia.org/wiki/Rounding#Round_half_to_even">Bankers' Rounding</a>&quot;. Whether this form of rounding was ever used by &quot;bankers&quot; is a bit of a mystery; but, theoretically, this type of rounding isn't skewed upwards and has equal distribution upwards and downwards. Presumably when bankers rounded transactions they would roughly have half the transactions round in their favour (either up or down, depending on whether it was your money or their money) and half the transactions would round in the customer's favour. Whether statistically it <em>does</em> that, I don't know.</p>
+<p>You can override what Math.Round does with the Math.Round(value, MidpointRounding) overloads. MidpointRounding was added after Math.Round was released (maybe to address the surprise that many had encountered) which then allows you to round towards even (explicitly) or away from zero.</p>
+<p>I, of course, can't say explicitly why Math.Round was designed the way it was. With methods on a class, you often have to take into account the responsibility of the whole class to get a better idea of why a particular method does what it does.</p>
+<p>If we look at the Math class, among other methods, it includes Ceiling, Floor, and Truncate. Each of these methods rounds up towards positive infinity, rounds down towards negative infinity, and rounds down towards zero; respectively. So, if you look at Math.Round in the context of Ceiling, Floor, and Truncate; then if Round rounded <em>down</em>, it would be very similar to Floor or Truncate—making it less distinct from the other methods (and likely even more confusing: if Round rounded-down like Floor, what's the difference?…).</p>
+<p>If you want rounding-down behaviour, you might be better off using Math.Floor, or Math.Truncate. That way it's semantically explicit what you meant and someone won't encounter &quot;Math.Round(value)&quot; and think &quot;did they really mean to do to-even rounding here?&quot;.</p>
+<p>But, this type of rounding has been around (no pun intended) for a while. VBScript's Round function did <a href="http://blogs.msdn.com/b/ericlippert/archive/2003/09/26/bankers-rounding.aspx">the same thing</a>. Math.Round doing what it does by default may simply be to be compatible with older APIs like VBScript's Round function (or that Round needs to differentiate from Floor—which also existed in VBScript).</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Math.Round(value)-does-to-even-rounding'
+    'Math.Round(value) does to-even rounding'
+    'http://blog.peterritchie.com/posts/Math.Round(value)-does-to-even-rounding'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/26/2014');
+    console.info('Math.Round(value)-does-to-even-rounding');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Math.Round(value) does to-even rounding';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Math.Round(value)-does-to-even-rounding';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Math.Round(value)-does-to-even-rounding';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

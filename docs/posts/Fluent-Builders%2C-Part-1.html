@@ -1,0 +1,283 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Fluent Builders, Part 1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Fluent Builders, Part 1</h2>
+            <p><em>Published on Wednesday, December 8, 2010</em></p>
+                    <a role="button" href="/tags/NET-40" class="button small">.NET 4.0</a>
+                <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/C%23-4" class="button small">C# 4</a>
+                <a role="button" href="/tags/December-2010" class="button small">December 2010</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Patterns" class="button small">Patterns</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2010/12/08/fluent-builders-part-1/" title="Permalink to Fluent Builders, Part 1">Source</a></p>
+<h1 id="fluent-builders-part-1">Fluent Builders, Part 1</h1>
+<p>I've seen some conversations about fluent builders as of late, and I'd thought I'd post some information about fluent builders, the principles behind them, the problems they address, and how to implement them.</p>
+<p>Fluent Builder is a combination of the builder pattern and a fluent API.</p>
+<p>The builder pattern is similar to the factory pattern in that it's intended to abstract the creation of other objects. This is often meant to abstract the fact that many objects need to be created (ala the composite pattern). It's often intended to hide the fact that the creation of one object is dependant on the creation of one or more other objects.</p>
+<p>A Fluent API or a Fluent Interface is a pattern-like design technique introduced by Eric Evans and Martin Fowler and is an interface that makes use of method chaining to promote readability of code.</p>
+<p>The combination of a Fluent API and a the Builder pattern give us fluent builders—the ability to fluently build complex objects. The principle of doing this is not only to gain the readability of a Fluent API but to also gain the expressiveness that we can get from the use of named methods and properties.</p>
+<p>Let's look at a simple example that I encountered recently in the creation of a RabbitMQ Subscription object:</p>
+<pre><code>var connectionFactory = newConnectionFactory  
+{  
+HostName = &quot;localhost&quot;,  
+UserName = &quot;pQowiht12glsh%d&quot;,  
+Password = &quot;i21uWghe&amp;gjs&quot;,  
+Port = 8181  
+};  
+var connection = connectionFactory.CreateConnection();  
+var model = connection.CreateModel();  
+var subscription = newSubscription(model, &quot;messages&quot;, false);  
+var currentMessage = subscription.Next();  
+// ...  
+</code></pre>
+<p>A Subscription object is dependant on an IModel object, and the creation of an IModel object is dependant on the creation of a IConnection object, and the IConnection object is dependant on the creation of a ConnectionFactory. The IConnection requires a host name, a user name, a password and a port number. A subscription requires an IModel object, a queue name, and whether messages retrieved from the queue require an acknowledgment or not.</p>
+<p>The creation of a connection factory is fairly easy to understand because it uses properties to configure the object and we've chosen to use the object initializer syntax to initialize said object type. When we get to the creation of the Subscription object, it gets a little sketchy. What does &quot;messages&quot; mean and what does &quot;false&quot; mean? It's not clear from the call to the Subscription constructor what those two parameters mean. Someone reading this code needs to understand what arguments this particular Subscription constructor accepts to really understand this code.</p>
+<p>Now, let's look an example using a Fluent Builder:</p>
+<pre><code>Subscription subscription = newRabbitMQSubscriptionBuilder()  
+.WithCredentials(&quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+.SubscribeToQueue(&quot;messages&quot;);  
+var currentMessage = subscription.Next();  
+</code></pre>
+<p>With this code, it's extremely obvious what &quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot; are and that they are related to one-another. It's also obvious that &quot;localhost&quot; and 8181 are related to one-another. It's now clear what &quot;messages&quot; meant and model and false are completely abstracted away. We've also got a few less lines of code.</p>
+<p>If we look at the actual builder that is used with this example:</p>
+<pre><code>publicclassRabbitMQSubscriptionBuilder {  
+publicstring UserName { get; set; }  
+publicstring Password { get; set; }  
+publicstring HostName { get; set; }  
+publicushort PortNumber { get; set; }  
+publicstring ExchangeName { get; set; }  
+publicstring QueueName { get; set; }  
+publicbool AckRequired { get; set; }
+
+public RabbitMQSubscriptionBuilder() {  
+HostName = &quot;localhost&quot;;  
+PortNumber = 5672;  
+UserName = &quot;guest&quot;;  
+AckRequired = false;  
+}
+
+publicRabbitMQSubscriptionBuilder WithAcknowledgements {  
+get {  
+AckRequired = true;  
+returnthis;  
+}  
+}
+
+publicRabbitMQSubscriptionBuilder WithCredentials(string userName, string password) {  
+UserName = userName;  
+Password = password;
+
+returnthis;  
+}
+
+publicRabbitMQSubscriptionBuilder ToHost(string hostName, ushort portNumber) {  
+HostName = hostName;  
+PortNumber = portNumber;
+
+returnthis;  
+}
+
+publicRabbitMQSubscriptionBuilder PublishToExchange(string exchangeName) {  
+ExchangeName = exchangeName;
+
+returnthis;  
+}
+
+publicRabbitMQSubscriptionBuilder SubscribeToQueue(string queueName) {  
+QueueName = queueName;
+
+returnthis;  
+}
+
+publicstaticimplicitoperatorSubscription(RabbitMQSubscriptionBuilder builder) {  
+var connectionFactory = newConnectionFactory  
+{  
+HostName = builder.HostName,  
+UserName = builder.UserName,  
+Password = builder.Password,  
+Port = builder.PortNumber  
+};  
+var connection = connectionFactory.CreateConnection();  
+var model = connection.CreateModel();  
+returnnewSubscription(model, builder.QueueName, builder.AckRequired);  
+}  
+}
+</code></pre>
+<p>…and look at where we create our Subscription object, it's now more clear what the arguments are being sent to the constructor.</p>
+<p>If we wanted to now create a Subscription object that required acknowledgements, we'd write code like this:</p>
+<pre><code>Subscription subscription = newRabbitMQSubscriptionBuilder()  
+.WithCredentials(&quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+**.WithAcknowledgements  
+**	.SubscribeToQueue(&quot;messages&quot;);  
+</code></pre>
+<p>…instead of changing false to true. Much more clear.</p>
+<p>I, personally, think the expressiveness of the fluent builder is second to none. But, let's look at a couple of alternatives.</p>
+<p>The builder pattern is very similar to the Introduce Parameter Object refactoring where you'd create another class that groups the parameters together into a single class. The issue here is that we're dealing with the creation of multiple objects in order to get the final Subscription object. We could create a parameter class for Subscription to give us a bit in the way of readability and come up with something like this:</p>
+<pre><code>var connectionFactory = newConnectionFactory  
+{  
+HostName = &quot;localhost&quot;,  
+UserName = &quot;pQowiht12glsh%d&quot;,  
+Password = &quot;i21uWghe&amp;gjs&quot;,  
+Port = 8181  
+};  
+var connection = connectionFactory.CreateConnection();  
+var model = connection.CreateModel();  
+var parameters = newSubscriptionParameters  
+ {  
+ Model = model,  
+ QueueName = &quot;messages&quot;,  
+ RequiresAcks = false  
+ };  
+var subscription = CreateSubscription(parameters);  
+var currentMessage = subscription.Next();  
+</code></pre>
+<p>We get some expressiveness with the names of properties in SubscriptionParameters; but we've now added several lines of code to support SubscriptionParameters because it only introduces an abstraction for the parameters of a single method. Not without benefit; but kind of an expensive benefit.</p>
+<p>There's a few readers who are probably thinking of what C# 4 an offer. And yes, that's where I'm going next: named parameters. Given our original example, C# offers the following possibility:</p>
+<pre><code>var subscription = newSubscription(model: model, queueName: &quot;messages&quot;, noAck: false);  
+</code></pre>
+<p>This offers the same readability and expressiveness of the Introduce Parameter Object refactoring; but with much less of the overhead. We don't need a new class with three parameters and we don't need a new method to accept the new parameter object. But, it still only really addresses a single method.</p>
+<p>If we look back at what we get from the fluent builder, it abstracts building a single scenario; a scenario that includes several objects. This scenario better encapsulates a particular usage pattern, not a particular class. It better encapsulates our intention to create and use the concept of a Rabbit MQ &quot;subscription&quot;; the fact that a connection and a model are needed truly become implementation details that they are, abstracted within the builder.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Fluent-Builders%2C-Part-1'
+    'Fluent Builders, Part 1'
+    'http://blog.peterritchie.com/posts/Fluent-Builders%2C-Part-1'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/8/2010');
+    console.info('Fluent-Builders%2C-Part-1');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Fluent Builders, Part 1';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Fluent-Builders%2C-Part-1';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Fluent-Builders%2C-Part-1';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

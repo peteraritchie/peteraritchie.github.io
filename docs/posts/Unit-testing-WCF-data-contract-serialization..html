@@ -1,0 +1,187 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Unit testing WCF data contract serialization.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Unit testing WCF data contract serialization.</h2>
+            <p><em>Published on Monday, May 4, 2009</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/May-2009" class="button small">May 2009</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/WCF" class="button small">WCF</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2009/05/04/unit-testing-wcf-data-contract-serialization/" title="Permalink to Unit testing WCF data contract serialization.">Source</a></p>
+<h1 id="unit-testing-wcf-data-contract-serialization">Unit testing WCF data contract serialization.</h1>
+<p>WCF service define &quot;data contracts&quot; for their interfaces. These contracts are often defined in an XML schema document and used to generated WCF data contract code. This process effectively creates a .NET type that will serialize to a chunk of XML text.</p>
+<p>Depending on the operation of the WCF service, its code may be responsible for creating some of these objects. A return value from an operation, for example. While the framework handles XML serialization of these object behind the scenes. But, if your have complex types and you end up not setting all the properties correctly in your object tracking down what properties haven't been set properly can be a chore as the server would have to enable passing exceptions back to the client, etc.</p>
+<p>A technique that I've found useful is to add unit tests to ensure the creation of my contract objects are indeed serializable.</p>
+<p>For example, I may have an method GetCustomer that retrieves a customer. Where I would like to create this contract Customer I would create a method to create this contract object based on parameters, like a Model Customer object.</p>
+<p>For example:</p>
+<p>PRI.ExampleWcfService.Customer ToWcfContractCustomer(PRI.Model.Customer customer)</p>
+<p>{</p>
+<p>//…</p>
+<p>}</p>
+<p>Now, one of the unit tests would call this method and attempt to serialize the object to XML text, for example:</p>
+<p>[Test]</p>
+<p>public void WhenCreatingCustomerContract_EnsureXmlSerializationSucceeds()</p>
+<p>{</p>
+<p>PRI.ExampleWcfService.Model.Customer customer = CustomerRepository.Get(1);</p>
+<p>PRI.ExampleWcfService.Application.Customer contractCustomer = ToWcfContractCustomer(customer);</p>
+<p>String text = Utility.ContractObjectToXml(contractCustomer);</p>
+<p>}</p>
+<p>where Utility.ContractObjectToXml is declared as:</p>
+<p>public static class Utility</p>
+<p>{</p>
+<p>public static string ContractObjectToXml<T>(T obj)</p>
+<p>{</p>
+<p>DataContractSerializer dataContractSerializer = new DataContractSerializer(obj.GetType());</p>
+<p>String text;</p>
+<p>using (MemoryStream memoryStream = new MemoryStream())</p>
+<p>{</p>
+<p>dataContractSerializer.WriteObject(memoryStream, obj);</p>
+<p>byte[] data = new byte[memoryStream.Length];</p>
+<p>Array.Copy(memoryStream.GetBuffer(), data, data.Length);</p>
+<p>text = Encoding.UTF8.GetString(data);</p>
+<p>}</p>
+<p>return text;</p>
+<p>}</p>
+<p>}</p>
+<p>Now, when this unit test is run, it will fail if the serialization process throws an exception because the resulting XML would violate the schema.</p>
+<p>See [DataContractSerializer.ReadObject is easily confused] for why I'm creating a new buffer and copying the serialized data before converting it to a string.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Unit-testing-WCF-data-contract-serialization.'
+    'Unit testing WCF data contract serialization.'
+    'http://blog.peterritchie.com/posts/Unit-testing-WCF-data-contract-serialization.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/4/2009');
+    console.info('Unit-testing-WCF-data-contract-serialization.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Unit testing WCF data contract serialization.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Unit-testing-WCF-data-contract-serialization.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Unit-testing-WCF-data-contract-serialization.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

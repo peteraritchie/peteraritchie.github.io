@@ -1,6 +1,6 @@
 ---
 layout: post
-title: API-Driven Architecture
+title: 'API-Driven Architecture'
 date: 2017-12-02 23:32:00 -0500
 categories: ['Design', 'API', 'Guidance']
 comments: true

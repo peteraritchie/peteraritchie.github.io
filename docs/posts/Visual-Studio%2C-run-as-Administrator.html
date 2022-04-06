@@ -1,0 +1,176 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Visual Studio, run as Administrator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Visual Studio, run as Administrator</h2>
+            <p><em>Published on Wednesday, April 17, 2013</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/April-2013" class="button small">April 2013</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Visual-Studio-2012" class="button small">Visual Studio 2012</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/04/17/visual-studio-run-as-administrator/" title="Permalink to Visual Studio, run as Administrator">Source</a></p>
+<h1 id="visual-studio-run-as-administrator">Visual Studio, run as Administrator</h1>
+<p><img src="http://www.fotothing.com/photos/8d9/8d9ab6ce158fef47436f6df201f07091.jpg" class="img-fluid" alt="" />I use enough technologies with Visual Studio that require that Visual Studio be run_ As Administrator_ that right-clicking the Visual Studio icon and selecting <strong>Run as Administrator</strong> has been very tiresome.</p>
+<p>I've been asked enough times <em>why</em> I need to run as administrator that I've compiled an incomplete list. For the most part, these are the technologies that <strong>I</strong> use that require run as administrator; I'm sure there's more. Post a comment if you know of others:</p>
+<ul>
+<li>Installing updates for various extensions (like NuGet)</li>
+<li>Developing for Windows Azure</li>
+<li>Coded UI tests</li>
+<li>Using IIS with web application <a href="http://www.fotothing.com/photos/8d9/8d9ab6ce158fef47436f6df201f07091.jpg">1</a></li>
+<li>Developing with WCF <a href="http://bit.ly/Z3dxHY" title="http://msdn.microsoft.com/en-us/library/58wxa9w5.aspx">2</a></li>
+<li>Profiling <a href="http://bit.ly/11dfVLM" title="http://msdn.microsoft.com/en-us/library/ms751423.aspx">3</a></li>
+</ul>
+<p>There's many more, and there's an incomplete list available on MSDN: <a href="http://msdn.microsoft.com/en-us/library/vstudio/jj662724.aspx">http://msdn.microsoft.com/en-us/library/vstudio/jj662724.aspx</a></p>
+<p>Suffice it to say that most of these technologies and Visual Studio itself really isn't designed around a least-privilege workflow. There's various good reasons why this simply can't be done for the average developer. I tried for the longest time to run Visual Studio under least privilege; but, it simply became too much of a burden to do it. You simply have to forget to run <em>as administrator</em>, close Visual Studio, re-run it, and reload your solution <strong>once</strong> for there to be too much friction.</p>
+<p>For a while I had simply changed the shortcut for Visual Studio (right click the icon, click <strong>Properties</strong>, click <strong>Compatibility</strong> tab, check <strong>Run this program as an administrator</strong>). Which works fine when you click the icon <em>then</em> load a solution/project. But, if Visual Studio gets executed in any other way (restart after extension update, double-click .SLN file, etc.) then Visual Studio is <em>not</em> run as an administrator and you have to exit and manually re-start Visual Studio and re-load your solution to continue your work.</p>
+<p>One particular day when I ended up having to restart Visual Studio at least three times, (i.e. six times) I decided that just setting the shortcut to <em>Run As Administrator</em> was not enough. I decided that there must be a better way. Fortunately, I found one.</p>
+<p>Sidebar: Double-clicking Visual Studio solution and project files is rather complex. Long story short, they are associated with an application called VSLauncher that peeks into the file to decide <em>which version</em> of Visual Studio to run (it supports side-by-side deployment).</p>
+<p>The first step is to make sure VSlauncher gets run as administrator. This process is the same as the Visual Studio shortcut icon. Navigate to the VSLauncher folder (&quot;C:Program Files (x86)Common FilesMicrosoft SharedMSEnv&quot; on my 64-bit computer), right click the EXE, select <strong>Properties</strong>, click <strong>Compatibility</strong> tab, and check <strong>Run this program as an administrator</strong>.</p>
+<p>This was not enough to get Visual Studio to run elevated, I also needed to do the same thing to the DEVENV.EXE file. But, unfortunately, when you right-click the EXE and click Properties, there is not Compatibility tab. I don't know why DEVENV.EXE is special in this respect, but there is a work around. Instead of clicking Properties, click <strong>Troubleshoot Compatibility</strong>. Then, in the <em>Program Compatibility Troubleshooter</em>, click <strong>Troubleshoot Program</strong>. In there, check <strong>The program requires additional permissions</strong>.</p>
+<p>Now, when you double-click on a SLN or CSPROJ file and have Visual Studio run as an administrator. As far as I have been able to tell, this is the only way for this to occur.</p>
+<h2 id="caveats">Caveats</h2>
+<p>And really, there's always caveats, isn't there. The biggest problem that I've encountered is that you can no longer drag-drop files onto the Visual Studio surface from Windows Explorer. Windows Explorer runs in least privilege by default and you can't drag a file from one app to another with different privileges.</p>
+<p>Another caveat is that you can no longer run Visual Studio in a least privilege mode. For mean, I rarely <em>can</em>, so it's not really a caveat for me.</p>
+<p>Of course, all the other security-relaated caveats of running any program with elevated permissions apply. Use at your own risk, provided &quot;as is&quot; without warranty of any kind, either expressed or implied…. bleah bleah bleah.</p>
+<p><a href="http://www.fotothing.com/photos/8d9/8d9ab6ce158fef47436f6df201f07091.jpg">1</a> <a href="http://bit.ly/Z3dxHY" title="http://msdn.microsoft.com/en-us/library/58wxa9w5.aspx">http://msdn.microsoft.com/en-us/library/58wxa9w5.aspx</a><br />
+<a href="http://bit.ly/Z3dxHY" title="http://msdn.microsoft.com/en-us/library/58wxa9w5.aspx">2</a> <a href="http://bit.ly/11dfVLM" title="http://msdn.microsoft.com/en-us/library/ms751423.aspx">http://msdn.microsoft.com/en-us/library/ms751423.aspx</a><br />
+<a href="http://bit.ly/11dfVLM" title="http://msdn.microsoft.com/en-us/library/ms751423.aspx">3</a> <a href="http://bit.ly/17Gz1xm" title="http://msdn.microsoft.com/en-us/library/vstudio/jj662724.aspx">http://msdn.microsoft.com/en-us/library/vstudio/jj662724.aspx</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Visual-Studio%2C-run-as-Administrator'
+    'Visual Studio, run as Administrator'
+    'http://blog.peterritchie.com/posts/Visual-Studio%2C-run-as-Administrator'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('4/17/2013');
+    console.info('Visual-Studio%2C-run-as-Administrator');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Visual Studio, run as Administrator';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Visual-Studio%2C-run-as-Administrator';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Visual-Studio%2C-run-as-Administrator';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

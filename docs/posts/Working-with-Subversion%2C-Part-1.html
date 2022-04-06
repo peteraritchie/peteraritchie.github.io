@@ -1,0 +1,192 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Working with Subversion, Part 1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Working with Subversion, Part 1</h2>
+            <p><em>Published on Friday, November 11, 2011</em></p>
+                    <a role="button" href="/tags/General" class="button small">General</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/November-2011" class="button small">November 2011</a>
+                <a role="button" href="/tags/SCC" class="button small">SCC</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Workflow" class="button small">Software Development Workflow</a>
+                <a role="button" href="/tags/Subversion" class="button small">Subversion</a>
+                <a role="button" href="/tags/SVN" class="button small">SVN</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2011/11/11/working-with-subversion-part-1/" title="Permalink to Working with Subversion, Part 1">Source</a></p>
+<h1 id="working-with-subversion-part-1">Working with Subversion, Part 1</h1>
+<p>Working with multiple client projects and keeping abreast of the industry through browsing and committing to open source and other people's libraries means working with multiple source code control (SCC) systems. One of the systems I use is Subversion (SVN). It's no longer one of the SCCs I use most often so I tend to come back to it after long pauses and my SVN <em>fu</em> is no longer what it used to be. I'm sure my brain is damaged from this form of &quot;task switching&quot;, not to mention the time I spend trying to figure out the less common actions I need to perform on a repository (repo). I usually spend more than few minutes digging up the commands I need for the once-in-a-decade actions I need to perform.</p>
+<p>I don't foresee getting away from SVN in the near future; so, I'd thought I'd aggregate some of these commands into one place. My blog is the perfect place to do that (because it's just for me, right? 🙂</p>
+<h3 id="backing-up">Backing Up</h3>
+<p>Outside of adding/committing, the most common action to be performed is backing up the repository. Unfortunately for my brain this is automated and I don't <strong>see</strong> it for months at a time. To back up an SVN repository that you're not hosting or being hosted by third-party software (like <a href="http://www.visualsvn.com/server/">VisualSVN Server</a>) then I like dump/load:</p>
+<p>svnadmin dump <em>repo-local-path</em> &gt; _repo-bkp-path _</p>
+<p>This let's you restore to the host that contains all the configuration data like permissions, users, and hooks.</p>
+<p>If the repository is completely autonomous (i.e, just a directory on your hard drive and <em>maybe</em> an SVN daemon) then hotcopy is better:</p>
+<p>svnadmin hotcopy <em>local-path</em> _destination-path _</p>
+<h3 id="restoring">Restoring</h3>
+<p>If you used the dump method of backing up, you need to use the load command to put the backup into an existing repository. If you're not using a hosted repository, you'll first need to create the repository (svn create repo-local-path) to run load (in which case I'd recommend using hotcopy instead). To load the dump into the existing repository:</p>
+<p>svnadmin load <em>repo-local-path</em> &lt; _repo-bkp-path _</p>
+<p>If you've used hotcopy then the backup is the fully functional repository; just make it available to users (i.e. put it where you want it :).</p>
+<h3 id="migrating">Migrating</h3>
+<p>Migrating is basically just a backup and restore. If you're backing up one repository and putting into an existing repository, use dump/load. On System A</p>
+<p>svnadmin dump <em>repo-local-path</em> &gt; _repo-bkp-path _</p>
+<p>On System B after copying repo-bkp-path from System A</p>
+<p>svnadmin load repo_-local-path_ &lt; _repo-bkp-path _</p>
+<p>Even if you weren't migrating to an existing repo, you could use this method; just add svnadmin create repo-local-path before svnadmin load. The dump/load method has the added benefit of upgrading the data from one format to another if both systems don't have the same version of SVN running. The drawback of migrating with dump/load is that you'll have to configure manually (or manually copy from the old repo) to get permissions, hooks, etc…</p>
+<p>Now you've migrated your repo to another computer, existing working copies will be referencing the old URL. To switch them to the new URL perform the following:</p>
+<p>svn switch –relocate _repo-remote-URL _</p>
+<h3 id="creating-working-copy">Creating Working Copy</h3>
+<p>If you don't already have a local copy of the repo to work with, the following command</p>
+<p>svn checkout <em>repo-remote-URL</em> _working-copy-path _</p>
+<h3 id="committing-changes">Committing Changes</h3>
+<p>I added this section because I've become used to GIT. GIT has a working directory and staging area model; so you tag files in the working directory for staging before committing. This allows you to selectively commit modifications/additions. SVN is different in that the working directory is the staging area so you effectively have to commit all modifications at once. (you can <em>stage</em> adds because you manually tell SVN which files to start controlling).</p>
+<p>svn status will tell you what's modified (M) and what's untracked (?). To commit all modified</p>
+<p>svn commit –m &quot;description of changings included in the commit&quot;</p>
+<h3 id="undoing-add">Undoing Add</h3>
+<p>Sometimes you a schedule something to add on commit by mistake or it's easier to add by wildcard and remove the files that you don't want to commit on your next commit. To remove them from the next commit:</p>
+<p>svn revert _file-path _</p>
+<p>Be careful with revert because if the file is already controlled this will revert your local modifications.</p>
+<h3 id="undoing-modifications">Undoing Modifications</h3>
+<p>To revert the modifications you've made locally and restore a file to current revision in the repo:</p>
+<p>svn revert _file-path _</p>
+<h3 id="resources">Resources</h3>
+<p><a href="http://svnbook.org/">http://svnbook.org/</a></p>
+<p>What's your favourite SVN workflow?</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Working-with-Subversion%2C-Part-1'
+    'Working with Subversion, Part 1'
+    'http://blog.peterritchie.com/posts/Working-with-Subversion%2C-Part-1'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/11/2011');
+    console.info('Working-with-Subversion%2C-Part-1');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Working with Subversion, Part 1';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Working-with-Subversion%2C-Part-1';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Working-with-Subversion%2C-Part-1';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

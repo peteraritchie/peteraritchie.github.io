@@ -1,0 +1,182 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Getting Started Unit Testing with nUnit</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Getting Started Unit Testing with nUnit</h2>
+            <p><em>Published on Sunday, April 18, 2010</em></p>
+                    <a role="button" href="/tags/April-2010" class="button small">April 2010</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Uncategorized" class="button small">Uncategorized</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2010/04/18/getting-started-unit-testing-with-nunit/" title="Permalink to Getting Started Unit Testing with nUnit">Source</a></p>
+<h1 id="getting-started-unit-testing-with-nunit">Getting Started Unit Testing with nUnit</h1>
+<p>Getting started with unit testing with nUnit is easy. <em>First download and install the latest version of nUnit</em>, which can be found here: <a href="http://www.nunit.org/index.php?p=download">http://www.nunit.org/index.php?p=download</a></p>
+<p>Next, you need to <em>decide where you want your unit tests will live</em>. If you're developing a shrink-wrapped system that will be deployed to multiple customers or clients, you'll likely want to have an independent project to house your tests. If you're developing an enterprise system—and the software won't be deployed outside your enterprise—then having the tests within an existing project (usually the highest-level project) is a valid option.</p>
+<p><strong>Note:</strong> The only configuration I've been able to get to work with Visual Studio 2010 compiled assemblies is to have my assemblies compile to x86 and use nunit-x86.exe to run the tests.</p>
+<p>Wherever you decide to keep your unit tests, you need to add a reference to the nUnit assembly. <em>Add a reference to nunit.framework.dll</em>.</p>
+<p>Next, you can <em>write some tests</em>. For example:</p>
+<p>[TestFixture]<br />
+public class TestSomething<br />
+{<br />
+[Test]<br />
+public void FailingTest()<br />
+{<br />
+Assert.Fail(&quot;Fail description.&quot;);<br />
+}<br />
+[Test]<br />
+public void PassingTest()<br />
+{<br />
+Assert.Pass();<br />
+}<br />
+[Test]<br />
+public void InconclusiveTest()<br />
+{<br />
+Assert.Inconclusive(&quot;Reason for lack of conclusion.&quot;);<br />
+}</p>
+<p>}</p>
+<p>Then, compile, and <em>load your test assembly into nUnit</em>. Clicking the Run button should result in something like the following in nUnit.</p>
+<p><img src="http://blogs.msmvps.com/cfs-file.ashx/__key/CommunityServer.Blogs.Components.WeblogFiles/peterritchie.metablogapi/8037.image_5F00_thumb_5F00_75912CA9.png" class="img-fluid" alt="image" title="image" /></p>
+<p>You're now ready for Red Green Refactor.</p>
+<h2 id="yellow">Yellow?</h2>
+<p>What about yellow? Red means a test failure, Green means a test pass. But, what about tests that don't have underlying code to be tested. Some may say that this is just another failing test. But, early in your testing efforts you may end up being overwhelmed by red. This could lead to missing a failed test actually is testing code. The alternative is to use the <a href="http://www.nunit.org/index.php?p=utilityAsserts&amp;r=2.5.1">Assert.Inconclusive()</a>. This actually gives you a purple, not yellow, result in nUnit, but you get the idea.</p>
+<h2 id="where-to-from-here">Where to from Here?</h2>
+<p>Now we've got an external test runner and the unit tests for the runner to execute and inform you of red, green, and yellow; you may want to automate the testing process. I would recommend looking at tools like <a href="http://www.testdriven.net/">TestDriven.NET</a>, <a href="http://www.jetbrains.com/resharper/">Resharper</a>, and Continuous Integration tools like <a href="http://confluence.public.thoughtworks.org/display/CCNET/Welcome+to+CruiseControl.NET">CruiseControl.NET</a></p>
+<p>Of course, you've always got the option using the built-in automated testing tools in Visual Studio 2010 Professional, and the Continuous Integration abilities of Visual Studio Team System.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Getting-Started-Unit-Testing-with-nUnit'
+    'Getting Started Unit Testing with nUnit'
+    'http://blog.peterritchie.com/posts/Getting-Started-Unit-Testing-with-nUnit'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('4/18/2010');
+    console.info('Getting-Started-Unit-Testing-with-nUnit');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Getting Started Unit Testing with nUnit';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Getting-Started-Unit-Testing-with-nUnit';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Getting-Started-Unit-Testing-with-nUnit';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,168 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Routing and Remote Access, NAT, and Internet connection sharing.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Routing and Remote Access, NAT, and Internet connection sharing.</h2>
+            <p><em>Published on Saturday, July 15, 2006</em></p>
+                    <a role="button" href="/tags/General" class="button small">General</a>
+                <a role="button" href="/tags/July-2006" class="button small">July 2006</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2006/07/15/routing-and-remote-access-nat-and-internet-connection-sharing/" title="Permalink to Routing and Remote Access, NAT, and Internet connection sharing.">Source</a></p>
+<h1 id="routing-and-remote-access-nat-and-internet-connection-sharing">Routing and Remote Access, NAT, and Internet connection sharing.</h1>
+<p>I've got a Windows 2000 Server running Routing and Remote Access with the NAT functionality to route my Internet connection through a computer running a firewall, etc.</p>
+<p>This works well, I can share my Internet amongst my local network while offering a bit more security.</p>
+<p>The problem is, Routing and Remote Access often gets confused and can't perform DNS lookups and therefore blows Internet connection sharing out of the water. This seems to occur if the radio/modem loses power.</p>
+<p>Until recently, the only way I found that rectified the problem (sometimes) is by rebooting the server.Asyou might understand, this is a real pain. But, recently I happened across a series of actions that seems to get Routing and Remote Access back up and running. I can managed to fix the connection sharing if I perform the following steps in the exact order:</p>
+<ol>
+<li><p>Stop the Routing and Remote Access service.</p>
+</li>
+<li><p>Release the the IP address assigned to the NIC connected to the ISP and used with NAT.</p>
+</li>
+<li><p>Renew the IP address of above NIC.</p>
+</li>
+<li><p>Start the Routing and Remote Access service.</p>
+</li>
+</ol>
+<p>This turns out to be more reliable than rebooting the server. There's been a couple of times I've had to reboot twice.</p>
+<p>Please correct me if there's a better way or post if this problem doesn't exist in later version of Windows Server (I don't have the resources to upgrade at the moment).</p>
+<p>I post here for posterity, my own reference, and anyone else you happens to find it.</p>
+<p>keywords: Reset NAT RRAS DNS remoteaccess ipconfig net stop start release renew</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Routing-and-Remote-Access%2C-NAT%2C-and-Internet-connection-sharing.'
+    'Routing and Remote Access, NAT, and Internet connection sharing.'
+    'http://blog.peterritchie.com/posts/Routing-and-Remote-Access%2C-NAT%2C-and-Internet-connection-sharing.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/15/2006');
+    console.info('Routing-and-Remote-Access%2C-NAT%2C-and-Internet-connection-sharing.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Routing and Remote Access, NAT, and Internet connection sharing.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Routing-and-Remote-Access%2C-NAT%2C-and-Internet-connection-sharing.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Routing-and-Remote-Access%2C-NAT%2C-and-Internet-connection-sharing.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

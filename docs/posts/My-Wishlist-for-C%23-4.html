@@ -1,0 +1,175 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - My Wishlist for C# 4</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>My Wishlist for C# 4</h2>
+            <p><em>Published on Tuesday, February 12, 2008</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/C%23-4" class="button small">C# 4</a>
+                <a role="button" href="/tags/February-2008" class="button small">February 2008</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Pontification" class="button small">Pontification</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/02/12/my-wishlist-for-c-4/" title="Permalink to My Wishlist for C# 4">Source</a></p>
+<h1 id="my-wishlist-for-c-4">My Wishlist for C# 4</h1>
+<p>[Edit: fixed the not-ready-for-publication problems]</p>
+<p>There seems to be more than few people blogging about what they hope C# 4 will do for them. I haven't seen one that really synchronizes with my thoughts, so I'd thought I'd post my own list.</p>
+<p><strong>Variance</strong></p>
+<p>A good story with regard to variance with generics is vital for upcoming versions of C# 4. You could argue that this should have been done in 3, but, unfortunately, that wasn't the focus. I think this really needs to be done for 4; and if <a href="http://blogs.msdn.com/ericlippert/archive/tags/Covariance+and+Contravariance/default.aspx">Eric Lippert's blog</a> is any indication, that may come true.</p>
+<p><strong>Design By Contract</strong></p>
+<p>Design by Contract (DbC) means programmers can define verifiable interfaces. This explicit intention information is then used by the compiler to greatly increase the compile-time checking it can do. In most cases this means no checking need be done at run-time because the compiler has verified the that condition cannot occur at run-time, increasing reliability and improving performance. There's hint of this in the framework already with the internal classes ImmutableAttribute and InvariantMethodAttribute. First-class language support for DbC would go a long way to being able to write more reliable software.</p>
+<p><strong>Concurrency</strong></p>
+<p>Various leaders in the industry (Microsoft included) are recognizing the processor speed improvements will essentially stop being vertical and continue to be horizontal (i.e. instead of increases in processor speed, increases in processors or cores will be the norm). This means that in order for applications to utilize that type of system processing throughput concurrency will become more mainstream. Microsoft has various concurrency initiatives going on (like the Parallel Framework Extensions). It's only logical that lessons learned from this project not long will make their way into the BCL and the .NET Framework but also into the respective languages (C# included, I hope). In this respect I hope that concurrency issues become first-class citizens in the library. This would include things like immutability. In the spirit of Agile development, the sooner this gets into the language the sooner it can be embraced and evolve.</p>
+<p><strong>Object-Oriented Programming</strong></p>
+<p>Much like <a href="http://msmvps.com/blogs/jon.skeet/archive/2008/02/10/c-4-part-4-my-manifesto-and-wishlist.aspx?CommentPosted=true#commentmessage">Jon Skeet</a>, I believe the language designers should recognize that C# is an object-oriented language first and foremost. This fact should continue to focus what, if any, aspects of other programming paradigms are added to the language. Paradigms like Aspect-Oriented Programming, Functional Programming, etc.</p>
+<p><strong>infoof, memberof, propertyof, eventof, methodof Operators</strong></p>
+<p>The information these operators require is so easy for the compiler to simply dump in the IL stream. For users to do the same thing requires that they have a string containing the name of the member in question–which can't be checked at compile time and leads to maintenance nightmares. Imagine what life would be like without the typeof operator forcing use to use code like this:</p>
+<p>Type type = Type.GetType(&quot;MyNamespace.MyClass&quot;);</p>
+<p>Instead of:</p>
+<p>Type type = typeof(MyNamespace.MyClass);</p>
+<p>…if I rename MyClass to UsefulClass no refactorying tool I've see will modify the &quot;MyNamespace.MyClass&quot; string and compilation will succeed and lead to a runtime-error.</p>
+<p><strong>Cleanup Some Long-standing Issues</strong>.</p>
+<p>The above and variance could be viewed as a long-standing issues; but, I thinkthey deserves to be called-out on they're own,they would be huge improvements. Detection of recursive properties, for example. The C# team have a backlog of a few things like this; now's the time.</p>
+<p><strong>Extensible Compiler</strong></p>
+<p>Years back my original idea for this was to have an IDE that automatically corrects mistakes. e.g. if an &quot;; expected&quot; error was spit out, the IDE could intercept it, correct the code, and recompile. But, this extensibility idea can be so much more than that. This sort of extensibility could introduce Aspect-Oriented Programming fundamentals or Domain-Specific Language abilities without the language really understanding the concepts at all. This extensibility would be very powerful for programmers and would give them the ability to evolve their language without being tied to the release schedule of the C# team.</p>
+<p><strong>Thinking Out Loud</strong></p>
+<p>Class-scoped aliases: Aliases in C# are a bit of a pariah, they're at global, file scope; making them not all that useful. In C++, for example, it's quite common to declare type aliases within a class declaration (usually based on a templated type). It would be nice to be able to createan instance of a type based on an alias within a class. E.g. MyType.MyAlias o = new MyType.MyAlias;</p>
+<p><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fmsmvps.com%2fblogs%2fpeterritchie%2farchive%2f2008%2f02%2f06%2funit-testing-the-units.aspx" class="img-fluid" alt="kick it on DotNetKicks.com" /></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'My-Wishlist-for-C%23-4'
+    'My Wishlist for C# 4'
+    'http://blog.peterritchie.com/posts/My-Wishlist-for-C%23-4'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/12/2008');
+    console.info('My-Wishlist-for-C%23-4');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'My Wishlist for C# 4';
+    var disqus_url = 'http://blog.peterritchie.com/posts/My-Wishlist-for-C%23-4';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'My-Wishlist-for-C%23-4';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

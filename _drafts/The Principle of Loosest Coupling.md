@@ -1,7 +1,6 @@
 ---
 layout: post
-title: The Principle of Loosest Coupling
-date: 2017-12-02 23:32:00 -0500
+title: 'The Principle of Loosest Coupling'
 categories: ['Design', 'API', 'Guidance']
 comments: true
 excerpt: ""

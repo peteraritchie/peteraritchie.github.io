@@ -1,0 +1,170 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - The Rat-hole of Object-oriented Mapping</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>The Rat-hole of Object-oriented Mapping</h2>
+            <p><em>Published on Friday, February 10, 2012</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/Architecture" class="button small">Architecture</a>
+                <a role="button" href="/tags/Code-Smells" class="button small">Code Smells</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/February-2012" class="button small">February 2012</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Patterns" class="button small">Patterns</a>
+                <a role="button" href="/tags/Pontification" class="button small">Pontification</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/02/10/the-rat-hole-of-object-oriented-mapping/" title="Permalink to The Rat-hole of Object-oriented Mapping">Source</a></p>
+<h1 id="the-rat-hole-of-object-oriented-mapping">The Rat-hole of Object-oriented Mapping</h1>
+<p><a href="http://bit.ly/waD5m6">Mark Seemann</a> recently had a <a href="http://bit.ly/xHRYMz">great post</a> that, as most of his posts seem to do, challenges the average reader to re-think their reality a bit. The post is titled &quot;Is Layering Worth the Mapping&quot;. In the post Mark essentially details some of the grief and friction that developers face when they need to decouple two or more concepts by way of an abstraction.</p>
+<p>Mark takes the example of layering. Layering is a one way coupling between two &quot;layers&quot; where the &quot;higher-level&quot; layer takes a dependency on abstractions in a &quot;lower-level&quot; layer. Part of his example is a UI layer communicates with a domain layer about musical track information. That track information that is communicated lives in a hand-crafted Track abstraction. Typically this abstraction would live with the lower-level layer to maintain the unidirectional coupling. Of course the UI layer needs a Track concretion for it to do its job and must map between the higher-level layer and the lower-level layer. To further complicate things other decoupling may occur within each layer to manage dependencies. The UI may implement an MVx pattern in which case there may be a specific &quot;view-model&quot; track abstraction, the data layer may employ object-relational mapping, etc. etc.</p>
+<p>Mark goes on to describe some &quot;solutions&quot; that often fall out of scenarios like this in a need to help manage the sheer magnitude of the classes involved: shared DTOs as cross-cutting entities, POCO classes, classes with only automatic properties, etc.</p>
+<p>It's not just layering. Layering lives in this grey area between in-memory modules and out-of-process &quot;tiers&quot;. Layering, I think, is an attempt to get the benefits of out-of-process decoupling without the infrastructure concerns of connecting and communicating between out-of-process processes. Of course, over and above the module/assembly separation, the only thing enforcing this decoupling in layers is skill and being methodical.</p>
+<p>I'm convinced layering is often, or often becomes, a &quot;speculative generality&quot; to give some &quot;future proofing&quot; to the application since layering so closely resembles &quot;tiering&quot; (not to be confused with the eventual response of &quot;tearing&quot;) as to make it easy to make it tiered should there ever be a need for it. To be clear, this is the <strong>wrong</strong> impetus to design a software solution. You're effectively setting yourself up to fail by essentially &quot;making up&quot; requirements that are more than likely going to be wrong. If the requirements for the design are based on fallacies, they too are designed wrong. But, you have to continue to maintain this design until you re-write it (ever noticed that anti-pattern?).</p>
+<p>But, implementing tiers or any sort of communication between processes often ends up in the same state. You have internal &quot;domain&quot; entities within the processes (and even within logical boundaries within those processes) that end up spawning the need for &quot;DTO&quot; objects that live at the seams on one or either side of the communication. Further that, many times that communication is facilitated by frameworks like WCF that create their own DTOs (SOAP envelopes for example). Except you're mandated by the physical boundaries of processes and you're forced to do things like shared-type assemblies to model the cross-cutting &quot;entities&quot; (if you choose that cross-cutting &quot;optimization&quot;) introducing a whole new level of effort and a massive surface area for attracting human error (you've technically introduced the need for versioning, potentially serialization, deployment issues, etc. etc.).</p>
+<p>Creating an object-oriented type to simply act as a one-way container to something that lives on the other size of some logical or physical boundary has appeared to me to be a smell for quite a while. e.g. the UI layer in Mark's original example has this concept of a &quot;Track&quot; DTO-like type that when used is only used in one direction at a time. When moving from the UI to the domain layer it's only written to. If it gets a &quot;track&quot; back from the domain layer the UI layer only reads from it. Abstracting this into an OO class seems pointless and, as Mark says, not particularly beneficial.</p>
+<p>Let's look specifically at the in-memory representation of something like a &quot;Track&quot;. We'll limit our self and say that we need four Track abstractions: one for the view model, one for the domain layer abstraction, one for the data layer abstraction, and one for the object-relational mapping. (I've assumed that the data layer may not have a track &quot;entity&quot; and is only responsible for pushing data around). So, in effect we have four Track DTO classes in our system (and two or three Track &quot;entities&quot;). But, if we look at the in-memory representation of instances of these objects they're effectively identical—each one can't really have more data than another otherwise there's something wrong. If we look at what's actually happing with this data, we're really writing a lot of code to copy memory around in a really inefficient way. The DTO classes in part become the way to copy memory. To be fair, this is a side-effect of the fact we're manually mapping from one abstraction to another or from one abstraction to an entity (or vice-versa).</p>
+<p>This type of thing isn't entirely unknown; it sometimes goes by the name of <strong>ceremony</strong>.</p>
+<p>For the most part, I think computer languages are hindering us in our ability to address this. Languages in general tend to maintain this specific way of messaging called method-calling that limits our ability to communicate only information that can be encapsulated by the language's or platform's type-system. But, to a certain extent we're also hindered by our myopia of &quot;everything must be a type in language X&quot;. Maybe this is another manifestation of Maslow's Hammer.</p>
+<p>Imagine if you removed all the mapping code in a complex system—especially a distributed system—and were left with just the &quot;domain&quot; code. I've done this with one system and I was astounded that over 75% of the code in the system had nothing to do with the systems &quot;domain&quot; (the &quot;value-add&quot;) and was &quot;ceremony&quot; to facilitate data mapping.</p>
+<p>I sometimes hear this isn't so much of a problem with specific frameworks. I'm often told that these frameworks do all the heavy lifting like this for us. But, they really don't. The frameworks really just introduce another seam. The issue of Impedance Mismatch isn't just related to object-relational mapping. I has to do with any mapping where both sides aren't constrained by the same rules. I've blogged about this before. but I can use some &quot;data framework&quot; to generate &quot;entities&quot; based on a data model or even based on POCO's. Some view this as solving the problem; but it doesn't. Each side operates under different rules. The generated classes can only have as much impedance as what it has to communicate with, and you have to plan that that's different than the impedance you'll end up mapping from/to. The only real solution to this is to introduce <strong>another DTO</strong> to map between your domain and the classes generated by the framework so you are decoupled from the eventual &quot;gotchas&quot; where your domain has different expectations or rules than the framework you're communicating with. When people don't do this, you see all sorts of complains like &quot;date/time in X isn't the same as what I need&quot;, etc.</p>
+<p>Don't fall into this rut. Think about what you're doing; if you're got 4 DTOs to hold the same data; maybe there's a better way of doing it. Try to come up with something better and blog about it or at least talk about the problem out in the open like Mark.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'The-Rat-hole-of-Object-oriented-Mapping'
+    'The Rat-hole of Object-oriented Mapping'
+    'http://blog.peterritchie.com/posts/The-Rat-hole-of-Object-oriented-Mapping'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/10/2012');
+    console.info('The-Rat-hole-of-Object-oriented-Mapping');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'The Rat-hole of Object-oriented Mapping';
+    var disqus_url = 'http://blog.peterritchie.com/posts/The-Rat-hole-of-Object-oriented-Mapping';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'The-Rat-hole-of-Object-oriented-Mapping';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,191 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Writing Solid Code</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Writing Solid Code</h2>
+            <p><em>Published on Monday, October 16, 2006</em></p>
+                    <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/C&#x2B;&#x2B;" class="button small">C&#x2B;&#x2B;</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/October-2006" class="button small">October 2006</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2006/10/16/writing-solid-code/" title="Permalink to Writing Solid Code">Source</a></p>
+<h1 id="writing-solid-code">Writing Solid Code</h1>
+<p>My apologies to Steve Maguire for &quot;borrowing&quot; a title.</p>
+<p>I constantly see code, examples, and advice that perpetuate unsafe coding practices. As programmers we have the habit of getting something to a &quot;working&quot; state and call it &quot;done&quot;. This is especially true in processes that have no real architecture or design phases. Over the years, as a society, programmers have begun to realize some of the obvious flaws and have been perpetuating practices and code checkers to avoid such flaws. But, there's still the mentality of &quot;but it works [in my limited tests], how could it be wrong&quot;.</p>
+<p>For example, I don't know of any programmers that would sanction the following C++ code:</p>
+<p>int * const p = new int[10];</p>
+<p>p[1] = 10;</p>
+<p>delete[] p;</p>
+<p>if(p[1] == 10)</p>
+<p>{</p>
+<p>puts(&quot;ten&quot;);</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>puts(&quot;not ten&quot;);</p>
+<p>}</p>
+<p>But, &quot;it works&quot; in a release build.</p>
+<p>There are many, many similar examples of code that &quot;works&quot; in limited circumstances and this is deemed acceptable by, what seems to be, a majority of programmers. I've seen many discussions of programming constructs that can't work 100% of the time; with impassioned participants that will always argue that either they can prove it works with an example and simply ignore proofs where it fails as &quot;contrived&quot; or statistically insignificant. Although, I don't know of a single programmer that can claim they've never been guilty of this.</p>
+<p>From a bricks-and-mortar building standpoint; we, as a society, realized the errors of assuming just 99% is good enough. From this there were the instigation of Engineering certifications/licensing, building standards, etc. All to ensure that 1% was equally as important as the other 99%; to ensureengineers don't unintentionally kill someone. Even with this we're still reminded how important it is to abide by these standards and what happens when we don't (like the Hyatt Regency Walkway Collapse, or the Sampoong Department Store Collapse), despite the likelihood.</p>
+<p>To a certain extent, our tools, processes, training, all seem to perpetuate the &quot;good enough&quot; mentality. The ANSI C library is a prime example. Largely designed in the 70's when security wasn't an issue yet, it's rife with functionality to let programmer write buffer overflow code to their heart's content. For example:</p>
+<p>#pragma pack(1)</p>
+<p>struct MyStruct</p>
+<p>{</p>
+<p>char s[10];</p>
+<p>int i;</p>
+<p>} myStruct = {&quot;&quot;, 1};</p>
+<p>#pragma pack(pop)</p>
+<p>sprintf(myStruct.s, &quot;1234567890&quot;);</p>
+<p>printf(&quot;%d&quot;, myStruct.i);</p>
+<p>…where the output is &quot;0&quot;, not &quot;1&quot;; with nary a compiler warning or runtime error. It's APIs like these and the mentality of &quot;when is that ever going to happen&quot; that lead to software security flaws. Even with continual bombardment of security patches, developers still can't get past the &quot;works 99% of the time&quot; hurdle.</p>
+<p>Here issmall list of some of the &quot;hot spots&quot; that will still cause heated discussions even amongst experienced developers:</p>
+<ul>
+<li>.NET: Avoid catch(Exception) in anything other than a last-chance handler.</li>
+<li>C++: Avoid catch(…) in anything other than a last-chance handler.</li>
+<li>Windows: Don't access windows data from a thread that didn't create the window.</li>
+<li>.NET: Avoid Control.Invoke.</li>
+<li>.NET/VB: Avoid DoEvents.</li>
+<li>Performing potentially lengthy operations on the main/GUI thread.</li>
+<li>Testing for valid pointers and IsBad*Ptr().</li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Writing-Solid-Code'
+    'Writing Solid Code'
+    'http://blog.peterritchie.com/posts/Writing-Solid-Code'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/16/2006');
+    console.info('Writing-Solid-Code');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Writing Solid Code';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Writing-Solid-Code';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Writing-Solid-Code';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

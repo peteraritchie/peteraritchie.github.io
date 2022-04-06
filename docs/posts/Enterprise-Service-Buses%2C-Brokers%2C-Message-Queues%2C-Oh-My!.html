@@ -1,0 +1,179 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Enterprise Service Buses, Brokers, Message Queues, Oh My!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Enterprise Service Buses, Brokers, Message Queues, Oh My!</h2>
+            <p><em>Published on Sunday, September 18, 2011</em></p>
+                    <a role="button" href="/tags/Architecture" class="button small">Architecture</a>
+                <a role="button" href="/tags/Distributed-Systems" class="button small">Distributed Systems</a>
+                <a role="button" href="/tags/Message-Oriented-Architectures" class="button small">Message-Oriented Architectures</a>
+                <a role="button" href="/tags/MOM" class="button small">MOM</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/September-2011" class="button small">September 2011</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2011/09/18/enterprise-service-buses-brokers-message-queues-oh-my/" title="Permalink to Enterprise Service Buses, Brokers, Message Queues, Oh My!">Source</a></p>
+<h1 id="enterprise-service-buses-brokers-message-queues-oh-my">Enterprise Service Buses, Brokers, Message Queues, Oh My!</h1>
+<p>Continuing on my theme of <em>message-oriented</em>, I thought I'd get into a bit of detail about the various middleware options and some details about these options.</p>
+<p>Regardless of what type of middleware is chosen, one thing is common to all types of message-oriented middleware—the fact that they broker messages from producers to consumers.</p>
+<h2 id="impetus">Impetus</h2>
+<p>Before I get too far into the options, let's look at a couple of the common reasons behind moving to a message-oriented architecture.</p>
+<p>One impetus towards MOM is to integrate various legacy or third-party systems into a new or exiting enterprise system. This type of MOM has been know as Enterprise Application Integration (or EAI). There's all sorts of information about this architectural style.</p>
+<p>The other major impetus towards MOM is to facilitate distribution.</p>
+<p>Technically EAI is also distributed; but that's more because the individual components are completely independent of one another and thus executing on different computers. The purpose of EAI isn't to get distribution but to integrate distributed components.</p>
+<h2 id="enterprise-application-integration">Enterprise Application Integration</h2>
+<h3 id="enterprise-service-bus">Enterprise Service Bus</h3>
+<p>The technology-du-jour in the MOM world seems to be Enterprise Service Buses (ESB). Enterprise Service Buses, by definition are are horizontally scalable MOM that integrate disparate (including legacy) loosely coupled SOA components using web services. Not only do ESBs technically broker communication between producers and consumers, they also deal with routing, transformation and translation. It's hard for ESBs to do what they're good at without that specific loose coupling you get from web services, where interface definition is discoverable and service-oriented (web services, over http, etc. etc.).</p>
+<p>From a .NET standpoint there's a few options out there calling themselves ESBs like NServiceBus and MassTransit.</p>
+<h3 id="brokers">Brokers</h3>
+<p>One form of EAI is a <em>Broker</em>. &quot;Broker&quot; is considered an anti-pattern by more than a few people in the industry given what we now know because of it's inherent hub-and-spoke <em>shape</em>. A broker is a single component (hub) that brokers messages from producers to consumers (spokes). It's frowned upon because of its inherent scalability problems. A single broker is constricted to a single computer and to gain scalability it's forced to scale vertically so it has finite and expensive scalability options. It's unfortunate that this architecture is frowned upon because it's still more than adequate when used where appropriate and technically a subset of all the other MOM options.</p>
+<p>There isn't technically a whole lot of options in NET for hub-and-spoke integration. .NET became popular just as the many of the problems with hub-and-spoke were coming to light. But, the closest thing to hub-and-spoke seems to be BizTalk. It's message box would technically be the hub and components integrated into BizTalk be spokes. But BizTalk is a bit of hybrid of sorts (it supports translation, SOA, etc) so it's a bit of a matter of opinion.</p>
+<h2 id="distribution">Distribution</h2>
+<h3 id="message-queues">Message Queues</h3>
+<p>Almost all EAI middleware uses some form of queue BizTalk: MSMQ, MassTransit: MSMQ, RabbitMQ, ActiveMQ, etc, NServiceBus MSMQ, Azure Queue, etc.</p>
+<h3 id="other">Other</h3>
+<p>Technically the other options are considered message queues; but they're not message queues in and of themselves; they just operate like a message queue. Like databases, RPC, web services, etc.</p>
+<h2 id="when-to-use-which-option">When to use which option</h2>
+<p>So now that I've confused the horizon with a bunch more terminology and a fair share of technobabble, why would you choose one over another?</p>
+<p>The reason I divided the options in to two is because the choice on which to use should really be based on the impetus behind the composition of the system.</p>
+<p>If you need to integrate legacy or disparate 3rd party services together, enterprise service buses are definitely the way to go. If you're dealing with integrating many components together with much routing and translation requirements, and a high number of messages, ESBs will help you immensely. If your scalability requirements are very low, going the broker route is probably more than adequate. The impetus here is the integration; but you don't want to make a system completely unusable because it can't scale.</p>
+<p>But, if you have control over all the components in your system and your overall impetus is the distribution of work and horizontal scalability, then your focus is on performance not integration. You want your endpoints to communicate in the most efficient manner and not be bogged down by unnecessary translations and routing. In which case you most likely want to avoid ESBs.</p>
+<p>ESBs are kind of a Golden Hammer at the moment. ESB implies a SOA, web services, certain discoverability, lack of control of some or all components, etc. If you <em>do</em> have control over all the components and don't specifically require SOA, Web Services, and discoverability; implementing specifically to work with an ESB seems overkill. If your have control over all components in your system and every message coming from a producer can be directly accepted by the consumer, you don't need any of the translation aspects of ESBs. You end up really only gaining in the routing aspect of ESB—which if you control all the components in your system, should be fairly static.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Enterprise-Service-Buses%2C-Brokers%2C-Message-Queues%2C-Oh-My!'
+    'Enterprise Service Buses, Brokers, Message Queues, Oh My!'
+    'http://blog.peterritchie.com/posts/Enterprise-Service-Buses%2C-Brokers%2C-Message-Queues%2C-Oh-My!'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('9/18/2011');
+    console.info('Enterprise-Service-Buses%2C-Brokers%2C-Message-Queues%2C-Oh-My!');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Enterprise Service Buses, Brokers, Message Queues, Oh My!';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Enterprise-Service-Buses%2C-Brokers%2C-Message-Queues%2C-Oh-My!';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Enterprise-Service-Buses%2C-Brokers%2C-Message-Queues%2C-Oh-My!';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

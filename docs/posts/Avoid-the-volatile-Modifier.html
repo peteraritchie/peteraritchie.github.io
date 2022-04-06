@@ -1,0 +1,197 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Avoid the volatile Modifier</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Avoid the volatile Modifier</h2>
+            <p><em>Published on Wednesday, January 25, 2012</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/January-2012" class="button small">January 2012</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Multithreaded" class="button small">Multithreaded</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/Software-Development-Guidance" class="button small">Software Development Guidance</a>
+                <a role="button" href="/tags/Visual-Studio" class="button small">Visual Studio</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/01/25/avoid-the-volatile-modifier/" title="Permalink to Avoid the volatile Modifier">Source</a></p>
+<h1 id="avoid-the-volatile-modifier">Avoid the volatile Modifier</h1>
+<p>[Update:   25-Jan-12 5:45 pm; fixed typo]</p>
+<p>I was reminded recently of the misconceptions of the volatile modifier in C#, and I'd thought I'd pass along the recommendations of other's that is tantamount to &quot;avoid the volatile modifier&quot;. The volatile modifier in C# &quot;indicates that a field might be modified by multiple threads that are executing at the same time&quot; <a href="http://bit.ly/wGztj8" title="http://bit.ly/wGztj8">1</a>.</p>
+<p>The first problem is that documentation. What does that really mean to someone developing code that uses multiple threads? Does that make the code &quot;thread-safe&quot;? The answer is &quot;maybe&quot;; the real answer is &quot;rarely&quot;. Most people just stick volatile on a field because they <em>think</em> that's what they need to do.</p>
+<p>What volatile modifier <em>does</em> do to a field in C# is make all reads to the field use &quot;acquire semantics&quot; and all readswrites use &quot;release semantics&quot;. Much clearer, right? Acquire semantics means access is &quot;guaranteed to occur prior to any references to memory that occur after it in the instruction sequence&quot; and release semantics means access is &quot;guaranteed to happen after any memory references prior to the write instruction in the instruction sequence&quot; [6,2]</p>
+<p>One of the problems with modern compilers <a href="http://bit.ly/zOmQI7" title="http://bit.ly/zOmQI7">3</a> and processers and multithreaded code is optimization. Within a block of code with no externally visible side effects the compiler is free to re-order instructions and remove instructions to result in the same visible side-effect. &quot;x+=1;x+=1;&quot; can be freely optimized to &quot;x+=2;&quot; and &quot;x+=1;y+=2;&quot; can be reordered so that order of execution is effectively &quot;y+=2;x+=1;&quot;, for example. The processor doesn't optimize multiple instructions into one; but can re-order instructions and make the results of executed instructions visible to other cores/processors visible well after the instructions were executed (processor caching). With fields, the compiler<a href="http://bit.ly/zOmQI7" title="http://bit.ly/zOmQI7">3</a> has less freedom to optimize because side-effects to fields have more visibility—but the processor doesn't discern between C# fields and any other bit of memory.</p>
+<p>So, what does volatile really do for a field? Realistically it prevents processor re-ordering and caching. It tells the processor that all accesses to the value of that variable should come from or be made directly to memory, not the cache.</p>
+<p>Not having a value cached by the processor so all other processors (and thus all other threads) can see what happens to the value of a variable seems like a really good thing though, doesn't it? In that respect, yes, it is a good thing. But, let's look at some of the drawbacks of volatile.</p>
+<p>The syntax of volatile is that it just annotates a memory location. In reality it really modifies the operations that occur on that memory location. Code that operates on that memory location looks the same, regardless of whether it's modified by volatile or not. i.e. it's unclear the code has different side-effects for multithreaded scenarios. Another problem is that &quot;volatile&quot; is a very overridden word. It's used in C++ and Java; but it means something different (sometimes slightly) in each. Moving back and forth from C++ to C# to Java could lead to using volatile incorrectly. Volatile also assumes that all accesses to the field need to be protected from re-ordering. Most of the time, there's very specific times you want to force side-effects to a field to be made &quot;visible&quot; and, effectively, flush the processors cache to/from memory. Flushing to the cache on every access is not very performant if you don't need side-effects truly visible until specific times. Plus, the volatile modifier means nothing if you pass the field by reference somewhere else. [4,5] There's also limitations to what you can apply volatile to (e.g. you can't have a volatile long).</p>
+<p>What does volatile really mean from a code perspective? Well, when you read from a volatile field effectively the following code is executed:</p>
+<pre><code>Thread.VolatileRead(ref field);
+</code></pre>
+<p>And when you write to a volatile field effectively the following code is executed:</p>
+<pre><code>Thread.VolatileWrite(ref field, newValue);
+</code></pre>
+<p>Both of these methods really just translate to a memory access and a call to Thread.MemoryBarrier (before the memory access for read, and after for write). What MemoryBarrier does for is is ensure that all cached writes are flushed to memory at the call to MemoryBarrier (i.e after MemoryBarrier, any cached writes that occurred prior to MemoryBarrier are flushed and any cached reads are abandoned). So, if you've noticed there's nothing field-specific about Volatile[Read|Write], it makes everything flush, not just the field in question. The performance aspect of the volatile modifier comes into play when you have multiple volatile fields within a class, it's really only the last one that needs to use VolatileWrite when writing and the first one to use VolatileRead when reading. To steal some code from Jeffery Richter:</p>
+<pre><code>m_value = 5;
+Thread.VolatileWrite(ref m_flag, 1);
+</code></pre>
+<p>is just as thread-safe as:</p>
+<pre><code>m_value = 5;
+m_flag = 1;
+</code></pre>
+<p>if m_value and m_flag were volatile.</p>
+<p>Same holds true for VolatileRead:</p>
+<pre><code>if(Thread.VolatileRead(ref m_flag) == 1)
+	Display(m_value);
+</code></pre>
+<p>is just as thread-safe as the following with volatile fields:</p>
+<pre><code>if(m_flag == 1)
+	Display(m_value);
+</code></pre>
+<p>I feel compelled to bring up invariants here. When you're dealing with modifications or accesses of multiple things that can't operate atomically (i.e. the &quot;validity&quot; of m_value depends on the value of m_flag, making the two fields an &quot;invariant&quot; that can be accessed by a single instruction—i.e. not atomically). While the above example ensures that changes to m_flag and m_value are made visible to other threads &quot;at the same time&quot; it doesn't do anything to stop another thread from accessing the m_value before m_flag has been updated. This may or many not be &quot;correct&quot;. If it's not correct, using lock or Monitor to model atomic access to such an &quot;invariant&quot; that isn't natively atomic is a better choice.</p>
+<p>On the topic of lock/Monitor. It's important to note that the end of a lock or the call to Monitor.Exit has release semantics and the start of the lock or Monitor.Enter (and variants) have acquire semantics. So, if all access to a field is guarded with lock or Monitor, there's no need for volatile or Thread.Volatile[Read|Write].</p>
+<p>Using Monitor, lock, volatile, VolatileRead and VolatileWrite correctly shows that you understand what it means to be thread-safe and that you understand what it means to be externally visible and when in the context of your fields and invariants.</p>
+<p>There have apparently been some discussions about the usefulness and applicability of volatile in C# as well as VB (and I assume C++11); but, I'm was not privy to those discussions and haven't been able to find much in the way of reference to those discussions other than third-hand information… Needless to say, VB doesn't have anything similar to &quot;volatile&quot;, apparently for a reason.</p>
+<p>I'm not saying there aren't perfectly valid scenarios for volatile; but, look carefully at what you need; you probably could make better use of VolatileRead or VolatileWrite. Just understand your needs and use what is correct—code on purpose.</p>
+<p><a href="http://bit.ly/wGztj8" title="http://bit.ly/wGztj8">1</a> <a href="http://bit.ly/wGztj8" title="http://bit.ly/wGztj8">volatile (C# Reference)</a></p>
+<p><a href="http://bit.ly/ynNgqf" title="http://bit.ly/ynNgqf">2</a> <a href="http://bit.ly/ynNgqf" title="http://bit.ly/ynNgqf">Acquire and Release Semantics</a></p>
+<p><a href="http://bit.ly/zOmQI7" title="http://bit.ly/zOmQI7">3</a> CSC and JIT compilers.</p>
+<p><a href="http://www.lidnug.org/Files/Recordings/Aug%2015,%202011%20-%20Getting%20Started%20with%20Threading.zip">4</a> <a href="http://bit.ly/zOmQI7" title="http://bit.ly/zOmQI7">Sayonara volatile</a></p>
+<p><a href="http://bit.ly/xNTlua" title="http://bit.ly/xNTlua">5</a> <a href="http://www.lidnug.org/Files/Recordings/Aug%2015,%202011%20-%20Getting%20Started%20with%20Threading.zip">Aug 2011 Getting Started with Threading webcast with Jeffrey Richter (45MB)</a></p>
+<p>[6] <a href="http://bit.ly/xNTlua" title="http://bit.ly/xNTlua">C# Language Specification (ECMA-334)</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Avoid-the-volatile-Modifier'
+    'Avoid the volatile Modifier'
+    'http://blog.peterritchie.com/posts/Avoid-the-volatile-Modifier'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/25/2012');
+    console.info('Avoid-the-volatile-Modifier');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Avoid the volatile Modifier';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Avoid-the-volatile-Modifier';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Avoid-the-volatile-Modifier';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

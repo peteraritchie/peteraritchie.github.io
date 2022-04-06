@@ -1,0 +1,371 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Nested Types</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Nested Types</h2>
+            <p><em>Published on Tuesday, July 15, 2008</em></p>
+                    <a role="button" href="/tags/NET-35" class="button small">.NET 3.5</a>
+                <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/Asynchronous-Programming-Model-(APM)" class="button small">Asynchronous Programming Model (APM)</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/C%23-30" class="button small">C# 3.0</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/July-2008" class="button small">July 2008</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+                <a role="button" href="/tags/TCP" class="button small">TCP</a>
+                <a role="button" href="/tags/Visual-Studio-2008" class="button small">Visual Studio 2008</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/07/15/nested-types/" title="Permalink to Nested Types">Source</a></p>
+<h1 id="nested-types">Nested Types</h1>
+<p>Recently <a href="http://www.michaelfeathers.com/">Michael Features</a> <a href="http://michaelfeathers.typepad.com/michael_feathers_blog/2008/06/are-nested-clas.html">blogged about nested types</a>. The title was almost &quot;nested types considered harmful&quot;.</p>
+<p>I don't agree. I don't agree that they're any more harmful than any other C# construct (except goto…). Nested types are like anything else in our tool-belt: they have a time and place and can be abused.</p>
+<p>But, when to use them? Well, for the most part I agree with Michael, you should avoid them. But, there are times when they're simply the best solution in a given set of circumstances.</p>
+<p>Let's look at asynchronous programming model (APM) in .NET.</p>
+<pre><code>  // Paraphrased from MSDN
+
+
+        // Accept one client connection asynchronously.
+
+
+  public static void DoBeginAcceptTcpClient(TcpListener
+
+
+   listener)
+
+
+  {
+
+
+   // Start to listen for connections from a client.
+
+
+   Trace.WriteLine(&quot;Waiting for a connection...&quot;);
+
+
+
+
+
+   // Accept the connection. 
+
+
+   // BeginAcceptSocket() creates the accepted socket.
+
+
+   listener.BeginAcceptTcpClient(
+
+
+    DoAcceptTcpClientCallback,
+
+
+    listener);
+
+
+  }
+
+
+
+
+
+  // Process the client connection.
+
+
+  public static void DoAcceptTcpClientCallback(IAsyncResult ar)
+
+
+  {
+
+
+   // Get the listener that handles the client request.
+
+
+   TcpListener listener = (TcpListener)ar.AsyncState;
+
+
+
+
+
+   // End the operation and display the received data on 
+
+
+   // the console.
+
+
+   TcpClient client = listener.EndAcceptTcpClient(ar);
+
+
+
+
+
+   // TODO: do something with client.
+
+
+
+
+
+   // Process the connection here. (Add the client to a
+
+
+   // server table, read data, etc.)
+
+
+   Trace.WriteLine(&quot;Client connected completed&quot;);
+
+
+  }
+</code></pre>
+<p>In this simple scenario we are getting by with a state of simply a TcpListener object. In a more complex scenario, you'll likely also want a connection-specific queue, some sort of information about what to do after a connection, etc. While you can use existing types of have several collection instance fields to keep track of each of these things; you then have to introduce synchronization of those collections, managing the content of those collections, etc.–it's much easier and safer to send that information on the stack. One method I've tried is simply passing an Object collection as the state; but that quickly becomes hard to manage because of the lack of type-safety on the elements in the array (if I remove an element and replace it with another type, the compile can't know and I'll get a run-time error instead of a compile-time error). To get type safety I generally introduce a new type to aggregate all the types I need in this asynchronous callback. While this new type <em>could</em> be reusable by other classes; it likely isn't and I don't want to then be bound that that explicit contract I've signed by making the types publicly available. The only option of not making them publicly available is as private nested types. For example:</p>
+<pre><code>  private class AcceptTcpClientParameters
+
+
+  {
+
+
+   public CommandQueue CommandQueue { get; private set; }
+
+
+   public Command NextCommand { get; private set; }
+
+
+   public TcpListener TcpListener { get; private set; }
+
+
+
+
+
+   public AcceptTcpClientParameters(int commandQueue, int nextCommand, TcpListener tcpListener)
+
+
+   {
+
+
+    CommandQueue = commandQueue;
+
+
+    NextCommand = nextCommand;
+
+
+    TcpListener = tcpListener;
+
+
+   }
+
+
+  }
+
+
+
+
+
+  // Accept one client connection asynchronously.
+
+
+  public static void DoBeginAcceptTcpClient(TcpListener
+
+
+   listener, CommandQueue commandQueue, Command nextCommand)
+
+
+  {
+
+
+   // Start to listen for connections from a client.
+
+
+   Trace.WriteLine(&quot;Waiting for a connection...&quot;);
+
+
+
+
+
+   // Accept the connection. 
+
+
+   // BeginAcceptSocket() creates the accepted socket.
+
+
+   listener.BeginAcceptTcpClient(
+
+
+    DoAcceptTcpClientCallback,
+
+
+    new AcceptTcpClientParameters(commandQueue, nextCommand, listener));
+
+
+  }
+
+
+
+
+
+  // Process the client connection.
+
+
+  public static void DoAcceptTcpClientCallback(IAsyncResult ar)
+
+
+  {
+
+
+   AcceptTcpClientParameters parameters = ar.AsyncState as AcceptTcpClientParameters;
+
+
+   if(parameters == null) return;
+
+
+
+
+
+   TcpClient client = parameters.TcpListener.EndAcceptTcpClient(ar);
+
+
+
+
+
+   parameters.NextCommand.Process(parameters.CommandQueue, client);
+
+
+  }
+</code></pre>
+<p>I find this use of nested types to be more object-oriented (the needs of the DoAcceptTcpClientCallback are abstracted), more intention revealing, better implements Single Responsibility Principle (SRP), better separates concerns, more maintainable and more agile.</p>
+<p>Now, to be clear; this is forced set of circumstances. You're using a library that implements the APM (right? You haven't implemented APM yourself…). But, that's my point–nested types are almost essential in a given set of circumstances.</p>
+<p><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fmsmvps.com%2fblogs%2fpeterritchie%2farchive%2f2008%2f07%2f15%2fnested-types.aspx" class="img-fluid" alt="kick it on DotNetKicks.com" /></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Nested-Types'
+    'Nested Types'
+    'http://blog.peterritchie.com/posts/Nested-Types'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/15/2008');
+    console.info('Nested-Types');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Nested Types';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Nested-Types';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Nested-Types';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

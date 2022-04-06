@@ -1,0 +1,303 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Exception Logging</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Exception Logging</h2>
+            <p><em>Published on Wednesday, August 1, 2007</em></p>
+                    <a role="button" href="/tags/August-2007" class="button small">August 2007</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/Design/Coding-Guidance" class="button small">Design/Coding Guidance</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Software-Development" class="button small">Software Development</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/08/01/exception-logging/" title="Permalink to Exception Logging">Source</a></p>
+<h1 id="exception-logging">Exception Logging</h1>
+<p>There is often a requirement for an application to log unhandled (and sometimes &quot;handled&quot;) exceptions. This logging could occur to a log file, to the Event Log, a logging server, etc. There's great reasons to log exceptions but logging exceptions can be fraught with problems.</p>
+<p>I've have many clients that have been requested to log exceptions and simply threw (pardon the pun) in a call to some logging method in every catch block and added catch blocks around most code that could throw. This certainly gets the exception logged but introduces at least oneproblem: if it's an unhandled exception, when does the exception stop getting logged? For example, given the following code:</p>
+<p>//…</p>
+<p>internal sealed class MyClass</p>
+<p>{</p>
+<p>private const int NAME_FIELDINDEX = 1;</p>
+<p>private IDAL dal;</p>
+<p>public MyClass ( )</p>
+<p>{</p>
+<p>// TODO: Base from configuration</p>
+<p>dal = MyOtherClass.Create();</p>
+<p>}</p>
+<p>public String GetName ( )</p>
+<p>{</p>
+<p>String name = String.Empty;</p>
+<p>try</p>
+<p>{</p>
+<pre><code>dal.ReadField(NAME_FIELDINDEX, ref name);
+</code></pre>
+<p>}</p>
+<p>catch (Exception exception)</p>
+<p>{</p>
+<pre><code>Logger.LogException(exception);
+
+throw;
+</code></pre>
+<p>}</p>
+<p>return name;</p>
+<p>}</p>
+<p>}</p>
+<p>//…</p>
+<p>internal sealed class MyOtherClass : IDAL</p>
+<p>{</p>
+<p>IDataReader dataReader;</p>
+<p>//…</p>
+<p>public static IDAL Create ( )</p>
+<p>{</p>
+<p>// TODO: do something real</p>
+<p>return new MyOtherClass();</p>
+<p>}</p>
+<p>// implements IDAL.ReadField<T>(int, ref T)</p>
+<p>public bool ReadField<T> ( int index, ref T value )</p>
+<p>{</p>
+<p>try</p>
+<p>{</p>
+<pre><code>value = (T)dataReader.GetValue(index);
+</code></pre>
+<p>}</p>
+<p>catch (InvalidCastException invalidCastException)</p>
+<p>{</p>
+<pre><code>Logger.LogLogicError(Resources.GetMessage(Resources.MessageType.LogicError), invalidCastException);
+
+return false;
+</code></pre>
+<p>}</p>
+<p>catch (Exception exception)</p>
+<p>{</p>
+<pre><code>Logger.LogException(exception);
+
+throw;
+</code></pre>
+<p>}</p>
+<p>return true;</p>
+<p>}</p>
+<p>}</p>
+<p>//…</p>
+<p>public static class Program</p>
+<p>{</p>
+<p>public static void Main ( )</p>
+<p>{</p>
+<p>// …</p>
+<p>MyClass myObject = new MyClass();</p>
+<p>String name = myObject.GetName();</p>
+<p>// …</p>
+<p>}</p>
+<p>}</p>
+<p>…since no other method should know (or more importantly, rely-upon) the implementation details of another (like whether it logs exceptions or not) and with a notion that low-level exception logging should be implemented, each method is forced to log exceptions. As a result, in this example,there would be two identical exceptions logged here. Anyone debugging would have to know to begin researching the problem with the first in a series of identical exceptions; but, this could be a rat-hole because it assumes adjacently logged exceptions are really the same–which isn't always going to be the case. But, that's the minor problem. What if logging is performed to file and a StackException occurs? Best case, nothing gets logged and several StackExceptions occur (calling another method in the presence of a StackException doesn't go far and may just throw another StackException), worst case you've conceptually got an infinite loopandtheremote possibility it can write the event, filling up the event log. Same would occur with a file, quickly eating up disk space. In low disk space situations or where there are policies to restrict the size of the Event Log you run into a denial of service problem (i.e. you've blocked all other applications from writing to the event log or to disk).</p>
+<p>While the intentions are noble here, the result is not as useful as it was intended to be. How do you correct this?</p>
+<p>This situation can be corrected by mirroring accepted exception handling practices: only catch exceptions you can handle with the exception of a last-chance exception handler. Since there's the requirement of logging both unhandled and some handled exceptions; logging of handled exceptions needs to occur when the exception is handled, and the notion of low-level unhandled exception logging should be abandoned and unhandled exceptions would be logged at the last-chance handler. This change would result in something like:</p>
+<p>//…</p>
+<p>internal sealed class MyClass</p>
+<p>{</p>
+<p>private const int NAME_FIELDINDEX = 1;</p>
+<p>private IDAL dal;</p>
+<p>public MyClass ( )</p>
+<p>{</p>
+<p>// TODO: Base from configuration</p>
+<p>dal = MyOtherClass.Create();</p>
+<p>}</p>
+<p>public String GetName ( )</p>
+<p>{</p>
+<p>String name = String.Empty;</p>
+<p>dal.ReadField(NAME_FIELDINDEX, ref name);</p>
+<p>return name;</p>
+<p>}</p>
+<p>}</p>
+<p>//…</p>
+<p>internal sealed class MyOtherClass : IDAL</p>
+<p>{</p>
+<p>IDataReader dataReader;</p>
+<p>//…</p>
+<p>public static IDAL Create ( )</p>
+<p>{</p>
+<p>// TODO: do something real</p>
+<p>return new MyOtherClass();</p>
+<p>}</p>
+<p>// implements IDAL.ReadField<T>(int, ref T)</p>
+<p>public bool ReadField<T> ( int index, ref T value )</p>
+<p>{</p>
+<p>try</p>
+<p>{</p>
+<pre><code>value = (T)dataReader.GetValue(index);
+</code></pre>
+<p>}</p>
+<p>catch (InvalidCastException invalidCastException)</p>
+<p>{</p>
+<pre><code>Logger.LogLogicError(Resources.GetMessage(Resources.MessageType.LogicError), invalidCastException);
+
+return false;
+</code></pre>
+<p>}</p>
+<p>return true;</p>
+<p>}</p>
+<p>}</p>
+<p>public static class Program</p>
+<p>{</p>
+<p>public static void Main ( )</p>
+<p>{</p>
+<p>try</p>
+<p>{</p>
+<pre><code>MyClass myObject = new MyClass();
+
+String name = myObject.GetName();
+
+//…
+</code></pre>
+<p>}</p>
+<p>catch (Exception exception)</p>
+<p>{</p>
+<pre><code>// last-chance handler
+
+Logger.LogException(exception);
+
+throw; // optional re-throw
+
+// terminate
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>I've added a last-change handler in Program.Main, removed the exception handler from MyClass.GetName, and removed the catch(Exception) block from MyOtherClass.GetField<T>.Now you've got simpler code (even in this example, more so in the real world), without the potential of duplicate exception logging and denial of service. And taking into account the <a href="http://msmvps.com/blogs/peterritchie/archive/2007/06/22/performance-implications-of-try-catch-finally.aspx">performance implications of try blocks</a>, potentially faster code.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Exception-Logging'
+    'Exception Logging'
+    'http://blog.peterritchie.com/posts/Exception-Logging'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/1/2007');
+    console.info('Exception-Logging');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Exception Logging';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Exception-Logging';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Exception-Logging';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,171 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - &quot;Object is currently in use elsewhere&quot; error.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>&quot;Object is currently in use elsewhere&quot; error.</h2>
+            <p><em>Published on Monday, January 28, 2008</em></p>
+                    <a role="button" href="/tags/NET-Development" class="button small">.NET Development</a>
+                <a role="button" href="/tags/C%23" class="button small">C#</a>
+                <a role="button" href="/tags/DevCenterPost" class="button small">DevCenterPost</a>
+                <a role="button" href="/tags/January-2008" class="button small">January 2008</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/WinForms" class="button small">WinForms</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p>[Source](<a href="http://blogs.msmvps.com/peterritchie/2008/01/28/quot-object-is-currently-in-use-elsewhere-quot-error/">http://blogs.msmvps.com/peterritchie/2008/01/28/quot-object-is-currently-in-use-elsewhere-quot-error/</a> &quot;Permalink to &quot;Object is currently in use elsewhere&quot; error.&quot;)</p>
+<h1 id="object-is-currently-in-use-elsewhere-error">&quot;Object is currently in use elsewhere&quot; error.</h1>
+<p>I was debugging what I thought was a strange exception the other day. The exception was an InvalidOperationException and the message was &quot;Object is currently in use elsewhere&quot;. Unless you're familiar with this exception, it really doesn't offer much as to why the exception is occurring. There seems to be several stale threads on the Web about this issue, so I'd thought I'd post about it.</p>
+<p>As it turns out it had to do with some code that was PInvoking some native graphics functions and the interaction with the WinForm that was hosting the drawing surface was to blame.</p>
+<p>What's really happening with &quot;Object is currently in use elsewhere&quot; is that GDI+ is complaining that the device context (DC)that it is trying to use is already &quot;in use&quot;. With WinForms, this generally means there is a recursive Graphics.GetHdc occurring. GetHdc must match a ReleaseHdc before any other GetHdc. Recursive means you have something like GetHdc-&gt;GetHdc-&gt;ReleaseHdc-&gt;ReleaseHdc, instead of GetHdc-&gt;ReleaseHdc-&gt;GetHdc-&gt;ReleaseHdc. Another possibility is that there is a missing call toReleaseHdc. (i.e. GetHdc-&gt;GetHdc-&gt;ReleaseHdc)</p>
+<p>Now, in my case there was some seemingly innocuous code like this:</p>
+<p>SafeNativeMethods.DrawSomeStuff(e.Graphics.GetHdc(), parameters);</p>
+<p>e.Graphics.DrawString(text, this.Font, Brushes.Black, point);</p>
+<p>…no matching ReleaseHdc(), before the DrawString call.</p>
+<p>The fix turned out to be really simple:</p>
+<p>try</p>
+<p>{</p>
+<p>SafeNativeMethods.DrawSomeStuff(e.Graphics.GetHdc(), parameters);</p>
+<p>}</p>
+<p>finally</p>
+<p>{</p>
+<p>e.Graphics.ReleaseHdc();</p>
+<p>}</p>
+<p>e.Graphics.DrawString(text, this.Font, Brushes.Black, point);</p>
+<p>You can also encounter this exception if you're drawing to a form from multiple threads. You'll likely also be encountering a cross-threading exception as well. The solution in this case is to not use multiple threads when accessing a form, including drawing.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    '%22Object-is-currently-in-use-elsewhere%22-error.'
+    '&quot;Object is currently in use elsewhere&quot; error.'
+    'http://blog.peterritchie.com/posts/%22Object-is-currently-in-use-elsewhere%22-error.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/28/2008');
+    console.info('%22Object-is-currently-in-use-elsewhere%22-error.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = '&quot;Object is currently in use elsewhere&quot; error.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/%22Object-is-currently-in-use-elsewhere%22-error.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = '%22Object-is-currently-in-use-elsewhere%22-error.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>

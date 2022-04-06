@@ -1,0 +1,189 @@
+﻿
+
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Peter Ritchie&#x27;s Blog - Fluent Builders Part 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/assets/sass/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/assets/sass/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/sass/ie8.css" /><![endif]-->
+        
+
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+				<header id="header">
+					<h1><a href="/">Peter Ritchie&#x27;s Blog</a></h1>
+					<nav>
+						<a href="#menu">Menu</a>
+					</nav>
+				</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<div class="inner">
+						<h2>Menu</h2>
+						<ul class="links">
+							        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+
+						</ul>
+						<a href="#" class="close">Close</a>
+					</div>
+				</nav>
+
+
+    
+<section id="banner">
+  <div class="inner">
+    <h2>Fluent Builders Part 2</h2>
+            <p><em>Published on Thursday, December 9, 2010</em></p>
+                    <a role="button" href="/tags/December-2010" class="button small">December 2010</a>
+                <a role="button" href="/tags/msmvps" class="button small">msmvps</a>
+                <a role="button" href="/tags/Uncategorized" class="button small">Uncategorized</a>
+  </div>
+</section>
+
+				<!-- Main -->
+				<section id="wrapper">
+					<section class="wrapper style2">
+						<div class="inner">
+							
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2010/12/09/fluent-builders-part-2/" title="Permalink to Fluent Builders Part 2">Source</a></p>
+<h1 id="fluent-builders-part-2">Fluent Builders Part 2</h1>
+<p>In this part I'm going to go into the principles behind a fluent builder.</p>
+<p>Fluent builders don't simply provide a method for each argument a constructor (or other method) may take, they provide consistency when providing related arguments.</p>
+<p>In my fluent builder example I had a WithCredentials method on the builder that take two related arguments: a username and a password. I could have just as easily have a WithPassword and WithUserName method and used it like this:</p>
+<pre><code>Subscription subscription = newRabbitMQSubscriptionBuilder()  
+.WithUserName(&quot;pQowiht12glsh%d&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+.WithPassword(&quot;i21uWghe&amp;gjs&quot;)  
+.SubscribeToQueue(&quot;messages&quot;);  
+</code></pre>
+<p>We achieve the same result; but now we can have username and password disconnected with this new interface. It's not clear that username and password go hand-in-hand.</p>
+<p>A fluent builder is all about readability and expressiveness. It's about using basic compiler tricks to maintain consistency while providing an expressive and readable interface. The very nature of chained method calls is basically a violation of the Law of Demeter, for example—depending on your interpretation. Builders are transient containers of data that transform data into the creation of an object. They're not modeling domain behaviour; they're strictly utility. So they don't have to completely abide by object-oriented design principles.</p>
+<p>There's been a couple of comments about the property with only a getter that has side-effects. For classes that model domain behaviour, I completely agree that getters with side-effects are an abomination. But, we're not modeling domain behaviour with builders; we're simply attempting to provide the most expressive interface to build object so that it's readable by just about anyone reading the code. The fact that WithAcknowledgements is a property with only getter that has side-effects is moot. It could have been implemented with a method with no parameters; but that doesn't add any expressiveness nor add to readability at all—it just adds more typing.</p>
+<p>We're trying to define an interface that allows the programmer to convey intent. WithAcknowledgements as a property or a method that takes no arguments shows much more intent than WithAcknowledgementsEnabled(bool).</p>
+<p>In my original example, I should have also included WithoutAcknowledgements in order for the programmer to accurately convey that they understand the default values. We'd end up being able to convey that intent nicely with code like this:</p>
+<pre><code>Subscription subscription = newRabbitMQSubscriptionBuilder()  
+.WithCredentials(&quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+.WithoutAcknowledgements  
+.SubscribeToQueue(&quot;messages&quot;);  
+</code></pre>
+<p>I've also chosen to use an implicit cast operator to convert the builder to the object it builds and chosen in my example to not use an implicitly typed variable as the for the object created by the builder. My views on implicitly typed variables are pretty well known. Should a programmer using this interface accidentally used an implicitly typed variable; they'd quickly have a compile error; so, I don't feel there's much issue with this technique. If implicitly typed variables are a preference, the programmer could write code like this:</p>
+<pre><code>var subscription = (Subscription)newRabbitMQSubscriptionBuilder()  
+.WithCredentials(&quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+.WithoutAcknowledgements  
+.SubscribeToQueue(&quot;messages&quot;);  
+</code></pre>
+<p>Not much more ore less expressive than the original; but a little bit more typing. Sure, there could be a method that terminates the method chain like &quot;Build&quot; and we could do this:</p>
+<pre><code>var subscription = newRabbitMQSubscriptionBuilder()  
+.WithCredentials(&quot;pQowiht12glsh%d&quot;, &quot;i21uWghe&amp;gjs&quot;)  
+.ToHost(&quot;localhost&quot;, 8181)  
+.WithoutAcknowledgements  
+.SubscribeToQueue(&quot;messages&quot;)  
+.Build();  
+</code></pre>
+<p>But, it's no more expressive that our previous version. Plus, there's an implied order to the call to Build: it always has to be at the end. This seems like unnecessary ceremony.</p>
+<h2 id="other-practices">Other Practices</h2>
+<p>Generally methods are prefixed with &quot;With&quot; to convey that builder is building up an object through a series of additions. But, when another prefix would add more expressiveness or clarity, that prefix should be preferred over &quot;With&quot;. The &quot;ToHost&quot; is a good example. The builder is creating an object that connects to a remote host; &quot;With&quot; could be ambiguous. &quot;ToHost&quot; conveys better that the resulting object connects <strong>to</strong> a host of given name and port.</p>
+<p>I hope this short excursion into fluent builders and fluent interfaces has given you the motivation to add expressiveness to your code where you find long strings of meaningless parameters. By all means you should implement your builders that are most expressive to you; but don't let strict adherence to object-oriented principles make these utilitarian classes more complex than they need to and end up hindering your expressiveness.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Fluent-Builders-Part-2'
+    'Fluent Builders Part 2'
+    'http://blog.peterritchie.com/posts/Fluent-Builders-Part-2'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/9/2010');
+    console.info('Fluent-Builders-Part-2');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Fluent Builders Part 2';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Fluent-Builders-Part-2';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Fluent-Builders-Part-2';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+						</div>
+					</section>
+				
+				</section>
+				
+				<!-- Footer -->
+                <footer id="footer">
+                    <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/skel.min.js"></script>
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/assets/js/main.js"></script>
+
+	</body>
+
+</html>
