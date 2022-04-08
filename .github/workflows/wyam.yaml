@@ -3,7 +3,7 @@ name: Wyam
 on:
   push:
     branches:
-    - main  # default branch
+    - wyam  # default branch
 
 jobs:
   build:
