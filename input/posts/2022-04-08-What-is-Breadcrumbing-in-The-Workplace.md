@@ -105,12 +105,16 @@ An obvious no-win situation may be unlawful if it creates a work environment tha
 would be intimidating, hostile, or offensive to reasonable people. (I mentioned
 "subjective above? Good, I did).
 
-My opinion is to move on once you recognize this. It has been challenging to
-move on in the past, but it is less of a challenge with the employment
-landscape being what it is recently. This behavior shows how your employer
-views your worth; it's up to you how much worth to give to your employer. I
-don't recommend providing them more worth than they offer you.
+What worth your employer places on you and your peers is reflected in behaviors
+like breadcrumbing. What worth you place on your employer is entirely up to you.
 
+<!--
+My opinion is to move on once you recognize this. It has been challenging to
+move on in the past, but it is less of a challenge with the employment landscape
+being what it is recently. This behavior shows how your employer views your
+worth; it's up to you how much worth to give to your employer. I don't recommend
+providing them more worth than they offer you.
+--------------------------------------------------------------------------------
 <!--
 https://fairygodboss.com/articles/signs-youre-being-breadcrumbed-at-work-and-how-to-deal
 https://www.hrmonline.com.au/section/featured/breadcrumbing-ghosting-workplace/
