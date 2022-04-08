@@ -1,0 +1,247 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Mapping a Domain Model to RESTful</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Mapping a Domain Model to RESTful" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Mapping a Domain Model to RESTful</h1>
+    <div class="meta">        
+Published on Friday, December 29, 2017<br>    </div>
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>In the Object-Oriented discipline, an <em>object</em> <strong>is the bundling of data and behavior</strong>.  Martin Fowler defined the First Law of Distributed Objects.  That law states &quot;<strong>Don't distribute your objects</strong>&quot;.</p>
+<p>A <em>domain model</em> is a conceptual <strong>object model of a domain's behavior and structure (entities, data, relationships)</strong>.  It is considered an anti-pattern if a domain model is <em>anemic</em>: if it has hardly any behavior.</p>
+<p>RESTful APIs have become the de facto standard for distributed applications that provides <strong>stateless access to and manipulate textual representations of <em>resources</em></strong>.  i.e. the textual representation is a document or file.  A resource is a mapping to a concept or concepts; a resource is not the implementation details that may have been used during the request for the resource.</p>
+<p>We're in an industry with a complexity that requires distributing domain behavior across multiple processes.  So, if RESTful APIs are about providing access to documents or files, yet we need to distribute behavior, what do we do?</p>
+<blockquote class="blockquote">
+<p>This post is about making a <em>domain model</em> accessible by RESTful API, and not just making your data (entities) available to the outside world.  That doesn't mean there's no need to provide access to your data a resources, but providing data only by way of your domain model (that is also supposed to abstract <em>behavior</em> is kinda pointless).</p>
+</blockquote>
+<p>Our industry is very dichotomous: only one thing seems to the right thing and any other thing is wrong (more like the other thing is ignored: Shiny New Thing, Maslow's Hammer, etc.).  Those things can be right, but not <em>on their own</em>: it's contextual.</p>
+<p>But why do these two things (object-oriented and RESTful) seem to conflict with each other?  How are we to maintain a dichotomy if we have two correct things?  It gets back to that <em>context</em> I talked about earlier.  We will <em>always</em> need to perform activities and tasks.  Sometimes it's all but <em>required</em> to distribute that processing.  That doesn't mean Object-Oriented and RESTful are contradictory.  Each provides a scope by which to follow their generally accepted practices, in <em>that context</em>.</p>
+<p>We don't want to <em>distribute objects</em>, but we want to <em>distribute processing</em>.  How do we do this with domain models consisting of objects?  With RESTful we're expected to be focused on <em>resources</em>.  It sounds very limiting, but the limit is really a thinking error.  Some people seem stuck on a RESTful API being entirely about resources (nouns) and not about behavior (verbs).  But, that is limited only by what we consider the resource to be.</p>
+<p>In RESTful, resources effectively need to manifest as <em>documents</em>, but that doesn't mean our API can't provide access to execution of behavior.  Even with the narrowest view of a resource that API still provides access to behavior.  In the simplest of scenarios that behavior is one the methods POST, GET, PUT, PATCH, or DELETE (there's also HEAD, OPTIONS, TRACE, and CONNECT; but we don't use those in with REST).  Those methods are sometimes referred to as <em>verbs</em>.  Someone unfamiliar with HTTP and REST may simply proclaim &quot;create more methods!&quot;.  That's wrong, that's not REST and that's not HTTP (well, <em>syntactically</em> it <em>is</em> HTTP; just like <em><code>goto</code></em> is syntactically acceptable)—the method is applied to the <em>resource</em>, not what the <em>resource represents</em>.  What we <em>can</em>, and <em>should</em>, do is consider that a resource can be a representation of a <em>request to perform behavior</em>.  The <em>document</em>—or contents of the resource—then becomes the result or outcome of that behavior.  We can realize that objective by in simplistic circumstances by converting the behavior verbs we want to execute to resource nouns.  I don't mean just using a verb like a noun like &quot;What's your <em>ask</em>?&quot;  I mean <a href="https://en.wikipedia.org/wiki/Nominalization"><em>nominalizing</em></a> the verb into a noun.  e.g. &quot;Explain&quot; to &quot;Explanation&quot; or &quot;Generate&quot; to &quot;Generation&quot; or &quot;Calculate&quot; to &quot;Calculation&quot;... I'm sure you can find lists or an <a href="https://www.wordsapi.com/">API</a> to get the noun form of a verb.</p>
+<blockquote class="blockquote">
+<p>To be clear: I'm suggesting that RESTful and OO can complement each other.  I'm not suggesting pick one.  I am recommending using each for the right context. Continue to use OO for modeling a domain (behavior and data, organized by object) to implement at the process level and continue to use HTTP and RESTful as the protocol for distributed application APIs.</p>
+</blockquote>
+<p>If you already have a domain model you want to make accessible via a RESTful API, you might think Contract First or Design by Contract is out the window.  I don't think this is true.  I think any interface intended to be used by anything yet-to-be-designed needs to be <em>Concepts-Oriented</em>--that is the interface should only present conceptual things (i.e. the concepts that have led to an implementation).  Contract First and Design by Contract are easy ways to get that because they suggest you define that contract up front, prior to solutioning and implementation.  That's fine when you can do it, but it's really hard to get <em>Concepts-Oriented</em> within a design that evolves along with the implementation over time with that chicken-and-egg &quot;Contract First&quot; or &quot;Design by Contract&quot; mentality.</p>
+<p>So, back to a domain model that you want to make accessible by RESTful APIs... The ideal domain model consists of objects that implement encapsulation and abstraction properly.  That is, they hide implementation details and provide access to behavior.  That behavior needs to be mapped to a &quot;resource&quot; to be made available via the RESTful API.  The details of that mapping have been explained above; but how do we work those nouns into a RESTful API?  It's not just a matter of sticking this new resource as a root path or within any-old path hierarchy.  The resource as an operation request needs to be associated with the concept it applies to.</p>
+<p>In RESTful, the concepts we make available are <em>resources</em>.  For one resource to be applied within another, we effectively make it a sub-resource.  The parent resource could be completely conceptual, i.e. like a business function: <code>/accounting/reconciliation</code>.  But, I'd argue that there might be something missing from the domain if you find something that is unable to be truly modeled as a resource.  e.g. <code>/accounts/1234/reconciliation</code>. So, in this case, if we POSTed to this URI we'd be requesting the creation of a <em>reconciliation</em> resource (AKA the request to execute the <code>reconcile</code> behavior) for <code>account</code> 1234.</p>
+<p>When modeling behaviors, especially over the network, we shouldn't expect them to be atomic--that is happening effectively instantaneously.  Luckily HTTP accounts for that with status codes like 202 Accepted.  When 202 is used, the response should fulfil the HATEOS constraint of REST and provide a hypermedia link to the new &quot;resource&quot;. That new resource can be accessed directly for status of the request or to get the outcome.  That doesn't stop you from <em>not</em> using 200 in circumstances where the request could be executed atomically.  Any HTTP-compliant client should handle 200 and 202.  The <em>request to perform behavior</em> model fits well with an independence from atomicity because if the behavior isn't atomic, you really are interested in the &quot;request&quot; and whether it's completed.</p>
+<h2 id="benefits">Benefits</h2>
+<ul>
+<li>Intention-revealing interfaces.  An API that provides an interface that details the intent of the request it's easier to understand what it does--simply building on standard HTTP methods POST, GET, PUT, PATCH, DELETE, any other behavior the API provides is not obvious.</li>
+<li>Makes the implicit explicit.  The implicit waiting for a non-atomic request becomes explicit.</li>
+<li>RESTful: this maintains the <em>resource</em> concept without having to deviate from it.</li>
+</ul>
+<h2 id="being-successful">Being Successful</h2>
+<ul>
+<li>Recognize a Command-Query Responsibility Segregation (CQRS) point of view of how you're making the resources available in your RESTful APIs.</li>
+<li>Think declaratively rather than imperatively: model a resource on the conceptual operation that needs to be performed (declarative), rather than simply CRUD abilities to data providing the ability to tell the API how to perform an operation (imperative)</li>
+<li>Treat atomicity as the exception, not the rule.</li>
+</ul>
+<p>How might this affect the design of Entity Services?  Well, that's a topic of a future post</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://martinfowler.com/bliki/FirstLaw.html">First Law of Distributed Objects</a></li>
+<li><a href="https://martinfowler.com/eaaCatalog/domainModel.html">Domain Model Pattern</a></li>
+<li><a href="https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling">REST API Design - Resource Modeling</a></li>
+<li><a href="http://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">Resources and Resource Identifiers</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nominalization">Nominalization</a></li>
+<li><a href="https://www.wordsapi.com/">Words API</a><!-- 2017, December--></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful'
+    'Mapping a Domain Model to RESTful'
+    'http://blog.peterritchie.com/posts/Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/29/17');
+    console.info('Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Mapping a Domain Model to RESTful';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Mapping&#x2B;a&#x2B;Domain&#x2B;Model&#x2B;To&#x2B;RESTful';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

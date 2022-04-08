@@ -1,0 +1,237 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - A Upcoming Pandemic of Domain Anaemia</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - A Upcoming Pandemic of Domain Anaemia" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/A-Upcoming-Pandemic-of-Domain-Anaemia" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>A Upcoming Pandemic of Domain Anaemia</h1>
+    <div class="meta">        
+Published on Thursday, January 29, 2009<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/ALTNET" class="btn btn-default btn-xs">ALT.NET</a>
+                    <a role="button" href="/tags/AntiPattern" class="btn btn-default btn-xs">AntiPattern</a>
+                    <a role="button" href="/tags/DDD" class="btn btn-default btn-xs">DDD</a>
+                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
+                    <a role="button" href="/tags/January-2009" class="btn btn-default btn-xs">January 2009</a>
+                    <a role="button" href="/tags/Microsoft" class="btn btn-default btn-xs">Microsoft</a>
+                    <a role="button" href="/tags/Microsoft-Patterns-and-Practices" class="btn btn-default btn-xs">Microsoft Patterns and Practices</a>
+                    <a role="button" href="/tags/OOD" class="btn btn-default btn-xs">OOD</a>
+                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Visual-Studio-2010-Best-Practices" class="btn btn-default btn-xs">Visual Studio 2010 Best Practices</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2009/01/29/a-upcoming-pandemic-of-domain-anaemia/" title="Permalink to A Upcoming Pandemic of Domain Anaemia">Source</a></p>
+<h1 id="a-upcoming-pandemic-of-domain-anaemia">A Upcoming Pandemic of Domain Anaemia</h1>
+<p>There's a well-known anti-pattern called the anaemic domain model<a href="http://en.wikipedia.org/wiki/Anemic_Domain_Model" title="Anemic Domain Model - Wikipedia, the free encyclopedia">1</a>. This anti-pattern basically says domain entities, chronically, have little or no behaviour (remember, object-oriented design is about attributes <strong>and</strong> behaviour).</p>
+<p>It should be obvious that a domain model that isn't truly object oriented is a domain model with a problem. But, let's look at other reasons why the Anaemic Domain Model is an anti-pattern. Your Domain is the nexus, the essence, of your system.</p>
+<p>An anaemic domain model is basically a reporting system. Each &quot;Entity&quot; becomes, essentially, a query. This is fine, reporting systems are necessary and prevalent. But, to shoe-horn a domain model on top of this leads away from good reporting patterns that could add value and increases complexity, needlessly. The designers spend most of their time trying to force entities on the system, without recognizing the basic reporting nature of the system. This usually leads to &quot;reports&quot; that have to pull in multiple domain &quot;entities&quot; to generate the report–rehydringing data into an entity (usually through some sort of ORM) with no value added. i.e. an ORM that will manage the child-parent relationship (and either pre-load or lazy-load aggregates) doesn't provide much value here.</p>
+<p>The worst case scenario with an anaemic domain model is that there really is behaviour there; but it's not handled in the domain entities; it's handled in a different layer. This is a problem because this circumvents the whole point of a domain model and layering.</p>
+<p>One indication of anaemia is that most of the domain classes simply contain attributes. Anyone familiar with patterns should recognize this as a Data Transfer Object, not a Domain Entity. There's nothing wrong with DTOs, they're very important in almost all systems with any sort of complexity; but they're not Domain Entities. Let's be truthful, there are systems with little or no behaviour in the domain; and that's not a bad thing. Systems like this likely don't need a Domain Model and may not need techniques like Domain Driven Design. The quicker people recognize that, the quicker they can be using a more appropriate architecture and design. In some extreme cases the anaemic-domain-entity-DTOs service other DTOs</p>
+<p>Now, where am I going with this? Well, there's been a series of guidance out of Microsoft Patterns and Practice about some application &quot;patterns&quot;.</p>
+<p>First, let me describe what a pattern is. A pattern is a way of &quot;documenting a solution to a design problem&quot; <a href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)" title="Design pattern (computer science) - Wikipedia, the free encyclopedia">3</a>. First, for it to be a pattern, it needs to detail the problem and it's context, then provide a solution. The latest &quot;patterns&quot; from P&amp;P do not detail the problem or a context. They're simply architectural descriptions.</p>
+<p>Now the association between the Anaemic Domain Model and the latest P&amp;P guidance. In 3 of the 5 recently publish &quot;patterns&quot; the following is detail is included: &quot;A Domain Entity pattern is used to define business entities that contain data only.&quot; This is the very definition of an Anaemic Domain Model. Plus, in the RIA pattern the following, contradictory, detail is included: &quot;Domain entities are responsible for implementing business rules. Entities from the domain model represent business objects that contain data and implement behavior [sic]. In other words, the business objects are responsible for implementing business operations and interacting with other business objects.&quot;</p>
+<p>This is disconcerting because historically sample code and guidance from Microsoft is simply reused without thought. This leads to poorly designed and architected applications, and the .NET community as a whole is seen as one that produces poor-quality code and design. Without context about the problems these patterns try to solve, they will be misused—likely forced upon contexts and situations where they don't fit, simply because &quot;they're from Microsoft&quot;.</p>
+<p><a href="http://www.martinfowler.com/bliki/AnemicDomainModel.html" title="MF Bliki- AnemicDomainModel">1</a> <a href="http://www.martinfowler.com/bliki/AnemicDomainModel.html" title="MF Bliki- AnemicDomainModel">MF Bliki- AnemicDomainModel</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Anemic_Domain_Model" title="Anemic Domain Model - Wikipedia, the free encyclopedia">2</a> <a href="http://en.wikipedia.org/wiki/Anemic_Domain_Model" title="Anemic Domain Model - Wikipedia, the free encyclopedia">Anemic Domain Model – Wikipedia, the free encyclopedia</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)" title="Design pattern (computer science) - Wikipedia, the free encyclopedia">3</a> <a href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)" title="Design pattern (computer science) - Wikipedia, the free encyclopedia">Design pattern (computer science) – Wikipedia, the free encyclopedia</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'A-Upcoming-Pandemic-of-Domain-Anaemia'
+    'A Upcoming Pandemic of Domain Anaemia'
+    'http://blog.peterritchie.com/posts/A-Upcoming-Pandemic-of-Domain-Anaemia'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/29/09');
+    console.info('A-Upcoming-Pandemic-of-Domain-Anaemia');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'A Upcoming Pandemic of Domain Anaemia';
+    var disqus_url = 'http://blog.peterritchie.com/posts/A-Upcoming-Pandemic-of-Domain-Anaemia';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'A-Upcoming-Pandemic-of-Domain-Anaemia';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

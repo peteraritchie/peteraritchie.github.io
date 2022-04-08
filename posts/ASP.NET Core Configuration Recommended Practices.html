@@ -1,0 +1,372 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - ASP.NET Core Configuration Recommended Practices</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - ASP.NET Core Configuration Recommended Practices" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/ASP.NET%20Core%20Configuration%20Recommended%20Practices" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>ASP.NET Core Configuration Recommended Practices</h1>
+    <div class="meta">        
+Published on Monday, September 24, 2018<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/September-2018" class="btn btn-default btn-xs">September 2018</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><em>ASP.NET Core</em> and <em>ASP.NET Core Configuration</em> build upon some fundamental and important principles to maintain its vision.  Having worked with some of those principles for years and more recently working with ASP.NET Core Configuration and guiding other team members, I've come up with a recommended practices view of the principles through the eyes of ASP.NET implementation examples.  It has helped me to have a deconstructed view of ASP.NET Core (and many other things) with those principles in mind, I hope it helps you too.</p>
+<p>Some of the principles:</p>
+<ul>
+<li>Separation of Concerns</li>
+<li>Loose coupling</li>
+<li>Interface Segregation</li>
+<li>Single Responsibility</li>
+<li>Dependency Inversion</li>
+<li>Don't Repeat Yourself</li>
+<li>Explicit Dependencies</li>
+</ul>
+<h2 id="compartmentalization-sections-are-your-friends">1. Compartmentalization: Sections Are Your Friends</h2>
+<h3 id="do-separate-independent-configuration-groups-by-sections"><span id=1-1>1.1</span> <strong>Do</strong> separate independent configuration groups by sections</h3>
+<p>One big chunk of configuration (essentially a big chunk of key-value pairs) as the configuration for all the individual components of your application has maintainability issues.  It Works™, but that means that every component that is individually configurable within your application is more tightly-coupled to all the others because there is no explicit abstraction between their settings data.  Something more maintainable is to separate the component configurations from one another by a section in the configuration.  An appsettings.json example:</p>
+<pre><code class="language-JSON">{
+  &quot;Logging&quot; {
+    &quot;Debug&quot;: {
+      &quot;LogLevel&quot;: {
+        &quot;Default&quot;: &quot;Warning&quot;
+      }
+    }
+  }, 
+  &quot;ConnectionStrings&quot;: {
+    &quot;BloggingDatabase&quot;: &quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;&quot;
+  },}
+</code></pre>
+<p>...where the sections are &quot;Logging&quot; and &quot;ConnectionStrings&quot;, and subsections &quot;Debug&quot; and &quot;LogLevel&quot;.</p>
+<p>ASP.NET does a lot to allow you to be explicit and to support Dependency Inversion, and section separation of configuration will make that and the following recommendations easier.</p>
+<h3 id="do-not-couple-all-your-classes-to-iconfiguration"><span id=1-2>1.2</span> <strong>Do not</strong> couple all your classes to <code>IConfiguration</code></h3>
+<p>In the same vein as <a href="#1-1">1.1</a>, using a single <code>IConfiguration</code> instance all over the place is the same as all your components being coupled to each others' configuration.  <code>IConfiguration</code> <em>is</em> loosely coupled,  but <em>maintain loose coupling at the class/component level too</em>.</p>
+<p>See also <a href="#Use_of_C#_built-in_types_in_constructor_parameters">Use of C# built-in types in constructor parameters</a></p>
+<h2 id="configuration-isnt-just-appsettings">2. Configuration Isn't Just <code>appsettings</code></h2>
+<p>Out of the box, ASP.NET Supports appsettings.json, environment-specific appsettings.json, command-line arguments, environment variables, ini files, XML config files, in-memory data, and any custom source/provider you need.</p>
+<p>Viewing the application configuration as being manifested by appsettings JSON files is very limiting.  Worse case it becomes an expectation and the ability to change configuration depends on loading appsettings:</p>
+<pre><code class="language-csharp">	var builder = new ConfigurationBuilder()
+		.SetBasePath(Directory.GetCurrentDirectory())
+		.AddJsonFile(&quot;appsettings.json&quot;);
+
+	Configuration = builder.Build();
+</code></pre>
+<p>As we'll see, ASP.NET configuration is very powerful and flexible, <em>think of ASP.NET Configuration independently of appsettings and that appsettings is just one part of it</em>.</p>
+<h3 id="do-think-of-asp.net-configuration-as-a-means-to-a-configuration-management-end"><span id=2-1>2.1</span> <strong>Do</strong> think of ASP.NET configuration as a means to a Configuration Management end</h3>
+<p>ASP.NET Configuration is powerful; powerful enough to be the application's pane of glass into Configuration Management.  ASP.NET Configuration provides a unified view of the independent variables that affect the success/outcome of application functionality. (think of the application as a function and configuration is the container of &quot;inputs&quot; that affect dependent variables to be observed or measured).</p>
+<h3 id="do-not-couple-code-to-source-of-configuration-data"><span id=2-2>2.2</span> <strong>Do not</strong> couple code to source of configuration data</h3>
+<p>ASP.NET Core configuration is powerful and flexible, there is no need for controller, model, or domain classes to know anything about details like appsettings.json, environment variables, etc.  Let ASP.NET Configuration handle all of that heavy lifting so that controller, model, and domain depend only upon abstractions, including these <em>configuration abstractions</em>.</p>
+<h3 id="consider-using-the-options-pattern-for-grouping-settings"><span id=2-3>2.3</span> <strong>Consider</strong> using the Options Pattern for grouping settings</h3>
+<p>One of the goals of a Dependency Injection container is to act as a registry--an opt-in mechanism to resolve instances from types and to relieve construction logic from dependents.  Settings, options, and configuration are genuinely unique; they're not object-oriented but data containers or shapes.  As data containers there's an expectation of &quot;default&quot; values and &quot;missing&quot; values and often &quot;missing&quot; means falling back to &quot;defaults&quot;.  But, in an opt-in registry situation, what does that mean?</p>
+<p>That's what <code>IOptions</code> does for you, you don't have to know that &quot;defaults&quot; need to be registered or to force the responsibility of knowing what &quot;defaults' mean on a boostrapper.  Using <code>IOptions&lt;T&gt;</code> in your constructors means you don't have to worry about that.  Using <code>IOptions&lt;T&gt;</code> is an indirect <em>opt-in of <code>T</code></em>, the container will go ahead and instantiate it if one hasn't already been registered with specific values (it doesn't do that with any other types).  This means the constructor of the options class takes on the responsibility of what &quot;defaults&quot; mean--which is more maintainable.</p>
+<p>The Pattern is using <code>IOptions&lt;T&gt;</code> in constructors to inject settings via an instance of <code>T</code>, and that any configuration is loaded via <code>services.Configure&lt;TOptions&gt;(Configuration.GetSection(&quot;TOptions&quot;))</code>.  But, a key part of that pattern are <em>the defaults</em>. So, the shapes you use as <code>TOptions</code> types should <em>set default values</em>.  For example:</p>
+<pre><code class="language-csharp">public class MyOptions
+{
+	public MyOptions()
+	{
+		// Set default value.
+		Option1 = &quot;value1_from_ctor&quot;;
+	}
+
+	public string Option1 { get; set; }
+	public int Option2 { get; set; } = 5;
+}
+</code></pre>
+<p>For more detail, see <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1">Options Pattern</a></p>
+<h3 id="do-understand-configuration-source-default-precedence"><span id=2-4>2.4</span> <strong>Do</strong> understand configuration source default precedence</h3>
+<p>When using the ASP.NET Core <code>WebHostBuilder</code>, the order of precedence of configuration sources is:</p>
+<ol>
+<li><strong>appsettings.json</strong></li>
+<li><strong>appsettings.<em>env</em>.json</strong></li>
+<li><strong>[<span title="Developer">User</span> Secrets]</strong></li>
+<li><strong>Environment Variables</strong></li>
+<li><strong>Command Line</strong></li>
+</ol>
+<p>To be specific, the order of precedence mirrors the order the providers are added to the configuration builder.  The above is really just how <code>WebHostBuilder</code> implements them.</p>
+<p>You can override all that if you want, but don't cause yourself that pain: accept the defaults of <code>WebHostBuilder</code>.</p>
+<h3 id="do-know-how-to-override-settings"><span id=2-5>2.5</span> <strong>Do</strong> know how to override settings</h3>
+<p>Configuration supports a variety of providers.  Some inherently support structured, complex data; some don't.  JSON is the quintessential example of structured configuration for ASP.NET:</p>
+<pre><code class="language-json">{
+  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Debug&quot;,
+      &quot;System&quot;: &quot;Information&quot;,
+      &quot;Microsoft&quot;: &quot;Information&quot;
+    }
+  }
+}
+</code></pre>
+<p>And command-line arguments are the quintessential example of <em>unstructured</em>:</p>
+<p><code>MyApplication.exe --Verbosity true</code></p>
+<p>But, configuration providers translate whatever structure they support into the <em>flat</em> structure that ASP.NET Core configuration supports.  To do that, providers simply use a colon <code>:</code> as hierarchy level separators.  So, the <code>Default</code> key name from the above JSON has a fully-qualified configuration key name of <code>Logging:LogLevel:Default</code>.  Which means you can override what is in appsettings with key/value pair from anyware, e.g. via the command line:
+<code>MyApplication --Logging:LogLevel:Default Error</code></p>
+<p>And to override appsettings values with environment variable values, use a double underscore <code>__</code> as a hierarchy delimiter instead of a colon hierarchy level delimiter:</p>
+<p><code>SET Logging__LogLevel__Default=Error</code></p>
+<h2 id="asp.net-core-bootstrapping-is-all-about-the-builder-pattern-and-the-dependency-injection-technique">3. ASP.NET Core bootstrapping is all about the Builder Pattern and the Dependency Injection technique</h2>
+<h3 id="do-understand-the-bounds-of-builders-and-utilize-them-correctly"><span id=3.1>3.1</span> <strong>Do</strong> understand the bounds of builders and utilize them correctly</h3>
+<p>To maintain the level of loose coupling that has lead to ASP.NET Core advancements, builders are essential.  Builders provide the ability to describe (declaratively) what is needed to compose things from dependencies, and avoid coding how (imperatively) to compose things <em>with</em> dependencies.</p>
+<p>The flow of things is often useful when getting into advanced situations:</p>
+<p>Building the web host starts in Program.Main, building configuration spawns from building the web host, configuration is built before spawning Startup from building the web host, Startup is created before configuring services, configuring services completes before application builder, application builder completes before controllers are instantiated, some services may be instantiated after the application builder completes.</p>
+<p>That flow results in some expectations:</p>
+<ul>
+<li>Use the application builder to amend what a built application means.</li>
+<li>Don't expect to use services with <code>IConfigurationBuilder</code></li>
+<li>Use the configuration builder only to describe what building configuration means.</li>
+<li>Don't expect to do any configuration building when services start configuring.</li>
+<li>Use the services collection to register instances or types for dependencies instead of within the dependencies.</li>
+<li>Add dependent service information after adding the information for services they depend upon.</li>
+<li>If service instances are required before service configuration is complete, instantiate them in <code>ConfigureServices</code> and use them before adding them to the services collection.</li>
+</ul>
+<p>Dependency inversion means that the order of operations start is opposite to the order of dependency:</p>
+<ul>
+<li>host→configuration→services→application</li>
+<li>application⇢services⇢configuration⇢host</li>
+</ul>
+<h3 id="avoid-constructing-any-instance-that-arent-used-through-services-collection"><span id=3.2>3.2</span> <strong>Avoid</strong> constructing any instance that aren't used through Services Collection</h3>
+<p>Needing to construct an instance before you've added all dependent services to the services collection is an indication of a potential dependency problem (not inverted, or circular).  So, avoid doing that without a specific reason (besides to Get It To Work™).</p>
+<h1 id="metrics">Metrics</h1>
+<h2 id="smells">Smells</h2>
+<p>Some less-measurable things that you can watch for that will help recognize refactoring candidates...</p>
+<h3 id="use-of-c-built-in-types-in-constructor-parameters">Use of C# built-in types in constructor parameters</h3>
+<p>The C# <a href="http://bit.ly/CsharpPrimitives">built-in</a> types are the building-blocks for all other complex types.  Parametric Polymorphism and Ad hoc Polymorphism are the language features that allow the compiler and runtimes to differentiate which thing to use while supporting looser coupling.  (e.g. Generics and Function Overloading).  Dependency Inversion depends heavily on Dependency Injection and Dependency Injection depends heavily on that type inference to achieve that level of loose coupling.</p>
+<p>So, the <em>re-usability of a type</em> is at odds with how <em>reliably another type</em> (dependent on that first type for instantiation input) <em>can be used with Dependency Injection</em>.</p>
+<p>For example, I may have a controller that needs a URL, and that URL could be a string parameter:</p>
+<pre><code class="language-csharp">public class NaiveController
+{
+	public NaiveController(string oAuthUrl)
+	{
+		//...
+	}
+}
+</code></pre>
+<p>and I <em>could</em> use the services collection to inject that URL when the controller is instantiated:</p>
+<pre><code class="language-csharp">services.AddSingleton(&quot;http://api.example.com/fugassi&quot;);
+</code></pre>
+<p>...and the ASP.NET container can infer that when instantiating a <code>NaiveController</code> instance.  <strong>But</strong>, that means you can only have that <em>one</em> <code>string</code> object as a service.  If you had another controller that needed a URL, the container wouldn't be able to figure out which string instance to use (if it supported more than one, unnamed).</p>
+<p>So, when you see the use of built-in types, or very ubiquitous types as inputs to controllers and services, consider refactoring to the Options Pattern or refactoring to a Service.  i.e. it's not just that URL is stored in a built-in type, the <code>Uri</code> type could have been used instead, and the problem would be the same.  Refactored to Options Pattern:</p>
+<pre><code class="language-csharp">public class NaiveController
+{
+	public NaiveController(IOptions&lt;NaiveControllerOptions&gt; options)
+	{
+		var url = options.Value.OAuthUrl;
+		//...
+	}
+}
+</code></pre>
+<p>Refactoring to a service means that functionality is encapsulated within a service.  In the case of the URL example, rather than creating an options type to store that string value, the controller should actually be dependent on another service that would use that URL value but provide behavior.  Refactoring to a service example:</p>
+<pre><code class="language-csharp">public class NaiveController
+{
+	public NaiveController(IOAuthProvider oAuthProvider)
+	{
+		//...
+	}
+}
+//...
+	services.AddSingleton&lt;IOAuthProvider&gt;(new TwitterOAuthProvider(Configuration.OAuthUrl/*...*/));
+</code></pre>
+<p>This is an easy example to understand, but lack of testability of a controller the uses a URL directly might have reared its head before noticing this smell. ¯\_(ツ)_/¯</p>
+<p>See also Introduce Parameter Object refactoring.</p>
+<h3 id="use-of-iconfiguration-outside-of-startup-or-bootstrap">Use of <code>IConfiguration</code> outside of <code>Startup</code> or bootstrap</h3>
+<p>See <a href="#1-2">1.2</a>.  Use of <code>IConfiguration</code> outside of <code>Startup</code> or bootstrap means you're coupling many classes to <code>IConfiguraiton</code>.</p>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://msdn.microsoft.com/en-us/magazine/mt632279.aspx">MSDN Magazine - Essential .NET - Configuration in .NET Core</a></li>
+<li><a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1">Microsoft Docs - Options pattern in ASP.NET Core</a></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'ASP.NET Core Configuration Recommended Practices'
+    'ASP.NET Core Configuration Recommended Practices'
+    'http://blog.peterritchie.com/posts/ASP.NET%20Core%20Configuration%20Recommended%20Practices'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('9/24/18');
+    console.info('ASP.NET Core Configuration Recommended Practices');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'ASP.NET Core Configuration Recommended Practices';
+    var disqus_url = 'http://blog.peterritchie.com/posts/ASP.NET%20Core%20Configuration%20Recommended%20Practices';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'ASP.NET Core Configuration Recommended Practices';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

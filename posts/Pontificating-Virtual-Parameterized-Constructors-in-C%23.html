@@ -1,0 +1,275 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Pontificating Virtual Parameterized Constructors in C#</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Pontificating Virtual Parameterized Constructors in C#" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Pontificating-Virtual-Parameterized-Constructors-in-C%23" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Pontificating Virtual Parameterized Constructors in C#</h1>
+    <div class="meta">        
+Published on Tuesday, November 18, 2008<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/AntiPattern" class="btn btn-default btn-xs">AntiPattern</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/November-2008" class="btn btn-default btn-xs">November 2008</a>
+                    <a role="button" href="/tags/OOD" class="btn btn-default btn-xs">OOD</a>
+                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
+                    <a role="button" href="/tags/Pontification" class="btn btn-default btn-xs">Pontification</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2008/11/18/pontificating-virtual-parameterized-constructors-in-c/" title="Permalink to Pontificating Virtual Parameterized Constructors in C#">Source</a></p>
+<h1 id="pontificating-virtual-parameterized-constructors-in-c">Pontificating Virtual Parameterized Constructors in C#</h1>
+<p><a href="http://blogs.msdn.com/tomholl/archive/2008/11/18/constructors-and-inheritance-why-is-this-still-so-painful.aspx">Tom Hollander recently posted</a> about a change he required to the Enterprise Library for date/time validation. He had to create a new class (rather than modify the Enterprise Library) that derived from another, defective class. One of his complaints was that in order to effectively implement the base class he had to also write matching constructors that simply called the base class. His suggestion was effectively to add the concept of virtual parameterized constructors to C#. I detail &quot;parameterized constructors&quot; because C# already effectively has virtual default constructors. In the following example the base constructor (Form()) is automatically called by the derivative:</p>
+<p>public class MyForm : Form</p>
+<p>{</p>
+<p>public MyForm()</p>
+<p>{</p>
+<p>}</p>
+<p>}</p>
+<p>Virtual parameterized constructors are not new, and from a mere language standpoint this seems reasonable. Pragmatically though, I believe, this is another story. It seems logical to be able to simply inherit the parameterized constructors of the base class; but, there are so many times that this isn't the case or some generally accepted principles that would be contravened by a language addition like this.</p>
+<p>Let's first look at the <a href="http://en.wikipedia.org/wiki/Open/closed_principle">open/closed principle</a> (OCP). The OCP suggests classes should be open for extension but closed for modification. Robert Martin suggests <a href="http://blogs.msdn.com/tomholl/archive/2008/11/18/constructors-and-inheritance-why-is-this-still-so-painful.aspx">1</a> properly designed class hierarchies that obey OCP implement an abstraction; i.e. derive from an abstract class or implement an interface. For example:</p>
+<p>public interface IShape</p>
+<p>{</p>
+<p>void Draw(Graphics graphics);</p>
+<p>}</p>
+<p>public class Rectangle : IShape</p>
+<p>{</p>
+<p>//…</p>
+<p>public void Draw(Graphics graphics)</p>
+<p>{</p>
+<p>///…</p>
+<p>}</p>
+<p>}</p>
+<p>Second, let's look at the &quot;<a href="http://www.ubookcase.com/book/Addison.Wesley/CPP.Coding.Standards.101.Rules.Guidelines.and.Best.Practices/0321113586/ch34lev1sec2.html">prefer composition over inheritance</a>&quot; principle. The effect of a language change like this on a design that prefers composition should be fairly obvious. Here's an example of this principle:</p>
+<p>public interface IPolygon {</p>
+<p>void Draw(Graphics graphics);</p>
+<p>}</p>
+<p>public sealed class Polygon {</p>
+<p>private readonly Point[] points;</p>
+<p>public Polygon(Point[] points) {</p>
+<p>this.points = points;</p>
+<p>}</p>
+<p>public void Draw(Graphics graphics) {</p>
+<p>for(int i = 1; i &lt; points.Length; i++) {</p>
+<p>graphics.DrawLine(Pens.Black, points[i-1], points[i]);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>public class Rectangle : IPolygon {</p>
+<p>private readonly Polygon polygon;</p>
+<p>public Rectangle(Point location, Size size) {</p>
+<p>Point[] points = new Point[5];</p>
+<p>points<a href="http://en.wikipedia.org/wiki/You_Ain%27t_Gonna_Need_It">4</a> = points[0] = location;</p>
+<p>points<a href="http://blogs.msdn.com/tomholl/archive/2008/11/18/constructors-and-inheritance-why-is-this-still-so-painful.aspx">1</a> = new Point(location.X + size.Width, location.Y);</p>
+<p>points<a href="http://en.wikipedia.org/wiki/Open/closed_principle">2</a> = new Point(location.X + size.Width, location.Y + size.Height);</p>
+<p>points<a href="http://www.ubookcase.com/book/Addison.Wesley/CPP.Coding.Standards.101.Rules.Guidelines.and.Best.Practices/0321113586/ch34lev1sec2.html">3</a> = new Point(location.X, location.Y + size.Height);</p>
+<p>polygon = new Polygon(points);</p>
+<p>}</p>
+<p>public void Draw(Graphics graphics) {</p>
+<p>polygon.Draw(graphics);</p>
+<p>}</p>
+<p>}</p>
+<p>Obviously there is no way to use virtual parameterized constructors here.</p>
+<p>Clearly, designs that take into account OCP and prefer-composition-over-inheritance would not benefit from a &quot;virtual parameterized constructor&quot; language addition.</p>
+<p>Finally, let's look at why a class might have many constructors causing such friction for derivatives. There's many reasons why a class might have many constructors. I believe all are indications of a poorly designed class. My first thought would be that many constructors is a result of a large class and that the large-class-code-smell should be an indication for redesign. A large class could be in an indication of a motherclass; but in either case this is likely a single responsibility principle (SRP) violation and the class is doing much more than it should and be redesigned. If the class isn't large but has many constructors, this was likely done not in response to how the class should/would be used but to cover every possible way of constructing the type. This would then be a <a href="http://en.wikipedia.org/wiki/You_Ain%27t_Gonna_Need_It">YAGNI</a> violation and the number of constructors should simply be pared down.</p>
+<p>But, what about when you have to deal with poorly design hierarchies and don't have the ability to modify them? A valid point; but, simply for the lack of friction of writing pass-through constructors I don't think adding to the language to support poorly designed classes is a good for the language or its developers.</p>
+<p>While an addition like virtual parameterized constructors seems benign, its limited actual usefulness makes the effort not worth the reward. Plus, it introduces greater abilities to create poorly designed types.</p>
+<p><a href="http://blogs.msdn.com/tomholl/archive/2008/11/18/constructors-and-inheritance-why-is-this-still-so-painful.aspx">1</a> <a href="http://www.objectmentor.com/resources/articles/ocp.pdf">http://www.objectmentor.com/resources/articles/ocp.pdf</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Pontificating-Virtual-Parameterized-Constructors-in-C%23'
+    'Pontificating Virtual Parameterized Constructors in C#'
+    'http://blog.peterritchie.com/posts/Pontificating-Virtual-Parameterized-Constructors-in-C%23'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/18/08');
+    console.info('Pontificating-Virtual-Parameterized-Constructors-in-C%23');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Pontificating Virtual Parameterized Constructors in C#';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Pontificating-Virtual-Parameterized-Constructors-in-C%23';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Pontificating-Virtual-Parameterized-Constructors-in-C%23';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

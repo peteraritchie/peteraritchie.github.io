@@ -1,0 +1,227 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Generating Windows Phone and Windows Store application images</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Generating Windows Phone and Windows Store application images" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Generating-Windows-Phone-and-Windows-Store-application-images" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Generating Windows Phone and Windows Store application images</h1>
+    <div class="meta">        
+Published on Wednesday, February 5, 2014<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/February-2014" class="btn btn-default btn-xs">February 2014</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/Windows-Phone-80" class="btn btn-default btn-xs">Windows Phone 8.0</a>
+                    <a role="button" href="/tags/Windows-Store" class="btn btn-default btn-xs">Windows Store</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://pr-blog.azurewebsites.net/2014/02/05/generating-windows-phone-and-windows-store-application-images/" title="Permalink to Generating Windows Phone and Windows Store application images">Source</a></p>
+<h1 id="generating-windows-phone-and-windows-store-application-images">Generating Windows Phone and Windows Store application images</h1>
+<p>One thing that you have to get your head around when you get started with Windows Phone or Windows Store development are all the icons you need to have in order to submit an app. Windows Phone 8 needs about 6 icons, depending on the tiles you support and Windows Store needs at least 4 (ApplicationIcon, FlipCycleTileLarge, FlipCycleTileMedium, FlipCycleTileSmall, IconicTileSmall, and IconicTileMediumLarge) depending on what scaling (resolutions) you want to support and whether you want more logos to display in the store.</p>
+<p>You could, of course, have a completely different picture for each of these images; but there are many cases where these images are just a scaled version of one picture. After a couple of app submissions, you quickly grow tired of having to create all these images—even if you're just scaling one picture down to different dimensions. I certainly did, so I decided to automate the process.</p>
+<p>I found that from a Windows Store/Phone aspect the highest common denominator is 300×300, so I create a 300×300 base image and scale it down to the various sizes that are required. After resounding feedback on Twitter that ImageMagick is the way to go for command-line image manipulation, I settled on using ImageMagick to scale the images. ImageMagick has a convert command (executable) to do various things including resizing.</p>
+<h2 id="windows-store">Windows Store</h2>
+<p>To scale down my base image I simply use the resize option and scale down to the various dimensions (50×50, 30×30, 150×150, and 620×300):</p>
+<p>With the 620×300 image I don't want to scale the image to fill the entire space, I just want to take the image and scale it up to 300×300 (or not, since I'm using a 300×300 base image) and centre it in a 620×300 image leaving the unused space transparent. this is where xc:transparent +swap –gravity center –composite comes from. xc:transparent +swap to make a 620×300 background image, and –gravity center –composite to overlay the source image on top of the background.</p>
+<p>For more details on the options for Windows Store logos, check out <a href="http://bitly.com/1bltGeu" title="http://msdn.microsoft.com/en-us/library/windows/apps/hh846296.aspx">http://msdn.microsoft.com/en-us/library/windows/apps/hh846296.aspx</a></p>
+<h2 id="windows-phone-8">Windows Phone 8</h2>
+<p>And it's much the same with Windows Phone 8, with more non-square icons.</p>
+<p>I haven't detailed anything on the Windows Phone 7.x side of things since this seems to be fairly unsupported at multiple levels. If there's interest, I can detail that as well.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Generating-Windows-Phone-and-Windows-Store-application-images'
+    'Generating Windows Phone and Windows Store application images'
+    'http://blog.peterritchie.com/posts/Generating-Windows-Phone-and-Windows-Store-application-images'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/5/14');
+    console.info('Generating-Windows-Phone-and-Windows-Store-application-images');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Generating Windows Phone and Windows Store application images';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Generating-Windows-Phone-and-Windows-Store-application-images';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Generating-Windows-Phone-and-Windows-Store-application-images';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

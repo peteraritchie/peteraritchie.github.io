@@ -1,0 +1,266 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - RESTful Versioning</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - RESTful Versioning" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/RESTful-Versioning" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>RESTful Versioning</h1>
+    <div class="meta">        
+Published on Tuesday, November 12, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/November-2019" class="btn btn-default btn-xs">November 2019</a>
+                    <a role="button" href="/tags/REST" class="btn btn-default btn-xs">REST</a>
+                    <a role="button" href="/tags/Versioning" class="btn btn-default btn-xs">Versioning</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>Versioning is not new.  Versioning seems to be one of those things that people find hard to do or difficult to fully understand, especially with services and APIs.  RESTful versioning seems to be in the realm of Tabs v Spaces, but I want to detail my related observations (mostly of other's writings, but with some added color).</p>
+<h2 id="what-is-a-version">What is a Version?</h2>
+<p>Before going further, I find defining terms so their meaning is explicit and understood. <em>Version</em> is no exception.</p>
+<p>A <em>version</em> recognizes a change to <em>something</em> already established and assigns it an unique identity.  That identity serves as a moniker for <em>what</em> changed so that when the <em>something</em> that changed is processed, it can be differentiated from other <em>somethings</em> of different versions.</p>
+<h2 id="why-do-we-need-a-version">Why Do we Need a Version?</h2>
+<p>Based on what a version <em>is</em>, it may seem easy to at least deduce <em>why</em>.  That deduction usually <em>to differentiate different versions of things</em>.  This is <em>what</em> not <em>why</em>. This is the part that many people seem to dismiss or let slip by.  In the context the knee-jerk response is &quot;different version of the API&quot; (API Versioning).  But, this simply restating what versioning is.  It's similar to defining &quot;version&quot; as</p>
+<blockquote class="blockquote">
+<p>A version is the version of something in relation to other versions of the same thing.</p>
+</blockquote>
+<p>Yeah, using the word you're defining in the definition is <em>helpful</em>.  &quot;Version&quot; must provide:</p>
+<h3 id="support-for-past-representations">Support For Past <em><strong>Representations</strong></em></h3>
+<p>The major reason versioning comes into play is because any one <em>representation</em> of something evolves over time.  Needs change, understanding improves, technology evolves, imperfections are found, etc. and how something is stored or communicated needs to change to accommodate that evolution.</p>
+<p>&quot;Requirements&quot; are an obvious agent of change, and it would be easy to provide a trivial requirements example but a <em>fixing imperfection</em> example would be more persuasive.  Humans like to be open-minded but inherently we live in our own worlds (our own mental model of the world).  Some of us are empathic and recognize parts of other worlds of the people around us. Or we know about a set of archetypes for which we can optimized interaction.  But in reality there are really 8+ billion other worlds out there and it's simply not humanly possible to know the intricacies of each.  Which means we make assumptions and trade-offs of what is acceptable to all of those other worlds.  Usually our audience isn't all 8+ billion people, so we're generally more correct than incorrect in our assumptions.  But, being incorrect is inevitable and expected. Much like we need to support many personalities, preferences, and needs; we also need to:</p>
+<h3 id="support-multiple-representations-of-concepts">Support Multiple <em>Representations</em> of Concepts</h3>
+<p>An example of this type of imperfection are date/time representations.  We live in our own <em>locus</em> (which is like a personal <em>locale</em>) and take for granted things we use or do in our locus from day-to-day, like Date/Time representations.  Local time has been working for each of us for all our lives, we take that for granted and use it in a representation without thinking.</p>
+<p>There are many things that make this problematic and error-prone.  I won't get into detail what  <em>all of those</em> may be (a blog isn't the place for a tome like that).  The <em>fix</em> is, of course, to use a <em>different representation</em>. Implementing that fix and supporting existing representations of complex data means we need to be able to tell different representations of the same data from one another.</p>
+<p>This allows us to know how to translate each representation to the same in-memory structure when we (i.e. our code) encounter these representations; reinforcing that <em>representations</em> differ from the <em>conceptual</em> resource <em>and</em> from the <em>implementation</em> translation of the representation</p>
+<p>We need the ability to translate <em>multiple representations</em> because there will be instances of differing representations <em>in the wild</em> at a time.</p>
+<h3 id="support-multiple-active-representation-versions">Support Multiple <em>Active</em> Representation Versions</h3>
+<p>Increasingly we work in asynchronous environments where communication of data is off-loaded to asynchronous communication technology (like queues, topics, and even threads).  And with the drive to 100% availability this means that we perform software updates <em>in situ</em> or without taking our systems completely off-line (or unavailable).  e.g. <em>indirect</em> communication through a queue makes communication of the message independent of the processes. Until it reaches and is consumed by the destination, the message can be in a queue with neither process executing. This requires components to support <strong>at least</strong> two versions of a representation <em>at the same time</em>.</p>
+<h2 id="attributes-of-rest">Attributes of REST</h2>
+<p>Since we're in the context of <strong>Re</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer where resource <em>representation</em> is front-and-center as well as <em>state</em> of that resource, the following is a review of main features of RESTful services:</p>
+<ul>
+<li>REST is not a distributed object style <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_3_1">3</a> <!--(5.2.1-1)--></li>
+<li>A resource identifier (URI/URN) is a reference to a particular conceptual resource, not to a particular representation of it. <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">1</a> <!--(5.2.1.1-4)--></li>
+<li>A representation of a resource is transfered between REST components. <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">1</a> <!--(5.2.1.1-4)--></li>
+<li>A resource maps to a set of entities that varies over time, not just the representation at the moment <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">2</a> <!--(5.2.1.1-2)--></li>
+<li>The set of entities that are mapped to a resource are considered equal (by resource identifier and/or representation). <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">2</a> <!--(5.2.1.1-2)--></li>
+<li>The semantics of mapping a resource to an entity distinguishes one resource from another and is constant. <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">2</a> <!--(5.2.1.1-2)--></li>
+<li>Representations are late-bound and based on characteristics of the request. <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">2</a> <!--(5.2.1.1-4)--></li>
+<li>An identifier may exist without, or before, any realized representations. <a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1">2</a> <!--(5.2.1.1-2)--></li>
+</ul>
+<h2 id="restful-versioning-options"><em>RESTful</em> Versioning Options</h2>
+<p>A quick review of objectives, for any given resource representation:</p>
+<ul>
+<li>we need to differentiate change independently from unrelated representations</li>
+<li>we need to differentiate different changes to related representations at the same time</li>
+</ul>
+<p>There are really only two fundamental options for <em>API Versioning</em> (I didn't use <em>RESTful Versioning</em> for reasons I hope will become clear):</p>
+<ul>
+<li>Version moniker in the URI/URN, or</li>
+<li>Version moniker in the headers (or media-type)</li>
+</ul>
+<h3 id="uriurn">URI/URN</h3>
+<p>In REST, a URL/URI <strong>only</strong> identifies a resource, it is not a content-type identifier.  One reason for this is <em>Content Negotiation</em>.  Content negotiation details that in the <strong>request for any particular resource</strong>, the <em>representation</em> of the resource (the response) can be negotiated through headers and responses.  That negotiation occurs through the single URL/URI.</p>
+<p>I.e. the response format does not need to be consistent per URL/URI. <a href="https://tools.ietf.org/html/rfc7231#section-3.4">4</a> If it's not clear, supporting multiple representations means there can be <em>many</em> response formats for any single URI/URN.  Since we've already shown that each representation is independent of other, <strong>multiple versions need to be represented per URL</strong>. Making something like <code>example.com/picture/v2</code> for the SVG format meaningless. Therefore URI/URN versioning doesn't support some fundamental REST features.</p>
+<h3 id="media-types-headers">Media Types (Headers)</h3>
+<p>Media types are monikers for a particular re presentation.  XML and Json or JPEG and PNG are examples of particular representations of the same resource.  But media types are more complex than that.
+Media types can consist of a registered type (<code>application</code>, <code>audio</code>, <code>example</code>, <code>font</code>, <code>image</code>, <code>message</code>, <code>model</code>, <code>multipart</code>, <code>text</code>, and <code>video</code>), a subtype (the registered format in the standards tree, or a dot-delimited subtype tree), a suffix (prefixed with <code>+</code>), and optional parameters (key/optional-value pairs prefixed with <code>;</code>). Suffixes can be used to specify the underlying <em>structure</em> of a type/subtype, e.g. JSON and XML.  Formats like SVG can be either textual or binary, so although being a image and SVG, simply specifying <code>image/svg</code> is not enough to cover both of those structures. The media type for the XML format of SVG ends up being <code>image/svg+xml</code>.  Application-specific types use the <code>application</code> type and a subtype in the vendor tree (<code>vnd</code>).  If a custom application format for a <em>person</em> resource that uses XML format would have a media type of <code>application/vnd.person+xml</code>.  If the service also supports JSON it would have another media type <code>application/vnd.person+json</code>. <code>charset</code> is a reserved parameter, other parameters have unique meaning defined within the type/subtype.  for example <code>text/html; charset=UTF-8</code> and <code>application/vnd.person+json; version=2.0.0</code>.</p>
+<p>The take away is that <strong>media-types are independent from the endpoint</strong>.</p>
+<h1 id="wrapping-up">Wrapping Up</h1>
+<p>It may make sense to think that the resource is changing, but in reality it is the representation that changes.  The resource is abstract, like <em>client</em>.  Changing Birth Date from local to UTC doesn't change the fact that the <strong>resource is still a <em>client</em></strong>.  If the resource fundamentally changes, that's when you change the URL/URI.  But not with a version identifier, but a new <em>resource</em>.  If something previously considered a &quot;client&quot; changes so is conceptually no longer a &quot;client&quot;, then a new URI/URN should be used (like &quot;client&quot; to &quot;lead&quot;).  <em>We wouldn't have different versions of clients, merely different representations of client information</em>.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>A URI/URN is a reference to the single conceptual resource and not to a particular representation.  Since media types <em>are</em> the data format of the representation and the same conceptual resource has representations that can change, <strong>media type must be used to specify different representations that a single URI/URNs supports</strong>.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'RESTful-Versioning'
+    'RESTful Versioning'
+    'http://blog.peterritchie.com/posts/RESTful-Versioning'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/12/19');
+    console.info('RESTful-Versioning');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'RESTful Versioning';
+    var disqus_url = 'http://blog.peterritchie.com/posts/RESTful-Versioning';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'RESTful-Versioning';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

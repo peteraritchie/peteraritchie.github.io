@@ -1,0 +1,260 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - What Code Comments are Not For.</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - What Code Comments are Not For." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/What-Code-Comments-are-Not-For." />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>What Code Comments are Not For.</h1>
+    <div class="meta">        
+Published on Monday, January 30, 2012<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/January-2012" class="btn btn-default btn-xs">January 2012</a>
+                    <a role="button" href="/tags/Uncategorized" class="btn btn-default btn-xs">Uncategorized</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/01/30/what-code-comments-are-not-for/" title="Permalink to What Code Comments are Not For.">Source</a></p>
+<h1 id="what-code-comments-are-not-for">What Code Comments are Not For.</h1>
+<p>I deal a lot with other people's and legacy code. One of the things I see very often is what I call &quot;misuse of code comments&quot;. Let me provide an exhaustive list of what code comments are for:</p>
+<ul>
+<li>Describing why code isn't doing something obvious</li>
+</ul>
+<p>There, done.</p>
+<p>What code comments are not for (not complete):</p>
+<p>// set the value of i<br />
+i = value;</p>
+<p>It's obvious that the code is doing that; the comment adds no value here. The compiler provides no validation that the &quot;i&quot; in the comment really applies to any variable in the line the comment applies to. Nor does it even know what line the comment applies to! Comments like this actually introduce some technical debt because I can refactor this code to move it around independently of the comment and thus the comment would appear to annotate some other line of code. Refactoring tools help somewhat with this; but they only really do name matching in comments when you rename a variable. Do you think renaming &quot;i&quot; to &quot;count&quot; really means replacing all &quot;i&quot;'s in all comments with &quot;count&quot;? Probably not; don't use refactoring tools as a crutch.</p>
+<p>You can't possibly know what the reader of your code does and does not know. This is especially true of what they do and don't know of language syntax. The language syntax is your common language; you can only assume they know it. You can't possibly know if a comment about language syntax is going to help the reader or not. If they don't know it, they should look it up. Comments that describe syntax are a no-win proposition, you can't possibly have a comment that helps <em>every</em> reader of the code.</p>
+<p>An example:<br />
+/// <summary><br />
+/// Constructor for class.<br />
+/// </summary><br />
+public MyClass()</p>
+<p>If your reader doesn't know this is a constructor, they probably don't even know what a c'tor is—this comment isn't going to help them much.</p>
+<p>Slightly different example:</p>
+<blockquote class="blockquote">
+<p>/// <summary><br />
+/// Initializes a new instance of the MyClass class<br />
+/// </summary><br />
+public MyClass()</p>
+</blockquote>
+<p>If the reader doesn't know what a c'tor does, does all your code include comments that will help this reader? These comments are a waste of time and add no value. Same technical debt as Obvious, it's not a syntax error to separate the comment from the declaration; there is a risk they will become disconnected or out of synch. If the comment has no value having to manage it also has no value and therefore adds work to the project.</p>
+<p>Another example verging on Obvious:<br />
+public MyClass()<br />
+{<br />
+// Empty<br />
+}</p>
+<p>As this stands, it seems benign. But one, it should be Obvious. Two, if it's not, the reader should be brushing up on language syntax. Three, it's not verified. I can edit this c'tor to make it do something else this is perfectly syntactically correct:</p>
+<p>public MyClass()<br />
+{<br />
+x = 42;<br />
+// Empty<br />
+}</p>
+<p>Now, the comment is meaningless and potentially confusing. Reading this for the first time makes you wonder did the class just have // Empty in it in the past and x = 42 was added, or does &quot;empty&quot; mean something different to the author, or did the author suffer from a stroke and possibly need medical attention?</p>
+<p>You <em>can</em> assume the reader of your code doesn't know anything about the code. If the language can't express the concepts in the code properly (if it can, you should be writing it that way; if you choose not to, comment <em>why</em>.) then comment <em>why</em> the language isn't describing the concepts.</p>
+<p>Writing comments to aid the reader in the understanding of the language is sometimes describing HOW the language is working. That's not describing the code but describing the language. Comments should describe WHY the code was written that way if it's not obvious. Again, the language is the common denominator between the reader and the author. There's many references the reader can refer to to learn the language–let them do that; you may not be the best person to help someone learn the language; at the very least you don't know the degree to which they don't know the language. Let the code clearly describe HOW.</p>
+<p>Use of comments is often a form of religion; people are very opinionated about them in one way or another. Robert Martin pulls no punches in <a href="http://bit.ly/yBatMT">Clean Code</a> by saying:</p>
+<blockquote class="blockquote">
+<p>&quot;The proper use of comments is to compensate for our failure to express yourself in code. Note that I used the word failure. I meant it. Comments are always failures.&quot;</p>
+</blockquote>
+<p>Martin has previous described comments as &quot;apologies&quot; for &quot;making the code unmaintainable&quot;…</p>
+<p>If you want to use concepts like XMLDOC or tools like JavaDoc to document members and classes, that's fine; just make sure your comments are meaningful and can stand alone.</p>
+<p>For what it's worth, these are comments that I have encountered; more than once and on more than one project.</p>
+<p>Do you have some code comment pet peeves? We'd love to hear them!</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'What-Code-Comments-are-Not-For.'
+    'What Code Comments are Not For.'
+    'http://blog.peterritchie.com/posts/What-Code-Comments-are-Not-For.'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/30/12');
+    console.info('What-Code-Comments-are-Not-For.');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'What Code Comments are Not For.';
+    var disqus_url = 'http://blog.peterritchie.com/posts/What-Code-Comments-are-Not-For.';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'What-Code-Comments-are-Not-For.';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

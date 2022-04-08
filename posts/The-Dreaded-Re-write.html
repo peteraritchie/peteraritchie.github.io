@@ -1,0 +1,238 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - The Dreaded Re-write</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - The Dreaded Re-write" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/The-Dreaded-Re-write" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>The Dreaded Re-write</h1>
+    <div class="meta">        
+Published on Sunday, February 22, 2015<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/Architecture" class="btn btn-default btn-xs">Architecture</a>
+                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
+                    <a role="button" href="/tags/February-2015" class="btn btn-default btn-xs">February 2015</a>
+                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Software-Development-Practices" class="btn btn-default btn-xs">Software Development Practices</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://pr-blog.azurewebsites.net/2015/02/22/the-dreaded-re-write/" title="Permalink to The Dreaded Re-write">Source</a></p>
+<h1 id="the-dreaded-re-write">The Dreaded Re-write</h1>
+<p>There are lots of people who have arbitrarily said &quot;never do a rewrite&quot;. Some have caveats like &quot;unless you have to&quot; (without criteria). Some have even called it the &quot;single worst strategic mistake&quot; a software team can make. Refactoring is great, but sometimes a product is in dire straitsand the existing behaviour is part of the problem and ignoring any problem in software is a huge mistake.</p>
+<p>Software evolves over time, the initial design and architecture is based on what was known when the project started. If a software product lasts long enough, changes to, and additions to, functionality eventually mean the design and architecture are no longer sufficient. We have all sorts of great patterns and practices that allow us to create design and architectures that are able to accommodate changing requirements, but future-proofing software is worse than a total rewrite (i.e. designing something that is not based on actual requirements—designing on what <em>might be</em>). &quot;Never do a rewrite&quot; is a sign of a immature project team not capable of re-architecting to something better.</p>
+<p>When software lives beyond the applicability of its design and architecture, software effectively goes on life-support. Working with software not designed to accommodate certain features means adding these features involves a lot of tweaking and hacking (keeping in mind, &quot;fixing&quot; something might entail adding features). Adding features becomes complex and error-prone. Adding features becomes harder and harder over time and the development team becomes less and less responsive. The amount of time tweaking and hacking required to support new features is directly proportional to the amount of time required to fix the bugs that are introduced by those tweaks and hacks. That's the nature of a tweak/hack. There will be times when it's all-hands-on-deck trying to fix newly introduced problems–and no real forward progress can be made on new features or otherwise.</p>
+<p>Experienced software designers and architects ignore this &quot;never re-write&quot; distortion and instead recognize when a design/architecture is no long sufficient. It is then that they take action. But, rather than misleading absolutes like &quot;never do a re-write&quot; or superlatives like &quot;single worst strategic mistake&quot; (because all absolutes and superlatives have exceptions in software development: &quot;never say never&quot;), they begin a re-architecture whose end-goal is effectively a &quot;re-write&quot;. This doesn't mean hide a <em>re-write</em> by calling it <em>re-architecture</em>; let's look a some criteria to temper a <em>re-architecture</em>.</p>
+<p>Writing software isn't an atomic operation; things happen while you're architecting/designing/writing and by the time something is complete the assumptions you had going in may be wrong. This is the fundamental premise of agile software teams: the ability to recognize that change and be able to accommodate for it. Re-design and re-architecture is the same way, you can't simply take a team of people and &quot;go dark&quot; and expect to come out at the end and be successful.</p>
+<p>Redesigning and re-architecting needs to take into account the environment it is in, the environment that needs redesign, the environment that is effectively funding the redesign. Re-architecture needs to take into account that writing any code takes time (even if it's writing new code) and accept existing products will exist until a re-architecture is fully complete and will need attention during that time.</p>
+<p>Re-architecture should not be considered a &quot;total re-write&quot; it should be viewed as an &quot;eventual re-write&quot;. &quot;total re-writes&quot; are viewed as atomic—something that cannot be interrupted between the start and the completion. Re-architecture is a <em>phased re-write</em>. A sly architect will re-architect a system so that parts of the system may be redesigned and implemented independently of one another. There are many ways to approach this independence, all of which deal with abstraction. Even the simplest of maintainable software has abstractions.</p>
+<p>A well componentized architecture facilitates the phased nature of re-architecture. But, we're talking about something with a sub-optimal architecture, aren't we? So, which abstractions do we use? In a simple inter-process architecture, such as:</p>
+<p><img src="http://pr-blog.azurewebsites.net/wp-content/uploads/2015/02/Deploy_thumb.png" class="img-fluid" alt="Deploy" title="Deploy" /></p>
+<p>…we have typical <em>object seams</em> where the typical OO data-hiding comes into play and we can vary our implementation details as we see fit—one component at a time. As I mentioned in my <a href="http://blog.peterritchie.com/?p=2291">previous post</a>, the concept of seams allows us to define a logical API grouping as a seam. In much the same way object-orientated languages provide abstraction boundaries (well defined) we can define logical abstraction boundaries (in the form of logical API groupings) to create new seams by which we can organize and plan re-architecture. In our previous architecture, we can see a couple of logic abstractions that we can view as seams:</p>
+<p><img src="http://pr-blog.azurewebsites.net/wp-content/uploads/2015/02/Deployprocessseams_thumb.png" class="img-fluid" alt="Deploy process seams" title="Deploy process seams" /></p>
+<p>As we can see, we've recognized seams at the inter-process boundaries of the Server and the Service. This allows is to not only organize independent work bounded by component seams, but also allows us to organize independent work bounded by inter-process seams. If we maintain these seams over time, we can view the Server and the Service processes as implementation details that are free to evolve how they need to. These are fairly easy abstraction points, and probably ones that seem (no pun intended) obvious. You probably already work within constrictions like this.</p>
+<p>With a sufficiently complex code, breaking work up on at these inter-process seams may still be a huge amount of work to bite off. In order to delineate work to a more manageable level, a re-architecture might take some interrelated classes and logically group them together to create a new component whose existing interaction with the rest of the current system is now defined as a seam. For example:</p>
+<p><img src="http://pr-blog.azurewebsites.net/wp-content/uploads/2015/02/intercomponentseams_thumb.png" class="img-fluid" alt="inter-component seams" title="inter-component seams" /></p>
+<p>This new &quot;component&quot; could be logical or it could be physical. The main point here is we are bounding work to a specific API subset that we can delineate as a seam. We can communicate and reason about this seam in the same way as any other abstraction. We define that seam API as immutable and therefore decouple the work (implementation detail) from the rest of the system down to the build/link level. Changes to anything in this seam will require a re-build but will not require and code changes outside of the seam.</p>
+<p>This seam abstraction allows us to limit the side-effects of a change and better estimate the work involved. This allows to delineate work and assign tasks, as well as better gauge progress once started. The key to agile development is to better gauge and demonstrate progress—without that, the effort appears to &quot;go dark&quot; and success is doomed.</p>
+<p>What logical abstractions you define and use seams is up to our project, the people on it, the requirements, and the timeframes involved. You should optimize use of seams to your team—don't assume you ca cleave off any subset of APIs and be successful.</p>
+<p>Once all the implementation details behind a dependent seam are complete (implemented, tested, etc.) then the seams can be evolved (hopefully just a refactoring, but could be deeper). Obviously both logical sides of a seam should be re-architected before attempting to evolve the API defined by the seam—otherwise we break the decoupling we created when work started on the one side.</p>
+<p>Typical abstraction patterns (adapters, model-view, facades, etc.) can facilitate decoupling the implementation detail of the re-design of one side of the seam from the now well-defined API. It may seem like architecture overkill, but when you come back later (and sometimes that's much later) to refactor the seam API if you focus your work within abstractions, you'll be much more efficient and sane.</p>
+<p>Re-architecting portions of software is a very powerful way of decoupling parts of a system from others so that work can be undertaken independently. Using the concept of seams allows you to better define and delineate parts of a system whose architecture is insufficient and allows to improve it more efficiently and effectively, without an overwhelming amount of work.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'The-Dreaded-Re-write'
+    'The Dreaded Re-write'
+    'http://blog.peterritchie.com/posts/The-Dreaded-Re-write'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/22/15');
+    console.info('The-Dreaded-Re-write');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'The Dreaded Re-write';
+    var disqus_url = 'http://blog.peterritchie.com/posts/The-Dreaded-Re-write';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'The-Dreaded-Re-write';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

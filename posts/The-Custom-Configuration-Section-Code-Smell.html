@@ -1,0 +1,321 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - The Custom Configuration Section Code Smell</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - The Custom Configuration Section Code Smell" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/The-Custom-Configuration-Section-Code-Smell" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>The Custom Configuration Section Code Smell</h1>
+    <div class="meta">        
+Published on Saturday, December 18, 2010<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-40" class="btn btn-default btn-xs">.NET 4.0</a>
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/Code-Smells" class="btn btn-default btn-xs">Code Smells</a>
+                    <a role="button" href="/tags/December-2010" class="btn btn-default btn-xs">December 2010</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Software-Development-Principles" class="btn btn-default btn-xs">Software Development Principles</a>
+                    <a role="button" href="/tags/Unity-20" class="btn btn-default btn-xs">Unity 2.0</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2010/12/18/the-custom-configuration-section-code-smell/" title="Permalink to The Custom Configuration Section Code Smell">Source</a></p>
+<h1 id="the-custom-configuration-section-code-smell">The Custom Configuration Section Code Smell</h1>
+<p>I was recently involved in a project that involved some design-time configuration. That design-time configuration was based on custom config sections.</p>
+<p>I didn't really pay too much attention to it at the time because I don't write my own custom config sections. As I worked on the project and do what I usually do by refactoring and evolving the system to use various patterns and principles, I came to realize why I don't use my own custom config sections.</p>
+<p>That realization came as I began refactoring code for dependency inversion. As I progressed getting the majority object creation code to get performed and managed by the container, I slowly started deleting the code that used these custom config sections. I also started deleting the configuration sections from the app.config files. It's then I realized why I don't use custom configuration section: I simply can't use them them.</p>
+<p>Custom config sections can be used for anything you need them for. For the most part, they're about configuration settings for infrastructure-like objects. Effectively the constructor arguments for a particular class or a façade for a group of related classes. They're a way abstracting away the constructor parameters away from your code so that you don't need to recompile simply to change configuration-like information. In an of itself, that's a good thing. And, if, for whatever misguided reason you can't use an IoC container, custom configuration sections are a good thing.</p>
+<p>Let's look and an example of a custom config section. Let's say that have a class that I use to connect to an external device via TCP. To connect to that device I need an host name (or IP address) and a port number. To communicate with the device (beyond &quot;hello&quot;) I need a user name and password. I also need some various other things like timeout values, retry values, etc. For example:</p>
+<pre><code>publicclassDevice : IDevice {  
+publicstring HostName { get; privateset; }  
+publicuint Port { get; privateset; }  
+publicstring UserName { get; privateset; }  
+publicstring Password { get; privateset; }  
+publicuint SocketTimeout { get; privateset; }  
+publicuint RetryCount { get; privateset; }
+
+public Device(string hostName, uint port, string userName, string password, uint socketTimeout, uint retryCount) {  
+HostName = hostName;  
+Port = port;  
+UserName = userName;  
+Password = password;  
+SocketTimeout = socketTimeout;  
+RetryCount = retryCount;  
+}  
+//...  
+}
+</code></pre>
+<p>I may want a app.config like this:</p>
+<pre><code>&lt;?xmlversion=&quot;1.0&quot;encoding=&quot;utf-8&quot; ?&gt;  
+&lt;configuration&gt;  
+	&lt;configSections&gt;  
+		&lt;sectionname=&quot;device&quot;type=&quot;DeviceConfigSection, Application&quot;/&gt;  
+	&lt;/configSections&gt;  
+	&lt;devicehostName=&quot;192.168.0.111&quot;port=&quot;8080&quot;username=&quot;admin&quot;password=&quot;p&#64;55w0rd&quot;/&gt;  
+&lt;/configuration&gt;
+</code></pre>
+<p>In order to do that I need a config section class like this:</p>
+<pre><code>publicclassDeviceConfigSection : ConfigurationSection {  
+[ConfigurationProperty(&quot;hostName&quot;, IsRequired=true)]  
+publicstring HostName { get; set; }  
+[ConfigurationProperty(&quot;port&quot;, IsRequired=true)]  
+publicuint Port { get; set; }  
+[ConfigurationProperty(&quot;username&quot;, DefaultValue=&quot;guest&quot;, IsRequired = false)]  
+publicstring UserName { get; set; }  
+[ConfigurationProperty(&quot;password&quot;, IsRequired=false)]  
+publicstring Password { get; set; }  
+[ConfigurationProperty(&quot;socketTimeout&quot;, DefaultValue = 1000u, IsRequired = false)]  
+publicuint SocketTimeout { get; set; }  
+[ConfigurationProperty(&quot;retryCount&quot;, DefaultValue = 3u, IsRequired = false)]  
+publicuint RetryCount { get; set; }  
+}
+</code></pre>
+<p>I'd then use it like this:</p>
+<pre><code>	classProgram {  
+staticvoid Main() {  
+var config = System.Configuration.ConfigurationManager.GetSection(&quot;device&quot;) asDeviceConfigSection;  
+IDevice device = newDevice(config.HostName, config.Port, config.UserName,  
+ config.Password, config.SocketTimeout, config.RetryCount);  
+
+
+
+			var x = newDeviceConsumer(device);  
+
+
+
+			//...  
+}  
+}  
+</code></pre>
+<p>Fairly straightforward; but quite a bit of code to separate construction parameters to design-time values. Plus, my code is still tightly coupled to how a Device object is created <em>and</em> tightly coupled to that device being the Device implementation. Let's look at how I might do the same thing in an IoC container like Unity 2.0.</p>
+<p>I'd start with a configuration file like this:</p>
+<pre><code>&lt;?xmlversion=&quot;1.0&quot;encoding=&quot;utf-8&quot; ?&gt;  
+&lt;configuration&gt;  
+	&lt;configSections&gt;  
+		&lt;sectionname=&quot;unity&quot;type=&quot;Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration&quot;/&gt;  
+	&lt;/configSections&gt;  
+	&lt;unity&gt;  
+		&lt;assemblyname=&quot;Producer&quot;/&gt;  
+		&lt;container&gt;  
+			&lt;registertype=&quot;IDevice&quot;mapTo=&quot;Device&quot;&gt;  
+				&lt;constructor&gt;  
+					&lt;paramname=&quot;hostName&quot;value=&quot;192.168.0.111&quot;/&gt;  
+					&lt;paramname=&quot;port&quot;value=&quot;8080&quot;/&gt;  
+					&lt;paramname=&quot;userName&quot;value=&quot;admin&quot;/&gt;  
+					&lt;paramname=&quot;password&quot;value=&quot;p&#64;55w0rd&quot;/&gt;  
+					&lt;paramname=&quot;socketTimeout&quot;value=&quot;1000&quot;/&gt;  
+					&lt;paramname=&quot;retryCount&quot;value=&quot;3&quot;/&gt;  
+				&lt;/constructor&gt;  
+			&lt;/register&gt;  
+		&lt;/container&gt;  
+	&lt;/unity&gt;  
+&lt;/configuration&gt;
+</code></pre>
+<p>And to load that configuration I'd have code like this:</p>
+<pre><code>	classProgram {  
+staticvoid Main() {  
+var unityContainer = newUnityContainer().LoadConfiguration();  
+var x = unityContainer.Resolve&lt;DeviceConsumer&gt;();  
+//...  
+}  
+}  
+</code></pre>
+<p>Et viola, a much simpler way of putting my parameters into the configuration file and making them a design-time concern. Much less code. If I want to do the same thing with another class, I just add more elements to the &quot;unity&quot; section, I don't need to add more configSection elements and I don't have to write a custom config section. If you were paying close attention, you'll also notice that <em>I didn't actually write code to create a Device object</em>! I simply tell Unity that I need a DeviceConsumer (which is a concrete class so I don't necessarily need to tell it how to create it) and the container figures out the dependency and if it knows about it (which it does, because I told it Device is a type of IDevice and what parameters to use when creating one) and instantiates it automatically. My code is now completely decoupled from how a Device object is created and completely compile-time decoupled from the Device class!</p>
+<p>Does that mean configuration section handlers are completely useless? Of course not; but, as you embrace getting your dependencies in the right direction, decoupling your code from the responsibility of creating these dependencies the more and more you realize that configuration section handlers aren't the solution you need or even a solution you can use. Of course, if you're an IoC container; that's a completely different story 🙂</p>
+<p>I have come to decide that using a custom configuration section is a code smell. The impetus to using them is basically decoupling creation from use; but it only does it half-way by moving just the parameters into app.config.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'The-Custom-Configuration-Section-Code-Smell'
+    'The Custom Configuration Section Code Smell'
+    'http://blog.peterritchie.com/posts/The-Custom-Configuration-Section-Code-Smell'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('12/18/10');
+    console.info('The-Custom-Configuration-Section-Code-Smell');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'The Custom Configuration Section Code Smell';
+    var disqus_url = 'http://blog.peterritchie.com/posts/The-Custom-Configuration-Section-Code-Smell';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'The-Custom-Configuration-Section-Code-Smell';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

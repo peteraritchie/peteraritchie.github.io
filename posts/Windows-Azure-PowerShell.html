@@ -1,0 +1,226 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Windows Azure PowerShell</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Windows Azure PowerShell" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Windows-Azure-PowerShell" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Windows Azure PowerShell</h1>
+    <div class="meta">        
+Published on Monday, October 28, 2013<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/October-2013" class="btn btn-default btn-xs">October 2013</a>
+                    <a role="button" href="/tags/Uncategorized" class="btn btn-default btn-xs">Uncategorized</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://pr-blog.azurewebsites.net/2013/10/29/windows-azure-powershell/" title="Permalink to Windows Azure PowerShell">Source</a></p>
+<h1 id="windows-azure-powershell">Windows Azure PowerShell</h1>
+<p>The management portal for Azure is very powerful—letting you do almost anything you need to. But, it's a web interface requiring navigation, mouse clicks, etc. From an operational standpoint, why bother when you can script anything? The majority of documentation about working with Azure is all through the management portal, you almost never see PowerShell examples of working with features. I haven't really seen a good single source for Azure and PowerShell, so I thought I'd collect some information about it.</p>
+<p>The Windows Azure PowerShell consists of a PowerShell module (among other things—like dependencies on various Azure SDKs) that contains a plethora of Cmdlets devoted to scripting various actions on a Azure subscription. You get started, you need to install that. This is installed through the Web Platform Installer (WPI). If you have WPI installed you can select Windows Azure PowerShell in there, or you can get WPI and automatically jump to Azure PowerShell by downloading and running: <a href="http://go.microsoft.com/fwlink/p/?linkid=320376&amp;clcid=0x409" title="Microsoft Web Platform Installer">http://go.microsoft.com/fwlink/p/?linkid=320376&amp;clcid=0x409</a></p>
+<p>Once you have Azure PowerShell installed, you need to configure it to recognize your subscription. There's a couple of ways of doing this. Both ways are accomplished within the Azure PowerShell—so, you have to run Windows Azure PowerShell from the Start menu. The first way is to use the Add-AzureAccount. (all my examples will use Camel Case for readability, the names of the cmdlets are not case-sensitvie—for those PowerShell n00bs) This prompts you to log in to Azure (or your Microsoft ID) then you're able to perform operations on your subscription. This method of adding a subscription times-out, and after 12 hours you'll have to log in again. The other (more automation-friendly) method is to import a publishsettings file. If you don't have a Azure publishsettings file you can use Get-AzurePublishSettingsFile to get one. Once you have one, you can use Import-AzurePublishSettingsFile to import the credentials and the management certificate. The cmdlet will tell you that it's changed the default and current subscription. You can use the Get-AzureSubscription command to verify you've added your subscription and detail the subscriptions you have associated with that Microsoft ID.</p>
+<p>It's recommended that you don't leave your publishsettings file lying around. When you're done with it, they recommend deleting it.</p>
+<p>More information on the process so far can be found here: <a href="http://www.windowsazure.com/en-us/manage/install-and-configure-windows-powershell/">http://www.windowsazure.com/en-us/manage/install-and-configure-windows-powershell/</a></p>
+<p>You can add multiple subscriptions with Import-AzurePublishSettingsFile and switch between which account you want to work with with the Select-AzureSubscription cmdlet. For example:</p>
+<p>The Azure cmdlets generally follow a naming pattern. Similar to existing PowerShell patterns, cmdlets that get information start with &quot;Get-&quot; and cmdlets that set information start with &quot;Set-&quot;. In general, cmdlets that add or create things things start with &quot;New-&quot; or&quot; &quot;Add-&quot; and cmdlets that delete or remove things start with &quot;Remove-&quot;.</p>
+<p>Now that you're able to script your Azure subscription. Let's do some stuff.</p>
+<p>There's many easy operations you can perform from the Portal. One of the more involved operations is creating a VM. You can script this with the New-AzureQuckVM cmdlet—which is the equivalent of Quick Create in the portal—selecting a particular image. For example (all one line):</p>
+<p>This creates a VM with specified admin username and password with the specific vhd from the gallery (Windows Server 2012 R2) and stores the newly created VHD in a WestUS-ST storage account with the name MyVM.vhd and puts the VM in the WestUS-AG affinity group and names the VM and corresponding service &quot;MyVM1&quot;. Of course, this assumes you've already created the storage account and affinity group. If you didn't want to add the VM to an affinity group, you could use a location with the –Location option, for example: –Location &quot;East US&quot;. And if you wanted to script the creation of the storage account:</p>
+<p>For a list of the available azure cmdlets, you can type help azure.More information on the cmdlets available can be found here: <a href="http://bit.ly/1bvPYuf" title="http://msdn.microsoft.com/en-us/library/jj152841.aspx">http://msdn.microsoft.com/en-us/library/jj152841.aspx</a></p>
+<p>The Azure PowerShell module is open-source and can viewed/contributed-to here: <a href="http://bit.ly/17o6i3y" title="Windows Azure PowerShell code repository">https://github.com/WindowsAzure/azure-sdk-tools</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Windows-Azure-PowerShell'
+    'Windows Azure PowerShell'
+    'http://blog.peterritchie.com/posts/Windows-Azure-PowerShell'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/28/13');
+    console.info('Windows-Azure-PowerShell');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Windows Azure PowerShell';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Windows-Azure-PowerShell';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Windows-Azure-PowerShell';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

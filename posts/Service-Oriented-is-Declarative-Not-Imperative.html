@@ -1,0 +1,259 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Service-Oriented is Declarative, not Imperative</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Service-Oriented is Declarative, not Imperative" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Service-Oriented-is-Declarative-Not-Imperative" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Service-Oriented is Declarative, not Imperative</h1>
+    <div class="meta">        
+Published on Friday, June 28, 2019<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/June-2019" class="btn btn-default btn-xs">June 2019</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>In this post, I'd like to address a challenge that I've witnessed in the understanding of service-oriented and implementations of it.<br />
+The issue I've seen in the design approach of services and service-oriented systems.  Programmers and engineers can easily view each service as a function.  Services are perceived as being composed together within a set of functions commanding specific state changes to achieve one of a smaller set of final states.<br />
+This is really describing the totality of <em>how</em> a system does what it does.  At some point, the <em>how</em> must exist but in order to have a system that isn't one-off and can evolve by responding to change, we need the <em>how</em> to be encapsulated from one another.<br />
+Composition of a system in this way is an <em>imperative</em> model.  Ideal service-orientation works within a <em>declarative</em> model.</p>
+<p>im·per·a·tive<br />
+   /əmˈperədiv/</p>
+<blockquote class="blockquote">
+<p>uses statements that change a program's state.</p>
+</blockquote>
+<p>de·clar·a·tive<br />
+   /dəˈklerədiv/</p>
+<blockquote class="blockquote">
+<p>denoting high-level programming languages which can be used to solve problems without requiring the programmer to specify an exact procedure to be followed</p>
+</blockquote>
+<p>In other words, declarative is declaring the outcomes required and imperative is supplying the commands to change state in order to achieve the outcome required.</p>
+<p>Both are useful and both have benefits.  They're merely different.  One isn't better than the other.  But, they don't work well together.  Supplying a command to something that understands outcomes or supplying outcomes to something that expects command</p>
+<p>Service-orientation involves many things but in the context, it involves the principles of abstraction and autonomy.  Something that is self-contained and is a black box to consumers, represents a repeatable activity with a specific outcome. <sup><a href="https://www.opengroup.org/soa/source-book/ontologyv2/index.htm">OG1</a></sup></p>
+<p>This is different from what most programmers seem to understand, which is to provide an order list of commands or statements to change state.</p>
+<p>Patterns are a good example of this, and the iterator pattern is one of my favorites.  That pattern details that to traverse the elements of a container an iterator object should be used to start at an initial element and progress through the rest through the use of a &quot;<code>next</code>&quot; method.  This allows any type of sequences, collections, etc. to be iterated over regardless of their implementation.  i.e. <em>give me <em>next</em>, whatever <em>next</em> means</em>.  C# has this built into the language with iterators:</p>
+<pre><code class="language-csharp">foreach( var element in theContainer)
+{
+   Do.Something.With(element);
+}
+</code></pre>
+<p>In other languages/scenarios, the type of the container needs to be known and the unique way to enumerate all elements.  Typically reserved for collection/sequence structures, an array example may look like this:</p>
+<pre><code class="language-csharp">for(int i = 0; i &lt; anArray.Length; ++i)
+{
+   var element = theContainer[i];
+   Do.Something.With(element);
+}
+</code></pre>
+<p>and</p>
+<pre><code class="language-vb">For i = 1 to aList.Count
+   Dim element = theContainer.Item(i)
+Next i
+</code></pre>
+<p>Both of these blocks of code show <em>imperative</em> commands: <em>get array element</em> i or <em>get list element</em> i.</p>
+<p>With C# and the iterator syntax, it's a better description to say <em>give me the outcome of each iteration of a container</em>.  What the container does to iterate is encapsulated, the container is a black box to the caller.  We can use it the same if that container implementation used an array, a list, or just had hard-coded values.</p>
+<p>Services in Service-Orientation should take this form.  A service is a location where an outcome can be retrieved, usually with parameters.  Thinking in this way allows us to think of the outcomes we want to work with, rather than the details of how those outcomes are produced.  I allow us to (and is recommended) to think about things in our problem domain (or higher-level abstractions).  If we're thinking about a conference, we can think of a session as a container of registered attendees.  I can then model that I want to perform an activity with the information from each registered attendee before I implement something and decide <em>how</em> that will be implemented.</p>
+<p>In a service, we should not have a contract that details <em>how</em> an activity should be performed. A service contract should only detail the outcome and what parameters are required to get that outcome.</p>
+<p>Almost all design patterns (that aren't structural patterns) effectively do this: to abstract away implementation details in favor of declaring the outcome desired.  &quot;Declarative&quot; can also be considered &quot;composable&quot;: you're declaring how to compose things rather than the flow of logic.  The messaging library I published, you can effectively declare a producer, a consumer, and a channel/pipe between them.  Once composed like that, the type of channel/pipe used hides how the messages move between the producer and the consumer (in-memory, queue, HTTP endpoint, etc.).  You don't have imperatively create a queue (or a topic, etc) and imperatively connect the consumer and producer to the queue.</p>
+<p>I realize this is very subtle and, in particular, the iterator example. And maybe some advice on naming may help to bring it over the line. What also makes these concepts complex is that they're not digital; i.e. nothing is entirely declarative or entirely imperative, there are degrees of declartiveness/imperativeness.</p>
+<p>Service names should generally be nouns (e.g. the name of the &quot;outcome&quot; of the activity).  REST describes these as resources, which should also be nouns.  Verbs and a dead giveaway that something is imperative (if that wasn't obvious by the use of <em>imperative</em> :) ).  Inputs in contracts should not contain verbs as well, consider the input/output as resources.</p>
+<p>Additionally, this doesn't mean everything using the outcomes of declarative statements must be declarative.  You can certainly program a set of statements to change state based on what that outcome was.</p>
+<h3 id="traits-and-smells">Traits and Smells</h3>
+<p>One of the traits of services that are not imperative is that they can be viewed as stateless.  If the need arises to store per-session state or state that shouldn't be available to other consumers of the service, that's a smell to tell you that you're probably more imperative than declarative.  The solution to this is to ensure anything required for the activity to be performed should be supplied in the input.  REST services facilitate this through HATEOS.  There was <em>state</em> when an activity was requested, and it should be passed back in one or more hyperlinks for stateless services.  e.g. The current total number of resources at an endpoint at that point in time.  You may be paging through resources a page at a time and something could change between requests.  To avoid problems with that the state is effectively <em>stored</em> in the response via links.  At the time of a request, a service may have 20 resources, if paging 10 at a time the &quot;next&quot; page for page one would be 2. If something changed before page 2 was retrieved, the response for page 2 may include page 3 for &quot;next&quot;.</p>
+<p>Next time, I'll talk about how &quot;declarative&quot; doesn't mean always up front.</p>
+<h2 id="references">References</h2>
+<p><a href="https://www.opengroup.org/soa/source-book/ontologyv2/index.htm">Service-Oriented Architecture Ontology Version 2.0 - The Open Group</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Service-Oriented-is-Declarative-Not-Imperative'
+    'Service-Oriented is Declarative, not Imperative'
+    'http://blog.peterritchie.com/posts/Service-Oriented-is-Declarative-Not-Imperative'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('6/28/19');
+    console.info('Service-Oriented-is-Declarative-Not-Imperative');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Service-Oriented is Declarative, not Imperative';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Service-Oriented-is-Declarative-Not-Imperative';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Service-Oriented-is-Declarative-Not-Imperative';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

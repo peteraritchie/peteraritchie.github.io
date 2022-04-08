@@ -1,0 +1,305 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Dispose Pattern and &#x201C;Set large fields to null&#x201D;</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dispose Pattern and &#x201C;Set large fields to null&#x201D;" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Dispose Pattern and &#x201C;Set large fields to null&#x201D;</h1>
+    <div class="meta">        
+Published on Thursday, April 26, 2012<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-40" class="btn btn-default btn-xs">.NET 4.0</a>
+                    <a role="button" href="/tags/April-2012" class="btn btn-default btn-xs">April 2012</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/DevCenterPost" class="btn btn-default btn-xs">DevCenterPost</a>
+                    <a role="button" href="/tags/Pontification" class="btn btn-default btn-xs">Pontification</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/04/26/dispose-pattern-and-set-large-fields-to-null/" title="Permalink to Dispose Pattern and “Set large fields to null”">Source</a></p>
+<h1 id="dispose-pattern-and-set-large-fields-to-null">Dispose Pattern and “Set large fields to null”</h1>
+<p>I was involved in a short side discussion about &quot;should&quot; fields be set to null in the Dispose method(s). I'm not sure what the impetus of the question was; but, if you read through the <a href="http://bit.ly/I8Xf3R">dispose pattern MSDN documentation</a> (in most versions I believe) there's a comment // Set large fields to null. in the implementation of the virtual Dispose method within the if(!disposed) block and after the if(disposing) block. But, that's the only reference to setting fields to null during dispose. There's nothing else that I've been able to find in MSDN with regard to setting fields to null.</p>
+<p>At face value, setting a field to null means that the referenced object is now unrooted from the class that owns the field and, if that was the last root of that reference, the Garbage Collector (GC) is now free to release the memory used by the object that was referenced by that field. Although advanced, this seems all very academic because the amount of time between unrooting the reference and the return from Dispose (and thus the unrooting of the parent object) would seem like a very short amount of time. Even if the amount of time between these two actions is small, setting a single field to null (i.e. a single assignment) seems like such a minor bit of code to provide no adverse affects. The prevalent opinion seems to be that the GC &quot;handles&quot; this case and does what is best for you without setting the field to null.</p>
+<p>The GC is pretty smart. There's a lot of bright people who have worked on the GC over the years; and it improves every release of .NET. But, that doesn't answer the question; is there benefit to setting a field to null in the Dispose method? Considering there isn't much guidance on the topic; I'd though I'd set aside any faith I have in the GC and throw some science at the problem: take my theory, create some experiments, make observations, and collect some evidence.</p>
+<p>What I did was to create two classes, identical except that the Dispose method doesn't set a reference field to null. The classes contain an field that could reference a &quot;large&quot; or &quot;small&quot; object: I would experiment with large objects and small objects and observe the differences. The following are the classes:</p>
+<pre><code>	publicclassFirst : IDisposable {
+		int[] arr = newint[Constants.ArraySize];
+		publicint[] GetArray() {
+			return arr;
+		}
+		publicvoid Dispose() {
+			arr = null;
+		}
+	}
+ 
+	publicclassSecond : IDisposable {
+		int[] arr = newint[Constants.ArraySize];
+		publicint[] GetArray() {
+			return arr;
+		}
+ 
+		publicvoid Dispose() {
+		}
+	}
+</code></pre>
+<p>I would vary Constants.ArraySize constant to make the arr reference a &quot;large&quot; object or a &quot;small&quot; object. I then created a loop that created several thousand instances of one of these classes then forced a garbage collection at the end; keeping track of the start time and the end time via Stopwatch:</p>
+<pre><code>	publicclassProgram {
+		privateconstint Iterations = 10000;
+ 
+		staticvoid Main(string[] args)
+		{
+			var stopwatch = Stopwatch.StartNew();
+			for (int i = 0; i &lt; Iterations; ++i)
+			{
+				using (var f = newFirst())
+				{
+					ConsumeValue(f.GetArray().Length);
+				}
+			}
+			GC.Collect();
+			stopwatch.Stop();
+			Trace.WriteLine(String.Format(&quot;{0}{1}&quot;, stopwatch.Elapsed, stopwatch.ElapsedTicks));
+			stopwatch = Stopwatch.StartNew();
+			for (int i = 0; i &lt; Iterations; ++i)
+			{
+				using (var s = newSecond())
+				{
+					ConsumeValue(s.GetArray().Length);
+				}
+			}
+			GC.Collect();
+			stopwatch.Stop();
+			Trace.WriteLine(String.Format(&quot;{0}{1}&quot;, stopwatch.Elapsed, stopwatch.ElapsedTicks));
+		}
+ 
+		staticvoid ConsumeValue(int x) {
+		}
+	}
+</code></pre>
+<p>I wanted to make sure instanced got optimized away so the GetArray method makes sure the arr field sticks around and the ConsumeValue makes sure the First/Second instances stick around (more a knit-picker circumvention measure :). Results are the 2nd result from running the application 2 times.</p>
+<p>As it turns out, the results were very interesting (at least to me :). The results are as follows:</p>
+<p>Iterations: 10000 ArraySize: 85000 Debug: yes Elapsed time: 00:00:00.0759408 Ticks: 170186.</p>
+<p>Iterations: 10000 ArraySize: 85000 Debug: yes Elapsed time: 00:00:00.7449450 Ticks: 1669448.</p>
+<p>Iterations: 10000 ArraySize: 85000 Debug: no Elapsed time: 00:00:00.0714526 Ticks: 160128.</p>
+<p>Iterations: 10000 ArraySize: 85000 Debug: no Elapsed time: 00:00:00.0753187 Ticks: 168792.</p>
+<p>Iterations: 10000 ArraySize: 1 Debug: yes Elapsed time: 00:00:00.0009410 Ticks: 2109.</p>
+<p>Iterations: 10000 ArraySize: 1 Debug: yes Elapsed time: 00:00:00.0007179 Ticks: 1609.</p>
+<p>Iterations: 10000 ArraySize: 1 Debug: no Elapsed time: 00:00:00.0005225 Ticks: 1171.</p>
+<p>Iterations: 10000 ArraySize: 1 Debug: no Elapsed time: 00:00:00.0003908 Ticks: 876.</p>
+<p>Iterations: 10000 ArraySize: 1000 Debug: yes Elapsed time: 00:00:00.0088454 Ticks: 19823.</p>
+<p>Iterations: 10000 ArraySize: 1000 Debug: yes Elapsed time: 00:00:00.0062082 Ticks: 13913.</p>
+<p>Iterations: 10000 ArraySize: 1000 Debug: no Elapsed time: 00:00:00.0096442 Ticks: 21613.</p>
+<p>Iterations: 10000 ArraySize: 1000 Debug: no Elapsed time: 00:00:00.0058977 Ticks: 13217.</p>
+<p>Iterations: 10000 ArraySize: 10000 Debug: yes Elapsed time: 00:00:00.0527439 Ticks: 118201.</p>
+<p>Iterations: 10000 ArraySize: 10000 Debug: yes Elapsed time: 00:00:00.0528719 Ticks: 118488.</p>
+<p>Iterations: 10000 ArraySize: 10000 Debug: no Elapsed time: 00:00:00.0478136 Ticks: 107152.</p>
+<p>Iterations: 10000 ArraySize: 10000 Debug: no Elapsed time: 00:00:00.0524012 Ticks: 117433.</p>
+<p>Iterations: 10000 ArraySize: 40000 Debug: yes Elapsed time: 00:00:00.0491652 Ticks: 110181.</p>
+<p>Iterations: 10000 ArraySize: 40000 Debug: yes Elapsed time: 00:00:00.3580011 Ticks: 802293.</p>
+<p>Iterations: 10000 ArraySize: 40000 Debug: no Elapsed time: 00:00:00.0467649 Ticks: 104802.</p>
+<p>Iterations: 10000 ArraySize: 40000 Debug: no Elapsed time: 00:00:00.0487685 Ticks: 109292.</p>
+<p>Iterations: 10000 ArraySize: 30000 Debug: yes Elapsed time: 00:00:00.0446106 Ticks: 99974.</p>
+<p>Iterations: 10000 ArraySize: 30000 Debug: yes Elapsed time: 00:00:00.2748007 Ticks: 615838.</p>
+<p>Iterations: 10000 ArraySize: 30000 Debug: no Elapsed time: 00:00:00.0411109 Ticks: 92131.</p>
+<p>Iterations: 10000 ArraySize: 30000 Debug: no Elapsed time: 00:00:00.0381225 Ticks: 85434.</p>
+<p>For the most part, results in debug mode are meaningless. There's no point in making design/coding decisions based on perceived benefits in debug mode; so, I don't the results other than to document them above.</p>
+<p>The numbers could go either way, if we look at percentages; release mode, setting a field to null seems to be slower 50% of the time and faster 50% of the time. When setting a field to null is faster it's insignificantly faster (5.41%, 9.59%, and 4.28% faster) when it's slower it's insignificantly slower but more slow than it is fast (133.68%, 163.52%, and 107.84% slower). Neither seems to make a whole lot of difference (like 10281 ticks over 10000 iterations in the biggest difference for about 1 tick per iteration—1000 byte array at 10000 iterations). If we look at just the time values, we start to see that setting a field starts to approach being faster (when it's slower it's slower by 295, 8396, and 6697 ticks; when it's faster it's faster by 8664, 10281, 4490). Oddly though, setting &quot;large&quot; fields to null isn't the biggest of faster setting field to null values. But, of course, I don't know what the documentation means by &quot;large&quot;; it could be large-heap objects or some other arbitrary size.</p>
+<p>Of course there's other variables that could affect things here that I haven't accounted for (server GC, client GC, GC not occurring at specific time, better sample size, better sample range, etc.); so, take the results with a grain of salt.</p>
+<p>What should you do with this evidence? It's up to you. I suggest not taking it as gospel and making a decision that is best for you own code based on experimentation and gathered metrics in the circumstances unique to your application and its usage.. i.e. setting a field to null in Dispose is neither bad nor good in the general case.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D'
+    'Dispose Pattern and &#x201C;Set large fields to null&#x201D;'
+    'http://blog.peterritchie.com/posts/Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('4/26/12');
+    console.info('Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Dispose Pattern and &#x201C;Set large fields to null&#x201D;';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Dispose-Pattern-and-%E2%80%9CSet-large-fields-to-null%E2%80%9D';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

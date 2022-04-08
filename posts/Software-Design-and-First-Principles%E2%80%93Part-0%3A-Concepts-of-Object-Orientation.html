@@ -1,0 +1,229 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Software Design and First Principles&#x2013;Part 0: Concepts of Object Orientation</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Software Design and First Principles&#x2013;Part 0: Concepts of Object Orientation" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Software Design and First Principles&#x2013;Part 0: Concepts of Object Orientation</h1>
+    <div class="meta">        
+Published on Thursday, February 23, 2012<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/February-2012" class="btn btn-default btn-xs">February 2012</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Software-Development-Principles" class="btn btn-default btn-xs">Software Development Principles</a>
+                    <a role="button" href="/tags/Visual-Studio-2010-Best-Practices" class="btn btn-default btn-xs">Visual Studio 2010 Best Practices</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/02/23/software-design-and-first-principles-part-0-concepts-of-object-orientation/" title="Permalink to Software Design and First Principles–Part 0: Concepts of Object Orientation">Source</a></p>
+<h1 id="software-design-and-first-principlespart-0-concepts-of-object-orientation">Software Design and First Principles–Part 0: Concepts of Object Orientation</h1>
+<p>I often compare software development with building houses or woodworking. I sometimes even compare software development with the vocation of electrician. In each of these other vocations, craftspeople need to go through a period of apprenticeship and mentoring before being &quot;allowed&quot; to practice their craft. In each of these vocations there are a series of rules that apply to a lot of the basics of what what they do. With building houses there are techniques and principles that are regulated by building codes; with electricians there's techniques and fundamentals that are effectively regulated by electrical codes and standards. It's one thing to learn the techniques, principles, and fundamental laws of physics; but, it's another thing to be able to call yourself an electrician or a carpenter.</p>
+<p>Now, don't get me wrong; I'm not advocating that software development be a licensed trade—that's an entirely different conversation. But, I do believe that many of the techniques and principles around software development take a lot of mentorship in order to get right. Just like electricity, they're not the most intuitive of techniques and principles. But, just like electricity, it's really good to know why you're doing something so you can know its limits an better judge &quot;correctness&quot; in different scenarios.</p>
+<p>To that effect, in order to understand many of the software development design techniques and patterns, I think the principles behind them are being ignored somewhat in a rush to get hands-on experience with certain techniques. I think it's important that we remember and understand what—I'm deeming—&quot;first principles&quot;.</p>
+<p>A <strong>First Principle</strong> is a foundational principle about what it applies to. Some of the principles I'm going to talk about may not all be foundational; but, I view then as almost as important as foundational, so I'm including them in First Principles.</p>
+<p>From an object-oriented standpoint, there's lots of principles that we can apply. Before I get too deeply into these principles, I think it's useful to remind ourselves what object-orientation is. I'm not going to get too deep into OO here; I'll assume you've got some experience writing and designing object-oriented programs. But, I want to associate the principles to the OO concepts that guide them; so, It's important you as the reader are on the same page as me.</p>
+<p>OO really involves various concepts. These concepts are typically outlined by: Encapsulation, abstraction, inheritance, Polymorphism (at least subtype, but usually parametric and ad-hoc as well), and &quot;message passing&quot;. I'm going to ignore message passing in this part; other than to say this is typically implemented as method calls…</p>
+<p>You don't have to use all the OO concepts when you're using an OO language; but, you could argue that <strong>encapsulation</strong> is one concept that is fundamental. Encapsulation is sometimes referred to information hiding; but, I don't think that term does it justice. Sure, an object with private fields and methods &quot;hides&quot; information; but, the fact that it hides the privates of the type through a public interface of methods isn't even alluded to in &quot;information hiding&quot;. Encapsulation is, thus, a means to keep privates private and to provide a consistent public interface to act upon or access those privates. The interface is an abstraction of the implementation details (the private data) of the class.</p>
+<p>The next biggest part of OO is <strong>abstraction</strong>. As we've seen, encapsulation is a form of abstraction (data abstraction); but the abstraction we're focusing on now is one that decouples other implementation details. Abstraction can be implemented with inheritance in many languages (e.g. code can know now to deal with a Shape, and not care that it's given a Rectangle) and that inheritance can use abstract types. Some OO languages expand abstraction abilities to include things like interfaces—although you could technically do the same thing with an abstract type that had no implementation.</p>
+<p><strong>Inheritance</strong> is key to many of other concepts in OO—abstraction, subtype polymorphism, interfaces, etc. (if we view an interface as an abstract type with no code, then something that &quot;implements&quot; an interface is really just inheriting from an abstract type; but, my focus isn't these semantics). We often let our zeal to model artefacts in our design and run into problems with the degree and the depth of our inheritance; a point I hope to revisit in a future post in this series.</p>
+<p>Although you could technically use an OO language and not use polymorphism in any way, I think OO languages' greatest features is polymorphism. <strong>Subtype polymorphism</strong>, as I've noted, is a form of abstraction (Shape, Rectangle…). But all other types of polymorphism are also abstractions—they're replacing something concrete (implementation details) with something less concrete (abstract). With subtype polymorphism that abstraction is an abstract type or a base type; with <strong>parametric polymorphism</strong> we generally create an algorithm abstraction that is decoupled from the data involved (Generics in .NET); and ad-hoc polymorphism is overloading—a decoupling of one particular method to one of many.</p>
+<p>I quickly realized the scope of this topic is fairly large and that one post on the topic would be too much like drinking from a firehose as well as potentially to be protracted (and risking never getting done at all :). So, I've split up what I wanted to talk about into chunks. I'm not entirely sure what the scope actually is yet; I'll kind of figure that out as a I go or let feedback guide me. Now that we've got most of the OO concepts in our head, the next post will begin detailing the principles I wanted to talk about.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation'
+    'Software Design and First Principles&#x2013;Part 0: Concepts of Object Orientation'
+    'http://blog.peterritchie.com/posts/Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/23/12');
+    console.info('Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Software Design and First Principles&#x2013;Part 0: Concepts of Object Orientation';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Software-Design-and-First-Principles%E2%80%93Part-0%3A-Concepts-of-Object-Orientation';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

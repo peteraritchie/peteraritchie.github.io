@@ -1,0 +1,236 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Seam expansion</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Seam expansion" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Seam-expansion" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Seam expansion</h1>
+    <div class="meta">        
+Published on Tuesday, February 17, 2015<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/Architecture" class="btn btn-default btn-xs">Architecture</a>
+                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
+                    <a role="button" href="/tags/February-2015" class="btn btn-default btn-xs">February 2015</a>
+                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Software-Development-Practices" class="btn btn-default btn-xs">Software Development Practices</a>
+                    <a role="button" href="/tags/Software-Development-Principles" class="btn btn-default btn-xs">Software Development Principles</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://pr-blog.azurewebsites.net/2015/02/17/seam-expansion/" title="Permalink to Seam expansion">Source</a></p>
+<h1 id="seam-expansion">Seam expansion</h1>
+<p>No, this isn't a post about gaining weight: busting at the seams. It's about expanding on the concept of &quot;seams&quot;.</p>
+<p>My first introduction to &quot;seams&quot; was with Michael Feathers' book <em>Working Effectively with Legacy Code</em>. In which he defined a seam as:</p>
+<blockquote class="blockquote">
+<p>A seam is a place where you can alter behaviour in your program without editing that place.</p>
+</blockquote>
+<p>He also detailed some <em>types</em> of seams: <em>Preprocessing Seams</em>, <em>Object Seams</em>, and <em>Link Seams</em>. As well as detailing <em>Enabling Point</em>, or the thing that represents the choice of which behaviour to enable at that seam.</p>
+<p>Feathers described seams and their use in the context of testing. I think the concept of seams can be used for other places we want to reason about code, design, or architecture. Before I get into that, let's have a quick overview of the types of seams that Feathers detailed.</p>
+<p>This seam is fairly straightforward. It's a point where a compiler's preprocessor lets you enable or disable behaviour based on preprocessor directives (.NET, C++, etc) or preprocessor logic (C++, etc.). I'm sure we're all familiar with using #if DEBUG to enable/disable behaviour.</p>
+<p>This seam is also straight-forward, it basically details the abstraction behind OOD and that through polymorphism and an object's published API (or behaviour) we can facilitate enabling or disabling behaviour at compile-time.</p>
+<p>The final seam (although, the second in <em>Working Effectively With Legacy Code</em>) basically details all the other possibilities (at least in the context of object-oriented languages) in that they are seams not related to the compiler. I think this type of seam offers a wonderful ability to facilitate abstraction at so many other levels and allows us to reason about code, design, and architecture in very powerful way. The rest of this post will be about expanding this seam concept (link-level or link-time) into other areas to allow us to reason about software design more powerfully.</p>
+<p>One place where we can get immediate value from seams is to view them as an independent attribute of a design or architecture. We could view seams as just a side effect of integrating components in a system, but by viewing them as independent artefacts we can reason better about software and its design and architecture. Much like a directed graph that has nodes and edges, a dependency diagram details components and dependencies or relationships. In most cases, we can view these dependencies and relationships as seams that we can reason about over-and-above testing, regardless of <em>how</em> they are dependant.</p>
+<p>Seams are effectively recognizing APIs (or subsets of APIS) and allowing them to be independent of the elements on either side of the seam. When we do that, either side of the dependency is really dependant on the <em>seam</em>, not on the other side. If we take that point of view, we can then modify one side to modify the behaviour of the other without directly modifying that other side. We're really just thinking about abstraction in a different way.</p>
+<p>The link seam that Feathers details encompasses link-time resolutions (in terms of .NET: <em>references</em>) but also includes dynamic resolution (run-time linking done either by the runtime, or by the application code—e.g. Double Dispatch, the dynamic keyword, etc.). Feathers' <em>Link Seam</em> is effectively a run-time resolution seam but can be expanded to allow reasoning about much more of a system's design. For example, in many contemporary systems we use web APIs to communicate between components. This really isn't the &quot;link&quot; operation that which Feathers details; but equally as useful when viewed as a seam. A web API is a much more understandable API front-end to implementation—we can view all APIs this way when we use seams. We can even view a logical grouping of components in a design and their API as a seam. There may be no unique physical separation between a logical group and the things that depend on it, but again, equally as useful to view its seams.</p>
+<p>Some readers may be thinking, these are just <em>views</em>. While this is a very good analogy and it shows you're grasping the concept, seams are not views. Views are different in that the view is an implementation detail <em>behind</em> a physically componentized API, the seam is an outward representation of a grouping of APIs (physically componentized or logically grouped). Any particular component with an API may, of course, implement that API with a view behind it; but that's orthogonal to seams. e.g. a seam exists whether or not the View pattern is used.</p>
+<p>Once we can reason about seams we can then reason about the rest of the design around those seems. As I've mentioned, we can view a logical grouping of APIs as a logical component that publishes a specific API. If we maintain that specific API over time, we can change the implementation behind that API without having to modify that rest of system that depends on it. We, of course, will likely have to re-compile or re-build and re-deploy; but if we have maintained that <em>seam</em>, that re-compile our re-build will not fail.</p>
+<p>Recognizing, defining, and reasoning about seams at these levels provides a lot of flexibility in software design and architecture. This post serves as an introduction to this expanded seam concept that will be shown in my next post.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Seam-expansion'
+    'Seam expansion'
+    'http://blog.peterritchie.com/posts/Seam-expansion'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/17/15');
+    console.info('Seam-expansion');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Seam expansion';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Seam-expansion';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Seam-expansion';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

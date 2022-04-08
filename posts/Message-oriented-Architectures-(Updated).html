@@ -1,0 +1,275 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Message-oriented Architectures (Updated)</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Message-oriented Architectures (Updated)" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Message-oriented-Architectures-(Updated)" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Message-oriented Architectures (Updated)</h1>
+    <div class="meta">        
+Published on Thursday, July 14, 2011<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/Architecture" class="btn btn-default btn-xs">Architecture</a>
+                    <a role="button" href="/tags/Distributed-Systems" class="btn btn-default btn-xs">Distributed Systems</a>
+                    <a role="button" href="/tags/July-2011" class="btn btn-default btn-xs">July 2011</a>
+                    <a role="button" href="/tags/MOM" class="btn btn-default btn-xs">MOM</a>
+                    <a role="button" href="/tags/Message-Oriented-Architectures" class="btn btn-default btn-xs">Message-Oriented Architectures</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2011/07/14/message-oriented-architectures/" title="Permalink to Message-oriented Architectures (Updated)">Source</a></p>
+<h1 id="message-oriented-architectures-updated">Message-oriented Architectures (Updated)</h1>
+<p>I've had a few people ask me about message-oriented architectures and my knowledge and experience of it has evolved over time; so, I figured it would be a good idea to collect and publish some information about it. It's not one of those topics on the Internet that has gotten a lot of content, so I'll try and change that.</p>
+<p>A Message-Oriented Architecture is sometimes called Message-Oriented Middleware or MOM because there's a middle tier or middleware that acts as the broker to relay messages from producers to consumers. At the most succinct definition MOM is simply an architecture that supports sending and receiving messages. That's an extreme simplification and when implementing MOM many more facets of it's design come into play, so I'm going to expand out into some of the common ways of implementing a message-oriented architecture over time. So, I may go outside of <em>MOM</em> from a purists point of view.</p>
+<p>This will be the first post in a series of posts so it will attempt to be very introductory. To have a stable base on which to discuss this topic, let me first outline some terms relating to messaging.</p>
+<p><strong>Producer</strong></p>
+<p>Something that produces a message. A message could be a command sent to a single command handler or an event published to zero or more event handlers.</p>
+<p><strong>Consumer</strong></p>
+<p>Something that consumes a message</p>
+<p><strong>Handler</strong></p>
+<p>Synonym for consumer</p>
+<p><strong>Message Broker</strong></p>
+<p>A component, often in an ESB, that transforms/translates and/or routes messages from one subsystem to another.</p>
+<p><strong>Queue</strong></p>
+<p>A storage mechanism for messages. Depending in the implementation, a queue may be where messages are received from. Generally a separate process that receives messages through a known protocol like HTTP or TCP. Generally used to implement load balancing semantics.</p>
+<p><strong>Aggregator</strong></p>
+<p>Something that consumes messages and contains them in some way and directs the message to another consumers. Used, partially, to decouple producers from consumers. A Queue is a form of aggregator. Often lives within the a process. Sometimes used to to merge pipelines.</p>
+<p><strong>Topic</strong></p>
+<p>Metadata associated with one or more messages that is generally used for publish and subscribe semantics. Something publishes to or subscribes to topics rather than having to process all messages.</p>
+<p><strong>Exchange</strong></p>
+<p>In messaging systems that implement exchanges, exchanges are where messages are sent (compared to a queue, which is technically where messages are received from).</p>
+<p><strong>Service Bus</strong></p>
+<p>A integration platform that generally combines web services, messaging, transformations, and routing, to transactionally integrate many disparagedisparate applications or systems. Often referred to an Enterprise Service Bus or ESB.</p>
+<p><strong>Pipeline</strong></p>
+<p>Often used in the context of messaging to describe a particular stream of messages or the fact that messages arrive or are processed one-by-one in a particular order.</p>
+<p><strong>Event</strong></p>
+<p>A message that informs subscribers of something that occurred in the past (albeit possibly not in the very distant past).</p>
+<p><strong>Command</strong></p>
+<p>A message that requests a change in state or data.</p>
+<p><strong>Saga</strong></p>
+<p>A series of related long-lived transactions that are executed as a non-atomic unit.</p>
+<p><strong>Idempotent</strong></p>
+<p>A operation that when repeated gives the same result. This concept is used in mathematics as well; but becomes an important concept in messaging when we deal with things like guaranteed delivery.</p>
+<p><strong>Guaranteed delivery</strong></p>
+<p>Reliable messaging that guarantees a message is delivered to its intended recipients. This often involves store-and-forward techniques to ensure message are not lost before delivery.</p>
+<p><strong>A least once delivery</strong></p>
+<p>A form of delivery reliability that involves concessions which may mean a message is delivered more than once. See Idempotent.</p>
+<p><strong>Pub/Sub</strong></p>
+<p>AKA Publish/Subscribe. A form of messaging where a publish publishes an event that is subscribed to by zero or more subscribers. Publishers don't can who, if anything, subscribes to events because an event is a representation of something that occurred in the past and requires no response.</p>
+<p><strong>Publisher</strong></p>
+<p>A producer that produces messages that are considered events. A producer could produce events and commands.</p>
+<p><strong>Subscriber</strong></p>
+<p>A consumer that consumes message that are considered events. There nothing stopping someone from implementing a consumer that subscribes to events and handlers commands; but they are generally kept separate, ala CQRS.</p>
+<p>There's all sorts of examples of messaging that have been around quite a while. Sockets, HTTP, Web Services, WCF, etc are all examples of messaging techniques or technologies. I'm going to discuss things at a slightly higher level where we deal with some of the application-level details of a message-oriented system. i.e. things like Sockets, HTTP, Web Services, WCF, etc are implementation details—they may facilitate our messaging, but I'm not really going to get into that level of detail.</p>
+<p>Messages are sent by producers asynchronously. This means the producer is decoupled from consumers in every way except the fact that they share knowledge of one or more messages. This also means that producers don't know whether or not consumers have or will consume a message that it sends. This sounds a bit scary at first; but it opens up a world of possibilities through this decoupling. You have to account for the fact that producers don't know about what consumers are up to.</p>
+<p><strong>Very loosely coupled</strong></p>
+<p>Consumers and produces are separated by messages. These messages are simply data. They could be a binary serialized blob of data that a producer needs to be able to understand how to deserialize (often limiting producer/consumer to the same platform), or the message could be in the form of XML; where the consumer need only know how to process XML (not limiting consumer/producer to the same platform).</p>
+<p><strong>Platform agnostic</strong></p>
+<p>Messages can be sent and received on any platform. Much in the same way an HTML page can be downloaded and viewed on any platform. There are degrees to which a message-oriented system can support multiplatform (see above w.r.t. binary serialization); but the architecture itself imposes no real platform specifics.</p>
+<p><strong>Asynchronous</strong></p>
+<p>Consumers give messages to a broker, aggregator, or queue of some sort and that message is processed and delivered asynchronous. The consumer is free to go about its business before effectively before the message has even left the broker. Of course when consumer and producer and living in the same memory space using certain types of aggregators, this may not be the case; but typical message-oriented architectures use middleware that processes messages asynchronously.</p>
+<p>Flexibility is one of the important benefits of message-oriented architectures. A message-oriented architecture is limited only by the coupling you impose. If you some sort of middleware and don't impose any requirements on how your message needs to be processes, you messages can be processed on any platform and at any point in time. Need to publish a message from Windows and have it consumed in a Windows 7 Phone? No problem. Need that processing to occur almost instantly? It's entirely up to the consumer how quickly they need to consume a message. Message doesn't need to be processed right away? Again, no problem the consumer can take as long as it needs to process the message.</p>
+<p>The flexibility of the system results in many indirect benefits. The producer doesn't know anything about the consumer of a message (or how many consumers there are, if any) which means the message is free to be routed, aggregated and delivered completely independently of the producer.</p>
+<p>One of the most important aspect, in my opinion, of message-oriented architectures is scalability. By separating producers and consumers at the process level from one another by way of a message you introduce the ability to horizontally scale almost infinitely. Because a producer asynchronously produces a message and one or more consumers may process the messages of a consumer, the broker is free to load balance or scale out to multiple consumers. This is not without purposeful, and correct, design; but offers a system-level scalability the supports vertical and horizontal scaling. For example, multiple consumers can be running on a computer to take advantage of each processor on that computer (vertical) or multiple consumers can be running on multiple computers to take advantage of any number or type of computers (horizontal) resulting in an architecture that supports near infinite scalability.</p>
+<p>One of the biggest drawbacks of a message-oriented architecture is the topology. You're generally looking at least at a publishing computer, a computer to house the messaging middleware, and another computer handle the consuming. Each of these computers needs to be configured and publishers/consumers/middleware needs to be deployed and working correctly. This can be cost prohibitive on smaller systems and implies much management.</p>
+<p>If a message-oriented architecture is used in a situation it is not intended, there can be drawbacks to using it. If a producer needs to synchronously produce a message (i.e, now when the consumer handles the message before it continues on with anything else), this can be a difficult scenario to implement. If the producer needs to know about the consumer or consumers, this can also be a difficult scenario to implement. Both of the scenarios can cause various headaches in a particular deployment. I don't really consider these drawbacks because MOM is not truly being used correctly; but the technology is not widely understood and the concepts it requires are often misunderstood so I mention it here because an implementation of MOM may encounter them early in the implementation.</p>
+<p>Standards have come a long way recently, but—depending on your choice of implementation—there may be no real messaging standard. This could mean you end up being tied to a particular vendor or even a particular platform with no means of extending to other platforms or other components using another messaging mechanism.</p>
+<p><a href="http://bitly.com/jwpzkl">Wikipedia's Message-oriented Middleware</a></p>
+<p><a href="http://cqrsinfo.com/">CQRS</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Message-oriented-Architectures-(Updated)'
+    'Message-oriented Architectures (Updated)'
+    'http://blog.peterritchie.com/posts/Message-oriented-Architectures-(Updated)'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('7/14/11');
+    console.info('Message-oriented-Architectures-(Updated)');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Message-oriented Architectures (Updated)';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Message-oriented-Architectures-(Updated)';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Message-oriented-Architectures-(Updated)';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

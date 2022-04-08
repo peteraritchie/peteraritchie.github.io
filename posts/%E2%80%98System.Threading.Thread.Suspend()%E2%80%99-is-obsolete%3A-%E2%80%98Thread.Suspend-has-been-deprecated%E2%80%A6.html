@@ -1,0 +1,397 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - &#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - &#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>&#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;</h1>
+    <div class="meta">        
+Published on Friday, October 13, 2006<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/October-2006" class="btn btn-default btn-xs">October 2006</a>
+                    <a role="button" href="/tags/Uncategorized" class="btn btn-default btn-xs">Uncategorized</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2006/10/13/system-threading-thread-suspend-is-obsolete-thread-suspend-has-been-deprecated/" title="Permalink to ‘System.Threading.Thread.Suspend()’ is obsolete: ‘Thread.Suspend has been deprecated…">Source</a></p>
+<h1 id="system.threading.thread.suspend-is-obsolete-thread.suspend-has-been-deprecated">‘System.Threading.Thread.Suspend()’ is obsolete: ‘Thread.Suspend has been deprecated…</h1>
+<p>For time eternal there has been a way to suspend (and by association resume) another thread. It wasn't until .NET 2.0 that someone took leadership and conceded that suspending another thread is not a safe thing to do. .NET 2.0 deprecates System.Threading.Thread.Suspend() and Resume() (although, Resume() isn't dangerous by association…).</p>
+<p>Basically, Suspend() has no care that the thread may actually be managing one or more complex invariants that can't be changed atomically. Normally with complex invariants synchronization is used to ensure while one thread is modifying the individual components of an invariant another thread doesn't try to access it. This is important because the validity of an invariant is rarely atomic; meaning changing an invariant may take several steps and may be in an unknown or invalid state between the first and the last step (a date is a good example, setting the day and month is two steps; until both steps are complete the date might be invalid). Suspending a thread circumvents the synchronization primitives and cuts the thread off at the knees.</p>
+<p>On a lower level, a thread may be performing a system-wide-synchronized operation like locking a range of bytes in a file, writing to those bytes, unlocking those bytes, then closing the file. If a thread is suspended before the unlock, that range of bytes will remain locked for an indeterminate amount of time until the thread is resumed or the process terminates. Not a good thing. Most threads don't do all their work with low-level methods and call various higher-level helper methods to perform tasks. This means the author of a thread's routine really has no way to determine whether their thread is in a &quot;suspendable&quot; state at any given point in time. .NET complicates this even further by using locks during execution of class constructors–increasing the likelihood that suspending a thread will cause dire consequences.</p>
+<p>Unfortunately, the documentation for Thread.Suspend() really doesn't offer much in the way of guidance on how to get around this issue with your own threads, it just casually mentions classes Monitor, Mutex, Event and Semaphore; but doesn't offer any detail on how to use them to put your thread into a wait state–the equivalent of Suspend.</p>
+<p>When I create threads they're meant simply to let my UI be responsive or make use of multiple CPUs (i.e. in both casesthey're CPU bound) and don't have much need to put a thread into a wait state manually. But, it's not without merit. There are lots of circumstances I don't normally get into that could benefit from being able to put a thread into a wait state. It's also a common question; so, the following is small class that I created: SuspendableThread.</p>
+<p>namespace PRI.Threading</p>
+<p>{</p>
+<p>using System.Threading;</p>
+<p>abstract class SuspendableThread</p>
+<p>{</p>
+<p>#region Data</p>
+<p>private ManualResetEvent suspendChangedEvent = new ManualResetEvent(false);</p>
+<p>private ManualResetEvent terminateEvent = new ManualResetEvent(false);</p>
+<p>private long suspended;</p>
+<p>private Thread thread;</p>
+<p>private System.Threading.ThreadState failsafeThreadState = System.Threading.ThreadState.Unstarted;</p>
+<p>#endregion Data</p>
+<p>public SuspendableThread ( )</p>
+<p>{</p>
+<p>}</p>
+<p>private void ThreadEntry ( )</p>
+<p>{</p>
+<p>failsafeThreadState = System.Threading.ThreadState.Stopped;</p>
+<p>OnDoWork();</p>
+<p>}</p>
+<p>protected abstract void OnDoWork ( );</p>
+<p>#region Protected methods</p>
+<p>protected Boolean SuspendIfNeeded ( )</p>
+<p>{</p>
+<p>Boolean suspendEventChanged = suspendChangedEvent.WaitOne(0, true);</p>
+<p>if (suspendEventChanged)</p>
+<p>{</p>
+<pre><code>Boolean needToSuspend = Interlocked.Read(ref suspended) != 0;
+
+suspendChangedEvent.Reset();
+
+if (needToSuspend)
+
+{
+
+ /// Suspending…
+
+ if (1 == WaitHandle.WaitAny(new WaitHandle[] { suspendChangedEvent, terminateEvent }))
+
+ {
+
+  return true;
+
+ }
+
+ /// …Waking
+
+}
+</code></pre>
+<p>}</p>
+<p>return false;</p>
+<p>}</p>
+<p>protected bool HasTerminateRequest ( )</p>
+<p>{</p>
+<p>return terminateEvent.WaitOne(0, true);</p>
+<p>}</p>
+<p>#endregion Protected methods</p>
+<p>public void Start ( )</p>
+<p>{</p>
+<p>thread = new Thread(new ThreadStart(ThreadEntry));</p>
+<p>// make sure this thread won't be automaticaly</p>
+<p>// terminated by the runtime when the</p>
+<p>// application exits</p>
+<p>thread.IsBackground = false;</p>
+<p>thread.Start();</p>
+<p>}</p>
+<p>public void Join ( )</p>
+<p>{</p>
+<p>if (thread != null)</p>
+<p>{</p>
+<pre><code>thread.Join();
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>public Boolean Join ( Int32 milliseconds )</p>
+<p>{</p>
+<p>if (thread != null)</p>
+<p>{</p>
+<pre><code>return thread.Join(milliseconds);
+</code></pre>
+<p>}</p>
+<p>return true;</p>
+<p>}</p>
+<p>/// <remarks>Not supported in .NET Compact Framework</remarks></p>
+<p>public Boolean Join ( TimeSpan timeSpan )</p>
+<p>{</p>
+<p>if (thread != null)</p>
+<p>{</p>
+<pre><code>return thread.Join(timeSpan);
+</code></pre>
+<p>}</p>
+<p>return true;</p>
+<p>}</p>
+<p>public void Terminate ( )</p>
+<p>{</p>
+<p>terminateEvent.Set();</p>
+<p>}</p>
+<p>public void TerminateAndWait ( )</p>
+<p>{</p>
+<p>terminateEvent.Set();</p>
+<p>thread.Join();</p>
+<p>}</p>
+<p>public void Suspend ( )</p>
+<p>{</p>
+<p>while (1 != Interlocked.Exchange(ref suspended, 1))</p>
+<p>{</p>
+<p>}</p>
+<p>suspendChangedEvent.Set();</p>
+<p>}</p>
+<p>public void Resume ( )</p>
+<p>{</p>
+<p>while (0 != Interlocked.Exchange(ref suspended, 0))</p>
+<p>{</p>
+<p>}</p>
+<p>suspendChangedEvent.Set();</p>
+<p>}</p>
+<p>public System.Threading.ThreadState ThreadState</p>
+<p>{</p>
+<p>get</p>
+<p>{</p>
+<pre><code>if (null != thread)
+
+{
+
+ return thread.ThreadState;
+
+}
+
+return failsafeThreadState;
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>} // namespace</p>
+<p>This thread class works a little differently than the run-time's System.Threading.Thread class in that you can't just pass it a method from any-old place. Because we don't want just anyone getting at the implementation details used to suspend the thread, you have to derive from SuspendableThread and override OnDoWork so your code can gain access to helper methods.</p>
+<p>This class has another feature. If you're likely to want to initiate thread suspension externally, you're likely to want to initiate thread termination externally as well. To that effect this thread also has Terminate() and TerminateAndWait() methods that ask the thread to terminate and will awaken the thread is suspended (something System.Thread.Suspend() and System.Thread.Abort() won't do).</p>
+<p>Using this class is fairly simple. If you want a suspendable/terminatable thread you simply create a new SuspendableThread-derived class and override OnDoWork with the following pattern:</p>
+<p>class MyThread : PRI.Threading.SuspendableThread</p>
+<p>{</p>
+<p>protected override void OnDoWork ( )</p>
+<p>{</p>
+<p>try</p>
+<p>{</p>
+<p>while (false == HasTerminateRequest())</p>
+<p>{</p>
+<pre><code>Boolean awokenByTerminate = SuspendIfNeeded();
+
+if (awokenByTerminate)
+
+{
+
+ return;
+
+}
+
+
+
+// TODO: replace the following to lines
+
+Debug.WriteLine(&quot;doing some work…&quot;);
+
+Thread.Sleep(450);
+</code></pre>
+<p>}</p>
+<p>}</p>
+<p>finally</p>
+<p>{</p>
+<p>// TODO: Replace the following line with thread</p>
+<p>// exit processing.</p>
+<p>Debug.WriteLine(&quot;Exiting ThreadEntry()…&quot;);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>For this class to be useful you generally have to have an iterative algorithm that can test for suspend/terminate during each iteration (the while loop in the above pattern).</p>
+<p>To initiate thread suspension, simply call the SuspendableThread.Suspend() method–which asynchronously suspend the thread. SuspendableThread.Resume() resumes the thread. For terminate, generally you want to be able to determine when the thread has terminated. If you want to do that asynchronously you use the SuspendableThread.Terminate() and SuspendableThread.Join() methods. To start the terminate process Terminate() is called. When your asynchronous work is done (i.e. you went on to do something else while the thread was terminating) call Join() to block until the thread is terminated. If you don't need to, or don't have anything to, do while the thread is terminating, use SuspendThread.TerminateAndWait().</p>
+<p>This class gives complete control of suspension and termination to the thread. So, use this class with great care. You have to write your OnDoWork override in a way that won't cause deadlocks. If you don't have an iterative process, this class isn't for you. If each of your iterations takes much time (more than say 500ms) then this class probably isn't for you either. If you can't terminate in the middle of your process, this class also is not for you. This class will not let the application terminate until the thread routine has exited; so, be sure you initiate termination of the thread before the application exits or you'll get a deadlock. The class is a scaled-down version of System.Threading.Thread. It doesn't provide all the same goodies System.Threading.Thread does (partially for .NET Compact Framework 2.0 support, and partially for readability) and is intended to be used in limited scenarios. But, you can extend it to mirror some of System.Threading.Thread's functionality fairly easily–like Name and Priority properties.</p>
+<p>This class was intentionally designed to be compatible with the .NET CF 2.0 (delete Join(TimeSpan) before compiling) but has not been tested with .NET CF 2.0 (if you use the class in .NET CF 2.0, please send me a note and I'll update this post for the benefit of other readers).</p>
+<p>[30-Oct-06 Update: as it turns out, this class is not entirely .NET CF 2.0 compatible, please contact me if you're interested in a .NET CF 2.0 compatible version]</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    '%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6'
+    '&#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;'
+    'http://blog.peterritchie.com/posts/%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/13/06');
+    console.info('%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = '&#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;';
+    var disqus_url = 'http://blog.peterritchie.com/posts/%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = '%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

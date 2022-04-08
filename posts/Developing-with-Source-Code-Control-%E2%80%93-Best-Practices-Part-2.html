@@ -1,0 +1,268 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Developing with Source Code Control &#x2013; Best Practices Part 2</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Developing with Source Code Control &#x2013; Best Practices Part 2" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Developing with Source Code Control &#x2013; Best Practices Part 2</h1>
+    <div class="meta">        
+Published on Wednesday, March 11, 2009<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/March-2009" class="btn btn-default btn-xs">March 2009</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/Visual-Studio-2010-Best-Practices" class="btn btn-default btn-xs">Visual Studio 2010 Best Practices</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2009/03/11/developing-with-source-code-control-best-practices-part-2/" title="Permalink to Developing with Source Code Control – Best Practices Part 2">Source</a></p>
+<h1 id="developing-with-source-code-control-best-practices-part-2">Developing with Source Code Control – Best Practices Part 2</h1>
+<p>[Edited 14-Mar-09: clarified generated code SCC practice]</p>
+<p>This edition provides SCC vocabulary and some more practices that make development life easier.</p>
+<p><strong>Vocabulary</strong><br />
+<strong>Trunk</strong><br />
+The root of the project or database. Sometimes called mainline or baseline; depending on the SCC structure, this is where most of the development occurs.<br />
+<strong>Mainline</strong><br />
+The root of the project or database. Sometimes called trunk or baseline; depending on the SCC structure, this is where most of the development occurs.<br />
+<strong>Baseline</strong><br />
+The root of the project or database. Sometimes called mainline or trunk; depending on the SCC structure, this is where most of the development occurs.<br />
+<strong>Tag</strong><br />
+A snapshot in time of the system or a project/subfolder in the system. Usually also associated with an annotation explaining the significance of that point of time. Also known as label.<br />
+<strong>Label</strong><br />
+A snapshot in time of the system or a project/subfolder in the system. Usually also associated with an annotation explaining the significance of that point of time. Also known as tag.<br />
+<strong>Branch</strong><br />
+A &quot;copy&quot; of subfolders and files that are controlled separately from the trunk with an intention to eventually merge back into the trunk.<br />
+<strong>Merge</strong><br />
+Unifies two independant changes into one. Often the process of merging requires manual resolution of conflicts.<br />
+**Merge Conflict<br />
+**When two independant changes cannot be automatically merged.<br />
+<strong>Commit</strong><br />
+Same as check in<br />
+<strong>Check in</strong><br />
+When changes are written to the repository.<br />
+<strong>Head</strong><br />
+The most recent version of code in the system.<br />
+<strong>Fork</strong><br />
+For the most part, same as branch–depending on the SCC system. More fun to use than branch, &quot;I forked the code&quot;.<br />
+**Copy-modify-merge<br />
+**Under this SCC model the SCC always merges changes back into the database (trunk or branch, depending on what you're editing).This model assumes a team model where there is the likely posibility of more than one person working on the same file at the same time. This model rarely precludes the ability to lock a file before modification if changes to the file cannot be merged). This is the preferred SCC model.<br />
+<strong>Lock-modify-unlock</strong><br />
+Under this SCC model the SCC forces devs to lock files they wish to edit before modifying them. (with IDE integration this is often transparent).<br />
+<strong>ALM</strong><br />
+Application lifecycle management.</p>
+<p>**Practices<br />
+**<strong>Don't use Visual SourceSafe for your SCC system.</strong><br />
+Believe me, I've been there and have the scars to prove it. Visual SourceSafe (VSS) has a unique process that isn't mirrored by many majorcontemporary SCC systems. VSS is a distributed file-based SCC system and as such is prone to data corruption–not really something that is acceptable in any sort of &quot;Control&quot; system. Branching is really difficult in VSS. If you're one person and you have your VSS database on the same computer; you're likely fine. Otherwise, do yourself a huge favour and consider another SCC system, like Subversion (it's free). VSS doesn't scale well; as time goes on and the database increases in size, developers are added to the project, VSS gets slower and slower.</p>
+<p>**Don't put generated code in SCC<br />
+**SCC provides the ability to rollback to a state in the past that allows compilation of the solution. Code that is generated [edit start] as part of the/a build process [edit end] can be generated at any time; there's no need to put that code into SCC. With lock-modify-unlock SCC systems, generated code that is checked-in will be locked and cause errors during build unless you lock it on every build. This will cause conflicts in lock-modify-unlock systems in that you end up not being able to build while somone else is building (yes, you likely build serveral times a day).</p>
+<p><strong>Make sure unit tests pass before checking in.</strong><br />
+This means <em>all</em> unit tests. If you check in a change that causes a unit test to fail, someone else won't know where to start to make that unit test pass. You're wasting your time and setting the project schedule back by not ensuring unit tests pass before checking in changes. If your team allows it, use some sort of continuous integration suite. This allows you to get feedback upon every check-in that tells you whether all the unit tests pass. If you have an SCC or ALM that supports it, enable guards that force the unit tests to pass before changes are allowed into SCC.</p>
+<p><strong>Work on one set of related changes at a time.</strong><br />
+It's more efficient to work on one thing at a time. Switching back and forth from task to task means wasting time getting into a different frame of mind and sometimes a different configuration. This also causes issues with SCC in that you've now got modified files that you're not currently working on. The longer they're kept unmerged, the more likely there will be issues during merge (someone else made a changed that conflicts with yours, and if everyone else is checking in often, you're the one that has to deal with all the conflicts). The more things you're working on at once, the more likely that one set of changes becomes dependant on another and you simply can't check your files in until all the changes you're working on are complete. Work on one set of related changes at a time and check those changes in to avoid not merging your changes often.</p>
+<p><strong>Check-in often.</strong><br />
+SCC provides developers the ability to keep a history of their changes. But, this only works if you check your changes into the SCC system. When you have something that compiles, check it in. The more often you check changes into the SCC system the less likely you'll get into a situation where you have to deal with merge conflicts. The more often you check changes into the SCC system the least complex the changes will be. If the changes are not complex and you do run into a merge conflict, the less work will be involved in resolving the conflict. Do your sanity (and the sanity of your team mates) a favour and check in often. See next practice.</p>
+<p><strong>Avoid leaving changes overnight.</strong><br />
+Check in your workingchanges before you leave for the day. If it compiles and works (unit tests pass) there's likely no harm to checking in. Leaving work for an extended period of time means it's that much harder to get back into that mindset; if you check in and describe the check in, you now have a history of the day's changes with an annotation making it easier to get back in that mindset. But, since you've checked the files in, you may not need to get back into that mindset (if you didn't check in, you <em>must</em> get back in that mindset in order to check in).</p>
+<p><strong>Never destroy SCC content.</strong><br />
+SCC offers the ability to get back to a project state at any time in the past. If you destroy content from the system, this incapacitates this ability. It goes against keeping any sort of history of a project to destroy content, so don't do it unless you intend never to make use of the history for that project (i.e. you're destroying and entire project and you never intend to work on it again or support it).</p>
+<p><strong>Don't Bypass Copy-modify-Merge</strong><br />
+Eventually you'll be in a situation where you need to edit a file at the same time as another person. In this case you'll need to merge your changes. The copy-modify-merge model accepts this inevitable fact and makes merging a first-class citizen of your development process; not some nebulous process that occurs only occaisionally. With a properly designed system the need to merge should be minimized. I've seen teams instigate a policy that you must lock the file before you modify it. I've also seen teams configure a SCC provider to automatically lock a file when changes are made to it. This is the wrong thing to do on software development teams. It leads to one of two things: 1) people just stop working when they can't lock the file they need to edit; or 2) they end up forcing copy-modify-merge that isn't supported by the tools they're using, which often leads to human errors and errors in merging.</p>
+<p>I hope to continue this series as time goes on, if you have suggested topics, please comment. I expect to keep pretty generic; but could get SCC-system-specific, if there's interest.</p>
+<p><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fmsmvps.com%2fblogs%2fpeterritchie%2farchive%2f2009%2f03%2f11%2fdeveloping-with-source-code-control-best-practices-part-2.aspx" class="img-fluid" alt="kick it on DotNetKicks.com" /></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2'
+    'Developing with Source Code Control &#x2013; Best Practices Part 2'
+    'http://blog.peterritchie.com/posts/Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('3/11/09');
+    console.info('Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Developing with Source Code Control &#x2013; Best Practices Part 2';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Developing-with-Source-Code-Control-%E2%80%93-Best-Practices-Part-2';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

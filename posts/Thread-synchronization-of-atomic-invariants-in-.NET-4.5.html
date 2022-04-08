@@ -1,0 +1,614 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Thread synchronization of atomic invariants in .NET 4.5</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Thread synchronization of atomic invariants in .NET 4.5" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Thread-synchronization-of-atomic-invariants-in-.NET-4.5" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Thread synchronization of atomic invariants in .NET 4.5</h1>
+    <div class="meta">        
+Published on Sunday, September 9, 2012<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-45" class="btn btn-default btn-xs">.NET 4.5</a>
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/Concurrency" class="btn btn-default btn-xs">Concurrency</a>
+                    <a role="button" href="/tags/DevCenterPost" class="btn btn-default btn-xs">DevCenterPost</a>
+                    <a role="button" href="/tags/Multithreaded" class="btn btn-default btn-xs">Multithreaded</a>
+                    <a role="button" href="/tags/September-2012" class="btn btn-default btn-xs">September 2012</a>
+                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-xs">Software Development Guidance</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/09/09/thread-synchronization-of-atomic-invariants-in-net-4-5/" title="Permalink to Thread synchronization of atomic invariants in .NET 4.5">Source</a></p>
+<h1 id="thread-synchronization-of-atomic-invariants-in.net-4.5">Thread synchronization of atomic invariants in .NET 4.5</h1>
+<p>I've written before about multi-threaded programming in .NET (C#). Spinning up threads and executing code on another thread isn't really the hard part. The hard part is synchronization of data between threads.</p>
+<p>Most of what I've written about is from a processor agnostic point of view. It's written from the historical point of view: that .NET supports many processors with varying memory models. The stance has generally been that you're programming for the .NET memory model and not a particular processor memory model.</p>
+<p>But, that's no longer entirely true. In 2010 Microsoft basically dropped support for Itanium in both Windows Server and in Visual Studio (<a href="http://blogs.technet.com/b/windowsserver/archive/2010/04/02/windows-server-2008-r2-to-phase-out-itanium.aspx">http://blogs.technet.com/b/windowsserver/archive/2010/04/02/windows-server-2008-r2-to-phase-out-itanium.aspx)</a>. In VS 2012 there is no &quot;Itanium&quot; choice in the project Build options. As far as I can tell, Windows 2008 R2 is the only Windows operating system, still in support, that supports Itanium. And even Windows 2008 R2 for Itanium is not supported for .NET 4.5 (<a href="http://msdn.microsoft.com/en-us/library/8z6watww.aspx">http://msdn.microsoft.com/en-us/library/8z6watww.aspx)</a></p>
+<p>So, what does this mean to really only have the context of running only x86/x64? Well, if you really read the documentation and research the Intel x86 and x64 memory model this could have an impact in how you write multi-threaded code with regard to shared data synchronization. x86 and x64 memory models include guarantees like &quot;In a multiple-processor system…Writes by a single processor are observed in the same order by all processors.&quot; but doesand also includes guarantees like &quot;Loads May Be Reordered with Earlier Stores to Different Locations&quot;. What this really means is that a store or a load to a single location won't be reordered with regard to a load or a store to the same location across processors. That is we don't <em>need</em> fences to ensure a store to a single memory location is &quot;seen&quot; by all threads or that a load from memory loads the &quot;most recent&quot; value stored. But, it does mean that in order for <em>multiple stores</em> to <em>multiple locations</em> to be viewed by other threads <em>in the same order</em>, a fence is necessary (or the group of store operations is invoked as an atomic action through the user of synchronization primitives like Monitor.Enter/Exit, lock, Semaphore, etc.) (See section 8.2 Memory Ordering of the <a href="http://download.intel.com/products/processor/manual/253668.pdf">Intel Software Developer's Manual Volume 3A</a> found <a href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html">here</a>). But, that deals with non-atomic invariants which I'll detail in another post.</p>
+<p>To be clear, you could develop to just x86 or just x64 prior to .NET 4.5 and have all the issues I'm about to detail.</p>
+<p>Prior to .NET 4.5 you really programmed to the .NET memory model. This has changed over time since ECMA defined it around .NET 2.0; but that model was meant to be a &quot;supermodel&quot; to deal with the fact that .NET could be deployed to different CPUs with disparate memory models. Most notably was the Itanium memory model. This model is much looser than the Intel x86 memory model and allowed things like a store without a release fence and a load without an acquire fence. This meant that a load or a store might be done only in one CPU's memory cache and wouldn't be flushed to memory until a fence. This also meant that other CPUs (e.g. other threads) may not see the store or may not get the &quot;latest&quot; value with a load. You can explicitly cause release and acquire fences with .NET with things like Monitor.Enter/Exit (lock), Interlocked methods, Thread.MemoryBarrier, Thread.VolatileRead/VolatileWrite, etc. So, it wasn't a big issue for .NET programmers to write code that would work on an Itanium. For the most part, if you simply guarded all your shared data with a lock, you were fine. lock is expensive, so you could optimize things with Thread.VolatileRead/VolatileWriter if your shared data was inherently atomic (like a single int, a single Object, etc) or you could use the volatile keyword (in C#). The conventional wisdom has been to use Thread.VolatileRead/VolatileWrite rather than decorate a field with volatile because you may not need <em>every</em> access to be volatile and you don't want to take the performance hit when it doesn't <em>need</em> to be volatile.</p>
+<p>For example (borrowed from <a href="http://www.lidnug.org/archives.aspx">Jeffrey Richter</a>, but slightly modified) shows synchronizing a static member variable with Thread.VolatileRead/VolatileWrite:</p>
+<pre><code>   1: public static class Program {
+
+
+   2:   private static int s_stopworker;
+
+
+   3:   public static void Main() {
+
+
+   4:     Console.WriteLine(&quot;Main: letting worker run for 5 seconds&quot;);
+
+
+   5:     Thread t = new Thread(Worker);
+
+
+   6:     t.Start();
+
+
+   7:     Thread.Sleep(5000);
+
+
+   8:     Thread.VolatileWrite(ref s_stopworker, 1);
+
+
+   9:     Console.WriteLine(&quot;Main: waiting for worker to stop&quot;);
+
+
+  10:     t.Join();
+
+
+  11:   }
+
+
+  12:  
+
+
+  13:   public static void Worker(object o) {
+
+
+  14:     Int32 x = 0;
+
+
+  15:     while(Thread.VolatileRead(ref s_stopworker) == 0)
+
+
+  16:     {
+
+
+  17:       x++;
+
+
+  18:     }
+
+
+  19:   }
+
+
+  20: }
+</code></pre>
+<p>Without the call to Thread.VolatileWrite the processor could reorder the write of 1 to s_stopworker to after the read (assuming we're not developing to on particular processor memory model and we're including Itanium). In terms of the compiler, without Thread.VolatileRead it could cache the value being read from s_stopworker in to a register. For example, removing the Thread.VolatileRead, the compiler optimizes the comparison of s_stopworker to 0 in the while to single register (on x86):</p>
+<pre><code>00000000  push        ebp 
+
+
+00000001  mov         ebp,esp 
+
+
+00000003  mov         eax,dword ptr ds:[00213360h] 
+
+
+00000008  test        eax,eax 
+
+
+0000000a  jne         00000010 
+
+
+0000000c  test        eax,eax 
+
+
+0000000e  je          0000000C 
+
+
+00000010  pop         ebp 
+
+
+00000011  ret 
+</code></pre>
+<p>The loop is 0000000c to 0000000e (really just testing that the eax register is 0). Using Thread.VolatileRead, we'd always get a value from a physical memory location:</p>
+<pre><code>00000000  push        ebp 
+
+
+00000001  mov         ebp,esp 
+
+
+00000003  lea         ecx,ds:[00193360h] 
+
+
+00000009  call        71070480 
+
+
+0000000e  test        eax,eax 
+
+
+00000010  jne         00000021 
+
+
+00000012  lea         ecx,ds:[00193360h] 
+
+
+00000018  call        71070480 
+
+
+0000001d  test        eax,eax 
+
+
+0000001f  je          00000012 
+
+
+00000021  pop         ebp 
+
+
+00000022  ret 
+</code></pre>
+<p>The loop is now 00000012 to 0000001f, which shows calling Thread.VolatileRead each iteration (location 00000018). But, as we've seen from the Intel documentation and guidance, we don't really need to call VolatileRead, we just don't want the compiler to optimize the memory access away into a register access. This code <em>works</em>, but we take the hit of calling VolatileRead which forces a memory fence through a call to Thread.MemoryBarrier after reading the value. For example, the following code is equivalent:</p>
+<pre><code>while(s_stopworker == 0)
+
+
+{
+
+
+  Thread.MemoryBarrier();
+
+
+  x++;
+
+
+}
+</code></pre>
+<p>And this works equally as well as using Thread.VolatileRead, and compiles down to:</p>
+<pre><code>00000000  push        ebp 
+
+
+00000001  mov         ebp,esp 
+
+
+00000003  cmp         dword ptr ds:[002A3360h],0 
+
+
+0000000a  jne         0000001A 
+
+
+0000000c  lock or     dword ptr [esp],0 
+
+
+00000011  cmp         dword ptr ds:[002A3360h],0 
+
+
+00000018  je          0000000C 
+
+
+0000001a  pop         ebp 
+
+
+0000001b  ret 
+</code></pre>
+<p>The loop is now is 0000000c to 00000018. As we can see at 0000000c we have an extra &quot;lock or&quot; instruction—which is what the compiler optimizes a call to Thread.MemoryBarrier to. This instruction really just or's 0 with what esp is pointing to (i.e. &quot;nothing&quot;, zero or'ed with something else does not change the value). But the lock prefix forces a fence and is less expensive than instructions like mfence. But, based on what we know of the x86/x64 memory model, we're only dealing with a single memory location and we don't <em>need</em> that lock prefix—the inherent memory guarantees of the processor means that our thread can see any and all writes to that memory location without this extra fence. So, what can we do to get rid of it? Well, using volatile actually results in code that doesn't generate that lock or instruction. For example, if we change our code to make s_stopworker volatile:</p>
+<pre><code>   1: public static class Program {
+
+
+   2:   private static volatile int s_stopworker;
+
+
+   3:   public static void Main() {
+
+
+   4:     Console.WriteLine(&quot;Main: letting worker run for 5 seconds&quot;);
+
+
+   5:     Thread t = new Thread(Worker);
+
+
+   6:     t.Start();
+
+
+   7:     Thread.Sleep(5000);
+
+
+   8:     s_stopworker = 1;
+
+
+   9:     Console.WriteLine(&quot;Main: waiting for worker to stop&quot;);
+
+
+  10:     t.Join();
+
+
+  11:   }
+
+
+  12:  
+
+
+  13:   public static void Worker(object o) {
+
+
+  14:     Int32 x = 0;
+
+
+  15:     while(s_stopworker == 0)
+
+
+  16:     {
+
+
+  17:       x++;
+
+
+  18:     }
+
+
+  19:   }
+
+
+  20: }
+</code></pre>
+<p>We tell the compiler that we don't want accesses to s_stopworker optimized. This then compiles down to:</p>
+<pre><code>00000000  push        ebp 
+
+
+00000001  mov         ebp,esp 
+
+
+00000003  cmp         dword ptr ds:[00163360h],0 
+
+
+0000000a  jne         00000015 
+
+
+0000000c  cmp         dword ptr ds:[00163360h],0 
+
+
+00000013  je          0000000C 
+
+
+00000015  pop         ebp 
+
+
+00000016  ret 
+</code></pre>
+<p>The loop is now 0000000c to 00000013. Notice that we're simply getting the value from memory on each iteration and comparing it to 0. There's no lock or. One less instruction and no extra memory fence. Although in many cases it doesn't matter (i.e. you might only do this once, in which case an extra few milliseconds won't hurt and this might be a premature optimization), but using lock or with the register optimization is about 992% slower when measured on my computer (or volatile is 91% faster than using Thread.MemoryBarrier and probably a bit faster still than use Thread.VolatileRead). This is actually contradictory to conventional wisdom with respect to a .NET memory model that supports Itanium. If you want to support Itanium, every access to a volatile field would be tantamount to Thread.VolatileRead or Thread.VolatileWrite, in which case, yes, in scenarios where you don't really need the field to be volatile, you take a performance hit.</p>
+<p>In .NET 4.5 where Itanium is out of the picture, you might be thinking &quot;volatile all the time then!&quot;. But, hold on a minute, let's look at another example:</p>
+<pre><code>   1: static void Main()
+
+
+   2: {
+
+
+   3:   bool complete = false; 
+
+
+   4:   var t = new Thread (() =&gt;
+
+
+   5:   {
+
+
+   6:     bool toggle = false;
+
+
+   7:     while (!complete)
+
+
+   8:     {
+
+
+   9:         Thread.MemoryBarrier();
+
+
+  10:         toggle = !toggle;
+
+
+  11:     }
+
+
+  12:   });
+
+
+  13:   t.Start();
+
+
+  14:   Thread.Sleep (1000);
+
+
+  15:   complete = true;
+
+
+  16:   t.Join();
+
+
+  17: }
+</code></pre>
+<p>This code (borrowed from <a href="http://www.albahari.com/threading/part4.aspx">Joe Albahari</a>) will block indefinitely at the call to Thread.Join (line 16) without the call to Thread.MemoryBarrier() (at line 9).</p>
+<p>This code blocks indefinitely without Thread.MemoryBarrier() on both x86 and x64; but this is due to compiler optimizations, not because of the processor's memory model. We can see this in the disassembly of what the JIT produces for the thread lambda (on x64):</p>
+<pre><code>00000000  push        ebp 
+
+
+00000001  mov         ebp,esp 
+
+
+00000003  movzx       eax,byte ptr [ecx+4] 
+
+
+00000007  test        eax,eax 
+
+
+00000009  jne         0000000F 
+
+
+0000000b  test        eax,eax 
+
+
+0000000d  je          0000000B 
+
+
+0000000f  pop         ebp 
+
+
+00000010  ret 
+</code></pre>
+<p>Notice the loop (0000000b to 0000000d), the compiler has optimized access to the variable toggle into a register and doesn't update that register from memory—identical to what we saw with the member field above. If we see the disassembly when using MemoryBarrier:</p>
+<pre><code>00000000  movzx       eax,byte ptr [rcx+8] 
+
+
+00000004  test        eax,eax 
+
+
+00000006  jne         0000000000000020 
+
+
+00000008  nop         dword ptr [rax+rax+00000000h] 
+
+
+00000010  lock or     dword ptr [rsp],0 
+
+
+00000015  movzx       eax,byte ptr [rcx+8] 
+
+
+00000019  test        eax,eax 
+
+
+0000001b  je          0000000000000010 
+
+
+0000001d  nop         dword ptr [rax] 
+
+
+00000020  rep ret 
+</code></pre>
+<p>We see that loop testing toggle (instructions from 00000010 to 0000001b) grabs the memory value into eax then tests eax until it's true (or non-zero). MemoryBarrier has been optimized to &quot;lock or&quot; here as well.</p>
+<p>What we're dealing with here is a <strong>local variable</strong> and <strong>can't use the volatile keyword</strong>. We could use the lock keyword to get a fence, it couldn't be around the comparison (the while) because that would enclose the entire while block and would never exit the lock to get the memory fence and thus the compiler believes reads of toggle aren't guarded by lock's implicit fences. We'd have to wrap <em>the assignment</em> to toggle to get the release fence before and the acquire fence after, ala:</p>
+<pre><code>var lockObject = new object();
+
+
+while (!complete)
+
+
+{
+
+
+    lock(lockObject)
+
+
+    {
+
+
+        toggle = !toggle;
+
+
+    }
+
+
+}
+</code></pre>
+<p>Clearly this lock block isn't really a critical section because the lockObject instance can't be shared amongst threads. Anyone reading this code is likely going to think &quot;WTF?&quot;. But, <em>we do</em> get our fences, and the compiler will not optimize access to toggle to only a register and our code will no longer block at the call to Thread.Join. It's apparent that Thread.MemoryBarrier is the better choice in this scenario, it's just more readable and doesn't appear to be poorly written code (i.e. code that only depends on side effects).</p>
+<p>But, you still take the performance hit on &quot;lock or&quot;. If you want to avoid that, then refactor the local toggle variable to a field and decorate it with volatile.</p>
+<p>Although some of this seems like micro-optimizations, but it's not. You have to be careful to &quot;synchronize&quot; shared atomic data with respect to compiler optimizations, so you might as well pick the best way that works.</p>
+<p>In the next post I'll get into synchronizing non-atomic invariants shared amongst threads.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Thread-synchronization-of-atomic-invariants-in-.NET-4.5'
+    'Thread synchronization of atomic invariants in .NET 4.5'
+    'http://blog.peterritchie.com/posts/Thread-synchronization-of-atomic-invariants-in-.NET-4.5'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('9/9/12');
+    console.info('Thread-synchronization-of-atomic-invariants-in-.NET-4.5');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Thread synchronization of atomic invariants in .NET 4.5';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Thread-synchronization-of-atomic-invariants-in-.NET-4.5';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Thread-synchronization-of-atomic-invariants-in-.NET-4.5';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

@@ -1,0 +1,260 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Uses for yield Part One &#x2013; Introduction</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Uses for yield Part One &#x2013; Introduction" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Uses-for-yield-Part-One-%E2%80%93-Introduction" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Uses for yield Part One &#x2013; Introduction</h1>
+    <div class="meta">        
+Published on Saturday, February 3, 2007<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/February-2007" class="btn btn-default btn-xs">February 2007</a>
+                    <a role="button" href="/tags/Uncategorized" class="btn btn-default btn-xs">Uncategorized</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/02/03/uses-for-yield-part-one-introduction/" title="Permalink to Uses for yield Part One – Introduction">Source</a></p>
+<h1 id="uses-for-yield-part-one-introduction">Uses for yield Part One – Introduction</h1>
+<p>.NET has strong support for collections. Even the built-in Array type implements <code>ICollection</code>. The <code>ICollection</code> interface derives from the <code>IEnumerable</code> interface to allow easy enumeration of all elements in a collection. In C#, the foreach statement uses the <code>GetEnumerator</code> member of <code>IEnumerable</code> (a class need not implement <code>IEnumerable</code>, it just needs a public <code>GetEnumerator</code> method that returns an <code>IEnumerator</code> object) to begin enumeration.</p>
+<p>Previous to C# 2.0 foreach required the existence of the collection and all the elements contained therein, or a custom implementation of IEnumerator.<code>MoveNext()</code> and IEnumerator.Current. Not an entirely unexpected demand, when you think of it. If you wanted to provide the ability to enumerate all the elements of a particular set of data then that data would have to be calculated at the time of the set's creation. C# 2.0 introduced the yield keyword that meant you could implement an enumerable set that doesn't require all its elements to exist at the beginning of the enumeration or creating an IEnumerator-derived class.</p>
+<p>What does this do you for, the designer? Well, you can employ lazy evaluation to distribute processing throughout several different points in time. This is handy if you want to maintain a responsive UI, or you have to deal with high-latency resources like a web connection to a remote server or a connection to a remote database. This is especially beneficial if you know your clients aren't always going to enumerate all elements in your set (i.e. you don't have to perform processing to create all elements in order to use the foreach pattern). This effectively means the creation of your set can be O(1).</p>
+<p>The documentation for yield provides a pragmatic example of creating an enumerable set of powers of a number up to a specific exponent. A slight modification of the example shows that indeed the calculation of each power is in fact lazy, and distributed across time:</p>
+<blockquote class="blockquote">
+<p>calculating 2<sup>1<br />
+2</sup>1 = 2<br />
+calculating 2<sup>2<br />
+2</sup>2 = 4<br />
+calculating 2<sup>3<br />
+2</sup>3 = 8<br />
+calculating 2<sup>4<br />
+2</sup>4 = 16<br />
+calculating 2<sup>5<br />
+2</sup>5 = 32<br />
+calculating 2<sup>6<br />
+2</sup>6 = 64<br />
+calculating 2<sup>7<br />
+2</sup>7 = 128<br />
+calculating 2<sup>8<br />
+2</sup>8 = 256</p>
+</blockquote>
+<p>The yield statement has a couple of variations. To provide the value at the current position, use yield return <em>value</em>. Use yield break to signal the end of the set and to stop the enumeration loop. For example, to implement an enumerator of a set whose limit is notknown at the start of an enumeration:</p>
+<p>/// <summary></p>
+<p>/// Get an enumerator for all the keys pressed until Esc</p>
+<p>/// </summary></p>
+<p>/// <returns>IEnumerator object.</returns></p>
+<p>public static System.Collections.IEnumerable GetPressedKeysUntilEscape()</p>
+<p>{</p>
+<p>do</p>
+<p>{</p>
+<p>ConsoleKeyInfo character = Console.ReadKey(true);</p>
+<p>if (character.Key == ConsoleKey.Escape)</p>
+<p>{</p>
+<pre><code>yield break;
+</code></pre>
+<p>}</p>
+<p>yield return character.Key;</p>
+<p>}</p>
+<p>while (true);</p>
+<p>}</p>
+<p>// …</p>
+<p>foreach (ConsoleKey key in GetPressedKeysUntilEscape())</p>
+<p>{</p>
+<p>Debug.WriteLine(key.ToString());</p>
+<p>}</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Uses-for-yield-Part-One-%E2%80%93-Introduction'
+    'Uses for yield Part One &#x2013; Introduction'
+    'http://blog.peterritchie.com/posts/Uses-for-yield-Part-One-%E2%80%93-Introduction'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/3/07');
+    console.info('Uses-for-yield-Part-One-%E2%80%93-Introduction');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Uses for yield Part One &#x2013; Introduction';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Uses-for-yield-Part-One-%E2%80%93-Introduction';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Uses-for-yield-Part-One-%E2%80%93-Introduction';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

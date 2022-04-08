@@ -1,0 +1,265 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Introduction to Productivity Extensions</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Introduction to Productivity Extensions" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Introduction-to-Productivity-Extensions" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Introduction to Productivity Extensions</h1>
+    <div class="meta">        
+Published on Friday, November 30, 2012<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/November-2012" class="btn btn-default btn-xs">November 2012</a>
+                    <a role="button" href="/tags/Open-Source" class="btn btn-default btn-xs">Open Source</a>
+                    <a role="button" href="/tags/Visual-Studio-2010" class="btn btn-default btn-xs">Visual Studio 2010</a>
+                    <a role="button" href="/tags/Visual-Studio-2012" class="btn btn-default btn-xs">Visual Studio 2012</a>
+                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><a href="http://blogs.msmvps.com/peterritchie/2012/11/30/introduction-to-productivity-extensions/" title="Permalink to Introduction to Productivity Extensions">Source</a></p>
+<h1 id="introduction-to-productivity-extensions">Introduction to Productivity Extensions</h1>
+<p>The .NET Framework has been around since 2002. There are many common classes and methods that have been around a long time. The Framework and the languages used to develop on it have evolved quite a bit since many of these classes and their methods came into existence. Existing classes and methods in the base class library (BCL) could be kept up to date with these technologies, but it's time consuming and potentially destabilizing to add or change methods after a library has been released and Microsoft generally avoids this unless there's a <em>really good</em> reason.</p>
+<p>Generics, for example, came along in the .Net 2.0 timeframe; so, many existing Framework subsystems never had the benefit of generics to make certain methods more strongly-typed. Many methods in the Framework take a <code>Type</code> parameter and return an<code>Object</code> of that <code>Type</code> but must be first cast in order for the object to be used as its requested type.<code>Attribute.GetCustomAttribute(Assembly, Type)</code> gets an <code>Attribute</code>-based class that has been added at the assembly level. For example, to get the copyright information of an assembly, you might do something like:</p>
+<pre><code>var aca = (AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(),
+    typeof (AssemblyCopyrightAttribute));
+Trace.WriteLine(aca.Copyright);
+</code></pre>
+<p>Involving an <code>Assembly</code> instance, the <code>Attribute</code> class, the <code>typeof</code> operator, and a cast.</p>
+<p>Another feature added after many of the existing APIs were released was <em>anonymous methods</em>. Anonymous methods will capture outer variables to extend their lifetime so they will be available when the anonymous method is executed (presumably asynchronously to the code where the capture occurred). There are many existing APIs that make the assumption that state can't be captured and it must be managed and passed in explicitly by the caller.</p>
+<p>For example:</p>
+<pre><code>  //...
+  byte[] buffer = new byte[1024];
+    fileStream.BeginRead(buffer, 0, buffer.Length, ReadCompleted, fileStream);
+  //...
+
+private static void ReadCompleted(IAsyncResult ar)
+{
+  FileStream fileStream = (FileStream) ar.AsyncState;
+    fileStream.EndRead(ar);
+    //...
+}
+</code></pre>
+<p>In this example we're re-using the stream (fileStream) for our state and passing as the state object in the last argument to <code>BeginRead</code>.</p>
+<p>With anonymous methods, passing this state in often became unnecessary as the compiler would generate a state machine to manage any variables used within the anonymous method that were declared outside of the anonymous method. For example:</p>
+<pre><code>fileStream.BeginRead(buffer, 0, buffer.Length, 
+  delegate(IAsyncResult ar) { fileStream.EndRead(ar); },
+    null);
+</code></pre>
+<p>Or, if you prefer the more recent lambda syntax:</p>
+<pre><code>fileStream.BeginRead(buffer, 0, buffer.Length,
+                    ar =&gt; fileStream.EndRead(ar),
+                        null);
+</code></pre>
+<p>The compiler generates a state machine that captures fileStream so we don't have to. But, since we're using methods designed prior to <em>out variable capturing</em>, we have to send <code>null </code>as the last parameter to tell the method we don't have any state that it needs to pass along.</p>
+<p>Microsoft has a policy of not changing shipped assemblies unless they have to (i.e. bug fixes). This means that just because Generics or anonymous methods were released, they weren't going to go through all the existing classes/methods in already-shipped assemblies and add Generics support or APIs optimized for anonymous methods. Unfortunately, this means many older APIs are harder to use then they need to be.</p>
+<p>Enter Productivity Extensions. When extension methods came along, I would create extension methods to &quot;wrap&quot; some of these methods in a way that was more convenient with current syntax or features. As a result I had various extension methods lying around that did various things. I decided to collect all those (and others), look at patterns and create a more comprehensive and centralized collection of extension methods—which I'm calling the Productivity Extensions.</p>
+<p>One of those patterns is the Asynchronous Programming Model (APM) and the Begin* methods and their use of the state parameter. Productivity Extensions provide a variety of overrides that simply leave this parameter off and call the original method with <code>null</code>. For example:</p>
+<pre><code>fileStream.BeginRead(buffer, 0, buffer.Length,
+                    ar =&gt; fileStream.EndRead(ar));
+</code></pre>
+<p>In addition, overrides are provided to simply assume offset of 0 and a length that matches the array length. So, using Productivity Extensions you could re-write our original call to BeginRead as:</p>
+<pre><code>fileStream.BeginRead(buffer, ar =&gt; fileStream.EndRead(ar));
+</code></pre>
+<p>Productivity Extensions also include various extensions to make using older APIs that accept a Type argument and return an Object like Attribute.GetCustomAttribute to make use of Generics. For example:</p>
+<pre><code>var aca = Assembly.GetExecutingAssembly().GetCustomAttribute&lt;AssemblyCopyrightAttribute&gt;();
+</code></pre>
+<p>There's many other instances of these two patterns as well as many other extensions. There's currently 650 methods extending over 400 classes in the .NET Framework. This is completely open source at <a href="http://bit.ly/RMOM0c">http://bit.ly/RMOM0c</a> and available on NuGet (the ID is &quot;ProductivityExtensions&quot;) with more information at <a href="http://bit.ly/PDsKcs">http://bit.ly/PDsKcs</a>.</p>
+<p>I encourage you have a look and if you have any questions, drop me a line, add an issue on GitHub or add suggestions/issues on UserVoice at <a href="http://bit.ly/SkupF9">http://bit.ly/SkupF9</a>.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Introduction-to-Productivity-Extensions'
+    'Introduction to Productivity Extensions'
+    'http://blog.peterritchie.com/posts/Introduction-to-Productivity-Extensions'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/30/12');
+    console.info('Introduction-to-Productivity-Extensions');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Introduction to Productivity Extensions';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Introduction-to-Productivity-Extensions';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Introduction-to-Productivity-Extensions';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
