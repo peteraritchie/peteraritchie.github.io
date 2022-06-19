@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - As a Delivery Team Member, I Want To Know if My Organization&#x27;s Agile Initiative Is off the Rails</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - As a Delivery Team Member, I Want To Know if My Organization&#x27;s Agile Initiative Is off the Rails" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/agile-off-the-rails" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,16 +75,13 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>As a Delivery Team Member, I Want To Know if My Organization&#x27;s Agile Initiative Is off the Rails</h1>
     <div class="meta">        
-Published on Thursday, December 13, 2007<br>    </div>
+Published on Sunday, June 19, 2022<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/December-2007" class="btn btn-default btn-xs">December 2007</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/Agile" class="btn btn-default btn-xs">Agile</a>
+                    <a role="button" href="/tags/June-2022" class="btn btn-default btn-xs">June 2022</a>
+                    <a role="button" href="/tags/Workplace" class="btn btn-default btn-xs">Workplace</a>
         </div>     
 </div>
                                         </div>
@@ -98,116 +95,74 @@ Published on Thursday, December 13, 2007<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency injection (DI) is a form of inversion of control. There seems to be a tendency in some circles to refer to dependency injection as inversion of control (IoC).</p>
-<p>Dependency injection is a form of abstraction by removing physical dependencies between classes and potentially assemblies. This abstraction can have many different motives. One motive is for Aspect Oriented Software Development (ASOD) where you're abstracting shared (or cross-cutting) concerns into independent classes. Another motive is for Test-Driven Development (TDD) where you want to be able to test each class independently of its dependencies–in which case injected dependencies are &quot;mocked&quot;–technically this is still AOSD because you're separating the testing concern.</p>
-<p>Dependency injection in .NET is most frequently implemented using interface-oriented design/programming, where a dependency of a class is on an interface. Any class implementing that interface is then a candidate for being &quot;injected&quot; into the other class.There's many ways to inject dependency, one is at time of construction the other is at time of operation.</p>
-<p>There are many examples of dependency injection at time of operation in the .NET Framework. Normally when an interface is involved, dependency injection is also involved. Serialization is a good example. Serialization in .NET allows programmers to serialize topretty much anything. &quot;Anything&quot; being a stream. Serialization abstracts the destination from the act of serializing and allows programmers to inject a dependency on any type of destination (media, resource, mock, etc.) simply by implementing IStream. For example, for any given class in .NET I can &quot;serialize&quot; it to any stream:</p>
-<pre><code>   MyType myType = new MyType();
+<p><img src="..%5Cassets%5Cadult-gd72730acb_1920.jpg" class="img-fluid" alt="concentration" /></p>
+<p>Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850268">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850268">Pixabay</a></p>
+<p>Or, <em>as a delivery team member, I want to know if my organization's agile initiative is off the rails, so that I may compensate for it</em>.</p>
+<p>I have been an agile team member (delivery, engineering) in many organizations. There is a spirit to any defined agile process, a spirit that addresses known time-to-market and quality fallacies. Agile processes are like any good guidance; they are based on experience and techniques proven to address known problems.</p>
+<p>First, some context:</p>
+<p><strong>Excellence</strong> is not about being perfect but about recognizing and exploiting opportunity.</p>
+<p>A <strong>Project</strong> is a temporary, planned effort to achieve a particular aim.</p>
+<p>A <strong>Sprint</strong> is a time-boxed period where a team works to deliver usable functionality to stakeholders.</p>
+<p>Goals and objectives are often <strong>Means Goals</strong> and <strong>Means Objectives</strong>, signifying they are a catalytic end to realize another end.</p>
+<p>Objectives that are meant to accomplish other objectives exist in a continuum of objectives called <strong>Cascading Objectives</strong>.</p>
+<p>A <strong>Key Result</strong> are not qualitatively measured (&quot;done,&quot; &quot;improved,&quot; etc.); they are measured quantitatively (&quot;improved by 25%,&quot; &quot;decreased by a factor of 2,&quot; etc.)</p>
+<p>Agile methodologies embody a continuum of purpose, motivation, and improvement. Purpose, motivation, and improvement are not team-specific concepts but are organization-wide constructs. This continuum is the result of the act of leadership.</p>
+<p>Over the years, I have witnessed many patterns of behavior that have resulted in failed agile delivery. Following are some common of those practices,</p>
+<h2 id="agile-is-the-only-process">Agile Is the Only Process</h2>
+<p>Agile's raison d'être is to deliver value to the stakeholders. Agile is a project management technique; no enterprise devotes 100% of its resources to projects. An enterprise has a purpose for existing (their <em>why</em>, the vision) and has a current means to achieve that purpose (their mission). Any effort not gauged by whether it satisfies the overall mission (and thus aligns with the purpose) can only succeed accidentally. Planning to succeed accidentally is not planning, and that sort of &quot;planning&quot; is a waste of time. Agile organizations put effort into addressing assumptions before planning value delivery.</p>
+<p>You know an organization is working against itself and pretending to be agile when:</p>
+<ul>
+<li>100% of engineering time is devoted to &quot;sprints.&quot;</li>
+<li>Sprints are planned correctly 100% of the time and are never canceled due to change.</li>
+<li>A project plan does not focus on an operational outcome.</li>
+<li>Spikes are exceedingly rare.</li>
+<li>No stakeholder has communicated what they value.</li>
+<li>Stakeholders do not declare a spike's usable functionality; the delivery team declares it.</li>
+</ul>
+<h2 id="no-one-has-okr-training-or-expertise">No One Has OKR Training or Expertise</h2>
+<p>Goals and objectives are easily understood conceptually but are hard to implement in reality. One of the impetus' of OKRs is to recognize and address that. Objectives and deliverables are consequents of goals; they are the means to a larger end while still being an end in and of themselves. In isolation, objectives and deliverables are meaningless and, like any other misguided activities, detract from the purpose of accomplishing them. OKRs attempt to associate goal-oriented <em>key results</em> with individual objectives, objectives that cascade from higher-level objectives.</p>
+<p>You know OKRs are in name only when:</p>
+<ul>
+<li>Objectives do not cascade from higher-level objectives</li>
+<li>Key results are an action, not an event</li>
+<li>Key results are not measurable</li>
+</ul>
+<p>To be honest, I've only ever seen failed implementations of OKRs--OKRs more often address perceived delivery failures rather than leadership failures. i.e., they are a management technique rather than a result of leadership.</p>
+<h2 id="leadership-in-name-only">Leadership in Name Only</h2>
+<p>A manager creates and judges the attainment of goals (doing things right). A leader communicates and cultivates purpose and vision (doing the right things).</p>
+<ul>
+<li>There are only &quot;leaders&quot; and no &quot;managers.&quot;</li>
+<li>&quot;Leaders&quot; that are late to every meeting.</li>
+<li>Activities are judged, not outcomes.</li>
+<li>Goals and objectives are only ever qualitative, not quantitative.</li>
+<li>Personal improvement is not a measured performance metric.</li>
+</ul>
+<p>Of course, I could go on. There are many more examples and many bad practices. I'd love to hear about what you've witnessed and your thoughts on these and other bad practices.</p>
+<!--
+## References:
 
+https://www.forbes.com/sites/williamarruda/2016/11/15/9-differences-between-being-a-leader-and-a-manager/?sh=2432b1424609
 
-   IFormatter formatter = Configuration.CreateFormatter(typeof(myType));
-
-
-   using (Stream stream = new MemoryStream())
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-
-
-   }
-</code></pre>
-<p>In the above example, IFormatter.Serialize(Stream, Object), uses dependency injection at time of operation to serialize to a MemoryStream object. In no way is IFormatter.Serialize dependant on MemoryStream. The same call could be written as follows:</p>
-<pre><code>   using(Stream stream = new FileStream(&quot;file.dat&quot;, FileMode.Create))
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-</code></pre>
-<p>}</p>
-<p>The above form of DI is interface (and class) based, in that you need to implement a specificinterface to inject as a dependency. Another form of DI is via delegates. You can abstract a particular class from other concerns simply by accepting a delegate. Any class that wants to be injected simply needs to implement a method with the same signature as the required delegate. Events are an example of this. Any class that raises events is completely independent of any other classes that want to act as observers and subscribe to these events. Subscribers are, in effect,are preforming dependency injection by subscribing to an event. This form of DI is not limited to DI,it can be any delegate.In.NET 2.0 there were many examples of this introduced. List.ForEach, for example:</p>
-<pre><code>namespace Examples
-
-
-{
-
-
- using System.Collections.Generic;
-
-
- public class Program
-
-
- {
-
-
-  static void Main()
-
-
-  {
-
-
-   List&lt;string&gt; names = new List&lt;string&gt;();
-
-
-   // TODO: populate names
-
-
-   names.ForEach(Print);
-
-
-  }
-
-
-  static void Print(String name)
-
-
-  {
-
-
-   Console.WriteLine(name);
-
-
-  }
-
-
- }
-
-
-}
-</code></pre>
-<p>In this example, <code>List&lt;T&gt;</code>, of course, iscompletely independent from Program andProgram is free to be static because there are no interface implementation requirements.</p>
+-->
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'agile-off-the-rails'
+    'As a Delivery Team Member, I Want To Know if My Organization&#x27;s Agile Initiative Is off the Rails'
+    'http://blog.peterritchie.com/posts/agile-off-the-rails'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('12/13/07');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('6/19/22');
+    console.info('agile-off-the-rails');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'As a Delivery Team Member, I Want To Know if My Organization&#x27;s Agile Initiative Is off the Rails';
+    var disqus_url = 'http://blog.peterritchie.com/posts/agile-off-the-rails';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -216,7 +171,7 @@ Published on Thursday, December 13, 2007<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'agile-off-the-rails';
     }
     console.info(disqus_identifier);
 
