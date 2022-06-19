@@ -6,7 +6,7 @@ comments: true
 excerpt: "As a delivery team member, I want to know if my organization's agile initiative is off the rails, so that I may compensate for it."
 tags: ['Workplace', 'Agile', 'June 2022']
 ---
-![concentration](..\assets\adult-gd72730acb_1920.jpg)
+![concentration](assets\adult-gd72730acb_1920.jpg)
 
 Image by <a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850268">Pexels</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850268">Pixabay</a>
 
