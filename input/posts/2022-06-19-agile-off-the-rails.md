@@ -26,7 +26,7 @@ Goals and objectives are often **Means Goals** and **Means Objectives**, signify
 
 Objectives that are meant to accomplish other objectives exist in a continuum of objectives called **Cascading Objectives**.
 
-A **Key Result** are not qualitatively measured ("done," "improved," etc.); they are measured quantitatively ("improved by 25%," "decreased by a factor of 2," etc.)
+A **Key Result** is not qualitatively measured ("done," "improved," etc.); they are measured quantitatively ("improved by 25%," "decreased by a factor of 2," etc.)
 
 Agile methodologies embody a continuum of purpose, motivation, and improvement. Purpose, motivation, and improvement are not team-specific concepts but are organization-wide constructs. This continuum is the result of the act of leadership.
 
