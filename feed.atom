@@ -4,8 +4,58 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2022</rights>
-	<updated>2022-06-19T23:18:01Z</updated>
+	<updated>2022-06-28T02:04:06Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/data-urls-in-markdown</id>
+		<title> Data URLs in Markdown</title>
+		<link href="http://blog.peterritchie.com/posts/data-urls-in-markdown" />
+		<updated>2022-06-27T00:00:00Z</updated>
+		<content>&lt;ul&gt;
+&lt;li&gt;Data URLs embed data within the URI instead of being a link&lt;/li&gt;
+&lt;li&gt;Data URLs can be used to embed images into a web page&lt;/li&gt;
+&lt;li&gt;Data URLs can be used for images in markdown&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="#data-urls"&gt;TL;DR&lt;/a&gt;⮷&lt;/p&gt;
+&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;h3 id="links-in-markdown"&gt;Links in Markdown&lt;/h3&gt;
+&lt;p&gt;URLs can be used in markdown as a hyper-link to another location (another page, or an anchor in the current page, or both.) These links in markdown come in two varieties: &amp;quot;conventional&amp;quot; and reference-style.  Conventional links have the format &lt;code&gt;[text](url)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Reference-style links have a two-part format.  The first is the reference declaration which consists of a name and the URL.  For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-markdown"&gt;[twitter]: https://twitter.com/peterritchie
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Typically the reference declarations appear at the end of the markdown file.&lt;/p&gt;
+&lt;p&gt;That second-part of the format is slightly different than a conventional link: &lt;code&gt;[Visible Text][reference-name]&lt;/code&gt; (notice that both parts are enclosed in square brackets)&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;[Me&amp;#64;Twitter][twitter]&lt;/code&gt;.  Which would result in &lt;a href="https://twitter.com/peterritchie"&gt;Me&amp;#64;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That reference can be used any number of times within markdown by referencing the reference name.&lt;/p&gt;
+&lt;h3 id="images-in-markdown"&gt;Images in Markdown&lt;/h3&gt;
+&lt;p&gt;An image in markdown is a special kind of link; it follows the same format as other links &lt;em&gt;except&lt;/em&gt; that it starts with an exclamation mark (!) and has an optional title-text enclosed in quotes.  For example &lt;code&gt;![alt-text](url &amp;quot;title-text&amp;quot;)&lt;/code&gt;.  Since the image is what is visible, the title text portion of the link is text shown when hovering over the image and the alternative text is used by accessibility features.&lt;/p&gt;
+&lt;h2 id="data-urls"&gt;Data URLs&lt;/h2&gt;
+&lt;p&gt;There exists the ability to encode content within a URL (so the URL is actually the &amp;quot;response&amp;quot; in the conventional URI request scenario).  &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"&gt;Data URLs&lt;/a&gt; (Formally known as Data &lt;em&gt;URIs&lt;/em&gt;) use the &lt;code&gt;data:&lt;/code&gt; URI schema followed by an optional media type, an optional base64 extension (&lt;code&gt;;base64&lt;/code&gt;) followed by data (if the &lt;code&gt;base64&lt;/code&gt; extension is used the data is binary and is base-64 encoded).&lt;/p&gt;
+&lt;p&gt;For example, with binary data for a red dot png a data URL may look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="images-data-urls-and-reference-style-markdown-links"&gt;Images, Data Urls, and Reference-Style Markdown Links&lt;/h3&gt;
+&lt;p&gt;Data URLs may be used in markdown image links. With image markdown format and a data URL:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;![a red dot](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" title="The Image" /&gt;&lt;/p&gt;
+&lt;p&gt;...or with title text:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;![a red dot](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg== &amp;quot;The Image&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" title="The Image" /&gt;&lt;/p&gt;
+&lt;p&gt;Or, with a reference-style image link:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-markdown"&gt;![a red dot][red-dot]
+
+[red-dot]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" /&gt;&lt;/p&gt;
+&lt;p&gt;Data URLs are a handy way to reduce the number of files involved in a page.  Like any feature, that can get ridiculous so the value comes when working with small chunks of data (like a red dot image.)&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"&gt;Data URLs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Data_URI_scheme"&gt;Data URI Scheme (wikipedia)&lt;/a&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;a href="#data-urls"&gt;TL;DR&lt;/a&gt;⮷&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/agile-off-the-rails</id>
 		<title>As a Delivery Team Member, I Want To Know if My Organization's Agile Initiative Is off the Rails</title>
@@ -1431,19 +1481,5 @@ documented in a contract document. [1]&lt;/li&gt;
 &lt;p&gt;[1]: B.Meyer, &amp;quot;Applying Design by Contract&amp;quot;, IEEE Computer, Oct.1992, 40-51.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;Barbara Liskov's famous principle (named Liskov Substitution Principle by Robert Martin) came out of the area of &lt;a href="http://dl.acm.org/citation.cfm?id=62141"&gt;data abstraction&lt;/a&gt; as it applies to a hierarchy of data types.  At the time (around 1987-1994) the idea was someone absorbed by software language advancements of the day, primarily object-orientation.  The principle got heavily associated with OOD and OOP and many people left it at that. But, I suggest that Liskov Substitution Principle (LSP) is wider appeal than just in the design of objects/classes.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Resetting-Build-Number-in-Appveyor</id>
-		<title>Resetting Build Number in Appveyor</title>
-		<link href="http://blog.peterritchie.com/posts/Resetting-Build-Number-in-Appveyor" />
-		<updated>2017-05-09T00:00:00Z</updated>
-		<content>&lt;p&gt;I've been using &lt;a href="http://ci.appveyor.com"&gt;AppVeyor&lt;/a&gt; for a while now to be my CI platform of choice for my OSS projects.  It's like any other tool.  It works, and does a lot of things very well.  I recently bumped some major version numbers up and realized that some things AppVeyor was automating weren't completely automated.&lt;/p&gt;
-&lt;p&gt;Build numbers.  AppVeyor takes on the burden of incrementing a build number for you (and updating your AssemblyInfo and Nuget info, if you want).  Unfortunately that's all it does automatically with the build number.  If I change my version number (e.g. from 1.0 to 2.0) then the build number does not reset to zero but continues on with the next version (so I go from 1.0.34 to 2.0.35).  Not what I was expecting.  Not that big a deal; but when it also publishes Nuget packages; kinda leaves you stuck at contining on from that point.&lt;/p&gt;
-&lt;p&gt;I've seen a &lt;a href="http://help.appveyor.com/discussions/problems/311-reset-the-build-number-automatically-yml"&gt;couple&lt;/a&gt; &lt;a href="http://help.appveyor.com/discussions/suggestions/730-support-next-build-number-0-zero"&gt;threads&lt;/a&gt; on the topic, but the result always seemed to get pointed to the API to reset the build number.  I kinda think this violated the Principle of Least Surprise, so I decided to dig in a bit to avoid the surprise the future.&lt;/p&gt;
-&lt;p&gt;The problem turned out to be fairly easy to solve (easier if you're an expert in PowerShell).  Basically, the way I approached it was to add a script in the &lt;em&gt;Init script&lt;/em&gt; section of the configuration to get the last build version via the &lt;a href="https://www.appveyor.com/docs/api/projects-builds/#get-project-last-build"&gt;API&lt;/a&gt; and compare the components of that version to the current build verison found in the &lt;a href="https://www.appveyor.com/docs/environment-variables/"&gt;environment&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This is the result:&lt;/p&gt;
-&lt;script src="https://gist.github.com/peteraritchie/3643ba729e20d5d0b1b2f817ed00ce6b.js"&gt;&lt;/script&gt;
-</content>
-		<summary>&lt;p&gt;I've been using &lt;a href="http://ci.appveyor.com"&gt;AppVeyor&lt;/a&gt; for a while now to be my CI platform of choice for my OSS projects.  It's like any other tool.  It works, and does a lot of things very well.  I recently bumped some major version numbers up and realized that some things AppVeyor was automating weren't completely automated.&lt;/p&gt;</summary>
 	</entry>
 </feed>
