@@ -4,8 +4,160 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2022</rights>
-	<updated>2022-06-28T02:04:06Z</updated>
+	<updated>2022-08-28T15:43:35Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/Message-oriented-Minimal-APIs-in-ASP.NET</id>
+		<title>Message-oriented Minimal APIs in ASP.NET Core</title>
+		<link href="http://blog.peterritchie.com/posts/Message-oriented-Minimal-APIs-in-ASP.NET" />
+		<updated>2022-08-28T00:00:00Z</updated>
+		<content>&lt;p&gt;TL;DR - &lt;a href="#implementation-details"&gt;go to the implementation details&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;First of all, what is message-oriented?  Like many things in technology and life, terms like &amp;quot;oriented&amp;quot; are frequently used whose meaning may not be immediately connected to its usage.  Object-oriented, message-oriented, aspect-oriented, etc. have a vague meaning when used, which can sometimes introduce a lack of clarity.&lt;/p&gt;
+&lt;p&gt;*-Oriented means that a particular concept always taken into consideration and utilized in the specified circumstances.  Message-oriented means that interactions between concepts &lt;em&gt;at a certain layer&lt;/em&gt; involve messages.  This is sometimes referred to as Message Passing; or that communication between layer-specific concepts it done by passing messages to each other.&lt;/p&gt;
+&lt;p&gt;Things can be oriented in many ways at the same time.  A system may be simultaneously message-oriented and object-oriented, for example--which usually means that what produces and consumes messages are implemented as &lt;em&gt;objects&lt;/em&gt;.&lt;/p&gt;
+&lt;!--Some may say that the Command Pattern is message-oriented.  For the purposes of this article, that's not the complete story.  A command can (and should) be a message; but a message on it's own does not constitute message-orientation.  Falling back to Message Passing, it's how the command is communicated is what makes a component message-oriented.
+
+## Is HTTP Message-Oriented?
+
+Yes, HTTP is message-oriented.  Underlying layers (like TCP) implement HTTP via frames and streams (and packets, datagrams, etc.) but at the HTTP layer, communication between major concepts is done with what is called "messages".
+--&gt;
+&lt;h2 id="being-message-oriented"&gt;Being Message-Oriented&lt;/h2&gt;
+&lt;p&gt;Message-orientation demands a level of loose coupling.  In object-oriented message-orientation objects donn't communicate with each other directly, a third-party transports message from the sender (or producer) to the receiver (or the consumer).  There an many ways that can happen: queues (or simply collections), mediators, buses, etc.  The type of the third-party component depends on the degree of loose coupling and how much work the third party takes on to transport those messages.  For the purposes of this article I'll focus on &lt;em&gt;Bus Architecture&lt;/em&gt;.  Bus Architecture is a combination of a common data model, a common command set, and an infrastructure that provides a shared set of interfaces to transport messages.&lt;/p&gt;
+&lt;h2 id="being-successfully-message-oriented"&gt;Being Successfully Message-Oriented&lt;/h2&gt;
+&lt;p&gt;As with any layered architecture, implementation details at different layers allow us to compartmentalize different concerns to ease understanding and simplify implementation.  Message-oriented systems often classify messages to better implement and support a subdomain.  Messages are often classified as commands, events, or documents to better support common subdomain and communication scenarios.  Commands are messages that communicate a request or imperative intent.  Events are messages that communicate or encapsulate a change in state.  And documents are messages that contain data independent of a command or an event.&lt;/p&gt;
+&lt;h2 id="why-minimal-apis"&gt;Why Minimal APIs?&lt;/h2&gt;
+&lt;p&gt;You may have read articles like &amp;quot;&lt;a href="https://ardalis.com/mvc-controllers-are-dinosaurs-embrace-api-endpoints/"&gt;MVC Controllers are Dinosaurs - Embrace API Endpoints&lt;/a&gt;&amp;quot; that suggest that modern MVC implementation have controllers that don't actually &amp;quot;control&amp;quot; anything.  MVC details that Models, Views, and Controllers are decoupled from one another and cohesive in and of themselves.  Controllers should interpret input and convert it into invocations upon the model and the view.  Models are a dynamic data structure that directly manages data, logic, and rules for a given context.  When MVC was devised, the controller was far closer to the user and took on more responsibility to imperatively translate and route data.  With modern systems and technologies like JSON and programming language syntax, much of that translation and routing can be declarative--wiring up a request, its route, and the receiver of the command directly.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;As an aside, many have argued that &lt;em&gt;model&lt;/em&gt; and &lt;em&gt;view&lt;/em&gt; have been muddied and that &lt;em&gt;view&lt;/em&gt; doesn't exist with RESTful APIs, questioning &amp;quot;MVC&amp;quot; implementations altogether.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;When you don't really have a controller and data translation occurs under the hood, going through the motions of controllers and models with core subdomain objects is viewed as needless ceremony.&lt;/p&gt;
+&lt;h2 id="message-oriented-frameworks"&gt;Message-Oriented Frameworks&lt;/h2&gt;
+&lt;p&gt;I've been working with a simple-but-no-simpler messaging library for several years.  It's a set of libraries that I maintain called &lt;code&gt;[PRI.Messaging](https://github.com/peteraritchie/Messaging)&lt;/code&gt;.  It consists of primitive types (abstractions) (&lt;code&gt;PRI.Messaging.Primitives&lt;/code&gt;) and pattern implementations (&lt;code&gt;PRI.Messaging.Patterns&lt;/code&gt;).  It makes ideas like consumers, producers, and buses first-class concepts.  PRI.Messaging.Patterns includes a bus implementation that assumes the role of dependency injection and message routing, allowing you to simply create message producers, message consumers, and have them automatically wired-up and messages routed appropriately.&lt;/p&gt;
+&lt;p&gt;I'll be using these libraries to implement message-oriented minimal APIs in ASP.NET Core 6+.&lt;/p&gt;
+&lt;h2 id="implementation-details"&gt;Implementation Details&lt;/h2&gt;
+&lt;p&gt;For simplicity, I'll show making the default project created for minimal APIs message-oriented; get ready for some weather forecasting.&lt;/p&gt;
+&lt;p&gt;Starting with creating the default project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new webapi -minimal -o WebApi
+dotnet new sln -n example
+dotnet sln example.sln add WebApi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gives us OpenAPI (Swagger) and HTTPs support along with a single &lt;code&gt;weatherforecast&lt;/code&gt; endpoint and a &lt;code&gt;WeatherForecast&lt;/code&gt; response model (message).&lt;/p&gt;
+&lt;p&gt;The important code from Program.cs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var summaries = new[]
+{
+    &amp;quot;Freezing&amp;quot;, &amp;quot;Bracing&amp;quot;, &amp;quot;Chilly&amp;quot;, &amp;quot;Cool&amp;quot;, &amp;quot;Mild&amp;quot;, &amp;quot;Warm&amp;quot;, &amp;quot;Balmy&amp;quot;, &amp;quot;Hot&amp;quot;, &amp;quot;Sweltering&amp;quot;, &amp;quot;Scorching&amp;quot;
+};
+
+app.MapGet(&amp;quot;/weatherforecast&amp;quot;, () =&amp;gt;
+{
+    var forecast =  Enumerable.Range(1, 5).Select(index =&amp;gt;
+        new WeatherForecast
+        (
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20, 55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        ))
+        .ToArray();
+    return forecast;
+})
+.WithName(&amp;quot;GetWeatherForecast&amp;quot;)
+.WithOpenApi();
+
+app.Run();
+
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF =&amp;gt; 32 + (int)(TemperatureC / 0.5556);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To become message-oriented we need to first create explicit messages to represent the interactions.  For this I've created a &lt;code&gt;GetWeatherForecastCommand&lt;/code&gt; command and a &lt;code&gt;WeatherForecastedEvent&lt;/code&gt; event:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class GetWeatherForecastCommand : ICommand
+{
+    public string CorrelationId { get; set; } = Guid.NewGuid().ToString();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class WeatherForecastedEvent : IEvent
+{
+    public WeatherForecast[] Forecasts { get; }
+
+    public WeatherForecastedEvent(WeatherForecast[] forecasts)
+    {
+        Forecasts = forecasts;
+    }
+
+    public DateTime OccurredDateTime { get; set; } = DateTime.UtcNow;
+    public string CorrelationId { get; set; } = Guid.NewGuid().ToString();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we need something that explicitly handles (consumes) the &lt;code&gt;GetWeatherForecastCommand&lt;/code&gt; command produces the &lt;code&gt;WeatherForecastedEvent&lt;/code&gt; event.  I prefer to call these types of things &amp;quot;Command Handlers&amp;quot;.  So,:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class GetWeatherForecastCommandHandler : IConsumer&amp;lt;GetWeatherForecastCommand&amp;gt;, IProducer&amp;lt;WeatherForecastedEvent&amp;gt;
+{
+    private IConsumer&amp;lt;WeatherForecastedEvent&amp;gt; consumer = new ActionConsumer&amp;lt;WeatherForecastedEvent&amp;gt;((_) =&amp;gt; { });
+
+    public void AttachConsumer(IConsumer&amp;lt;WeatherForecastedEvent&amp;gt; consumer)
+    {
+        this.consumer = consumer;
+    }
+
+    private readonly string[] summaries = new[]
+    {
+        &amp;quot;Freezing&amp;quot;, &amp;quot;Bracing&amp;quot;, &amp;quot;Chilly&amp;quot;, &amp;quot;Cool&amp;quot;, &amp;quot;Mild&amp;quot;, &amp;quot;Warm&amp;quot;, &amp;quot;Balmy&amp;quot;, &amp;quot;Hot&amp;quot;, &amp;quot;Sweltering&amp;quot;, &amp;quot;Scorching&amp;quot;
+    };
+
+    public void Handle(GetWeatherForecastCommand message)
+    {
+        var forecasts = Enumerable.Range(1, 5).Select(index =&amp;gt;
+            new WeatherForecast
+            (
+                DateTime.Now.AddDays(index),
+                Random.Shared.Next(-20, 55),
+                summaries[Random.Shared.Next(summaries.Length)]
+            ))
+            .ToArray();
+
+        consumer.Handle(new WeatherForecastedEvent(forecasts));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you'll see in this command handler, I've moved the implementation details from Program.cs and encapsulated them into this class (i.e. &lt;code&gt;summaries&lt;/code&gt; and the creation of the &lt;code&gt;WeatherForcast&lt;/code&gt; array.)&lt;/p&gt;
+&lt;p&gt;Returning to Program.cs, we now need to inject a &lt;code&gt;Bus&lt;/code&gt; service and update the route endpoint to accept a bus instance, translate to our command, and send it to the bus.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;app.MapGet(&amp;quot;/weatherforecast&amp;quot;, async (IBus bus) =&amp;gt;
+{
+    WeatherForecastedEvent result =
+        await bus.RequestAsync&amp;lt;GetWeatherForecastCommand, WeatherForecastedEvent&amp;gt;(
+            new GetWeatherForecastCommand());
+    return Results.Ok(result.Forecasts);
+})
+.WithName(&amp;quot;GetWeatherForecast&amp;quot;)
+.WithOpenApi();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;IBus&lt;/code&gt; &lt;code&gt;RequestAsync&lt;/code&gt; extension method implements the asynchronous request-reply pattern.&lt;/p&gt;
+&lt;p&gt;With our messages, consumers, and producers we can now create a message bus singleton and have it wire-up the producers and the consumers.  This is simply done by invoking the &lt;code&gt;IBus.AddHandlersAndTranslators&lt;/code&gt; method in addition to registering a singleton bus:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;IBus bus = new Bus();
+bus.AddHandlersAndTranslators(
+    Path.GetDirectoryName(typeof(Program).Assembly.Location)!,
+    Path.GetFileName(typeof(Program).Assembly.Location), &amp;quot;&amp;quot;);
+builder.Services.AddSingleton(bus);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;As you can see, the route endpoint has an &lt;code&gt;IBus&lt;/code&gt; injected into it (i.e. Dependency Injection) and is only concerned with sending a &lt;code&gt;GetWeatherForecastCommand&lt;/code&gt; message and receiving a &lt;code&gt;WeatherForecastedEvent&lt;/code&gt; message. Where that command goes and where the event comes from (and how it gets created) are irrelevant (i.e. neither knows nor cares about &lt;code&gt;GetWeatherForecastCommandHandler&lt;/code&gt;).  With the implementation details of weather forecasting moved out into &lt;code&gt;GetWeatherForecastCommandHandler&lt;/code&gt; those details are now longer directly coupled to a web API.  &lt;code&gt;GetWeatherForecastCommandHandler&lt;/code&gt; exists in its own library and can be used by several types of applications.  &lt;code&gt;GetWeatherForecastCommandHandler&lt;/code&gt; could be used, as is, within a console application, a PowerShell CmdLet, etc.  As with any well designed loosely coupled system, it's just a matter of correctly setting up a service container for the specific circumstances.&lt;/p&gt;
+&lt;p&gt;How will you use event-orientation?&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ardalis.com/mvc-controllers-are-dinosaurs-embrace-api-endpoints/"&gt;MVC Controllers are Dinosaurs - Embrace API Endpoints | Ardalis Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/peteraritchie/Messaging"&gt;PRI.Messaging - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.nuget.org/packages/PRI.Messaging.Primitives/3.0.0-beta"&gt;PRI.Messaging.Primitives - Nuget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.nuget.org/packages/PRI.Messaging.Patterns/3.0.0-beta"&gt;PRI.Messaging.Patterns - Nuget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply"&gt;Asynchronous Request-Reply Pattern - Azure Architecture Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.enterpriseintegrationpatterns.com/RequestReply.html"&gt;Request-Reply Messaging Pattern - Enterprise Integration Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;TL;DR - &lt;a href="#implementation-details"&gt;go to the implementation details&lt;/a&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/data-urls-in-markdown</id>
 		<title> Data URLs in Markdown</title>
@@ -1449,37 +1601,5 @@ copy Pri.LongPath.net200\bin\Release\Pri.LongPath.dll nuget\lib\net20
 &lt;p&gt;[protobuf]: &lt;a href="https://github.com/mgravell/protobuf-net"&gt;https://github.com/mgravell/protobuf-net&lt;/a&gt; &lt;!-- 2017, June--&gt;&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;With Visual Studio 2017 recently being released, I felt it was time to start looking into converting some of the OSS projects I work on to Core/Standard.  I think Core/Standard won't be mainstream until .NET Core 2.0; but we're already looking at a .NET Core 2.0 Preview 1; so it's not too far off.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Rethinking%20Liskov%20Substitution%20Principle</id>
-		<title>Rethinking the Liskov Substitution  Principle</title>
-		<link href="http://blog.peterritchie.com/posts/Rethinking%20Liskov%20Substitution%20Principle" />
-		<updated>2017-06-06T00:00:00Z</updated>
-		<content>&lt;p&gt;Barbara Liskov's famous principle (named Liskov Substitution Principle by Robert Martin) came out of the area of &lt;a href="http://dl.acm.org/citation.cfm?id=62141"&gt;data abstraction&lt;/a&gt; as it applies to a hierarchy of data types.  At the time (around 1987-1994) the idea was someone absorbed by software language advancements of the day, primarily object-orientation.  The principle got heavily associated with OOD and OOP and many people left it at that. But, I suggest that Liskov Substitution Principle (LSP) is wider appeal than just in the design of objects/classes.&lt;/p&gt;
-&lt;p&gt;I recently had a conversation about LSP within the SOLID principles as they apply to distributed architecture (Service-Oriented Architecture at the time) where in the back of my head I had discounted LSP and said something along the lines of &amp;quot;SOLID applies, except for maybe Liskov&amp;quot;.  We proceeded to talk about what we should call SOLID with out 'L' and came up with the &amp;quot;I DOS&amp;quot;.&lt;/p&gt;
-&lt;p&gt;The more I thought about it, the more I could reconcile LSP with various principles that apply to distributed software design and architecture.  So, I changed my mind.&lt;/p&gt;
-&lt;p&gt;As I detailed above, the original idea was around data abstraction and it was absorbed as an &lt;em&gt;OOD principle&lt;/em&gt;.  The original principle is:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;&lt;em&gt;Subtype Requirement&lt;/em&gt;: Let Φ(𝔁) be a property provable about objects 𝔁 of type 𝚃. Then Φ(𝔂) should be true for objects 𝔂 of type 𝚂 where 𝚂 is a subtype of 𝚃.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Or, as Robert Martin simplifies:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Martin goes on to show the strong resemblance between LSP and Bertrand Meyer's &lt;em&gt;Design by Contract&lt;/em&gt;.  And this is where I think LSP can really be applied to distributed architecture.  For completeness, Meyer associated that contract with human contracts by defining them as:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;ul&gt;
-&lt;li&gt;Each party expects some benefits
-from the contract and is prepared to
-incur some obligations to obtain them.&lt;/li&gt;
-&lt;li&gt;These benefits and obligations are
-documented in a contract document. [1]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;By definition, components in a distributed system at some level communicate with other components via the network.  In order for those components to communicate effectively and repeatedly there needs to be a known API or a &amp;quot;contract&amp;quot;.  This &amp;quot;contract&amp;quot; defines the inputs, the outputs, their structure and their constraints (or the obligations and benefits).  Therefore, &lt;em&gt;given two distributed components with the same contract, one should be replaceable with other components with the same contract without altering the correctness of the system&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;So, I believe LSP to be a very important part of distributed computing as it provides the governor to Dependency Inversion Principle so that no only should things depend upon abstractions, but different implementations of those abstractions should not affect the correctness of the system.&lt;/p&gt;
-&lt;p&gt;[1]: B.Meyer, &amp;quot;Applying Design by Contract&amp;quot;, IEEE Computer, Oct.1992, 40-51.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;Barbara Liskov's famous principle (named Liskov Substitution Principle by Robert Martin) came out of the area of &lt;a href="http://dl.acm.org/citation.cfm?id=62141"&gt;data abstraction&lt;/a&gt; as it applies to a hierarchy of data types.  At the time (around 1987-1994) the idea was someone absorbed by software language advancements of the day, primarily object-orientation.  The principle got heavily associated with OOD and OOP and many people left it at that. But, I suggest that Liskov Substitution Principle (LSP) is wider appeal than just in the design of objects/classes.&lt;/p&gt;</summary>
 	</entry>
 </feed>

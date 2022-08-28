@@ -1,0 +1,354 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Message-oriented Minimal APIs in ASP.NET Core</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Message-oriented Minimal APIs in ASP.NET Core" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Message-oriented-Minimal-APIs-in-ASP.NET" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Message-oriented Minimal APIs in ASP.NET Core</h1>
+    <div class="meta">        
+Published on Sunday, August 28, 2022<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/August-2022" class="btn btn-default btn-xs">August 2022</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>TL;DR - <a href="#implementation-details">go to the implementation details</a></p>
+<p>First of all, what is message-oriented?  Like many things in technology and life, terms like &quot;oriented&quot; are frequently used whose meaning may not be immediately connected to its usage.  Object-oriented, message-oriented, aspect-oriented, etc. have a vague meaning when used, which can sometimes introduce a lack of clarity.</p>
+<p>*-Oriented means that a particular concept always taken into consideration and utilized in the specified circumstances.  Message-oriented means that interactions between concepts <em>at a certain layer</em> involve messages.  This is sometimes referred to as Message Passing; or that communication between layer-specific concepts it done by passing messages to each other.</p>
+<p>Things can be oriented in many ways at the same time.  A system may be simultaneously message-oriented and object-oriented, for example--which usually means that what produces and consumes messages are implemented as <em>objects</em>.</p>
+<!--Some may say that the Command Pattern is message-oriented.  For the purposes of this article, that's not the complete story.  A command can (and should) be a message; but a message on it's own does not constitute message-orientation.  Falling back to Message Passing, it's how the command is communicated is what makes a component message-oriented.
+
+## Is HTTP Message-Oriented?
+
+Yes, HTTP is message-oriented.  Underlying layers (like TCP) implement HTTP via frames and streams (and packets, datagrams, etc.) but at the HTTP layer, communication between major concepts is done with what is called "messages".
+-->
+<h2 id="being-message-oriented">Being Message-Oriented</h2>
+<p>Message-orientation demands a level of loose coupling.  In object-oriented message-orientation objects donn't communicate with each other directly, a third-party transports message from the sender (or producer) to the receiver (or the consumer).  There an many ways that can happen: queues (or simply collections), mediators, buses, etc.  The type of the third-party component depends on the degree of loose coupling and how much work the third party takes on to transport those messages.  For the purposes of this article I'll focus on <em>Bus Architecture</em>.  Bus Architecture is a combination of a common data model, a common command set, and an infrastructure that provides a shared set of interfaces to transport messages.</p>
+<h2 id="being-successfully-message-oriented">Being Successfully Message-Oriented</h2>
+<p>As with any layered architecture, implementation details at different layers allow us to compartmentalize different concerns to ease understanding and simplify implementation.  Message-oriented systems often classify messages to better implement and support a subdomain.  Messages are often classified as commands, events, or documents to better support common subdomain and communication scenarios.  Commands are messages that communicate a request or imperative intent.  Events are messages that communicate or encapsulate a change in state.  And documents are messages that contain data independent of a command or an event.</p>
+<h2 id="why-minimal-apis">Why Minimal APIs?</h2>
+<p>You may have read articles like &quot;<a href="https://ardalis.com/mvc-controllers-are-dinosaurs-embrace-api-endpoints/">MVC Controllers are Dinosaurs - Embrace API Endpoints</a>&quot; that suggest that modern MVC implementation have controllers that don't actually &quot;control&quot; anything.  MVC details that Models, Views, and Controllers are decoupled from one another and cohesive in and of themselves.  Controllers should interpret input and convert it into invocations upon the model and the view.  Models are a dynamic data structure that directly manages data, logic, and rules for a given context.  When MVC was devised, the controller was far closer to the user and took on more responsibility to imperatively translate and route data.  With modern systems and technologies like JSON and programming language syntax, much of that translation and routing can be declarative--wiring up a request, its route, and the receiver of the command directly.</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">As an aside, many have argued that <em>model</em> and <em>view</em> have been muddied and that <em>view</em> doesn't exist with RESTful APIs, questioning &quot;MVC&quot; implementations altogether.</th>
+</tr>
+</thead>
+</table>
+<p>When you don't really have a controller and data translation occurs under the hood, going through the motions of controllers and models with core subdomain objects is viewed as needless ceremony.</p>
+<h2 id="message-oriented-frameworks">Message-Oriented Frameworks</h2>
+<p>I've been working with a simple-but-no-simpler messaging library for several years.  It's a set of libraries that I maintain called <code>[PRI.Messaging](https://github.com/peteraritchie/Messaging)</code>.  It consists of primitive types (abstractions) (<code>PRI.Messaging.Primitives</code>) and pattern implementations (<code>PRI.Messaging.Patterns</code>).  It makes ideas like consumers, producers, and buses first-class concepts.  PRI.Messaging.Patterns includes a bus implementation that assumes the role of dependency injection and message routing, allowing you to simply create message producers, message consumers, and have them automatically wired-up and messages routed appropriately.</p>
+<p>I'll be using these libraries to implement message-oriented minimal APIs in ASP.NET Core 6+.</p>
+<h2 id="implementation-details">Implementation Details</h2>
+<p>For simplicity, I'll show making the default project created for minimal APIs message-oriented; get ready for some weather forecasting.</p>
+<p>Starting with creating the default project:</p>
+<pre><code class="language-powershell">dotnet new webapi -minimal -o WebApi
+dotnet new sln -n example
+dotnet sln example.sln add WebApi
+</code></pre>
+<p>This gives us OpenAPI (Swagger) and HTTPs support along with a single <code>weatherforecast</code> endpoint and a <code>WeatherForecast</code> response model (message).</p>
+<p>The important code from Program.cs:</p>
+<pre><code class="language-csharp">var summaries = new[]
+{
+    &quot;Freezing&quot;, &quot;Bracing&quot;, &quot;Chilly&quot;, &quot;Cool&quot;, &quot;Mild&quot;, &quot;Warm&quot;, &quot;Balmy&quot;, &quot;Hot&quot;, &quot;Sweltering&quot;, &quot;Scorching&quot;
+};
+
+app.MapGet(&quot;/weatherforecast&quot;, () =&gt;
+{
+    var forecast =  Enumerable.Range(1, 5).Select(index =&gt;
+        new WeatherForecast
+        (
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20, 55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        ))
+        .ToArray();
+    return forecast;
+})
+.WithName(&quot;GetWeatherForecast&quot;)
+.WithOpenApi();
+
+app.Run();
+
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF =&gt; 32 + (int)(TemperatureC / 0.5556);
+}
+</code></pre>
+<p>To become message-oriented we need to first create explicit messages to represent the interactions.  For this I've created a <code>GetWeatherForecastCommand</code> command and a <code>WeatherForecastedEvent</code> event:</p>
+<pre><code class="language-csharp">public class GetWeatherForecastCommand : ICommand
+{
+    public string CorrelationId { get; set; } = Guid.NewGuid().ToString();
+}
+</code></pre>
+<pre><code class="language-csharp">public class WeatherForecastedEvent : IEvent
+{
+    public WeatherForecast[] Forecasts { get; }
+
+    public WeatherForecastedEvent(WeatherForecast[] forecasts)
+    {
+        Forecasts = forecasts;
+    }
+
+    public DateTime OccurredDateTime { get; set; } = DateTime.UtcNow;
+    public string CorrelationId { get; set; } = Guid.NewGuid().ToString();
+}
+</code></pre>
+<p>Now we need something that explicitly handles (consumes) the <code>GetWeatherForecastCommand</code> command produces the <code>WeatherForecastedEvent</code> event.  I prefer to call these types of things &quot;Command Handlers&quot;.  So,:</p>
+<pre><code class="language-csharp">public class GetWeatherForecastCommandHandler : IConsumer&lt;GetWeatherForecastCommand&gt;, IProducer&lt;WeatherForecastedEvent&gt;
+{
+    private IConsumer&lt;WeatherForecastedEvent&gt; consumer = new ActionConsumer&lt;WeatherForecastedEvent&gt;((_) =&gt; { });
+
+    public void AttachConsumer(IConsumer&lt;WeatherForecastedEvent&gt; consumer)
+    {
+        this.consumer = consumer;
+    }
+
+    private readonly string[] summaries = new[]
+    {
+        &quot;Freezing&quot;, &quot;Bracing&quot;, &quot;Chilly&quot;, &quot;Cool&quot;, &quot;Mild&quot;, &quot;Warm&quot;, &quot;Balmy&quot;, &quot;Hot&quot;, &quot;Sweltering&quot;, &quot;Scorching&quot;
+    };
+
+    public void Handle(GetWeatherForecastCommand message)
+    {
+        var forecasts = Enumerable.Range(1, 5).Select(index =&gt;
+            new WeatherForecast
+            (
+                DateTime.Now.AddDays(index),
+                Random.Shared.Next(-20, 55),
+                summaries[Random.Shared.Next(summaries.Length)]
+            ))
+            .ToArray();
+
+        consumer.Handle(new WeatherForecastedEvent(forecasts));
+    }
+}
+</code></pre>
+<p>As you'll see in this command handler, I've moved the implementation details from Program.cs and encapsulated them into this class (i.e. <code>summaries</code> and the creation of the <code>WeatherForcast</code> array.)</p>
+<p>Returning to Program.cs, we now need to inject a <code>Bus</code> service and update the route endpoint to accept a bus instance, translate to our command, and send it to the bus.</p>
+<pre><code class="language-csharp">app.MapGet(&quot;/weatherforecast&quot;, async (IBus bus) =&gt;
+{
+    WeatherForecastedEvent result =
+        await bus.RequestAsync&lt;GetWeatherForecastCommand, WeatherForecastedEvent&gt;(
+            new GetWeatherForecastCommand());
+    return Results.Ok(result.Forecasts);
+})
+.WithName(&quot;GetWeatherForecast&quot;)
+.WithOpenApi();
+</code></pre>
+<p>The <code>IBus</code> <code>RequestAsync</code> extension method implements the asynchronous request-reply pattern.</p>
+<p>With our messages, consumers, and producers we can now create a message bus singleton and have it wire-up the producers and the consumers.  This is simply done by invoking the <code>IBus.AddHandlersAndTranslators</code> method in addition to registering a singleton bus:</p>
+<pre><code class="language-csharp">IBus bus = new Bus();
+bus.AddHandlersAndTranslators(
+    Path.GetDirectoryName(typeof(Program).Assembly.Location)!,
+    Path.GetFileName(typeof(Program).Assembly.Location), &quot;&quot;);
+builder.Services.AddSingleton(bus);
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>As you can see, the route endpoint has an <code>IBus</code> injected into it (i.e. Dependency Injection) and is only concerned with sending a <code>GetWeatherForecastCommand</code> message and receiving a <code>WeatherForecastedEvent</code> message. Where that command goes and where the event comes from (and how it gets created) are irrelevant (i.e. neither knows nor cares about <code>GetWeatherForecastCommandHandler</code>).  With the implementation details of weather forecasting moved out into <code>GetWeatherForecastCommandHandler</code> those details are now longer directly coupled to a web API.  <code>GetWeatherForecastCommandHandler</code> exists in its own library and can be used by several types of applications.  <code>GetWeatherForecastCommandHandler</code> could be used, as is, within a console application, a PowerShell CmdLet, etc.  As with any well designed loosely coupled system, it's just a matter of correctly setting up a service container for the specific circumstances.</p>
+<p>How will you use event-orientation?</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://ardalis.com/mvc-controllers-are-dinosaurs-embrace-api-endpoints/">MVC Controllers are Dinosaurs - Embrace API Endpoints | Ardalis Blog</a></li>
+<li><a href="https://github.com/peteraritchie/Messaging">PRI.Messaging - GitHub</a></li>
+<li><a href="https://www.nuget.org/packages/PRI.Messaging.Primitives/3.0.0-beta">PRI.Messaging.Primitives - Nuget</a></li>
+<li><a href="https://www.nuget.org/packages/PRI.Messaging.Patterns/3.0.0-beta">PRI.Messaging.Patterns - Nuget</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply">Asynchronous Request-Reply Pattern - Azure Architecture Center</a></li>
+<li><a href="https://www.enterpriseintegrationpatterns.com/RequestReply.html">Request-Reply Messaging Pattern - Enterprise Integration Patterns</a></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Message-oriented-Minimal-APIs-in-ASP.NET'
+    'Message-oriented Minimal APIs in ASP.NET Core'
+    'http://blog.peterritchie.com/posts/Message-oriented-Minimal-APIs-in-ASP.NET'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/28/22');
+    console.info('Message-oriented-Minimal-APIs-in-ASP.NET');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Message-oriented Minimal APIs in ASP.NET Core';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Message-oriented-Minimal-APIs-in-ASP.NET';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Message-oriented-Minimal-APIs-in-ASP.NET';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
