@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - Naming Things - Common Actions and Events</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Naming Things - Common Actions and Events" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/naming-things-events-and-action" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,16 +75,11 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>Naming Things - Common Actions and Events</h1>
     <div class="meta">        
-Published on Thursday, December 13, 2007<br>    </div>
+Published on Thursday, September 1, 2022<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/December-2007" class="btn btn-default btn-xs">December 2007</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/September-2022" class="btn btn-default btn-xs">September 2022</a>
         </div>     
 </div>
                                         </div>
@@ -98,116 +93,60 @@ Published on Thursday, December 13, 2007<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency injection (DI) is a form of inversion of control. There seems to be a tendency in some circles to refer to dependency injection as inversion of control (IoC).</p>
-<p>Dependency injection is a form of abstraction by removing physical dependencies between classes and potentially assemblies. This abstraction can have many different motives. One motive is for Aspect Oriented Software Development (ASOD) where you're abstracting shared (or cross-cutting) concerns into independent classes. Another motive is for Test-Driven Development (TDD) where you want to be able to test each class independently of its dependencies–in which case injected dependencies are &quot;mocked&quot;–technically this is still AOSD because you're separating the testing concern.</p>
-<p>Dependency injection in .NET is most frequently implemented using interface-oriented design/programming, where a dependency of a class is on an interface. Any class implementing that interface is then a candidate for being &quot;injected&quot; into the other class.There's many ways to inject dependency, one is at time of construction the other is at time of operation.</p>
-<p>There are many examples of dependency injection at time of operation in the .NET Framework. Normally when an interface is involved, dependency injection is also involved. Serialization is a good example. Serialization in .NET allows programmers to serialize topretty much anything. &quot;Anything&quot; being a stream. Serialization abstracts the destination from the act of serializing and allows programmers to inject a dependency on any type of destination (media, resource, mock, etc.) simply by implementing IStream. For example, for any given class in .NET I can &quot;serialize&quot; it to any stream:</p>
-<pre><code>   MyType myType = new MyType();
-
-
-   IFormatter formatter = Configuration.CreateFormatter(typeof(myType));
-
-
-   using (Stream stream = new MemoryStream())
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-
-
-   }
-</code></pre>
-<p>In the above example, IFormatter.Serialize(Stream, Object), uses dependency injection at time of operation to serialize to a MemoryStream object. In no way is IFormatter.Serialize dependant on MemoryStream. The same call could be written as follows:</p>
-<pre><code>   using(Stream stream = new FileStream(&quot;file.dat&quot;, FileMode.Create))
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-</code></pre>
-<p>}</p>
-<p>The above form of DI is interface (and class) based, in that you need to implement a specificinterface to inject as a dependency. Another form of DI is via delegates. You can abstract a particular class from other concerns simply by accepting a delegate. Any class that wants to be injected simply needs to implement a method with the same signature as the required delegate. Events are an example of this. Any class that raises events is completely independent of any other classes that want to act as observers and subscribe to these events. Subscribers are, in effect,are preforming dependency injection by subscribing to an event. This form of DI is not limited to DI,it can be any delegate.In.NET 2.0 there were many examples of this introduced. List.ForEach, for example:</p>
-<pre><code>namespace Examples
-
-
-{
-
-
- using System.Collections.Generic;
-
-
- public class Program
-
-
- {
-
-
-  static void Main()
-
-
-  {
-
-
-   List&lt;string&gt; names = new List&lt;string&gt;();
-
-
-   // TODO: populate names
-
-
-   names.ForEach(Print);
-
-
-  }
-
-
-  static void Print(String name)
-
-
-  {
-
-
-   Console.WriteLine(name);
-
-
-  }
-
-
- }
-
-
-}
-</code></pre>
-<p>In this example, <code>List&lt;T&gt;</code>, of course, iscompletely independent from Program andProgram is free to be static because there are no interface implementation requirements.</p>
+<p>In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.</p>
+<p>What does Deleted mean? Is it the same as Removed or Destroyed? What if you want to support soft delete as well as hard delete?</p>
+<p>I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like &quot;soft delete&quot; and &quot;hard delete .&quot;The customer will probably refer to the most common form of delete as &quot;delete.&quot; An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.</p>
+<p>Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection--physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed--from a particular view or existence.</p>
+<p>English allows us to reuse terms to mean many things. &quot;Delete&quot; and &quot;changed,&quot; for example. There are well-known terms that enable us to communicate intent and consequences easily. But, when we reuse these terms across different contexts with different intents and consequences, we introduce the possibility of confusion, making naming things seem difficult.</p>
+<p>It's important to understand the different intents and resulting consequences to data and attempt to get consensus on names and terms that adequately and uniquely represent these situations.</p>
+<p>&quot;Delete&quot; is a common point of confusion. There may be a need for <em>soft deletes</em> and <em>hard deletes</em>; both of WHICH make data inaccessible in a context. But, data may also be moved from one context to another, changing its accessibility but not making it <em>inaccessible</em>. To use a single term like &quot;delete&quot; for all of these situations leads to confusion and issues in naming things.</p>
+<!--
+An important aspect of naming: name the consistency boundary. What is a date? A year, month, and day. If we included time, is it still a date? Typically that would be called date/time.  
+-->
+<p>Each domain can be different, but the situations I've just described are very common. For those, I start with unique terms for each and work with the subject matter experts to refine them (if needed):</p>
+<ul>
+<li><strong>Deleted</strong> means something is no longer accessible in some context.</li>
+<li><strong>Destroyed</strong> means removed from existence; no possible way to ever get it back.</li>
+<li><strong>Removed</strong> means a thing has been moved out of or removed from a container/collection.</li>
+</ul>
+<p>Inverse terms:</p>
+<ul>
+<li><strong>Created</strong> signifies something new has come into existence (rather than Added).</li>
+<li><strong>Added</strong>* signifies something has been added to a container or collection.</li>
+</ul>
+<p>Mutating information seems like such a simple concept. But, we often need to know if data changes within the context of other data.  Unique data mutation terms I start out with when working with subject matter experts:</p>
+<ul>
+<li><strong>Updated</strong> signifies the value properties or attributes of an existing thing (entity) have been changed.</li>
+<li><strong>Changed</strong> signifies an entire thing (entity) has been replaced with another.</li>
+</ul>
+<h2 id="word-form">Word Form</h2>
+<p>Actions are verbs, and events are past participles constructed from verbs. Most event names are constructed from regular verbs by adding the prefix -ed. Delete + ed: deleted; create + ed: created.  Sometimes events are constructed from irregular verbs and don't end in ed. Bind: bound; drive: driven; sleep: slept.</p>
+<p>Events are not simply verbs in past tense form. An event's context is that it is related to a subject. For example, the event &quot;deleted&quot; involves a subject and is used to describe the current state as a result of a past action. In grammar, this is <em>present perfect tense</em> and implies an auxiliary verb of &quot;has been .&quot;e.g., <em>The customer record has been deleted</em> or <em>The customer record is deleted</em>. Since this details the subject somehow, it is also in a <em>present indicative</em> form. This detail is important but normally for edge cases. Normal domain narratives should align with this because that's normal language in these scenarios.</p>
+<ul>
+<li>Match events to actions; don't define events when no action would result in that event.</li>
+<li>Don't assume events always end in &quot;ed.&quot;</li>
+<li>Events are present indicative, past participles, and in the present perfect tense.</li>
+</ul>
+<p>Do you have other actions and events that you commonly encounter?</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'naming-things-events-and-action'
+    'Naming Things - Common Actions and Events'
+    'http://blog.peterritchie.com/posts/naming-things-events-and-action'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('12/13/07');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('9/1/22');
+    console.info('naming-things-events-and-action');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'Naming Things - Common Actions and Events';
+    var disqus_url = 'http://blog.peterritchie.com/posts/naming-things-events-and-action';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -216,7 +155,7 @@ Published on Thursday, December 13, 2007<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'naming-things-events-and-action';
     }
     console.info(disqus_identifier);
 
