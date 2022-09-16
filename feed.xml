@@ -5,8 +5,66 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Thu, 01 Sep 2022 14:43:59 GMT</pubDate>
-		<lastBuildDate>Thu, 01 Sep 2022 14:43:59 GMT</lastBuildDate>
+		<pubDate>Fri, 16 Sep 2022 20:50:50 GMT</pubDate>
+		<lastBuildDate>Fri, 16 Sep 2022 20:50:50 GMT</lastBuildDate>
+		<item>
+			<title>Fundamental Quality Attributes of Technology Systems</title>
+			<link>http://blog.peterritchie.com/posts/the-fundamental-quality-attributes-of-technology-systems</link>
+			<description>&lt;p&gt;What are quality attributes? The term "non-functional requirements" has been more prevalent, but that is a technologist's term. The first time you bring up "non-functional requirements" with a customer, there's always confusion, then concern. I've heard more than once, "we want something functional."&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/the-fundamental-quality-attributes-of-technology-systems</guid>
+			<pubDate>Fri, 16 Sep 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;What are quality attributes? The term &amp;quot;non-functional requirements&amp;quot; has been more prevalent, but that is a technologist's term. The first time you bring up &amp;quot;non-functional requirements&amp;quot; with a customer, there's always confusion, then concern. I've heard more than once, &amp;quot;we want something functional.&amp;quot;&lt;/p&gt;
+&lt;p&gt;The most important attribute of a system is its functionality. Functionality is whether a system is &lt;em&gt;fit for purpose&lt;/em&gt;. A system's functionality is what makes it unique, so I'll defer detail on functional attributes for another time. In this post I'll focus this post on cross-cutting quality attributes that permeate all aspects of a solution.&lt;/p&gt;
+&lt;p&gt;Quality attributes are the characteristics a system needs to exhibit--qualifications of the system's desired functionality. Quality attributes address customer concerns regarding the degree of success of a system. A customer's concerns of a system are unique and thus precludes having a universal prioritized list of quality attributes.&lt;/p&gt;
+&lt;p&gt;It is simple to describe the characteristics a customer expects of a system that provides the features they need:  Customers expect features that operate without fault or error, operate consistently within expectations, operate within resource constraints, and protect from unauthorized access. Translating that into a collection of system-specific measures is an enormous undertaking that cannot be taken lightly.&lt;/p&gt;
+&lt;p&gt;Many philosophies about quality attributes (usually termed &amp;quot;quality models&amp;quot;) exist, like FURPS, ISO/IEC 9126/25010, McCall, etc. These models detail several categories that organize the many adjectives that can apply to software systems. Some common categories may include Reliable, Efficient, Maintainable, Secure, etc. I view quality attributes as a palette of possible adjectives; no one list is perfect for every situation. There are top-/high-level categorizations that can apply more broadly. When discussing quality attributes, we use the noun form (Reliability vs. Reliable.) I've landed on the following top-level categories (in no particular order): Performance, Operability, Security, and Dependability.&lt;/p&gt;
+&lt;h2 id="dependability-of-features"&gt;Dependability (of features)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;to function, without fault or error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dependability involves concerns such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;availability — readiness for usage&lt;/li&gt;
+&lt;li&gt;reliability — continuity of service&lt;/li&gt;
+&lt;li&gt;safety — non-occurrence of catastrophic consequences on the environment&lt;/li&gt;
+&lt;li&gt;confidentiality — non-occurrence of unauthorized disclosure of information&lt;/li&gt;
+&lt;li&gt;integrity — non-occurrence of improper alterations of information&lt;/li&gt;
+&lt;li&gt;maintainability — aptitude to undergo repairs and evolution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="performance-of-execution"&gt;Performance (of execution)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;To function within resource constraints (time, compute, storage, memory, network) constraints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Performance involves concerns such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;latency - the degree of responsiveness.&lt;/li&gt;
+&lt;li&gt;throughput - the rate at which work can be performed&lt;/li&gt;
+&lt;li&gt;capacity - the amount of work that can be performed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="operability-of-function"&gt;Operability (of function)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;to become and remain operable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Operability involves concerns such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deployability - the ability of a system to be put into production&lt;/li&gt;
+&lt;li&gt;monitorability - the ability of a system's health and operation to be monitored&lt;/li&gt;
+&lt;li&gt;configurability - the ability of a system's behavior to be customized&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;To ensure authorized usage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Security involves concerns such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Confidentiality - the quality of a system restrict access to information&lt;/li&gt;
+&lt;li&gt;Integrity - the quality of a system adhere to accuracy and consistency of information and behavior&lt;/li&gt;
+&lt;li&gt;Availability - the quality of a system to provide access to information to those authorized&lt;/li&gt;
+&lt;li&gt;accountability - the quality of a system to account for its actions when fulfilling its responsibilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Because quality attributes address customer concerns, there are overlaps between categories. For example, there's a dependability concern that data integrity does not impact functionality; there's also a security concern that data integrity doesn't result in data loss. Don't let the overlap distract you from what's best for your solution. It will change even if you could pre-define a complex structure of quality attributes most suitable for your solution. Needs change, priorities change, and quality attributes are philosophic influencers to a solution that requires nurturing.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Naming Things - Common Actions and Events</title>
 			<link>http://blog.peterritchie.com/posts/naming-things-events-and-action</link>
@@ -1403,77 +1461,6 @@ The Correlation ID header value provides an application-unique identifier to som
 &lt;p&gt;&lt;a href="http://wiki.c2.com/?PimplIdiom"&gt;PImpl&lt;/a&gt;, Driver, &lt;a href="https://en.wikipedia.org/wiki/Mediator_pattern"&gt;Mediator&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="final-thoughts"&gt;Final Thoughts&lt;/h2&gt;
 &lt;p&gt;An important thing to remember is the category of the pattern.  Adapter, Façade, and Bridge are structural patterns.  Their intention is to provide benefits to the structure of a body software through composition.  Another category of patterns is behavioral; which attempt to improve cohesion by separating responsibilities through composition.  The mediator pattern may structurally be a Bridge pattern but its use is to achieve a separation of communication behavior responsibilities.  i.e. certain structural considerations are needed to obtain separation of responsibilities: to implement cohesive mediation behavior, you may need a Bridge structure.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Multi-targeting in Visual Studio 2017</title>
-			<link>http://blog.peterritchie.com/posts/Multi-targeting-in-Visual-Studio-2017</link>
-			<description>&lt;p&gt;I've got a few OSS projects on the go that have evolved over time enough that some target more than one version of .NET.  Recently I started adding support to some of those projects for .NET Standard and .NET Core. Traditionally I've attempted to support multiple targets with multiple projects: since there's a single target framework in a project.  This has served me well over the years.  Here's some details:&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Multi-targeting-in-Visual-Studio-2017</guid>
-			<pubDate>Fri, 16 Jun 2017 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;I've got a few OSS projects on the go that have evolved over time enough that some target more than one version of .NET.  Recently I started adding support to some of those projects for .NET Standard and .NET Core. Traditionally I've attempted to support multiple targets with multiple projects: since there's a single target framework in a project.  This has served me well over the years.  Here's some details:&lt;/p&gt;
-&lt;p&gt;Once you've got a project on the go and a Nuget package being used, Microsoft releases a new framework.  Eventually there may be something you need to support but can't just drop your assembly that only supports the previous version, so you you create new project targeting the new framework.  Usually a new framework is backwards compatible with the version you're already deploying for, so all the code you currently have should work fine with the new framework.  The best way I've found so far is to simply link to all the existing files in the new project.  In Solution Explorer, right-click the new project and click &lt;strong&gt;Add►Existing File…&lt;/strong&gt; and select the files you want to add as a link and click the ► in the &lt;strong&gt;Add ►&lt;/strong&gt; button and click &lt;strong&gt;Add Link&lt;/strong&gt;. This adds links to the files from another projetc so each file is shared across the two projects.  If you edit one, you edit for both (or all projects).  If you have a lot of files across more than few directories, you'll quickly notice that using the &lt;strong&gt;Add►Existing File…&lt;/strong&gt; dialog will be a huge chore.  An easier way is to select the files in the previous project in Solution Explorer and drag and drop the files you want to share while holding the &lt;strong&gt;Alt&lt;/strong&gt; key to the new project.  This will add links to your new project.  At this point, the project should compile and effectively give you an identical class library that supports the new framework.  For any new framework features you want to support, simply add them as new files into the project for that framework (remember &lt;code&gt;partial&lt;/code&gt; if you want to add new framework functionality to an existing class.  In rare cases you may need to add a some compile-time constants like &lt;code&gt;NET40&lt;/code&gt; and &lt;code&gt;NET45&lt;/code&gt; to each project so that you can wire-off specific functionality in a shared file.&lt;/p&gt;
-&lt;p&gt;Now when you want to generate your new Nuget package, you can copy the library dlls into a convention-based folder that Nuget understands.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;\lib
-    \net40
-        myassembly.dll
-    \netstandard1.3
-        musassembly.dll
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For example, one of my OSS projects, files are copied into a Nuget-convention &lt;code&gt;lib&lt;/code&gt; folder like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;copy Pri.LongPath.net40\bin\Release\Pri.LongPath.dll nuget\lib\net40
-copy Pri.LongPath.net200\bin\Release\Pri.LongPath.dll nuget\lib\net20
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then Nuget just packages things properly.&lt;/p&gt;
-&lt;p&gt;This works, but realistically it's quite a bit of work.  Over time you get more and more projects, and if you have lots of files, you have more and more files in Solution Explorer and performance seems to suffer.&lt;/p&gt;
-&lt;p&gt;Fortunately, I've found that there's a much better way in Visual Studio 2017 and the new csproj files: via the &lt;a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/libraries"&gt;TargetFrameworks&lt;/a&gt; element.  There does not seem to be support for this in the Visual Studio UI yet, so you have to manually edit your csproj to add support for multiple frameworks; but that's easy with the new csproj files because you can simply edit them in Visual Studio 2017 (right-click project in Solution Explorer and select &lt;strong&gt;Edit&lt;/strong&gt;).  Once there, simply rename the &lt;code&gt;TargetFramework&lt;/code&gt; element to &lt;code&gt;TargetFrameworks&lt;/code&gt; (note the 's' suffix).  For example, if you create a .NET Standard class library, the csproj will contain the following:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;Project Sdk=&amp;quot;Microsoft.NET.Sdk&amp;quot;&amp;gt;
-
-&amp;lt;PropertyGroup&amp;gt;
-    &amp;lt;TargetFramework&amp;gt;netstandard1.3&amp;lt;/TargetFramework&amp;gt;
-&amp;lt;!-- ... --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;to support .NET Standard 1.3 &lt;em&gt;and&lt;/em&gt; .NET 4.6.2, change that to the following:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;Project Sdk=&amp;quot;Microsoft.NET.Sdk&amp;quot;&amp;gt;
-
-&amp;lt;PropertyGroup&amp;gt;
-    &amp;lt;TargetFrameworks&amp;gt;netstandard1.3;net462&amp;lt;/TargetFrameworks&amp;gt;
-&amp;lt;!-- ... --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note the use of semicolons to separate framework monikers.&lt;/p&gt;
-&lt;p&gt;This method means that the one project is built for each framework and all the files are shared amongst those builds.  This means you have to resort to compile-time constants to signify framework-specific code.  Fortunately Visual Studio (or really the build system) knows about our multi-targeting, so it automatically provides compile-time constants.  The following table shows current compile-time constants (and the convention it uses, for future framework versions :) ):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.NET Framework 2.0   --&amp;gt; NET20
-.NET Framework 3.5   --&amp;gt; NET35
-.NET Framework 4.0   --&amp;gt; NET40
-.NET Framework 4.5   --&amp;gt; NET45
-.NET Framework 4.5.1 --&amp;gt; NET451
-.NET Framework 4.5.2 --&amp;gt; NET452
-.NET Framework 4.6   --&amp;gt; NET46
-.NET Framework 4.6.1 --&amp;gt; NET461
-.NET Framework 4.6.2 --&amp;gt; NET462
-.NET Standard 1.0    --&amp;gt; NETSTANDARD1_0
-.NET Standard 1.1    --&amp;gt; NETSTANDARD1_1
-.NET Standard 1.2    --&amp;gt; NETSTANDARD1_2
-.NET Standard 1.3    --&amp;gt; NETSTANDARD1_3
-.NET Standard 1.4    --&amp;gt; NETSTANDARD1_4
-.NET Standard 1.5    --&amp;gt; NETSTANDARD1_5
-.NET Standard 1.6    --&amp;gt; NETSTANDARD1_6 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#if (NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
-
-	public static Task ConnectAsync(this TcpClient tcpClient, EndPoint endPoint)
-	{
-		//...
-	}
-#endif
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To edit code in the context of a particular framework (and thus have the particular compile-time constants defined) you can select the file projects dropdown to show the file in the compiler context of the target:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/assets/file%20projects%20dropdown.png" class="img-fluid" alt="file projects dropdown" /&gt;&lt;/p&gt;
-&lt;p&gt;Now when you build the project it will create a binary for each target platform (within the bin directory under Debug/Release and subdirectories by target name like &amp;quot;net45&amp;quot;).&lt;/p&gt;
-&lt;p&gt;With a .NET Standard project in Visual Studio you can also have it create the Nuget package during build.  Since the project builds the nuget, you enter all the package information in the project settings.  And, of course, this means it builds a package with all the target binaries, not just one so you don't need to create a nuspec, nor edit it, more create a convention-based directory structure with the binaries for all the target frameworks you support.&lt;/p&gt;
-&lt;h3 id="caveats"&gt;Caveats&lt;/h3&gt;
-&lt;p&gt;As mentioned earlier, VS doesn't support multi-targeting like this right in the UI (other than the file projects dropdown to view the file in the compiler context of the target) so it can be tedious editing the csproj manually to change configuration like references etc.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
