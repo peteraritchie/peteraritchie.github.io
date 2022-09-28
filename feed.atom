@@ -4,8 +4,51 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2022</rights>
-	<updated>2022-09-16T20:50:50Z</updated>
+	<updated>2022-09-28T20:09:47Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/By-Reference-in-csharp</id>
+		<title>By Reference in C#</title>
+		<link href="http://blog.peterritchie.com/posts/By-Reference-in-csharp" />
+		<updated>2022-09-28T00:00:00Z</updated>
+		<content>&lt;p&gt;I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.&lt;/p&gt;
+&lt;p&gt;C# compiler errors can be categorized (arbitrarily) by different areas of C# syntax, and I started to focus on one category at a time.  One of those areas involves referenced variables.  C# has always has &lt;code&gt;ref&lt;/code&gt; arguments, but &lt;code&gt;ref&lt;/code&gt; return, &lt;code&gt;ref&lt;/code&gt; locals, &lt;code&gt;ref&lt;/code&gt; structs, and &lt;code&gt;ref&lt;/code&gt; fields have been additions to the syntax.&lt;/p&gt;
+&lt;p&gt;The declaration of a variable in C# influences its syntax in a couple ways: binding and accessibility.  Accessibility is whether an identifier is &lt;em&gt;visible&lt;/em&gt; at compile-time in a given context.  Binding is how an identifier or name is bound at run-time to resources like data and code.  Binding uniquely affect the compile-time correctness of any particular usage of a &lt;code&gt;ref&lt;/code&gt; variable.&lt;/p&gt;
+&lt;p&gt;Binding affects the compile-time usage of an identifier because of the run-time lifetime of the resources it is bound to. You're probably familiar with a static method accessing instance data and the errors caused in this context. &lt;code&gt;ref&lt;/code&gt; variables have a similar context when they are stack allocated. Heap-allocated objects (objects bound to the heap) can have their lifetime extended to be long-lived because the heap shares the same lifetime as the application. Variables bound to stack-allocated resources cannot have their lifetime extended beyond a specific scope. The stack is a sequential collection of elements with elements implicitly partitioned by a shared scope. The most recognized scope is probably a method call or method/lambda body. Local variables bound to stack elements do not have a lifetime beyond the method call. A reference to a stack object cannot be assigned to a variable or expression with a broader scope.&lt;/p&gt;
+&lt;p&gt;How far the value of an expression can leave the confines of its declaration scope is called &amp;quot;escape scope&amp;quot;.  Sometimes the escape scope is the same as the declaration scope.  The compiler verifies compatible escape scopes during assignment.  For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;    void M(ref int ra)
+    {
+        int number = 0;
+        ref int rl = ref number;
+        if (ra == 0)
+        {
+            int x = number;
+            rl = ref x;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; is local to the &lt;code&gt;if&lt;/code&gt; body, it is bound to the stack, and its escape scope is narrower than &lt;code&gt;ref rl&lt;/code&gt; because &lt;code&gt;ref rl&lt;/code&gt; is declared in the outer scope.  Since &lt;code&gt;ref rl&lt;/code&gt; is an alias to another variable, it cannot reference a variable bound to a resource that will go out of scope before it does.  &lt;code&gt;rl = ref x&lt;/code&gt; results in a compiler error.  If &lt;code&gt;rl&lt;/code&gt; were not a reference to a value type, the assignment would be okay because &lt;code&gt;x&lt;/code&gt; would be bound to heap and have a broader escape scope.&lt;/p&gt;
+&lt;p&gt;The compiler also verifies compatible escape scopes when returning values.  For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;    ref int M(ref int ra)
+    {
+        int number = 0;
+        ref int rl = ref number;
+        if (ra == 0)
+        {
+            ref int x = ref number;
+            return ref x;
+        }
+        return ref ra;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;return ref x&lt;/code&gt; results in a compiler error because the escape scope of &lt;code&gt;x&lt;/code&gt; is local to the method.  The error message here may not be as clear as the first because it doesn't mention the narrower escape scope.&lt;/p&gt;
+&lt;p&gt;There are the basic escape scopes.  A calling method scope, a current method scope, and a return-only scope.&lt;/p&gt;
+&lt;p&gt;The calling method scope is a scope outside of the containing method/lambda.  References can reach this scope via either a &lt;code&gt;ref&lt;/code&gt; parameter or a return.&lt;/p&gt;
+&lt;p&gt;The current method scope is a scope within a containing method/lambda.&lt;/p&gt;
+&lt;p&gt;The return-only scope is a special case for &lt;code&gt;ref struct&lt;/code&gt; types that can only leave the method scope via a return and not through a &lt;code&gt;ref&lt;/code&gt; or &lt;code&gt;out&lt;/code&gt; parameter.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/the-fundamental-quality-attributes-of-technology-systems</id>
 		<title>Fundamental Quality Attributes of Technology Systems</title>
@@ -1271,195 +1314,5 @@ The Correlation ID header value provides an application-unique identifier to som
 &lt;p&gt;[Recipient List]: &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html"&gt;http://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html&lt;/a&gt;&lt;!-- 2017, September--&gt;&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;Like HTTP, what should be in the headers and what should be in the message "content" can be difficult to pin down definitively.  Unlike HTTP (i.e. REST), message-oriented communication can be a lot easier when it comes to the "resource identifier".&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Bridges-Facades-and-Adapters</id>
-		<title>Bridges, Facades, and Adapters</title>
-		<link href="http://blog.peterritchie.com/posts/Bridges-Facades-and-Adapters" />
-		<updated>2017-07-28T00:00:00Z</updated>
-		<content>&lt;p&gt;I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and Façade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Bridge_pattern"&gt;Bridge&lt;/a&gt;, &lt;a href="https://en.wikipedia.org/wiki/Adapter_pattern"&gt;Adapter&lt;/a&gt;, and &lt;a href="https://en.wikipedia.org/wiki/Facade_pattern"&gt;Façade&lt;/a&gt; are similar: they are all about providing a more useful interface.  How and why they produce those interfaces are very different.&lt;/p&gt;
-&lt;p&gt;Let's first look at some of the principles behind each pattern.&lt;/p&gt;
-&lt;h2 id="principles"&gt;Principles&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Bridge&lt;/em&gt;: to decouple an abstraction from its implementations so that they can vary independently.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Façade&lt;/em&gt;: provide a simplified interface to a larger body of code.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Adapter&lt;/em&gt;: allows incompatible interfaces to work together by wrapping an already existing interface.&lt;/p&gt;
-&lt;h2 id="subtleties"&gt;Subtleties&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Bridge&lt;/em&gt;: Bridge is about decoupling an abstraction from its implementations.  This means it provides an abstraction to an abstraction; or in other words it's about the interaction of three things.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Façade&lt;/em&gt;: Façade is about providing a simpler abstraction to an existing interface.  This means it provides an abstraction to  set of interfaces&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Adapter&lt;/em&gt;: Adapter is about providing an interface that accepts existing data formats to translate to other formats used by another interface.&lt;/p&gt;
-&lt;h2 id="adapter-deep-dive"&gt;Adapter Deep Dive&lt;/h2&gt;
-&lt;p&gt;An an Adapter is effectively a function or a transformation.  It transforms one set of data compatible with a known interface into a set of data compatible with another known interface. At its most complex, it's still only dealing with transformation/mapping--providing an abstraction to &lt;em&gt;how to transform&lt;/em&gt; data, not an abstraction from the data.  It's a one-to-one relationship between two interfaces that existed before the Adapter.  If we viewed it in a method calling context: something like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var result = ExternalInterface(AdaptToExternal(internalData));
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="possible-adapter-pattern-specializations"&gt;Possible Adapter Pattern Specializations&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Data_mapper_pattern"&gt;Mapper&lt;/a&gt; (&lt;a href="https://en.wikipedia.org/wiki/Object-relational_mapping"&gt;Object-Relational&lt;/a&gt; aka ORM, &lt;a href="https://en.wikipedia.org/wiki/Data_access_object"&gt;Data Access Object&lt;/a&gt; aka DAO), &lt;a href="https://en.wikipedia.org/wiki/Active_record_pattern"&gt;ActiveRecord&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="facade-deep-dive"&gt;Façade Deep Dive&lt;/h2&gt;
-&lt;p&gt;A Façade at it's simplest can act like an Adapter but it provides an abstraction to an interface rather than data: a simple pass-through Façade that performs some adaption.  An Adapter pattern could be used in a Façade or Bridge, but the Adapter pattern would be implemented independently from the implementation of either of other two.  e.g. some sort of Adapter class or method would exist regardless of the Façade or Bridge implementation.  At its most complex, a Façade is a managed workflow or a process that integrates several independent interfaces along with state to provide a new, simpler interface.  i.e. a Façade can abstract behavior while being a structural pattern.  It's a one-to-many relationship between interfaces.  At the heart of both. the Bridge and the Adapter is to provide a more useful (better) interface, which is common to Façade, but it's the purpose of that new interface that distinguishes it as one pattern or another.&lt;/p&gt;
-&lt;p&gt;We often think of these patterns are the interface or class level; but they're applicable more broadly. Extension methods, for instance, can be a good example of a Façade implementation.  The following extension method is from Productivity Extensions:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public static bool ReferencesMethod&amp;lt;T&amp;gt;(this Type sourceType, Expression&amp;lt;Action&amp;lt;T&amp;gt;&amp;gt; func)
-{
-	if (sourceType == null)
-	{
-		throw new ArgumentNullException(nameof(sourceType));
-	}
-
-	if (func == null)
-	{
-		throw new ArgumentNullException(nameof(func));
-	}
-
-	var methodCallExpression = func.Body as MethodCallExpression;
-	if (methodCallExpression == null)
-	{
-		return false;
-	}
-
-	MethodInfo memberInfo = methodCallExpression.Method;
-	MethodInfo getTypeMethodInfo = typeof(object).GetMethods().Single(x =&amp;gt; x.Name == &amp;quot;GetType&amp;quot;); // &amp;amp;&amp;amp; x.GetParameters().Count() == 0 &amp;amp;&amp;amp; x.ReflectedType == typeof(Object));
-	bool getTypeCall = memberInfo == getTypeMethodInfo;
-
-	foreach (var methodInfo in sourceType.GetMethods())
-	{
-		var methodBody = methodInfo.GetMethodBody();
-		if (methodBody == null)
-		{
-			continue;
-		}
-
-		var il = methodBody.GetILAsByteArray();
-		IEnumerable&amp;lt;IlInstruction&amp;gt; instructions = GetMethodInstructions(methodInfo, sourceType.Module, il);
-
-		for (int i = 0; i &amp;lt; instructions.Count(); ++i)
-		{
-			var instruction = instructions.ElementAt(i);
-			if (getTypeCall &amp;amp;&amp;amp; instruction.Code == OpCodes.Ldtoken &amp;amp;&amp;amp; i &amp;lt; instructions.Count() &amp;amp;&amp;amp; instructions.ElementAt(i + 1).Code == OpCodes.Call)
-			{
-				var calledMethodInfo = instructions.ElementAt(i + 1).Operand as MethodInfo;
-				if (calledMethodInfo == null)
-				{
-					continue;
-				}
-
-				if (calledMethodInfo == typeof(Type).GetMethods().Single(x =&amp;gt; x.Name == &amp;quot;GetTypeFromHandle&amp;quot;))
-				{
-					return true;
-				}
-			}
-
-			if (instruction.Code == OpCodes.Call || instruction.Code == OpCodes.Callvirt)
-			{
-				var calledMethodInfo = instruction.Operand as MethodInfo;
-				if (calledMethodInfo == null)
-				{
-					continue;
-				}
-
-				if (calledMethodInfo == memberInfo)
-				{
-					return true;
-				}
-			}
-		}
-	}
-
-	return false;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Obviously, the interfaces are there to figure out if a particular method is referenced within a type, but &lt;code&gt;ReferencesMethod&lt;/code&gt; provides a more convenient interface (a façade).&lt;/p&gt;
-&lt;h2 id="bridge-deep-dive"&gt;Bridge Deep Dive&lt;/h2&gt;
-&lt;p&gt;The Bridge provides a third interface (abstraction) so that one known interface never needs to be coupled to by a future unknown interface.  A Bridge is very useful in some languages/frameworks to provide compile-time independence between two implementations.  You often want a bidirectional independence in Bridges and as such the interfaces are often in their own link-time unit (class library).  The code that uses the Bridge is decoupled from and implementation of the a Bridge as well as whatever the Bridge is bridging to (so bridge implementations and what they bridge to can be implementated after the fact).  Façade is used when defining what is being bridged to because Bridge is used to abstract multiple implementations and often need that Façade interface to provide a better (consistent) interface.&lt;/p&gt;
-&lt;p&gt;For me, an example really helps my understanding.  Here are some example interfaces to support a Bridge pattern (the Abstraction and Implementor from the pattern):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;namespace Primitives
-{
-    public interface IShapeBridgeAbstraction
-    {
-        void Draw();
-    }
-
-    public interface IGraphicalViewBridgeImplementor
-    {
-        void DrawCircle(double x, double y, double radius);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then, implementations of those interfaces provided by another party (vendor?):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;namespace VendorX
-{
-    using Primitives;
-
-    public class GraphicalViewBridgeConcreteImplementor : IGraphicalViewBridgeImplementor
-    {
-        void DrawCircle(double x, double y, double radius);
-    }
-
-    public class CircleShapeBridgeRefinedAbstraction : IShapeBridgeAbstraction
-    {
-        double x, y, radius;
-        IGraphicalViewBridgeImplementor view;
-        public void CircleShapeBridgeRefinedAbstraction(double x, double y, double radius, IGraphicalViewBridgeImplementor view)
-        {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.view = view;
-        }
-
-        public void Draw()
-        {
-            view.DrawCircle(x, y, radius);
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or, to get away from the pattern-parlance:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;namespace Primitives
-{
-    public interface IShape
-    {
-        void Draw();
-    }
-
-    public interface IGraphicalView
-    {
-        void DrawCircle(double x, double y, double radius);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;namespace Microsoft
-{
-    using Primitives;
-
-    public class WinFormsGraphicalView : IGraphicalView
-    {
-        void DrawCircle(double x, double y, double radius);
-    }
-
-    public class WinFormsCircleShape : IShape
-    {
-        double x, y, radius;
-        IGraphicalView view;
-        public void WinFormsCircleShape(double x, double y, double radius, IGraphicalView view)
-        {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.view = view;
-        }
-
-        public void Draw()
-        {
-            view.DrawCircle(x, y, radius);
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="possible-bridge-pattern-specializations"&gt;Possible Bridge Pattern Specializations&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://wiki.c2.com/?PimplIdiom"&gt;PImpl&lt;/a&gt;, Driver, &lt;a href="https://en.wikipedia.org/wiki/Mediator_pattern"&gt;Mediator&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="final-thoughts"&gt;Final Thoughts&lt;/h2&gt;
-&lt;p&gt;An important thing to remember is the category of the pattern.  Adapter, Façade, and Bridge are structural patterns.  Their intention is to provide benefits to the structure of a body software through composition.  Another category of patterns is behavioral; which attempt to improve cohesion by separating responsibilities through composition.  The mediator pattern may structurally be a Bridge pattern but its use is to achieve a separation of communication behavior responsibilities.  i.e. certain structural considerations are needed to obtain separation of responsibilities: to implement cohesive mediation behavior, you may need a Bridge structure.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and Façade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.&lt;/p&gt;</summary>
 	</entry>
 </feed>

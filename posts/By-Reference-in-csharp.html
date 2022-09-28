@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - By Reference in C#</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - By Reference in C#" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/By-Reference-in-csharp" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,17 +75,11 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>By Reference in C#</h1>
     <div class="meta">        
-Published on Friday, March 8, 2013<br>    </div>
+Published on Wednesday, September 28, 2022<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
-                    <a role="button" href="/tags/March-2013" class="btn btn-default btn-xs">March 2013</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/September-2022" class="btn btn-default btn-xs">September 2022</a>
         </div>     
 </div>
                                         </div>
@@ -99,41 +93,60 @@ Published on Friday, March 8, 2013<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency Injection (DI) is a form of Inversion of Control where the instances that one class need are instantiated outside of the class an &quot;injected&quot; into it. The most common injection is constructor injection. This is called inversion of control because the control of the dependencies have been inverted from the dependant class instantiating them to another class instantiating them. e.g. I could write class like this:</p>
-<p>Which is perfectly functional, but MyClass is now directly dependant on <code>List&lt;T&gt;</code> and this type has become an implementation detail of MyClass. If I wanted to use some other implementation of <code>IList&lt;T&gt;</code>, I'd have to re-write MyClass and fix the tests that broke because of it. I may want to use another <code>IList&lt;T&gt;</code> implementation because I want to test MyClass. As it stands, I have no way of telling if the class does anything successfully. I could write an <code>IList&lt;T&gt;</code> implementation that I can spy on in a test to verify that MyClass does what it supposed to do. The way MyClass is written at the moment, I can't do that.</p>
-<p>Bear in mind, this is a stupid example. But, it shows inversion of control with types commonly recognizable.</p>
-<p>So, I could invert the control on <code>IList&lt;T&gt;</code> and refactor MyClass to be DI-friendly. In this case, it's fairly simple:</p>
-<p>Now MyClass does not have a direct dependency on <code>List&lt;T&gt;</code> and I can give it anything I want. In production I'd create an instance like this:</p>
-<p>Not a whole lot more complex than before. If I wanted to test MyClass in some way, I could give it a spy:</p>
-<p>This is considered <em>Poor Man's IoC</em>, in that you're not making use of a framework or a library specifically devoted to IoC.</p>
-<p>Yes, you'd never really do this in real life; but it's a fairly clear example—with commonly-used types.</p>
-<h2 id="ioc-containers">IoC Containers</h2>
-<p>There's a plethora of IoC containers for .NET. They're all great tools, like StructureMap, Autofac, Ninject, Unity, etc. Don't get me wrong, they're powerful and they do a lot of things. But, they do a lot of things.</p>
-<p>What do I mean by &quot;they do a lot of things&quot;? Well, they're all effectively designed to work with codebases that are not DI-friendly. They go out of their way to provide features to support DI in any imaginable design. &quot;What's wrong with that&quot; you say? If you've got a brownfield project, that's great—you can likely get testability with code not designed to be testable—which is a good thing. But, these abilities make us lazy. We stop designing DI-friendly classes because we know how to use a particular IoC container to get a known level of IoC and/or testability. We've stopped striving for a simpler design, we've stopped striving for DI-friendly code.</p>
-<p>If you're finding that you're generally using much more than just constructor injection, having reams and reams of config to set up the various instances or lifecycles then you're probably letting your IoC container do too much for you and your design is suffering. If someone has to spend days understanding your IoC container and it's config for you project, you may have defeated the purpose.</p>
-<p>For lots of good advice on DI in .NET, check out <a href="http://blog.ploeh.dk/tags.html#Dependency%20Injection-ref">http://blog.ploeh.dk/tags.html#Dependency Injection-ref</a>. Some of my favourites: <a href="http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/">http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/</a>, <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/">http://blog.ploeh.dk/2011/07/28/CompositionRoot/</a>, and <a href="http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/">http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/</a></p>
-<p><img src="http://msmvps.com/aggbug.aspx?PostID=1824852" class="img-fluid" alt="" /></p>
+<p>I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.</p>
+<p>C# compiler errors can be categorized (arbitrarily) by different areas of C# syntax, and I started to focus on one category at a time.  One of those areas involves referenced variables.  C# has always has <code>ref</code> arguments, but <code>ref</code> return, <code>ref</code> locals, <code>ref</code> structs, and <code>ref</code> fields have been additions to the syntax.</p>
+<p>The declaration of a variable in C# influences its syntax in a couple ways: binding and accessibility.  Accessibility is whether an identifier is <em>visible</em> at compile-time in a given context.  Binding is how an identifier or name is bound at run-time to resources like data and code.  Binding uniquely affect the compile-time correctness of any particular usage of a <code>ref</code> variable.</p>
+<p>Binding affects the compile-time usage of an identifier because of the run-time lifetime of the resources it is bound to. You're probably familiar with a static method accessing instance data and the errors caused in this context. <code>ref</code> variables have a similar context when they are stack allocated. Heap-allocated objects (objects bound to the heap) can have their lifetime extended to be long-lived because the heap shares the same lifetime as the application. Variables bound to stack-allocated resources cannot have their lifetime extended beyond a specific scope. The stack is a sequential collection of elements with elements implicitly partitioned by a shared scope. The most recognized scope is probably a method call or method/lambda body. Local variables bound to stack elements do not have a lifetime beyond the method call. A reference to a stack object cannot be assigned to a variable or expression with a broader scope.</p>
+<p>How far the value of an expression can leave the confines of its declaration scope is called &quot;escape scope&quot;.  Sometimes the escape scope is the same as the declaration scope.  The compiler verifies compatible escape scopes during assignment.  For example:</p>
+<pre><code class="language-csharp">    void M(ref int ra)
+    {
+        int number = 0;
+        ref int rl = ref number;
+        if (ra == 0)
+        {
+            int x = number;
+            rl = ref x;
+        }
+    }
+</code></pre>
+<p><code>x</code> is local to the <code>if</code> body, it is bound to the stack, and its escape scope is narrower than <code>ref rl</code> because <code>ref rl</code> is declared in the outer scope.  Since <code>ref rl</code> is an alias to another variable, it cannot reference a variable bound to a resource that will go out of scope before it does.  <code>rl = ref x</code> results in a compiler error.  If <code>rl</code> were not a reference to a value type, the assignment would be okay because <code>x</code> would be bound to heap and have a broader escape scope.</p>
+<p>The compiler also verifies compatible escape scopes when returning values.  For example:</p>
+<pre><code class="language-csharp">    ref int M(ref int ra)
+    {
+        int number = 0;
+        ref int rl = ref number;
+        if (ra == 0)
+        {
+            ref int x = ref number;
+            return ref x;
+        }
+        return ref ra;
+    }
+</code></pre>
+<p><code>return ref x</code> results in a compiler error because the escape scope of <code>x</code> is local to the method.  The error message here may not be as clear as the first because it doesn't mention the narrower escape scope.</p>
+<p>There are the basic escape scopes.  A calling method scope, a current method scope, and a return-only scope.</p>
+<p>The calling method scope is a scope outside of the containing method/lambda.  References can reach this scope via either a <code>ref</code> parameter or a return.</p>
+<p>The current method scope is a scope within a containing method/lambda.</p>
+<p>The return-only scope is a special case for <code>ref struct</code> types that can only leave the method scope via a return and not through a <code>ref</code> or <code>out</code> parameter.</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'By-Reference-in-csharp'
+    'By Reference in C#'
+    'http://blog.peterritchie.com/posts/By-Reference-in-csharp'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('3/8/13');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('9/28/22');
+    console.info('By-Reference-in-csharp');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'By Reference in C#';
+    var disqus_url = 'http://blog.peterritchie.com/posts/By-Reference-in-csharp';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -142,7 +155,7 @@ Published on Friday, March 8, 2013<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'By-Reference-in-csharp';
     }
     console.info(disqus_identifier);
 
