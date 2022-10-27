@@ -5,8 +5,55 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Wed, 28 Sep 2022 20:09:47 GMT</pubDate>
-		<lastBuildDate>Wed, 28 Sep 2022 20:09:47 GMT</lastBuildDate>
+		<pubDate>Thu, 27 Oct 2022 16:18:02 GMT</pubDate>
+		<lastBuildDate>Thu, 27 Oct 2022 16:18:02 GMT</lastBuildDate>
+		<item>
+			<title>Visual Studio Performance with Microsoft Defender</title>
+			<link>http://blog.peterritchie.com/posts/visual-studio-defender-performance</link>
+			<description>&lt;p&gt;&lt;img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/visual-studio-defender-performance</guid>
+			<pubDate>Thu, 27 Oct 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image" /&gt;&lt;/p&gt;
+&lt;p&gt;Steve Smith posted about &lt;a href="https://ardalis.com/speed-up-visual-studio-build-times/?utm_sq=h3m43zzlkm"&gt;speeding up built times in Visual Studio&lt;/a&gt; by configuring Windows Defender.  That was in 2016 and to say things have changed a bit is probably an understatement.  Configuring a new laptop, I thought I'd revisit this briefly.&lt;/p&gt;
+&lt;p&gt;Before changing anything in Windows Virus &amp;amp; Threat Protection, go ahead and run a scan to make sure we're starting with a clean slate.  &lt;del&gt;Go to &lt;a href="ms-settings:windowsdefender"&gt;Windows Security&lt;/a&gt; and click &lt;strong&gt;Virus &amp;amp; threat protection&lt;/strong&gt; then click the &lt;strong&gt;Quick scan&lt;/strong&gt; button.&lt;/del&gt; I've been advocating scripting all-the-things, to run a quick scan in an administrator Powershell terminal run &lt;code&gt;Start-MpScan -ScanType QuickScan&lt;/code&gt;.  You can also run a full-scan, if that makes you more comfortable: &lt;code&gt;Start-MpScan -ScanType FullScan&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once that's complete we can configure Windows Virus and Threat Protection to &amp;quot;trust&amp;quot; (exclude) Visual Studio.  To do that in PowerShell you can use the &lt;a href="https://learn.microsoft.com/en-us/powershell/module/defender/add-mppreference?view=windowsserver2022-ps"&gt;&lt;code&gt;App-MpPreference&lt;/code&gt; cmdlet&lt;/a&gt; (as well as see what's already configured with the &lt;a href="https://learn.microsoft.com/en-us/powershell/module/defender/get-mppreference?view=windowsserver2022-ps"&gt;&lt;code&gt;Get-MpPreference&lt;/code&gt; cmdlet&lt;/a&gt;).  Some examples:&lt;/p&gt;
+&lt;p&gt;With Visual Studio 2022 Enterprise:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With Visual Studio 2022 Professional:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With Visual Studio 2022 Community:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And, with Visual Studio 2022 Preview:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also do that for Visual Studio Code:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:LocalAppData\Programs\Microsoft VS Code\code.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also exclude the location of where you store your source code.  The default location is &lt;code&gt;C:\Users\&amp;lt;user-name&amp;gt;\source\repos&lt;/code&gt; for Visual Studio.  So, in PowerShell, you can add a path exclusion:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionPath &amp;quot;$Env:USERPROFILE\source\repos&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Note:&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;If you're working with Git repositories that you're unsure of what they contain, you may want to separate where you clone those repos from where you exclude.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Or, if you want a PowerShell script to just do all thee things, see &lt;a href="https://gist.githubusercontent.com/peteraritchie/d6025591566821b4ae5995eb831b6e8d/raw/912b5b20b749d506562437f40e169e6a3e24d279/optimize-defender.ps1"&gt;optimize-defender.ps1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Other processes to consider:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\dotnet\dotnet.exe&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Any other processes or paths that you'd consider for exclusion?&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>By Reference in C#</title>
 			<link>http://blog.peterritchie.com/posts/By-Reference-in-csharp</link>
@@ -1269,51 +1316,6 @@ Configuration.Bind(myConfiguration)
 &lt;p&gt;I think for the most part that this hack is likely renderer-specific (having no real standard around what rendering really does beyond visable HTML); but after some research and some trial and error; you can hack a comment into your markdown by using an un-referenced reference link.  Reference links have the format: &lt;code&gt;[link text][link-label]&lt;/code&gt; that references a link label definition like &lt;code&gt;[link-label]: http://example.com&lt;/code&gt;.  You may omit the link text and simply use the label: &lt;code&gt;[link text][link-label]&lt;/code&gt; to reference a link, which would look like this: &lt;a href="http://www.example.com"&gt;link-label&lt;/a&gt;.  Labels may have spaces in them, so you can really have label that is the link text: &lt;code&gt;[link text]&lt;/code&gt; and the link label definition: &lt;code&gt;[link text]: http://www.example.com&lt;/code&gt; which would look like &lt;a href="http://www.example.com"&gt;link text&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Those link label defintions can appear anywhere in your markdown (as long as there's a blank line above it).  And, if you don't include the link references anywhere (e.g. &lt;code&gt;[link-label]&lt;/code&gt;) then the what is in the link label definition is completely ignored (i.e. does not show up in the rendered HTML).  So, to add a comment to your markdown simply add an unused link label definition:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;[*]: # &amp;quot;TODO: Deal with this later&amp;quot;&lt;/code&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Message-oriented Content and Properties/Attributes</title>
-			<link>http://blog.peterritchie.com/posts/Message-oriented%20Content%20and%20Properties-Attributes</link>
-			<description>&lt;p&gt;Like HTTP, what should be in the headers and what should be in the message "content" can be difficult to pin down definitively.  Unlike HTTP (i.e. REST), message-oriented communication can be a lot easier when it comes to the "resource identifier".&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Message-oriented%20Content%20and%20Properties-Attributes</guid>
-			<pubDate>Mon, 18 Sep 2017 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;Like HTTP, what should be in the headers and what should be in the message &amp;quot;content&amp;quot; can be difficult to pin down definitively.  Unlike HTTP (i.e. REST), message-oriented communication can be a lot easier when it comes to the &amp;quot;resource identifier&amp;quot;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/Introduction.html"&gt;Messaging systems almost always consider &amp;quot;content&amp;quot; the &amp;quot;body&amp;quot; and have the concept of a message &amp;quot;header&amp;quot; that contains metadata about the message&lt;/a&gt;; much in the same way as HTTP.  And like HTTP, what shouldn't be in the message body can sometimes be bewildering.&lt;/p&gt;
-&lt;p&gt;There are some straight-forward, established patterns and practices that cover some of the considerations about what might not be &amp;quot;content&amp;quot;.  For example: &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/EnvelopeWrapper.html"&gt;Envelope Wrapper&lt;/a&gt; details that non-body data should be in an &amp;quot;envelope&amp;quot; (which then becomes part of the &amp;quot;content&amp;quot; when you can't support a messaging system's headers).  But this can also be made less deterministic by established patterns like &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html"&gt;Content-based Router&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Message-oriented is first and foremost about loose-coupling.  For the most part, the fact that you're using messaging (and that there is a message to be sent and to be received) should be the only thing that couples a producer to a consumer.  To some extent that's why patterns like &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html"&gt;Content-based Router&lt;/a&gt; exist, the sender of a message shouldn't need to do anything special for the message to be routed.  But, &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html"&gt;Content-based Router&lt;/a&gt; is about routing based on &lt;em&gt;content&lt;/em&gt;, there are also reasons to route messages that may have nothing to do with content.  This doesn't mean pushing those things into the content in order be routed is the right thing to do.&lt;/p&gt;
-&lt;p&gt;As mentioned earlier, metadata &lt;em&gt;about&lt;/em&gt; the content or the message should not be within the content and should be part of the message attributes or within the message headers (depending on how messages are transported, I'll refer to these simply as &lt;strong&gt;message header values&lt;/strong&gt; or something within the &lt;strong&gt;message headers&lt;/strong&gt;). This is the predominant rule of thumb.  Information like &lt;em&gt;sender&lt;/em&gt; or &lt;em&gt;date/time sent&lt;/em&gt; are obviously metadata &lt;em&gt;about&lt;/em&gt; the message (or the sender) and are good candidates to be placed in the message headers.&lt;/p&gt;
-&lt;p&gt;What &lt;em&gt;is&lt;/em&gt; data &lt;em&gt;about&lt;/em&gt; content can be vague though.  &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html"&gt;Content-based Router&lt;/a&gt; points out routing and routing sometimes involved addressing.  With a Point-to-Point channel, addressing from a producer's point of view is simply just sending the message to a well-known queue.  In situations where the producer needs to &lt;em&gt;address&lt;/em&gt; a message to a consumer or a &lt;em&gt;type of consumer&lt;/em&gt;, message headers should be used for this.&lt;/p&gt;
-&lt;p&gt;Some &lt;a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields"&gt;HTTP header fields&lt;/a&gt; might be more familiar and a good source of inspiration.  For example:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17"&gt;Content-Type&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.8"&gt;Authorization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/HTTP_cookie"&gt;Cookie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host"&gt;Host&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="content-type"&gt;Content-Type&lt;/h3&gt;
-&lt;p&gt;In message-oriented systems, this is often referred to as a &lt;em&gt;Message Type&lt;/em&gt;.  Like HTTP, the format of a message could be unique.  In cases where the type of message changes, a message header field that allows a consumer to differentiate the content properly is very useful (essential?).  And to be clear, the headers portion of HTTP (actually, all but the message-body) is a fixed format: ASCII.  The &lt;em&gt;Content-Type&lt;/em&gt; field details (in that predetermined format/encoding) what encoding and format the message-body is in.  Message header values should be viewed the same way: in a predefined format/encoding and something like &lt;em&gt;Message-Type&lt;/em&gt; details the format/encoding of the body.&lt;/p&gt;
-&lt;h3 id="authorization"&gt;Authorization&lt;/h3&gt;
-&lt;p&gt;Typically the &lt;em&gt;authentication&lt;/em&gt; aspect of something like this is only used in message-oriented system (authorization handled by channel, for example).  Validating that a message came from a known producer is frequently required.  Many message transport systems can, like HTTP can, do that authentication/authorization within the transport; but application-specific authorization is common.&lt;/p&gt;
-&lt;h3 id="cookie"&gt;Cookie&lt;/h3&gt;
-&lt;p&gt;A cookie is a form of encoding stateful information so that a stateless protocol like HTTP can retain state from request to request.  It's extremely important to view message-oriented channels as stateless as well and if &lt;em&gt;state&lt;/em&gt; is required to be known across messages, this needs to be included (or linked to) when sending the message.  This typically doesn't follow a cookie-like model (i.e. including the actual state within the request) but the message is &lt;em&gt;correlated&lt;/em&gt; to that state and the receiver is able to &lt;em&gt;retrieve&lt;/em&gt; that state.  Typically this is covered by other messaging patterns like &lt;em&gt;Correlation ID&lt;/em&gt; or &lt;em&gt;Causation ID&lt;/em&gt; to provide identification of that &lt;em&gt;context&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id="host"&gt;Host&lt;/h3&gt;
-&lt;p&gt;Sometimes addressing of messages can simply be the fact of sending a message to a particular queue name/endpoint.  Sometimes there is application- or session-context that affects addressing, in which case addressing is included when the message is sent.  HTTP &lt;em&gt;Host&lt;/em&gt; is similar to that, in that it provides the address where the message is sent to.  Typically in HTTP this is the same as the value in the URI involved in the request, but an HTTP request could be forwarded to another URI.  From a message-oriented point of view, this type of thing is generally referred to as a [Recipient List] when addressing to specific instances of consumers or &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html"&gt;Routing Slip&lt;/a&gt; when addressing by some level of context that a consumer that understands the context can consume.&lt;/p&gt;
-&lt;p&gt;Some other useful messaging-specific patterns involving header-related fields:&lt;/p&gt;
-&lt;h3 id="message-id"&gt;Message ID&lt;/h3&gt;
-&lt;p&gt;There are many cases where the producer of a message must identify the message in some way.  &lt;em&gt;Message ID&lt;/em&gt; is a header value that holds that application-unique identifier of the message being sent.
-##Correlation ID
-The Correlation ID header value provides an application-unique identifier to some sort of context.  Often that is communication-unique (not just application-unique).  i.e. it may be a re-use of some other ID.  e.g. if the context of a given message is the fact that another message is being processed, the Correlation ID may be the Message ID of that original message (although, some prefer a Causation ID for that; but there's more semantics to that).  The re-used ID may have nothing directly to do with messaging.  For example, it could be the primary key of whatever is related to message being sent (e.g. &lt;code&gt;CaseId&lt;/code&gt;).&lt;/p&gt;
-&lt;h3 id="causation-id"&gt;Causation ID&lt;/h3&gt;
-&lt;p&gt;Much the same as a Correlation ID, but the added semantics of value being a Message ID sent previously.&lt;/p&gt;
-&lt;h3 id="sequence-ordinal"&gt;Sequence Ordinal&lt;/h3&gt;
-&lt;p&gt;Although using message-orientation is partially to accomplish some level of abstraction of a consumer from a producer and both from the physical transport method, anything used in a system introduces coupling and what is coupled to should be viewed as a &lt;em&gt;leaky abstraction&lt;/em&gt; that can affect &lt;em&gt;how&lt;/em&gt; messages are sent.  Message size, for example, is often (technically &lt;em&gt;always&lt;/em&gt;) a consideration and what &lt;em&gt;maximum message size&lt;/em&gt; the transport or channel can handle may need to be taken into consideration.  If the data that needs to be sent is larger than can actually be sent by that transport of channel then the message must be split up.  Depending on the transport and the channel messages may not relate to one another (e.g. order) and how the sequence of those messages need to be interpreted by the consumer should be included when the messages are sent. A Sequence Ordinal (or Number or Identifier) can be included as a header value so the consumer, should it receive messages out-of-order, can sequence the messages to generate the larger piece of data or super-message.&lt;/p&gt;
-&lt;h3 id="expiration"&gt;Expiration&lt;/h3&gt;
-&lt;p&gt;Messages are often sent with the intent of accomplishing something (&lt;em&gt;event&lt;/em&gt; messages are unique in that an &lt;em&gt;event getting sent&lt;/em&gt; is really the only intent of the producer).  Sometimes, what needs to be accomplished has a shelf life; and if that thing that needs to be accomplished really has no point in being done if not done within that time, an &lt;em&gt;Expriation&lt;/em&gt; can be included as a header value to hint to the consumer that if the message isn't processed within a certain amount of time, don't bother.  This is often a UTC date/time value.&lt;/p&gt;
-&lt;h3 id="return-address"&gt;Return Address&lt;/h3&gt;
-&lt;p&gt;Sometimes the sender may need to define &lt;em&gt;where&lt;/em&gt; a response or related messages are sent in response to a message.  The Return Address pattern is used to communicate that to the consumer of the message so that any related/response messages can be sent to a specific channel.  &lt;em&gt;Be careful here, if the channel is really based on the content type,&lt;/em&gt; Content Type &lt;em&gt;should probably be used instead avoid content-based coupling being additionally coupled to channel&lt;/em&gt;.  Also, if &lt;em&gt;where&lt;/em&gt; replies are sent are based on the destination having the state needed to process the reply, a &lt;em&gt;Correlation ID&lt;/em&gt; should be used also to avoid state-based coupling being additionally coupled to channel.&lt;/p&gt;
-&lt;h3 id="wrap-up"&gt;Wrap-up&lt;/h3&gt;
-&lt;p&gt;I hope that gives you some good guidance with examples to better decide what should and should not be within the body of a message in message-oriented systems.  There are always exceptions, but those are scenario-specific and need to be addressed on a case-by-case basis.  Just remember that when making decisions, if something isn't giving you the value you need and you're doing it just because it's a guideline, you've misunderstood the meaning of &lt;em&gt;guideline&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;[Recipient List]: &lt;a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html"&gt;http://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html&lt;/a&gt;&lt;!-- 2017, September--&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>

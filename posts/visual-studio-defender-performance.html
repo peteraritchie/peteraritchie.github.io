@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - Visual Studio Performance with Microsoft Defender</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Visual Studio Performance with Microsoft Defender" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/visual-studio-defender-performance" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,16 +75,11 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>Visual Studio Performance with Microsoft Defender</h1>
     <div class="meta">        
-Published on Thursday, December 13, 2007<br>    </div>
+Published on Thursday, October 27, 2022<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/December-2007" class="btn btn-default btn-xs">December 2007</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/October-2022" class="btn btn-default btn-xs">October 2022</a>
         </div>     
 </div>
                                         </div>
@@ -98,116 +93,64 @@ Published on Thursday, December 13, 2007<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency injection (DI) is a form of inversion of control. There seems to be a tendency in some circles to refer to dependency injection as inversion of control (IoC).</p>
-<p>Dependency injection is a form of abstraction by removing physical dependencies between classes and potentially assemblies. This abstraction can have many different motives. One motive is for Aspect Oriented Software Development (ASOD) where you're abstracting shared (or cross-cutting) concerns into independent classes. Another motive is for Test-Driven Development (TDD) where you want to be able to test each class independently of its dependencies–in which case injected dependencies are &quot;mocked&quot;–technically this is still AOSD because you're separating the testing concern.</p>
-<p>Dependency injection in .NET is most frequently implemented using interface-oriented design/programming, where a dependency of a class is on an interface. Any class implementing that interface is then a candidate for being &quot;injected&quot; into the other class.There's many ways to inject dependency, one is at time of construction the other is at time of operation.</p>
-<p>There are many examples of dependency injection at time of operation in the .NET Framework. Normally when an interface is involved, dependency injection is also involved. Serialization is a good example. Serialization in .NET allows programmers to serialize topretty much anything. &quot;Anything&quot; being a stream. Serialization abstracts the destination from the act of serializing and allows programmers to inject a dependency on any type of destination (media, resource, mock, etc.) simply by implementing IStream. For example, for any given class in .NET I can &quot;serialize&quot; it to any stream:</p>
-<pre><code>   MyType myType = new MyType();
-
-
-   IFormatter formatter = Configuration.CreateFormatter(typeof(myType));
-
-
-   using (Stream stream = new MemoryStream())
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-
-
-   }
+<p><img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image" /></p>
+<p>Steve Smith posted about <a href="https://ardalis.com/speed-up-visual-studio-build-times/?utm_sq=h3m43zzlkm">speeding up built times in Visual Studio</a> by configuring Windows Defender.  That was in 2016 and to say things have changed a bit is probably an understatement.  Configuring a new laptop, I thought I'd revisit this briefly.</p>
+<p>Before changing anything in Windows Virus &amp; Threat Protection, go ahead and run a scan to make sure we're starting with a clean slate.  <del>Go to <a href="ms-settings:windowsdefender">Windows Security</a> and click <strong>Virus &amp; threat protection</strong> then click the <strong>Quick scan</strong> button.</del> I've been advocating scripting all-the-things, to run a quick scan in an administrator Powershell terminal run <code>Start-MpScan -ScanType QuickScan</code>.  You can also run a full-scan, if that makes you more comfortable: <code>Start-MpScan -ScanType FullScan</code>.</p>
+<p>Once that's complete we can configure Windows Virus and Threat Protection to &quot;trust&quot; (exclude) Visual Studio.  To do that in PowerShell you can use the <a href="https://learn.microsoft.com/en-us/powershell/module/defender/add-mppreference?view=windowsserver2022-ps"><code>App-MpPreference</code> cmdlet</a> (as well as see what's already configured with the <a href="https://learn.microsoft.com/en-us/powershell/module/defender/get-mppreference?view=windowsserver2022-ps"><code>Get-MpPreference</code> cmdlet</a>).  Some examples:</p>
+<p>With Visual Studio 2022 Enterprise:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe&quot;
 </code></pre>
-<p>In the above example, IFormatter.Serialize(Stream, Object), uses dependency injection at time of operation to serialize to a MemoryStream object. In no way is IFormatter.Serialize dependant on MemoryStream. The same call could be written as follows:</p>
-<pre><code>   using(Stream stream = new FileStream(&quot;file.dat&quot;, FileMode.Create))
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
+<p>With Visual Studio 2022 Professional:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe&quot;
 </code></pre>
-<p>}</p>
-<p>The above form of DI is interface (and class) based, in that you need to implement a specificinterface to inject as a dependency. Another form of DI is via delegates. You can abstract a particular class from other concerns simply by accepting a delegate. Any class that wants to be injected simply needs to implement a method with the same signature as the required delegate. Events are an example of this. Any class that raises events is completely independent of any other classes that want to act as observers and subscribe to these events. Subscribers are, in effect,are preforming dependency injection by subscribing to an event. This form of DI is not limited to DI,it can be any delegate.In.NET 2.0 there were many examples of this introduced. List.ForEach, for example:</p>
-<pre><code>namespace Examples
-
-
-{
-
-
- using System.Collections.Generic;
-
-
- public class Program
-
-
- {
-
-
-  static void Main()
-
-
-  {
-
-
-   List&lt;string&gt; names = new List&lt;string&gt;();
-
-
-   // TODO: populate names
-
-
-   names.ForEach(Print);
-
-
-  }
-
-
-  static void Print(String name)
-
-
-  {
-
-
-   Console.WriteLine(name);
-
-
-  }
-
-
- }
-
-
-}
+<p>With Visual Studio 2022 Community:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe&quot;
 </code></pre>
-<p>In this example, <code>List&lt;T&gt;</code>, of course, iscompletely independent from Program andProgram is free to be static because there are no interface implementation requirements.</p>
+<p>And, with Visual Studio 2022 Preview:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe&quot;
+</code></pre>
+<p>You can also do that for Visual Studio Code:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:LocalAppData\Programs\Microsoft VS Code\code.exe&quot;
+</code></pre>
+<p>You can also exclude the location of where you store your source code.  The default location is <code>C:\Users\&lt;user-name&gt;\source\repos</code> for Visual Studio.  So, in PowerShell, you can add a path exclusion:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionPath &quot;$Env:USERPROFILE\source\repos&quot;
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>If you're working with Git repositories that you're unsure of what they contain, you may want to separate where you clone those repos from where you exclude.</td>
+</tr>
+</tbody>
+</table>
+<p>Or, if you want a PowerShell script to just do all thee things, see <a href="https://gist.githubusercontent.com/peteraritchie/d6025591566821b4ae5995eb831b6e8d/raw/912b5b20b749d506562437f40e169e6a3e24d279/optimize-defender.ps1">optimize-defender.ps1</a></p>
+<p>Other processes to consider:</p>
+<pre><code class="language-PowerShell">Add-MpPreference -ExclusionProcess &quot;$Env:ProgramFiles\dotnet\dotnet.exe&quot;
+</code></pre>
+<p>Any other processes or paths that you'd consider for exclusion?</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'visual-studio-defender-performance'
+    'Visual Studio Performance with Microsoft Defender'
+    'http://blog.peterritchie.com/posts/visual-studio-defender-performance'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('12/13/07');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('10/27/22');
+    console.info('visual-studio-defender-performance');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'Visual Studio Performance with Microsoft Defender';
+    var disqus_url = 'http://blog.peterritchie.com/posts/visual-studio-defender-performance';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -216,7 +159,7 @@ Published on Thursday, December 13, 2007<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'visual-studio-defender-performance';
     }
     console.info(disqus_identifier);
 
