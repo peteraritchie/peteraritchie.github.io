@@ -1,0 +1,371 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Fundamental ASP.Net Minimal API Integration Tests</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Fundamental ASP.Net Minimal API Integration Tests" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Fundamental ASP.Net Minimal API Integration Tests</h1>
+    <div class="meta">        
+Published on Thursday, November 3, 2022<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/November-2022" class="btn btn-default btn-xs">November 2022</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="/assets/robotic%20computing%20testing.png" class="img-fluid" alt="Robotic computing testing" /></p>
+<p>I've been involved with some fairly large projects that involved RESTful APIs. When dealing with multiple team members, multiple teams, and OpenAPI specs, there can be many risks. Even when an OpenAPI specification is generated from source code, what the code does can easily be unaligned with the spec. Luckily the spec is a machine-readable contract of the <em>intent and purpose</em> of the API.</p>
+<p>Automated testing to the rescue! With ASP.NET, you can inject into and observe the middleware pipeline. ASP.NET integration tests are a common way of verifying the pipeline and how it is used. We can create integration tests that process the OpenAPI spec and verify operations are working as expected in various ways. This article dives into a couple of these ways.</p>
+<h2 id="fundamental-api-integration-tests">Fundamental API Integration Tests</h2>
+<p>With a functioning Web API and an OpenAPI specification that describes it there are some fundamental things we can verify:</p>
+<ul>
+<li>The generated OpenAPI document is valid</li>
+<li>The paths have endpoints implemented</li>
+<li>The operations respond with the correct type of response</li>
+</ul>
+<p>First, let's set up our solution, projects, and integration testing scaffolding.</p>
+<h2 id="setting-up-the-solution-and-projects">Setting Up the Solution and Projects</h2>
+<p>We're dealing with a Web API and integration tests, so let's create a Web API project and make the <code>Program</code> class <code>public</code>. You can do that manually in Visual Studio; but for consistency, the CLI is powerful (I'm being intentional with framework versions and some configuration options--appending <code>public partial class Program { }</code> to Program.cs to make the class public):</p>
+<pre><code class="language-PowerShell">dotnet new solution
+dotnet new webapi -o WebApi --use-minimal-apis true --framework net6.0 --use-program-main false
+echo public partial class Program { } &gt;&gt; WebApi\Program.cs
+dotnet sln add WebApi\WebApi.csproj
+</code></pre>
+<p>Next, we want to add a test project. xUnit is my go-to, so we'll use that and add a reference to the Web API project. Again, in the CLI:</p>
+<pre><code class="language-PowerShell">dotnet new xunit -o IntegrationTests --framework net6.0
+del IntegrationTests\UnitTest1.cs
+dotnet add IntegrationTests\IntegrationTests.csproj reference WebApi\WebApi.csproj
+dotnet sln add IntegrationTests\IntegrationTests.csproj
+</code></pre>
+<p>For ASP.Net integration tests, we will use <code>WebApplicationFactory&lt;T&gt;</code>, which requires a reference to <code>Microsoft.AspNetCore.Mvc.Testing</code>. In addition, to process OpenAPI documents, we'll need the <code>Microsoft.OpenApi.Readers</code> package. Again, via the CLI:</p>
+<pre><code class="language-PowerShell">dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.OpenApi.Readers
+dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore.Mvc.Testing
+</code></pre>
+<h2 id="integration-test-scaffolding">Integration Test Scaffolding</h2>
+<p>I got into some of the scaffolding of ASP.NET 6 integration tests in <a href="#setting-up-the-solution-and-projects">Setting Up the Solution and Projects</a> concerning the required package references. the <code>Microsoft.AspNetCore.Mvc.Testing</code> package is required so that we may use the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"><code>WebApplicationFactory&lt;TEntryPoint&gt;</code></a> class--which allows us to bootstrap a web application in memory, specifically for testing.</p>
+<p>We'll use <code>WebApplicationFactory</code> to create an instance of an <code>HttpClient</code> test fake that works with our in-memory host. In addition, we'll override <code>WebApplicationFactory</code> to get at some of the Swashbuckle details from the pipeline. We're interested in the generated OpenAPI document for processing and the name of that document to generate the OpenAPI specification URI for verification. Here's an example of a <code>WebApplicationFactory</code> implementation that does what we need:</p>
+<pre><code class="language-csharp">public class MyWebApplicationFactory : WebApplicationFactory&lt;Program&gt;
+{
+	public OpenApiDocument? OpenApiDocument { get; private set; }
+	public string OpenApiDocumentName { get; private set; } = string.Empty;
+
+	protected override IHost CreateHost(IHostBuilder builder)
+	{
+		var host = base.CreateHost(builder);
+		using var scope = host.Services.CreateScope();
+		var sp = scope.ServiceProvider;
+		var swaggerGeneratorOptions = sp.GetRequiredService&lt;IOptions&lt;SwaggerGeneratorOptions&gt;&gt;().Value;
+		OpenApiDocumentName = swaggerGeneratorOptions.SwaggerDocs.First().Key ?? string.Empty;
+		var swaggerProvider = sp.GetRequiredService&lt;ISwaggerProvider&gt;();
+		OpenApiDocument = swaggerProvider.GetSwagger(OpenApiDocumentName);
+
+		return host;
+	}
+}
+</code></pre>
+<p>The important parts are the <code>OpenApiDocument</code> and <code>OpenApiDocumentName</code> properties.</p>
+<p>Now that we've got integration testing scaffolded let's create a test base class to make creating multiple integration tests clean and tidy.</p>
+<h2 id="some-test-conventions">Some Test Conventions</h2>
+<p>Automated testing classes and methods offer an opportunity to isolate and categorize tests to reduce work and clarify what is being tested (more importantly, what isn't passing). I tend towards a given/when/then structure when designing tests. The test class encapsulates the given/when (as well as the <em>arrange</em> from arrange/act/assert) whose name is suffixed with &quot;Should.&quot; Each test method in the class is then given a name that describes the <em>then</em> condition. I try to ensure that there is one condition and thus one assert per method. YMMV.</p>
+<p>For the tests I want to describe in this article, I've created a base class to encapsulate related given/when scenarios (or <em>shoulds</em>) that require the details we're accessing with the <code>WebApplicationFactory&lt;Program&gt;</code> implementation. Naming is hard, so I'm starting simple with a <code>WebApiShouldBase</code> class that encapsulates the parts we're getting with <code>MyWebApplicationFactory</code> and an ability to get a stream to the &quot;live&quot; OpenAPI spec document (JSON). It also deals with the responsibility of owning those things (e.g., disposal):</p>
+<pre><code class="language-csharp">public class WebApiShouldBase : IDisposable
+{
+	private readonly string openApiSpecUriText;
+
+	protected readonly HttpClient WebApiClient;
+	protected OpenApiDocument? OpenApiDocument { get; }
+	protected Task&lt;Stream&gt; GetOpenApiDocumentStreamAsync() =&gt; WebApiClient.GetStreamAsync(openApiSpecUriText);
+
+	protected WebApiShouldBase()
+	{
+		var factory = new MyWebApplicationFactory();
+		WebApiClient = factory.CreateClient();
+		OpenApiDocument = factory.OpenApiDocument;
+		this.openApiSpecUriText = $&quot;/swagger/{factory.OpenApiDocumentName}/swagger.json&quot;;
+	}
+
+	protected virtual void Dispose(bool isDisposing)
+	{
+		if (isDisposing)
+		{
+			Dispose();
+		}
+	}
+
+	public void Dispose() =&gt; WebApiClient.Dispose();
+
+}
+</code></pre>
+<p>The important parts are the <code>OpenApiDocument</code> property which re-surfaces the <code>MyWebApplicationFactory.OpenApiDocument</code> to implementors, the <code>WebApiClient</code> property to access the API, and the <code>GetOpenApiDocumentStreamAsync</code> method that holds the OpenAPI spec document that the API provides. This class hides things like the URI to the swagger.json, the use of <code>MyWebApplicationFactory</code>, disposal, etc.</p>
+<p>With that, let's start doing some tests!</p>
+<h2 id="verifying-the-generated-openapi-is-valid">Verifying The Generated OpenAPI Is Valid</h2>
+<p>&quot;Valid&quot; is subjective with OpenAPI. An OpenAPI spec is very <em>forgiving</em> in allowing for many opinions on what a <em>good</em> API looks like. I'm not going to go deep on what <em>good</em> might mean; just dive into facilitating validation of that generated document. The fact that there is an OpenApiDocument instance, and a raw OpenAPI specification, is an implementation detail. We'll use that OpenApiDocument instance shortly, but I want to ensure that the raw document meets some minimum requirements. For this example, the OpenAPI document is processed, not errors we detected, and there <em>are</em> paths. Very simple:</p>
+<pre><code class="language-csharp">	[Fact]
+	public async Task ProduceValidOpenApi()
+	{
+		var readerResult = await new OpenApiStreamReader()
+			.ReadAsync(await GetOpenApiDocumentStreamAsync().ConfigureAwait(false)).ConfigureAwait(false);
+		Assert.NotNull(OpenApiDocument);
+		Assert.NotEmpty(readerResult.OpenApiDocument.Paths);
+		Assert.Empty(readerResult.OpenApiDiagnostic.Errors);
+	}
+</code></pre>
+<p>Client requirements can be less strict than development requirements (development objectives), and there may be different subsets of requirements in the case of multiple clients. This example doesn't implement that specifically but does provide the means to do it (by adding distinct test methods.)</p>
+<p>OpenAPI.Net has can do very complex verification and validation, but I expect that sort of testing to be performed at a different level--I want to make sure client-oriented tests are handled here.</p>
+<h2 id="verifying-the-paths-have-endpoints-implemented">Verifying The Paths Have Endpoints Implemented</h2>
+<p>Publishing an API with paths and operations, and hosting an API that hasn't implemented those operations is silly. So the next test verifies they are implemented (at least the GET operations) as specified:</p>
+<pre><code class="language-csharp">	[Fact]
+	public async Task EndpointsRespondOkToGet()
+	{
+		Assert.NotNull(OpenApiDocument);
+		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&gt; w.Value.Operations.ContainsKey(OperationType.Get));
+
+		foreach (var (requestUriText, _) in pathsWithGetOperations)
+		{
+			var response = await WebApiClient.GetAsync(requestUriText).ConfigureAwait(false);
+			Assert.True(response.IsSuccessStatusCode);
+		}
+	}
+</code></pre>
+<p>GET operations are <em>easy</em>; they shouldn't have a request body and almost always have a success response specified. In the future, I can dive into other types of operations like POST, how to extract samples from the OpenAPI specification, and how to verify operations with request data and or error responses.</p>
+<h2 id="verifying-the-operations-respond-with-the-correct-type-of-response">Verifying The Operations Respond With The Correct Type Of Response</h2>
+<p>HTTP, and thus OpenAPI, don't enforce that any operation responds with anything in particular. But, if you're reading <em>this</em> blog, you are probably of the opinion that given the opportunity to specify behavior, you should be at least as detailed in specifying the type and schema of the responses.  I'll leave out validating response schema in this article, but I will show verifying that each request responds with the correct media type. For example:</p>
+<pre><code class="language-csharp">	[Fact]
+	public async Task EndpointsRespondWithCorrectMediaTypeToGet()
+	{
+		Assert.NotNull(OpenApiDocument);
+		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&gt; w.Value.Operations.ContainsKey(OperationType.Get));
+
+		foreach (var (requestUriText, pathItem) in pathsWithGetOperations)
+		{
+			var responseContentType = pathItem.Operations[OperationType.Get]
+				.Responses[OkResponseCodeText]
+				.Content
+				.Single().Key;
+
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri(requestUriText, UriKind.Relative),
+				Headers =
+				{
+					{
+						HttpRequestHeader.Accept.ToString(),
+						responseContentType
+					}
+				}
+			};
+			var response = await WebApiClient.SendAsync(request).ConfigureAwait(false);
+			Assert.True(response.Content.Headers.ContentType?.MediaType ==
+			            responseContentType);
+		}
+	}
+</code></pre>
+<h2 id="caveats">Caveats</h2>
+<p>Of course, you can have or create an OpenAPI that does little more than document an endpoint and ignore that there are operations and those operations do specific things.</p>
+<p>This article is an overview. I recognize that Swashbuckle and <del>Swagger</del>OpenAPI support in ASP.NET is powerful, but this article doesn't take into account many things you can do with it (like multiple OpenAPI documents.)</p>
+<p>I also recognize that operations that take no parameters are rare, but I trust that my readers are good with taking on that as an exercise. Or, at least let me know if that's detail I should post in the future.</p>
+<h2 id="summary">Summary</h2>
+<p>This article provides a very high-level overview of integration testing ASP.NET minimal APIs. We then got into some details of general Web API integration tests that focus on OpenAPI specification aspects of the Web API middleware.</p>
+<p>What sort of automated testing of an API specification do you see as beneficial to your projects?</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-6.0">Integration tests in ASP.NET Core</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"><code>WebApplicationFactory&lt;TEntryPoint&gt;</code></a></li>
+</ul>
+<p>The source for the examples, including the creation scripts can be found at <a href="https://github.com/peteraritchie/fundamental-webapi-integration-testing">https://github.com/peteraritchie/fundamental-webapi-integration-testing</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'fundamental-webapi-integration-tests'
+    'Fundamental ASP.Net Minimal API Integration Tests'
+    'http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/3/22');
+    console.info('fundamental-webapi-integration-tests');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Fundamental ASP.Net Minimal API Integration Tests';
+    var disqus_url = 'http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'fundamental-webapi-integration-tests';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

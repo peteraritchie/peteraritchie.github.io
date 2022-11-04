@@ -5,8 +5,177 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Thu, 27 Oct 2022 16:18:02 GMT</pubDate>
-		<lastBuildDate>Thu, 27 Oct 2022 16:18:02 GMT</lastBuildDate>
+		<pubDate>Fri, 04 Nov 2022 15:08:17 GMT</pubDate>
+		<lastBuildDate>Fri, 04 Nov 2022 15:08:17 GMT</lastBuildDate>
+		<item>
+			<title>Fundamental ASP.Net Minimal API Integration Tests</title>
+			<link>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</link>
+			<description>&lt;p&gt;&lt;img src="/assets/robotic%20computing%20testing.png" class="img-fluid" alt="Robotic computing testing"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</guid>
+			<pubDate>Thu, 03 Nov 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/robotic%20computing%20testing.png" class="img-fluid" alt="Robotic computing testing" /&gt;&lt;/p&gt;
+&lt;p&gt;I've been involved with some fairly large projects that involved RESTful APIs. When dealing with multiple team members, multiple teams, and OpenAPI specs, there can be many risks. Even when an OpenAPI specification is generated from source code, what the code does can easily be unaligned with the spec. Luckily the spec is a machine-readable contract of the &lt;em&gt;intent and purpose&lt;/em&gt; of the API.&lt;/p&gt;
+&lt;p&gt;Automated testing to the rescue! With ASP.NET, you can inject into and observe the middleware pipeline. ASP.NET integration tests are a common way of verifying the pipeline and how it is used. We can create integration tests that process the OpenAPI spec and verify operations are working as expected in various ways. This article dives into a couple of these ways.&lt;/p&gt;
+&lt;h2 id="fundamental-api-integration-tests"&gt;Fundamental API Integration Tests&lt;/h2&gt;
+&lt;p&gt;With a functioning Web API and an OpenAPI specification that describes it there are some fundamental things we can verify:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The generated OpenAPI document is valid&lt;/li&gt;
+&lt;li&gt;The paths have endpoints implemented&lt;/li&gt;
+&lt;li&gt;The operations respond with the correct type of response&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First, let's set up our solution, projects, and integration testing scaffolding.&lt;/p&gt;
+&lt;h2 id="setting-up-the-solution-and-projects"&gt;Setting Up the Solution and Projects&lt;/h2&gt;
+&lt;p&gt;We're dealing with a Web API and integration tests, so let's create a Web API project and make the &lt;code&gt;Program&lt;/code&gt; class &lt;code&gt;public&lt;/code&gt;. You can do that manually in Visual Studio; but for consistency, the CLI is powerful (I'm being intentional with framework versions and some configuration options--appending &lt;code&gt;public partial class Program { }&lt;/code&gt; to Program.cs to make the class public):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet new solution
+dotnet new webapi -o WebApi --use-minimal-apis true --framework net6.0 --use-program-main false
+echo public partial class Program { } &amp;gt;&amp;gt; WebApi\Program.cs
+dotnet sln add WebApi\WebApi.csproj
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we want to add a test project. xUnit is my go-to, so we'll use that and add a reference to the Web API project. Again, in the CLI:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet new xunit -o IntegrationTests --framework net6.0
+del IntegrationTests\UnitTest1.cs
+dotnet add IntegrationTests\IntegrationTests.csproj reference WebApi\WebApi.csproj
+dotnet sln add IntegrationTests\IntegrationTests.csproj
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For ASP.Net integration tests, we will use &lt;code&gt;WebApplicationFactory&amp;lt;T&amp;gt;&lt;/code&gt;, which requires a reference to &lt;code&gt;Microsoft.AspNetCore.Mvc.Testing&lt;/code&gt;. In addition, to process OpenAPI documents, we'll need the &lt;code&gt;Microsoft.OpenApi.Readers&lt;/code&gt; package. Again, via the CLI:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.OpenApi.Readers
+dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore.Mvc.Testing
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="integration-test-scaffolding"&gt;Integration Test Scaffolding&lt;/h2&gt;
+&lt;p&gt;I got into some of the scaffolding of ASP.NET 6 integration tests in &lt;a href="#setting-up-the-solution-and-projects"&gt;Setting Up the Solution and Projects&lt;/a&gt; concerning the required package references. the &lt;code&gt;Microsoft.AspNetCore.Mvc.Testing&lt;/code&gt; package is required so that we may use the &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"&gt;&lt;code&gt;WebApplicationFactory&amp;lt;TEntryPoint&amp;gt;&lt;/code&gt;&lt;/a&gt; class--which allows us to bootstrap a web application in memory, specifically for testing.&lt;/p&gt;
+&lt;p&gt;We'll use &lt;code&gt;WebApplicationFactory&lt;/code&gt; to create an instance of an &lt;code&gt;HttpClient&lt;/code&gt; test fake that works with our in-memory host. In addition, we'll override &lt;code&gt;WebApplicationFactory&lt;/code&gt; to get at some of the Swashbuckle details from the pipeline. We're interested in the generated OpenAPI document for processing and the name of that document to generate the OpenAPI specification URI for verification. Here's an example of a &lt;code&gt;WebApplicationFactory&lt;/code&gt; implementation that does what we need:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MyWebApplicationFactory : WebApplicationFactory&amp;lt;Program&amp;gt;
+{
+	public OpenApiDocument? OpenApiDocument { get; private set; }
+	public string OpenApiDocumentName { get; private set; } = string.Empty;
+
+	protected override IHost CreateHost(IHostBuilder builder)
+	{
+		var host = base.CreateHost(builder);
+		using var scope = host.Services.CreateScope();
+		var sp = scope.ServiceProvider;
+		var swaggerGeneratorOptions = sp.GetRequiredService&amp;lt;IOptions&amp;lt;SwaggerGeneratorOptions&amp;gt;&amp;gt;().Value;
+		OpenApiDocumentName = swaggerGeneratorOptions.SwaggerDocs.First().Key ?? string.Empty;
+		var swaggerProvider = sp.GetRequiredService&amp;lt;ISwaggerProvider&amp;gt;();
+		OpenApiDocument = swaggerProvider.GetSwagger(OpenApiDocumentName);
+
+		return host;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The important parts are the &lt;code&gt;OpenApiDocument&lt;/code&gt; and &lt;code&gt;OpenApiDocumentName&lt;/code&gt; properties.&lt;/p&gt;
+&lt;p&gt;Now that we've got integration testing scaffolded let's create a test base class to make creating multiple integration tests clean and tidy.&lt;/p&gt;
+&lt;h2 id="some-test-conventions"&gt;Some Test Conventions&lt;/h2&gt;
+&lt;p&gt;Automated testing classes and methods offer an opportunity to isolate and categorize tests to reduce work and clarify what is being tested (more importantly, what isn't passing). I tend towards a given/when/then structure when designing tests. The test class encapsulates the given/when (as well as the &lt;em&gt;arrange&lt;/em&gt; from arrange/act/assert) whose name is suffixed with &amp;quot;Should.&amp;quot; Each test method in the class is then given a name that describes the &lt;em&gt;then&lt;/em&gt; condition. I try to ensure that there is one condition and thus one assert per method. YMMV.&lt;/p&gt;
+&lt;p&gt;For the tests I want to describe in this article, I've created a base class to encapsulate related given/when scenarios (or &lt;em&gt;shoulds&lt;/em&gt;) that require the details we're accessing with the &lt;code&gt;WebApplicationFactory&amp;lt;Program&amp;gt;&lt;/code&gt; implementation. Naming is hard, so I'm starting simple with a &lt;code&gt;WebApiShouldBase&lt;/code&gt; class that encapsulates the parts we're getting with &lt;code&gt;MyWebApplicationFactory&lt;/code&gt; and an ability to get a stream to the &amp;quot;live&amp;quot; OpenAPI spec document (JSON). It also deals with the responsibility of owning those things (e.g., disposal):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class WebApiShouldBase : IDisposable
+{
+	private readonly string openApiSpecUriText;
+
+	protected readonly HttpClient WebApiClient;
+	protected OpenApiDocument? OpenApiDocument { get; }
+	protected Task&amp;lt;Stream&amp;gt; GetOpenApiDocumentStreamAsync() =&amp;gt; WebApiClient.GetStreamAsync(openApiSpecUriText);
+
+	protected WebApiShouldBase()
+	{
+		var factory = new MyWebApplicationFactory();
+		WebApiClient = factory.CreateClient();
+		OpenApiDocument = factory.OpenApiDocument;
+		this.openApiSpecUriText = $&amp;quot;/swagger/{factory.OpenApiDocumentName}/swagger.json&amp;quot;;
+	}
+
+	protected virtual void Dispose(bool isDisposing)
+	{
+		if (isDisposing)
+		{
+			Dispose();
+		}
+	}
+
+	public void Dispose() =&amp;gt; WebApiClient.Dispose();
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The important parts are the &lt;code&gt;OpenApiDocument&lt;/code&gt; property which re-surfaces the &lt;code&gt;MyWebApplicationFactory.OpenApiDocument&lt;/code&gt; to implementors, the &lt;code&gt;WebApiClient&lt;/code&gt; property to access the API, and the &lt;code&gt;GetOpenApiDocumentStreamAsync&lt;/code&gt; method that holds the OpenAPI spec document that the API provides. This class hides things like the URI to the swagger.json, the use of &lt;code&gt;MyWebApplicationFactory&lt;/code&gt;, disposal, etc.&lt;/p&gt;
+&lt;p&gt;With that, let's start doing some tests!&lt;/p&gt;
+&lt;h2 id="verifying-the-generated-openapi-is-valid"&gt;Verifying The Generated OpenAPI Is Valid&lt;/h2&gt;
+&lt;p&gt;&amp;quot;Valid&amp;quot; is subjective with OpenAPI. An OpenAPI spec is very &lt;em&gt;forgiving&lt;/em&gt; in allowing for many opinions on what a &lt;em&gt;good&lt;/em&gt; API looks like. I'm not going to go deep on what &lt;em&gt;good&lt;/em&gt; might mean; just dive into facilitating validation of that generated document. The fact that there is an OpenApiDocument instance, and a raw OpenAPI specification, is an implementation detail. We'll use that OpenApiDocument instance shortly, but I want to ensure that the raw document meets some minimum requirements. For this example, the OpenAPI document is processed, not errors we detected, and there &lt;em&gt;are&lt;/em&gt; paths. Very simple:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
+	public async Task ProduceValidOpenApi()
+	{
+		var readerResult = await new OpenApiStreamReader()
+			.ReadAsync(await GetOpenApiDocumentStreamAsync().ConfigureAwait(false)).ConfigureAwait(false);
+		Assert.NotNull(OpenApiDocument);
+		Assert.NotEmpty(readerResult.OpenApiDocument.Paths);
+		Assert.Empty(readerResult.OpenApiDiagnostic.Errors);
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Client requirements can be less strict than development requirements (development objectives), and there may be different subsets of requirements in the case of multiple clients. This example doesn't implement that specifically but does provide the means to do it (by adding distinct test methods.)&lt;/p&gt;
+&lt;p&gt;OpenAPI.Net has can do very complex verification and validation, but I expect that sort of testing to be performed at a different level--I want to make sure client-oriented tests are handled here.&lt;/p&gt;
+&lt;h2 id="verifying-the-paths-have-endpoints-implemented"&gt;Verifying The Paths Have Endpoints Implemented&lt;/h2&gt;
+&lt;p&gt;Publishing an API with paths and operations, and hosting an API that hasn't implemented those operations is silly. So the next test verifies they are implemented (at least the GET operations) as specified:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
+	public async Task EndpointsRespondOkToGet()
+	{
+		Assert.NotNull(OpenApiDocument);
+		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&amp;gt; w.Value.Operations.ContainsKey(OperationType.Get));
+
+		foreach (var (requestUriText, _) in pathsWithGetOperations)
+		{
+			var response = await WebApiClient.GetAsync(requestUriText).ConfigureAwait(false);
+			Assert.True(response.IsSuccessStatusCode);
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GET operations are &lt;em&gt;easy&lt;/em&gt;; they shouldn't have a request body and almost always have a success response specified. In the future, I can dive into other types of operations like POST, how to extract samples from the OpenAPI specification, and how to verify operations with request data and or error responses.&lt;/p&gt;
+&lt;h2 id="verifying-the-operations-respond-with-the-correct-type-of-response"&gt;Verifying The Operations Respond With The Correct Type Of Response&lt;/h2&gt;
+&lt;p&gt;HTTP, and thus OpenAPI, don't enforce that any operation responds with anything in particular. But, if you're reading &lt;em&gt;this&lt;/em&gt; blog, you are probably of the opinion that given the opportunity to specify behavior, you should be at least as detailed in specifying the type and schema of the responses.  I'll leave out validating response schema in this article, but I will show verifying that each request responds with the correct media type. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
+	public async Task EndpointsRespondWithCorrectMediaTypeToGet()
+	{
+		Assert.NotNull(OpenApiDocument);
+		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&amp;gt; w.Value.Operations.ContainsKey(OperationType.Get));
+
+		foreach (var (requestUriText, pathItem) in pathsWithGetOperations)
+		{
+			var responseContentType = pathItem.Operations[OperationType.Get]
+				.Responses[OkResponseCodeText]
+				.Content
+				.Single().Key;
+
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri(requestUriText, UriKind.Relative),
+				Headers =
+				{
+					{
+						HttpRequestHeader.Accept.ToString(),
+						responseContentType
+					}
+				}
+			};
+			var response = await WebApiClient.SendAsync(request).ConfigureAwait(false);
+			Assert.True(response.Content.Headers.ContentType?.MediaType ==
+			            responseContentType);
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="caveats"&gt;Caveats&lt;/h2&gt;
+&lt;p&gt;Of course, you can have or create an OpenAPI that does little more than document an endpoint and ignore that there are operations and those operations do specific things.&lt;/p&gt;
+&lt;p&gt;This article is an overview. I recognize that Swashbuckle and &lt;del&gt;Swagger&lt;/del&gt;OpenAPI support in ASP.NET is powerful, but this article doesn't take into account many things you can do with it (like multiple OpenAPI documents.)&lt;/p&gt;
+&lt;p&gt;I also recognize that operations that take no parameters are rare, but I trust that my readers are good with taking on that as an exercise. Or, at least let me know if that's detail I should post in the future.&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;This article provides a very high-level overview of integration testing ASP.NET minimal APIs. We then got into some details of general Web API integration tests that focus on OpenAPI specification aspects of the Web API middleware.&lt;/p&gt;
+&lt;p&gt;What sort of automated testing of an API specification do you see as beneficial to your projects?&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-6.0"&gt;Integration tests in ASP.NET Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"&gt;&lt;code&gt;WebApplicationFactory&amp;lt;TEntryPoint&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The source for the examples, including the creation scripts can be found at &lt;a href="https://github.com/peteraritchie/fundamental-webapi-integration-testing"&gt;https://github.com/peteraritchie/fundamental-webapi-integration-testing&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Visual Studio Performance with Microsoft Defender</title>
 			<link>http://blog.peterritchie.com/posts/visual-studio-defender-performance</link>
@@ -1304,18 +1473,6 @@ Configuration.Bind(myConfiguration)
 &lt;li&gt;&lt;a href="http://www.opengroup.org/subjectareas/enterprise/togaf"&gt;TOGAF© Version 9.1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.zachman.com/about-the-zachman-framework"&gt;The Zachman Framework 3.0&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Comments in Markdown</title>
-			<link>http://blog.peterritchie.com/posts/Comments-in-Markdown</link>
-			<description>&lt;p&gt;I was authoring some markdown the other day, and I wanted to make a note to myself about something I needed to return to later, when I came back to the document.  I thought to myself that this seems like a comment, something I don't want to see in the rendered markdown, just in the "source".&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Comments-in-Markdown</guid>
-			<pubDate>Wed, 13 Dec 2017 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;I was authoring some markdown the other day, and I wanted to make a note to myself about something I needed to return to later, when I came back to the document.  I thought to myself that this seems like a comment, something I don't want to see in the rendered markdown, just in the &amp;quot;source&amp;quot;.&lt;/p&gt;
-&lt;p&gt;I think for the most part that this hack is likely renderer-specific (having no real standard around what rendering really does beyond visable HTML); but after some research and some trial and error; you can hack a comment into your markdown by using an un-referenced reference link.  Reference links have the format: &lt;code&gt;[link text][link-label]&lt;/code&gt; that references a link label definition like &lt;code&gt;[link-label]: http://example.com&lt;/code&gt;.  You may omit the link text and simply use the label: &lt;code&gt;[link text][link-label]&lt;/code&gt; to reference a link, which would look like this: &lt;a href="http://www.example.com"&gt;link-label&lt;/a&gt;.  Labels may have spaces in them, so you can really have label that is the link text: &lt;code&gt;[link text]&lt;/code&gt; and the link label definition: &lt;code&gt;[link text]: http://www.example.com&lt;/code&gt; which would look like &lt;a href="http://www.example.com"&gt;link text&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Those link label defintions can appear anywhere in your markdown (as long as there's a blank line above it).  And, if you don't include the link references anywhere (e.g. &lt;code&gt;[link-label]&lt;/code&gt;) then the what is in the link label definition is completely ignored (i.e. does not show up in the rendered HTML).  So, to add a comment to your markdown simply add an unused link label definition:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;[*]: # &amp;quot;TODO: Deal with this later&amp;quot;&lt;/code&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
