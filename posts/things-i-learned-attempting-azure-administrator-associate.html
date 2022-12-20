@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - Things I Learned Attempting Azure Administrator Associate - Part 1</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Things I Learned Attempting Azure Administrator Associate - Part 1" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,17 +75,11 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>Things I Learned Attempting Azure Administrator Associate - Part 1</h1>
     <div class="meta">        
-Published on Friday, March 8, 2013<br>    </div>
+Published on Tuesday, December 20, 2022<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
-                    <a role="button" href="/tags/March-2013" class="btn btn-default btn-xs">March 2013</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/December-2022" class="btn btn-default btn-xs">December 2022</a>
         </div>     
 </div>
                                         </div>
@@ -99,41 +93,45 @@ Published on Friday, March 8, 2013<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency Injection (DI) is a form of Inversion of Control where the instances that one class need are instantiated outside of the class an &quot;injected&quot; into it. The most common injection is constructor injection. This is called inversion of control because the control of the dependencies have been inverted from the dependant class instantiating them to another class instantiating them. e.g. I could write class like this:</p>
-<p>Which is perfectly functional, but MyClass is now directly dependant on <code>List&lt;T&gt;</code> and this type has become an implementation detail of MyClass. If I wanted to use some other implementation of <code>IList&lt;T&gt;</code>, I'd have to re-write MyClass and fix the tests that broke because of it. I may want to use another <code>IList&lt;T&gt;</code> implementation because I want to test MyClass. As it stands, I have no way of telling if the class does anything successfully. I could write an <code>IList&lt;T&gt;</code> implementation that I can spy on in a test to verify that MyClass does what it supposed to do. The way MyClass is written at the moment, I can't do that.</p>
-<p>Bear in mind, this is a stupid example. But, it shows inversion of control with types commonly recognizable.</p>
-<p>So, I could invert the control on <code>IList&lt;T&gt;</code> and refactor MyClass to be DI-friendly. In this case, it's fairly simple:</p>
-<p>Now MyClass does not have a direct dependency on <code>List&lt;T&gt;</code> and I can give it anything I want. In production I'd create an instance like this:</p>
-<p>Not a whole lot more complex than before. If I wanted to test MyClass in some way, I could give it a spy:</p>
-<p>This is considered <em>Poor Man's IoC</em>, in that you're not making use of a framework or a library specifically devoted to IoC.</p>
-<p>Yes, you'd never really do this in real life; but it's a fairly clear example—with commonly-used types.</p>
-<h2 id="ioc-containers">IoC Containers</h2>
-<p>There's a plethora of IoC containers for .NET. They're all great tools, like StructureMap, Autofac, Ninject, Unity, etc. Don't get me wrong, they're powerful and they do a lot of things. But, they do a lot of things.</p>
-<p>What do I mean by &quot;they do a lot of things&quot;? Well, they're all effectively designed to work with codebases that are not DI-friendly. They go out of their way to provide features to support DI in any imaginable design. &quot;What's wrong with that&quot; you say? If you've got a brownfield project, that's great—you can likely get testability with code not designed to be testable—which is a good thing. But, these abilities make us lazy. We stop designing DI-friendly classes because we know how to use a particular IoC container to get a known level of IoC and/or testability. We've stopped striving for a simpler design, we've stopped striving for DI-friendly code.</p>
-<p>If you're finding that you're generally using much more than just constructor injection, having reams and reams of config to set up the various instances or lifecycles then you're probably letting your IoC container do too much for you and your design is suffering. If someone has to spend days understanding your IoC container and it's config for you project, you may have defeated the purpose.</p>
-<p>For lots of good advice on DI in .NET, check out <a href="http://blog.ploeh.dk/tags.html#Dependency%20Injection-ref">http://blog.ploeh.dk/tags.html#Dependency Injection-ref</a>. Some of my favourites: <a href="http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/">http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/</a>, <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/">http://blog.ploeh.dk/2011/07/28/CompositionRoot/</a>, and <a href="http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/">http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/</a></p>
-<p><img src="http://msmvps.com/aggbug.aspx?PostID=1824852" class="img-fluid" alt="" /></p>
+<p><img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown" /></p>
+<p>I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)</p>
+<p>Certifications aren't perfect, &quot;certification&quot; has different meanings to the observer and the certification itself. Most certifications bring with them an expected minimum understanding of the subject.  Does it mean the earner will do everything perfectly with the subject?  Of course not, but it gives the person a certain vocabulary to communicate more efficiently on the subject.</p>
+<p>The road to Azure Administrator Associate was interesting, and sharing some notable information would be helpful for others.</p>
+<h2 id="making-the-implicit-explicit">Making The Implicit Explicit</h2>
+<p>The key to good communication is clearly understanding a subject and eliminating assumptions and misunderstandings. While understanding what is expected of a certified Azure Administrator Associate, I noticed some knowledge that I realized is typically implicit. Another way of looking at the following is that each starts with &quot;It may seem obvious, but...&quot;.</p>
+<p>Implicit knowledge is knowledge obtained through incidental activities; knowledge gained without awareness of learning is occurring.</p>
+<h3 id="line-of-business-lob-applications">Line of Business (LoB) Applications</h3>
+<p>Line of Business (LoB) applications is ubiquitous in the computing industry.  Everyone knows what it <em>means</em>, but if you ask two people to define it, you'll get more than one answer.  While agreement/standardization on what a LoB application is isn't going to happen any time soon, there are certain truths about LoB applications:</p>
+<ul>
+<li>An in-house, custom web application</li>
+<li>Not accessible via the Internet, either behind a firewall or strict access control (authentication and authorization)</li>
+<li>Access <em>may</em> occur via an application gateway or load balancer</li>
+<li>Specific to the company, business area, or industry</li>
+</ul>
+<h3 id="azcopy">AzCopy</h3>
+<p>AzCopy works with Azure storage but only Azure Blob Storage and Azure Files.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>There are many areas of clarification with Azure Administrator Associate.  Future posts on the subject will address clarifications involving important explicit limits, restrictions, constraints, rules, etc.</p>
+<p>Are there other implicit aspects of Azure administration that can be made explicit?</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'things-i-learned-attempting-azure-administrator-associate'
+    'Things I Learned Attempting Azure Administrator Associate - Part 1'
+    'http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('3/8/13');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('12/20/22');
+    console.info('things-i-learned-attempting-azure-administrator-associate');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'Things I Learned Attempting Azure Administrator Associate - Part 1';
+    var disqus_url = 'http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -142,7 +140,7 @@ Published on Friday, March 8, 2013<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'things-i-learned-attempting-azure-administrator-associate';
     }
     console.info(disqus_identifier);
 

@@ -5,8 +5,36 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Fri, 11 Nov 2022 21:15:20 GMT</pubDate>
-		<lastBuildDate>Fri, 11 Nov 2022 21:15:20 GMT</lastBuildDate>
+		<pubDate>Tue, 20 Dec 2022 20:19:25 GMT</pubDate>
+		<lastBuildDate>Tue, 20 Dec 2022 20:19:25 GMT</lastBuildDate>
+		<item>
+			<title>Things I Learned Attempting Azure Administrator Associate - Part 1</title>
+			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</link>
+			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</guid>
+			<pubDate>Tue, 20 Dec 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown" /&gt;&lt;/p&gt;
+&lt;p&gt;I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)&lt;/p&gt;
+&lt;p&gt;Certifications aren't perfect, &amp;quot;certification&amp;quot; has different meanings to the observer and the certification itself. Most certifications bring with them an expected minimum understanding of the subject.  Does it mean the earner will do everything perfectly with the subject?  Of course not, but it gives the person a certain vocabulary to communicate more efficiently on the subject.&lt;/p&gt;
+&lt;p&gt;The road to Azure Administrator Associate was interesting, and sharing some notable information would be helpful for others.&lt;/p&gt;
+&lt;h2 id="making-the-implicit-explicit"&gt;Making The Implicit Explicit&lt;/h2&gt;
+&lt;p&gt;The key to good communication is clearly understanding a subject and eliminating assumptions and misunderstandings. While understanding what is expected of a certified Azure Administrator Associate, I noticed some knowledge that I realized is typically implicit. Another way of looking at the following is that each starts with &amp;quot;It may seem obvious, but...&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Implicit knowledge is knowledge obtained through incidental activities; knowledge gained without awareness of learning is occurring.&lt;/p&gt;
+&lt;h3 id="line-of-business-lob-applications"&gt;Line of Business (LoB) Applications&lt;/h3&gt;
+&lt;p&gt;Line of Business (LoB) applications is ubiquitous in the computing industry.  Everyone knows what it &lt;em&gt;means&lt;/em&gt;, but if you ask two people to define it, you'll get more than one answer.  While agreement/standardization on what a LoB application is isn't going to happen any time soon, there are certain truths about LoB applications:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An in-house, custom web application&lt;/li&gt;
+&lt;li&gt;Not accessible via the Internet, either behind a firewall or strict access control (authentication and authorization)&lt;/li&gt;
+&lt;li&gt;Access &lt;em&gt;may&lt;/em&gt; occur via an application gateway or load balancer&lt;/li&gt;
+&lt;li&gt;Specific to the company, business area, or industry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="azcopy"&gt;AzCopy&lt;/h3&gt;
+&lt;p&gt;AzCopy works with Azure storage but only Azure Blob Storage and Azure Files.&lt;/p&gt;
+&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;There are many areas of clarification with Azure Administrator Associate.  Future posts on the subject will address clarifications involving important explicit limits, restrictions, constraints, rules, etc.&lt;/p&gt;
+&lt;p&gt;Are there other implicit aspects of Azure administration that can be made explicit?&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Fundamental ASP.Net Minimal API Integration Tests</title>
 			<link>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</link>
@@ -1429,49 +1457,6 @@ Configuration.Bind(myConfiguration)
 &lt;li&gt;&lt;a href="http://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;Resources and Resource Identifiers&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Nominalization"&gt;Nominalization&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.wordsapi.com/"&gt;Words API&lt;/a&gt;&lt;!-- 2017, December--&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>What Is Architecture</title>
-			<link>http://blog.peterritchie.com/posts/What-Is-Architecture</link>
-			<description>&lt;p&gt;Getting someone to explain architecture is sometimes like asking them what &lt;em&gt;disinterested&lt;/em&gt; means or whether &lt;em&gt;irregardless&lt;/em&gt; is a word. The number of answers you get from people has a complexity O(n log n) to the number of people you ask.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/What-Is-Architecture</guid>
-			<pubDate>Thu, 21 Dec 2017 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;Getting someone to explain architecture is sometimes like asking them what &lt;em&gt;disinterested&lt;/em&gt; means or whether &lt;em&gt;irregardless&lt;/em&gt; is a word. The number of answers you get from people has a complexity O(n log n) to the number of people you ask.&lt;/p&gt;
-&lt;p&gt;Architecture is defined as:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;The fundamental organization of a system, embodied in its components, their relationships to each other and the environment, and the principles governing its design and evolution. (&lt;a href="http://standards.ieee.org/findstds/standard/1471-2000.html"&gt;ANSI/IEEE 1471-2000&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;or&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;The structure of components, their interrelationships, and the principles and guidelines governing their design and evolution over time. (&lt;a href="http://www.opengroup.org/public/arch/p1/togaf_faq.htm"&gt;TOGAF&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;One thing that is very subtle about these definitions is the aspect about &amp;quot;design and evolution&amp;quot; especially regarding &amp;quot;over time&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Architecture is the fundamental component granularity of a system and the component structure, the interrelationships of those components, and the principles governing the lower-level design and evolution from initiation or conception of a system.&lt;/p&gt;
-&lt;p&gt;This means the architecture applies before many of the &lt;em&gt;logical&lt;/em&gt; design decisions can be made. Architecture considers the high-level &lt;em&gt;concepts&lt;/em&gt;, &lt;em&gt;philosophies&lt;/em&gt;, and &lt;em&gt;principles&lt;/em&gt; (e.g. domain topics, vision, patterns) that would go into the lower-level design.  The subtlety here is that these are the basis of the logical decisions (which type of database, what format data might be in, algorithms, which language is most appropriate, etc.).&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;Before getting too much further, we should dig into &lt;em&gt;Conceptual v Logical&lt;/em&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;Generally accepted design principles involve understanding the concepts of the real-world domain (or &amp;quot;business&amp;quot;), it's processes, what decisions are made, the workflow, expectations, results, etc.  Those are the &lt;em&gt;concepts&lt;/em&gt; of the domain.  i.e. that is &lt;em&gt;conceptual information&lt;/em&gt; as it relates to an implementation.  That conceptual information allows us (through analysis) to discover and evaluate &lt;em&gt;logical&lt;/em&gt; solutions or automation techniques.  The logical information builds a potential model to guide the logical implementation.  That logical model would not be possible (or would not be accurate) without collecting and understanding the concepts and formulating/describing a conceptual model.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If architecture is that much before those logical decisions can be made, what goes into deciding upon an architecture?  Over-and-above the principles, philosophies, and generally acceptable practices; much of what governs how something is architected involves the quality attributes required of the solution.  Quality attributes are often called non-functional requirements (you may be able to guess my preference).  There are lots of quality attributes that impact an architecture.  Also, many of these attributes can be (or have been) decided upon before lower-level functional details.  I could go on about each attribute like availability, disaster recovery, fault tolerance, performance, reporting, maintainability, etc.; but that's an entire series of posts.  Many of these attributes are necessary or known &lt;em&gt;despite&lt;/em&gt; the functional requirements.  An architecture needs to take these things into consideration to be correct. (A design realizes those considerations, or should)&lt;/p&gt;
-&lt;p&gt;Some of the confusion of what architecture is may come from the fact that not all software is written from the very beginning.  Iterative changes to software also mean iterative changes to architecture.  Those changes to architecture are done with a greater knowledge of logical and implementation details and thus a higher risk of becoming influenced by logical details, or have them leak into the architecture such that they may be hard to differentiate between the two.&lt;/p&gt;
-&lt;p&gt;So, in terms of software that changes iteratively (is there any other kind?), how can we ensure the vision of the architecture remains visionary and influences the iterative changes of software from a high-level aspect? Now that we have a clearer understanding of the level and point of view of the architecture we can better keep conceptual concerns in the architecture and logical concerns lower in the design and implementation. Also knowing that architecture componentizes conceptually and makes many decisions on relationships between components based on quality attributes, we can make informed determinations between architectural changes and design/implementation changes.&lt;/p&gt;
-&lt;p&gt;Sometimes the architecture cannot be finalized until a great amount of understanding of a solution.  Even though the software may not be implemented (and thus incrementing) that understanding can negatively influence what should be architectural decisions.  For example, what does a REST API &lt;em&gt;actually&lt;/em&gt; model?  With a deep understanding of a solution (like data may be stored in a relational database with specific table names) that understanding can result in interfaces overly-coupled to the implementation.  This can manifest in interfaces that are not based on conceptual information but on logical information.  For example, when we know there's really a database implementation detail and a &amp;quot;resource&amp;quot; may be a row in the database, it can become hard to differentiate POST/GET/PUT/PATCH/DELETE from CREATE/READ/UPDATE/DELETE because those are the logical details of the database.&lt;/p&gt;
-&lt;p&gt;A related area, and a personal peeve, is when &amp;quot;MVC&amp;quot; applications are really &amp;quot;C&amp;quot; applications.  In these applications there is &lt;em&gt;really&lt;/em&gt; no distinct conceptual information (i.e. a model) and everything is effectively muddled together in the controller (or &lt;em&gt;big ball of mud&lt;/em&gt;).  In an MVC application the model is conceptual to &lt;em&gt;model&lt;/em&gt; the domain (i.e. the domain we need to understand to initiate or conceive of a project/product) and the view is a &lt;em&gt;view&lt;/em&gt; of that model based on the behavioral concepts the application is solving for or UI technical details.&lt;/p&gt;
-&lt;h2 id="being-successful"&gt;Being Successful&lt;/h2&gt;
-&lt;h3 id="understand-architectural-boundaries"&gt;Understand Architectural Boundaries&lt;/h3&gt;
-&lt;p&gt;It's important to understand from a general point of view, where architecture can start (what it more-or-less depends upon) and end (or when it influences other things).  Much of software development is imperial, so also an understanding of what architecture means in a product/project context also contributes a better understanding of where things do and do not fit into &amp;quot;architecture&amp;quot;.&lt;/p&gt;
-&lt;h3 id="understand-boundaries-should-involve-only-concepts"&gt;Understand Boundaries Should Involve Only Concepts&lt;/h3&gt;
-&lt;p&gt;An architecture (a.k.a. a &lt;em&gt;good&lt;/em&gt; architecture) considers the &lt;em&gt;conceptual&lt;/em&gt; to discover the &lt;em&gt;logical&lt;/em&gt;.  It's important to understand that despite architectural evolution in-step with software evolution that only conceptual information should live in the &amp;quot;architecture&amp;quot; and that there isn't one description/specification to fit architecture &lt;em&gt;and&lt;/em&gt; design (describing the concepts is different from specifying the logical details).&lt;/p&gt;
-&lt;h3 id="understand-conceptual-from-logical"&gt;Understand Conceptual from Logical&lt;/h3&gt;
-&lt;p&gt;An architecture describes those conceptual details, how they're componentized, and their type of relationships.  That should ultimately influence the design, not the other way around.  If you're evolving a complex system over time, make sure you understand the conceptual information (i.e. the domain, its vocabulary, processes--independent of whether it's automated within software) and the logical (how it is or may be automated with software).&lt;/p&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://www.opengroup.org/subjectareas/enterprise/togaf"&gt;TOGAF© Version 9.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.zachman.com/about-the-zachman-framework"&gt;The Zachman Framework 3.0&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content:encoded>
 		</item>
