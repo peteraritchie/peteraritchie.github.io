@@ -4,14 +4,14 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2022</rights>
-	<updated>2022-12-21T18:24:39Z</updated>
+	<updated>2022-12-21T18:26:17Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</id>
 		<title>Things I Learned Attempting Azure Administrator Associate - Part 1</title>
 		<link href="http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate" />
 		<updated>2022-12-20T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown" /&gt;&lt;/p&gt;
+		<content>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge" /&gt;&lt;/p&gt;
 &lt;p&gt;I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)&lt;/p&gt;
 &lt;p&gt;Certifications aren't perfect, &amp;quot;certification&amp;quot; has different meanings to the observer and the certification itself. Most certifications bring with them an expected minimum understanding of the subject.  Does it mean the earner will do everything perfectly with the subject?  Of course not, but it gives the person a certain vocabulary to communicate more efficiently on the subject.&lt;/p&gt;
 &lt;p&gt;The road to Azure Administrator Associate was interesting, and sharing some notable information would be helpful for others.&lt;/p&gt;
@@ -32,7 +32,7 @@
 &lt;p&gt;There are many areas of clarification with Azure Administrator Associate.  Future posts on the subject will address clarifications involving important explicit limits, restrictions, constraints, rules, etc.&lt;/p&gt;
 &lt;p&gt;Are there other implicit aspects of Azure administration that can be made explicit?&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown"&gt;&lt;/p&gt;</summary>
+		<summary>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge"&gt;&lt;/p&gt;</summary>
 	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</id>

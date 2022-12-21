@@ -5,15 +5,15 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Wed, 21 Dec 2022 18:24:39 GMT</pubDate>
-		<lastBuildDate>Wed, 21 Dec 2022 18:24:39 GMT</lastBuildDate>
+		<pubDate>Wed, 21 Dec 2022 18:26:17 GMT</pubDate>
+		<lastBuildDate>Wed, 21 Dec 2022 18:26:17 GMT</lastBuildDate>
 		<item>
 			<title>Things I Learned Attempting Azure Administrator Associate - Part 1</title>
 			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</link>
-			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown"&gt;&lt;/p&gt;</description>
+			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge"&gt;&lt;/p&gt;</description>
 			<guid>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</guid>
 			<pubDate>Tue, 20 Dec 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="file projects dropdown" /&gt;&lt;/p&gt;
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge" /&gt;&lt;/p&gt;
 &lt;p&gt;I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)&lt;/p&gt;
 &lt;p&gt;Certifications aren't perfect, &amp;quot;certification&amp;quot; has different meanings to the observer and the certification itself. Most certifications bring with them an expected minimum understanding of the subject.  Does it mean the earner will do everything perfectly with the subject?  Of course not, but it gives the person a certain vocabulary to communicate more efficiently on the subject.&lt;/p&gt;
 &lt;p&gt;The road to Azure Administrator Associate was interesting, and sharing some notable information would be helpful for others.&lt;/p&gt;
