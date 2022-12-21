@@ -6,7 +6,7 @@ comments: true
 excerpt: "."
 tags: ['December 2022']
 ---
-![file projects dropdown](/assets/DALL·E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png)
+![person going through the process of certifying knowledge](/assets/DALL·E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png)
 
 I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)
 
