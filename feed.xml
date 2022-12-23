@@ -5,8 +5,170 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2022</copyright>
-		<pubDate>Thu, 22 Dec 2022 22:11:49 GMT</pubDate>
-		<lastBuildDate>Thu, 22 Dec 2022 22:11:49 GMT</lastBuildDate>
+		<pubDate>Fri, 23 Dec 2022 15:06:55 GMT</pubDate>
+		<lastBuildDate>Fri, 23 Dec 2022 15:06:55 GMT</lastBuildDate>
+		<item>
+			<title>Things I Learned Attempting Azure Administrator Associate - Part 2 - Storage</title>
+			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate-part-2</link>
+			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png" class="img-fluid" alt="distributed cloud data storage"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate-part-2</guid>
+			<pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png" class="img-fluid" alt="distributed cloud data storage" /&gt;&lt;/p&gt;
+&lt;p&gt;Azure Administrator Associate certification is about the skills required to be an Azure account, subscription, tenant, etc., administrator. If your end goal is to develop applications on Azure, that involves a lot of &lt;em&gt;administration&lt;/em&gt; of Azure resources. Regardless of your plan, storage administration is nuanced. This post focuses on some of those nuances, nuances that may not be apparent in the documentation.&lt;/p&gt;
+&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
+&lt;!--capabilities--&gt;
+&lt;p&gt;Azure provides storage services for Files, Blobs, Queues, and Tables. Files are blobs that support access via SMB protocol, AKA File Shares. Blobs are web resources that support access via a URI (HTTP). Blob Storage supports two types of blobs: block blobs and page blobs. Table Storage supports key-based relational and document access. Queues support access to ephemeral messages.&lt;/p&gt;
+&lt;p&gt;Azure Files has a File Sync feature that supports file-level replication across Windows Servers. The Azure File endpoint is also called the Cloud Endpoint and is part of a Sync Group that includes one or more Windows Server file shares.&lt;/p&gt;
+&lt;p&gt;There are two performance options for Storage Accounts: Standard (general purpose v2) and Premium (for low latency.)&lt;/p&gt;
+&lt;!--tiers/skus--&gt;
+&lt;p&gt;Storage has a couple of storage tiers: Standard and Premium. Storage tiers provide different functionality at different costs. Blob Storage has several access tiers: Hot, Cool, and Archive. Access tiers offer a way to communicate the frequency and type of data access to reduce storage costs. Access tiers can be used to implement a lifecycle for data, moving to lower-cost tiers over time to reduce cost.&lt;/p&gt;
+&lt;!--durability/high-availability--&gt;
+&lt;p&gt;Storage supports data redundancy that makes copies of data to avoid loss due to infrastructure failure. There are several options: Locally-Redundant Storage (LRS), Zone-Redundant storage (ZRS), Geo-Redundant Storage (GRS), and Geo-Zone-Redundant Storage (GZRS). LRS stores three copies of the data asynchronously within a single data center. ZRS duplicates those 3 LRS copies across three availability zones (clusters) in a region. GRS duplicates those 3 LRS asynchronously to a single zone in a secondary region. GZRS duplicates the ZRS data across zones within the secondary region.&lt;/p&gt;
+&lt;!--data protection--&gt;
+&lt;p&gt;Recovery Services is the service responsible for storing backups and recovery points. Recovery Services stores data within Recovery Services Vaults.&lt;/p&gt;
+&lt;p&gt;Encryption scopes logically group blobs or containers and assign an encryption key specific to that scope.&lt;/p&gt;
+&lt;!--access control--&gt;
+&lt;p&gt;There are a couple options for controlling access to data: Azure AD accounts/groups or Shared Access Signatures (SAS). Azure AD Groups provide a more manageable way to control Azure AD account access to data (than simply Azure AD accounts). SAS provides a granular means to provide delegate access to external entities.&lt;/p&gt;
+&lt;h3 id="notable-information"&gt;Notable information &lt;!--TIL--&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;LRS protects against rack-level hardware failure (so, if you want data-center-wide failure protection, LRS is insufficient).&lt;/li&gt;
+&lt;li&gt;LRS is supported for Standard File and Standard Block Blob account types (otherwise, GRS is the default.)&lt;/li&gt;
+&lt;li&gt;ZRS protects against data loss due to data center failure (so, if you want region-wide failure protection, ZRS is insufficient)&lt;/li&gt;
+&lt;li&gt;GRS protects against region failure.&lt;/li&gt;
+&lt;li&gt;GRS and GZRS secondary regions are pre-defined, forcing your data into a specific region.&lt;/li&gt;
+&lt;li&gt;GZRS protects against region failure and simultaneous data center failure in the secondary region.&lt;/li&gt;
+&lt;li&gt;When defining a data lifecycle, in the case of a tie, the option that results in the least cost will be chosen.&lt;/li&gt;
+&lt;li&gt;Migrating from LRS to GRS is supported with a feature called &amp;quot;Live Migration.&amp;quot; Migration from LRS in other scenarios (e.g. to ZRS) must be done manually. Since Premium Storage accounts do not support LRS, Live Migration does not support Premium Storage accounts.&lt;/li&gt;
+&lt;li&gt;Live migration supports the use case of a storage account failure of GRS-replicated data. GRS is a second LRS in a secondary region. If a region fails, GRS reduces to LRS, so recovering means using Live Migration.&lt;/li&gt;
+&lt;li&gt;Durability is not backup; it provides access to data when infrastructure recoverability isn't an option. Apart from Live Migration, &lt;em&gt;restoration&lt;/em&gt; is limited to manually copying live data when needed.&lt;/li&gt;
+&lt;li&gt;Durability does not protect against application-level failure; use backups or custom (application-level) durability in those scenarios.&lt;/li&gt;
+&lt;li&gt;Encryption scopes are useful for providing logical data tenancy.&lt;/li&gt;
+&lt;li&gt;Files added/modified in a File Share are only detected and replicated to the Windows Server file shares once every 24 hours (i.e., only visible after 24 hours).&lt;/li&gt;
+&lt;li&gt;Adding a file share to a Sync Group acts like all the files and folders within the file share were just added, replicating to the cloud endpoint and any other file shares.&lt;/li&gt;
+&lt;li&gt;When applying &lt;em&gt;least privilege&lt;/em&gt; to storage accounts, the &lt;strong&gt;Reader&lt;/strong&gt; role is also required on the Azure AD account if the Azure AD account needs to navigate storage resources in the Azure Portal.&lt;/li&gt;
+&lt;li&gt;Asynchronous data redundancy options introduce the possibility of data loss. If the asynchronous duplication to the secondary region did not complete, it is out of sync with the last state of the primary region. Application-level logic is required to prevent loss of data in this scenario.&lt;/li&gt;
+&lt;li&gt;The Archive tier does not have immediate access; it must be &lt;em&gt;rehydrated&lt;/em&gt; to a cool/hot tier first (usually with a Copy Blob operation of up to 15 hours completion time).&lt;/li&gt;
+&lt;li&gt;File Share storage may be backed up to Recover Service vaults, but Blob Storage may not.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This table summarizes the types of storage accounts and the features/redundancy that each support.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Account&lt;/th&gt;
+&lt;th&gt;Redundancy&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;block blob&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;page blob&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;append blob&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;file share&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;queue&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;table&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Standard account&lt;/td&gt;
+&lt;td&gt;LRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Standard account&lt;/td&gt;
+&lt;td&gt;GRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Standard account&lt;/td&gt;
+&lt;td&gt;GAZRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Standard account&lt;/td&gt;
+&lt;td&gt;RA-GZRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium Block blobs account&lt;/td&gt;
+&lt;td&gt;LRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium Block blobs account&lt;/td&gt;
+&lt;td&gt;ZRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium File shares account&lt;/td&gt;
+&lt;td&gt;LRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium File shares account&lt;/td&gt;
+&lt;td&gt;ZRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium Page blobs account&lt;/td&gt;
+&lt;td&gt;LRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Premium Page blobs account&lt;/td&gt;
+&lt;td&gt;ZRS&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things I Learned Attempting Azure Administrator Associate - Part 1</title>
 			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</link>
@@ -1410,54 +1572,6 @@ Configuration.Bind(myConfiguration)
 &lt;p&gt;Galbraith, Jay. (February 2012). Designing the Innovating Organization. Retrieved from &lt;a href="http://web.archive.org/web/20170812123800/http://www.jaygalbraith.com/component/rsfiles/download-file/files?path=whitepapers%2Fdesigninginnovatingorg.pdf"&gt;http://web.archive.org/web/20170812123800/http://www.jaygalbraith.com/component/rsfiles/download-file/files?path=3Dwhitepapers%2Fdesigninginnovatingorg.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Hess, Edward D. (August 2014). Why Is Innovation So Hard? Retrieved from &lt;a href="https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd"&gt;https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Hamel, Gary and Tennant, Nancy. (April 2015). The 5 Requirements of a Truly Innovative Company. Retrieved from &lt;a href="https://web.archive.org/web/20180126024656/https:/hbr.org/2015/04/the-5-requirements-of-a-truly-innovative-company"&gt;https://web.archive.org/web/20180126024656/https://hbr.org/2015/04/the-5-requirements-of-a-truly-innovative-company&lt;/a&gt;&lt;!-- 2018, July--&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Mapping a Domain Model to RESTful</title>
-			<link>http://blog.peterritchie.com/posts/Mapping+a+Domain+Model+To+RESTful</link>
-			<description>&lt;p&gt;In the Object-Oriented discipline, an &lt;em&gt;object&lt;/em&gt; &lt;strong&gt;is the bundling of data and behavior&lt;/strong&gt;.  Martin Fowler defined the First Law of Distributed Objects.  That law states "&lt;strong&gt;Don't distribute your objects&lt;/strong&gt;".&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Mapping+a+Domain+Model+To+RESTful</guid>
-			<pubDate>Fri, 29 Dec 2017 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;In the Object-Oriented discipline, an &lt;em&gt;object&lt;/em&gt; &lt;strong&gt;is the bundling of data and behavior&lt;/strong&gt;.  Martin Fowler defined the First Law of Distributed Objects.  That law states &amp;quot;&lt;strong&gt;Don't distribute your objects&lt;/strong&gt;&amp;quot;.&lt;/p&gt;
-&lt;p&gt;A &lt;em&gt;domain model&lt;/em&gt; is a conceptual &lt;strong&gt;object model of a domain's behavior and structure (entities, data, relationships)&lt;/strong&gt;.  It is considered an anti-pattern if a domain model is &lt;em&gt;anemic&lt;/em&gt;: if it has hardly any behavior.&lt;/p&gt;
-&lt;p&gt;RESTful APIs have become the de facto standard for distributed applications that provides &lt;strong&gt;stateless access to and manipulate textual representations of &lt;em&gt;resources&lt;/em&gt;&lt;/strong&gt;.  i.e. the textual representation is a document or file.  A resource is a mapping to a concept or concepts; a resource is not the implementation details that may have been used during the request for the resource.&lt;/p&gt;
-&lt;p&gt;We're in an industry with a complexity that requires distributing domain behavior across multiple processes.  So, if RESTful APIs are about providing access to documents or files, yet we need to distribute behavior, what do we do?&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;This post is about making a &lt;em&gt;domain model&lt;/em&gt; accessible by RESTful API, and not just making your data (entities) available to the outside world.  That doesn't mean there's no need to provide access to your data a resources, but providing data only by way of your domain model (that is also supposed to abstract &lt;em&gt;behavior&lt;/em&gt; is kinda pointless).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Our industry is very dichotomous: only one thing seems to the right thing and any other thing is wrong (more like the other thing is ignored: Shiny New Thing, Maslow's Hammer, etc.).  Those things can be right, but not &lt;em&gt;on their own&lt;/em&gt;: it's contextual.&lt;/p&gt;
-&lt;p&gt;But why do these two things (object-oriented and RESTful) seem to conflict with each other?  How are we to maintain a dichotomy if we have two correct things?  It gets back to that &lt;em&gt;context&lt;/em&gt; I talked about earlier.  We will &lt;em&gt;always&lt;/em&gt; need to perform activities and tasks.  Sometimes it's all but &lt;em&gt;required&lt;/em&gt; to distribute that processing.  That doesn't mean Object-Oriented and RESTful are contradictory.  Each provides a scope by which to follow their generally accepted practices, in &lt;em&gt;that context&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;We don't want to &lt;em&gt;distribute objects&lt;/em&gt;, but we want to &lt;em&gt;distribute processing&lt;/em&gt;.  How do we do this with domain models consisting of objects?  With RESTful we're expected to be focused on &lt;em&gt;resources&lt;/em&gt;.  It sounds very limiting, but the limit is really a thinking error.  Some people seem stuck on a RESTful API being entirely about resources (nouns) and not about behavior (verbs).  But, that is limited only by what we consider the resource to be.&lt;/p&gt;
-&lt;p&gt;In RESTful, resources effectively need to manifest as &lt;em&gt;documents&lt;/em&gt;, but that doesn't mean our API can't provide access to execution of behavior.  Even with the narrowest view of a resource that API still provides access to behavior.  In the simplest of scenarios that behavior is one the methods POST, GET, PUT, PATCH, or DELETE (there's also HEAD, OPTIONS, TRACE, and CONNECT; but we don't use those in with REST).  Those methods are sometimes referred to as &lt;em&gt;verbs&lt;/em&gt;.  Someone unfamiliar with HTTP and REST may simply proclaim &amp;quot;create more methods!&amp;quot;.  That's wrong, that's not REST and that's not HTTP (well, &lt;em&gt;syntactically&lt;/em&gt; it &lt;em&gt;is&lt;/em&gt; HTTP; just like &lt;em&gt;&lt;code&gt;goto&lt;/code&gt;&lt;/em&gt; is syntactically acceptable)—the method is applied to the &lt;em&gt;resource&lt;/em&gt;, not what the &lt;em&gt;resource represents&lt;/em&gt;.  What we &lt;em&gt;can&lt;/em&gt;, and &lt;em&gt;should&lt;/em&gt;, do is consider that a resource can be a representation of a &lt;em&gt;request to perform behavior&lt;/em&gt;.  The &lt;em&gt;document&lt;/em&gt;—or contents of the resource—then becomes the result or outcome of that behavior.  We can realize that objective by in simplistic circumstances by converting the behavior verbs we want to execute to resource nouns.  I don't mean just using a verb like a noun like &amp;quot;What's your &lt;em&gt;ask&lt;/em&gt;?&amp;quot;  I mean &lt;a href="https://en.wikipedia.org/wiki/Nominalization"&gt;&lt;em&gt;nominalizing&lt;/em&gt;&lt;/a&gt; the verb into a noun.  e.g. &amp;quot;Explain&amp;quot; to &amp;quot;Explanation&amp;quot; or &amp;quot;Generate&amp;quot; to &amp;quot;Generation&amp;quot; or &amp;quot;Calculate&amp;quot; to &amp;quot;Calculation&amp;quot;... I'm sure you can find lists or an &lt;a href="https://www.wordsapi.com/"&gt;API&lt;/a&gt; to get the noun form of a verb.&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;To be clear: I'm suggesting that RESTful and OO can complement each other.  I'm not suggesting pick one.  I am recommending using each for the right context. Continue to use OO for modeling a domain (behavior and data, organized by object) to implement at the process level and continue to use HTTP and RESTful as the protocol for distributed application APIs.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If you already have a domain model you want to make accessible via a RESTful API, you might think Contract First or Design by Contract is out the window.  I don't think this is true.  I think any interface intended to be used by anything yet-to-be-designed needs to be &lt;em&gt;Concepts-Oriented&lt;/em&gt;--that is the interface should only present conceptual things (i.e. the concepts that have led to an implementation).  Contract First and Design by Contract are easy ways to get that because they suggest you define that contract up front, prior to solutioning and implementation.  That's fine when you can do it, but it's really hard to get &lt;em&gt;Concepts-Oriented&lt;/em&gt; within a design that evolves along with the implementation over time with that chicken-and-egg &amp;quot;Contract First&amp;quot; or &amp;quot;Design by Contract&amp;quot; mentality.&lt;/p&gt;
-&lt;p&gt;So, back to a domain model that you want to make accessible by RESTful APIs... The ideal domain model consists of objects that implement encapsulation and abstraction properly.  That is, they hide implementation details and provide access to behavior.  That behavior needs to be mapped to a &amp;quot;resource&amp;quot; to be made available via the RESTful API.  The details of that mapping have been explained above; but how do we work those nouns into a RESTful API?  It's not just a matter of sticking this new resource as a root path or within any-old path hierarchy.  The resource as an operation request needs to be associated with the concept it applies to.&lt;/p&gt;
-&lt;p&gt;In RESTful, the concepts we make available are &lt;em&gt;resources&lt;/em&gt;.  For one resource to be applied within another, we effectively make it a sub-resource.  The parent resource could be completely conceptual, i.e. like a business function: &lt;code&gt;/accounting/reconciliation&lt;/code&gt;.  But, I'd argue that there might be something missing from the domain if you find something that is unable to be truly modeled as a resource.  e.g. &lt;code&gt;/accounts/1234/reconciliation&lt;/code&gt;. So, in this case, if we POSTed to this URI we'd be requesting the creation of a &lt;em&gt;reconciliation&lt;/em&gt; resource (AKA the request to execute the &lt;code&gt;reconcile&lt;/code&gt; behavior) for &lt;code&gt;account&lt;/code&gt; 1234.&lt;/p&gt;
-&lt;p&gt;When modeling behaviors, especially over the network, we shouldn't expect them to be atomic--that is happening effectively instantaneously.  Luckily HTTP accounts for that with status codes like 202 Accepted.  When 202 is used, the response should fulfil the HATEOS constraint of REST and provide a hypermedia link to the new &amp;quot;resource&amp;quot;. That new resource can be accessed directly for status of the request or to get the outcome.  That doesn't stop you from &lt;em&gt;not&lt;/em&gt; using 200 in circumstances where the request could be executed atomically.  Any HTTP-compliant client should handle 200 and 202.  The &lt;em&gt;request to perform behavior&lt;/em&gt; model fits well with an independence from atomicity because if the behavior isn't atomic, you really are interested in the &amp;quot;request&amp;quot; and whether it's completed.&lt;/p&gt;
-&lt;h2 id="benefits"&gt;Benefits&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Intention-revealing interfaces.  An API that provides an interface that details the intent of the request it's easier to understand what it does--simply building on standard HTTP methods POST, GET, PUT, PATCH, DELETE, any other behavior the API provides is not obvious.&lt;/li&gt;
-&lt;li&gt;Makes the implicit explicit.  The implicit waiting for a non-atomic request becomes explicit.&lt;/li&gt;
-&lt;li&gt;RESTful: this maintains the &lt;em&gt;resource&lt;/em&gt; concept without having to deviate from it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="being-successful"&gt;Being Successful&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Recognize a Command-Query Responsibility Segregation (CQRS) point of view of how you're making the resources available in your RESTful APIs.&lt;/li&gt;
-&lt;li&gt;Think declaratively rather than imperatively: model a resource on the conceptual operation that needs to be performed (declarative), rather than simply CRUD abilities to data providing the ability to tell the API how to perform an operation (imperative)&lt;/li&gt;
-&lt;li&gt;Treat atomicity as the exception, not the rule.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;How might this affect the design of Entity Services?  Well, that's a topic of a future post&lt;/p&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://martinfowler.com/bliki/FirstLaw.html"&gt;First Law of Distributed Objects&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://martinfowler.com/eaaCatalog/domainModel.html"&gt;Domain Model Pattern&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling"&gt;REST API Design - Resource Modeling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;Resources and Resource Identifiers&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Nominalization"&gt;Nominalization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.wordsapi.com/"&gt;Words API&lt;/a&gt;&lt;!-- 2017, December--&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded>
 		</item>
 	</channel>
