@@ -9,6 +9,7 @@
         margin: 0;
     }
 }
+#content>p>img, 
 .post-preview>p:not(.post-meta)>img {
     max-width: 100%!important;
 }
