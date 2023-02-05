@@ -77,12 +77,11 @@
 <div class="post-heading">
     <h1>Dependency Injection</h1>
     <div class="meta">        
-Published on Friday, March 8, 2013<br>    </div>
+Published on Thursday, December 13, 2007<br>    </div>
         <div class="tags">
                     <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
                     <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
-                    <a role="button" href="/tags/March-2013" class="btn btn-default btn-xs">March 2013</a>
+                    <a role="button" href="/tags/December-2007" class="btn btn-default btn-xs">December 2007</a>
                     <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
                     <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
                     <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
@@ -99,22 +98,97 @@ Published on Friday, March 8, 2013<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/" title="Permalink to Dependency Injection">Source</a></p>
+<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/" title="Permalink to Dependency Injection">Source</a></p>
 <h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency Injection (DI) is a form of Inversion of Control where the instances that one class need are instantiated outside of the class an &quot;injected&quot; into it. The most common injection is constructor injection. This is called inversion of control because the control of the dependencies have been inverted from the dependant class instantiating them to another class instantiating them. e.g. I could write class like this:</p>
-<p>Which is perfectly functional, but MyClass is now directly dependant on <code>List&lt;T&gt;</code> and this type has become an implementation detail of MyClass. If I wanted to use some other implementation of <code>IList&lt;T&gt;</code>, I'd have to re-write MyClass and fix the tests that broke because of it. I may want to use another <code>IList&lt;T&gt;</code> implementation because I want to test MyClass. As it stands, I have no way of telling if the class does anything successfully. I could write an <code>IList&lt;T&gt;</code> implementation that I can spy on in a test to verify that MyClass does what it supposed to do. The way MyClass is written at the moment, I can't do that.</p>
-<p>Bear in mind, this is a stupid example. But, it shows inversion of control with types commonly recognizable.</p>
-<p>So, I could invert the control on <code>IList&lt;T&gt;</code> and refactor MyClass to be DI-friendly. In this case, it's fairly simple:</p>
-<p>Now MyClass does not have a direct dependency on <code>List&lt;T&gt;</code> and I can give it anything I want. In production I'd create an instance like this:</p>
-<p>Not a whole lot more complex than before. If I wanted to test MyClass in some way, I could give it a spy:</p>
-<p>This is considered <em>Poor Man's IoC</em>, in that you're not making use of a framework or a library specifically devoted to IoC.</p>
-<p>Yes, you'd never really do this in real life; but it's a fairly clear example—with commonly-used types.</p>
-<h2 id="ioc-containers">IoC Containers</h2>
-<p>There's a plethora of IoC containers for .NET. They're all great tools, like StructureMap, Autofac, Ninject, Unity, etc. Don't get me wrong, they're powerful and they do a lot of things. But, they do a lot of things.</p>
-<p>What do I mean by &quot;they do a lot of things&quot;? Well, they're all effectively designed to work with codebases that are not DI-friendly. They go out of their way to provide features to support DI in any imaginable design. &quot;What's wrong with that&quot; you say? If you've got a brownfield project, that's great—you can likely get testability with code not designed to be testable—which is a good thing. But, these abilities make us lazy. We stop designing DI-friendly classes because we know how to use a particular IoC container to get a known level of IoC and/or testability. We've stopped striving for a simpler design, we've stopped striving for DI-friendly code.</p>
-<p>If you're finding that you're generally using much more than just constructor injection, having reams and reams of config to set up the various instances or lifecycles then you're probably letting your IoC container do too much for you and your design is suffering. If someone has to spend days understanding your IoC container and it's config for you project, you may have defeated the purpose.</p>
-<p>For lots of good advice on DI in .NET, check out <a href="http://blog.ploeh.dk/tags.html#Dependency%20Injection-ref">http://blog.ploeh.dk/tags.html#Dependency Injection-ref</a>. Some of my favourites: <a href="http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/">http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/</a>, <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/">http://blog.ploeh.dk/2011/07/28/CompositionRoot/</a>, and <a href="http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/">http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/</a></p>
-<p><img src="http://msmvps.com/aggbug.aspx?PostID=1824852" class="img-fluid" alt="" /></p>
+<p>Dependency injection (DI) is a form of inversion of control. There seems to be a tendency in some circles to refer to dependency injection as inversion of control (IoC).</p>
+<p>Dependency injection is a form of abstraction by removing physical dependencies between classes and potentially assemblies. This abstraction can have many different motives. One motive is for Aspect Oriented Software Development (ASOD) where you're abstracting shared (or cross-cutting) concerns into independent classes. Another motive is for Test-Driven Development (TDD) where you want to be able to test each class independently of its dependencies–in which case injected dependencies are &quot;mocked&quot;–technically this is still AOSD because you're separating the testing concern.</p>
+<p>Dependency injection in .NET is most frequently implemented using interface-oriented design/programming, where a dependency of a class is on an interface. Any class implementing that interface is then a candidate for being &quot;injected&quot; into the other class.There's many ways to inject dependency, one is at time of construction the other is at time of operation.</p>
+<p>There are many examples of dependency injection at time of operation in the .NET Framework. Normally when an interface is involved, dependency injection is also involved. Serialization is a good example. Serialization in .NET allows programmers to serialize topretty much anything. &quot;Anything&quot; being a stream. Serialization abstracts the destination from the act of serializing and allows programmers to inject a dependency on any type of destination (media, resource, mock, etc.) simply by implementing IStream. For example, for any given class in .NET I can &quot;serialize&quot; it to any stream:</p>
+<pre><code>   MyType myType = new MyType();
+
+
+   IFormatter formatter = Configuration.CreateFormatter(typeof(myType));
+
+
+   using (Stream stream = new MemoryStream())
+
+
+   {
+
+
+    formatter.Serialize(stream, myType);
+
+
+    // TODO: something with stream.
+
+
+   }
+</code></pre>
+<p>In the above example, IFormatter.Serialize(Stream, Object), uses dependency injection at time of operation to serialize to a MemoryStream object. In no way is IFormatter.Serialize dependant on MemoryStream. The same call could be written as follows:</p>
+<pre><code>   using(Stream stream = new FileStream(&quot;file.dat&quot;, FileMode.Create))
+
+
+   {
+
+
+    formatter.Serialize(stream, myType);
+
+
+    // TODO: something with stream.
+</code></pre>
+<p>}</p>
+<p>The above form of DI is interface (and class) based, in that you need to implement a specificinterface to inject as a dependency. Another form of DI is via delegates. You can abstract a particular class from other concerns simply by accepting a delegate. Any class that wants to be injected simply needs to implement a method with the same signature as the required delegate. Events are an example of this. Any class that raises events is completely independent of any other classes that want to act as observers and subscribe to these events. Subscribers are, in effect,are preforming dependency injection by subscribing to an event. This form of DI is not limited to DI,it can be any delegate.In.NET 2.0 there were many examples of this introduced. List.ForEach, for example:</p>
+<pre><code>namespace Examples
+
+
+{
+
+
+ using System.Collections.Generic;
+
+
+ public class Program
+
+
+ {
+
+
+  static void Main()
+
+
+  {
+
+
+   List&lt;string&gt; names = new List&lt;string&gt;();
+
+
+   // TODO: populate names
+
+
+   names.ForEach(Print);
+
+
+  }
+
+
+  static void Print(String name)
+
+
+  {
+
+
+   Console.WriteLine(name);
+
+
+  }
+
+
+ }
+
+
+}
+</code></pre>
+<p>In this example, <code>List&lt;T&gt;</code>, of course, iscompletely independent from Program andProgram is free to be static because there are no interface implementation requirements.</p>
 
 
 <div id="disqus_thread"></div>  
@@ -127,7 +201,7 @@ Published on Friday, March 8, 2013<br>    </div>
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('3/8/13');
+    var publishedDate = new Date('12/13/07');
     console.info('Dependency-Injection');
 
     var disqus_identifier = '';
@@ -174,7 +248,7 @@ Published on Friday, March 8, 2013<br>    </div>
         <div class="row">
                 <div class="col-md-12 text-center">
                     <p class="copyright text-muted">
-                        Copyright © Peter Ritchie&#x27;s Blog 2022
+                        Copyright © Peter Ritchie&#x27;s Blog 2023
                         <br />
                             <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
                         |
