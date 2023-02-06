@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog</title>
+        <title>Peter Ritchie&#x27;s Blog - Installing .NET Framework 4.5 Targeting Pack</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Installing .NET Framework 4.5 Targeting Pack" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -73,10 +73,14 @@
                                 <div class="row">
                                         <div class="col-md-12">
 
-    <div class="site-heading">
-        <h1>Peter Ritchie</h1>
-                <hr class="small">
-        <span class="subheading">IT Platform and Architecture Expert</span>
+    
+<div class="post-heading">
+    <h1>Installing .NET Framework 4.5 Targeting Pack</h1>
+    <div class="meta">        
+Published on Sunday, February 5, 2023<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/February-2023" class="btn btn-default btn-xs">February 2023</a>
+        </div>     
 </div>
                                         </div>
                                 </div>
@@ -88,75 +92,85 @@
                         <div class="row">
                                 <div id="content" class="col-md-12">
                                         
-<div class="row">
-    <div class="col-sm-8 right-border">
-                <div class="post-preview">
-                    <a href="/posts/installing-dotnet-framework-4-5-targeting-pack">
-                        <h2 class="post-title">Installing .NET Framework 4.5 Targeting Pack</h2>
-                    </a>
-                    <p class="post-meta">Posted on Sunday, February 5, 2023</p>
-<p><img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons"></p>                </div>       
-                    <hr /> 
-                <div class="post-preview">
-                    <a href="/posts/things-i-learned-attempting-azure-administrator-associate-part-2">
-                        <h2 class="post-title">Things I Learned Attempting Azure Administrator Associate - Part 2 - Storage</h2>
-                    </a>
-                    <p class="post-meta">Posted on Thursday, December 22, 2022</p>
-<p><img src="/assets/DALL%C2%B7E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png" class="img-fluid" alt="distributed cloud data storage"></p>                </div>       
-                    <hr /> 
-                <div class="post-preview">
-                    <a href="/posts/things-i-learned-attempting-azure-administrator-associate">
-                        <h2 class="post-title">Things I Learned Attempting Azure Administrator Associate - Part 1</h2>
-                    </a>
-                    <p class="post-meta">Posted on Tuesday, December 20, 2022</p>
-<p><img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge"></p>                </div>       
-        <ul class="pager">
-            <li class="previous">                
-            </li>
-            <li class="next">
-            </li>
-        </ul>
-    </div>
-    <div class="col-sm-4 sidebar">
-        <hr class="visible-xs-block" />
 
-            <h5>Tags</h5>
-            <div>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-sm"> msmvps (275)</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-sm"> Software Development (101)</a>
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-sm"> .NET Development (91)</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-sm"> C# (87)</a>
-                    <a role="button" href="/tags/Uncategorized" class="btn btn-default btn-sm"> Uncategorized (61)</a>
-                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-sm"> Design/Coding Guidance (50)</a>
-                    <a role="button" href="/tags/Software-Development-Guidance" class="btn btn-default btn-sm"> Software Development Guidance (33)</a>
-                    <a role="button" href="/tags/DevCenterPost" class="btn btn-default btn-sm"> DevCenterPost (31)</a>
-                    <a role="button" href="/tags/Visual-Studio-2005" class="btn btn-default btn-sm"> Visual Studio 2005 (19)</a>
-                    <a role="button" href="/tags/Visual-Studio-2008" class="btn btn-default btn-sm"> Visual Studio 2008 (19)</a>
-            </div>
-            <ul class="pager">
-                <li class="next">
-                    <a href="/tags">View All Tags &rarr;</a>
-                </li>
-            </ul>
+<p><img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons" /></p>
+<p>Something came up with a client around Live Dependency Validation in Visual Studio recently.  Digging into it I ran into several issues, one of which was the error:</p>
+<pre><code>Severity	Code	Description	Project	File	Line	Suppression State
+Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download .NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks	DependencyValidation	C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets	1229	
+</code></pre>
+<p>.NET Framework 4.5 has been out of support since 2016, so its targetting pack isn't available for download.  I found a couple blogs posts about editing the modelproj file to add things like <code>ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch</code> or a <code>PackageReference</code> to <code>microsoft.netframework.referenceassemblies.net45</code> but neither worked.</p>
+<p>One of the features of Visual Studio Installers is that they can be a one-stop-shop for all the things you're going to need to develop software (with or without Visual Studio).  One of these features is to install .NET targeting packs!  Although the latest version of Visual Studio doesn't include out-of-support components, prior versions of Visual Studio are available.  Visual Studio 2019 came out before .NET Framework 4.5 was completely unsupported (i.e. still had the option of paid support) so it offers the ability to install some targetting packs that are currently out of support.</p>
+<p>You can download older versions of Visual Studio via <a href="https://bit.ly/vs-old">https://visualstudio.microsoft.com/vs/older-downloads/</a>, which seems to redirect you eventually to Visual Studio Subscriptions downloads.  For our purposes, Visual Studio Community Editions works fine.</p>
+<p>To install, run the Visual Studio installer that you've downloaded (if you already have 2019 installed, run the already installed Visual Studio Installer and click <strong>Modify</strong>) then click <strong>Continue</strong> to go past the <em>set up a view things</em> dialog. (if you have VS 2022 installed, this seems to do nothing.)</p>
+<table class="table">
+<thead>
+<tr>
+<th><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make sure you don't change any of the <em>workloads</em> (if you have Visual Studio 2019 install already, some may be checked--don't uncheck them, that will uninstall them).</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/assets/vs2019-installer-45-targetting-pack.png" class="img-fluid" alt="Visual Studio Installer" /></p>
+<p>Click on the <strong>Individual Components</strong> tab at the top (to the right of <em>Workloads</em> and to the left of <em>Language packs</em>.)  In the .NET section, find an check <strong>.NET Framework 4.5 targetting pack</strong>.</p>
+<p>Click <strong>Install</strong> or <strong>Install while downloading</strong>.</p>
+<p>Once completed, you now have the .NET Framework 4.5 targetting pack.  If you're doing this in response to a .NET Framework 4.5 targetting pack error message in Visual Studio, exit and re-start Visual Studio--the error should go away (it does with the modelproj error.)</p>
+<hr />
+<p>Incidentally, the other issues I encountered are:</p>
+<pre><code>Full solution analysis for C# is currently disabled. You may not be seeing all possible dependency validation issues in C# projects. Options... Don't show again 
+</code></pre>
+<p>... with no way to enable full solution analysis in a way that this notice recognizes and goes away.</p>
+<p>I'd appreciate any advice to resolve that that doesn't involve clicking <strong>Don't show again</strong>.</p>
 
-            <hr />
-            <h5>Older Posts</h5>
-            <ul class="list-unstyled">
-                    <li><a href="/posts/fundamental-webapi-integration-tests">Fundamental ASP.Net Minimal API Integration Tests</a></li>
-                    <li><a href="/posts/visual-studio-defender-performance">Visual Studio Performance with Microsoft Defender</a></li>
-                    <li><a href="/posts/By-Reference-in-csharp">By Reference in C#</a></li>
-                    <li><a href="/posts/the-fundamental-quality-attributes-of-technology-systems">Fundamental Quality Attributes of Technology Systems</a></li>
-            </ul>
-                <ul class="pager">
-                    <li class="next">
-                        <a href="/posts">Archive &rarr;</a>
-                    </li>
-                </ul>
 
-        
-    </div> 
-</div>
+<div id="disqus_thread"></div>  
+<!--
+    'installing-dotnet-framework-4-5-targeting-pack'
+    'Installing .NET Framework 4.5 Targeting Pack'
+    'http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('2/5/23');
+    console.info('installing-dotnet-framework-4-5-targeting-pack');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Installing .NET Framework 4.5 Targeting Pack';
+    var disqus_url = 'http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'installing-dotnet-framework-4-5-targeting-pack';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>

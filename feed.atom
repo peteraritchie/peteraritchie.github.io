@@ -4,8 +4,47 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2023</rights>
-	<updated>2023-02-05T18:26:13Z</updated>
+	<updated>2023-02-06T18:05:54Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack</id>
+		<title>Installing .NET Framework 4.5 Targeting Pack</title>
+		<link href="http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack" />
+		<updated>2023-02-05T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons" /&gt;&lt;/p&gt;
+&lt;p&gt;Something came up with a client around Live Dependency Validation in Visual Studio recently.  Digging into it I ran into several issues, one of which was the error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Severity	Code	Description	Project	File	Line	Suppression State
+Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download .NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks	DependencyValidation	C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets	1229	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.NET Framework 4.5 has been out of support since 2016, so its targetting pack isn't available for download.  I found a couple blogs posts about editing the modelproj file to add things like &lt;code&gt;ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch&lt;/code&gt; or a &lt;code&gt;PackageReference&lt;/code&gt; to &lt;code&gt;microsoft.netframework.referenceassemblies.net45&lt;/code&gt; but neither worked.&lt;/p&gt;
+&lt;p&gt;One of the features of Visual Studio Installers is that they can be a one-stop-shop for all the things you're going to need to develop software (with or without Visual Studio).  One of these features is to install .NET targeting packs!  Although the latest version of Visual Studio doesn't include out-of-support components, prior versions of Visual Studio are available.  Visual Studio 2019 came out before .NET Framework 4.5 was completely unsupported (i.e. still had the option of paid support) so it offers the ability to install some targetting packs that are currently out of support.&lt;/p&gt;
+&lt;p&gt;You can download older versions of Visual Studio via &lt;a href="https://bit.ly/vs-old"&gt;https://visualstudio.microsoft.com/vs/older-downloads/&lt;/a&gt;, which seems to redirect you eventually to Visual Studio Subscriptions downloads.  For our purposes, Visual Studio Community Editions works fine.&lt;/p&gt;
+&lt;p&gt;To install, run the Visual Studio installer that you've downloaded (if you already have 2019 installed, run the already installed Visual Studio Installer and click &lt;strong&gt;Modify&lt;/strong&gt;) then click &lt;strong&gt;Continue&lt;/strong&gt; to go past the &lt;em&gt;set up a view things&lt;/em&gt; dialog. (if you have VS 2022 installed, this seems to do nothing.)&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Make sure you don't change any of the &lt;em&gt;workloads&lt;/em&gt; (if you have Visual Studio 2019 install already, some may be checked--don't uncheck them, that will uninstall them).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src="/assets/vs2019-installer-45-targetting-pack.png" class="img-fluid" alt="Visual Studio Installer" /&gt;&lt;/p&gt;
+&lt;p&gt;Click on the &lt;strong&gt;Individual Components&lt;/strong&gt; tab at the top (to the right of &lt;em&gt;Workloads&lt;/em&gt; and to the left of &lt;em&gt;Language packs&lt;/em&gt;.)  In the .NET section, find an check &lt;strong&gt;.NET Framework 4.5 targetting pack&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Click &lt;strong&gt;Install&lt;/strong&gt; or &lt;strong&gt;Install while downloading&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Once completed, you now have the .NET Framework 4.5 targetting pack.  If you're doing this in response to a .NET Framework 4.5 targetting pack error message in Visual Studio, exit and re-start Visual Studio--the error should go away (it does with the modelproj error.)&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Incidentally, the other issues I encountered are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Full solution analysis for C# is currently disabled. You may not be seeing all possible dependency validation issues in C# projects. Options... Don't show again 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... with no way to enable full solution analysis in a way that this notice recognizes and goes away.&lt;/p&gt;
+&lt;p&gt;I'd appreciate any advice to resolve that that doesn't involve clicking &lt;strong&gt;Don't show again&lt;/strong&gt;.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate-part-2</id>
 		<title>Things I Learned Attempting Azure Administrator Associate - Part 2 - Storage</title>
@@ -1524,53 +1563,5 @@ Configuration.Bind(myConfiguration)
 &lt;/ul&gt;
 </content>
 		<summary>&lt;p&gt;One of the biggest roadblocks in creating software that stands the test of time is the trouble many people have separating concept from actuality.  To some degree this is a basic human trait.  Shopping for a new house for example, it's common for someone not to buy a house simply because of the colors of the walls despite the triviality of re-painting (or the fact you probably will regardless).  In software, it's common for the separation between abstractions and implementation details to end up bleeding across.  So, it's no surprise that some patterns (or patterns in general?) are hard to truly understand and commonly mis-implemented.  The &lt;a href="https://en.wikipedia.org/wiki/Bridge_pattern"&gt;Bridge Pattern&lt;/a&gt; is one of the prime examples, from my experience.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Innovation</id>
-		<title>Innovation</title>
-		<link href="http://blog.peterritchie.com/posts/Innovation" />
-		<updated>2018-07-02T00:00:00Z</updated>
-		<content>&lt;h2 id="what-is-innovative"&gt;What is innovative?&lt;/h2&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;For our purposes, let’s define it as a “big new” for your business or a “big different” in how you operate your business.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;― &lt;a href="https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd"&gt;https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="what-is-innovation-and-innovating"&gt;What is innovation and innovating&lt;/h2&gt;
-&lt;p&gt;Innovation is&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;The act of innovating&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;― &lt;a href="https://web.archive.org/web/20170215125906/https:/en.wiktionary.org/wiki/innovation"&gt;https://web.archive.org/web/20170215125906/https://en.wiktionary.org/wiki/innovation&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Innovating is, of course, being innovative or:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;To begin or introduce (something new) for the first time.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;―&lt;a href="https://www.thefreedictionary.com/innovating"&gt;https://www.thefreedictionary.com/innovating&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;All fine and satisfies pedantry, but what does innovation really mean? If it's truly &lt;em&gt;something new&lt;/em&gt; or the &lt;em&gt;first time&lt;/em&gt; then that means it occured through &lt;em&gt;ideation&lt;/em&gt;, &lt;em&gt;exploration&lt;/em&gt;, and &lt;em&gt;experimentation&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;I think ideation and exploration must go hand in hand. Ideation is the creation, development, and communication of new ideas. New ideas (ones you don't already have) come from observation. That act of observation (again, if you already have an idea, the observation is complete) is done through exploration. You explore things; explore clients doing things with your system, exploration through conversation with clients, exploring different ways of thinking and different ways of doing things. It's that observation that leads to ideas, either as Aha! moments observing day-to-day life or observing planned exploration.&lt;/p&gt;
-&lt;p&gt;Ideas are theories, they are generally something that someone thinks can work but does not yet have the evidence. Something needs to be done to prove or disprove the idea. If the idea is proved then innovation might have occurred. If the idea is disproved then you don't move forward with it. With theories, success is when it is no longer a theory. That process is called experimentation. There really is no &amp;quot;failure&amp;quot;, something is always learned from the experiment. But the business practice of &amp;quot;fail fast&amp;quot; is basically that: perform experimentations and know what isn't going to work as quickly as possible.&lt;/p&gt;
-&lt;h2 id="how-do-you-stifle-or-prevent-innovation"&gt;How do you stifle or prevent innovation&lt;/h2&gt;
-&lt;p&gt;Another way of thinking about actions designed to prevent failure is that they are actions that focus on ensuring success. Doing things to ensure success and avoid failure is avoiding experimentation and thus exploration. Avoiding failure means controlling as many of the variables as possible to be able to guarantee an outcome, not introduce variables to promote random outcomes.&lt;/p&gt;
-&lt;p&gt;You'll never be able to come up with many new ideas without exploration, and you'll never be able to prove out new ideas without experimentation (not knowing if you're going succeed or not). And this exploration and experimentation cannot be scheduled (you cannot sit down and say you're going to spend 2 weeks exploring and experimenting in the field of faster than light travel and schedule to start work on delivering it 3 Mondays from now).&lt;/p&gt;
-&lt;p&gt;The actions and mindset behind exploration and experimentation are in contrast with delivering value. You can stifle and even prevent innovation by expecting innovation efforts to be done within the same process as delivering value.&lt;/p&gt;
-&lt;h2 id="how-do-you-promote-innovation"&gt;How do you promote innovation&lt;/h2&gt;
-&lt;p&gt;I started with how you stifle innovation to try to highlight that promoting innovation is mostly stopping the instincts and habits that stifle innovation.&lt;/p&gt;
-&lt;h3 id="combat-confirmation-biases"&gt;Combat confirmation biases&lt;/h3&gt;
-&lt;p&gt;Confirmation bias is the human tendency to be bias towards ideas and concepts that confirm what we already know. Innovation is introducing new things, not leveraging what we already know. We want to avoid confirming the things we already know and think outside the box. Actively avoiding confirming your beliefs can be hard, habitually and emotionally.&lt;/p&gt;
-&lt;p&gt;Promoting critical thinking goes a long way to combating confirmation bias.&lt;/p&gt;
-&lt;h3 id="promote-critical-thinking"&gt;Promote critical thinking&lt;/h3&gt;
-&lt;p&gt;It may sound obvious but people get better at a skill with training. If you have a set of critical thinkers and have been innovating, that's one thing. If you want to innovate, the right training is essential to purposefully achieving that. Innovation requires good critical thinking skills—not taking things at face value but objectively analyzing and evaluating to form a judgement. A systematic approach to understanding something, focusing on delivering the understanding and not viewing un-forecasted understanding as &amp;quot;failures&amp;quot;.&lt;/p&gt;
-&lt;h3 id="segregate-it"&gt;Segregate it&lt;/h3&gt;
-&lt;p&gt;Innovation is the hopeful, eventual delivery of new value. But companies need to be continually delivering value, and delivery value predictably. Those two efforts need to be done in isolation. Experimentation destabilizes delivery and planned delivery constrains/eliminates experimentation. So, the two initiatives must have different vision, different goals, different practices, etc. Thinking your organization &amp;quot;innovates&amp;quot; while not segregating the innovation initiative away from the initiatives delivering value, you're inadvertently stifling innovation. The efforts towards innovation and predictable value delivery need to be separate. The vision, principles, and practices to predicable value delivery is contradictory to the vision, principles, and practices to innovating. The two need to be separate at an organizational level so the organization matches where the two fundamentally diverge.&lt;/p&gt;
-&lt;p&gt;The initiative to innovate needs to be fed into value delivery, at the right time. Teams that innovate are not usually the best teams to deliver functionality, they're different skillsets and leveraging one in the place of the other isn't efficient and reduces ROI. You actually want less critical thinking when delivering value, not more. Perfection is the enemy of executing and critical thinking often focuses on ways of moving towards perfection.&lt;/p&gt;
-&lt;h3 id="measure-it"&gt;Measure it!&lt;/h3&gt;
-&lt;p&gt;Anything worth doing is worth knowing it's being done right. Measuring innovation efforts is vital to success. Leveraging an innovation capability is a form of critical thinking: don't let your confirmation biases let you think you're innovating well. Treat the whole processes as experimentation: systematically observe what's going on and make judgments on those observations. Use experimentation to improve the innovation process. The areas that can benefit from innovation probably also need measurement: look to trends, market analysis, etc. to provide the metrics to help prioritize where to innovate.&lt;/p&gt;
-&lt;p&gt;Other measures might include: tracking innovation through to delivery, resources spent on innovation, resources gained from innovation, what are or have been innovations, leadership metrics focusing on innovation, rate of innovation, areas of innovation, culture (get feedback from those in the trenches to find out how well the effort is viewed and ways of innovating your innovation).&lt;/p&gt;
-&lt;h1 id="references"&gt;References&lt;/h1&gt;
-&lt;p&gt;Galbraith, Jay. (February 2012). Designing the Innovating Organization. Retrieved from &lt;a href="http://web.archive.org/web/20170812123800/http://www.jaygalbraith.com/component/rsfiles/download-file/files?path=whitepapers%2Fdesigninginnovatingorg.pdf"&gt;http://web.archive.org/web/20170812123800/http://www.jaygalbraith.com/component/rsfiles/download-file/files?path=3Dwhitepapers%2Fdesigninginnovatingorg.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Hess, Edward D. (August 2014). Why Is Innovation So Hard? Retrieved from &lt;a href="https://web.archive.org/web/20170105015034/http:/www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd"&gt;https://web.archive.org/web/20170105015034/http://www.forbes.com:80/sites/darden/2014/08/04/why-is-innovation-so-hard/#4fd5e64046fd&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Hamel, Gary and Tennant, Nancy. (April 2015). The 5 Requirements of a Truly Innovative Company. Retrieved from &lt;a href="https://web.archive.org/web/20180126024656/https:/hbr.org/2015/04/the-5-requirements-of-a-truly-innovative-company"&gt;https://web.archive.org/web/20180126024656/https://hbr.org/2015/04/the-5-requirements-of-a-truly-innovative-company&lt;/a&gt;&lt;!-- 2018, July--&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;For our purposes, let’s define it as a “big new” for your business or a “big different” in how you operate your business.&lt;/p&gt;</summary>
 	</entry>
 </feed>
