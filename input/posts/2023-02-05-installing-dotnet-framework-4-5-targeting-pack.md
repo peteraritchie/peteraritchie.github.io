@@ -3,7 +3,7 @@ layout: post
 title: 'Installing .NET Framework 4.5 Targeting Pack'
 categories: ['Azure', 'Azure Administrator Associate (AZ-104)']
 comments: true
-excerpt: 
+excerpt: If you need to install the now unsupported .NET Framework 4.5 targeting pack, use Visual Studio 2019 Community Edition installer.
 tags: ['February 2023']
 ---
 ![When working in an IDE seems like working with crayons](/assets/DALL·E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png)
