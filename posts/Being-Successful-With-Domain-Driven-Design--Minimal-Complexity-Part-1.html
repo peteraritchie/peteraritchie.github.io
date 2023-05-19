@@ -1,0 +1,228 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Being Successful With Domain-Driven Design: Minimal Complexity, Part 1</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Being Successful With Domain-Driven Design: Minimal Complexity, Part 1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Being Successful With Domain-Driven Design: Minimal Complexity, Part 1</h1>
+    <div class="meta">        
+Published on Friday, May 19, 2023<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/May-2023" class="btn btn-default btn-xs">May 2023</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="/assets/concepts-contexts-and-boundaries.jpg" class="img-fluid" alt="Concepts, Context, and Boundaries. Abstract Thought" />
+The Domain-Driven Design book (the &quot;Blue Book&quot;) includes &quot;Tackling complexity at the heart of software&quot; in the title. While &quot;complexity&quot; can be subjective, the takeaway is that Domain-Driven Design intends to address complex software systems. The principles and practices in Domain-Driven Design have their complexities, so for Domain-Driven Design to add value, it needs to address existing/expected complexity and attempt to be net-positive for simplicity.</p>
+<p>Interestingly, the title of the Blue Book alludes to questions about <em>what</em> complexity is at the heart of software. Subjectively subjective, but we can look to the intent of some of the patterns and practices to deduce some types of complexity that Domain-Driven Design adequately addresses in the design of software systems.</p>
+<p>For this series, I'll tranche away some of the patterns as essential complexity (essential complexity of <em>both</em> Domain-Driven design and the design of almost all software design):  Entities, Value Objects, Modules, Layered Architecture, Factories, and Repositories. Any modular software system must deal with identity, value, creation, and storage. There's nothing new about layered architecture, but Domain-Driven Design does detail the isolation of specific responsibilities (like Domain and Infrastructure) that I'll cover. Practices like Side-Effect Free Functions, Standalone Classes, Intention-Revealing Interfaces, Continuous Integration, Assertions, and Declarative Style are aspects of long-championed techniques like cohesion, loose-coupling, naming standards, or functional programming (in my opinion).</p>
+<p>None of what I've tranched off are unimportant, but they have been tried and true before Domain-Driven Design, and I want to focus on added value in Domain-Driven Design. To that end, I'll focus on Ubiquitous Language, Bounded Context, Context Map, Aggregates, Services, Domain Layer, Generic Subdomains, Segregated Core, Anti-Corruption Layer, and Core Domain; and touch on Evolving Order.</p>
+<h3 id="clean-concepts-contexts-and-boundaries">Clean Concepts, Contexts, and Boundaries</h3>
+<p>If I had to distill the intent of Domain-Driven Design to a single statement, it might be &quot;be explicit.&quot;  Or, more explicitly: &quot;Be explicit with boundaries.&quot;  Software systems are not the only source (or victim) of complexity. There's a whole science devoted to it: Complex Adaptive Systems. Not to oversimplify Complex Adaptive Systems, but systems with sufficient complexity are inherently unpredictable and exhibit <em>emergent behavior</em>, among other things. Meaning that complex systems will do what they're going to do, and we can only sometimes predict what they will do. Sometimes that emergent behavior is beneficial; sometimes, it isn't. To make systems more predictable (and get the benefits that provides), we have to reduce complexity. The complexity of complex systems arises from the number of dependencies, relationships, and interactions. Each unbounded interconnection increases complexity exponentially.</p>
+<p>Complex adaptive systems theory is why explicit boundaries are a major aspect of how Domain-Driven Design combats complexity in software to produce more reliable and robust systems. Explicitness is important here; we're not looking for any-old boundaries. We're looking to constrain and isolate areas of the system based on purpose, meaning, and intent. We could chalk this up as simply an exercise in cohesion, but Domain-Driven Design focuses on getting to and clarifying that purpose, meaning, and intent.</p>
+<p>Explicitness starts with unambiguous concepts, descriptions, and terms. If people aren't communicating the same concept things aren't going to get simpler. I speak about <em>Naming Things</em>, and part of what makes that difficult, I've decided, is language (or English). Stemming from human nature, we try to classify an ever-increasing set of concepts with a finite set of words, syntax, and semantics. The first step to explicit boundaries is the agreement on what they are: agreement on the concepts and to which explicit context they apply—the Ubiquitous Language.</p>
+<p>The value of Ubiquitous Language isn't just that there is an agreed-upon vocabulary. The added value to a Ubiquitous Language is what it accounts for. The Ubiquitous Language recognizes classifications of concepts, classifications common to most software systems. Classifications that the Ubiquitous Language fosters and isolates: individuals, invariants and consistency rules, operations, processes, collaborations, commands, events, views, and values/properties. By &quot;individuals,&quot; I don't just mean people, but anything that exhibits individuality (aka &quot;entity.&quot;)</p>
+<p>Imagine an amorphous &quot;loan&quot; concept in the financial industry. People apply for loans, obtain loans, and pay back loans. Getting a loan involves evaluating personal information (credit rating, assets, liabilities, etc.). Paying back a loan consists of a term, an interest rate, a payment schedule, etc. Credit rating, assets, liabilities, term, interest rate, and payment schedule are six interconnected concepts. With six concepts (with each having five interconnections to the others), there are 30 interconnections. Or 30 complexity points. But, if we think of these six concepts as two different semi-independent contexts: &quot;loan application&quot; and &quot;loan servicing,&quot; we end up with two contexts (and one interconnection) with three concepts (or three interconnections) totaling six interconnections. We've gone from 30 complexity points to 6 simply by defining the actual contexts better. In other words, we're being more explicit.</p>
+<p>Explicitness like this--delineating elements of a set into two groups connected by a specific relationship--is creating a boundary between two contexts. This is a very simple example of Bounded Context. As the name implies, Bounded Context is an explicit contextual boundary: where one context ends and another begins. This is a domain's macro level, recognizing that Loan Servicing can only happen after Loan Application is successful. This particular boundary is based on a temporal or procedural boundary. Phases or steps are a good way of organizing domains into bounded contexts.</p>
+<p>In these two contexts, the word &quot;loan&quot; exists in both. The word &quot;loan&quot; is used in the application context as well as in the servicing context. But, in the application context, the meaning is really &quot;loan application,&quot; and in the servicing context, it really means &quot;serviced loan&quot;. Understanding that servicing depends on an approval event in a loan application phase (or activity) allows us to realize an explicit boundary. Sometimes it's as easy as this, but often it's not. There are other ways of teasing out boundaries (or contexts), almost always involving vocabulary elements.</p>
+<p>Sometimes you've got overloaded terms like &quot;loan&quot;; sometimes, you have different terms like different <em>rules</em>. Different rules are typically applied in different scenarios or involve different parameters. Different rules offer a window into recognizing different contexts with a boundary in-between. You may recognize concepts like this (events, operations, rules/invariants) from the larger list I mentioned above. A Ubiquitous Language can also account for individuals and entities, commands (often related to an activity), views (reports, screens, results), collaborations, and attributes or properties attributed to individuals and entities. Additionally, attributes or properties can be involved in criteria, and categories or subtypes may group individuals and entities.</p>
+<p>Working towards a Ubiquitous Language is working towards concepts more independent from each other. Independent concepts are themselves individual contexts. Any defined concept has a defined context with understandable boundaries. Keeping the complexity of one context bound from others keeps the essential complexity within that context and reduces the accidental complexity that arises from blended contexts.</p>
+<p>Domain-Driven Design adds value when you have a minimal complexity, when a subject matter has multiple terms per classification. Terms can be classified as entities, processes, phases, events, rules, views, etc. The focus of this post was a level of complexity where boundaries are recognizable in the nuances of the vocabulary. In future posts, I'll dig deeper into different the subject matter (or domain) classifications, how you can isolate the complexities of each, and the parts of Domain-Driven Design that apply.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1'
+    'Being Successful With Domain-Driven Design: Minimal Complexity, Part 1'
+    'http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/19/23');
+    console.info('Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Being Successful With Domain-Driven Design: Minimal Complexity, Part 1';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2023
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
