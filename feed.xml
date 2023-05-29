@@ -5,8 +5,32 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2023</copyright>
-		<pubDate>Fri, 19 May 2023 15:55:37 GMT</pubDate>
-		<lastBuildDate>Fri, 19 May 2023 15:55:37 GMT</lastBuildDate>
+		<pubDate>Mon, 29 May 2023 19:39:05 GMT</pubDate>
+		<lastBuildDate>Mon, 29 May 2023 19:39:05 GMT</lastBuildDate>
+		<item>
+			<title>Being Successful with Domain-Driven Design: Minimal Complexity, Part 2</title>
+			<link>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2</link>
+			<description>&lt;p&gt;In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain &lt;em&gt;concepts&lt;/em&gt;. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2</guid>
+			<pubDate>Mon, 29 May 2023 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain &lt;em&gt;concepts&lt;/em&gt;. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):&lt;/p&gt;
+&lt;p&gt;&lt;img src="/assets/ddd-pattern-language.png" class="img-fluid" alt="ddd-pattern-language" /&gt;&lt;/p&gt;
+&lt;p&gt;Isolating individual concepts, naming them, and detailing how they relate allows each to be thought about independently.  We can focus on parts of &amp;quot;Domain-Driven Design&amp;quot; because a Context Map details that isolation.&lt;/p&gt;
+&lt;p&gt;I'll dig deeper into the Aggregate and Service patterns in this part two. Aggregate and Service enable and embody major domain concepts.&lt;/p&gt;
+&lt;p&gt;An aggregate is the realization of a logical consistency boundary and the operations contributing to that consistency. An aggregate is a composition of several domain objects: At least one entity object and usually several value objects. Each domain object maintains its own consistency (it has invariants.) A date is a composition of a day, month, and year, but February 31, 1981 is not a valid date.  We differentiate an aggregate from any grouping of domain objects because of the invariants and rules beyond that of simply a collection of consistent domain objects. An aggregate models that cross-object consistency requirement.&lt;/p&gt;
+&lt;p&gt;Aggregates map to major domain concepts and significant domain behavior associated with a particular domain object (the root). The root is the object of behavior and acts as a gateway to the other objects the aggregate comprises. The root takes on the responsibility of maintaining the consistency of the entire aggregate. The complexity of that composition and the consistency are separated from complexities outside the natural boundary of the aggregate.&lt;/p&gt;
+&lt;p&gt;An aggregate is not a design choice; it is a natural role that a major domain entity plays in the domain that requires recognition in a domain model. Some domain entities naturally take on certain behavior that affects other domain objects. All the behavior must happen in certain ways and have expectedly consistent results. Those consistent results (or state) abide by rules and invariants--it's consistent &lt;em&gt;because&lt;/em&gt;... With a loan application, for example, there's no such thing as having negative assets (particularly: it's not a consistent loan application when it contains assets with negative value.) If you &lt;em&gt;owe&lt;/em&gt; money, that's a liability.&lt;/p&gt;
+&lt;p&gt;When understanding and modeling a domain, I like to accurately map behavior to domain concepts that logically have that (or any) behavior. Sometimes it's easy to mis-associate behavior with static concepts when those are the major concepts in the domain. A loan, for example, is a major concept in many financial domains, but it does not exhibit behavior; it's static. A loan is the subject of many behaviors in a financial domain but is just a contract (or a specification.) We know we have complexity to deal with. Mis-associating behavior reduces clarity, making things needlessly more complex.&lt;/p&gt;
+&lt;p&gt;Starting out understanding a domain, I find focusing primarily on behavior and activities useful. Everything else in a domain is ultimately the subject of a behavior or activity, so I don't model them explicitly. For example, the role of underwriter &lt;em&gt;approves&lt;/em&gt; a loan application. A loan application can be approved when the following rules are satisfied: a) the Debt-To-Income Ratio is below 43%, and b) etc... Debt-To-Income Ratio is modeled as an attribute of a loan application and covered in the activity of Approving a Loan. Information that isn't the object of a behavior also adds needless complexity.&lt;/p&gt;
+&lt;p&gt;When certain logic doesn't require a single object or doesn't require a &lt;em&gt;particular state&lt;/em&gt; and requires &lt;em&gt;particular objects&lt;/em&gt;, it might not be accurate to model the logic as part of an &lt;em&gt;aggregate&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A Service is the realization of a collaboration between several objects. The concept of that service exists because it is not the natural behavior of a domain &lt;em&gt;entity&lt;/em&gt;. A Domain Service is the realization of a collaboration between one or more domain entities. It involves business logic and or business rules that may affect the state of those domain entities. An application service is the realization of a collaboration between one or more domain services, domain objects, and an infrastructure service. And an infrastructure service is a collaboration with a framework or the &amp;quot;outside.&amp;quot;  The Service pattern recognizes complexity by isolating logic that is otherwise unrelated.&lt;/p&gt;
+&lt;p&gt;Look again at the Domain-Driven Design pattern language. If we always had to deal with all the complexities detailed in that diagram, it would be much harder to get things done promptly. The fact that the concepts are delineated and we can deal with them in isolation simplifies working with them. Separating interaction-only logic into a separate service from the object behavior affecting their state means we can think about and work with those concepts in isolation. Those concepts are now more loosely-coupled, and we obtain the benefits of loose coupling.&lt;/p&gt;
+&lt;p&gt;These definitions are easy enough to understand but can be confusing when it comes time to put them into practice. Sometimes the confusion stems from a backward approach to implementing software systems. Teams work backward from patterns when looking for the opportunity to use patterns. It's more successful in understanding the domain and then matching domain concepts to patterns and practices. For example, I've seen people approach a domain with questions like &amp;quot;What are all the entities?&amp;quot; or &amp;quot;What are all the services?&amp;quot;  While we might be able to answer those questions after we've understood the domain and started to design solutions, approaching it from that perspective at that stage of understanding can pervert the interpretation of the domain. Services can be hard to recognize and implement when the domain concepts are not yet clearly isolated.&lt;/p&gt;
+&lt;p&gt;Sometimes it can be easy to delineate interaction logic in a collaboration from the business logic; often, it is not. In a financial domain, &lt;em&gt;transferring funds&lt;/em&gt; as a capability can be easily viewed as the behavior of an account, for example. It involves accounts, obviously, so why would it not be an &lt;em&gt;account behavior&lt;/em&gt;? But what happens when transferring funds? The situation's complexity comes from the fact that more than one account is involved, and the consistency of each account needs to be managed independently of the other(s).  A funds transfer succeeds or fails, but has no state of its own--any change in state is encapsulated in the objects participating in the collaboration.&lt;/p&gt;
+&lt;p&gt;A clear understanding of the domain concepts is vital to project the isolation of those concepts into design elements more accurately. Modeling domain knowledge requires the delineation and understanding of the concepts as well as correctly associating all the behavior and attributes of those concepts. Maintaining this model is a process of managing complexity, but it only happens in stages. Managing these complexities is an ongoing and iterative process. The more complex a domain is, knowledge fragmentation amongst domain experts is more likely. It's highly unlikely that a single person completely understands the domain. This knowledge fragmentation is one reason we model the domain iteratively, recognizing that understanding evolves over time.&lt;/p&gt;
+&lt;p&gt;The Aggregate and Service patterns model parts of the domain similarly but provide a means to recognize separate parts of the domain: independent of the level at which they apply as well as how they affect state.  Service operates at a higher level to model an activity, a collaboration of objects.  An aggregate is the composition of several domain objects that must abide by the same invariants and be consistent in the presence of each other.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Being Successful With Domain-Driven Design: Minimal Complexity, Part 1</title>
 			<link>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1</link>
@@ -1421,124 +1445,6 @@ icon-looking button, drag and drop this fist (fight the power) to accomplish the
 &lt;p&gt;See also Introduce Parameter Object refactoring.&lt;/p&gt;
 &lt;h3 id="use-of-iconfiguration-outside-of-startup-or-bootstrap"&gt;Use of &lt;code&gt;IConfiguration&lt;/code&gt; outside of &lt;code&gt;Startup&lt;/code&gt; or bootstrap&lt;/h3&gt;
 &lt;p&gt;See &lt;a href="#1-2"&gt;1.2&lt;/a&gt;.  Use of &lt;code&gt;IConfiguration&lt;/code&gt; outside of &lt;code&gt;Startup&lt;/code&gt; or bootstrap means you're coupling many classes to &lt;code&gt;IConfiguraiton&lt;/code&gt;.&lt;/p&gt;
-&lt;h1 id="references"&gt;References&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://msdn.microsoft.com/en-us/magazine/mt632279.aspx"&gt;MSDN Magazine - Essential .NET - Configuration in .NET Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1"&gt;Microsoft Docs - Options pattern in ASP.NET Core&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Supporting Structured Dynamic Configuration in ASP.NET Core appsettings</title>
-			<link>http://blog.peterritchie.com/posts/Supporting%20Structured%20Dynamic%20Configuration%20in%20ASP.NET%20Core</link>
-			<description>&lt;p&gt;Let's look at a couple of isolated examples of ASP.NET Core configuration, options, and appsettings to set a scope:&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Supporting%20Structured%20Dynamic%20Configuration%20in%20ASP.NET%20Core</guid>
-			<pubDate>Fri, 21 Sep 2018 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;h2 id="configuration-in-asp.net-core-a-brief-retrospection"&gt;Configuration in ASP.NET Core, a Brief Retrospection&lt;/h2&gt;
-&lt;p&gt;Let's look at a couple of isolated examples of ASP.NET Core configuration, options, and appsettings to set a scope:&lt;/p&gt;
-&lt;p&gt;ASP.NET Core is very flexible and powerful with regard to configuration and options.  One of the features is the ability to bind configuration (textual information) to a concrete type and support strongly-typed configuration.  For example, with the following appsettings:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-JSON"&gt;{
-  &amp;quot;option1&amp;quot;: &amp;quot;value1_from_json&amp;quot;,
-  &amp;quot;option2&amp;quot;: -1,
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;A class can be created to structurally contain that data:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MyOptions
-{
-	public string Option1 { get; set; }
-	public int Option2 { get; set; } = 5;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And in your startup, you can either directly bind the data to an instance of the class:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var myOptions = new MyOptions();
-Configuration.Bind(myOptions);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or indirectly bind the data via the &lt;em&gt;Options Pattern&lt;/em&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;services.Configure&amp;lt;MyOptions&amp;gt;(Configuration);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...to be injected into other services that have a constructor parameter of type &lt;code&gt;IOptions&amp;lt;MyOptions&amp;gt;&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;	public ValuesController(IOptions&amp;lt;MyOptions&amp;gt; myOptions)
-	{
-		//...
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="what-is-dynamic-configuration"&gt;What is &lt;em&gt;Dynamic Configuration&lt;/em&gt;?&lt;/h2&gt;
-&lt;p&gt;Dynamic configuration is really about how the configuration data is handled.  The structure of the configuration is the same, but with a looser &amp;quot;schema&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Given the following JSON:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;{
-  &amp;quot;ConnectionStrings&amp;quot;:
-  {
-    &amp;quot;BloggingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...and much like above, you &lt;em&gt;can&lt;/em&gt; bind it to classes like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class ConnectionStrings
-{
-	public string BloggingDatabase {get;set;}
-}
-
-public class MyConfiguration
-{
-	public ConnectionStrings ConnectionStrings {get;set;}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With familiar but specific binding code like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var myConfiguration = new MyConfiguration();
-Configuration.Bind(myConfiguration)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;services.Configure&amp;lt;MyConfiguration&amp;gt;(Configuration);
-// ...and use the type IOptions&amp;lt;MyConfiguration&amp;gt; in constructor
-// parameters for the options to be injected.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For that &lt;code&gt;Bind&lt;/code&gt; or &lt;code&gt;Configure&lt;/code&gt; (which does the &lt;code&gt;Bind&lt;/code&gt; for you) to work, the &lt;code&gt;ConnectionStrngs&lt;/code&gt; class requires the &lt;code&gt;BloggingDatabase&lt;/code&gt; property so it can match the name in the config.&lt;/p&gt;
-&lt;p&gt;The &amp;quot;dynamic&amp;quot; part is when you want to support user-supplied key names and/or variable quantities of key/value pairs. If a user added another connection string, we'd be unable to support it without a redeployment, for example another connection string in the config:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;{
-  &amp;quot;ConnectionStrings&amp;quot;:
-  {
-    &amp;quot;BloggingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;&amp;quot;,
-    &amp;quot;AuditingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.AuditDb;Trusted_Connection=True;&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We'd have to update our ConnectionStrings class to support the new connection string value.  You can imagine that connection strings are unique to each app, so there's no way to create one class to handle every scenario.&lt;/p&gt;
-&lt;p&gt;But, in the end, ASP.NET Core configuration/options are really just a set of key/value pairs, you &lt;strong&gt;can support user-supplied names like this using a dictionary&lt;/strong&gt;.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MyConfiguration
-{
-	public Dictionary&amp;lt;string, string&amp;gt; ConnectionStrings {get;set;}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And rather than &lt;code&gt;myConfiguration.ConnectionStrings.BloggingDatabase&lt;/code&gt; to access the value, it would be &lt;code&gt;myConfiguration.ConnectionStrings[&amp;quot;BloggingDatabase&amp;quot;]&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Binding would be the same:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var myConfiguration = new MyConfiguration();
-Configuration.Bind(myConfiguration)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;services.Configure&amp;lt;MyConfiguration&amp;gt;(Configuration);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This technique also supports the ability to more easily reference keys as values of other configuration keys.  Let's say that I want to have my connection strings in one place and configure other things to use those connection string (e.g. shared).  You might consider a JSON config that looks like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;{
-  &amp;quot;ConnectionStrings&amp;quot;: {
-    &amp;quot;BloggingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;&amp;quot;,
-    &amp;quot;AuditingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.AuditDb;Trusted_Connection=True;&amp;quot;
-  },
-  &amp;quot;Repositories&amp;quot;: {
-    &amp;quot;BlogEntryController&amp;quot; : {
-      &amp;quot;Type&amp;quot;: &amp;quot;Infrastructure.Persistence.SqlServer.SqlServerRepository, aipss, Version=1.7.1.0, Culture=neutral, PublicKeyToken=80e841a370b13835&amp;quot;,
-      &amp;quot;Argument&amp;quot;: &amp;quot;BloggingDatabase&amp;quot;
-    },
-    &amp;quot;BlogEntryControllerAudit&amp;quot; : {
-      &amp;quot;Type&amp;quot;: &amp;quot;Infrastructure.Persistence.SqlServer.SqlServerRepository, aipss, Version=1.7.1.0, Culture=neutral, PublicKeyToken=80e841a370b13835&amp;quot;,
-      &amp;quot;Argument&amp;quot;: &amp;quot;AuditDatabase&amp;quot;
-    },
-    &amp;quot;AdminControllerAudit&amp;quot; : {
-      &amp;quot;Type&amp;quot;: &amp;quot;Infrastructure.Persistence.SqlServer.SqlServerRepository, aipss, Version=1.7.1.0, Culture=neutral, PublicKeyToken=80e841a370b13835&amp;quot;,
-      &amp;quot;Argument&amp;quot;: &amp;quot;AuditDatabase&amp;quot;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id="references"&gt;References&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://msdn.microsoft.com/en-us/magazine/mt632279.aspx"&gt;MSDN Magazine - Essential .NET - Configuration in .NET Core&lt;/a&gt;&lt;/li&gt;

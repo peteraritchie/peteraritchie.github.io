@@ -1,0 +1,228 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Being Successful with Domain-Driven Design: Minimal Complexity, Part 2</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Being Successful with Domain-Driven Design: Minimal Complexity, Part 2" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Being Successful with Domain-Driven Design: Minimal Complexity, Part 2</h1>
+    <div class="meta">        
+Published on Monday, May 29, 2023<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/May-2023" class="btn btn-default btn-xs">May 2023</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain <em>concepts</em>. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):</p>
+<p><img src="/assets/ddd-pattern-language.png" class="img-fluid" alt="ddd-pattern-language" /></p>
+<p>Isolating individual concepts, naming them, and detailing how they relate allows each to be thought about independently.  We can focus on parts of &quot;Domain-Driven Design&quot; because a Context Map details that isolation.</p>
+<p>I'll dig deeper into the Aggregate and Service patterns in this part two. Aggregate and Service enable and embody major domain concepts.</p>
+<p>An aggregate is the realization of a logical consistency boundary and the operations contributing to that consistency. An aggregate is a composition of several domain objects: At least one entity object and usually several value objects. Each domain object maintains its own consistency (it has invariants.) A date is a composition of a day, month, and year, but February 31, 1981 is not a valid date.  We differentiate an aggregate from any grouping of domain objects because of the invariants and rules beyond that of simply a collection of consistent domain objects. An aggregate models that cross-object consistency requirement.</p>
+<p>Aggregates map to major domain concepts and significant domain behavior associated with a particular domain object (the root). The root is the object of behavior and acts as a gateway to the other objects the aggregate comprises. The root takes on the responsibility of maintaining the consistency of the entire aggregate. The complexity of that composition and the consistency are separated from complexities outside the natural boundary of the aggregate.</p>
+<p>An aggregate is not a design choice; it is a natural role that a major domain entity plays in the domain that requires recognition in a domain model. Some domain entities naturally take on certain behavior that affects other domain objects. All the behavior must happen in certain ways and have expectedly consistent results. Those consistent results (or state) abide by rules and invariants--it's consistent <em>because</em>... With a loan application, for example, there's no such thing as having negative assets (particularly: it's not a consistent loan application when it contains assets with negative value.) If you <em>owe</em> money, that's a liability.</p>
+<p>When understanding and modeling a domain, I like to accurately map behavior to domain concepts that logically have that (or any) behavior. Sometimes it's easy to mis-associate behavior with static concepts when those are the major concepts in the domain. A loan, for example, is a major concept in many financial domains, but it does not exhibit behavior; it's static. A loan is the subject of many behaviors in a financial domain but is just a contract (or a specification.) We know we have complexity to deal with. Mis-associating behavior reduces clarity, making things needlessly more complex.</p>
+<p>Starting out understanding a domain, I find focusing primarily on behavior and activities useful. Everything else in a domain is ultimately the subject of a behavior or activity, so I don't model them explicitly. For example, the role of underwriter <em>approves</em> a loan application. A loan application can be approved when the following rules are satisfied: a) the Debt-To-Income Ratio is below 43%, and b) etc... Debt-To-Income Ratio is modeled as an attribute of a loan application and covered in the activity of Approving a Loan. Information that isn't the object of a behavior also adds needless complexity.</p>
+<p>When certain logic doesn't require a single object or doesn't require a <em>particular state</em> and requires <em>particular objects</em>, it might not be accurate to model the logic as part of an <em>aggregate</em>.</p>
+<p>A Service is the realization of a collaboration between several objects. The concept of that service exists because it is not the natural behavior of a domain <em>entity</em>. A Domain Service is the realization of a collaboration between one or more domain entities. It involves business logic and or business rules that may affect the state of those domain entities. An application service is the realization of a collaboration between one or more domain services, domain objects, and an infrastructure service. And an infrastructure service is a collaboration with a framework or the &quot;outside.&quot;  The Service pattern recognizes complexity by isolating logic that is otherwise unrelated.</p>
+<p>Look again at the Domain-Driven Design pattern language. If we always had to deal with all the complexities detailed in that diagram, it would be much harder to get things done promptly. The fact that the concepts are delineated and we can deal with them in isolation simplifies working with them. Separating interaction-only logic into a separate service from the object behavior affecting their state means we can think about and work with those concepts in isolation. Those concepts are now more loosely-coupled, and we obtain the benefits of loose coupling.</p>
+<p>These definitions are easy enough to understand but can be confusing when it comes time to put them into practice. Sometimes the confusion stems from a backward approach to implementing software systems. Teams work backward from patterns when looking for the opportunity to use patterns. It's more successful in understanding the domain and then matching domain concepts to patterns and practices. For example, I've seen people approach a domain with questions like &quot;What are all the entities?&quot; or &quot;What are all the services?&quot;  While we might be able to answer those questions after we've understood the domain and started to design solutions, approaching it from that perspective at that stage of understanding can pervert the interpretation of the domain. Services can be hard to recognize and implement when the domain concepts are not yet clearly isolated.</p>
+<p>Sometimes it can be easy to delineate interaction logic in a collaboration from the business logic; often, it is not. In a financial domain, <em>transferring funds</em> as a capability can be easily viewed as the behavior of an account, for example. It involves accounts, obviously, so why would it not be an <em>account behavior</em>? But what happens when transferring funds? The situation's complexity comes from the fact that more than one account is involved, and the consistency of each account needs to be managed independently of the other(s).  A funds transfer succeeds or fails, but has no state of its own--any change in state is encapsulated in the objects participating in the collaboration.</p>
+<p>A clear understanding of the domain concepts is vital to project the isolation of those concepts into design elements more accurately. Modeling domain knowledge requires the delineation and understanding of the concepts as well as correctly associating all the behavior and attributes of those concepts. Maintaining this model is a process of managing complexity, but it only happens in stages. Managing these complexities is an ongoing and iterative process. The more complex a domain is, knowledge fragmentation amongst domain experts is more likely. It's highly unlikely that a single person completely understands the domain. This knowledge fragmentation is one reason we model the domain iteratively, recognizing that understanding evolves over time.</p>
+<p>The Aggregate and Service patterns model parts of the domain similarly but provide a means to recognize separate parts of the domain: independent of the level at which they apply as well as how they affect state.  Service operates at a higher level to model an activity, a collaboration of objects.  An aggregate is the composition of several domain objects that must abide by the same invariants and be consistent in the presence of each other.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2'
+    'Being Successful with Domain-Driven Design: Minimal Complexity, Part 2'
+    'http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/29/23');
+    console.info('Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Being Successful with Domain-Driven Design: Minimal Complexity, Part 2';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2023
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
