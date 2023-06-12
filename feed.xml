@@ -5,8 +5,51 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2023</copyright>
-		<pubDate>Mon, 29 May 2023 19:39:05 GMT</pubDate>
-		<lastBuildDate>Mon, 29 May 2023 19:39:05 GMT</lastBuildDate>
+		<pubDate>Mon, 12 Jun 2023 21:03:36 GMT</pubDate>
+		<lastBuildDate>Mon, 12 Jun 2023 21:03:36 GMT</lastBuildDate>
+		<item>
+			<title>Being Successful with Domain-Driven Design: Minimal Complexity, Part 3</title>
+			<link>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-3</link>
+			<description>&lt;p&gt;&lt;img src="/assets/complex-relationships.jpg" class="img-fluid" alt="complex-relationships"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-3</guid>
+			<pubDate>Mon, 12 Jun 2023 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="/assets/complex-relationships.jpg" class="img-fluid" alt="complex-relationships" /&gt;&lt;/p&gt;
+&lt;p&gt;With a name like &amp;quot;Domain-Driven Design,&amp;quot; it should be no surprise there is a major focus on the domain and has a huge influence on implementation. We've focused mostly on strategic design patterns and practices like Ubiquitous Language, Bounded Context, etc. But I've also covered a bit of tactical design and implementation. I've transitioned from strategical patterns--that deal with being explicit with domain concepts (Ubiquitous Language, Bounded Contexts)--to tactical patterns that have focused on directly translating domain concepts into code structure or coding patterns (like Services and Aggregates.)&lt;/p&gt;
+&lt;p&gt;The concepts and their consistency boundaries are only a couple of things that contribute to the complexity of non-trivial domains. For example, the work required to implement a domain is independent of its concepts and consistency boundaries. Additionally, the system's quality attributes and technical constraints are major influencers on the internal structure of that system. The next set of Domain-Driven Design patterns I'll get into (&lt;em&gt;tactical&lt;/em&gt; patterns) aid in this respect. As we get closer to implementation, the focus turns more towards isolating domain complexity from implementation complexities.&lt;/p&gt;
+&lt;p&gt;As with many things in Domain-Driven Design, &lt;em&gt;x&lt;/em&gt; for the sake of &lt;em&gt;x&lt;/em&gt; is not the intention. Many things in most methodologies can be regurgitated and used by rote, providing little to no value. The principles and practices in Domain-Driven Design are best utilized with purpose and intent. Architectural layering is a good example. Each layer needs a reason for being (a purpose) with unidirectional  independence of its concepts from another layer's concepts. Just any two groupings won't do; without the purposeful intent of having two layers with a unidirectional dependency, you'll never gain the benefits of layering. You end up with the added burden of managing a structure that does not give you any layered benefits.&lt;/p&gt;
+&lt;p&gt;The minimum complexity for layers is that two groups of concepts (contexts) are uni-directionally interdependent. In Domain-Driven Design, those layers focus on isolating the concerns of a User Interface, Application, Domain, and Infrastructure.&lt;/p&gt;
+&lt;p&gt;The Application layer may seem unique to Domain-Driven Design. There are few patterns/methodologies that isolates the concern that the application layer deals with. Ports and Adapters (Hexagonal) and, by extension, Clean Architecture recognize and isolate high-level &lt;em&gt;use cases&lt;/em&gt; from both the domain and the implementation details of a UI. This is the role of the Application layer in Domain-Driven Design to further isolate the domain from how any use case uses the domain (a use case &lt;em&gt;applies&lt;/em&gt; or &lt;em&gt;realizes&lt;/em&gt; the domain). In Ports and Adapters, uses-cases (or, as Cockburn describes, uses-cases) are sequences of interactions between the system and users/actors. With the recognition of these interactions, they can now be isolated as collaborations within the Application layer.&lt;/p&gt;
+&lt;p&gt;There are other patterns that isolate interaction behavior structurally within collaborations like the Adapter pattern, but I'll save that for another day.&lt;/p&gt;
+&lt;p&gt;A UI may have to deal with different form factors, communication protocols, execution contexts, etc. A loosely coupled UI involves designing an interface that takes all of those things into consideration to be successful. A web-based UI requires a backend that supports open protocols and standards. Protocols and standards relating to implementation or delivery are merely constraints on how a system is implemented. At some level, the domain needs to operate correctly regardless of those constraints.&lt;/p&gt;
+&lt;p&gt;Layers are like different team roles, all working together simultaneously to accomplish specific types of goals. Bounded contexts are also like multiple teams, sometimes like a night shift and a day shift or an on-shore and an off-shore team. These types of teams work with some level of independence: shifts may never work together simultaneously, and on- and off-shore teams only work together for a brief time with much more structured communication.&lt;/p&gt;
+&lt;p&gt;Recognizing and planning for how teams contribute to the same goals is key for these teams to be effective. It's the recognition that different parts of a larger system need different levels of independence. With teams, this is to utilize resources effectively: like how shifts can use limited resources (human skills) across more of the day (e.g., 24 hours instead of 8.)  Conway's law is just an observation (i.e., a reality). A team (or teams) structure imposes a means and cadence to communication. How often and the way inter-team communications occurs has implicit limits on that communication.&lt;/p&gt;
+&lt;p&gt;Recognizing and working with that communications structure can make teams much more successful. Domain-Driven Design makes domains and sub-domains first-class citizens within the practices. Many aspects of architectural and social boundaries can affect the release of a product. A Bounded Context is more than a consistency boundary or scope of a domain model. A Bounded Context also involves work products (deployments, deliverables) and team organization.&lt;/p&gt;
+&lt;p&gt;For example, the consistency boundary of a mortgage loan application becoming complete and submitted is a fairly obvious boundary and context. Still, the amount of work involved to support that might be fairly large. The number of people implementing and supporting that context might amount to several teams. The complexity of dealing with several teams of people to deliver parts of the same system can be enormous. Domain-Driven Design also gives us some patterns and practices to address those complexities. You may need to split a domain into more bounded contexts because one context is too complex for a single team to manage. When we start to talk about separating work across teams, we're still talking about bounded contexts. For similar reasons, you may need to split a domain into more bounded contexts (and thus &amp;quot;sub-domains&amp;quot;) simply because of an existing team or reporting structure.&lt;/p&gt;
+&lt;p&gt;For delivery to be more successful, it's important to recognize the different teams, reporting structures, team motivations, and missions within the strategic design of the Bounded Contexts. How two teams and how the work product of those two teams interact is unique. Fortunately, there are some patterns to address the dependencies between two teams and their work products that help us address their inherent complexities. I'm assuming there's always some degree of interdependency and independence, and I'm ignoring mutually independent (Separate Ways) and Big Ball of Mud relationships/structures.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;It's worth noting that as soon as two contexts are recognized the need to translate between the two becomes a reality. As context become complex to the point of being bounded context so too does the need to recognize and isolate translation. Much of what we do in Domain-Driven Design is the isolation of concepts, concerns, responsibilities, etc. The need for a translation layer is no different.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is a spectrum to the degree of independence of two teams and or the independence of their work products. The teams are very dependent on one end, while the other is extremely independent. With Domain-Driven Design, very dependent teams exhibit a lot of domain overlap. With a lot of domain overlap, you can have an interdependence where teams work as equals or partners. This partnership can manifest in an early re-org of people working on existing or legacy systems. That partnership may start with different teams working on separate parts of the codebase. This partnership may only be one step in the evolution of the teams; the next step is often to organize teams toward the Shared Kernel model.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;A spectrum of options is a synonym for &lt;em&gt;infinite combinations&lt;/em&gt;. It's nice to have flexibility, but an endless set of possibilities is hard to map to a finite set of patterns, and it's hard to use established practices if every situation is novel. There are some ideas and structures that Domain-Driven Design details to add some granularity to the domain we're modeling so that we can more easily map complexity to the patterns and practices that address them.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the Shared Kernel model, the team carves off a separate shared codebase or a shared component to contain all the things that two or more teams will always or almost always mutually require. A Shared Kernel model involves organizational behavior, like specific responsibilities, code areas, accountability, etc. But Shared Kernel is a fairly casual relationship. With more formality between two teams or components, you usually see an Upstream/Downstream relationship form. It is easy to view the users of the Shared Kernel downstream dependents and evolve to a more formal Upstream/Downstream relationship. A Customer/Supplier model may emerge in cases like this.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;A shared codebase is more casual than a shared component, but a shared component promotes more independence. At the component level, it's important to ensure that autonomy hasn't allowed the teams to deviate from a shared plot, which Continuous Integration is intended to address. The component should be integrated with client code at every opportunity. The intent of a Published Language is for all contexts to be on the same page in understanding that domain. It's not that all contexts will adopt the published language as their domain, but they know how to translate in and out of their domain.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the Customer/Supplier model, one team owns a component the other uses as the consumer of the component's capabilities. The team that owns the component is the Supplier, and the team that uses it is the Customer. With this model comes organizational behavior with more specific responsibilities, more planning, and scheduling. With this increased independence, the supplier team has very specific goals in which the customer team has a stake and influence, represented in a release cadence and a roadmap. The Customer is usually the driver of what capabilities the component provides next. The integration model of Customer/Supplier is usually a web service.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;In a Upstream/Downstream model, there will almost always be some form of Published Language--usually more formal than just a description, often a specification. Translation becomes more formal in a Upstream/Downstream model, often resulting in a translation layer. If the Upstream/Downstream relationship is between two Bounded Contexts with a high degree of independence an Anticorruption Layer is used on one side to manage the differences communicating between the two domains.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Shared kernel and two-team customer/supplier relationships often exist due to the reporting structure or that reporting structure was created to split work across two teams. In a more product-focused organization, you may have a Customer/Supplier model with more than one customer. Multi-customer relationships can be witnessed in larger organizations with things like shared libraries. The customers are still driving the capabilities that the component and team provide them, but it can become more formal to manage the unique requirements of different customers. The supplier team is often more organized or formal and may have more of a product strategy with a product vision and mission that helps guide their work.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;With more formal relationships come more formal expectations. Those expectations may come in the form of specifications and processes. Continuous Integration is an example of a process that continuously validates integrability. Potentially less formal than a specification may be a Published Language--which in its simplest form is a description of the concepts of a domain. (more complex forms would be varying degrees of specifications.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Communications with a customer/supplier model within the same organization can be informal. What the team is working on and how they interact with customers might be more like partnerships; teams may work closely together to implement and integrate components. The number of customers or distance from customers can impact this informalness. The further away a customer is (different division, different organization, different company) may impose more formality to the relationship. The work product of the supplier team may be viewed more like a product. And while customers may drive that product, it may be much more formal to the point where the component is independent of any single customer. This type of relationship may be structured more like a service with a very specific or well-specified interface. Moving towards a well-specified interface is the intent of an Open Host Service where the component is remotely accessed (a service) with a specified protocol and interface.&lt;/p&gt;
+&lt;p&gt;As a customer has less influence on a service, they may become completely dependent on the supplier team to provide the capabilities they require. They accept the risk that the supplier team may not provide the necessary capabilities in the future. This is extreme, and either no organization would accept this risk, or it is a temporary relationship. In reality, the different models aren't mutually exclusive, but there is a tendency towards one of them. e.g., a relationship tends to be less like a customer/supplier relationship and more like one completely conforming to another. The recognition of this relationship is called the Conformist model.&lt;/p&gt;
+&lt;p&gt;highlight: Recognize change will happen but don't try to create a design that accommodates all change.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Being Successful with Domain-Driven Design: Minimal Complexity, Part 2</title>
 			<link>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2</link>
@@ -1280,176 +1323,6 @@ icon-looking button, drag and drop this fist (fight the power) to accomplish the
 &lt;a href="javascript: (function () { document.oncopy = null;})();"&gt;✊&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Now when you get one of those websites, click that bookmarklet and copy to clipboard All. You. Want.&lt;/p&gt;
 &lt;p&gt;If you have any similar tips and tricks, please share with a comment!&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>ASP.NET Core Configuration Recommended Practices</title>
-			<link>http://blog.peterritchie.com/posts/ASP.NET%20Core%20Configuration%20Recommended%20Practices</link>
-			<description>&lt;p&gt;&lt;em&gt;ASP.NET Core&lt;/em&gt; and &lt;em&gt;ASP.NET Core Configuration&lt;/em&gt; build upon some fundamental and important principles to maintain its vision.  Having worked with some of those principles for years and more recently working with ASP.NET Core Configuration and guiding other team members, I've come up with a recommended practices view of the principles through the eyes of ASP.NET implementation examples.  It has helped me to have a deconstructed view of ASP.NET Core (and many other things) with those principles in mind, I hope it helps you too.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/ASP.NET%20Core%20Configuration%20Recommended%20Practices</guid>
-			<pubDate>Mon, 24 Sep 2018 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;em&gt;ASP.NET Core&lt;/em&gt; and &lt;em&gt;ASP.NET Core Configuration&lt;/em&gt; build upon some fundamental and important principles to maintain its vision.  Having worked with some of those principles for years and more recently working with ASP.NET Core Configuration and guiding other team members, I've come up with a recommended practices view of the principles through the eyes of ASP.NET implementation examples.  It has helped me to have a deconstructed view of ASP.NET Core (and many other things) with those principles in mind, I hope it helps you too.&lt;/p&gt;
-&lt;p&gt;Some of the principles:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Separation of Concerns&lt;/li&gt;
-&lt;li&gt;Loose coupling&lt;/li&gt;
-&lt;li&gt;Interface Segregation&lt;/li&gt;
-&lt;li&gt;Single Responsibility&lt;/li&gt;
-&lt;li&gt;Dependency Inversion&lt;/li&gt;
-&lt;li&gt;Don't Repeat Yourself&lt;/li&gt;
-&lt;li&gt;Explicit Dependencies&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="compartmentalization-sections-are-your-friends"&gt;1. Compartmentalization: Sections Are Your Friends&lt;/h2&gt;
-&lt;h3 id="do-separate-independent-configuration-groups-by-sections"&gt;&lt;span id=1-1&gt;1.1&lt;/span&gt; &lt;strong&gt;Do&lt;/strong&gt; separate independent configuration groups by sections&lt;/h3&gt;
-&lt;p&gt;One big chunk of configuration (essentially a big chunk of key-value pairs) as the configuration for all the individual components of your application has maintainability issues.  It Works™, but that means that every component that is individually configurable within your application is more tightly-coupled to all the others because there is no explicit abstraction between their settings data.  Something more maintainable is to separate the component configurations from one another by a section in the configuration.  An appsettings.json example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-JSON"&gt;{
-  &amp;quot;Logging&amp;quot; {
-    &amp;quot;Debug&amp;quot;: {
-      &amp;quot;LogLevel&amp;quot;: {
-        &amp;quot;Default&amp;quot;: &amp;quot;Warning&amp;quot;
-      }
-    }
-  }, 
-  &amp;quot;ConnectionStrings&amp;quot;: {
-    &amp;quot;BloggingDatabase&amp;quot;: &amp;quot;Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;&amp;quot;
-  },}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...where the sections are &amp;quot;Logging&amp;quot; and &amp;quot;ConnectionStrings&amp;quot;, and subsections &amp;quot;Debug&amp;quot; and &amp;quot;LogLevel&amp;quot;.&lt;/p&gt;
-&lt;p&gt;ASP.NET does a lot to allow you to be explicit and to support Dependency Inversion, and section separation of configuration will make that and the following recommendations easier.&lt;/p&gt;
-&lt;h3 id="do-not-couple-all-your-classes-to-iconfiguration"&gt;&lt;span id=1-2&gt;1.2&lt;/span&gt; &lt;strong&gt;Do not&lt;/strong&gt; couple all your classes to &lt;code&gt;IConfiguration&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;In the same vein as &lt;a href="#1-1"&gt;1.1&lt;/a&gt;, using a single &lt;code&gt;IConfiguration&lt;/code&gt; instance all over the place is the same as all your components being coupled to each others' configuration.  &lt;code&gt;IConfiguration&lt;/code&gt; &lt;em&gt;is&lt;/em&gt; loosely coupled,  but &lt;em&gt;maintain loose coupling at the class/component level too&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;See also &lt;a href="#Use_of_C#_built-in_types_in_constructor_parameters"&gt;Use of C# built-in types in constructor parameters&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="configuration-isnt-just-appsettings"&gt;2. Configuration Isn't Just &lt;code&gt;appsettings&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;Out of the box, ASP.NET Supports appsettings.json, environment-specific appsettings.json, command-line arguments, environment variables, ini files, XML config files, in-memory data, and any custom source/provider you need.&lt;/p&gt;
-&lt;p&gt;Viewing the application configuration as being manifested by appsettings JSON files is very limiting.  Worse case it becomes an expectation and the ability to change configuration depends on loading appsettings:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;	var builder = new ConfigurationBuilder()
-		.SetBasePath(Directory.GetCurrentDirectory())
-		.AddJsonFile(&amp;quot;appsettings.json&amp;quot;);
-
-	Configuration = builder.Build();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As we'll see, ASP.NET configuration is very powerful and flexible, &lt;em&gt;think of ASP.NET Configuration independently of appsettings and that appsettings is just one part of it&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id="do-think-of-asp.net-configuration-as-a-means-to-a-configuration-management-end"&gt;&lt;span id=2-1&gt;2.1&lt;/span&gt; &lt;strong&gt;Do&lt;/strong&gt; think of ASP.NET configuration as a means to a Configuration Management end&lt;/h3&gt;
-&lt;p&gt;ASP.NET Configuration is powerful; powerful enough to be the application's pane of glass into Configuration Management.  ASP.NET Configuration provides a unified view of the independent variables that affect the success/outcome of application functionality. (think of the application as a function and configuration is the container of &amp;quot;inputs&amp;quot; that affect dependent variables to be observed or measured).&lt;/p&gt;
-&lt;h3 id="do-not-couple-code-to-source-of-configuration-data"&gt;&lt;span id=2-2&gt;2.2&lt;/span&gt; &lt;strong&gt;Do not&lt;/strong&gt; couple code to source of configuration data&lt;/h3&gt;
-&lt;p&gt;ASP.NET Core configuration is powerful and flexible, there is no need for controller, model, or domain classes to know anything about details like appsettings.json, environment variables, etc.  Let ASP.NET Configuration handle all of that heavy lifting so that controller, model, and domain depend only upon abstractions, including these &lt;em&gt;configuration abstractions&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id="consider-using-the-options-pattern-for-grouping-settings"&gt;&lt;span id=2-3&gt;2.3&lt;/span&gt; &lt;strong&gt;Consider&lt;/strong&gt; using the Options Pattern for grouping settings&lt;/h3&gt;
-&lt;p&gt;One of the goals of a Dependency Injection container is to act as a registry--an opt-in mechanism to resolve instances from types and to relieve construction logic from dependents.  Settings, options, and configuration are genuinely unique; they're not object-oriented but data containers or shapes.  As data containers there's an expectation of &amp;quot;default&amp;quot; values and &amp;quot;missing&amp;quot; values and often &amp;quot;missing&amp;quot; means falling back to &amp;quot;defaults&amp;quot;.  But, in an opt-in registry situation, what does that mean?&lt;/p&gt;
-&lt;p&gt;That's what &lt;code&gt;IOptions&lt;/code&gt; does for you, you don't have to know that &amp;quot;defaults&amp;quot; need to be registered or to force the responsibility of knowing what &amp;quot;defaults' mean on a boostrapper.  Using &lt;code&gt;IOptions&amp;lt;T&amp;gt;&lt;/code&gt; in your constructors means you don't have to worry about that.  Using &lt;code&gt;IOptions&amp;lt;T&amp;gt;&lt;/code&gt; is an indirect &lt;em&gt;opt-in of &lt;code&gt;T&lt;/code&gt;&lt;/em&gt;, the container will go ahead and instantiate it if one hasn't already been registered with specific values (it doesn't do that with any other types).  This means the constructor of the options class takes on the responsibility of what &amp;quot;defaults&amp;quot; mean--which is more maintainable.&lt;/p&gt;
-&lt;p&gt;The Pattern is using &lt;code&gt;IOptions&amp;lt;T&amp;gt;&lt;/code&gt; in constructors to inject settings via an instance of &lt;code&gt;T&lt;/code&gt;, and that any configuration is loaded via &lt;code&gt;services.Configure&amp;lt;TOptions&amp;gt;(Configuration.GetSection(&amp;quot;TOptions&amp;quot;))&lt;/code&gt;.  But, a key part of that pattern are &lt;em&gt;the defaults&lt;/em&gt;. So, the shapes you use as &lt;code&gt;TOptions&lt;/code&gt; types should &lt;em&gt;set default values&lt;/em&gt;.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MyOptions
-{
-	public MyOptions()
-	{
-		// Set default value.
-		Option1 = &amp;quot;value1_from_ctor&amp;quot;;
-	}
-
-	public string Option1 { get; set; }
-	public int Option2 { get; set; } = 5;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For more detail, see &lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1"&gt;Options Pattern&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="do-understand-configuration-source-default-precedence"&gt;&lt;span id=2-4&gt;2.4&lt;/span&gt; &lt;strong&gt;Do&lt;/strong&gt; understand configuration source default precedence&lt;/h3&gt;
-&lt;p&gt;When using the ASP.NET Core &lt;code&gt;WebHostBuilder&lt;/code&gt;, the order of precedence of configuration sources is:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;appsettings.json&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;appsettings.&lt;em&gt;env&lt;/em&gt;.json&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;[&lt;span title="Developer"&gt;User&lt;/span&gt; Secrets]&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Environment Variables&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Command Line&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;To be specific, the order of precedence mirrors the order the providers are added to the configuration builder.  The above is really just how &lt;code&gt;WebHostBuilder&lt;/code&gt; implements them.&lt;/p&gt;
-&lt;p&gt;You can override all that if you want, but don't cause yourself that pain: accept the defaults of &lt;code&gt;WebHostBuilder&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id="do-know-how-to-override-settings"&gt;&lt;span id=2-5&gt;2.5&lt;/span&gt; &lt;strong&gt;Do&lt;/strong&gt; know how to override settings&lt;/h3&gt;
-&lt;p&gt;Configuration supports a variety of providers.  Some inherently support structured, complex data; some don't.  JSON is the quintessential example of structured configuration for ASP.NET:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;{
-  &amp;quot;Logging&amp;quot;: {
-    &amp;quot;LogLevel&amp;quot;: {
-      &amp;quot;Default&amp;quot;: &amp;quot;Debug&amp;quot;,
-      &amp;quot;System&amp;quot;: &amp;quot;Information&amp;quot;,
-      &amp;quot;Microsoft&amp;quot;: &amp;quot;Information&amp;quot;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And command-line arguments are the quintessential example of &lt;em&gt;unstructured&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;MyApplication.exe --Verbosity true&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;But, configuration providers translate whatever structure they support into the &lt;em&gt;flat&lt;/em&gt; structure that ASP.NET Core configuration supports.  To do that, providers simply use a colon &lt;code&gt;:&lt;/code&gt; as hierarchy level separators.  So, the &lt;code&gt;Default&lt;/code&gt; key name from the above JSON has a fully-qualified configuration key name of &lt;code&gt;Logging:LogLevel:Default&lt;/code&gt;.  Which means you can override what is in appsettings with key/value pair from anyware, e.g. via the command line:
-&lt;code&gt;MyApplication --Logging:LogLevel:Default Error&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;And to override appsettings values with environment variable values, use a double underscore &lt;code&gt;__&lt;/code&gt; as a hierarchy delimiter instead of a colon hierarchy level delimiter:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;SET Logging__LogLevel__Default=Error&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id="asp.net-core-bootstrapping-is-all-about-the-builder-pattern-and-the-dependency-injection-technique"&gt;3. ASP.NET Core bootstrapping is all about the Builder Pattern and the Dependency Injection technique&lt;/h2&gt;
-&lt;h3 id="do-understand-the-bounds-of-builders-and-utilize-them-correctly"&gt;&lt;span id=3.1&gt;3.1&lt;/span&gt; &lt;strong&gt;Do&lt;/strong&gt; understand the bounds of builders and utilize them correctly&lt;/h3&gt;
-&lt;p&gt;To maintain the level of loose coupling that has lead to ASP.NET Core advancements, builders are essential.  Builders provide the ability to describe (declaratively) what is needed to compose things from dependencies, and avoid coding how (imperatively) to compose things &lt;em&gt;with&lt;/em&gt; dependencies.&lt;/p&gt;
-&lt;p&gt;The flow of things is often useful when getting into advanced situations:&lt;/p&gt;
-&lt;p&gt;Building the web host starts in Program.Main, building configuration spawns from building the web host, configuration is built before spawning Startup from building the web host, Startup is created before configuring services, configuring services completes before application builder, application builder completes before controllers are instantiated, some services may be instantiated after the application builder completes.&lt;/p&gt;
-&lt;p&gt;That flow results in some expectations:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Use the application builder to amend what a built application means.&lt;/li&gt;
-&lt;li&gt;Don't expect to use services with &lt;code&gt;IConfigurationBuilder&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Use the configuration builder only to describe what building configuration means.&lt;/li&gt;
-&lt;li&gt;Don't expect to do any configuration building when services start configuring.&lt;/li&gt;
-&lt;li&gt;Use the services collection to register instances or types for dependencies instead of within the dependencies.&lt;/li&gt;
-&lt;li&gt;Add dependent service information after adding the information for services they depend upon.&lt;/li&gt;
-&lt;li&gt;If service instances are required before service configuration is complete, instantiate them in &lt;code&gt;ConfigureServices&lt;/code&gt; and use them before adding them to the services collection.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Dependency inversion means that the order of operations start is opposite to the order of dependency:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;host→configuration→services→application&lt;/li&gt;
-&lt;li&gt;application⇢services⇢configuration⇢host&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="avoid-constructing-any-instance-that-arent-used-through-services-collection"&gt;&lt;span id=3.2&gt;3.2&lt;/span&gt; &lt;strong&gt;Avoid&lt;/strong&gt; constructing any instance that aren't used through Services Collection&lt;/h3&gt;
-&lt;p&gt;Needing to construct an instance before you've added all dependent services to the services collection is an indication of a potential dependency problem (not inverted, or circular).  So, avoid doing that without a specific reason (besides to Get It To Work™).&lt;/p&gt;
-&lt;h1 id="metrics"&gt;Metrics&lt;/h1&gt;
-&lt;h2 id="smells"&gt;Smells&lt;/h2&gt;
-&lt;p&gt;Some less-measurable things that you can watch for that will help recognize refactoring candidates...&lt;/p&gt;
-&lt;h3 id="use-of-c-built-in-types-in-constructor-parameters"&gt;Use of C# built-in types in constructor parameters&lt;/h3&gt;
-&lt;p&gt;The C# &lt;a href="http://bit.ly/CsharpPrimitives"&gt;built-in&lt;/a&gt; types are the building-blocks for all other complex types.  Parametric Polymorphism and Ad hoc Polymorphism are the language features that allow the compiler and runtimes to differentiate which thing to use while supporting looser coupling.  (e.g. Generics and Function Overloading).  Dependency Inversion depends heavily on Dependency Injection and Dependency Injection depends heavily on that type inference to achieve that level of loose coupling.&lt;/p&gt;
-&lt;p&gt;So, the &lt;em&gt;re-usability of a type&lt;/em&gt; is at odds with how &lt;em&gt;reliably another type&lt;/em&gt; (dependent on that first type for instantiation input) &lt;em&gt;can be used with Dependency Injection&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;For example, I may have a controller that needs a URL, and that URL could be a string parameter:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class NaiveController
-{
-	public NaiveController(string oAuthUrl)
-	{
-		//...
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and I &lt;em&gt;could&lt;/em&gt; use the services collection to inject that URL when the controller is instantiated:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;services.AddSingleton(&amp;quot;http://api.example.com/fugassi&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...and the ASP.NET container can infer that when instantiating a &lt;code&gt;NaiveController&lt;/code&gt; instance.  &lt;strong&gt;But&lt;/strong&gt;, that means you can only have that &lt;em&gt;one&lt;/em&gt; &lt;code&gt;string&lt;/code&gt; object as a service.  If you had another controller that needed a URL, the container wouldn't be able to figure out which string instance to use (if it supported more than one, unnamed).&lt;/p&gt;
-&lt;p&gt;So, when you see the use of built-in types, or very ubiquitous types as inputs to controllers and services, consider refactoring to the Options Pattern or refactoring to a Service.  i.e. it's not just that URL is stored in a built-in type, the &lt;code&gt;Uri&lt;/code&gt; type could have been used instead, and the problem would be the same.  Refactored to Options Pattern:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class NaiveController
-{
-	public NaiveController(IOptions&amp;lt;NaiveControllerOptions&amp;gt; options)
-	{
-		var url = options.Value.OAuthUrl;
-		//...
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Refactoring to a service means that functionality is encapsulated within a service.  In the case of the URL example, rather than creating an options type to store that string value, the controller should actually be dependent on another service that would use that URL value but provide behavior.  Refactoring to a service example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class NaiveController
-{
-	public NaiveController(IOAuthProvider oAuthProvider)
-	{
-		//...
-	}
-}
-//...
-	services.AddSingleton&amp;lt;IOAuthProvider&amp;gt;(new TwitterOAuthProvider(Configuration.OAuthUrl/*...*/));
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is an easy example to understand, but lack of testability of a controller the uses a URL directly might have reared its head before noticing this smell. ¯\_(ツ)_/¯&lt;/p&gt;
-&lt;p&gt;See also Introduce Parameter Object refactoring.&lt;/p&gt;
-&lt;h3 id="use-of-iconfiguration-outside-of-startup-or-bootstrap"&gt;Use of &lt;code&gt;IConfiguration&lt;/code&gt; outside of &lt;code&gt;Startup&lt;/code&gt; or bootstrap&lt;/h3&gt;
-&lt;p&gt;See &lt;a href="#1-2"&gt;1.2&lt;/a&gt;.  Use of &lt;code&gt;IConfiguration&lt;/code&gt; outside of &lt;code&gt;Startup&lt;/code&gt; or bootstrap means you're coupling many classes to &lt;code&gt;IConfiguraiton&lt;/code&gt;.&lt;/p&gt;
-&lt;h1 id="references"&gt;References&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://msdn.microsoft.com/en-us/magazine/mt632279.aspx"&gt;MSDN Magazine - Essential .NET - Configuration in .NET Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-2.1"&gt;Microsoft Docs - Options pattern in ASP.NET Core&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded>
 		</item>
 	</channel>
