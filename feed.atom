@@ -4,15 +4,16 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2023</rights>
-	<updated>2023-06-15T17:03:40Z</updated>
+	<updated>2023-06-15T18:32:30Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/http-and-etag-header-fields</id>
 		<title>HTTP and ETag Header Fields</title>
 		<link href="http://blog.peterritchie.com/posts/http-and-etag-header-fields" />
 		<updated>2023-06-15T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite" /&gt;
-Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the &lt;em&gt;reinvention of the wheel&lt;/em&gt; and recognizing the problem ETags solves after publishing a specification (sometimes both).&lt;/p&gt;
+		<content>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite" /&gt;&lt;/p&gt;
+&lt;p&gt;Update: corrected mention of &lt;code&gt;412&lt;/code&gt; in the context of &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;If-Modified-Since&lt;/code&gt; to &lt;code&gt;304&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the &lt;em&gt;reinvention of the wheel&lt;/em&gt; and recognizing the problem ETags solves after publishing a specification (sometimes both).&lt;/p&gt;
 &lt;p&gt;With *aaS as a Web API, the intention is to have multiple API clients providing access to representations of shared resources. Early in projects like this involves an initial (single) client, so the chances of a client having a stale resource representation are slim. When another client starts to use the API and an update gets accidentally overwritten, things get needlessly complicated.&lt;/p&gt;
 &lt;p&gt;I've seen teams address this problem in a number of ways, often involving a date-time stamp. With multiple clients on an API, scalability is an issue, and a date-time stamp can mean different things to different servers (as we'll see below). You need a single authority for a resource's last modified date-time to avoid exchanging one problem for another. See &lt;a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.2.2"&gt;Last-Modified/Comparison&lt;/a&gt; for more details.&lt;/p&gt;
 &lt;p&gt;The creators of HTTP encountered this issue and added features to HTTP to deal with this (I assume that's why they added these features). I don't know when these features were devised, but they proposed them in 1997. So, they've been in the wild for at least 25 years with the entire web as a test bed. So, many brilliant people either created or scrutinized the solution. i.e., it's a wheel.&lt;/p&gt;
@@ -40,7 +41,7 @@ Over the last four-plus years, I have been almost exclusively working on some so
 &lt;h4 id="if-unmodified-since"&gt;If-Unmodified-Since&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;If-Unmodified-Since&lt;/code&gt; is used with state-changing methods like PUT, POST, DELETE, and PATCH to avoid accidental overrides (lost updates). &lt;code&gt;If-Unmodified-Since&lt;/code&gt; imposes the precondition &lt;em&gt;update this entity only if it hasn't changed since the provided date-time&lt;/em&gt;. &lt;strong&gt;Use &lt;code&gt;If-Unmodified-Since&lt;/code&gt; to avoid lost update problems when second granularity is not a problem&lt;/strong&gt;.&lt;/p&gt;
 &lt;h4 id="if-modified-since"&gt;If-Modified-Since&lt;/h4&gt;
-&lt;p&gt;When used with &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;HEAD&lt;/code&gt;, the &lt;code&gt;If-Modified-Since&lt;/code&gt; header field imposes the precondition &lt;em&gt;respond with &lt;code&gt;412&lt;/code&gt; and not with an entity representation if the modification date of the identified resource is not more recent than the date provided&lt;/em&gt;. &lt;strong&gt;Use &lt;code&gt;If-Modified-Since&lt;/code&gt; to avoid re-transferring the same data&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;When used with &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;HEAD&lt;/code&gt;, the &lt;code&gt;If-Modified-Since&lt;/code&gt; header field imposes the precondition &lt;em&gt;respond with &lt;code&gt;304 (Not Modified)&lt;/code&gt; and not with an entity representation if the modification date of the identified resource is not more recent than the date provided&lt;/em&gt;. &lt;strong&gt;Use &lt;code&gt;If-Modified-Since&lt;/code&gt; to avoid re-transferring the same data&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id="conflict"&gt;&lt;code&gt;409 (Conflict)&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;409 (Conflict)&lt;/code&gt; may sound like an appropriate response to a conditional PUT/POST/PATCH request, except that &lt;code&gt;412 (Precondition Failed)&lt;/code&gt; is expected. &lt;strong&gt;Response status code &lt;a href="https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8"&gt;&lt;code&gt;409&lt;/code&gt;&lt;/a&gt; should be used when something about the current state of the resource means that the server cannot change it&lt;/strong&gt;. Also, if you have chosen not to use HTTP precondition features and have included something &lt;em&gt;in the representation of the entity&lt;/em&gt; for versioning (like last-modified-date, see above), then &lt;code&gt;409 (Conflict)&lt;/code&gt; is appropriate to signify a potential accidental overwrite or lost update.&lt;/p&gt;
 &lt;h3 id="leveraging-existing-implementations"&gt;Leveraging Existing Implementations&lt;/h3&gt;
@@ -97,8 +98,7 @@ Client2&lt;--API:&lt;color:#red&gt;""412 Precondition Failed\nBasis version of r
 --&gt;
 &lt;h2 id="references"&gt;References&lt;/h2&gt;
 </content>
-		<summary>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite"&gt;
-Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the &lt;em&gt;reinvention of the wheel&lt;/em&gt; and recognizing the problem ETags solves after publishing a specification (sometimes both).&lt;/p&gt;</summary>
+		<summary>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite"&gt;&lt;/p&gt;</summary>
 	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-3</id>
