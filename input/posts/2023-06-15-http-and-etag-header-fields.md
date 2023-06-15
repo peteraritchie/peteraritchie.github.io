@@ -7,6 +7,9 @@ excerpt: An ETag addresses accidental overwrite by versioning the resource with 
 tags: ['June 2023', 'ASP.NET', 'HTTP', 'Azure', 'Cosmos DB', 'Optimistic Concurrency']
 ---
 ![A stuffed tiger corrupted appearance due to accidental overwrite](../assets/accidental-overwrite.jpg)
+
+Update: corrected mention of `412` in the context of `GET` and `If-Modified-Since` to `304`.
+
 Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the _reinvention of the wheel_ and recognizing the problem ETags solves after publishing a specification (sometimes both).
 
 With *aaS as a Web API, the intention is to have multiple API clients providing access to representations of shared resources. Early in projects like this involves an initial (single) client, so the chances of a client having a stale resource representation are slim. When another client starts to use the API and an update gets accidentally overwritten, things get needlessly complicated.
@@ -59,7 +62,7 @@ Remember that `Last-Modified` uses [HTTP-date] format, so **`Last-Modified` only
 
 #### If-Modified-Since
 
-When used with `GET` or `HEAD`, the `If-Modified-Since` header field imposes the precondition _respond with `412` and not with an entity representation if the modification date of the identified resource is not more recent than the date provided_. **Use `If-Modified-Since` to avoid re-transferring the same data**.
+When used with `GET` or `HEAD`, the `If-Modified-Since` header field imposes the precondition _respond with `304 (Not Modified)` and not with an entity representation if the modification date of the identified resource is not more recent than the date provided_. **Use `If-Modified-Since` to avoid re-transferring the same data**.
 
 ### `409 (Conflict)`
 
