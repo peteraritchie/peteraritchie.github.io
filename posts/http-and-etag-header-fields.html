@@ -1,0 +1,302 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - HTTP and ETag Header Fields</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - HTTP and ETag Header Fields" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/http-and-etag-header-fields" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>HTTP and ETag Header Fields</h1>
+    <div class="meta">        
+Published on Thursday, June 15, 2023<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET</a>
+                    <a role="button" href="/tags/Azure" class="btn btn-default btn-xs">Azure</a>
+                    <a role="button" href="/tags/Cosmos-DB" class="btn btn-default btn-xs">Cosmos DB</a>
+                    <a role="button" href="/tags/HTTP" class="btn btn-default btn-xs">HTTP</a>
+                    <a role="button" href="/tags/June-2023" class="btn btn-default btn-xs">June 2023</a>
+                    <a role="button" href="/tags/Optimistic-Concurrency" class="btn btn-default btn-xs">Optimistic Concurrency</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite" />
+Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the <em>reinvention of the wheel</em> and recognizing the problem ETags solves after publishing a specification (sometimes both).</p>
+<p>With *aaS as a Web API, the intention is to have multiple API clients providing access to representations of shared resources. Early in projects like this involves an initial (single) client, so the chances of a client having a stale resource representation are slim. When another client starts to use the API and an update gets accidentally overwritten, things get needlessly complicated.</p>
+<p>I've seen teams address this problem in a number of ways, often involving a date-time stamp. With multiple clients on an API, scalability is an issue, and a date-time stamp can mean different things to different servers (as we'll see below). You need a single authority for a resource's last modified date-time to avoid exchanging one problem for another. See <a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.2.2">Last-Modified/Comparison</a> for more details.</p>
+<p>The creators of HTTP encountered this issue and added features to HTTP to deal with this (I assume that's why they added these features). I don't know when these features were devised, but they proposed them in 1997. So, they've been in the wild for at least 25 years with the entire web as a test bed. So, many brilliant people either created or scrutinized the solution. i.e., it's a wheel.</p>
+<p>The HTTP features are <em>ETags</em> and <em>conditional requests</em> and enable <em>optimistic concurrency</em>.</p>
+<h2 id="etags">ETags</h2>
+<p>An <a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.3">ETag</a> (AKA entity-tag) addresses the &quot;lost update&quot; problem where there are two clients of an API that have received the representation of a version of an entity. Still, another client updates the entity before the other: the second update causes the first the be &quot;lost.&quot; See the following diagram for a visualization:</p>
+<p><img src="./assets/lost-update-sequence.png" class="img-fluid" alt="Lost-update" /></p>
+<p>An ETag addresses accidental overwrite by <em>versioning</em> the resource with an entity-tag (a hash of the representation, a version, etc.). When a client requests a resource, the server may include an ETag validator header field with an entity-tag value in the response. The URI of the resource, along with that entity-tag, constitutes an identifier for a particular version of an entity.</p>
+<p>When a client requests a change to the entity, it includes the entity-tag as a basis version with a conditional header field (like <code>If-Match</code>.)  The server responds with <code>412 (Precondition Failed)</code>, and the client can retrieve the latest version, re-apply their change, and re-send. See the following diagram for a visualization:</p>
+<p><img src="./assets/lost-update-solution-sequence.png" class="img-fluid" alt="Lost-update" /></p>
+<h2 id="falling-back-to-date-and-time">Falling back to date and time</h2>
+<p>Even if you use date and time, <strong>HTTP also covers you with other precondition header fields involving modification date</strong>. The <code>If-Unmodified-Since</code> and <code>If-Modified-Since</code> precondition header fields allow you to pass modification date preconditions to make a request conditional. When the precondition isn't met, a <code>412 (Precondition Failed)</code> status code will be in the response, or for <code>GET</code> or <code>HEAD</code>, a <code>304 (Not Modified)</code> status code will be in the response.</p>
+<p>The initial GET of a resource that supports modification dates in conditional requests will include a <code>Last-Modified</code> header field validator. The <code>Last-Modified</code> validator is in the form of an <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.1.1">HTTP-date</a>.</p>
+<h2 id="being-successful">Being Successful</h2>
+<p>RFC 7232, the HTTP 1.1 specification, section 2.3 describes the <em>entity-tag</em>:</p>
+<blockquote class="blockquote">
+<p>An entity-tag is an opaque validator for differentiating between multiple representations of the same resource, regardless of whether those multiple representations are due to resource state changes over time, content negotiation resulting in multiple representations being valid at the same time, or both.</p>
+</blockquote>
+<p>This means that the ETag value depends on the content-type, so two <strong>different representations of the same resource should have different ETag values</strong> (e.g., one gzip encoded, one not.)</p>
+<p>This also means that the ETag value is opaque to requestors but does point out that one of the intents of ETags to be <strong>an alternative to using a date-time stamp due to lack of accuracy</strong>.</p>
+<h3 id="patch">PATCH</h3>
+<p>Using <code>PATCH</code> with something like <a href="https://jsonpatch.com/">JSONPatch</a> may seem to help alleviate conflicts by providing more granularity in what is changing. Technically true, to implement this would be non-trivial. The ETag specifics a tag of that edition of the entire resource, not any one field. While comparing a change against a delta between two editions of a resource (keeping in mind those editions may not be adjacent) might be one technique for dealing with that, <strong>creating deltas between arbitrary versions of the same resource is non-trivial</strong>. You could introduce that sort of thing. Something like event-sourcing might enable that. But remember that there may be interdependencies between properties of a resource, and just because the current request changes a property that hasn't changed since the resource was retrieved doesn't mean there isn't still a conflict.</p>
+<h3 id="last-modified">Last-Modified</h3>
+<p>Remember that <code>Last-Modified</code> uses <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.1.1">HTTP-date</a> format, so <strong><code>Last-Modified</code> only supports second granularity</strong>. With multiple origin servers, more than second granularity may be needed to be accurate 100% of the time.</p>
+<h4 id="if-unmodified-since">If-Unmodified-Since</h4>
+<p><code>If-Unmodified-Since</code> is used with state-changing methods like PUT, POST, DELETE, and PATCH to avoid accidental overrides (lost updates). <code>If-Unmodified-Since</code> imposes the precondition <em>update this entity only if it hasn't changed since the provided date-time</em>. <strong>Use <code>If-Unmodified-Since</code> to avoid lost update problems when second granularity is not a problem</strong>.</p>
+<h4 id="if-modified-since">If-Modified-Since</h4>
+<p>When used with <code>GET</code> or <code>HEAD</code>, the <code>If-Modified-Since</code> header field imposes the precondition <em>respond with <code>412</code> and not with an entity representation if the modification date of the identified resource is not more recent than the date provided</em>. <strong>Use <code>If-Modified-Since</code> to avoid re-transferring the same data</strong>.</p>
+<h3 id="conflict"><code>409 (Conflict)</code></h3>
+<p><code>409 (Conflict)</code> may sound like an appropriate response to a conditional PUT/POST/PATCH request, except that <code>412 (Precondition Failed)</code> is expected. <strong>Response status code <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8"><code>409</code></a> should be used when something about the current state of the resource means that the server cannot change it</strong>. Also, if you have chosen not to use HTTP precondition features and have included something <em>in the representation of the entity</em> for versioning (like last-modified-date, see above), then <code>409 (Conflict)</code> is appropriate to signify a potential accidental overwrite or lost update.</p>
+<h3 id="leveraging-existing-implementations">Leveraging Existing Implementations</h3>
+<p>Azure Cosmos DB implements ETags and <code>Last-Modified</code> to be leveraged to support the versioning of resources in your Web API. Technically the ETag is a version of the representation that Cosmos DB provides, so consider generating a new ETag based on what Cosmos DB provides, especially if you support more than one content-type (like XML). Suppose you have the concept of a database DTO or database models different from your MVC models. In that case, you should consider custom entity-tag generation based on the Cosmos-supplied entity-tag.</p>
+<p>To leverage the Cosmos-supplied entity-tag, retain it and re-send it in any state-changing requests to Cosmos in the <code>If-Match</code> header field. If the entity-tags do not match, Cosmos DB will respond with <code>412</code>, and the Cosmos DB library will throw a <code>CosmosException</code> with <code>StatusCode</code> == <code>HttpStatusCode.PreconditionFailed</code>.</p>
+<!--
+title Lost Update Problem
+
+participant "Client 1" as Client1
+participant "Client 2" as Client2
+participant API
+
+Client1->API:""GET /resource/123""
+activate Client1
+Client1<--API:""200 OK""\n//resource v1 representation//
+
+create Client2
+Client2->API:""GET /resource/123""
+activate Client2
+Client2<--API:""200 OK""\n//resource v1 representation//
+Client1->API:""PUT /resource/123""
+Client1<--API:""200 OK""\n//resource v2 representation//
+deactivateafter Client1
+destroyafter Client1
+
+Client2-#red>API:""PUT /resource/123""
+note over Client1,API#pink:Client 2 is updating the resource based from **v1**, not **v2**:\n<align:center>the v2 update is "lost" to //Client 2//</align>
+Client2<--API:""200 OK""\n//resource v3 representation//
+
+-->
+<!--
+title Lost Update Solution
+
+participant "Client 1" as Client1
+participant "Client 2" as Client2
+participant API
+
+Client1->API:""GET /resource/123""
+activate Client1
+Client1<--API:""200 OK""\n//resource v1 representation//
+
+create Client2
+Client2->API:""GET /resource/123""
+activate Client2
+Client2<--API:""200 OK""\n//resource v1 representation//
+Client1->API:""PUT /resource/123\nIf-Match: v1""
+Client1<--API:""200 OK""\n//resource v2 representation//
+deactivateafter Client1
+destroyafter Client1
+
+Client2->API:""PUT /resource/123\nIf-Match: v1""
+
+Client2<--API:<color:#red>""412 Precondition Failed\nBasis version of resource is out of date""</color>
+-->
+<h2 id="references">References</h2>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'http-and-etag-header-fields'
+    'HTTP and ETag Header Fields'
+    'http://blog.peterritchie.com/posts/http-and-etag-header-fields'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('6/15/23');
+    console.info('http-and-etag-header-fields');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'HTTP and ETag Header Fields';
+    var disqus_url = 'http://blog.peterritchie.com/posts/http-and-etag-header-fields';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'http-and-etag-header-fields';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2023
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
