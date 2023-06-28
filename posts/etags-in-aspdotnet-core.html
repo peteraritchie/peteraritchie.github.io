@@ -1,0 +1,728 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - ETags in ASP.NET Core</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - ETags in ASP.NET Core" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/etags-in-aspdotnet-core" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>ETags in ASP.NET Core</h1>
+    <div class="meta">        
+Published on Wednesday, June 28, 2023<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/ASPNET" class="btn btn-default btn-xs">ASP.NET</a>
+                    <a role="button" href="/tags/Application-Service" class="btn btn-default btn-xs">Application Service</a>
+                    <a role="button" href="/tags/Azure" class="btn btn-default btn-xs">Azure</a>
+                    <a role="button" href="/tags/Cosmos-DB" class="btn btn-default btn-xs">Cosmos DB</a>
+                    <a role="button" href="/tags/Domain-Driven-Design" class="btn btn-default btn-xs">Domain-Driven Design</a>
+                    <a role="button" href="/tags/ETag" class="btn btn-default btn-xs">ETag</a>
+                    <a role="button" href="/tags/June-2023" class="btn btn-default btn-xs">June 2023</a>
+                    <a role="button" href="/tags/Optimistic-Concurrency" class="btn btn-default btn-xs">Optimistic Concurrency</a>
+                    <a role="button" href="/tags/Repository" class="btn btn-default btn-xs">Repository</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/farside-etags-in-asp-dot-net.jpg" class="img-fluid" alt="lots of things going on at the same time, in the style of Farside" /></p>
+<p>A good software architect doesn't just provide expectations of structure; they also work with developers to give feedback and guidance for implementation. It's easy to say, &quot;Use ETags for entity concurrency control in a Web API,&quot; it's another to empower teams to accomplish the objectives of entity versioning.</p>
+<p>To review: entity-tags (Etags) are a method of implementing Optimistic Concurrency Control. Optimistic Concurrency Control is a means to avoid distributed locking in situations when two or more potentially concurrent operations rarely interfere with each other. You can see cases like this on the Web when multiple processes or people are not normally working on the same data simultaneously. With the Web, there are rare situations where a single process or single person can (usually inadvertently) modify data from two places at the same time. It's rare case like this where the low overhead of optimistic concurrency can avoid accidental overwrites.</p>
+<p>Entity-tags are a moniker of a particular incarnation of an entity. The tag is opaque, so it shouldn't need to be interpretable by a requestor to your service. With opaque data, you want to make the value itself as unobvious as possible.</p>
+<p>The value, of course, could be an incrementing integer if you could reliably and efficiently increment an integer in a distributed environment (remember, we're addressing the possibility of two distributed transactions interfering with one another, the same transactions mechanisms that would be used to increment an integer.)  But, before choosing to increment an integer (an ordinal number), consider <a href="https://www.rfc-editor.org/rfc/rfc9110#field.etag">RFC 9110 ETags</a> and why ordinal version numbers are not specified.</p>
+<p>| If you think an ordinal number will work, do you need entity-tags at all?</p>
+<p>A time-stamp is something to consider, in which case, prefer the <code>Last-Modified</code> header field validator. Or in conjunction with entity-tags. If a time-stamp is reliable, <code>Last-Modified</code> offers better interoperability options than re-inventing the wheel. Also, be thoughtful when considering time-stamps, especially their granularity; per-second time-stamp granularity can only partially solve the problem of concurrent writes.</p>
+<p>So, how do you reliably generate an entity-tag value? The first thing to consider is what you want to accomplish. Do you want to prevent accidental overwrites, or do you want entity versioning? If you said, &quot;I want entity versioning,&quot; to what end? If a client gets version 1, and another client updates it to version 2, what action do you want to perform when the first client requests to update the entity? You don't need <em>versioning</em> to prevent that first client from updating the entity. If you want to merge with version 2, you probably want versioning; in this case, you can stop reading now; I won't get into detail like that in this post.</p>
+<p>If we're interested in preventing accidental overwrites, on the server side, we only really care about the current entity and the basis for the current request to update it. It doesn't matter if the basis is the previous version or ten versions behind; we only care that it's not based on the current version.</p>
+<p>Another thing to consider is that entity-tags are also used in HTTP caching, which requires that an entity-tag be unique per encoding (e.g., a gzipped response should have a different entity-tag than a non-gzipped response.) The encoding value is often postfixed to the entity-tag to make it unique per encoding. But be careful to parse that out when checking for semantically identical entities. That's out of the scope of this post.</p>
+<p>With an understanding of those constraints, a common method of generating an entity-tag is to use a hash of the entity representation.</p>
+<p>Let's look at an example controller that tries to isolate the implementation detail of how the entity-tag is calculated. For my examples, I'm choosing to use controllers over minimal APIs; the controller class attributes make some of what is required easier. For clarity, my examples are stripped of error responses unrelated to conditional requests and exception middleware. For complete source, see <a href="https://github.com/peteraritchie/Examples.Etag">this repo</a>.</p>
+<pre><code class="language-csharp">[ApiController] [Route(&quot;[controller]&quot;)]
+public class AppointmentController : ControllerBase
+{
+	[HttpGet(Name = &quot;GetAppointmentRequests&quot;)]
+	[ProducesResponseType(typeof(WebCollectionElement&lt;AppointmentRequestDto&gt;[]),
+		StatusCodes.Status200OK, MediaTypeNames.Application.Json)]
+	public async Task&lt;IActionResult&gt; GetMany(CancellationToken cancellationToken = default)
+	{
+		var resource = appointmentRequestService.GetRequests(cancellationToken);
+
+		List&lt;WebCollectionElement&lt;AppointmentRequestDto&gt;&gt; items = new();
+		foreach (var (dto, guid, concurrencyToken) in await resource.ToListAsync(cancellationToken: cancellationToken))
+		{
+			items.Add(
+				new WebCollectionElement&lt;AppointmentRequestDto&gt;(dto, Url.Action(nameof(GetById),
+					new { id = guid })!, etag: concurrencyToken));
+		}
+
+		return base.Ok(items);
+	}
+
+	[HttpGet(&quot;{id}&quot;, Name = &quot;GetAppointmentRequest&quot;)]
+	[ProducesResponseType(typeof(AppointmentRequestDto), StatusCodes.Status200OK, MediaTypeNames.Application.Json)]
+	[ProducesResponseType(typeof(AppointmentRequestDto), StatusCodes.Status304NotModified)]
+	public async Task&lt;IActionResult&gt; GetById(Guid id, [FromHeader(Name = &quot;If-None-Match&quot;)] string? ifNoneMatch,
+		CancellationToken cancellationToken = default)
+	{
+		var (resource, concurrencyToken) = string.IsNullOrWhiteSpace(ifNoneMatch) 
+			? await appointmentRequestService.GetRequest(id, cancellationToken) 
+			: await appointmentRequestService.GetRequest(id, ifNoneMatch, cancellationToken);
+
+		HttpContext.Response.Headers.Add(HeaderNames.ETag, concurrencyToken);
+
+		return Ok(resource);
+	}
+
+	[HttpPost(Name = &quot;CreateAppointmentRequest&quot;)]
+	[Consumes(MediaTypeNames.Application.Json)]
+	[ProducesResponseType(StatusCodes.Status201Created)]
+	public async Task&lt;IActionResult&gt; Create([FromBody] AppointmentRequestDto appointmentRequest,
+		CancellationToken cancellationToken = default)
+	{
+		var (id, concurrencyToken) = await appointmentRequestService.CreateRequest(appointmentRequest, cancellationToken);
+
+		HttpContext.Response.Headers.Add(HeaderNames.ETag, concurrencyToken);
+
+		return CreatedAtAction(nameof(GetById), routeValues: new { id }, value: null);
+	}
+
+	[HttpPut(&quot;{id}&quot;, Name = &quot;ReplaceAppointmentRequest&quot;)]
+	[Consumes(MediaTypeNames.Application.Json)]
+	[ProducesResponseType(StatusCodes.Status204NoContent)]
+	public async Task&lt;IActionResult&gt; Replace(Guid id, [FromBody] AppointmentRequestDto appointmentRequest,
+		[FromHeader(Name = &quot;If-Match&quot;)] string? ifMatch, CancellationToken cancellationToken = default)
+	{
+		var concurrencyToken = string.IsNullOrWhiteSpace(ifMatch)
+			? await appointmentRequestService.ReplaceRequest(
+				id, appointmentRequest, cancellationToken)
+			: await appointmentRequestService.ReplaceRequest(
+				id, appointmentRequest, ifMatch, cancellationToken);
+
+		HttpContext.Response.Headers.Add(HeaderNames.ETag, concurrencyToken);
+
+		return NoContent();
+	}
+
+	[HttpPatch(&quot;{id:guid}&quot;, Name = &quot;UpdateAppointmentRequest&quot;)]
+	[ProducesResponseType(typeof(AppointmentRequestDto), StatusCodes.Status200OK, MediaTypeNames.Application.Json)]
+	[Consumes(&quot;application/json-patch+json&quot;)]
+	public async Task&lt;IActionResult&gt; Update(Guid id, JsonPatchDocument&lt;AppointmentRequestDto&gt; patchDocument,
+		[FromHeader(Name = &quot;If-Match&quot;)] string? ifMatch, CancellationToken cancellationToken = default)
+	{
+		var (result, concurrencyToken) = string.IsNullOrWhiteSpace(ifMatch)
+			? await appointmentRequestService.UpdateRequest(id, patchDocument, cancellationToken)
+			: await appointmentRequestService.UpdateRequest(id, patchDocument, ifMatch, cancellationToken);
+
+		HttpContext.Response.Headers.Add(HeaderNames.ETag, concurrencyToken);
+
+		return Ok(result);
+	}
+
+	[HttpDelete(&quot;{id}&quot;, Name = &quot;RemoveAppointmentRequest&quot;)]
+	[ProducesResponseType(StatusCodes.Status204NoContent)]
+	public async Task&lt;IActionResult&gt; Remove(Guid id, [FromHeader(Name = &quot;If-Match&quot;)] string? ifMatch,
+		CancellationToken cancellationToken = default)
+	{
+		if(string.IsNullOrWhiteSpace(ifMatch))
+			await appointmentRequestService.RemoveRequest(id, cancellationToken);
+		else
+			await appointmentRequestService.RemoveRequest(id, ifMatch, cancellationToken);
+
+		return NoContent();
+	}
+}
+</code></pre>
+<blockquote class="blockquote">
+<p>There are inherent complexities in a Web API. It needs to present an interface usable on the Web and utilizes open standards as much as possible. You'll notice that the <code>AppointmentController</code> PATCH implementation uses <code>JsonPatchDocument</code>, an implementation of the <a href="https://jsonpatch.com/">JSON Patch</a> (IETF RFC 6902) standard. This standard is specific to the Web, specific to JSON, and deals with operations intended to be specifically applied to JSON representations equivalent to the model defined in the interface (i.e., the model, not what is represented in the database or an in-memory representation of a domain object.)</p>
+</blockquote>
+<p>This controller is isolated from the collaboration with the database and delegates that interaction to an Application Service via the <code>appointmentRequestService</code> field (declaration removed for readability). In state-modifying HTTP methods (PUT, DELETE, PATCH), the actions have an <code>ifMatch</code> parameter passed in through the <code>If-Match</code> HTTP request header. When present, it is passed along to the application service for optimistic concurrency. This example shows an <em>optional</em> use of <code>If-Match</code>; it's plausible that another implementation might <em>require</em> the <code>If-Match</code> header and respond with status code 428 Precondition Required.</p>
+<p>Of note is that this controller abstracts etag header values as <em>concurrency token</em> text so that nothing else has to deal with HTTP headers.</p>
+<p>Let's look at the MVC model (I prefer to refer to it as a Data Transfer Object).</p>
+<pre><code class="language-csharp">public class AppointmentRequestDto
+{
+	[Required]
+	public DateTime? CreationDate { get; set; }
+	public IEnumerable&lt;string&gt;? Categories { get; set; }
+	[Required]
+	public string? Description { get; set; }
+	public string? Notes { get; set; }
+	[Required]
+	public AppointmentRequestStatus? Status { get; set; }
+	[Required]
+	public MeetingDuration? Duration { get; set; }
+	[Required]
+	public IEnumerable&lt;string&gt;? Participants { get; set; }
+	[Required]
+	public IEnumerable&lt;DateTime&gt;? ProposedStartDateTimes { get; set; }
+}
+</code></pre>
+<p>Since we're delegating serialization to ASP.NET (which requires writable properties), the properties are nullable but annotated with <code>RequiredAttribute</code> to signal to the framework what properties are required. There is no identifier in the <code>AppointmentRequestDto</code> class because we don't want to duplicate it there and in the resource's URI.</p>
+<p>Azure Cosmos has implemented optimistic concurrency control and stores an ETag per document. I'll use Azure Cosmos for the database implementation to show how this can be re-used in your WebAPI.</p>
+<h2 id="azure-cosmos-example">Azure Cosmos Example</h2>
+<p>In Azure Cosmos, each document has several mandatory properties: <code>id</code>, <code>_rid</code>, <code>_self</code>, <code>_etag</code>, <code>_attachements</code>, and <code>_ts</code>. These are implementation details of the database that we don't want to leak into our API as body content. When we use the <a href="https://www.nuget.org/packages/Microsoft.Azure.Cosmos">Azure Cosmos SDK</a>, we need serialization classes to serialize the data to and from a container. Let's see an example with a fictitious appointment request resource:</p>
+<pre><code class="language-csharp">public class AppointmentRequestEntity : CosmosEntityBase
+{
+    [JsonProperty(PropertyName = &quot;id&quot;)]
+    public Guid Id { get; set; }
+    [JsonProperty(PropertyName = &quot;_rid&quot;)]
+    public string? ResourceId { get; set; }
+    [JsonProperty(PropertyName = &quot;_self&quot;)]
+    public Uri? SelfUri { get; set; }
+    [JsonProperty(PropertyName = &quot;_etag&quot;)]
+    public string? ETag{ get; set; }
+    [JsonProperty(PropertyName = &quot;_ts&quot;)]
+    public int? TimestampText{ get; set; }
+	public DateTime? CreationDate { get;  set; }
+	public IEnumerable&lt;string&gt;? Categories { get; set; }
+	public string? Description { get;  set; }
+	public string? Notes { get;  set;  }
+	public AppointmentRequestStatus? Status { get;  set; }
+	public MeetingDuration? Duration { get;  set; }
+	public IEnumerable&lt;string&gt;? Participants { get; set; }
+	public IEnumerable&lt;DateTime&gt;? ProposedStartDateTimes { get;  set; }
+}
+</code></pre>
+<p>Notice the first five properties that are necessary to access the Azure Cosmos implementation details. (in <a href="https://github.com/peteraritchie/Examples.Etag">this repo</a> this is split out into a <code>CosmosEntityBase</code> class.)</p>
+<p>For my example, I'm going to draw on Domain-Driven design patterns and use a Repository implementation in the database collaboration. I want to delegate all the logic related to database-specific details to the repository implementation. This includes encapsulating the use of the database entity <em>serialization</em> class (translation to/from the database entity class), associating an identifier and etag with the resource, etc. To separate the existence of the database entity class from clients of the repository, we'll define a generic interface that I'll name <code>IOptimisticallyConcurrentRepository</code> that works with different types of domain entity classes:</p>
+<pre><code class="language-csharp">public interface IOptimisticallyConcurrentRepository&lt;TDomainEntity&gt;
+{
+    Task&lt;TDomainEntity&gt; Get(Guid id, CancellationToken cancellationToken = default);
+    IAsyncEnumerable&lt;TDomainEntity&gt; Get(CancellationToken cancellationToken = default);
+	Guid GetId(TDomainEntity entity);
+
+	bool TryGetIfModified(Guid id, string concurrencyToken, out TDomainEntity? entity);
+	string GetConcurrencyToken(TDomainEntity entity);
+
+    Task&lt;Guid&gt; Add(TDomainEntity entity, CancellationToken cancellationToken = default);
+    Task Remove(Guid id, CancellationToken cancellationToken = default);
+    Task Replace(Guid id, TDomainEntity entity, CancellationToken cancellationToken = default);
+
+    Task RemoveIfMatch(Guid id, string token, CancellationToken cancellationToken = default);
+    Task ReplaceIfMatch(Guid id, TDomainEntity entity, string token, CancellationToken cancellationToken = default);
+}
+</code></pre>
+<p>Next is a generic repository class to support Azure Cosmos that deals with arbitrary domain (<code>TDomainEntity</code>) and database serialization classes (<code>TDbEntity</code>):</p>
+<pre><code class="language-csharp">public class CosmosOptimisticallyConcurrentRepository&lt;TDomainEntity, TDbEntity&gt; 
+	: IOptimisticallyConcurrentRepository&lt;TDomainEntity&gt;
+	where TDomainEntity : class
+	where TDbEntity : CosmosEntityBase
+{
+	private class EntityContext
+	{
+		public EntityContext(Guid id, string concurrencyToken)
+		{
+			Id = id;
+			ConcurrencyToken = concurrencyToken;
+		}
+
+		public Guid Id { get; }
+		public string ConcurrencyToken { get; }
+	}
+
+	private readonly Container container;
+	private readonly ITranslator&lt;TDomainEntity, TDbEntity&gt; dbEntityTranslator;
+	private readonly Action&lt;TDbEntity, Guid&gt; setDbEntityId;
+
+	protected CosmosOptimisticallyConcurrentRepository(Container container, ITranslator&lt;TDomainEntity, TDbEntity&gt; dbEntityTranslator,
+		Action&lt;TDbEntity, Guid&gt; setDbEntityId)
+	{
+		this.container = container;
+		this.dbEntityTranslator = dbEntityTranslator;
+		this.setDbEntityId = setDbEntityId;
+	}
+
+	public async Task&lt;Guid&gt; Add(TDomainEntity entity, CancellationToken cancellationToken = default)
+	{
+		var id = Guid.NewGuid();
+		var dbEntity = dbEntityTranslator.ToData(entity);
+		setDbEntityId(dbEntity, id);
+
+		try
+		{
+			var result = await container.CreateItemAsync(dbEntity, new PartitionKey(id.ToString(&quot;D&quot;)), cancellationToken: cancellationToken);
+			conditionalWeakTable.Add(entity, new EntityContext(id, result.ETag));
+			return id;
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.PreconditionFailed)
+		{
+			throw new ConcurrencyException();
+		}
+	}
+
+	public bool TryGetIfModified(Guid id, string concurrencyToken, out TDomainEntity? entity)
+	{
+		var idText = id.ToString(&quot;D&quot;);
+		try
+		{
+			var result = container.ReadItemAsync&lt;TDbEntity&gt;(
+					idText,
+					new PartitionKey(idText),
+					requestOptions: new ItemRequestOptions() { IfNoneMatchEtag = concurrencyToken })
+				.Result;
+
+			entity = dbEntityTranslator.ToDomain(result.Resource);
+			conditionalWeakTable.Add(entity, new EntityContext(id, result.ETag));
+			return true;
+		}
+		catch (AggregateException aggregateException) when (aggregateException.InnerExceptions.Count == 1 &amp;&amp;
+		                                                    aggregateException.InnerExceptions.Single() is
+			                                                    CosmosException
+			                                                    {
+				                                                    StatusCode: HttpStatusCode.NotModified
+			                                                    })
+		{
+			entity = default;
+			return false;
+		}
+		catch (AggregateException aggregateException) when (aggregateException.InnerExceptions.Count == 1 &amp;&amp;
+		                                                    aggregateException.InnerExceptions.Single() is
+			                                                    CosmosException
+			                                                    {
+				                                                    StatusCode: HttpStatusCode.NotFound
+			                                                    })
+		{
+			throw new EntityNotFoundException(id);
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+
+	public async IAsyncEnumerable&lt;TDomainEntity&gt; Get([EnumeratorCancellation] CancellationToken cancellationToken = default)
+	{
+		var iterator = container.GetItemQueryIterator&lt;TDbEntity&gt;();
+		while (iterator.HasMoreResults)
+		{
+			var set = await iterator.ReadNextAsync(cancellationToken);
+			foreach (var e in set)
+			{
+				var entity = dbEntityTranslator.ToDomain(e);
+				conditionalWeakTable.Add(entity, new EntityContext(e.Id, e.ETag!));
+				yield return entity;
+			}
+		}
+	}
+
+	public async Task&lt;TDomainEntity&gt; Get(Guid id, CancellationToken cancellationToken = default)
+	{
+		var idText = id.ToString(&quot;D&quot;);
+		try
+		{
+			var result = await container.ReadItemAsync&lt;TDbEntity&gt;(idText, new PartitionKey(idText), cancellationToken: cancellationToken);
+			var entity = dbEntityTranslator.ToDomain(result.Resource);
+			conditionalWeakTable.Add(entity, new EntityContext(id, result.ETag));
+			return entity;
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+
+	public async Task Replace(Guid id, TDomainEntity entity, CancellationToken cancellationToken = default)
+	{
+		var dbEntity = dbEntityTranslator.ToData(entity);
+		setDbEntityId(dbEntity, id);
+
+		try
+		{
+			_ = await container.UpsertItemAsync(dbEntity, cancellationToken: cancellationToken);
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+
+	public async Task ReplaceIfMatch(Guid id, TDomainEntity entity, string token, CancellationToken cancellationToken = default)
+	{
+		var idText = id.ToString(&quot;D&quot;);
+		var dbEntity = dbEntityTranslator.ToData(entity);
+		setDbEntityId(dbEntity, id);
+
+		var requestOptions = new ItemRequestOptions { IfMatchEtag = token };
+		try
+		{
+			_ = await container.ReplaceItemAsync(dbEntity, idText, new PartitionKey(idText), requestOptions: requestOptions, cancellationToken: cancellationToken);
+		}
+		catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
+		{
+			throw new ConcurrencyException();
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+
+	public async Task Remove(Guid id, CancellationToken cancellationToken = default)
+	{
+		var idText = id.ToString(&quot;D&quot;);
+
+		try
+		{
+			_ = await container.DeleteItemAsync&lt;TDbEntity&gt;(idText, new PartitionKey(idText), cancellationToken: cancellationToken);
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+
+	public async Task RemoveIfMatch(Guid id, string token, CancellationToken cancellationToken = default)
+	{
+		var idText = id.ToString(&quot;D&quot;);
+
+		var requestOptions = new ItemRequestOptions { IfMatchEtag = token };
+		try
+		{
+			_ = await container.DeleteItemAsync&lt;TDbEntity&gt;(idText, new PartitionKey(idText), requestOptions: requestOptions, cancellationToken: cancellationToken);
+		}
+		catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.PreconditionFailed)
+		{
+			throw new ConcurrencyException();
+		}
+		catch (CosmosException ex) when(ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			throw new EntityNotFoundException(id);
+		}
+	}
+}
+</code></pre>
+<p>As a reminder, a &quot;concurrency token&quot; is synonymous with an &quot;etag&quot; in the context of the repository.</p>
+<p>The persistence needs of an application are independent of a domain entity, so the domain entity is isolated from web/database identifiers, concurrency tokens, HTTP, etags, etc. So, the repository needs to translate from a domain object to the serialization object, which is performed mostly by an <code>ITranslator&lt;TDomain, TData&gt;</code> implementation but also with the assignment of the identifier to the serialization object. To keep the non-domain details isolated from the domain object, I've used the <code>ConditionalWeakTable&lt;TKey, TValue&gt;</code> type to associate database persistence details (ID and etag/concurrency token, as abstracted by <code>EntityContext</code>) to the object without too much management logic.</p>
+<blockquote class="blockquote">
+<p><code>ConditionalWeakTable</code> is like a dictionary that associates a value with another object. It differs from a traditional dictionary in that when the key is no longer referenced, the associated value is freed/destroyed. This allows us to get associated data with minimal memory impact easily.</p>
+</blockquote>
+<p>An implementation of the repository now just requires the type to use for the database serialization class, the domain entity type, and how to assign an identifier to the Azure Cosmos <code>id</code> property:</p>
+<pre><code class="language-csharp">public sealed class CosmosAppointmentRequestRepository : CosmosOptimisticallyConcurrentRepository&lt;AppointmentRequest, AppointmentRequestEntity&gt;
+{
+    public CosmosAppointmentRequestRepository(Container container, ITranslator&lt;AppointmentRequest, AppointmentRequestEntity&gt; appointmentRequestEntityTranslator)
+        : base(container, appointmentRequestEntityTranslator, (entity, guid) =&gt; entity.Id = guid)
+    {
+    }
+}
+</code></pre>
+<p>The only remaining part is the implementation of the application/database collaboration, the <em>application service</em>:</p>
+<pre><code class="language-csharp">public class AppointmentRequestService
+{
+	private readonly AppointmentRequestDtoTranslator appointmentRequestDtoTranslator;
+	private readonly IOptimisticallyConcurrentRepository&lt;AppointmentRequest&gt; repository;
+
+	public AppointmentRequestService(AppointmentRequestDtoTranslator appointmentRequestDtoTranslator, IOptimisticallyConcurrentRepository&lt;AppointmentRequest&gt; repository)
+	{
+		this.appointmentRequestDtoTranslator = appointmentRequestDtoTranslator;
+		this.repository = repository;
+	}
+
+	public async Task&lt;(Guid, string)&gt; CreateRequest(AppointmentRequestDto appointmentRequest, CancellationToken cancellationToken = default)
+	{
+		var entity = appointmentRequestDtoTranslator.AppointmentRequestDtoToAppointmentRequest(appointmentRequest);
+		var guid = await repository.Add(entity, cancellationToken);
+
+		return (guid, repository.GetConcurrencyToken(entity));
+	}
+
+	public async Task&lt;(AppointmentRequestDto, string)&gt; GetRequest(Guid id, CancellationToken cancellationToken = default)
+	{
+		var appointmentRequest = await repository.Get(id, cancellationToken);
+		return (appointmentRequestDtoTranslator.AppointmentRequestToAppointmentRequestDto(appointmentRequest), repository.GetConcurrencyToken(appointmentRequest));
+	}
+
+	public Task&lt;(AppointmentRequestDto, string)&gt; GetRequest(Guid id, string etag, CancellationToken _ = default)
+	{
+		if(repository.TryGetIfModified(id, etag, out var appointmentRequest))
+		{ 
+			return Task.FromResult((appointmentRequestDtoTranslator.AppointmentRequestToAppointmentRequestDto(appointmentRequest!), repository.GetConcurrencyToken(appointmentRequest!)));
+		}
+
+		throw new ConcurrencyException();
+	}
+
+	public async IAsyncEnumerable&lt;(AppointmentRequestDto, Guid, string)&gt; GetRequests([EnumeratorCancellation] CancellationToken cancellationToken = default)
+	{
+		var result = repository.Get(cancellationToken);
+		await foreach (var item in result.WithCancellation(cancellationToken))
+		{
+			yield return (appointmentRequestDtoTranslator.AppointmentRequestToAppointmentRequestDto(item), repository.GetId(item),
+				repository.GetConcurrencyToken(item));
+		}
+	}
+
+	public async Task RemoveRequest(Guid id, CancellationToken cancellationToken = default)
+	{
+		await repository.Remove(id, cancellationToken);
+	}
+
+	public async Task RemoveRequest(Guid id, string etag, CancellationToken cancellationToken = default)
+	{
+		await repository.RemoveIfMatch(id, etag, cancellationToken);
+	}
+
+	internal async Task&lt;string&gt; ReplaceRequest(Guid id, AppointmentRequestDto appointmentRequest,
+		CancellationToken cancellationToken = default)
+	{
+		var entity = appointmentRequestDtoTranslator.AppointmentRequestDtoToAppointmentRequest(appointmentRequest);
+		await repository.Replace(id, entity, cancellationToken);
+
+		return repository.GetConcurrencyToken(entity);
+	}
+
+	internal async Task&lt;string&gt; ReplaceRequest(Guid id, AppointmentRequestDto appointmentRequest, string etag,
+		CancellationToken cancellationToken = default)
+	{
+		var entity = appointmentRequestDtoTranslator.AppointmentRequestDtoToAppointmentRequest(appointmentRequest);
+		await repository.ReplaceIfMatch(id, entity, etag, cancellationToken);
+
+		return repository.GetConcurrencyToken(entity);
+	}
+
+	public async Task&lt;(AppointmentRequestDto, string)&gt; UpdateRequest(Guid id, JsonPatchDocument&lt;AppointmentRequestDto&gt; patchDocument,
+		CancellationToken cancellationToken = default)
+	{
+		var current = await repository.Get(id, cancellationToken);
+		var currentDto = appointmentRequestDtoTranslator.AppointmentRequestToAppointmentRequestDto(current);
+		patchDocument.ApplyTo(currentDto);
+		await repository.Replace(id, appointmentRequestDtoTranslator.AppointmentRequestDtoToAppointmentRequest(currentDto), cancellationToken);
+		return (currentDto, repository.GetConcurrencyToken(current));
+	}
+
+	public async Task&lt;(AppointmentRequestDto, string)&gt; UpdateRequest(Guid id, JsonPatchDocument&lt;AppointmentRequestDto&gt; patchDocument,
+		string etag, CancellationToken cancellationToken = default)
+	{
+		var current = await repository.Get(id, cancellationToken);
+		var currentDto = appointmentRequestDtoTranslator.AppointmentRequestToAppointmentRequestDto(current);
+		patchDocument.ApplyTo(currentDto);
+		await repository.ReplaceIfMatch(id, appointmentRequestDtoTranslator.AppointmentRequestDtoToAppointmentRequest(currentDto), etag, cancellationToken);
+		return (currentDto, repository.GetConcurrencyToken(current));
+	}
+}
+</code></pre>
+<p><code>AppointmentRequestService</code> contains the interaction logic specific to the application and the repository. Since there</p>
+<p>Dealing with translation to and from DTO, domain, and serialization classes is made less of a chore with tools like <a href="https://github.com/riok/mapperly">Mapperly</a>. <a href="https://github.com/riok/mapperly">Mapperly</a> will generate translation code based on property names. To create a translator to/from two types is easy as creating a partial class with a <code>MapperAttribute</code> attribute with partial methods that take one type as parameter and the other as a return:</p>
+<pre><code class="language-csharp">[Mapper]
+public partial class AppointmentRequestDtoTranslator
+{
+	public partial AppointmentRequest AppointmentRequestDtoToAppointmentRequest(AppointmentRequestDto dto);
+	public partial AppointmentRequestDto AppointmentRequestToAppointmentRequestDto(AppointmentRequest entity);
+}
+</code></pre>
+<p><code>AppointmentRequestDtoTranslator</code> translates <code>AppointmentRequestDto</code> instances to/from <code>AppointmentRequest</code> domain entity instances. And to translate to/from <code>AppointmentRequestEntity</code>:</p>
+<pre><code class="language-csharp">[Mapper]
+public partial class AppointmentRequestEntityTranslator : ITranslator&lt;AppointmentRequest, AppointmentRequestEntity&gt;
+{
+	[MapperIgnoreSource(nameof(AppointmentRequestEntity.Id))]
+	[MapperIgnoreSource(nameof(AppointmentRequestEntity.ResourceId))]
+	[MapperIgnoreSource(nameof(AppointmentRequestEntity.ETag))]
+	[MapperIgnoreSource(nameof(AppointmentRequestEntity.SelfUri))]
+	[MapperIgnoreSource(nameof(AppointmentRequestEntity.TimestampText))]
+	public partial AppointmentRequest ToDomain(AppointmentRequestEntity data);
+
+	[MapperIgnoreTarget(nameof(AppointmentRequestEntity.Id))]
+	[MapperIgnoreTarget(nameof(AppointmentRequestEntity.ResourceId))]
+	[MapperIgnoreTarget(nameof(AppointmentRequestEntity.ETag))]
+	[MapperIgnoreTarget(nameof(AppointmentRequestEntity.SelfUri))]
+	[MapperIgnoreTarget(nameof(AppointmentRequestEntity.TimestampText))]
+	public partial AppointmentRequestEntity ToData(AppointmentRequest domain);
+}
+</code></pre>
+<p>Since <code>AppointmentRequestEntity</code> has some Azure Cosmos implementation details, we use Mapprerly's <code>MapperIgnoreTargetAttribute</code> and <code>MapperIgnoreSourceAttribute</code> to tell <a href="https://github.com/riok/mapperly">Mapperly</a> that not all properties need translation.</p>
+<p>Dealing with concurrency issues and implementing concurrency control can be intimidating. In this post, I make it less intimidating by clarifying some specifics by showing an example implementation with ASP.NET Core and Azure Cosmos DB. Additionally, the Domain-Driven Design patterns Repository and Application Service are used to isolate etag implementation details from the Web API to delegate that to Azure Cosmos.</p>
+<blockquote class="blockquote">
+<p>There are multiple ways of implementing optimistic concurrency; HTTP ETags are but one way. If you can't abide by the expectations set out by the HTTP standards, don't use Etags. There's nothing that forces you to use HTTP precondition header fields. But, remember, the means exist in HTTP, and embracing it will promote interoperability and reliability (to implement something different than something introduced at least 26 years ago fails to recognize the huge amount of validation and verification that's gone into making it correct.)</p>
+</blockquote>
+<p>In a future post, I will show an example of a repository implementation that uses Entity Framework and its expectations for concurrency tokens.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'etags-in-aspdotnet-core'
+    'ETags in ASP.NET Core'
+    'http://blog.peterritchie.com/posts/etags-in-aspdotnet-core'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('6/28/23');
+    console.info('etags-in-aspdotnet-core');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'ETags in ASP.NET Core';
+    var disqus_url = 'http://blog.peterritchie.com/posts/etags-in-aspdotnet-core';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'etags-in-aspdotnet-core';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2023
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
