@@ -5,8 +5,32 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2023</copyright>
-		<pubDate>Wed, 28 Jun 2023 18:08:57 GMT</pubDate>
-		<lastBuildDate>Wed, 28 Jun 2023 18:08:57 GMT</lastBuildDate>
+		<pubDate>Wed, 29 Nov 2023 15:42:51 GMT</pubDate>
+		<lastBuildDate>Wed, 29 Nov 2023 15:42:51 GMT</lastBuildDate>
+		<item>
+			<title>Entity Framework in .NET Aspire</title>
+			<link>http://blog.peterritchie.com/posts/entity-framework-in-aspire</link>
+			<description>&lt;p&gt;&lt;img src="../assets/entity-framework-in-aspire.jpg" class="img-fluid" alt="A path through the infrastructure"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/entity-framework-in-aspire</guid>
+			<pubDate>Wed, 29 Nov 2023 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/entity-framework-in-aspire.jpg" class="img-fluid" alt="A path through the infrastructure" /&gt;&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;.NET Aspire is an opinionated, cloud ready stack for building observable, production ready, distributed applications.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview"&gt;.NET Aspire&lt;/a&gt; is currently in preview and focuses on &lt;em&gt;simplifying the developer experience&lt;/em&gt; with &lt;em&gt;orchestration&lt;/em&gt; and &lt;em&gt;automatic service discovery&lt;/em&gt; features. There's a huge potential for .NET Aspire beyond this initial valuable feature set.&lt;/p&gt;
+&lt;p&gt;Being in preview, .NET Aspire may not yet support all the scenarios or workloads you may be comfortable with. It's an opinionated framework, which means differences of opinion are natural and expected. Currently, one of those opinions seems to be a focus on containers. The sample solutions that the new &lt;code&gt;dotnet&lt;/code&gt; templates provide are a great example of the benefits of containerization. The .NET Aspire starter solution that &lt;code&gt;dotnet new --use-redis-cache --output AspireStarter&lt;/code&gt; generates, out of the box, is something that, when debugged, will download, run, and utilize a Docker Redis image. (I've worked with teams where getting each member productive in a development environment has ended up being days of work.) The AppHost component of a .NET Aspire solution codifies abstract aspects of the architectural decisions that automates the generation and deployment of a development environment&amp;lt;(!--and configuration provides the details from future decisions about other environments--&amp;gt;.)&lt;/p&gt;
+&lt;p&gt;A container focus is empowered by .NET Aspire's &lt;em&gt;orchestration&lt;/em&gt; features. An independent orchestration responsibility enables better separation of &lt;em&gt;release and deploy&lt;/em&gt; concerns from &lt;em&gt;build and test&lt;/em&gt; concerns; &lt;em&gt;shifting right&lt;/em&gt; those decisions that release and deploy depend on. (i.e., the ability to develop, execute, and evaluate solutions are discernibly &lt;em&gt;left&lt;/em&gt; of release and operation.) Containers are an established method of componentizing a distributed system with independent servers (sometimes called &amp;quot;tiers.&amp;quot;) This provides flexibility to deploy and execute in a development environment even before architectural decisions about a production topology have been considered. For example, debugging the .NET Aspire starter app automatically spins up a Redis container in Docker, but it's extremely unlikely that's how it will be deployed in production. In production, will there be one only Redis instance? If you have many instances, what sort of gateway or reverse proxy to that pool of instances will be utilized? Will it be on-prem or cloud? Will it be Azure, AWS, or Google Cloud? The beauty of Aspire's orchestration feature is that it doesn't matter yet; you can configure orchestration to &lt;em&gt;figure it out at run-time&lt;/em&gt;, one environment at a time!&lt;/p&gt;
+&lt;p&gt;But, with every decision comes compromise. Technologies that depend on the physical resources that come from those decisions (that we're now effectively deferring) introduce some challenges with some existing software development idioms. A chicken-and-egg situation: if how to connect to physical resources may only be known at run-time, what happens to design-time technologies that depend on that connection information?&lt;/p&gt;
+&lt;p&gt;One popular technology in .NET, Entity Framework, suffers one of those challenges in .NET Aspire (Possibly only in &lt;em&gt;code-first&lt;/em&gt; scenarios. Many Entity Framework examples detail adding Entity Framework support to an existing component (resource, like console app, ASP.NET Core web API, Razor app, etc.), creating a circular dependency between its project and the existence of an executing database (i.e., a valid database connection string.) In database-first, you have an existing application with existing physical databases and practices to utilize them in a development environment. With .NET Aspire, developers are &lt;em&gt;shifted left&lt;/em&gt; from the decisions that provide the resources that things like &lt;code&gt;migrations add &amp;lt;migration-name&amp;gt;&lt;/code&gt; and &lt;code&gt;dotnet ef database update&lt;/code&gt; require to function properly.&lt;/p&gt;
+&lt;p&gt;To be clear, the way .NET Aspire works is that the orchestration (AppHost) executes, figures out the various connection strings, and overrides the &lt;code&gt;appsettings&lt;/code&gt; by setting environment variables before running the other components. The premise behind this means that at run-time, whatever is in &lt;code&gt;appsettings&lt;/code&gt; is ignored. &lt;code&gt;dotnet ef&lt;/code&gt; command doesn't execute at run-time; it effectively runs at design-time and gets its configuration from &lt;code&gt;appsettings&lt;/code&gt;, so it's out of sync with reality.&lt;/p&gt;
+&lt;p&gt;The basic guidance is to &lt;em&gt;abstract those types of dependencies as .NET Aspire resources&lt;/em&gt;. Nothing new conceptually, but this might be an application of the principles of abstraction at a level less commonly applied. Refining that guidance to using Entity Framework: &lt;em&gt;the database should be an independent resource&lt;/em&gt;. Independent resources are modeled in .NET as either separate projects or separate solutions. Luckily, an &lt;a href="https://github.com/dotnet/aspire-samples/tree/main/samples/eShopLite"&gt;.NET Aspire sample&lt;/a&gt; addresses this. Let's look into the details.&lt;/p&gt;
+&lt;p&gt;The structure of the eShopLite sample overlaps with the .NET Aspire starter &lt;code&gt;dotnet new&lt;/code&gt; template. It has a Blazor web frontend, a web API, an Aspire AppHost, and an Aspire service defaults project. Additionally, there is a shopping cart service (BasketService), and the catalog database (CatalogDb) project is an abstraction of the database resource.&lt;/p&gt;
+&lt;p&gt;The CatalogDb looks very similar to what you'd end up with following &lt;a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&amp;amp;tabs=visual-studio"&gt;Tutorial: Create a web API with ASP.NET Core&lt;/a&gt;: an ASP.NET Core web API that leverages Entity Framework, and is effectively a gateway to a backend database. Although, that tutorial uses Entity Framework &lt;em&gt;in-memory&lt;/em&gt; rather than via PostgreSQL. The way eShopLite supports Entity Framework is through the CatalogDb project. CatalogDb is like a stub project to the rest of the solution: Aspire doesn't execute it, but CatalogService depends upon it for the database model classes and &lt;code&gt;DbContext&lt;/code&gt; (utilized more like a class library.)  Nothing connects to the CatalogDb &lt;em&gt;web API&lt;/em&gt;. The CatalogDb project contains all the Entity Framework design-time details and references, allowing you to utilize Entity Framework's features like &lt;code&gt;migrations add &amp;lt;migration-name&amp;gt;&lt;/code&gt; and &lt;code&gt;dotnet ef database update&lt;/code&gt;. The target of Entity Framework operations like migration add and database update would depend on the configuration in &lt;code&gt;appsettings.json&lt;/code&gt;. Initialization/seeding of the data is handled in &lt;code&gt;CatalogDbInitializer&lt;/code&gt; within CatalogDb, as well as migrations at run-time (startup). CatalogDb &lt;code&gt;appsettings&lt;/code&gt; connection strings must be in sync with the run-time values for &lt;code&gt;ef&lt;/code&gt; commands to work.&lt;/p&gt;
+&lt;p&gt;In summary, if you want to utilize Entity Framework in a basic .NET Aspire application, &lt;a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&amp;amp;tabs=visual-studio"&gt;adding a project&lt;/a&gt; to contain the entity models, context, and Entity Framework references and supporting a database engine container is a recommended place to get started. I suspect this guidance may be refined as .NET Aspire evolves.&lt;/p&gt;
+&lt;p&gt;I'm still wrapping my head around how .NET Aspire can support other non-containerized workloads like Azure SQL. Still, a containerized design melds nicely with the idea of independent resources (or nodes) in .NET Aspire.  .NET Aspire also helps to more clearly delineate concerns like design, build, test, release, and deploy. As with .NET Aspire, containerization is an easier starting point for someone interested in distributed applications.&lt;/p&gt;
+&lt;p&gt;I look forward to how .NET Aspire evolves.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>ETags in ASP.NET Core</title>
 			<link>http://blog.peterritchie.com/posts/etags-in-aspdotnet-core</link>
@@ -1699,121 +1723,6 @@ Next i
 &lt;p&gt;Next time, I'll talk about how &amp;quot;declarative&amp;quot; doesn't mean always up front.&lt;/p&gt;
 &lt;h2 id="references"&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.opengroup.org/soa/source-book/ontologyv2/index.htm"&gt;Service-Oriented Architecture Ontology Version 2.0 - The Open Group&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Thoughts on Web Services, REST APIs, and Message Structure</title>
-			<link>http://blog.peterritchie.com/posts/Thoughts-Web-Services--REST-APIs--and-Message-Structure</link>
-			<description>&lt;p&gt;Love it or hate it, HTTP is ubiquitous.  It's been around for thirty years.
-It has evolved alot in those thirty years.  One critical way it has evolved is
-to support flexibility. Despite the huge benefits of that flexibility it can
-and has lead people away from recommended and expected usage and patterns.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Thoughts-Web-Services--REST-APIs--and-Message-Structure</guid>
-			<pubDate>Tue, 09 Apr 2019 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;h2 id="part-1-http"&gt;Part 1: HTTP&lt;/h2&gt;
-&lt;p&gt;Love it or hate it, HTTP is ubiquitous.  It's been around for thirty years.
-It has evolved alot in those thirty years.  One critical way it has evolved is
-to support flexibility. Despite the huge benefits of that flexibility it can
-and has lead people away from recommended and expected usage and patterns.&lt;/p&gt;
-&lt;p&gt;&amp;quot;No big deal&amp;quot;, some say, but being lead away from recommended
-usage leads to re-discovery and re-invention and an evolutionary way of
-working (i.e. it's never right the first time).  This evolutionary process
-is a constraining process, each step must be based on the last and all that
-came before it.  That's great when you do have to invent something that never
-existed; but when a solution already exists, this process needlessly
-constrains progress sometimes to the point of missing the actual
-recommendation or expectation.&lt;/p&gt;
-&lt;p&gt;The flexibility of HTTP really means that people have to have a deep or broad
-knowledge of it to use it properly.  Take the &lt;code&gt;Accept&lt;/code&gt; request header and
-media types. It allows a requestor to limit and rank the possible content
-format. We typically see this with at least XML and JSON nowadays.  To be
-clear this means Web APIs can have different formats of responses. The
-Content-Type header field means the inverse, that an API can accept multiple
-request content formats.  As flexible as this is, different content formats
-have at least some lack of parity of features.  As an example, XML has rich
-syntax that includes things like full featured consistent schema definitions.
-JSON is working towards things like that, but this is an example where the
-two have different semantic structure.  There are things that can be done to
-compensate, but at the end of the day neither was designed to work exactly like
-the other (that's kinda the point, isn't it?)  This is just one example where
-there's possibility of mismatch, mismatch in how two content formats can
-represent the same thing.&lt;/p&gt;
-&lt;p&gt;You may be thinking, &lt;em&gt;where am I going this with&lt;/em&gt;?  Thanks for the segue. What
-this means is there will be times when you &lt;em&gt;change the structure or schema&lt;/em&gt; of
-content (request or response) &lt;strong&gt;because it's one type OR the other&lt;/strong&gt;.  Which
-leads me back towards media types.  If the schema of a JSON response
-changes but the XML doesn't, what does &lt;em&gt;versioning&lt;/em&gt; of APIs mean?  Well, it
-means that because there are different formats of content is independently
-changing schemas &lt;strong&gt;you cannot reliably the version an API by URI&lt;/strong&gt;.  You can't even use a general
-header field that applies to all content because a change to one could be
-breaking but unnecessary or non-breaking in the other.  Making versioning
-problematic at best.  This means you really &lt;strong&gt;must use media type as the
-versioning mechanism&lt;/strong&gt;. (&amp;quot;MTATEOV&amp;quot;: Media Type As The Engine of
-Versionability?)&lt;/p&gt;
-&lt;p&gt;But, if you've ignored media types and effectively ignored schemas and cause
-breaking changes because it just works and breaking changes have been
-tolerable.  Of course, being in this situation and let the flexibility
-herd you into this corner.  But, it really is fairly easy also ends up
-solving these issues as well as open up some opportunities like Web Linking to
-content type and version! Let's have a look at the standard format of the media type.&lt;/p&gt;
-&lt;p&gt;Media types consist of a &lt;em&gt;type&lt;/em&gt; and a &lt;em&gt;subtype&lt;/em&gt;, separated by a forward slash.&lt;br /&gt;
-For example &amp;quot;application/xml&amp;quot;, &amp;quot;application/json&amp;quot;.  The subtype is further
-structured in a tree that provides many options.  There are standards subtypes
-that are fixed or *standard&amp;quot; like &amp;quot;text/html&amp;quot; and &amp;quot;image/png&amp;quot; which specify a
-standard format.  The standards subtypes typically fall under types like
-&amp;quot;text&amp;quot;, &amp;quot;image&amp;quot;, etc.&lt;/p&gt;
-&lt;p&gt;There can be application-specific subtypes and those fall under the
-&amp;quot;application&amp;quot; type.  There is a bit of inconsistency in media types, like
-JSON is &amp;quot;application/json&amp;quot; and XML is &amp;quot;text/xml&amp;quot; despite the two content
-formats having standard structure and semantics.  But, I'll focus on
-application-specific structures because you should only need to version
-application-specific structures.&lt;/p&gt;
-&lt;p&gt;Despite application-specific, the application-specific parts can be built off
-of those standard content structures like XML and JSON to create a custom
-subset schema (so to speak).  Media type standard supports that including a
-suffix and parameters to the subtype.  The subtype format is essentially
-&lt;code&gt;subtype[&amp;quot;+&amp;quot; suffix] [*&amp;quot;;&amp;quot; parameter]&lt;/code&gt; or &amp;quot;subtype&amp;quot; followed by an optional
-suffix separated by &amp;quot;+&amp;quot; followed by one or more parameters separated by &amp;quot;;&amp;quot;.&lt;br /&gt;
-And each parameter may have an optional value separated by &amp;quot;=&amp;quot;.
-So, I could specify that I have HTML text encoding as UTF-8 as
-&amp;quot;text/html; charset=UTF-8&amp;quot; or I could specific an application-specific format
-(like &amp;quot;gibberish&amp;quot;) that is based on XML like this &amp;quot;application/gibberish+xml&amp;quot;.&lt;/p&gt;
-&lt;p&gt;In order to avoid name clashes with other vendors, these media types are
-expected to be in the Vendor Tree where standards types fall under the root or
-Standards Tree.  Trees are specified with a prefix to the subtype, making
-the standard structure of a subtype like this
-&lt;code&gt;[tree &amp;quot;.&amp;quot;] subtype[&amp;quot;+&amp;quot; suffix] [*&amp;quot;;&amp;quot; parameter]&lt;/code&gt;.  &lt;em&gt;tree&lt;/em&gt; as the
-structure of &lt;code&gt;tree *[&amp;quot;.&amp;quot; subtree]&lt;/code&gt; meaning there can be many trees separated
-by &amp;quot;.&amp;quot;.  The standard details that the Vendor Tree starts with the &amp;quot;vnd.&amp;quot;
-prefix.  So, our custom type should really have the form
-&amp;quot;application/vnd.pri.gibberish+xml&amp;quot;, where &amp;quot;pri&amp;quot; is a vendor-specific name or
-identifier.  Or if JSON format is required: &amp;quot;application/vnd.pri.gibberish+xml&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Now that we know about custom, vendor application-specific type identifiers,
-on to dealing with changes to that content format that may introduce breaking
-changes, or &lt;em&gt;versioning&lt;/em&gt;.  Since we're dealing with vendor and application-
-specific identifiers within &lt;em&gt;subtype&lt;/em&gt; we deviate into an area not covered
-specifically by a standard.  And you're basically free to do anything you want
-to specify the version, some have a format like
-&amp;quot;application/vnd.pri.gibberish.v2+xml&amp;quot;.  Some use a subtype parameter like
-&amp;quot;application/vnd.pri.gibberish+xml;v=2&amp;quot; or
-&amp;quot;application/vnd.pri.gibberish+xml;version=2&amp;quot;.  Since what lead us on
-this particular journey was the problem of diverging versions between
-underlying structures, the parameter route makes more sense because the
-version really applies, in that case, to the content with an underlying
-structure.  And being a parameter after the prefix, it's less like a version
-of the subtype. e.g. &amp;quot;application/vnd.pri.gibberish.v2+xml&amp;quot; could be
-interpreted as gibberish version 2 with an underlying XML structure.  But
-&amp;quot;application/vnd.pri.gibberish+xml;v=2&amp;quot; is easier to interpret as
-gibberish+xml version 2.&lt;/p&gt;
-&lt;p&gt;Side note: In the versions I've shown here I've not used a minor version
-(like 2.1).  I did that on purpose based on SEMVER that stipulates major
-version number increment to signify breaking changes.  Non-breaking changes
-in content is achieved with optional values, so client requestors that
-don't know the new optional values won't use them and thus minor version
-doesn't matter.  Also, if new optional values appear in a response, the
-requester shouldn't care either.  You can structure your schema to make such
-that a requestor need to care about it, but that is a breaking change and a
-major version increment, not a minor version increment.&lt;!-- 2019, April--&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
