@@ -5,8 +5,135 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2023</copyright>
-		<pubDate>Wed, 29 Nov 2023 15:42:51 GMT</pubDate>
-		<lastBuildDate>Wed, 29 Nov 2023 15:42:51 GMT</lastBuildDate>
+		<pubDate>Thu, 30 Nov 2023 18:55:01 GMT</pubDate>
+		<lastBuildDate>Thu, 30 Nov 2023 18:55:01 GMT</lastBuildDate>
+		<item>
+			<title>A tool to help contributing to many Git repos</title>
+			<link>http://blog.peterritchie.com/posts/contributing-to-many-git-repos</link>
+			<description>&lt;p&gt;&lt;img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/contributing-to-many-git-repos</guid>
+			<pubDate>Thu, 30 Nov 2023 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources" /&gt;&lt;/p&gt;
+&lt;p&gt;I've contributed to many Git repos over the years. Doing this means I work in a code base for a little while, switch to another, and often eventually switch back.&lt;/p&gt;
+&lt;h2 id="collaborating-with-others"&gt;Collaborating with Others&lt;/h2&gt;
+&lt;p&gt;In the repos that I work in, many have multiple contributors. The contributions to those repos can be prolific, and if the repo is using a workflow that uses feature or topic branches, branches come and go quite often. &lt;code&gt;git fetch&lt;/code&gt; by default (or with no other options) gets all branches so you'll have other team members' branches after a fetch--which can be used to do a deep dive on a PR.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;You could choose not to use the &lt;code&gt;git fetch&lt;/code&gt; defaults and have it only get a particular branch. This can typically be done with &lt;code&gt;git fetch origin main&lt;/code&gt; (depending on how you've named your remotes and your branches.)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;I work with many organizations and rarely is there one repo (yes, I know, there's this thing called a &amp;quot;monorepo&amp;quot;; but I find that organizations that can make this work need to be very technically savy, with products/technologies geared towards developers, and only a few of the organizations I work with are at that level.) With remote work being what it is (I'm often working at a different time than other contributors), when I return to work with an organization's code, I usually need to update several repos.&lt;/p&gt;
+&lt;p&gt;|Why not do a &lt;code&gt;git pull&lt;/code&gt; instead of &lt;code&gt;git fetch&lt;/code&gt;?|
+|:-:|
+What I'm contributing to, what I may be reviewing, and whether I'm connected, are variable enough that I've built a habit only to pull when I'm ready to merge and deal with potential conflicts. If I have conflicts, I must resolve them (or abort: &lt;code&gt;git merge --abort&lt;/code&gt; or &lt;code&gt;git fetch origin&lt;/code&gt; and &lt;code&gt;git reset --hard origin&lt;/code&gt;) before doing anything else. This means I must commit to resolving those conflicts before switching to another branch to review or work with it. (Yes, I could re-clone in a different place, but frequent-fetch&amp;gt;abort&amp;gt;clone in terms of effort and risk.)}&lt;/p&gt;
+&lt;h1 id="a-tool-to-help"&gt;A tool to help&lt;/h1&gt;
+&lt;p&gt;When I re-start work (or maybe I'm coming off a vacation), going to each repo dir to perform &lt;code&gt;git fetch&lt;/code&gt; is tedious. I've developed a Powershell script to do that. I'll walk through the script after the code (commented code available &lt;a href="https://github.com/peteraritchie/pri.powershell/blob/main/git/fetch-all.ps1"&gt;here&lt;/a&gt;.)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;using namespace System.IO;
+param (
+    [switch]$WhatIf,
+    [switch]$Verbose,
+    [switch]$Quiet
+    )
+$currentDir = (get-location).Path;
+
+if($Verbose.IsPresent) {
+    $VerbosePreference = &amp;quot;Continue&amp;quot;;
+}
+
+function Build-Command {
+    $expression = 'git fetch';
+    if($Quiet.IsPresent) {
+        $expression += ' -q';
+    }
+    if($Verbose.IsPresent) {
+        $expression += ' -v --progress';
+    }
+    if($WhatIf.IsPresent) {
+        $expression += ' --dry-run';
+    }
+    $expression += &amp;quot; origin&amp;quot;;
+    return $expression;
+}
+
+foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
+    $dir = get-item -Force $item;
+    Push-Location $dir.Parent;
+    try {
+        Write-Verbose &amp;quot;fetching in $((Get-Location).Path)...&amp;quot;;
+        $expression = Build-Command;
+
+        Invoke-expression $expression;
+
+    } finally {
+        Pop-Location;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First, I'm translating the PowerShell idioms &lt;code&gt;WhatIf&lt;/code&gt;, &lt;code&gt;Verbose&lt;/code&gt;, and &lt;code&gt;Quiet&lt;/code&gt; to common Git options &lt;code&gt;--dry-run&lt;/code&gt;, &lt;code&gt;--verbose&lt;/code&gt; (&lt;code&gt;-v&lt;/code&gt;), and &lt;code&gt;--quiet&lt;/code&gt; (&lt;code&gt;-q&lt;/code&gt;). The &lt;code&gt;Build-Command&lt;/code&gt; builds up the expression we want to use to invoke git. I've included the &lt;code&gt;--progress&lt;/code&gt; option with &lt;code&gt;git fetch&lt;/code&gt; to display progress when&lt;code&gt;-Verbose&lt;/code&gt; is specified. Next, I'm looping through all directories, looking for a &lt;code&gt;.git&lt;/code&gt; directory. I'm using &lt;code&gt;System.IO.GetDirectories&lt;/code&gt; instead of &lt;code&gt;Get-ChildItem&lt;/code&gt; because it's much faster. For each directory that contains a &lt;code&gt;.git&lt;/code&gt; subdirectory, Git &lt;code&gt;fetch&lt;/code&gt; is invoked. This allows me to fetch several Git repos within the hierarchy of the current directory.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Organizaing Code Locally&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;I work with my code (spikes, libraries, experiments, etc.), open-source projects, and multiple clients. All these diverge from one another at one level in my directory structure. e.g. I may have a &lt;code&gt;src&lt;/code&gt; subdiretory in my home directory; and &lt;code&gt;oss&lt;/code&gt;, &lt;code&gt;experiments&lt;/code&gt;, and &lt;code&gt;client&lt;/code&gt; subdirectories within &lt;code&gt;src&lt;/code&gt;, so I can choose to fetch from all the repos recursively in each of those subdirectories--if I'm returning to work on an OSS project after being away from OSS for a while, I just &lt;code&gt;fetch-all.ps&lt;/code&gt; within the &lt;code&gt;oss&lt;/code&gt; subdirectory.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;By default (or with no other options), &lt;code&gt;git fetch&lt;/code&gt; does not delete corresponding local branches that have been removed from a remote. So, new branches will be downloaded, but those that were removed will remain.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;To also remove local branches removed from the remote, you can include a purge option with &lt;code&gt;git fetch&lt;/code&gt;: &lt;code&gt;git fetch --prune&lt;/code&gt; or &lt;code&gt;git fetch -p&lt;/code&gt;.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;If I'm reviewing a PR, I don't necessarily want removed remote branches to be removed locally &lt;em&gt;all the time&lt;/em&gt;. So, I like pruning separately from fetching. The following is the script for that (other than Build-Command, it has the same structure and flow as &lt;code&gt;fetch-all.ps1&lt;/code&gt; (so I won't walk through this snippet.)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-PowerShell"&gt;using namespace System.IO;
+param (
+    [switch]$WhatIf,
+    [switch]$Verbose
+    )
+$currentDir = (get-location).Path;
+
+if($Verbose.IsPresent) {
+    $VerbosePreference = &amp;quot;Continue&amp;quot;;
+}
+
+function Build-Command {
+    $expression = 'git remote';
+    if($Verbose.IsPresent) {
+        $expression += ' -v';
+    }
+    $expression += ' prune';
+    if($WhatIf.IsPresent) {
+        $expression += ' --dry-run';
+    }
+    $expression += ' origin';
+    return $expression;
+}
+
+foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
+    $dir = get-item -Force $item;
+    Push-Location $dir.Parent;
+    try {
+        Write-Verbose &amp;quot;pruning in $((Get-Location).Path)...&amp;quot;;
+        $expression = Build-Command;
+
+        Invoke-expression $expression;
+    } finally {
+        Pop-Location;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Separating pruning from fetching also allows me to prune at a wider scope than fetching. e.g. &lt;code&gt;c:\Users\peter\src\client .\fetch-all.ps1&lt;/code&gt; and &lt;code&gt;c:\Users\peter\src .prune-all.ps1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I look forward to your feedback and comments.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Entity Framework in .NET Aspire</title>
 			<link>http://blog.peterritchie.com/posts/entity-framework-in-aspire</link>
@@ -1663,66 +1790,6 @@ Media types can consist of a registered type (&lt;code&gt;application&lt;/code&g
 &lt;p&gt;It may make sense to think that the resource is changing, but in reality it is the representation that changes.  The resource is abstract, like &lt;em&gt;client&lt;/em&gt;.  Changing Birth Date from local to UTC doesn't change the fact that the &lt;strong&gt;resource is still a &lt;em&gt;client&lt;/em&gt;&lt;/strong&gt;.  If the resource fundamentally changes, that's when you change the URL/URI.  But not with a version identifier, but a new &lt;em&gt;resource&lt;/em&gt;.  If something previously considered a &amp;quot;client&amp;quot; changes so is conceptually no longer a &amp;quot;client&amp;quot;, then a new URI/URN should be used (like &amp;quot;client&amp;quot; to &amp;quot;lead&amp;quot;).  &lt;em&gt;We wouldn't have different versions of clients, merely different representations of client information&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
 &lt;p&gt;A URI/URN is a reference to the single conceptual resource and not to a particular representation.  Since media types &lt;em&gt;are&lt;/em&gt; the data format of the representation and the same conceptual resource has representations that can change, &lt;strong&gt;media type must be used to specify different representations that a single URI/URNs supports&lt;/strong&gt;.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Service-Oriented is Declarative, not Imperative</title>
-			<link>http://blog.peterritchie.com/posts/Service-Oriented-is-Declarative-Not-Imperative</link>
-			<description>&lt;p&gt;In this post, I'd like to address a challenge that I've witnessed in the understanding of service-oriented and implementations of it.&lt;br&gt;
-The issue I've seen in the design approach of services and service-oriented systems.  Programmers and engineers can easily view each service as a function.  Services are perceived as being composed together within a set of functions commanding specific state changes to achieve one of a smaller set of final states.&lt;br&gt;
-This is really describing the totality of &lt;em&gt;how&lt;/em&gt; a system does what it does.  At some point, the &lt;em&gt;how&lt;/em&gt; must exist but in order to have a system that isn't one-off and can evolve by responding to change, we need the &lt;em&gt;how&lt;/em&gt; to be encapsulated from one another.&lt;br&gt;
-Composition of a system in this way is an &lt;em&gt;imperative&lt;/em&gt; model.  Ideal service-orientation works within a &lt;em&gt;declarative&lt;/em&gt; model.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Service-Oriented-is-Declarative-Not-Imperative</guid>
-			<pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;In this post, I'd like to address a challenge that I've witnessed in the understanding of service-oriented and implementations of it.&lt;br /&gt;
-The issue I've seen in the design approach of services and service-oriented systems.  Programmers and engineers can easily view each service as a function.  Services are perceived as being composed together within a set of functions commanding specific state changes to achieve one of a smaller set of final states.&lt;br /&gt;
-This is really describing the totality of &lt;em&gt;how&lt;/em&gt; a system does what it does.  At some point, the &lt;em&gt;how&lt;/em&gt; must exist but in order to have a system that isn't one-off and can evolve by responding to change, we need the &lt;em&gt;how&lt;/em&gt; to be encapsulated from one another.&lt;br /&gt;
-Composition of a system in this way is an &lt;em&gt;imperative&lt;/em&gt; model.  Ideal service-orientation works within a &lt;em&gt;declarative&lt;/em&gt; model.&lt;/p&gt;
-&lt;p&gt;im·per·a·tive&lt;br /&gt;
-   /əmˈperədiv/&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;uses statements that change a program's state.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;de·clar·a·tive&lt;br /&gt;
-   /dəˈklerədiv/&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;denoting high-level programming languages which can be used to solve problems without requiring the programmer to specify an exact procedure to be followed&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In other words, declarative is declaring the outcomes required and imperative is supplying the commands to change state in order to achieve the outcome required.&lt;/p&gt;
-&lt;p&gt;Both are useful and both have benefits.  They're merely different.  One isn't better than the other.  But, they don't work well together.  Supplying a command to something that understands outcomes or supplying outcomes to something that expects command&lt;/p&gt;
-&lt;p&gt;Service-orientation involves many things but in the context, it involves the principles of abstraction and autonomy.  Something that is self-contained and is a black box to consumers, represents a repeatable activity with a specific outcome. &lt;sup&gt;&lt;a href="https://www.opengroup.org/soa/source-book/ontologyv2/index.htm"&gt;OG1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;This is different from what most programmers seem to understand, which is to provide an order list of commands or statements to change state.&lt;/p&gt;
-&lt;p&gt;Patterns are a good example of this, and the iterator pattern is one of my favorites.  That pattern details that to traverse the elements of a container an iterator object should be used to start at an initial element and progress through the rest through the use of a &amp;quot;&lt;code&gt;next&lt;/code&gt;&amp;quot; method.  This allows any type of sequences, collections, etc. to be iterated over regardless of their implementation.  i.e. &lt;em&gt;give me &lt;em&gt;next&lt;/em&gt;, whatever &lt;em&gt;next&lt;/em&gt; means&lt;/em&gt;.  C# has this built into the language with iterators:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;foreach( var element in theContainer)
-{
-   Do.Something.With(element);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In other languages/scenarios, the type of the container needs to be known and the unique way to enumerate all elements.  Typically reserved for collection/sequence structures, an array example may look like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;for(int i = 0; i &amp;lt; anArray.Length; ++i)
-{
-   var element = theContainer[i];
-   Do.Something.With(element);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-vb"&gt;For i = 1 to aList.Count
-   Dim element = theContainer.Item(i)
-Next i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Both of these blocks of code show &lt;em&gt;imperative&lt;/em&gt; commands: &lt;em&gt;get array element&lt;/em&gt; i or &lt;em&gt;get list element&lt;/em&gt; i.&lt;/p&gt;
-&lt;p&gt;With C# and the iterator syntax, it's a better description to say &lt;em&gt;give me the outcome of each iteration of a container&lt;/em&gt;.  What the container does to iterate is encapsulated, the container is a black box to the caller.  We can use it the same if that container implementation used an array, a list, or just had hard-coded values.&lt;/p&gt;
-&lt;p&gt;Services in Service-Orientation should take this form.  A service is a location where an outcome can be retrieved, usually with parameters.  Thinking in this way allows us to think of the outcomes we want to work with, rather than the details of how those outcomes are produced.  I allow us to (and is recommended) to think about things in our problem domain (or higher-level abstractions).  If we're thinking about a conference, we can think of a session as a container of registered attendees.  I can then model that I want to perform an activity with the information from each registered attendee before I implement something and decide &lt;em&gt;how&lt;/em&gt; that will be implemented.&lt;/p&gt;
-&lt;p&gt;In a service, we should not have a contract that details &lt;em&gt;how&lt;/em&gt; an activity should be performed. A service contract should only detail the outcome and what parameters are required to get that outcome.&lt;/p&gt;
-&lt;p&gt;Almost all design patterns (that aren't structural patterns) effectively do this: to abstract away implementation details in favor of declaring the outcome desired.  &amp;quot;Declarative&amp;quot; can also be considered &amp;quot;composable&amp;quot;: you're declaring how to compose things rather than the flow of logic.  The messaging library I published, you can effectively declare a producer, a consumer, and a channel/pipe between them.  Once composed like that, the type of channel/pipe used hides how the messages move between the producer and the consumer (in-memory, queue, HTTP endpoint, etc.).  You don't have imperatively create a queue (or a topic, etc) and imperatively connect the consumer and producer to the queue.&lt;/p&gt;
-&lt;p&gt;I realize this is very subtle and, in particular, the iterator example. And maybe some advice on naming may help to bring it over the line. What also makes these concepts complex is that they're not digital; i.e. nothing is entirely declarative or entirely imperative, there are degrees of declartiveness/imperativeness.&lt;/p&gt;
-&lt;p&gt;Service names should generally be nouns (e.g. the name of the &amp;quot;outcome&amp;quot; of the activity).  REST describes these as resources, which should also be nouns.  Verbs and a dead giveaway that something is imperative (if that wasn't obvious by the use of &lt;em&gt;imperative&lt;/em&gt; :) ).  Inputs in contracts should not contain verbs as well, consider the input/output as resources.&lt;/p&gt;
-&lt;p&gt;Additionally, this doesn't mean everything using the outcomes of declarative statements must be declarative.  You can certainly program a set of statements to change state based on what that outcome was.&lt;/p&gt;
-&lt;h3 id="traits-and-smells"&gt;Traits and Smells&lt;/h3&gt;
-&lt;p&gt;One of the traits of services that are not imperative is that they can be viewed as stateless.  If the need arises to store per-session state or state that shouldn't be available to other consumers of the service, that's a smell to tell you that you're probably more imperative than declarative.  The solution to this is to ensure anything required for the activity to be performed should be supplied in the input.  REST services facilitate this through HATEOS.  There was &lt;em&gt;state&lt;/em&gt; when an activity was requested, and it should be passed back in one or more hyperlinks for stateless services.  e.g. The current total number of resources at an endpoint at that point in time.  You may be paging through resources a page at a time and something could change between requests.  To avoid problems with that the state is effectively &lt;em&gt;stored&lt;/em&gt; in the response via links.  At the time of a request, a service may have 20 resources, if paging 10 at a time the &amp;quot;next&amp;quot; page for page one would be 2. If something changed before page 2 was retrieved, the response for page 2 may include page 3 for &amp;quot;next&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Next time, I'll talk about how &amp;quot;declarative&amp;quot; doesn't mean always up front.&lt;/p&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.opengroup.org/soa/source-book/ontologyv2/index.htm"&gt;Service-Oriented Architecture Ontology Version 2.0 - The Open Group&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>

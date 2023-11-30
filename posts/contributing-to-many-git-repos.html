@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - A tool to help contributing to many Git repos</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - A tool to help contributing to many Git repos" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/contributing-to-many-git-repos" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,17 +75,12 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>A tool to help contributing to many Git repos</h1>
     <div class="meta">        
-Published on Friday, March 8, 2013<br>    </div>
+Published on Thursday, November 30, 2023<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/Design/Coding-Guidance" class="btn btn-default btn-xs">Design/Coding Guidance</a>
-                    <a role="button" href="/tags/March-2013" class="btn btn-default btn-xs">March 2013</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/Git" class="btn btn-default btn-xs">Git</a>
+                    <a role="button" href="/tags/October-2023" class="btn btn-default btn-xs">October 2023</a>
         </div>     
 </div>
                                         </div>
@@ -99,41 +94,144 @@ Published on Friday, March 8, 2013<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency Injection (DI) is a form of Inversion of Control where the instances that one class need are instantiated outside of the class an &quot;injected&quot; into it. The most common injection is constructor injection. This is called inversion of control because the control of the dependencies have been inverted from the dependant class instantiating them to another class instantiating them. e.g. I could write class like this:</p>
-<p>Which is perfectly functional, but MyClass is now directly dependant on <code>List&lt;T&gt;</code> and this type has become an implementation detail of MyClass. If I wanted to use some other implementation of <code>IList&lt;T&gt;</code>, I'd have to re-write MyClass and fix the tests that broke because of it. I may want to use another <code>IList&lt;T&gt;</code> implementation because I want to test MyClass. As it stands, I have no way of telling if the class does anything successfully. I could write an <code>IList&lt;T&gt;</code> implementation that I can spy on in a test to verify that MyClass does what it supposed to do. The way MyClass is written at the moment, I can't do that.</p>
-<p>Bear in mind, this is a stupid example. But, it shows inversion of control with types commonly recognizable.</p>
-<p>So, I could invert the control on <code>IList&lt;T&gt;</code> and refactor MyClass to be DI-friendly. In this case, it's fairly simple:</p>
-<p>Now MyClass does not have a direct dependency on <code>List&lt;T&gt;</code> and I can give it anything I want. In production I'd create an instance like this:</p>
-<p>Not a whole lot more complex than before. If I wanted to test MyClass in some way, I could give it a spy:</p>
-<p>This is considered <em>Poor Man's IoC</em>, in that you're not making use of a framework or a library specifically devoted to IoC.</p>
-<p>Yes, you'd never really do this in real life; but it's a fairly clear example—with commonly-used types.</p>
-<h2 id="ioc-containers">IoC Containers</h2>
-<p>There's a plethora of IoC containers for .NET. They're all great tools, like StructureMap, Autofac, Ninject, Unity, etc. Don't get me wrong, they're powerful and they do a lot of things. But, they do a lot of things.</p>
-<p>What do I mean by &quot;they do a lot of things&quot;? Well, they're all effectively designed to work with codebases that are not DI-friendly. They go out of their way to provide features to support DI in any imaginable design. &quot;What's wrong with that&quot; you say? If you've got a brownfield project, that's great—you can likely get testability with code not designed to be testable—which is a good thing. But, these abilities make us lazy. We stop designing DI-friendly classes because we know how to use a particular IoC container to get a known level of IoC and/or testability. We've stopped striving for a simpler design, we've stopped striving for DI-friendly code.</p>
-<p>If you're finding that you're generally using much more than just constructor injection, having reams and reams of config to set up the various instances or lifecycles then you're probably letting your IoC container do too much for you and your design is suffering. If someone has to spend days understanding your IoC container and it's config for you project, you may have defeated the purpose.</p>
-<p>For lots of good advice on DI in .NET, check out <a href="http://blog.ploeh.dk/tags.html#Dependency%20Injection-ref">http://blog.ploeh.dk/tags.html#Dependency Injection-ref</a>. Some of my favourites: <a href="http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/">http://blog.ploeh.dk/2010/02/03/ServiceLocatorisanAnti-Pattern/</a>, <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/">http://blog.ploeh.dk/2011/07/28/CompositionRoot/</a>, and <a href="http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/">http://blog.ploeh.dk/2012/11/06/WhentouseaDIContainer/</a></p>
-<p><img src="http://msmvps.com/aggbug.aspx?PostID=1824852" class="img-fluid" alt="" /></p>
+<p><img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources" /></p>
+<p>I've contributed to many Git repos over the years. Doing this means I work in a code base for a little while, switch to another, and often eventually switch back.</p>
+<h2 id="collaborating-with-others">Collaborating with Others</h2>
+<p>In the repos that I work in, many have multiple contributors. The contributions to those repos can be prolific, and if the repo is using a workflow that uses feature or topic branches, branches come and go quite often. <code>git fetch</code> by default (or with no other options) gets all branches so you'll have other team members' branches after a fetch--which can be used to do a deep dive on a PR.</p>
+<table class="table">
+<thead>
+<tr>
+<th>You could choose not to use the <code>git fetch</code> defaults and have it only get a particular branch. This can typically be done with <code>git fetch origin main</code> (depending on how you've named your remotes and your branches.)</th>
+</tr>
+</thead>
+</table>
+<p>I work with many organizations and rarely is there one repo (yes, I know, there's this thing called a &quot;monorepo&quot;; but I find that organizations that can make this work need to be very technically savy, with products/technologies geared towards developers, and only a few of the organizations I work with are at that level.) With remote work being what it is (I'm often working at a different time than other contributors), when I return to work with an organization's code, I usually need to update several repos.</p>
+<p>|Why not do a <code>git pull</code> instead of <code>git fetch</code>?|
+|:-:|
+What I'm contributing to, what I may be reviewing, and whether I'm connected, are variable enough that I've built a habit only to pull when I'm ready to merge and deal with potential conflicts. If I have conflicts, I must resolve them (or abort: <code>git merge --abort</code> or <code>git fetch origin</code> and <code>git reset --hard origin</code>) before doing anything else. This means I must commit to resolving those conflicts before switching to another branch to review or work with it. (Yes, I could re-clone in a different place, but frequent-fetch&gt;abort&gt;clone in terms of effort and risk.)}</p>
+<h1 id="a-tool-to-help">A tool to help</h1>
+<p>When I re-start work (or maybe I'm coming off a vacation), going to each repo dir to perform <code>git fetch</code> is tedious. I've developed a Powershell script to do that. I'll walk through the script after the code (commented code available <a href="https://github.com/peteraritchie/pri.powershell/blob/main/git/fetch-all.ps1">here</a>.)</p>
+<pre><code class="language-powershell">using namespace System.IO;
+param (
+    [switch]$WhatIf,
+    [switch]$Verbose,
+    [switch]$Quiet
+    )
+$currentDir = (get-location).Path;
+
+if($Verbose.IsPresent) {
+    $VerbosePreference = &quot;Continue&quot;;
+}
+
+function Build-Command {
+    $expression = 'git fetch';
+    if($Quiet.IsPresent) {
+        $expression += ' -q';
+    }
+    if($Verbose.IsPresent) {
+        $expression += ' -v --progress';
+    }
+    if($WhatIf.IsPresent) {
+        $expression += ' --dry-run';
+    }
+    $expression += &quot; origin&quot;;
+    return $expression;
+}
+
+foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
+    $dir = get-item -Force $item;
+    Push-Location $dir.Parent;
+    try {
+        Write-Verbose &quot;fetching in $((Get-Location).Path)...&quot;;
+        $expression = Build-Command;
+
+        Invoke-expression $expression;
+
+    } finally {
+        Pop-Location;
+    }
+}
+</code></pre>
+<p>First, I'm translating the PowerShell idioms <code>WhatIf</code>, <code>Verbose</code>, and <code>Quiet</code> to common Git options <code>--dry-run</code>, <code>--verbose</code> (<code>-v</code>), and <code>--quiet</code> (<code>-q</code>). The <code>Build-Command</code> builds up the expression we want to use to invoke git. I've included the <code>--progress</code> option with <code>git fetch</code> to display progress when<code>-Verbose</code> is specified. Next, I'm looping through all directories, looking for a <code>.git</code> directory. I'm using <code>System.IO.GetDirectories</code> instead of <code>Get-ChildItem</code> because it's much faster. For each directory that contains a <code>.git</code> subdirectory, Git <code>fetch</code> is invoked. This allows me to fetch several Git repos within the hierarchy of the current directory.</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">Organizaing Code Locally</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">I work with my code (spikes, libraries, experiments, etc.), open-source projects, and multiple clients. All these diverge from one another at one level in my directory structure. e.g. I may have a <code>src</code> subdiretory in my home directory; and <code>oss</code>, <code>experiments</code>, and <code>client</code> subdirectories within <code>src</code>, so I can choose to fetch from all the repos recursively in each of those subdirectories--if I'm returning to work on an OSS project after being away from OSS for a while, I just <code>fetch-all.ps</code> within the <code>oss</code> subdirectory.</td>
+</tr>
+</tbody>
+</table>
+<p>By default (or with no other options), <code>git fetch</code> does not delete corresponding local branches that have been removed from a remote. So, new branches will be downloaded, but those that were removed will remain.</p>
+<table class="table">
+<thead>
+<tr>
+<th>To also remove local branches removed from the remote, you can include a purge option with <code>git fetch</code>: <code>git fetch --prune</code> or <code>git fetch -p</code>.</th>
+</tr>
+</thead>
+</table>
+<p>If I'm reviewing a PR, I don't necessarily want removed remote branches to be removed locally <em>all the time</em>. So, I like pruning separately from fetching. The following is the script for that (other than Build-Command, it has the same structure and flow as <code>fetch-all.ps1</code> (so I won't walk through this snippet.)</p>
+<pre><code class="language-PowerShell">using namespace System.IO;
+param (
+    [switch]$WhatIf,
+    [switch]$Verbose
+    )
+$currentDir = (get-location).Path;
+
+if($Verbose.IsPresent) {
+    $VerbosePreference = &quot;Continue&quot;;
+}
+
+function Build-Command {
+    $expression = 'git remote';
+    if($Verbose.IsPresent) {
+        $expression += ' -v';
+    }
+    $expression += ' prune';
+    if($WhatIf.IsPresent) {
+        $expression += ' --dry-run';
+    }
+    $expression += ' origin';
+    return $expression;
+}
+
+foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
+    $dir = get-item -Force $item;
+    Push-Location $dir.Parent;
+    try {
+        Write-Verbose &quot;pruning in $((Get-Location).Path)...&quot;;
+        $expression = Build-Command;
+
+        Invoke-expression $expression;
+    } finally {
+        Pop-Location;
+    }
+}
+</code></pre>
+<p>Separating pruning from fetching also allows me to prune at a wider scope than fetching. e.g. <code>c:\Users\peter\src\client .\fetch-all.ps1</code> and <code>c:\Users\peter\src .prune-all.ps1</code>.</p>
+<p>I look forward to your feedback and comments.</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'contributing-to-many-git-repos'
+    'A tool to help contributing to many Git repos'
+    'http://blog.peterritchie.com/posts/contributing-to-many-git-repos'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('3/8/13');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('11/30/23');
+    console.info('contributing-to-many-git-repos');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'A tool to help contributing to many Git repos';
+    var disqus_url = 'http://blog.peterritchie.com/posts/contributing-to-many-git-repos';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -142,7 +240,7 @@ Published on Friday, March 8, 2013<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'contributing-to-many-git-repos';
     }
     console.info(disqus_identifier);
 
