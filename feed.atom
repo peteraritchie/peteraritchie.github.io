@@ -4,11 +4,11 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2024</rights>
-	<updated>2024-05-22T19:53:16Z</updated>
+	<updated>2024-05-22T20:44:40Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</id>
-		<title>A tool to help contributing to many Git repos</title>
+		<title>Dealing with Primitive Obsession with Entity Framework Core</title>
 		<link href="http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core" />
 		<updated>2024-05-22T00:00:00Z</updated>
 		<content>&lt;p&gt;&lt;img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes" /&gt;&lt;/p&gt;
