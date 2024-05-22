@@ -4,9 +4,84 @@
 		<title>Peter Ritchie's Blog</title>
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
-		<copyright>2023</copyright>
-		<pubDate>Thu, 30 Nov 2023 18:55:01 GMT</pubDate>
-		<lastBuildDate>Thu, 30 Nov 2023 18:55:01 GMT</lastBuildDate>
+		<copyright>2024</copyright>
+		<pubDate>Wed, 22 May 2024 19:53:16 GMT</pubDate>
+		<lastBuildDate>Wed, 22 May 2024 19:53:16 GMT</lastBuildDate>
+		<item>
+			<title>A tool to help contributing to many Git repos</title>
+			<link>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</link>
+			<description>&lt;p&gt;&lt;img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</guid>
+			<pubDate>Wed, 22 May 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes" /&gt;&lt;/p&gt;
+&lt;p&gt;Unlike object-oriented languages, serialization and data transfer are limited to a small set of primitive types. These primitive types are often text, numbers (integers, floating point), booleans, arrays, etc. Sometimes, you're fortunate enough to have a more modern framework and have fancy types like date, time, and date/time, UUID/GUID, monetary, or binary data.&lt;/p&gt;
+&lt;p&gt;Primitive types are &lt;em&gt;value types&lt;/em&gt;—they don't have identity semantics, and their equality/equivalence is based on their &lt;em&gt;value&lt;/em&gt;. Entity Framework Core supports &lt;em&gt;value types&lt;/em&gt; as attributes but only insomuch as what the underlying provider supports. Any complex types are &amp;quot;entities&amp;quot; in Entity Framework, despite not having an &amp;quot;identity&amp;quot;.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Note&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Every type that Entity Framework is configured to recognize is an &lt;em&gt;Entity&lt;/em&gt; (e.g., via &lt;code&gt;ModelBuilder.Entity&amp;lt;T&amp;gt;()&lt;/code&gt; or &lt;code&gt;IEntityTypeConfiguration&amp;lt;T&amp;gt;&lt;/code&gt;), despite an entity traditionally (English definition, philosophically, ontologically, or even entity-relationship diagrams) being an individual/instance with an independent (of its attributes) existence.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Domains invariably have many value types. Some may be complex (multiple attributes), and some may be simple (subsets of primitive types.) Even &lt;em&gt;simple&lt;/em&gt; domain value types have unique semantics—that constrain value validity. A common value type &lt;em&gt;Name&lt;/em&gt;, for example, is textual and thus can be implemented with a textual primitive type (like &lt;code&gt;string&lt;/code&gt; or &lt;code&gt;VARCHAR&lt;/code&gt;.) A textual primitive type like &lt;code&gt;string&lt;/code&gt; is a sequence of characters up to 2,146,483,647 characters of any value. This is unrealistic for a &amp;quot;name&amp;quot; in most domains: e.g., a name over 2 billion characters in length or containing characters like &lt;code&gt;%'&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, or &lt;code&gt;&amp;gt;&lt;/code&gt; is problematic. Unlike how an integer is not a valid text value, and there exists no way to assign an integer to a string (e.g., &lt;code&gt;string text = 1;&lt;/code&gt; is not valid and cannot be compiled and thus never be executed), re-using a primitive type for &lt;em&gt;domain types&lt;/em&gt; with validity (consistency) constraints means instances of these domain values may not be valid (e.g., &lt;code&gt;name = &amp;quot;%&amp;quot;&lt;/code&gt; or &lt;code&gt;name = new string('&amp;lt;', int.MaxValue);&lt;/code&gt;) until being checked. Enter &lt;strong&gt;Primitive Obsession&lt;/strong&gt;.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Hint&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Entity Framework &amp;quot;entities&amp;quot; are not the same as Domain-Driven Design &amp;quot;entities.&amp;quot; Despite being based on relational entities, Entity Framework considers groups of nested (owned) attributes to be entities even if they don't map to their own table (with key.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="primitive-obsession"&gt;Primitive Obsession&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Primitive Obsession&lt;/em&gt; is a type of code smell&lt;span title="Fowler, M. (2018). &amp;quot;Refactoring: Improving the Design of Existing Code&amp;quot; "&gt;&lt;sup&gt;&lt;a href="https://amzn.to/3KkcnDT"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/span&gt; where—in an object-oriented context—something that realistically  has unique behavior and semantics has been implemented with a primitive type that doesn't guard that concept's invariants. Primitive Obsession recommends that invariants be abstracted within a unique type so that invalid or inconsistent instances of that type cannot exist.&lt;/p&gt;
+&lt;h3 id="value-object-mapping-in-entity-framework"&gt;Value Object Mapping in Entity Framework&lt;/h3&gt;
+&lt;p&gt;Fortunately, Entity Framework Core supports mapping from domain-specific value types to database primitive types. The domain-specific types then maintain their consistency, and correct usage is enforced.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Note&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;The converse is also important; not all uses of primitive types need to be abstracted away within a custom domain type. For example, a domain type may have attributes that realistically won't have values outside a specific range, but a type does not need to be created to abstract a primitive type. For example, making a &lt;code&gt;Length&lt;/code&gt; value type that wraps an integer value that provides no added value increases complexity rather than reduces it.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I've encountered some complex domains that treat identity very specifically. In cases like this, custom value types like &lt;em&gt;Identifier&lt;/em&gt; that may use one of many primitive types are created to abstract the underlying primitive type. For example, a high-level view of an Identifier class (that doesn't include details like validation, parsing, etc.):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public record Identifier&amp;lt;T&amp;gt; where T : struct, IEquatable&amp;lt;T&amp;gt;
+{
+    private readonly T _value;
+    public Identifier(T value) =&amp;gt; _value = value;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Implemented as a &lt;code&gt;record&lt;/code&gt;, &lt;code&gt;Identifer&amp;lt;T&amp;gt;&lt;/code&gt; operates as a value type (&lt;code&gt;struct&lt;/code&gt;, at the runtime level to implement a domain-level &lt;em&gt;value type&lt;/em&gt;) and provides equality and isolation (&lt;code&gt;Identifier&amp;lt;int&amp;gt;&lt;/code&gt; is not the same as &lt;code&gt;Identifier&amp;lt;Guid&amp;gt;&lt;/code&gt;. They cannot be equal, or compared.)&lt;/p&gt;
+&lt;p&gt;Inferring the mapping of instances of this type to primitive database column types isn't possible (and EF will let you know with an &lt;code&gt;InvalidOperationException&lt;/code&gt; detailing &lt;em&gt;The 'Identifier' property 'ShippingCompany.Identifier' could not be mapped because the database provider does not support this type.&lt;/em&gt; We need to tell Entity Framework Core how to map to a type the database provider supports. This is done with the &lt;code&gt;PropertyBuilder&amp;lt;TProperty&amp;gt;.HasConversion&lt;/code&gt; method when configuring the containing entity type.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity&amp;lt;ShippingCompany&amp;gt;()
+        .Property(e =&amp;gt; e.Identifer)
+        .HasConversion(identifier =&amp;gt; identifer.Value, value =&amp;gt; new Identifier&amp;lt;Guid&amp;gt;(value));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above shows how you can address Primitive Obsession when using Entity Framework but, it assumes that you're directly persisting domain objects through Entity Framework. Focusing on behavior over attributes in a domain may not make all domain objects persistable by Entity Framework. Still, you can at least push off the mapping of non-primitive value types to Entity Framework if you don't want to introduce another layer of mapping (treating the types persisted via Entity Framework as persistence DTOs).  You could still have a non-primitive-DTO (e.g., &lt;code&gt;IdentifierDto&lt;/code&gt;) persisted through Entity Framework.  I'll leave it up to you to decide if that's &amp;quot;proper&amp;quot; for your domain.&lt;/p&gt;
+&lt;h3 id="references"&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;[1]: &lt;a href="https://amzn.to/3KkcnDT"&gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.c2.com/?ReplaceDataValueWithObject"&gt;Replace Data Value With Object Refactoring&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>A tool to help contributing to many Git repos</title>
 			<link>http://blog.peterritchie.com/posts/contributing-to-many-git-repos</link>
@@ -1728,68 +1803,6 @@ https://www.forbes.com/sites/williamarruda/2016/11/15/9-differences-between-bein
 &lt;p&gt;Damn, I thought.  But % is so... DOS, maybe they use a different delimiter.  So, I stuck in &lt;code&gt;${USERNAME}&lt;/code&gt;.  Nope.  Then I thought, wait, macros in build events have a specific format!  I entered &lt;code&gt;$(USERNAME)&lt;/code&gt; and low-and-behold &lt;strong&gt;it worked!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;It's a little wonky though, in the Project Settings it shows the expanded variable (&lt;code&gt;PETERRIT&lt;/code&gt;), but in the project file it shows the macro reference. (&lt;code&gt;$(USERNAME)&lt;/code&gt;).  I can see the macro reference getting overwritten from time to time.&lt;/p&gt;
 &lt;p&gt;Enjoy!&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>RESTful Versioning</title>
-			<link>http://blog.peterritchie.com/posts/RESTful-Versioning</link>
-			<description>&lt;p&gt;Versioning is not new.  Versioning seems to be one of those things that people find hard to do or difficult to fully understand, especially with services and APIs.  RESTful versioning seems to be in the realm of Tabs v Spaces, but I want to detail my related observations (mostly of other's writings, but with some added color).&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/RESTful-Versioning</guid>
-			<pubDate>Tue, 12 Nov 2019 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;Versioning is not new.  Versioning seems to be one of those things that people find hard to do or difficult to fully understand, especially with services and APIs.  RESTful versioning seems to be in the realm of Tabs v Spaces, but I want to detail my related observations (mostly of other's writings, but with some added color).&lt;/p&gt;
-&lt;h2 id="what-is-a-version"&gt;What is a Version?&lt;/h2&gt;
-&lt;p&gt;Before going further, I find defining terms so their meaning is explicit and understood. &lt;em&gt;Version&lt;/em&gt; is no exception.&lt;/p&gt;
-&lt;p&gt;A &lt;em&gt;version&lt;/em&gt; recognizes a change to &lt;em&gt;something&lt;/em&gt; already established and assigns it an unique identity.  That identity serves as a moniker for &lt;em&gt;what&lt;/em&gt; changed so that when the &lt;em&gt;something&lt;/em&gt; that changed is processed, it can be differentiated from other &lt;em&gt;somethings&lt;/em&gt; of different versions.&lt;/p&gt;
-&lt;h2 id="why-do-we-need-a-version"&gt;Why Do we Need a Version?&lt;/h2&gt;
-&lt;p&gt;Based on what a version &lt;em&gt;is&lt;/em&gt;, it may seem easy to at least deduce &lt;em&gt;why&lt;/em&gt;.  That deduction usually &lt;em&gt;to differentiate different versions of things&lt;/em&gt;.  This is &lt;em&gt;what&lt;/em&gt; not &lt;em&gt;why&lt;/em&gt;. This is the part that many people seem to dismiss or let slip by.  In the context the knee-jerk response is &amp;quot;different version of the API&amp;quot; (API Versioning).  But, this simply restating what versioning is.  It's similar to defining &amp;quot;version&amp;quot; as&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;A version is the version of something in relation to other versions of the same thing.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Yeah, using the word you're defining in the definition is &lt;em&gt;helpful&lt;/em&gt;.  &amp;quot;Version&amp;quot; must provide:&lt;/p&gt;
-&lt;h3 id="support-for-past-representations"&gt;Support For Past &lt;em&gt;&lt;strong&gt;Representations&lt;/strong&gt;&lt;/em&gt;&lt;/h3&gt;
-&lt;p&gt;The major reason versioning comes into play is because any one &lt;em&gt;representation&lt;/em&gt; of something evolves over time.  Needs change, understanding improves, technology evolves, imperfections are found, etc. and how something is stored or communicated needs to change to accommodate that evolution.&lt;/p&gt;
-&lt;p&gt;&amp;quot;Requirements&amp;quot; are an obvious agent of change, and it would be easy to provide a trivial requirements example but a &lt;em&gt;fixing imperfection&lt;/em&gt; example would be more persuasive.  Humans like to be open-minded but inherently we live in our own worlds (our own mental model of the world).  Some of us are empathic and recognize parts of other worlds of the people around us. Or we know about a set of archetypes for which we can optimized interaction.  But in reality there are really 8+ billion other worlds out there and it's simply not humanly possible to know the intricacies of each.  Which means we make assumptions and trade-offs of what is acceptable to all of those other worlds.  Usually our audience isn't all 8+ billion people, so we're generally more correct than incorrect in our assumptions.  But, being incorrect is inevitable and expected. Much like we need to support many personalities, preferences, and needs; we also need to:&lt;/p&gt;
-&lt;h3 id="support-multiple-representations-of-concepts"&gt;Support Multiple &lt;em&gt;Representations&lt;/em&gt; of Concepts&lt;/h3&gt;
-&lt;p&gt;An example of this type of imperfection are date/time representations.  We live in our own &lt;em&gt;locus&lt;/em&gt; (which is like a personal &lt;em&gt;locale&lt;/em&gt;) and take for granted things we use or do in our locus from day-to-day, like Date/Time representations.  Local time has been working for each of us for all our lives, we take that for granted and use it in a representation without thinking.&lt;/p&gt;
-&lt;p&gt;There are many things that make this problematic and error-prone.  I won't get into detail what  &lt;em&gt;all of those&lt;/em&gt; may be (a blog isn't the place for a tome like that).  The &lt;em&gt;fix&lt;/em&gt; is, of course, to use a &lt;em&gt;different representation&lt;/em&gt;. Implementing that fix and supporting existing representations of complex data means we need to be able to tell different representations of the same data from one another.&lt;/p&gt;
-&lt;p&gt;This allows us to know how to translate each representation to the same in-memory structure when we (i.e. our code) encounter these representations; reinforcing that &lt;em&gt;representations&lt;/em&gt; differ from the &lt;em&gt;conceptual&lt;/em&gt; resource &lt;em&gt;and&lt;/em&gt; from the &lt;em&gt;implementation&lt;/em&gt; translation of the representation&lt;/p&gt;
-&lt;p&gt;We need the ability to translate &lt;em&gt;multiple representations&lt;/em&gt; because there will be instances of differing representations &lt;em&gt;in the wild&lt;/em&gt; at a time.&lt;/p&gt;
-&lt;h3 id="support-multiple-active-representation-versions"&gt;Support Multiple &lt;em&gt;Active&lt;/em&gt; Representation Versions&lt;/h3&gt;
-&lt;p&gt;Increasingly we work in asynchronous environments where communication of data is off-loaded to asynchronous communication technology (like queues, topics, and even threads).  And with the drive to 100% availability this means that we perform software updates &lt;em&gt;in situ&lt;/em&gt; or without taking our systems completely off-line (or unavailable).  e.g. &lt;em&gt;indirect&lt;/em&gt; communication through a queue makes communication of the message independent of the processes. Until it reaches and is consumed by the destination, the message can be in a queue with neither process executing. This requires components to support &lt;strong&gt;at least&lt;/strong&gt; two versions of a representation &lt;em&gt;at the same time&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id="attributes-of-rest"&gt;Attributes of REST&lt;/h2&gt;
-&lt;p&gt;Since we're in the context of &lt;strong&gt;Re&lt;/strong&gt;presentational &lt;strong&gt;S&lt;/strong&gt;tate &lt;strong&gt;T&lt;/strong&gt;ransfer where resource &lt;em&gt;representation&lt;/em&gt; is front-and-center as well as &lt;em&gt;state&lt;/em&gt; of that resource, the following is a review of main features of RESTful services:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;REST is not a distributed object style &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_3_1"&gt;3&lt;/a&gt; &lt;!--(5.2.1-1)--&gt;&lt;/li&gt;
-&lt;li&gt;A resource identifier (URI/URN) is a reference to a particular conceptual resource, not to a particular representation of it. &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;1&lt;/a&gt; &lt;!--(5.2.1.1-4)--&gt;&lt;/li&gt;
-&lt;li&gt;A representation of a resource is transfered between REST components. &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;1&lt;/a&gt; &lt;!--(5.2.1.1-4)--&gt;&lt;/li&gt;
-&lt;li&gt;A resource maps to a set of entities that varies over time, not just the representation at the moment &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;2&lt;/a&gt; &lt;!--(5.2.1.1-2)--&gt;&lt;/li&gt;
-&lt;li&gt;The set of entities that are mapped to a resource are considered equal (by resource identifier and/or representation). &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;2&lt;/a&gt; &lt;!--(5.2.1.1-2)--&gt;&lt;/li&gt;
-&lt;li&gt;The semantics of mapping a resource to an entity distinguishes one resource from another and is constant. &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;2&lt;/a&gt; &lt;!--(5.2.1.1-2)--&gt;&lt;/li&gt;
-&lt;li&gt;Representations are late-bound and based on characteristics of the request. &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;2&lt;/a&gt; &lt;!--(5.2.1.1-4)--&gt;&lt;/li&gt;
-&lt;li&gt;An identifier may exist without, or before, any realized representations. &lt;a href="https://www.ics.uci.edu/%7Efielding/pubs/dissertation/rest_arch_style.htm#sec_5_2_1_1"&gt;2&lt;/a&gt; &lt;!--(5.2.1.1-2)--&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="restful-versioning-options"&gt;&lt;em&gt;RESTful&lt;/em&gt; Versioning Options&lt;/h2&gt;
-&lt;p&gt;A quick review of objectives, for any given resource representation:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;we need to differentiate change independently from unrelated representations&lt;/li&gt;
-&lt;li&gt;we need to differentiate different changes to related representations at the same time&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;There are really only two fundamental options for &lt;em&gt;API Versioning&lt;/em&gt; (I didn't use &lt;em&gt;RESTful Versioning&lt;/em&gt; for reasons I hope will become clear):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Version moniker in the URI/URN, or&lt;/li&gt;
-&lt;li&gt;Version moniker in the headers (or media-type)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="uriurn"&gt;URI/URN&lt;/h3&gt;
-&lt;p&gt;In REST, a URL/URI &lt;strong&gt;only&lt;/strong&gt; identifies a resource, it is not a content-type identifier.  One reason for this is &lt;em&gt;Content Negotiation&lt;/em&gt;.  Content negotiation details that in the &lt;strong&gt;request for any particular resource&lt;/strong&gt;, the &lt;em&gt;representation&lt;/em&gt; of the resource (the response) can be negotiated through headers and responses.  That negotiation occurs through the single URL/URI.&lt;/p&gt;
-&lt;p&gt;I.e. the response format does not need to be consistent per URL/URI. &lt;a href="https://tools.ietf.org/html/rfc7231#section-3.4"&gt;4&lt;/a&gt; If it's not clear, supporting multiple representations means there can be &lt;em&gt;many&lt;/em&gt; response formats for any single URI/URN.  Since we've already shown that each representation is independent of other, &lt;strong&gt;multiple versions need to be represented per URL&lt;/strong&gt;. Making something like &lt;code&gt;example.com/picture/v2&lt;/code&gt; for the SVG format meaningless. Therefore URI/URN versioning doesn't support some fundamental REST features.&lt;/p&gt;
-&lt;h3 id="media-types-headers"&gt;Media Types (Headers)&lt;/h3&gt;
-&lt;p&gt;Media types are monikers for a particular re presentation.  XML and Json or JPEG and PNG are examples of particular representations of the same resource.  But media types are more complex than that.
-Media types can consist of a registered type (&lt;code&gt;application&lt;/code&gt;, &lt;code&gt;audio&lt;/code&gt;, &lt;code&gt;example&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt;, &lt;code&gt;message&lt;/code&gt;, &lt;code&gt;model&lt;/code&gt;, &lt;code&gt;multipart&lt;/code&gt;, &lt;code&gt;text&lt;/code&gt;, and &lt;code&gt;video&lt;/code&gt;), a subtype (the registered format in the standards tree, or a dot-delimited subtype tree), a suffix (prefixed with &lt;code&gt;+&lt;/code&gt;), and optional parameters (key/optional-value pairs prefixed with &lt;code&gt;;&lt;/code&gt;). Suffixes can be used to specify the underlying &lt;em&gt;structure&lt;/em&gt; of a type/subtype, e.g. JSON and XML.  Formats like SVG can be either textual or binary, so although being a image and SVG, simply specifying &lt;code&gt;image/svg&lt;/code&gt; is not enough to cover both of those structures. The media type for the XML format of SVG ends up being &lt;code&gt;image/svg+xml&lt;/code&gt;.  Application-specific types use the &lt;code&gt;application&lt;/code&gt; type and a subtype in the vendor tree (&lt;code&gt;vnd&lt;/code&gt;).  If a custom application format for a &lt;em&gt;person&lt;/em&gt; resource that uses XML format would have a media type of &lt;code&gt;application/vnd.person+xml&lt;/code&gt;.  If the service also supports JSON it would have another media type &lt;code&gt;application/vnd.person+json&lt;/code&gt;. &lt;code&gt;charset&lt;/code&gt; is a reserved parameter, other parameters have unique meaning defined within the type/subtype.  for example &lt;code&gt;text/html; charset=UTF-8&lt;/code&gt; and &lt;code&gt;application/vnd.person+json; version=2.0.0&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The take away is that &lt;strong&gt;media-types are independent from the endpoint&lt;/strong&gt;.&lt;/p&gt;
-&lt;h1 id="wrapping-up"&gt;Wrapping Up&lt;/h1&gt;
-&lt;p&gt;It may make sense to think that the resource is changing, but in reality it is the representation that changes.  The resource is abstract, like &lt;em&gt;client&lt;/em&gt;.  Changing Birth Date from local to UTC doesn't change the fact that the &lt;strong&gt;resource is still a &lt;em&gt;client&lt;/em&gt;&lt;/strong&gt;.  If the resource fundamentally changes, that's when you change the URL/URI.  But not with a version identifier, but a new &lt;em&gt;resource&lt;/em&gt;.  If something previously considered a &amp;quot;client&amp;quot; changes so is conceptually no longer a &amp;quot;client&amp;quot;, then a new URI/URN should be used (like &amp;quot;client&amp;quot; to &amp;quot;lead&amp;quot;).  &lt;em&gt;We wouldn't have different versions of clients, merely different representations of client information&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
-&lt;p&gt;A URI/URN is a reference to the single conceptual resource and not to a particular representation.  Since media types &lt;em&gt;are&lt;/em&gt; the data format of the representation and the same conceptual resource has representations that can change, &lt;strong&gt;media type must be used to specify different representations that a single URI/URNs supports&lt;/strong&gt;.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>

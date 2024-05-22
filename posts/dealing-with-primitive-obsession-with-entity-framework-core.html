@@ -1,0 +1,283 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - A tool to help contributing to many Git repos</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - A tool to help contributing to many Git repos" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>A tool to help contributing to many Git repos</h1>
+    <div class="meta">        
+Published on Wednesday, May 22, 2024<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/Code-Smells" class="btn btn-default btn-xs">Code Smells</a>
+                    <a role="button" href="/tags/DDD" class="btn btn-default btn-xs">DDD</a>
+                    <a role="button" href="/tags/Domain-Driven-Design" class="btn btn-default btn-xs">Domain-Driven Design</a>
+                    <a role="button" href="/tags/Entity-Framework" class="btn btn-default btn-xs">Entity Framework</a>
+                    <a role="button" href="/tags/May-2024" class="btn btn-default btn-xs">May 2024</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes" /></p>
+<p>Unlike object-oriented languages, serialization and data transfer are limited to a small set of primitive types. These primitive types are often text, numbers (integers, floating point), booleans, arrays, etc. Sometimes, you're fortunate enough to have a more modern framework and have fancy types like date, time, and date/time, UUID/GUID, monetary, or binary data.</p>
+<p>Primitive types are <em>value types</em>—they don't have identity semantics, and their equality/equivalence is based on their <em>value</em>. Entity Framework Core supports <em>value types</em> as attributes but only insomuch as what the underlying provider supports. Any complex types are &quot;entities&quot; in Entity Framework, despite not having an &quot;identity&quot;.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every type that Entity Framework is configured to recognize is an <em>Entity</em> (e.g., via <code>ModelBuilder.Entity&lt;T&gt;()</code> or <code>IEntityTypeConfiguration&lt;T&gt;</code>), despite an entity traditionally (English definition, philosophically, ontologically, or even entity-relationship diagrams) being an individual/instance with an independent (of its attributes) existence.</td>
+</tr>
+</tbody>
+</table>
+<p>Domains invariably have many value types. Some may be complex (multiple attributes), and some may be simple (subsets of primitive types.) Even <em>simple</em> domain value types have unique semantics—that constrain value validity. A common value type <em>Name</em>, for example, is textual and thus can be implemented with a textual primitive type (like <code>string</code> or <code>VARCHAR</code>.) A textual primitive type like <code>string</code> is a sequence of characters up to 2,146,483,647 characters of any value. This is unrealistic for a &quot;name&quot; in most domains: e.g., a name over 2 billion characters in length or containing characters like <code>%'</code>, <code>&lt;</code>, or <code>&gt;</code> is problematic. Unlike how an integer is not a valid text value, and there exists no way to assign an integer to a string (e.g., <code>string text = 1;</code> is not valid and cannot be compiled and thus never be executed), re-using a primitive type for <em>domain types</em> with validity (consistency) constraints means instances of these domain values may not be valid (e.g., <code>name = &quot;%&quot;</code> or <code>name = new string('&lt;', int.MaxValue);</code>) until being checked. Enter <strong>Primitive Obsession</strong>.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Hint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entity Framework &quot;entities&quot; are not the same as Domain-Driven Design &quot;entities.&quot; Despite being based on relational entities, Entity Framework considers groups of nested (owned) attributes to be entities even if they don't map to their own table (with key.)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="primitive-obsession">Primitive Obsession</h3>
+<p><em>Primitive Obsession</em> is a type of code smell<span title="Fowler, M. (2018). &quot;Refactoring: Improving the Design of Existing Code&quot; "><sup><a href="https://amzn.to/3KkcnDT">1</a></sup></span> where—in an object-oriented context—something that realistically  has unique behavior and semantics has been implemented with a primitive type that doesn't guard that concept's invariants. Primitive Obsession recommends that invariants be abstracted within a unique type so that invalid or inconsistent instances of that type cannot exist.</p>
+<h3 id="value-object-mapping-in-entity-framework">Value Object Mapping in Entity Framework</h3>
+<p>Fortunately, Entity Framework Core supports mapping from domain-specific value types to database primitive types. The domain-specific types then maintain their consistency, and correct usage is enforced.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The converse is also important; not all uses of primitive types need to be abstracted away within a custom domain type. For example, a domain type may have attributes that realistically won't have values outside a specific range, but a type does not need to be created to abstract a primitive type. For example, making a <code>Length</code> value type that wraps an integer value that provides no added value increases complexity rather than reduces it.</td>
+</tr>
+</tbody>
+</table>
+<p>I've encountered some complex domains that treat identity very specifically. In cases like this, custom value types like <em>Identifier</em> that may use one of many primitive types are created to abstract the underlying primitive type. For example, a high-level view of an Identifier class (that doesn't include details like validation, parsing, etc.):</p>
+<pre><code class="language-csharp">public record Identifier&lt;T&gt; where T : struct, IEquatable&lt;T&gt;
+{
+    private readonly T _value;
+    public Identifier(T value) =&gt; _value = value;
+}
+</code></pre>
+<p>Implemented as a <code>record</code>, <code>Identifer&lt;T&gt;</code> operates as a value type (<code>struct</code>, at the runtime level to implement a domain-level <em>value type</em>) and provides equality and isolation (<code>Identifier&lt;int&gt;</code> is not the same as <code>Identifier&lt;Guid&gt;</code>. They cannot be equal, or compared.)</p>
+<p>Inferring the mapping of instances of this type to primitive database column types isn't possible (and EF will let you know with an <code>InvalidOperationException</code> detailing <em>The 'Identifier' property 'ShippingCompany.Identifier' could not be mapped because the database provider does not support this type.</em> We need to tell Entity Framework Core how to map to a type the database provider supports. This is done with the <code>PropertyBuilder&lt;TProperty&gt;.HasConversion</code> method when configuring the containing entity type.</p>
+<pre><code class="language-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity&lt;ShippingCompany&gt;()
+        .Property(e =&gt; e.Identifer)
+        .HasConversion(identifier =&gt; identifer.Value, value =&gt; new Identifier&lt;Guid&gt;(value));
+}
+</code></pre>
+<p>The above shows how you can address Primitive Obsession when using Entity Framework but, it assumes that you're directly persisting domain objects through Entity Framework. Focusing on behavior over attributes in a domain may not make all domain objects persistable by Entity Framework. Still, you can at least push off the mapping of non-primitive value types to Entity Framework if you don't want to introduce another layer of mapping (treating the types persisted via Entity Framework as persistence DTOs).  You could still have a non-primitive-DTO (e.g., <code>IdentifierDto</code>) persisted through Entity Framework.  I'll leave it up to you to decide if that's &quot;proper&quot; for your domain.</p>
+<h3 id="references">References</h3>
+<ul>
+<li>[1]: <a href="https://amzn.to/3KkcnDT">Refactoring: Improving the Design of Existing Code</a></li>
+<li><a href="https://wiki.c2.com/?ReplaceDataValueWithObject">Replace Data Value With Object Refactoring</a></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'dealing-with-primitive-obsession-with-entity-framework-core'
+    'A tool to help contributing to many Git repos'
+    'http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('5/22/24');
+    console.info('dealing-with-primitive-obsession-with-entity-framework-core');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'A tool to help contributing to many Git repos';
+    var disqus_url = 'http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'dealing-with-primitive-obsession-with-entity-framework-core';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2024
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
