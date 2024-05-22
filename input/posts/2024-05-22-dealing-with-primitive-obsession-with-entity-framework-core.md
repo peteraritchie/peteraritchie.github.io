@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'A tool to help contributing to many Git repos'
+title: 'Dealing with Primitive Obsession with Entity Framework Core'
 categories: ['DDD', 'Code Smells', 'Entity Framework', 'Domain-Driven Design']
 comments: true
 excerpt: Primitive Obsession is when intrinsic types are used to represent values in a domain that may be better served by a Value Object. This post shows how you can deal with addressing Primitive Obsession while still persisting data via Entity Framework Core.
