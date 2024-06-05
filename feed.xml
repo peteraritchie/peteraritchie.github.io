@@ -5,8 +5,126 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Wed, 22 May 2024 20:44:40 GMT</pubDate>
-		<lastBuildDate>Wed, 22 May 2024 20:44:40 GMT</lastBuildDate>
+		<pubDate>Wed, 05 Jun 2024 16:45:51 GMT</pubDate>
+		<lastBuildDate>Wed, 05 Jun 2024 16:45:51 GMT</lastBuildDate>
+		<item>
+			<title>New And Proposed Changes For C# 13 - June 5, 2024</title>
+			<link>http://blog.peterritchie.com/posts/new-and-proposed-changes-in-csharp-13-2024-jun-5</link>
+			<description>&lt;p&gt;&lt;img src="../assets/types-of-extensions.png" class="img-fluid" alt="Extensions, extensions, extensions"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/new-and-proposed-changes-in-csharp-13-2024-jun-5</guid>
+			<pubDate>Wed, 05 Jun 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/types-of-extensions.png" class="img-fluid" alt="Extensions, extensions, extensions" /&gt;&lt;/p&gt;
+&lt;p&gt;C# 13 is shaping up to introduce some interesting and useful additions to the C# language. Let's look at what we know as of June 5, 2024.&lt;/p&gt;
+&lt;h2 id="extension-types"&gt;Extension Types&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Extension Types&lt;/em&gt; (announced at Build 2024) are the latest proposed addition to C# 13. Microsoft introduced &lt;em&gt;Extension Methods&lt;/em&gt; in C# 3, and since C# 4, the concept of &amp;quot;Extension Everything&amp;quot; has been an anticipated addition. &lt;em&gt;Extension Methods&lt;/em&gt; added the ability to extend non-static classes with statically-defined methods in unrelated static classes. &lt;em&gt;Extension Types&lt;/em&gt; extend the extensibility that Extension Methods offer, a huge leap towards Extension Everything.&lt;/p&gt;
+&lt;p&gt;Extension Methods syntax stays the same, but you can be clearer about the intent of your extension methods by declaring implicit extension classes.&lt;/p&gt;
+&lt;p&gt;An extension method in C#3-C#12 may look like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public static class StringExtensions
+{
+    public static bool IsNotNullOrEmpty(this string text)
+    {
+        return !string.IsNullOrEmpty(text);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above code introduces the ability to do something like &lt;code&gt;myText.IsNotNullOrEmpty()&lt;/code&gt;. In C# 13, you can be more direct (I'm trying to avoid using the word &amp;quot;explicit&amp;quot;; you'll see why in a sec.) by declaring an &lt;em&gt;implicit extension&lt;/em&gt; class with what looks like an instance method &lt;code&gt;IsNotNullOrEmpty&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;implicit extension StringExtensions for string
+{
+    public bool IsNotNullOrEmpty()
+    {
+        return !string.IsNullOrEmpty(this);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This alternative way to re-implement an extension method implements an instance method on the extension class—which is how the extension method appears when used: a call to a method on an instance of a type (&lt;code&gt;string&lt;/code&gt; in our example.) We're not limited to extending the &lt;em&gt;instance&lt;/em&gt; of a type; we can also extend the type with static methods. &lt;code&gt;IsNotNullOrEmpty&lt;/code&gt; is looking to be the opposite of the static &lt;code&gt;string&lt;/code&gt; method &lt;code&gt;IsNullOrEmpty&lt;/code&gt;. With Extension Types we will be able to implement &lt;code&gt;IsNotNullOrEmpty&lt;/code&gt; as a static method on &lt;code&gt;string&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;implicit extension StringExtensions for string
+{
+    public static bool IsNotNullOrEmpty(string text)
+    {
+        return !string.IsNullOrEmpty(text);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above code adds a &lt;strong&gt;static extension method&lt;/strong&gt; that allows for &lt;code&gt;string.IsNotNullOrEmpty(myText)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But, since the code will truly be in the context—or scope of—&lt;code&gt;string&lt;/code&gt;, I don't need to qualify the call to &lt;code&gt;IsNullOrEmpty&lt;/code&gt; with the type &lt;code&gt;string&lt;/code&gt;! So, we could do this instead:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;implicit extension StringExtensions for string
+{
+    public static bool IsNotNullOrEmpty(string text)
+    {
+        return !IsNullOrEmpty(text);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since this is &amp;quot;Extensions Types,&amp;quot; we will also have &lt;em&gt;extension properties&lt;/em&gt;. Continuing with my theme of IsNotNullOrEmpty (potentially in a controversial way), we could implement my original extension method as an extension property:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;implicit extension StringExtensions for string
+{
+    public bool IsNotNullOrEmpty =&amp;gt; !IsNullOrEmpty(this);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above code allows us to write &lt;code&gt;myText.IsNotNullOrEmpty&lt;/code&gt;. (Feel free to comment that I'm mad for making a property on a potentially &lt;code&gt;null&lt;/code&gt; instance of a &lt;code&gt;string&lt;/code&gt;, this is just an example.)&lt;/p&gt;
+&lt;p&gt;Extension Types isn't limited to extension methods and properties but also includes extension indexers. Stealing from Dustin and Mads' demo, let's say we want to provide access to individual bits with a &lt;code&gt;UInt64&lt;/code&gt;; I could write an implicit extension type like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public implicit extension Bits for Uint64)
+{
+    public bool this[int index]
+    {
+        get =&amp;gt; (this &amp;amp; Mask(index)) != 0;
+        set =&amp;gt; this = value ? this | Mask(value) : this &amp;amp; !Mash(index);
+    }
+    
+    static ulong Mask(int index) =&amp;gt; `ul &amp;lt;&amp;lt; index;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... so I could obtain the first bit of an unsigned 64-bit number with &lt;code&gt;unsigned64BitNumber[0]&lt;/code&gt;!&lt;/p&gt;
+&lt;p&gt;What's with &lt;code&gt;implicit&lt;/code&gt;? Like implicit operators that will be resolved to based on inferred scope or that it &lt;em&gt;implicitly&lt;/em&gt; applies to all cases of the underlying type (&lt;code&gt;... for &amp;lt;type&amp;gt;&lt;/code&gt;.) The keyword &lt;code&gt;explicit&lt;/code&gt; means a caller can only use the member in an explicitly-qualified scope. So, if I made my &lt;code&gt;StringExtensions&lt;/code&gt; class &lt;code&gt;explicit&lt;/code&gt; instead, the use of &lt;code&gt;IsNullOrEmpty&lt;/code&gt; would only be callable by qualifying with &lt;code&gt;StringExtensions&lt;/code&gt;: &lt;code&gt;(StringExtensions)myText.IsNotNullOrEmpty&lt;/code&gt;. At least, that's what's currently proposed.&lt;/p&gt;
+&lt;p&gt;Extension Types is a work in progress, so some of these things may change—I expect details around &lt;code&gt;explicit&lt;/code&gt; usage to change.&lt;/p&gt;
+&lt;h2 id="new-field-contextual-keyword"&gt;New &lt;code&gt;field&lt;/code&gt; Contextual Keyword&lt;/h2&gt;
+&lt;p&gt;A feature that almost made it into C# 12 is the &lt;code&gt;field&lt;/code&gt; contextual keyword--contextual in autoproperties. &lt;code&gt;field&lt;/code&gt; is an &amp;quot;alias&amp;quot; got access the auto-generated backing field.&lt;/p&gt;
+&lt;p&gt;Since you could declare a variable within the context of an autoproperty, &lt;code&gt;field&lt;/code&gt; is technically a breaking change.&lt;/p&gt;
+&lt;h2 id="params-collections"&gt;&lt;code&gt;params&lt;/code&gt; Collections&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;params&lt;/code&gt; has existed in C# since the start as a means of declaring a method that takes a variable number of arguments. Generic types were not available at the time, so &lt;code&gt;params&lt;/code&gt; only works with &lt;em&gt;arrays&lt;/em&gt;, for example, &lt;code&gt;void Method(params string[] args)&lt;/code&gt; or &lt;code&gt;void Method(params int[] numbers)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This means that &lt;code&gt;ReadOnlySpan&amp;lt;T&amp;gt;&lt;/code&gt; may be used with &lt;code&gt;params&lt;/code&gt; to realize the performance improvements of spans.&lt;/p&gt;
+&lt;h2 id="system.threading.lock-type-and-lock"&gt;&lt;code&gt;System.Threading.Lock&lt;/code&gt; Type and &lt;code&gt;lock&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;.NET 9 introduces an improved lock type &lt;code&gt;System.Threading.Lock&lt;/code&gt;. &lt;code&gt;System.Threading.Lock&lt;/code&gt; offers improvements over &lt;code&gt;Monitor&lt;/code&gt; in that &lt;code&gt;Lock&lt;/code&gt; supports a narrower locking scope and avoids the overhead of SyncBlock.&lt;/p&gt;
+&lt;p&gt;C# 13 &lt;code&gt;lock&lt;/code&gt; recognizes if the target is &lt;code&gt;System.Threading.Lock&lt;/code&gt; and uses its updated API.&lt;/p&gt;
+&lt;h2 id="new-escape-sequence-for-esc-character"&gt;New Escape Sequence For &lt;kbd&gt;Esc&lt;/kbd&gt; Character&lt;/h2&gt;
+&lt;p&gt;You can now enter &lt;kbd&gt;Esc&lt;/kbd&gt; as a string/character literal with &lt;code&gt;'\e'&lt;/code&gt;. Prior to C# 13, having the &lt;kbd&gt;Esc&lt;/kbd&gt; character in a string would require typing &lt;code&gt;\u001b&lt;/code&gt; (or &lt;code&gt;\x1b&lt;/code&gt;, but that's not recommended.) I believe this accepts the existing Regular Expression character sequence of &lt;code&gt;\e&lt;/code&gt; as an escape for &lt;kbd&gt;Esc&lt;/kbd&gt;.&lt;/p&gt;
+&lt;h2 id="improved-overload-resolution-for-method-groups"&gt;Improved Overload Resolution For Method Groups&lt;/h2&gt;
+&lt;p&gt;C# 13 will improve overload resolution of method groups when determining the method group's natural type. Oversimplication: instead of generating all possible candidate methods and selecting the best candidate, candidates will be constructed scope by scope. If, after pruning all the candidates at one scope, candidates at the next scope are constructed and considered. If you're interested at that level, see &lt;a href="https://github.com/dotnet/roslyn/issues/69222"&gt;Generic constraints should prune out candidates for method group natural type&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="index-operator-now-available-in-object-initializer-expressions"&gt;Index operator &lt;code&gt;^&lt;/code&gt; Now Available In Object Initializer Expressions&lt;/h2&gt;
+&lt;p&gt;You can now use the &amp;quot;From the end&amp;quot; operator in object initializer expressions. e.g.:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var countdown = new TimerRemaining()
+{
+    buffer =
+    {
+        [^1] = 0,
+        [^2] = 1,
+        [^3] = 2,
+        [^4] = 3,
+        [^5] = 4,
+        [^6] = 5,
+        [^7] = 6,
+        [^8] = 7,
+        [^9] = 8,
+        [^10] = 9
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="caveat"&gt;Caveat&lt;/h2&gt;
+&lt;p&gt;&amp;quot;C# 13&amp;quot; is a work in progress, and the above was accurate when it was published. Hopefully we'll get everything detailed above but we may not. We may not get some of these features or we may get more!&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/roslyn/issues/11159"&gt;Language Feature: Extension Everything&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/5497"&gt;[Proposal]: Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/140"&gt;Proposal: Semi-Auto-Properties; field keyword&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/params-collections"&gt;&lt;code&gt;params&lt;/code&gt; Collections Feature Proposal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/lock-object"&gt;Lock Object Feature Specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/7400"&gt;[Proposal]: String/Character escape sequence \e as a short-hand for \u001b (&amp;lt;ESCAPE&amp;gt;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/method-group-natural-type-improvements"&gt;Method group natural type improvements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/7429"&gt;[Proposal]: Method group natural type improvements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/7684"&gt;Open issue: evaluation of implicit indexers in object initializers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Dealing with Primitive Obsession with Entity Framework Core</title>
 			<link>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</link>
@@ -1781,28 +1899,6 @@ builder.Services.AddSingleton(bus);
 https://www.forbes.com/sites/williamarruda/2016/11/15/9-differences-between-being-a-leader-and-a-manager/?sh=2432b1424609
 
 --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Environment Variables with C# Conditional Compilation Symbols</title>
-			<link>http://blog.peterritchie.com/posts/Environment-Variables-with-CSharp-Conditional-Compilation-Symbols</link>
-			<description>&lt;p&gt;Have you ever thought, it would be nice to have a symbol like &lt;code&gt;PETERRIT&lt;/code&gt; that is unique to your domain account that you could use for code that YOU maybe working on but don't want to break the build?&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Environment-Variables-with-CSharp-Conditional-Compilation-Symbols</guid>
-			<pubDate>Thu, 12 Dec 2019 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;Have you ever thought, it would be nice to have a symbol like &lt;code&gt;PETERRIT&lt;/code&gt; that is unique to your domain account that you could use for code that YOU maybe working on but don't want to break the build?&lt;/p&gt;
-&lt;p&gt;I occaisionally think I would like to do this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;#if PETERRIT
-   public class ViolatileExperiment()
-   {
-     //...
-   }
-#endif
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When I think of this I go look at the docs or on Stackoverflow, but I never find anything that allows me to do that.&lt;/p&gt;
-&lt;p&gt;I had that thought recently and poked around in the Project Settings for a few minutes to see what's going on.  Interestingly &lt;code&gt;&amp;quot;%USERNAME%&amp;quot;&lt;/code&gt; causes and error, but doesn't break the build.&lt;/p&gt;
-&lt;p&gt;Damn, I thought.  But % is so... DOS, maybe they use a different delimiter.  So, I stuck in &lt;code&gt;${USERNAME}&lt;/code&gt;.  Nope.  Then I thought, wait, macros in build events have a specific format!  I entered &lt;code&gt;$(USERNAME)&lt;/code&gt; and low-and-behold &lt;strong&gt;it worked!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;It's a little wonky though, in the Project Settings it shows the expanded variable (&lt;code&gt;PETERRIT&lt;/code&gt;), but in the project file it shows the macro reference. (&lt;code&gt;$(USERNAME)&lt;/code&gt;).  I can see the macro reference getting overwritten from time to time.&lt;/p&gt;
-&lt;p&gt;Enjoy!&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
