@@ -5,8 +5,41 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Wed, 05 Jun 2024 16:45:51 GMT</pubDate>
-		<lastBuildDate>Wed, 05 Jun 2024 16:45:51 GMT</lastBuildDate>
+		<pubDate>Fri, 14 Jun 2024 17:55:30 GMT</pubDate>
+		<lastBuildDate>Fri, 14 Jun 2024 17:55:30 GMT</lastBuildDate>
+		<item>
+			<title>Aspiring Links for Week Ending June 14, 2024</title>
+			<link>http://blog.peterritchie.com/posts/aspiring-links-2024-06-14</link>
+			<description>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/aspiring-links-2024-06-14</guid>
+			<pubDate>Fri, 14 Jun 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links" /&gt;&lt;/p&gt;
+&lt;p&gt;Using PostgreSQL with .NET and Entra ID (Blog)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/using-postgre-sql-with-dotnet-and-entra-id/"&gt;https://devblogs.microsoft.com/dotnet/using-postgre-sql-with-dotnet-and-entra-id/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Official .NET Aspire Learning Path at Microsoft Learn (Site)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/"&gt;https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My First look at .NET Aspire. What's with the Hype? by CodeOpinion (Video)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/maVXnkYEDIE?si=7AkKulcvVOgnxmVz"&gt;https://youtu.be/maVXnkYEDIE?si=7AkKulcvVOgnxmVz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Instant OpenTelemetry Dashboard for JavaScript Developers with Aspire (Video)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/YKraN1ZETpw?si=XZUWcnZMtpzl7ztT"&gt;https://youtu.be/YKraN1ZETpw?si=XZUWcnZMtpzl7ztT&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;.NET Aspire: Your Gateway to Cloud-Native Success (Blog)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://riasolutionsgroup.com/2024/06/11/using-dynatrace-to-navigate-the-microservices-maze/"&gt;https://riasolutionsgroup.com/2024/06/11/using-dynatrace-to-navigate-the-microservices-maze/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aspirant - Extensions for .NET Aspire (GitHub Repo)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/aspirant-project/aspirant"&gt;https://github.com/aspirant-project/aspirant&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>New And Proposed Changes For C# 13 - June 5, 2024</title>
 			<link>http://blog.peterritchie.com/posts/new-and-proposed-changes-in-csharp-13-2024-jun-5</link>
@@ -1842,63 +1875,6 @@ builder.Services.AddSingleton(bus);
 &lt;h2 id="references"&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"&gt;Data URLs&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Data_URI_scheme"&gt;Data URI Scheme (wikipedia)&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>As a Delivery Team Member, I Want To Know if My Organization's Agile Initiative Is off the Rails</title>
-			<link>http://blog.peterritchie.com/posts/agile-off-the-rails</link>
-			<description>&lt;p&gt;&lt;img src="/assets/adult-gd72730acb_1920.jpg" class="img-fluid" alt="concentration"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/agile-off-the-rails</guid>
-			<pubDate>Sun, 19 Jun 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/adult-gd72730acb_1920.jpg" class="img-fluid" alt="concentration" /&gt;&lt;/p&gt;
-&lt;p&gt;Image by &lt;a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=1850268"&gt;Pexels&lt;/a&gt; from &lt;a href="https://pixabay.com/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=1850268"&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Or, &lt;em&gt;as a delivery team member, I want to know if my organization's agile initiative is off the rails, so that I may compensate for it&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;I have been an agile team member (delivery, engineering) in many organizations. There is a spirit to any defined agile process, a spirit that addresses known time-to-market and quality fallacies. Agile processes are like any good guidance; they are based on experience and techniques proven to address known problems.&lt;/p&gt;
-&lt;p&gt;First, some context:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Excellence&lt;/strong&gt; is not about being perfect but about recognizing and exploiting opportunity.&lt;/p&gt;
-&lt;p&gt;A &lt;strong&gt;Project&lt;/strong&gt; is a temporary, planned effort to achieve a particular aim.&lt;/p&gt;
-&lt;p&gt;A &lt;strong&gt;Sprint&lt;/strong&gt; is a time-boxed period where a team works to deliver usable functionality to stakeholders.&lt;/p&gt;
-&lt;p&gt;Goals and objectives are often &lt;strong&gt;Means Goals&lt;/strong&gt; and &lt;strong&gt;Means Objectives&lt;/strong&gt;, signifying they are a catalytic end to realize another end.&lt;/p&gt;
-&lt;p&gt;Objectives that are meant to accomplish other objectives exist in a continuum of objectives called &lt;strong&gt;Cascading Objectives&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;A &lt;strong&gt;Key Result&lt;/strong&gt; is not qualitatively measured (&amp;quot;done,&amp;quot; &amp;quot;improved,&amp;quot; etc.); they are measured quantitatively (&amp;quot;improved by 25%,&amp;quot; &amp;quot;decreased by a factor of 2,&amp;quot; etc.)&lt;/p&gt;
-&lt;p&gt;Agile methodologies embody a continuum of purpose, motivation, and improvement. Purpose, motivation, and improvement are not team-specific concepts but are organization-wide constructs. This continuum is the result of the act of leadership.&lt;/p&gt;
-&lt;p&gt;Over the years, I have witnessed many patterns of behavior that have resulted in failed agile delivery. Following are some common of those practices,&lt;/p&gt;
-&lt;h2 id="agile-is-the-only-process"&gt;Agile Is the Only Process&lt;/h2&gt;
-&lt;p&gt;Agile's raison d'être is to deliver value to the stakeholders. Agile is a project management technique; no enterprise devotes 100% of its resources to projects. An enterprise has a purpose for existing (their &lt;em&gt;why&lt;/em&gt;, the vision) and has a current means to achieve that purpose (their mission). Any effort not gauged by whether it satisfies the overall mission (and thus aligns with the purpose) can only succeed accidentally. Planning to succeed accidentally is not planning, and that sort of &amp;quot;planning&amp;quot; is a waste of time. Agile organizations put effort into addressing assumptions before planning value delivery.&lt;/p&gt;
-&lt;p&gt;You know an organization is working against itself and pretending to be agile when:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;100% of engineering time is devoted to &amp;quot;sprints.&amp;quot;&lt;/li&gt;
-&lt;li&gt;Sprints are planned correctly 100% of the time and are never canceled due to change.&lt;/li&gt;
-&lt;li&gt;A project plan does not focus on an operational outcome.&lt;/li&gt;
-&lt;li&gt;Spikes are exceedingly rare.&lt;/li&gt;
-&lt;li&gt;No stakeholder has communicated what they value.&lt;/li&gt;
-&lt;li&gt;Stakeholders do not declare a spike's usable functionality; the delivery team declares it.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="no-one-has-okr-training-or-expertise"&gt;No One Has OKR Training or Expertise&lt;/h2&gt;
-&lt;p&gt;Goals and objectives are easily understood conceptually but are hard to implement in reality. One of the impetus' of OKRs is to recognize and address that. Objectives and deliverables are consequents of goals; they are the means to a larger end while still being an end in and of themselves. In isolation, objectives and deliverables are meaningless and, like any other misguided activities, detract from the purpose of accomplishing them. OKRs attempt to associate goal-oriented &lt;em&gt;key results&lt;/em&gt; with individual objectives, objectives that cascade from higher-level objectives.&lt;/p&gt;
-&lt;p&gt;You know OKRs are in name only when:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Objectives do not cascade from higher-level objectives&lt;/li&gt;
-&lt;li&gt;Key results are an action, not an event&lt;/li&gt;
-&lt;li&gt;Key results are not measurable&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To be honest, I've only ever seen failed implementations of OKRs--OKRs more often address perceived delivery failures rather than leadership failures. i.e., they are a management technique rather than a result of leadership.&lt;/p&gt;
-&lt;h2 id="leadership-in-name-only"&gt;Leadership in Name Only&lt;/h2&gt;
-&lt;p&gt;A manager creates and judges the attainment of goals (doing things right). A leader communicates and cultivates purpose and vision (doing the right things).&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;There are only &amp;quot;leaders&amp;quot; and no &amp;quot;managers.&amp;quot;&lt;/li&gt;
-&lt;li&gt;&amp;quot;Leaders&amp;quot; that are late to every meeting.&lt;/li&gt;
-&lt;li&gt;Activities are judged, not outcomes.&lt;/li&gt;
-&lt;li&gt;Goals and objectives are only ever qualitative, not quantitative.&lt;/li&gt;
-&lt;li&gt;Personal improvement is not a measured performance metric.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Of course, I could go on. There are many more examples and many bad practices. I'd love to hear about what you've witnessed and your thoughts on these and other bad practices.&lt;/p&gt;
-&lt;!--
-## References:
-
-https://www.forbes.com/sites/williamarruda/2016/11/15/9-differences-between-being-a-leader-and-a-manager/?sh=2432b1424609
-
---&gt;
 </content:encoded>
 		</item>
 	</channel>
