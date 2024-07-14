@@ -4,8 +4,32 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2024</rights>
-	<updated>2024-06-14T17:55:30Z</updated>
+	<updated>2024-07-14T19:24:26Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/aspiring-links-2024-07-14</id>
+		<title>Aspiring Links for Period Ending July 14, 2024</title>
+		<link href="http://blog.peterritchie.com/posts/aspiring-links-2024-07-14" />
+		<updated>2024-07-14T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://visualstudiomagazine.com/Articles/2024/06/28/net-aspire.aspx"&gt;Visual Studio Magazine - Microsoft Making Big .NET Aspire Push, So What Is It?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/live/YXCqkJLL3XE?si=MmW-KmBtkQnXvmXi"&gt;YouTube - Learn C# with CSharpFritz: Basics of .NET Aspire - Part 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/hTtlBlsy1WA?si=nQYJggHvNg4gNkXx"&gt;YouTube - What is Dev Time Orchestration in .NET Aspire?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/fYqnWmhR-HU?si=vQogEpoNDNbmawhc"&gt;YouTube - Meet .NET Aspire&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/qtUgntF21Uw?si=WsVnZ2UPBWPw3dN-"&gt;YouTube - What are .NET Aspire components?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/lCzQ2yQr6JE?si=b3WEiW1ZX6lYjVY0"&gt;YouTube - How to deploy .NET Aspire applications?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/_DzGe2DXrKk?si=hdIRJaoUKiJrSS6h"&gt;YouTube - What is .NET Aspire telemetry?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/DzUhBG7uKUk?si=Sto7FpG7-dG51-8n"&gt;YouTube - What are .NET Aspire service defaults?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/qT6AXCLrZtw?si=ADHbcJLQ9HoR3XM1"&gt;YouTube - Technology and Friends - Scott Hunter on .NET Aspire&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/live/PUCU9ZOOgQ8?si=OgYaSvjqYPDpAJMr"&gt;YouTube - Let's Learn .NET Aspire (Português)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/live/48CWnYfTZhk?si=cgzeQ7kiEBmvS-s_"&gt;YouTube - Let's Learn .NET: Aspire (Tiếng Việt)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.postsharp.net/aspire-caching-metalama"&gt;Metalama - Simplify Your .NET Aspire Caching With Metalama&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://jeffreyfritz.com/2024/07/adding-antivirus-to-net-aspire-systems/"&gt;Fritz on the Web - Adding Antivirus to .NET Aspire Systems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/aspiring-links-2024-06-14</id>
 		<title>Aspiring Links for Week Ending June 14, 2024</title>
@@ -1825,55 +1849,5 @@ builder.Services.AddSingleton(bus);
 &lt;/ul&gt;
 </content>
 		<summary>&lt;p&gt;TL;DR - &lt;a href="#implementation-details"&gt;go to the implementation details&lt;/a&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/data-urls-in-markdown</id>
-		<title> Data URLs in Markdown</title>
-		<link href="http://blog.peterritchie.com/posts/data-urls-in-markdown" />
-		<updated>2022-06-27T00:00:00Z</updated>
-		<content>&lt;ul&gt;
-&lt;li&gt;Data URLs embed data within the URI instead of being a link&lt;/li&gt;
-&lt;li&gt;Data URLs can be used to embed images into a web page&lt;/li&gt;
-&lt;li&gt;Data URLs can be used for images in markdown&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="#data-urls"&gt;TL;DR&lt;/a&gt;⮷&lt;/p&gt;
-&lt;h2 id="background"&gt;Background&lt;/h2&gt;
-&lt;h3 id="links-in-markdown"&gt;Links in Markdown&lt;/h3&gt;
-&lt;p&gt;URLs can be used in markdown as a hyper-link to another location (another page, or an anchor in the current page, or both.) These links in markdown come in two varieties: &amp;quot;conventional&amp;quot; and reference-style.  Conventional links have the format &lt;code&gt;[text](url)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Reference-style links have a two-part format.  The first is the reference declaration which consists of a name and the URL.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-markdown"&gt;[twitter]: https://twitter.com/peterritchie
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Typically the reference declarations appear at the end of the markdown file.&lt;/p&gt;
-&lt;p&gt;That second-part of the format is slightly different than a conventional link: &lt;code&gt;[Visible Text][reference-name]&lt;/code&gt; (notice that both parts are enclosed in square brackets)&lt;/p&gt;
-&lt;p&gt;For example: &lt;code&gt;[Me&amp;#64;Twitter][twitter]&lt;/code&gt;.  Which would result in &lt;a href="https://twitter.com/peterritchie"&gt;Me&amp;#64;Twitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;That reference can be used any number of times within markdown by referencing the reference name.&lt;/p&gt;
-&lt;h3 id="images-in-markdown"&gt;Images in Markdown&lt;/h3&gt;
-&lt;p&gt;An image in markdown is a special kind of link; it follows the same format as other links &lt;em&gt;except&lt;/em&gt; that it starts with an exclamation mark (!) and has an optional title-text enclosed in quotes.  For example &lt;code&gt;![alt-text](url &amp;quot;title-text&amp;quot;)&lt;/code&gt;.  Since the image is what is visible, the title text portion of the link is text shown when hovering over the image and the alternative text is used by accessibility features.&lt;/p&gt;
-&lt;h2 id="data-urls"&gt;Data URLs&lt;/h2&gt;
-&lt;p&gt;There exists the ability to encode content within a URL (so the URL is actually the &amp;quot;response&amp;quot; in the conventional URI request scenario).  &lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"&gt;Data URLs&lt;/a&gt; (Formally known as Data &lt;em&gt;URIs&lt;/em&gt;) use the &lt;code&gt;data:&lt;/code&gt; URI schema followed by an optional media type, an optional base64 extension (&lt;code&gt;;base64&lt;/code&gt;) followed by data (if the &lt;code&gt;base64&lt;/code&gt; extension is used the data is binary and is base-64 encoded).&lt;/p&gt;
-&lt;p&gt;For example, with binary data for a red dot png a data URL may look like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="images-data-urls-and-reference-style-markdown-links"&gt;Images, Data Urls, and Reference-Style Markdown Links&lt;/h3&gt;
-&lt;p&gt;Data URLs may be used in markdown image links. With image markdown format and a data URL:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-text"&gt;![a red dot](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" title="The Image" /&gt;&lt;/p&gt;
-&lt;p&gt;...or with title text:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-text"&gt;![a red dot](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg== &amp;quot;The Image&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" title="The Image" /&gt;&lt;/p&gt;
-&lt;p&gt;Or, with a reference-style image link:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-markdown"&gt;![a red dot][red-dot]
-
-[red-dot]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;... and result in: &lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" class="img-fluid" alt="a red dot" /&gt;&lt;/p&gt;
-&lt;p&gt;Data URLs are a handy way to reduce the number of files involved in a page.  Like any feature, that can get ridiculous so the value comes when working with small chunks of data (like a red dot image.)&lt;/p&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"&gt;Data URLs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Data_URI_scheme"&gt;Data URI Scheme (wikipedia)&lt;/a&gt;&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;a href="#data-urls"&gt;TL;DR&lt;/a&gt;⮷&lt;/p&gt;</summary>
 	</entry>
 </feed>
