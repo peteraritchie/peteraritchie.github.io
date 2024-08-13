@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Dependency Injection</title>
+        <title>Peter Ritchie&#x27;s Blog - What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Dependency Injection" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Dependency-Injection" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,16 +75,15 @@
 
     
 <div class="post-heading">
-    <h1>Dependency Injection</h1>
+    <h1>What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?</h1>
     <div class="meta">        
-Published on Thursday, December 13, 2007<br>    </div>
+Published on Tuesday, August 13, 2024<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/Aug-2024" class="btn btn-default btn-xs">Aug 2024</a>
                     <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/December-2007" class="btn btn-default btn-xs">December 2007</a>
-                    <a role="button" href="/tags/Patterns" class="btn btn-default btn-xs">Patterns</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
+                    <a role="button" href="/tags/C%23-13" class="btn btn-default btn-xs">C# 13</a>
         </div>     
 </div>
                                         </div>
@@ -98,116 +97,88 @@ Published on Thursday, December 13, 2007<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p><a href="http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/" title="Permalink to Dependency Injection">Source</a></p>
-<h1 id="dependency-injection">Dependency Injection</h1>
-<p>Dependency injection (DI) is a form of inversion of control. There seems to be a tendency in some circles to refer to dependency injection as inversion of control (IoC).</p>
-<p>Dependency injection is a form of abstraction by removing physical dependencies between classes and potentially assemblies. This abstraction can have many different motives. One motive is for Aspect Oriented Software Development (ASOD) where you're abstracting shared (or cross-cutting) concerns into independent classes. Another motive is for Test-Driven Development (TDD) where you want to be able to test each class independently of its dependencies–in which case injected dependencies are &quot;mocked&quot;–technically this is still AOSD because you're separating the testing concern.</p>
-<p>Dependency injection in .NET is most frequently implemented using interface-oriented design/programming, where a dependency of a class is on an interface. Any class implementing that interface is then a candidate for being &quot;injected&quot; into the other class.There's many ways to inject dependency, one is at time of construction the other is at time of operation.</p>
-<p>There are many examples of dependency injection at time of operation in the .NET Framework. Normally when an interface is involved, dependency injection is also involved. Serialization is a good example. Serialization in .NET allows programmers to serialize topretty much anything. &quot;Anything&quot; being a stream. Serialization abstracts the destination from the act of serializing and allows programmers to inject a dependency on any type of destination (media, resource, mock, etc.) simply by implementing IStream. For example, for any given class in .NET I can &quot;serialize&quot; it to any stream:</p>
-<pre><code>   MyType myType = new MyType();
-
-
-   IFormatter formatter = Configuration.CreateFormatter(typeof(myType));
-
-
-   using (Stream stream = new MemoryStream())
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-
-
-   }
-</code></pre>
-<p>In the above example, IFormatter.Serialize(Stream, Object), uses dependency injection at time of operation to serialize to a MemoryStream object. In no way is IFormatter.Serialize dependant on MemoryStream. The same call could be written as follows:</p>
-<pre><code>   using(Stream stream = new FileStream(&quot;file.dat&quot;, FileMode.Create))
-
-
-   {
-
-
-    formatter.Serialize(stream, myType);
-
-
-    // TODO: something with stream.
-</code></pre>
-<p>}</p>
-<p>The above form of DI is interface (and class) based, in that you need to implement a specificinterface to inject as a dependency. Another form of DI is via delegates. You can abstract a particular class from other concerns simply by accepting a delegate. Any class that wants to be injected simply needs to implement a method with the same signature as the required delegate. Events are an example of this. Any class that raises events is completely independent of any other classes that want to act as observers and subscribe to these events. Subscribers are, in effect,are preforming dependency injection by subscribing to an event. This form of DI is not limited to DI,it can be any delegate.In.NET 2.0 there were many examples of this introduced. List.ForEach, for example:</p>
-<pre><code>namespace Examples
-
-
+<!--what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions-->
+<p><img src="../assets/views-through-different-lenses.jpg" class="img-fluid" alt="views through different lenses" /></p>
+<p>The <a href="https://github.com/dotnet/csharplang/blob/18a527bcc1f0bdaf542d8b9a189c50068615b439/proposals/TypeUnions.md">rumor</a> is that a <em>type union</em> feature may make its way into the next version of C#. The next version of C# will be 13, and C# has been around since 2000. What do type unions mean to C#?</p>
+<p>The concepts behind type unions have probably been around as long as programming languages. Some languages refer to them with different terms. Ada, Pascal, and Modula-2 refer to them as <em>variant records</em> (like <em>variants</em> in COM), Algo refers to them as <em>united modes</em>, F#, and CORBA refer to them as discriminated unions and other languages refer to them as tagged unions (like Python and TypeScript). Some languages have a discriminator (tag) support in their enumerations feature (like Swift, Rust, and Haxe). You might also see discriminated union-<em>like</em> support in other technologies like Swagger and OpenAPI.</p>
+<p>If you're familiar with C/C++, you may be familiar with unions; they're similar--their data types that define the type (or a block of memory) can be one of multiple types. C/C++ unions don't have a tag or discriminator or track what the union's storage <em>means</em>). So, the code that uses the union has to figure out how to access data in the union correctly. I.e., the code that uses a union C/C++ must have its own discriminator/tag.</p>
+<p>C# never truly had the concept of a C/C++ union because of increased memory safety—accessing memory in many different ways wasn't considered <em>safe</em>. You can fake C/C++ style unions in C# with <code>StructLayoutAttribute</code> and <code>LayoutKind.Explicit</code>. But I, for one, wouldn't recommend implementing discriminated unions that way.</p>
+<p>There have been some quasi-discriminated union implementations out there like <code>Result&lt;T&gt;</code> and <code>Optional&lt;T&gt;</code>. I call these <em>quasi</em> because they're very special-case. Most <code>Result&lt;T&gt;</code> implementations are discriminated unions because of the <code>Status</code> or <code>IsSuccess</code> properties that allow a consumer of an instance to tell whether to access the success or the error information. <code>Optional&lt;T&gt;</code> is like <code>Nullable&lt;T&gt;</code> with a discriminator <code>HasValue</code>, but more semantically aligned with an <em>optional value</em> (that could also be nullable).</p>
+<h2 id="will-c-get-discriminated-unions-or-type-unions">Will C# Get <em>Discriminated Unions</em> or <em>Type Unions</em>?</h2>
+<p>The proposal for C# uses &quot;Type Union&quot; because the discriminator isn't explicit. The union object (or, more accurately, the C# compiler) knows the instance type and allows the use of existing C# type-matching features (like <code>is</code>). The proposed syntax for declaring a Type Union is similar to declaring a single-level inheritance hierarchy that cannot be inherited from and behaves as if it is <em>closed</em>. In fact, BCL support for the concept will use a <code>ClosedAttribute</code> to declare Type Unions in a Common Type System way.</p>
+<p>Without a Type Union feature, something with a discriminator (specifically something like <a href="https://blog.nimblepros.com/blogs/getting-started-with-ardalis-result/"><code>Result&lt;T&gt;</code></a>, is used like this:</p>
+<pre><code class="language-csharp">// makes use of predefined union &quot;Result&lt;T&gt;&quot;
+public Result&lt;Resource&gt; GetResource(Guid id)
 {
+   var resource = _context.Resources.SingleOrDefault(e =&gt; e.Id == id);
+   if(resource == null) return new Result&lt;Resource&gt;.NotFound;
+   return new Result&lt;Resource&gt;(resource);
+}
 
+//... 
 
- using System.Collections.Generic;
-
-
- public class Program
-
-
- {
-
-
-  static void Main()
-
-
-  {
-
-
-   List&lt;string&gt; names = new List&lt;string&gt;();
-
-
-   // TODO: populate names
-
-
-   names.ForEach(Print);
-
-
-  }
-
-
-  static void Print(String name)
-
-
-  {
-
-
-   Console.WriteLine(name);
-
-
-  }
-
-
- }
-
-
+var result = GetResource(id);
+if(result.Status == ResultStatus.Ok)
+{
+  result.Value.Description = newDescription;
+  UpdateResource(result.Value);
+}
+else
+{
+  CreateResource(new Resource(id){Description = newDescription};
 }
 </code></pre>
-<p>In this example, <code>List&lt;T&gt;</code>, of course, iscompletely independent from Program andProgram is free to be static because there are no interface implementation requirements.</p>
+<p>With the proposed C# syntax, you'd declare a type union something like this, and for the point of comparison, I'll do one possible, simplified Type Union implementation of <code>Result&lt;T&gt;</code></p>
+<pre><code class="language-csharp">public union struct Result&lt;TValue&gt;
+{
+  Success(TValue value);
+  Failure(ErrorCode errorCode);
+}
+</code></pre>
+<p>As a <em>Type Union</em>, this declares a union <code>Result</code> and member types <code>Success</code> and <code>Failure</code>.</p>
+<p>Creating an instance is similar to:</p>
+<pre><code class="language-csharp">Result&lt;Resource&gt; result = Succes(resource);
+</code></pre>
+<p>or</p>
+<pre><code class="language-csharp">Result&lt;Resource&gt; result = Failure(ErrorCode.NotFound);
+</code></pre>
+<p>Instantiating one of the types and assigning it to an instance of the union—much like assigning a subclass to an instance of the base class.</p>
+<p>And use the instance like:</p>
+<pre><code class="language-csharp">if(result is Failure f) { /*...*/ }
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>NOTE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>These examples were written without access to the feature in the language. Based solely on documentation, expect syntax errors when the feature is released.</td>
+</tr>
+</tbody>
+</table>
+<p>This example is covered in some common patterns in the proposal and only covers a part of what's possible with Type Unions (that part is <em>struct unions</em>.) What's nice about this proposed feature is that it also considers union classes, ad hoc unions, and a limited ability to create custom unions (e.g., <code>ClosedAttribute</code> and <code>UnionAttribute</code>).</p>
+<p>What's also nice about this proposal is that it considers records, refs, boxing, nullability, co-/contra-variance (with ad hoc unions), exhaustiveness, nullability, equivalence, and assignability. The proposal might only do <em>most</em> of what you'd expect, but it does what is correct and useful.</p>
 
 
 <div id="disqus_thread"></div>  
 <!--
-    'Dependency-Injection'
-    'Dependency Injection'
-    'http://blog.peterritchie.com/posts/Dependency-Injection'
+    'what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions'
+    'What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?'
+    'http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions'
 -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
     var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('12/13/07');
-    console.info('Dependency-Injection');
+    var publishedDate = new Date('8/13/24');
+    console.info('what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions');
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Dependency Injection';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Dependency-Injection';
+    var disqus_title = 'What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?';
+    var disqus_url = 'http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions';
 
     if(publishedDate < fromJekyllDate)
     {
@@ -216,7 +187,7 @@ Published on Thursday, December 13, 2007<br>    </div>
     }
     else
     {
-        //var disqus_identifier = 'Dependency-Injection';
+        //var disqus_identifier = 'what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions';
     }
     console.info(disqus_identifier);
 
