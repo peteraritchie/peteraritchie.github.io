@@ -6,6 +6,7 @@ comments: true
 excerpt: 
 tags: ['Aug 2024', '.NET', 'C#', 'Mapster', 'Mapping', 'Translation']
 ---
+![Complicated translation](../assets/mapping-translation.png)
 
 <!-- Mapping/Translation series intro boilerplate -->
 Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called _abstract syntax_, which is purposely devoid of the specifics (_concrete syntax_) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.
