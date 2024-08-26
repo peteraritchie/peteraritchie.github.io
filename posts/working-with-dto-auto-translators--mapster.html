@@ -1,0 +1,342 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Working With DTO Auto Translators -- Mapster</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Working With DTO Auto Translators -- Mapster" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Working With DTO Auto Translators -- Mapster</h1>
+    <div class="meta">        
+Published on Monday, August 26, 2024<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/Aug-2024" class="btn btn-default btn-xs">Aug 2024</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/Mapping" class="btn btn-default btn-xs">Mapping</a>
+                    <a role="button" href="/tags/Mapster" class="btn btn-default btn-xs">Mapster</a>
+                    <a role="button" href="/tags/Translation" class="btn btn-default btn-xs">Translation</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<!-- Mapping/Translation series intro boilerplate -->
+<p>Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called <em>abstract syntax</em>, which is purposely devoid of the specifics (<em>concrete syntax</em>) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.</p>
+<!-- Data Transfer Object boilerplate pull quote/box copy -->
+<table class="table">
+<thead>
+<tr>
+<th>Data Transfer Objects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defining concrete syntax in high-level languages is so essential that a design pattern is devoted to it. The Data Transfer Object<sup>[<a href="https://amzn.to/3SR8c73">ppoe</a>]</sup> design pattern describes declaring high-level types to describe aspects of concrete syntax.</td>
+</tr>
+</tbody>
+</table>
+<p>This installment details the mapping and translation of Data Transfer Objects with a package named <a href="https://github.com/MapsterMapper/Mapster">Mapster</a> (<a href="https://www.nuget.org/packages/Mapster.DependencyInjection"><code>Mapster.DependencyInjection</code></a>).</p>
+<h2 id="translation">Translation</h2>
+<p>Mapster makes translation available in several ways. Because this post details a solution with dependency injection, I'll be focusing on injecting an <code>IMapper</code> (<code>MapsterMapper.IMapper</code>) object where translation is required rather than the generated <code>TDestination Adapt&lt;TSource, TDestination&gt;(this TSource source)</code> methods.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Opinion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I don't like thinking of this type of translation as an adaptation (i.e., as an Adapter Pattern implementation) because this isn't adapting one interface to another; it's raw data translation. As &quot;<code>Adapt</code>&quot; alludes to mapping and translation being two different actions, I don't like the method that performs translation being named &quot;<code>Map</code>.&quot; But <a href="https://bit.ly/naming-things-repo">Naming is Hard</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Mapster generates classes with <code>Adapt</code> methods at compile-time, so they're as fast as coding them by hand. The above method of invoking <code>Adapt</code> doesn't generate code you can browse to in the IDE, but it's still pre-generated.</p>
+<p>Given a domain object of <code>Account</code> and a Data Transfer Object <code>AccountDto</code>:</p>
+<pre><code class="language-csharp">public class Account(Guid id, DateOnly creationDate, string name)
+{
+	public Guid Id { get; } = id;
+	public string Name { get; private set; } = name;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string name)
+	{
+		Name = name;
+	}
+}
+</code></pre>
+<pre><code class="language-csharp">public class AccountDto
+{
+	public Guid Id { get; set; }
+	public string Name { get; set; }
+	public DateOnly CreationDate { get; set; }
+}
+</code></pre>
+<p>Mapster generates code to translate to/from <code>Account</code>/<code>AccountDto</code> so that you just need to inject an <code>IMapper</code> and invoke the <code>IMapper.Map&lt;TSource, TDestination&gt;</code> method. <code>AddMapster(this IServiceCollection serviceCollection)</code> is used to add <code>IMapper</code> to services.</p>
+<h2 id="mapping-by-convention">Mapping by Convention</h2>
+<p>The raison d'etre of mapping/translation frameworks is to make translating one data type to another as simple as possible. A key feature of these frameworks is to map by convention, which automatically maps fields or properties based on criteria like name and data type. Mapster does an excellent job of mapping by convention. In the above example, you don't have to tell Mapster anything. It knows that <code>Account.Id</code> maps to <code>AccountDto.Id</code>, and <code>Account.Name</code> maps to <code>AccountDto.Name</code>, and <code>Account.CreationDate</code> maps to <code>AccountDto.CreationDate</code> because the properties have the same name and type.</p>
+<p>Explicit mapping isn't necessary. Simply injecting an <code>IMapper</code> instance and invoking <code>IMapper.Map&lt;TSource, TDestination&gt;</code> is enough to map th two type's properties by convention</p>
+<pre><code class="language-csharp">public class CreateAccountCommandHandler(IMapper mapper, INotificationService notificationService)
+	: IRequestHandler&lt;CreateAccountCommand&gt;
+{
+	private readonly IMapper mapper = mapper;
+
+	public async Task Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+	{
+		Guid accountId = Guid.NewGuid();
+		Account account = CreateAccount(accountId);
+
+		var dto = mapper.Map&lt;Account, AccountDto&gt;(account);
+
+		await notificationService.PublishAsync(new AccountCreated(dto), cancellationToken);
+	}
+    // ...
+}
+</code></pre>
+<h2 id="custom-mapping">Custom Mapping</h2>
+<p>When we start (greenfield) development, our DTOs are usually closely aligned with our domain objects, so by-convention mapping is our friend. However, an important reason for having two abstractions is that they can evolve independently. Eventually, as we gain a better understanding of the domain or clients of the communication channel, we will need to make changes that cause our DTO and Domain Objects to diverge. We can manage that divergence by extending the by-convention mapping to include custom mapping. Mapster supports this through what it calls registers or via <code>Register</code> methods. Mapster can be told to scan for Register methods and perform custom mapping automatically.</p>
+<p>For example, we've gained a better understanding of the domain, and an Account doesn't necessarily have a &quot;name&quot; but has an associated account holder with a given and family name. That understanding may make its way into the domain like this:</p>
+<pre><code class="language-csharp">public class Account(Guid id, DateOnly creationDate, string accountHolderGivenName, string accountHolderFamilyName)
+{
+	public Guid Id { get; } = id;
+	public string AccountHolderGivenName { get; private set; } = accountHolderGivenName;
+	public string AccountHolderFamilyName { get; private set; } = accountHolderFamilyName;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string accountHolderGivenName, string accountHolderFamilyName)
+	{
+		AccountHolderGivenName = accountHolderGivenName;
+		AccountHolderFamilyName = accountHolderFamilyName;
+	}
+}
+</code></pre>
+<p>Receivers of our <code>AccountDto</code> might be unable to accommodate that change immediately, so we may deal with that by mapping properties differently. Instead of including FamilyName and GivenName in AccountDto, we may concatenate the given and family name and assign it to <code>AccountDto.Name</code>. (A Strategy Pattern implementation that deals with whether a given name appears before a family name for a particular culture/customer is a topic for another time.)</p>
+<pre><code class="language-csharp">public class MappingRegister : IRegister
+{
+	public void Register(TypeAdapterConfig config)
+	{
+		config.NewConfig&lt;Account, AccountDto&gt;()
+			.Map(dest =&gt; dest.Name, src=&gt; $&quot;{src.AccountHolderGivenName} {src.AccountHolderFamilyName}&quot;);
+	}
+}
+</code></pre>
+<p>During startup/service configuration, Mapster can be to told to scan for implementations of <code>IRegister</code>:</p>
+<pre><code class="language-csharp">	TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
+</code></pre>
+<h2 id="where-does-mapping-and-translation-occur">Where Does Mapping and Translation Occur?</h2>
+<hr />
+<p>Data transfer can occur in different layers. Data transfer triggers a website or API (presentation layer); the application layer requests external services via an infrastructure layer to transfer data to and from. I'm often asked where that mapping and translation source code should exist and in which project in the solution. It's important to remember that we're dealing with multiple layers. While a presentation layer is the most common layer for initialization (DI container configuration), the translation method must be visible in the layer where the data transfer occurs.</p>
+<p>Translation of web/API models can exist in the presentation layer because that's where <em>that</em> data transfer occurs. However, invoking a service from the application layer can mean the translation method can't live in the presentation layer because the application layer cannot take a direct dependency on the presentation layer (it is the other way around.)</p>
+<p>When a build boundary separates a layer (e.g., separate projects and or binaries), both assemblies can't be dependent on each other—the initialization/DI can't both access the types in the different assembly <strong>and</strong> be referenced by the other assembly to invoke <code>Map</code>/<code>Adapt</code>. So, the mapping configuration that accesses the source and target types involved in the translation must exist in the assembly referenced by the initialization/DI. This is typically done by creating the familiar <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#register-groups-of-services-with-extension-methods"><code>Add{GROUP_NAME}</code> extension method pattern</a> for example, given an application layer implemented in a separate project, an extension method (sometimes in the <code>Microsoft.Extensions.Hosting</code> namespace, <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-usage#:%7E:text=don%27t%20place%20extension%20methods%20in%20the%20microsoft.extensions.dependencyinjection%20namespace%20unless%20you%27re%20authoring%20an%20official%20microsoft%20package.">but not recommended</a>)</p>
+<pre><code class="language-csharp">public static class ApplicationExtensions
+{
+	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+	{
+		ArgumentNullException.ThrowIfNull(services);
+		TypeAdapterConfig.GlobalSettings.Scan(typeof(ApplicationExtensions).Assembly);
+
+		services.AddMapster();
+		return services;
+	}
+}
+</code></pre>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/MapsterMapper/Mapster/wiki/Custom-mapping">Mapster - Custom Mapping</a></li>
+<li><a href="https://github.com/MapsterMapper/Mapster">Mapster repo</a></li>
+<li><a href="https://www.nuget.org/packages/Mapster.DependencyInjection">Mapster Nuget</a></li>
+</ul>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'working-with-dto-auto-translators--mapster'
+    'Working With DTO Auto Translators -- Mapster'
+    'http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/26/24');
+    console.info('working-with-dto-auto-translators--mapster');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Working With DTO Auto Translators -- Mapster';
+    var disqus_url = 'http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'working-with-dto-auto-translators--mapster';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2024
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

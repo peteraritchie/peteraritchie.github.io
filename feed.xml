@@ -5,8 +5,141 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Tue, 13 Aug 2024 13:29:43 GMT</pubDate>
-		<lastBuildDate>Tue, 13 Aug 2024 13:29:43 GMT</lastBuildDate>
+		<pubDate>Mon, 26 Aug 2024 17:23:14 GMT</pubDate>
+		<lastBuildDate>Mon, 26 Aug 2024 17:23:14 GMT</lastBuildDate>
+		<item>
+			<title>Working With DTO Auto Translators -- Mapster</title>
+			<link>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster</link>
+			<description>&lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called&amp;nbsp;&lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster</guid>
+			<pubDate>Mon, 26 Aug 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;!-- Mapping/Translation series intro boilerplate --&gt;
+&lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called &lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.&lt;/p&gt;
+&lt;!-- Data Transfer Object boilerplate pull quote/box copy --&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Data Transfer Objects&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Defining concrete syntax in high-level languages is so essential that a design pattern is devoted to it. The Data Transfer Object&lt;sup&gt;[&lt;a href="https://amzn.to/3SR8c73"&gt;ppoe&lt;/a&gt;]&lt;/sup&gt; design pattern describes declaring high-level types to describe aspects of concrete syntax.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This installment details the mapping and translation of Data Transfer Objects with a package named &lt;a href="https://github.com/MapsterMapper/Mapster"&gt;Mapster&lt;/a&gt; (&lt;a href="https://www.nuget.org/packages/Mapster.DependencyInjection"&gt;&lt;code&gt;Mapster.DependencyInjection&lt;/code&gt;&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id="translation"&gt;Translation&lt;/h2&gt;
+&lt;p&gt;Mapster makes translation available in several ways. Because this post details a solution with dependency injection, I'll be focusing on injecting an &lt;code&gt;IMapper&lt;/code&gt; (&lt;code&gt;MapsterMapper.IMapper&lt;/code&gt;) object where translation is required rather than the generated &lt;code&gt;TDestination Adapt&amp;lt;TSource, TDestination&amp;gt;(this TSource source)&lt;/code&gt; methods.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Opinion&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;I don't like thinking of this type of translation as an adaptation (i.e., as an Adapter Pattern implementation) because this isn't adapting one interface to another; it's raw data translation. As &amp;quot;&lt;code&gt;Adapt&lt;/code&gt;&amp;quot; alludes to mapping and translation being two different actions, I don't like the method that performs translation being named &amp;quot;&lt;code&gt;Map&lt;/code&gt;.&amp;quot; But &lt;a href="https://bit.ly/naming-things-repo"&gt;Naming is Hard&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Mapster generates classes with &lt;code&gt;Adapt&lt;/code&gt; methods at compile-time, so they're as fast as coding them by hand. The above method of invoking &lt;code&gt;Adapt&lt;/code&gt; doesn't generate code you can browse to in the IDE, but it's still pre-generated.&lt;/p&gt;
+&lt;p&gt;Given a domain object of &lt;code&gt;Account&lt;/code&gt; and a Data Transfer Object &lt;code&gt;AccountDto&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Account(Guid id, DateOnly creationDate, string name)
+{
+	public Guid Id { get; } = id;
+	public string Name { get; private set; } = name;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string name)
+	{
+		Name = name;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class AccountDto
+{
+	public Guid Id { get; set; }
+	public string Name { get; set; }
+	public DateOnly CreationDate { get; set; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mapster generates code to translate to/from &lt;code&gt;Account&lt;/code&gt;/&lt;code&gt;AccountDto&lt;/code&gt; so that you just need to inject an &lt;code&gt;IMapper&lt;/code&gt; and invoke the &lt;code&gt;IMapper.Map&amp;lt;TSource, TDestination&amp;gt;&lt;/code&gt; method. &lt;code&gt;AddMapster(this IServiceCollection serviceCollection)&lt;/code&gt; is used to add &lt;code&gt;IMapper&lt;/code&gt; to services.&lt;/p&gt;
+&lt;h2 id="mapping-by-convention"&gt;Mapping by Convention&lt;/h2&gt;
+&lt;p&gt;The raison d'etre of mapping/translation frameworks is to make translating one data type to another as simple as possible. A key feature of these frameworks is to map by convention, which automatically maps fields or properties based on criteria like name and data type. Mapster does an excellent job of mapping by convention. In the above example, you don't have to tell Mapster anything. It knows that &lt;code&gt;Account.Id&lt;/code&gt; maps to &lt;code&gt;AccountDto.Id&lt;/code&gt;, and &lt;code&gt;Account.Name&lt;/code&gt; maps to &lt;code&gt;AccountDto.Name&lt;/code&gt;, and &lt;code&gt;Account.CreationDate&lt;/code&gt; maps to &lt;code&gt;AccountDto.CreationDate&lt;/code&gt; because the properties have the same name and type.&lt;/p&gt;
+&lt;p&gt;Explicit mapping isn't necessary. Simply injecting an &lt;code&gt;IMapper&lt;/code&gt; instance and invoking &lt;code&gt;IMapper.Map&amp;lt;TSource, TDestination&amp;gt;&lt;/code&gt; is enough to map th two type's properties by convention&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class CreateAccountCommandHandler(IMapper mapper, INotificationService notificationService)
+	: IRequestHandler&amp;lt;CreateAccountCommand&amp;gt;
+{
+	private readonly IMapper mapper = mapper;
+
+	public async Task Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+	{
+		Guid accountId = Guid.NewGuid();
+		Account account = CreateAccount(accountId);
+
+		var dto = mapper.Map&amp;lt;Account, AccountDto&amp;gt;(account);
+
+		await notificationService.PublishAsync(new AccountCreated(dto), cancellationToken);
+	}
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="custom-mapping"&gt;Custom Mapping&lt;/h2&gt;
+&lt;p&gt;When we start (greenfield) development, our DTOs are usually closely aligned with our domain objects, so by-convention mapping is our friend. However, an important reason for having two abstractions is that they can evolve independently. Eventually, as we gain a better understanding of the domain or clients of the communication channel, we will need to make changes that cause our DTO and Domain Objects to diverge. We can manage that divergence by extending the by-convention mapping to include custom mapping. Mapster supports this through what it calls registers or via &lt;code&gt;Register&lt;/code&gt; methods. Mapster can be told to scan for Register methods and perform custom mapping automatically.&lt;/p&gt;
+&lt;p&gt;For example, we've gained a better understanding of the domain, and an Account doesn't necessarily have a &amp;quot;name&amp;quot; but has an associated account holder with a given and family name. That understanding may make its way into the domain like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Account(Guid id, DateOnly creationDate, string accountHolderGivenName, string accountHolderFamilyName)
+{
+	public Guid Id { get; } = id;
+	public string AccountHolderGivenName { get; private set; } = accountHolderGivenName;
+	public string AccountHolderFamilyName { get; private set; } = accountHolderFamilyName;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string accountHolderGivenName, string accountHolderFamilyName)
+	{
+		AccountHolderGivenName = accountHolderGivenName;
+		AccountHolderFamilyName = accountHolderFamilyName;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Receivers of our &lt;code&gt;AccountDto&lt;/code&gt; might be unable to accommodate that change immediately, so we may deal with that by mapping properties differently. Instead of including FamilyName and GivenName in AccountDto, we may concatenate the given and family name and assign it to &lt;code&gt;AccountDto.Name&lt;/code&gt;. (A Strategy Pattern implementation that deals with whether a given name appears before a family name for a particular culture/customer is a topic for another time.)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MappingRegister : IRegister
+{
+	public void Register(TypeAdapterConfig config)
+	{
+		config.NewConfig&amp;lt;Account, AccountDto&amp;gt;()
+			.Map(dest =&amp;gt; dest.Name, src=&amp;gt; $&amp;quot;{src.AccountHolderGivenName} {src.AccountHolderFamilyName}&amp;quot;);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;During startup/service configuration, Mapster can be to told to scan for implementations of &lt;code&gt;IRegister&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;	TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="where-does-mapping-and-translation-occur"&gt;Where Does Mapping and Translation Occur?&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Data transfer can occur in different layers. Data transfer triggers a website or API (presentation layer); the application layer requests external services via an infrastructure layer to transfer data to and from. I'm often asked where that mapping and translation source code should exist and in which project in the solution. It's important to remember that we're dealing with multiple layers. While a presentation layer is the most common layer for initialization (DI container configuration), the translation method must be visible in the layer where the data transfer occurs.&lt;/p&gt;
+&lt;p&gt;Translation of web/API models can exist in the presentation layer because that's where &lt;em&gt;that&lt;/em&gt; data transfer occurs. However, invoking a service from the application layer can mean the translation method can't live in the presentation layer because the application layer cannot take a direct dependency on the presentation layer (it is the other way around.)&lt;/p&gt;
+&lt;p&gt;When a build boundary separates a layer (e.g., separate projects and or binaries), both assemblies can't be dependent on each other—the initialization/DI can't both access the types in the different assembly &lt;strong&gt;and&lt;/strong&gt; be referenced by the other assembly to invoke &lt;code&gt;Map&lt;/code&gt;/&lt;code&gt;Adapt&lt;/code&gt;. So, the mapping configuration that accesses the source and target types involved in the translation must exist in the assembly referenced by the initialization/DI. This is typically done by creating the familiar &lt;a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#register-groups-of-services-with-extension-methods"&gt;&lt;code&gt;Add{GROUP_NAME}&lt;/code&gt; extension method pattern&lt;/a&gt; for example, given an application layer implemented in a separate project, an extension method (sometimes in the &lt;code&gt;Microsoft.Extensions.Hosting&lt;/code&gt; namespace, &lt;a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-usage#:%7E:text=don%27t%20place%20extension%20methods%20in%20the%20microsoft.extensions.dependencyinjection%20namespace%20unless%20you%27re%20authoring%20an%20official%20microsoft%20package."&gt;but not recommended&lt;/a&gt;)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public static class ApplicationExtensions
+{
+	public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+	{
+		ArgumentNullException.ThrowIfNull(services);
+		TypeAdapterConfig.GlobalSettings.Scan(typeof(ApplicationExtensions).Assembly);
+
+		services.AddMapster();
+		return services;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/MapsterMapper/Mapster/wiki/Custom-mapping"&gt;Mapster - Custom Mapping&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MapsterMapper/Mapster"&gt;Mapster repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.nuget.org/packages/Mapster.DependencyInjection"&gt;Mapster Nuget&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?</title>
 			<link>http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions</link>
@@ -1725,49 +1858,6 @@ dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore
 &lt;li&gt;accountability - the quality of a system to account for its actions when fulfilling its responsibilities&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Because quality attributes address customer concerns, there are overlaps between categories. For example, there's a dependability concern that data integrity does not impact functionality; there's also a security concern that data integrity doesn't result in data loss. Don't let the overlap distract you from what's best for your solution. It will change even if you could pre-define a complex structure of quality attributes most suitable for your solution. Needs change, priorities change, and quality attributes are philosophic influencers to a solution that requires nurturing.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Naming Things - Common Actions and Events</title>
-			<link>http://blog.peterritchie.com/posts/naming-things-events-and-action</link>
-			<description>&lt;p&gt;In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/naming-things-events-and-action</guid>
-			<pubDate>Thu, 01 Sep 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.&lt;/p&gt;
-&lt;p&gt;What does Deleted mean? Is it the same as Removed or Destroyed? What if you want to support soft delete as well as hard delete?&lt;/p&gt;
-&lt;p&gt;I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like &amp;quot;soft delete&amp;quot; and &amp;quot;hard delete .&amp;quot;The customer will probably refer to the most common form of delete as &amp;quot;delete.&amp;quot; An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.&lt;/p&gt;
-&lt;p&gt;Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection--physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed--from a particular view or existence.&lt;/p&gt;
-&lt;p&gt;English allows us to reuse terms to mean many things. &amp;quot;Delete&amp;quot; and &amp;quot;changed,&amp;quot; for example. There are well-known terms that enable us to communicate intent and consequences easily. But, when we reuse these terms across different contexts with different intents and consequences, we introduce the possibility of confusion, making naming things seem difficult.&lt;/p&gt;
-&lt;p&gt;It's important to understand the different intents and resulting consequences to data and attempt to get consensus on names and terms that adequately and uniquely represent these situations.&lt;/p&gt;
-&lt;p&gt;&amp;quot;Delete&amp;quot; is a common point of confusion. There may be a need for &lt;em&gt;soft deletes&lt;/em&gt; and &lt;em&gt;hard deletes&lt;/em&gt;; both of WHICH make data inaccessible in a context. But, data may also be moved from one context to another, changing its accessibility but not making it &lt;em&gt;inaccessible&lt;/em&gt;. To use a single term like &amp;quot;delete&amp;quot; for all of these situations leads to confusion and issues in naming things.&lt;/p&gt;
-&lt;!--
-An important aspect of naming: name the consistency boundary. What is a date? A year, month, and day. If we included time, is it still a date? Typically that would be called date/time.  
---&gt;
-&lt;p&gt;Each domain can be different, but the situations I've just described are very common. For those, I start with unique terms for each and work with the subject matter experts to refine them (if needed):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Deleted&lt;/strong&gt; means something is no longer accessible in some context.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Destroyed&lt;/strong&gt; means removed from existence; no possible way to ever get it back.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Removed&lt;/strong&gt; means a thing has been moved out of or removed from a container/collection.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Inverse terms:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Created&lt;/strong&gt; signifies something new has come into existence (rather than Added).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Added&lt;/strong&gt;* signifies something has been added to a container or collection.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Mutating information seems like such a simple concept. But, we often need to know if data changes within the context of other data.  Unique data mutation terms I start out with when working with subject matter experts:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Updated&lt;/strong&gt; signifies the value properties or attributes of an existing thing (entity) have been changed.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Changed&lt;/strong&gt; signifies an entire thing (entity) has been replaced with another.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="word-form"&gt;Word Form&lt;/h2&gt;
-&lt;p&gt;Actions are verbs, and events are past participles constructed from verbs. Most event names are constructed from regular verbs by adding the prefix -ed. Delete + ed: deleted; create + ed: created.  Sometimes events are constructed from irregular verbs and don't end in ed. Bind: bound; drive: driven; sleep: slept.&lt;/p&gt;
-&lt;p&gt;Events are not simply verbs in past tense form. An event's context is that it is related to a subject. For example, the event &amp;quot;deleted&amp;quot; involves a subject and is used to describe the current state as a result of a past action. In grammar, this is &lt;em&gt;present perfect tense&lt;/em&gt; and implies an auxiliary verb of &amp;quot;has been .&amp;quot;e.g., &lt;em&gt;The customer record has been deleted&lt;/em&gt; or &lt;em&gt;The customer record is deleted&lt;/em&gt;. Since this details the subject somehow, it is also in a &lt;em&gt;present indicative&lt;/em&gt; form. This detail is important but normally for edge cases. Normal domain narratives should align with this because that's normal language in these scenarios.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Match events to actions; don't define events when no action would result in that event.&lt;/li&gt;
-&lt;li&gt;Don't assume events always end in &amp;quot;ed.&amp;quot;&lt;/li&gt;
-&lt;li&gt;Events are present indicative, past participles, and in the present perfect tense.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Do you have other actions and events that you commonly encounter?&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
