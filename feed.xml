@@ -5,15 +5,16 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Mon, 26 Aug 2024 17:23:14 GMT</pubDate>
-		<lastBuildDate>Mon, 26 Aug 2024 17:23:14 GMT</lastBuildDate>
+		<pubDate>Mon, 26 Aug 2024 17:40:36 GMT</pubDate>
+		<lastBuildDate>Mon, 26 Aug 2024 17:40:36 GMT</lastBuildDate>
 		<item>
 			<title>Working With DTO Auto Translators -- Mapster</title>
 			<link>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster</link>
-			<description>&lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called&amp;nbsp;&lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.&lt;/p&gt;</description>
+			<description>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</description>
 			<guid>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapster</guid>
 			<pubDate>Mon, 26 Aug 2024 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;!-- Mapping/Translation series intro boilerplate --&gt;
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation" /&gt;&lt;/p&gt;
+&lt;!-- Mapping/Translation series intro boilerplate --&gt;
 &lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called &lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary conversion method.&lt;/p&gt;
 &lt;!-- Data Transfer Object boilerplate pull quote/box copy --&gt;
 &lt;table class="table"&gt;
