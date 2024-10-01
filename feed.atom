@@ -4,8 +4,216 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2024</rights>
-	<updated>2024-09-26T20:54:11Z</updated>
+	<updated>2024-10-01T21:17:31Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core</id>
+		<title>Avoiding Identity Obsession in .NET with Entity Framework Core</title>
+		<link href="http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core" />
+		<updated>2024-10-01T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/technological-layers.png" class="img-fluid" alt="Complicated translation" /&gt;&lt;/p&gt;
+&lt;p&gt;In a &lt;a href="identity-obsession-and-domain-driven-design"&gt;previous post&lt;/a&gt;, I introduced Identity Obsession. Identity Obsession can introduce race conditions relating to consistency with Domain Entities and other complexity. In that post, I point out that most entities have an inherent (implicit) local identity and that any additional global Identifiers are due to persistence (RDBMS) implementation details. I recommended that Identifiers be something in your persistence layer rather than your Domain layer. I won't rehash that post more than that here, but you may want to read that first.&lt;/p&gt;
+&lt;p&gt;It can be perceived as &lt;em&gt;easy for me to say&lt;/em&gt; when it comes to design constraints of Aggregates and Entities when implementing the persistence layer. This perception is probably most apparent with technologies like Entity Framework Core (EF) and that Entity Framework's support for Domain-Driven Design has been an afterthought. When dealing with external sources and targets of data, the Data Transfer Object pattern is recommended. Technically, EF supports persistence via DTOs.&lt;/p&gt;
+&lt;p&gt;Entity Framework can rarely do what it does out-of-the-box, provided classes are designed with a Domain-Driven Design mindset. Impedance Mismatch rears its ugly head resulting in translating data to/from the limited data types that databases tend to have (see &lt;code&gt;HasConversion&lt;/code&gt;, &lt;code&gt;HasKey&lt;/code&gt;, et al.) Despite best practices that recommend that Entities be implemented as POCOs and relational mapping be configured with fluent builders—outside of the Domain Layer—the needs and constraints of databases can easily leak into the design and evolution of Domain Objects.&lt;/p&gt;
+&lt;p&gt;In this post, I will provide an example of configuring Entity Framework to work with Domain Objects that don't suffer from Identity Obsession. The scenario (or use-case) I'll show with this Domain Object is onboarding a Client to the point they will have a Domain Identifier assigned. The Domain I introduced in my previous post involved SSNs; we can presume the Social Security Administration would be the Domain context. I'm sure none of my readers work in this context, but I believe it to be understandable by many people, making it a good example of Domain Identity. For my Canadian friends, replace &amp;quot;SSN&amp;quot; with &amp;quot;SIN&amp;quot; and &amp;quot;Social Security Administration&amp;quot; with &amp;quot;Service Canada.&amp;quot;&lt;/p&gt;
+&lt;p&gt;Entity Framework is a persistence/infrastructure implementation detail, and the Repository Pattern is used to isolate those details from the Domain. I gave an example repository in my previous post; for this example, I've expanded it to support asynchronous and the Result Pattern:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public interface IClientRepository
+{
+    Task&amp;lt;Result&amp;lt;Client&amp;gt;&amp;gt; FindBySsnAsync(Ssn ssn, CancellationToken cancellationToken);
+    Task&amp;lt;Result&amp;gt; SaveAsync(Client client, CancellationToken cancellationToken);
+    Task&amp;lt;Result&amp;lt;Ssn&amp;gt;&amp;gt; AddAsync(Client client, CancellationToken cancellationToken);
+	Task&amp;lt;Result&amp;lt;IEnumerable&amp;lt;Client&amp;gt;&amp;gt;&amp;gt; FindClientsAsync(CancellationToken cancellationToken);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This Repository provides the ability to find a Client by SSN (&lt;code&gt;FindBySsnAsync&lt;/code&gt;), save a &lt;code&gt;Client&lt;/code&gt; after being updated (&lt;code&gt;SaveAsync&lt;/code&gt;), and add a new &lt;code&gt;Client&lt;/code&gt; by allocating a new SSN (&lt;code&gt;AddAsync&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Elements within a container naturally have container Identity. The container understands how to identify individual elements based on an identifier. Contained elements, therefore, do not also have to take on that burden. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Client(string givenName, string familyName)
+    : Person(givenName, familyName)
+{
+    public void ChangeName(string givenName, string familyName)
+    {
+        GivenName = givenName;
+        FamilyName = familyName;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I've expanded &lt;code&gt;Client&lt;/code&gt; to support an update scenario (&lt;code&gt;ChangeName&lt;/code&gt;) so that there is Domain behavior.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Quote&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&amp;quot;All models are wrong, but some are useful&amp;quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The use-case of working with a Domain Object (&lt;code&gt;Client&lt;/code&gt;) before needing an SSN to be persisted might follow a sequence like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../assets/onboarding-client-use-case.png" class="img-fluid" alt="sequence" /&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;Client&lt;/code&gt; instance exists for a time before a Domain Identifier is allocated for it. However, our database requires an SSN for each client record. So, we need to configure Entity Framework to accommodate that detail and include a primary key. We do that through an &lt;code&gt;IEntityTypeConfiguration&amp;lt;T&amp;gt;&lt;/code&gt; implementation like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class ClientEntityTypeConfiguration : IEntityTypeConfiguration&amp;lt;Client&amp;gt;
+{
+    public void Configure(EntityTypeBuilder&amp;lt;Client&amp;gt; builder)
+    {
+        // Create a string &amp;quot;Id&amp;quot; Shadow Property to hold GUID values
+        builder.Property&amp;lt;string&amp;gt;(ColumnNames.Id)
+            .HasColumnType(&amp;quot;varchar(36)&amp;quot;)
+            .HasMaxLength(36);
+        builder.HasKey(ColumnNames.Id);
+
+        // Create a string &amp;quot;Ssn&amp;quot; Shadow Property that uses the type Sss,
+        // with conversion
+        builder.Property&amp;lt;Ssn&amp;gt;(ColumnNames.Ssn)
+            .HasColumnType(&amp;quot;varchar(11)&amp;quot;)
+            .HasMaxLength(11)
+            .HasConversion(ssn =&amp;gt; ssn.ToString(), value =&amp;gt; Ssn.Parse(value))
+            .IsRequired();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As with any &lt;code&gt;IEntityTypeConfiguration&amp;lt;T&amp;gt;&lt;/code&gt; implementation, we're configuring the primary key and other properties with property-specific requirements. This implementation may differ from other implementations because we're configuring &lt;em&gt;shadow properties&lt;/em&gt; for our identifiers. The &lt;code&gt;DbContext&lt;/code&gt; implementation will be responsible for the persistence concern of generating the primary key value, and the repository will be responsible for the Domain concern of generating the Domain Identifier (SSN).&lt;/p&gt;
+&lt;p&gt;Let's look at that &lt;code&gt;DbContext&lt;/code&gt; implementation (I'm using SQLite for this implementation):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class DatabaseContext : DbContext
+{
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		modelBuilder.ApplyConfiguration(new ClientEntityTypeConfiguration());
+
+		base.OnModelCreating(modelBuilder);
+	}
+
+	public async Task&amp;lt;Result&amp;lt;Client&amp;gt;&amp;gt; GetClientBySsnAsync(Ssn ssn, CancellationToken cancellationToken)
+	{
+		var client = await Clients
+			.SingleOrDefaultAsync(c =&amp;gt; EF.Property&amp;lt;Ssn&amp;gt;(c, ColumnNames.Ssn) == ssn, cancellationToken);
+
+		return client ?? Result&amp;lt;Client&amp;gt;.NotFound();
+	}
+
+	public async Task&amp;lt;Result&amp;lt;Client&amp;gt;&amp;gt; GetClientByIdAsync(Guid id, CancellationToken cancellationToken)
+	{
+		var client = await Clients
+			.SingleOrDefaultAsync(c =&amp;gt; EF.Property&amp;lt;string&amp;gt;(c, ColumnNames.Id) == id.ToString(), cancellationToken);
+
+		return client ?? Result&amp;lt;Client&amp;gt;.NotFound();
+	}
+
+	public Result&amp;lt;Ssn&amp;gt; GetClientSsn(Client client)
+	{
+		var entry = Entry(client);
+		var currentValue = entry.Property(ColumnNames.Ssn).CurrentValue as Ssn;
+
+		return currentValue ?? Result&amp;lt;Ssn&amp;gt;.NotFound();
+	}
+
+	public async Task AddClientAsync(Client client, Ssn ssn, CancellationToken cancellationToken)
+	{
+		var entry = Entry(client);
+		entry.Property(ColumnNames.Ssn).CurrentValue = ssn;
+		entry.Property(ColumnNames.Id).CurrentValue = Guid.NewGuid().ToString();
+		await AddAsync(client, cancellationToken);
+
+		await SaveChangesAsync(cancellationToken);
+	}
+	public DbSet&amp;lt;Client&amp;gt; Clients { get; set; }
+
+	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	{
+		optionsBuilder.UseSqlite($&amp;quot;Data Source={DataSourcePath}&amp;quot;);
+	}
+
+	public static string DataSourcePath {
+		get
+		{
+			var localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+			return Path.Join(localAppDataPath, &amp;quot;clients.db&amp;quot;);
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notable is &lt;code&gt;AddClientAsync&lt;/code&gt;, where it accepts an &lt;code&gt;Ssn&lt;/code&gt; value, sets the shadow property value for that database column, and generates the primary key by calling &lt;code&gt;Guid.NewGuid()&lt;/code&gt;. &lt;code&gt;DatabaseContext&lt;/code&gt; encapsulates the implementation detail of shadow properties. I've chosen to generate a&lt;code&gt;Guid&lt;/code&gt; in code rather than by the database for clarity. As a database concern, it could go either way. Also notable is the method &lt;code&gt;GetClientSsn&lt;/code&gt;, which shows how an SSN can be obtained outside the Domain (e.g., for Presentation concerns.)&lt;/p&gt;
+&lt;p&gt;Next, let's look at an implementation of &lt;code&gt;IClientRepository&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class ClientRepository(DatabaseContext dbContext, ISsnRegistry ssnRegistry) : IClientRepository
+{
+	private readonly DatabaseContext dbContext = dbContext;
+	private readonly ISsnRegistry ssnRegistry = ssnRegistry;
+
+	public Task&amp;lt;Result&amp;lt;IEnumerable&amp;lt;Client&amp;gt;&amp;gt;&amp;gt; FindClientsAsync(CancellationToken _)
+	{
+		Result&amp;lt;IEnumerable&amp;lt;Client&amp;gt;&amp;gt; result = dbContext.Clients;
+		return Task.FromResult(result);
+	}
+
+	public Task&amp;lt;Result&amp;lt;Client&amp;gt;&amp;gt; FindBySsnAsync(Ssn ssn, CancellationToken cancellationToken)
+	{
+		return dbContext.GetClientBySsnAsync(ssn, cancellationToken);
+	}
+
+	public async Task&amp;lt;Result&amp;lt;Ssn&amp;gt;&amp;gt; AddAsync(Client client, CancellationToken cancellationToken)
+	{
+		var reservationResult = ssnRegistry.Reserve();
+		if (reservationResult.IsError()) return Result&amp;lt;Ssn&amp;gt;.Error();
+
+		using var ssnReservation = reservationResult.Value;
+		Ssn newSsn = new(ssnReservation.Value);
+		await dbContext.AddClientAsync(client, newSsn, cancellationToken);
+		await dbContext.SaveChangesAsync(cancellationToken);
+		ssnReservation.Commit();
+		return newSsn;
+	}
+
+	public async Task&amp;lt;Result&amp;gt; SaveAsync(Client client, CancellationToken cancellationToken)
+	{
+		var entry = dbContext.Entry(client);
+		switch (entry.State)
+		{
+			case EntityState.Detached:
+				{
+					var addResult = await AddAsync(client, cancellationToken);
+					return addResult.IsSuccess
+						? Result.Success()
+						: Result.CriticalError(addResult.Errors.ToArray());
+				}
+			case EntityState.Modified:
+				await dbContext.SaveChangesAsync(cancellationToken);
+				return Result.Success();
+			default:
+				return Result.Success();
+		}
+	}
+
+	public Result&amp;lt;Ssn&amp;gt; GetClientSsn(Client client)
+	{
+		return dbContext.GetClientSsn(client);
+	}
+
+	public Task&amp;lt;Result&amp;lt;Client&amp;gt;&amp;gt; FindByIdAsync(Guid id, CancellationToken cancellationToken)
+	{
+		return dbContext.GetClientByIdAsync(id, cancellationToken);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since the primary key and the SSN storage is a Persistence concern, the &lt;code&gt;DbContext&lt;/code&gt; implementation is where the logic to work with Shadow Properties lives.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SaveAsync&lt;/code&gt; and &lt;code&gt;FindBySsnAsync&lt;/code&gt; simply encapsulate &lt;code&gt;DbContext.SaveChangesAsync&lt;/code&gt; and &lt;code&gt;DatabaseContext.GetClientBySsnAsync&lt;/code&gt; respectively. &lt;code&gt;FindClientsAsync&lt;/code&gt; finds all the client instances (typically, this would have a filter, which I've omitted for clarity.) SSN allocation is outside the scope of this post. But, because SSN allocation is a Domain concern, I'll show where it might fit in an orchestration with &lt;code&gt;DatabaseContext&lt;/code&gt; within &lt;code&gt;AddAsync&lt;/code&gt; (using a fictitious &lt;code&gt;ISsnRegistry&lt;/code&gt; object that manages generating/reserving then committing an SSN value--completing/committing the reserved value if it is successfully persisted to the database.) I've included &lt;code&gt;GetClientSsn&lt;/code&gt; as an example of how an SSN can be obtained outside the Domain (e.g., for Presentation concerns.) Also, I've included &lt;code&gt;FindByIdAsync&lt;/code&gt; as an example of how we can find a &lt;code&gt;Client&lt;/code&gt; instance based on a primary key value.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Caveat&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;Storing SSNs in a database is frowned upon. This example is for clarity, the value should be hashed or encrypted before storing in the database. Look ups based on last-four &amp;amp; name are beyond the scope of this post&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Entity Framework makes mapping Entity properties to columns in a relational database easy. But don't let that ease of use let Persistence concerns leak into your Domain. With a clear understanding of what Domain concerns are, what Persistence concerns are, and what Presentation concerns are Entity Framework can easily be leveraged to support loosely coupling the Persistence concerns from Entities.&lt;/p&gt;
+&lt;p&gt;The code from this post can be found in &lt;a href="https://github.com/peteraritchie/IdentityObsession"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/technological-layers.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/identity-obsession-and-domain-driven-design</id>
 		<title>Identity Obsession and Domain-Driven Design</title>
@@ -1930,48 +2138,5 @@ dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore
 &lt;p&gt;Any other processes or paths that you'd consider for exclusion?&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/By-Reference-in-csharp</id>
-		<title>By Reference in C#</title>
-		<link href="http://blog.peterritchie.com/posts/By-Reference-in-csharp" />
-		<updated>2022-09-28T00:00:00Z</updated>
-		<content>&lt;p&gt;I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.&lt;/p&gt;
-&lt;p&gt;C# compiler errors can be categorized (arbitrarily) by different areas of C# syntax, and I started to focus on one category at a time.  One of those areas involves referenced variables.  C# has always has &lt;code&gt;ref&lt;/code&gt; arguments, but &lt;code&gt;ref&lt;/code&gt; return, &lt;code&gt;ref&lt;/code&gt; locals, &lt;code&gt;ref&lt;/code&gt; structs, and &lt;code&gt;ref&lt;/code&gt; fields have been additions to the syntax.&lt;/p&gt;
-&lt;p&gt;The declaration of a variable in C# influences its syntax in a couple ways: binding and accessibility.  Accessibility is whether an identifier is &lt;em&gt;visible&lt;/em&gt; at compile-time in a given context.  Binding is how an identifier or name is bound at run-time to resources like data and code.  Binding uniquely affect the compile-time correctness of any particular usage of a &lt;code&gt;ref&lt;/code&gt; variable.&lt;/p&gt;
-&lt;p&gt;Binding affects the compile-time usage of an identifier because of the run-time lifetime of the resources it is bound to. You're probably familiar with a static method accessing instance data and the errors caused in this context. &lt;code&gt;ref&lt;/code&gt; variables have a similar context when they are stack allocated. Heap-allocated objects (objects bound to the heap) can have their lifetime extended to be long-lived because the heap shares the same lifetime as the application. Variables bound to stack-allocated resources cannot have their lifetime extended beyond a specific scope. The stack is a sequential collection of elements with elements implicitly partitioned by a shared scope. The most recognized scope is probably a method call or method/lambda body. Local variables bound to stack elements do not have a lifetime beyond the method call. A reference to a stack object cannot be assigned to a variable or expression with a broader scope.&lt;/p&gt;
-&lt;p&gt;How far the value of an expression can leave the confines of its declaration scope is called &amp;quot;escape scope&amp;quot;.  Sometimes the escape scope is the same as the declaration scope.  The compiler verifies compatible escape scopes during assignment.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;    void M(ref int ra)
-    {
-        int number = 0;
-        ref int rl = ref number;
-        if (ra == 0)
-        {
-            int x = number;
-            rl = ref x;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;x&lt;/code&gt; is local to the &lt;code&gt;if&lt;/code&gt; body, it is bound to the stack, and its escape scope is narrower than &lt;code&gt;ref rl&lt;/code&gt; because &lt;code&gt;ref rl&lt;/code&gt; is declared in the outer scope.  Since &lt;code&gt;ref rl&lt;/code&gt; is an alias to another variable, it cannot reference a variable bound to a resource that will go out of scope before it does.  &lt;code&gt;rl = ref x&lt;/code&gt; results in a compiler error.  If &lt;code&gt;rl&lt;/code&gt; were not a reference to a value type, the assignment would be okay because &lt;code&gt;x&lt;/code&gt; would be bound to heap and have a broader escape scope.&lt;/p&gt;
-&lt;p&gt;The compiler also verifies compatible escape scopes when returning values.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;    ref int M(ref int ra)
-    {
-        int number = 0;
-        ref int rl = ref number;
-        if (ra == 0)
-        {
-            ref int x = ref number;
-            return ref x;
-        }
-        return ref ra;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;return ref x&lt;/code&gt; results in a compiler error because the escape scope of &lt;code&gt;x&lt;/code&gt; is local to the method.  The error message here may not be as clear as the first because it doesn't mention the narrower escape scope.&lt;/p&gt;
-&lt;p&gt;There are the basic escape scopes.  A calling method scope, a current method scope, and a return-only scope.&lt;/p&gt;
-&lt;p&gt;The calling method scope is a scope outside of the containing method/lambda.  References can reach this scope via either a &lt;code&gt;ref&lt;/code&gt; parameter or a return.&lt;/p&gt;
-&lt;p&gt;The current method scope is a scope within a containing method/lambda.&lt;/p&gt;
-&lt;p&gt;The return-only scope is a special case for &lt;code&gt;ref struct&lt;/code&gt; types that can only leave the method scope via a return and not through a &lt;code&gt;ref&lt;/code&gt; or &lt;code&gt;out&lt;/code&gt; parameter.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.&lt;/p&gt;</summary>
 	</entry>
 </feed>

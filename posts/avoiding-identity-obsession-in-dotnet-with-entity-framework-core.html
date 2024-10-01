@@ -1,0 +1,418 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Avoiding Identity Obsession in .NET with Entity Framework Core</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Avoiding Identity Obsession in .NET with Entity Framework Core" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Avoiding Identity Obsession in .NET with Entity Framework Core</h1>
+    <div class="meta">        
+Published on Tuesday, October 1, 2024<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/DDD" class="btn btn-default btn-xs">DDD</a>
+                    <a role="button" href="/tags/Domain-Driven-Design" class="btn btn-default btn-xs">Domain-Driven Design</a>
+                    <a role="button" href="/tags/EFCore" class="btn btn-default btn-xs">EFCore</a>
+                    <a role="button" href="/tags/Identity-Obsession" class="btn btn-default btn-xs">Identity Obsession</a>
+                    <a role="button" href="/tags/Oct-2024" class="btn btn-default btn-xs">Oct 2024</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/technological-layers.png" class="img-fluid" alt="Complicated translation" /></p>
+<p>In a <a href="identity-obsession-and-domain-driven-design">previous post</a>, I introduced Identity Obsession. Identity Obsession can introduce race conditions relating to consistency with Domain Entities and other complexity. In that post, I point out that most entities have an inherent (implicit) local identity and that any additional global Identifiers are due to persistence (RDBMS) implementation details. I recommended that Identifiers be something in your persistence layer rather than your Domain layer. I won't rehash that post more than that here, but you may want to read that first.</p>
+<p>It can be perceived as <em>easy for me to say</em> when it comes to design constraints of Aggregates and Entities when implementing the persistence layer. This perception is probably most apparent with technologies like Entity Framework Core (EF) and that Entity Framework's support for Domain-Driven Design has been an afterthought. When dealing with external sources and targets of data, the Data Transfer Object pattern is recommended. Technically, EF supports persistence via DTOs.</p>
+<p>Entity Framework can rarely do what it does out-of-the-box, provided classes are designed with a Domain-Driven Design mindset. Impedance Mismatch rears its ugly head resulting in translating data to/from the limited data types that databases tend to have (see <code>HasConversion</code>, <code>HasKey</code>, et al.) Despite best practices that recommend that Entities be implemented as POCOs and relational mapping be configured with fluent builders—outside of the Domain Layer—the needs and constraints of databases can easily leak into the design and evolution of Domain Objects.</p>
+<p>In this post, I will provide an example of configuring Entity Framework to work with Domain Objects that don't suffer from Identity Obsession. The scenario (or use-case) I'll show with this Domain Object is onboarding a Client to the point they will have a Domain Identifier assigned. The Domain I introduced in my previous post involved SSNs; we can presume the Social Security Administration would be the Domain context. I'm sure none of my readers work in this context, but I believe it to be understandable by many people, making it a good example of Domain Identity. For my Canadian friends, replace &quot;SSN&quot; with &quot;SIN&quot; and &quot;Social Security Administration&quot; with &quot;Service Canada.&quot;</p>
+<p>Entity Framework is a persistence/infrastructure implementation detail, and the Repository Pattern is used to isolate those details from the Domain. I gave an example repository in my previous post; for this example, I've expanded it to support asynchronous and the Result Pattern:</p>
+<pre><code class="language-csharp">public interface IClientRepository
+{
+    Task&lt;Result&lt;Client&gt;&gt; FindBySsnAsync(Ssn ssn, CancellationToken cancellationToken);
+    Task&lt;Result&gt; SaveAsync(Client client, CancellationToken cancellationToken);
+    Task&lt;Result&lt;Ssn&gt;&gt; AddAsync(Client client, CancellationToken cancellationToken);
+	Task&lt;Result&lt;IEnumerable&lt;Client&gt;&gt;&gt; FindClientsAsync(CancellationToken cancellationToken);
+}
+</code></pre>
+<p>This Repository provides the ability to find a Client by SSN (<code>FindBySsnAsync</code>), save a <code>Client</code> after being updated (<code>SaveAsync</code>), and add a new <code>Client</code> by allocating a new SSN (<code>AddAsync</code>.)</p>
+<p>Elements within a container naturally have container Identity. The container understands how to identify individual elements based on an identifier. Contained elements, therefore, do not also have to take on that burden. For example:</p>
+<pre><code class="language-csharp">public class Client(string givenName, string familyName)
+    : Person(givenName, familyName)
+{
+    public void ChangeName(string givenName, string familyName)
+    {
+        GivenName = givenName;
+        FamilyName = familyName;
+    }
+}
+</code></pre>
+<p>I've expanded <code>Client</code> to support an update scenario (<code>ChangeName</code>) so that there is Domain behavior.</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">Quote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">&quot;All models are wrong, but some are useful&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>The use-case of working with a Domain Object (<code>Client</code>) before needing an SSN to be persisted might follow a sequence like this:</p>
+<p><img src="../assets/onboarding-client-use-case.png" class="img-fluid" alt="sequence" /></p>
+<p>A <code>Client</code> instance exists for a time before a Domain Identifier is allocated for it. However, our database requires an SSN for each client record. So, we need to configure Entity Framework to accommodate that detail and include a primary key. We do that through an <code>IEntityTypeConfiguration&lt;T&gt;</code> implementation like this:</p>
+<pre><code class="language-csharp">public class ClientEntityTypeConfiguration : IEntityTypeConfiguration&lt;Client&gt;
+{
+    public void Configure(EntityTypeBuilder&lt;Client&gt; builder)
+    {
+        // Create a string &quot;Id&quot; Shadow Property to hold GUID values
+        builder.Property&lt;string&gt;(ColumnNames.Id)
+            .HasColumnType(&quot;varchar(36)&quot;)
+            .HasMaxLength(36);
+        builder.HasKey(ColumnNames.Id);
+
+        // Create a string &quot;Ssn&quot; Shadow Property that uses the type Sss,
+        // with conversion
+        builder.Property&lt;Ssn&gt;(ColumnNames.Ssn)
+            .HasColumnType(&quot;varchar(11)&quot;)
+            .HasMaxLength(11)
+            .HasConversion(ssn =&gt; ssn.ToString(), value =&gt; Ssn.Parse(value))
+            .IsRequired();
+}
+</code></pre>
+<p>As with any <code>IEntityTypeConfiguration&lt;T&gt;</code> implementation, we're configuring the primary key and other properties with property-specific requirements. This implementation may differ from other implementations because we're configuring <em>shadow properties</em> for our identifiers. The <code>DbContext</code> implementation will be responsible for the persistence concern of generating the primary key value, and the repository will be responsible for the Domain concern of generating the Domain Identifier (SSN).</p>
+<p>Let's look at that <code>DbContext</code> implementation (I'm using SQLite for this implementation):</p>
+<pre><code class="language-csharp">public class DatabaseContext : DbContext
+{
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		modelBuilder.ApplyConfiguration(new ClientEntityTypeConfiguration());
+
+		base.OnModelCreating(modelBuilder);
+	}
+
+	public async Task&lt;Result&lt;Client&gt;&gt; GetClientBySsnAsync(Ssn ssn, CancellationToken cancellationToken)
+	{
+		var client = await Clients
+			.SingleOrDefaultAsync(c =&gt; EF.Property&lt;Ssn&gt;(c, ColumnNames.Ssn) == ssn, cancellationToken);
+
+		return client ?? Result&lt;Client&gt;.NotFound();
+	}
+
+	public async Task&lt;Result&lt;Client&gt;&gt; GetClientByIdAsync(Guid id, CancellationToken cancellationToken)
+	{
+		var client = await Clients
+			.SingleOrDefaultAsync(c =&gt; EF.Property&lt;string&gt;(c, ColumnNames.Id) == id.ToString(), cancellationToken);
+
+		return client ?? Result&lt;Client&gt;.NotFound();
+	}
+
+	public Result&lt;Ssn&gt; GetClientSsn(Client client)
+	{
+		var entry = Entry(client);
+		var currentValue = entry.Property(ColumnNames.Ssn).CurrentValue as Ssn;
+
+		return currentValue ?? Result&lt;Ssn&gt;.NotFound();
+	}
+
+	public async Task AddClientAsync(Client client, Ssn ssn, CancellationToken cancellationToken)
+	{
+		var entry = Entry(client);
+		entry.Property(ColumnNames.Ssn).CurrentValue = ssn;
+		entry.Property(ColumnNames.Id).CurrentValue = Guid.NewGuid().ToString();
+		await AddAsync(client, cancellationToken);
+
+		await SaveChangesAsync(cancellationToken);
+	}
+	public DbSet&lt;Client&gt; Clients { get; set; }
+
+	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	{
+		optionsBuilder.UseSqlite($&quot;Data Source={DataSourcePath}&quot;);
+	}
+
+	public static string DataSourcePath {
+		get
+		{
+			var localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+			return Path.Join(localAppDataPath, &quot;clients.db&quot;);
+		}
+	}
+}
+</code></pre>
+<p>Notable is <code>AddClientAsync</code>, where it accepts an <code>Ssn</code> value, sets the shadow property value for that database column, and generates the primary key by calling <code>Guid.NewGuid()</code>. <code>DatabaseContext</code> encapsulates the implementation detail of shadow properties. I've chosen to generate a<code>Guid</code> in code rather than by the database for clarity. As a database concern, it could go either way. Also notable is the method <code>GetClientSsn</code>, which shows how an SSN can be obtained outside the Domain (e.g., for Presentation concerns.)</p>
+<p>Next, let's look at an implementation of <code>IClientRepository</code>:</p>
+<pre><code class="language-csharp">public class ClientRepository(DatabaseContext dbContext, ISsnRegistry ssnRegistry) : IClientRepository
+{
+	private readonly DatabaseContext dbContext = dbContext;
+	private readonly ISsnRegistry ssnRegistry = ssnRegistry;
+
+	public Task&lt;Result&lt;IEnumerable&lt;Client&gt;&gt;&gt; FindClientsAsync(CancellationToken _)
+	{
+		Result&lt;IEnumerable&lt;Client&gt;&gt; result = dbContext.Clients;
+		return Task.FromResult(result);
+	}
+
+	public Task&lt;Result&lt;Client&gt;&gt; FindBySsnAsync(Ssn ssn, CancellationToken cancellationToken)
+	{
+		return dbContext.GetClientBySsnAsync(ssn, cancellationToken);
+	}
+
+	public async Task&lt;Result&lt;Ssn&gt;&gt; AddAsync(Client client, CancellationToken cancellationToken)
+	{
+		var reservationResult = ssnRegistry.Reserve();
+		if (reservationResult.IsError()) return Result&lt;Ssn&gt;.Error();
+
+		using var ssnReservation = reservationResult.Value;
+		Ssn newSsn = new(ssnReservation.Value);
+		await dbContext.AddClientAsync(client, newSsn, cancellationToken);
+		await dbContext.SaveChangesAsync(cancellationToken);
+		ssnReservation.Commit();
+		return newSsn;
+	}
+
+	public async Task&lt;Result&gt; SaveAsync(Client client, CancellationToken cancellationToken)
+	{
+		var entry = dbContext.Entry(client);
+		switch (entry.State)
+		{
+			case EntityState.Detached:
+				{
+					var addResult = await AddAsync(client, cancellationToken);
+					return addResult.IsSuccess
+						? Result.Success()
+						: Result.CriticalError(addResult.Errors.ToArray());
+				}
+			case EntityState.Modified:
+				await dbContext.SaveChangesAsync(cancellationToken);
+				return Result.Success();
+			default:
+				return Result.Success();
+		}
+	}
+
+	public Result&lt;Ssn&gt; GetClientSsn(Client client)
+	{
+		return dbContext.GetClientSsn(client);
+	}
+
+	public Task&lt;Result&lt;Client&gt;&gt; FindByIdAsync(Guid id, CancellationToken cancellationToken)
+	{
+		return dbContext.GetClientByIdAsync(id, cancellationToken);
+	}
+}
+</code></pre>
+<p>Since the primary key and the SSN storage is a Persistence concern, the <code>DbContext</code> implementation is where the logic to work with Shadow Properties lives.</p>
+<p><code>SaveAsync</code> and <code>FindBySsnAsync</code> simply encapsulate <code>DbContext.SaveChangesAsync</code> and <code>DatabaseContext.GetClientBySsnAsync</code> respectively. <code>FindClientsAsync</code> finds all the client instances (typically, this would have a filter, which I've omitted for clarity.) SSN allocation is outside the scope of this post. But, because SSN allocation is a Domain concern, I'll show where it might fit in an orchestration with <code>DatabaseContext</code> within <code>AddAsync</code> (using a fictitious <code>ISsnRegistry</code> object that manages generating/reserving then committing an SSN value--completing/committing the reserved value if it is successfully persisted to the database.) I've included <code>GetClientSsn</code> as an example of how an SSN can be obtained outside the Domain (e.g., for Presentation concerns.) Also, I've included <code>FindByIdAsync</code> as an example of how we can find a <code>Client</code> instance based on a primary key value.</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">Caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Storing SSNs in a database is frowned upon. This example is for clarity, the value should be hashed or encrypted before storing in the database. Look ups based on last-four &amp; name are beyond the scope of this post</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>Entity Framework makes mapping Entity properties to columns in a relational database easy. But don't let that ease of use let Persistence concerns leak into your Domain. With a clear understanding of what Domain concerns are, what Persistence concerns are, and what Presentation concerns are Entity Framework can easily be leveraged to support loosely coupling the Persistence concerns from Entities.</p>
+<p>The code from this post can be found in <a href="https://github.com/peteraritchie/IdentityObsession">GitHub</a>.</p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'avoiding-identity-obsession-in-dotnet-with-entity-framework-core'
+    'Avoiding Identity Obsession in .NET with Entity Framework Core'
+    'http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('10/1/24');
+    console.info('avoiding-identity-obsession-in-dotnet-with-entity-framework-core');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Avoiding Identity Obsession in .NET with Entity Framework Core';
+    var disqus_url = 'http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'avoiding-identity-obsession-in-dotnet-with-entity-framework-core';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2024
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
