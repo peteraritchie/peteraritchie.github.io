@@ -5,8 +5,58 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Tue, 01 Oct 2024 21:17:31 GMT</pubDate>
-		<lastBuildDate>Tue, 01 Oct 2024 21:17:31 GMT</lastBuildDate>
+		<pubDate>Thu, 24 Oct 2024 20:28:56 GMT</pubDate>
+		<lastBuildDate>Thu, 24 Oct 2024 20:28:56 GMT</lastBuildDate>
+		<item>
+			<title>Naming things: Actions</title>
+			<link>http://blog.peterritchie.com/posts/naming-things--generic-actions</link>
+			<description>&lt;p&gt;&lt;img src="../assets/overwhelming-possibilities.png" class="img-fluid" alt="Overwhelming Possibilities"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/naming-things--generic-actions</guid>
+			<pubDate>Thu, 24 Oct 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/overwhelming-possibilities.png" class="img-fluid" alt="Overwhelming Possibilities" /&gt;&lt;/p&gt;
+&lt;p&gt;A few years ago, I decided to look into &lt;em&gt;why&lt;/em&gt; naming is hard. That spawned a conference talk that I've done several times. Part of what I present in that talk is my observations of working with many teams regarding establishing names for generic actions applicable in their unique domain.&lt;/p&gt;
+&lt;h2 id="actions-activities-operations-events-occurrences-oh-my"&gt;Actions, Activities, Operations, Events, Occurrences, Oh My&lt;/h2&gt;
+&lt;p&gt;Generic actions have many synonyms. Without considering different words to mean the same thing, the names of things in the code related to generic actions added a noticeable cognitive load to the initial understanding of the domain. Let's look at what I mean by &lt;em&gt;generic actions&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In a domain, things &lt;em&gt;happen&lt;/em&gt; to domain objects. Many of these actions can be considered &amp;quot;updates,&amp;quot; but it's more fine-grained. For example, here's a table of some verbs that could mean some sort of &lt;em&gt;update&lt;/em&gt; in most domains:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;Add     Create   Generate  Build   Construct  Initialize  Make    Establish
+Update  Change   Modify    Mutate  Alter      Revise      Adjust  Transform
+Delete  Destroy  Remove    Erase   Move       Release     Pull    Withdraw
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It's extremely unlikely that there are 24 distinct mutating actions in any domain. Most domains work on a CRUD model where, besides Read, there are &lt;code&gt;Create&lt;/code&gt;, &lt;code&gt;Update&lt;/code&gt;, and &lt;code&gt;Delete&lt;/code&gt;. Unfortunately, three mutating actions are typically too coarse-grained and can be unrepresentative of the domain language.&lt;/p&gt;
+&lt;p&gt;Spending a short time creating a happy medium is valuable: making a brief list of the terms used for the generic domain actions. The list should be imperative verbs that can be (or are) transitive (that is, they can refer to an object. e.g., &amp;quot;arrive&amp;quot; is a verb that cannot be transitive).&lt;/p&gt;
+&lt;p&gt;Once there is agreement on the generic actions that apply to the domain, establishing a similar list of events further increases value. That list should be the action verbs in past participle form. For example, if &amp;quot;create&amp;quot; is an action in the domain, then the event that describes it would be the past participle form of &amp;quot;create&amp;quot;: &amp;quot;created.&amp;quot;&lt;/p&gt;
+&lt;h2 id="example"&gt;Example&lt;/h2&gt;
+&lt;p&gt;Each domain is unique, so make sure these terms work for yours.&lt;/p&gt;
+&lt;h3 id="actions"&gt;Actions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Create&lt;/code&gt;&lt;/strong&gt; - to bring something into existence. Contrast with Add. See also &lt;code&gt;Destroy&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Add&lt;/code&gt;&lt;/strong&gt; - to add something (already created) to a container or collection. See also &lt;code&gt;Remove&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Update&lt;/code&gt;&lt;/strong&gt; - to change the value of one or properties of an object. Contrast with &lt;code&gt;Change&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Change&lt;/code&gt;&lt;/strong&gt; - to replace an entire instance with another instance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Delete&lt;/code&gt;&lt;/strong&gt; - to remove access to something in some context. Contrast with &lt;code&gt;Destroy&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Destroy&lt;/code&gt;&lt;/strong&gt; - to eliminate something from existence, the opposite of Create. Contrast with &lt;code&gt;Delete&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Remove&lt;/code&gt;&lt;/strong&gt; - to remove something from a container or collection, the opposite of Add. Contrast with &lt;code&gt;Delete&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Modify&lt;/code&gt;&lt;/strong&gt; - to modify the structure or schema of something. Contrast with &lt;code&gt;Update&lt;/code&gt; and &lt;code&gt;Change&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This list should be a stretch for most domains. Many domains don't have a concept of &lt;em&gt;modifying&lt;/em&gt; schema or &lt;em&gt;changing&lt;/em&gt; instances. Further still, I have found that most domains either &lt;code&gt;Delete&lt;/code&gt; or &lt;code&gt;Destroy&lt;/code&gt; data. This leaves &lt;code&gt;Create&lt;/code&gt;, &lt;code&gt;Delete&lt;/code&gt;, &lt;code&gt;Add&lt;/code&gt;, &lt;code&gt;Remove&lt;/code&gt;, and &lt;code&gt;Update&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Remember that this example list is designed to be generic--actions not likely to be domain-specific. In your ubiquitous language, you will still have other terms to refer to domain-specific actions. e.g., you may &lt;code&gt;Correct&lt;/code&gt; an Address in the domain to signify an &lt;code&gt;Update&lt;/code&gt; or &lt;code&gt;Change&lt;/code&gt; to an Address to differentiate it from a &lt;code&gt;Move&lt;/code&gt; concept. Or a domain might have a &lt;code&gt;Restore&lt;/code&gt; behavior as a specialized type of &lt;code&gt;Update&lt;/code&gt; or &lt;code&gt;Change&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I recommend establishing a similar list of event names that is effectively the same list of verbs for the actions but in past participle form:&lt;/p&gt;
+&lt;h3 id="events"&gt;Events&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Created&lt;/code&gt;&lt;/strong&gt; - something was brought into existence. Contrast with &lt;code&gt;Added&lt;/code&gt;. See also &lt;code&gt;Destroyed&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Added&lt;/code&gt;&lt;/strong&gt; - something (already created) was added to a container or collection. See also &lt;code&gt;Removed&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Updated&lt;/code&gt;&lt;/strong&gt; - the value of one or properties of an object was changed. Contrast with &lt;code&gt;Changed&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Changed&lt;/code&gt;&lt;/strong&gt; - an entire instance was replaced with another instance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Deleted&lt;/code&gt;&lt;/strong&gt; - access to something was removed in some context. Contrast with &lt;code&gt;Destroyed&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Destroyed&lt;/code&gt;&lt;/strong&gt; - something was eliminated from existence, the opposite of &lt;code&gt;Created&lt;/code&gt;. Contrast with &lt;code&gt;Deleted&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Removed&lt;/code&gt;&lt;/strong&gt; - something was removed from a container or collection, the opposite of &lt;code&gt;Added&lt;/code&gt;. Contrast with &lt;code&gt;Deleted&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Modified&lt;/code&gt;&lt;/strong&gt; - the structure or schema of something was modified. Contrast with &lt;code&gt;Updated&lt;/code&gt; and &lt;code&gt;Changed&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This list of events could be similarly optimized as &lt;code&gt;Created&lt;/code&gt;, &lt;code&gt;Deleted&lt;/code&gt;, &lt;code&gt;Added&lt;/code&gt;, &lt;code&gt;Removed&lt;/code&gt;, and &lt;code&gt;Updated&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My experience has been that establishing and communicating lists like these work well in avoiding ambiguity and establishing clarity. Most domains are complex, but clarifying the names of generic actions can make a noticeable difference in understandability and approachability. I've even found that this level of attention to naming makes the code base more agile.&lt;/p&gt;
+&lt;p&gt;In the comments, I'd love to hear what generic actions apply to your domain if these don't apply.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Avoiding Identity Obsession in .NET with Entity Framework Core</title>
 			<link>http://blog.peterritchie.com/posts/avoiding-identity-obsession-in-dotnet-with-entity-framework-core</link>
@@ -2091,53 +2141,6 @@ dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore
 &lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"&gt;&lt;code&gt;WebApplicationFactory&amp;lt;TEntryPoint&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The source for the examples, including the creation scripts can be found at &lt;a href="https://github.com/peteraritchie/fundamental-webapi-integration-testing"&gt;https://github.com/peteraritchie/fundamental-webapi-integration-testing&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Visual Studio Performance with Microsoft Defender</title>
-			<link>http://blog.peterritchie.com/posts/visual-studio-defender-performance</link>
-			<description>&lt;p&gt;&lt;img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/visual-studio-defender-performance</guid>
-			<pubDate>Thu, 27 Oct 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/antivirus%20exclusion%20developer.png" class="img-fluid" alt="Antivirus Exclusion Developer Dall-E image" /&gt;&lt;/p&gt;
-&lt;p&gt;Steve Smith posted about &lt;a href="https://ardalis.com/speed-up-visual-studio-build-times/?utm_sq=h3m43zzlkm"&gt;speeding up built times in Visual Studio&lt;/a&gt; by configuring Windows Defender.  That was in 2016 and to say things have changed a bit is probably an understatement.  Configuring a new laptop, I thought I'd revisit this briefly.&lt;/p&gt;
-&lt;p&gt;Before changing anything in Windows Virus &amp;amp; Threat Protection, go ahead and run a scan to make sure we're starting with a clean slate.  &lt;del&gt;Go to &lt;a href="ms-settings:windowsdefender"&gt;Windows Security&lt;/a&gt; and click &lt;strong&gt;Virus &amp;amp; threat protection&lt;/strong&gt; then click the &lt;strong&gt;Quick scan&lt;/strong&gt; button.&lt;/del&gt; I've been advocating scripting all-the-things, to run a quick scan in an administrator Powershell terminal run &lt;code&gt;Start-MpScan -ScanType QuickScan&lt;/code&gt;.  You can also run a full-scan, if that makes you more comfortable: &lt;code&gt;Start-MpScan -ScanType FullScan&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Once that's complete we can configure Windows Virus and Threat Protection to &amp;quot;trust&amp;quot; (exclude) Visual Studio.  To do that in PowerShell you can use the &lt;a href="https://learn.microsoft.com/en-us/powershell/module/defender/add-mppreference?view=windowsserver2022-ps"&gt;&lt;code&gt;App-MpPreference&lt;/code&gt; cmdlet&lt;/a&gt; (as well as see what's already configured with the &lt;a href="https://learn.microsoft.com/en-us/powershell/module/defender/get-mppreference?view=windowsserver2022-ps"&gt;&lt;code&gt;Get-MpPreference&lt;/code&gt; cmdlet&lt;/a&gt;).  Some examples:&lt;/p&gt;
-&lt;p&gt;With Visual Studio 2022 Enterprise:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With Visual Studio 2022 Professional:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With Visual Studio 2022 Community:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And, with Visual Studio 2022 Preview:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can also do that for Visual Studio Code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:LocalAppData\Programs\Microsoft VS Code\code.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can also exclude the location of where you store your source code.  The default location is &lt;code&gt;C:\Users\&amp;lt;user-name&amp;gt;\source\repos&lt;/code&gt; for Visual Studio.  So, in PowerShell, you can add a path exclusion:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionPath &amp;quot;$Env:USERPROFILE\source\repos&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Note:&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;If you're working with Git repositories that you're unsure of what they contain, you may want to separate where you clone those repos from where you exclude.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Or, if you want a PowerShell script to just do all thee things, see &lt;a href="https://gist.githubusercontent.com/peteraritchie/d6025591566821b4ae5995eb831b6e8d/raw/912b5b20b749d506562437f40e169e6a3e24d279/optimize-defender.ps1"&gt;optimize-defender.ps1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Other processes to consider:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;Add-MpPreference -ExclusionProcess &amp;quot;$Env:ProgramFiles\dotnet\dotnet.exe&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Any other processes or paths that you'd consider for exclusion?&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
