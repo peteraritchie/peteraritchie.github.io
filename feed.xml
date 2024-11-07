@@ -5,8 +5,159 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2024</copyright>
-		<pubDate>Thu, 24 Oct 2024 20:28:56 GMT</pubDate>
-		<lastBuildDate>Thu, 24 Oct 2024 20:28:56 GMT</lastBuildDate>
+		<pubDate>Thu, 07 Nov 2024 19:48:24 GMT</pubDate>
+		<lastBuildDate>Thu, 07 Nov 2024 19:48:24 GMT</lastBuildDate>
+		<item>
+			<title>Working With DTO Auto Translators -- Mapperly</title>
+			<link>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly</link>
+			<description>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly</guid>
+			<pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation" /&gt;&lt;/p&gt;
+&lt;!-- Mapping/Translation series intro boilerplate --&gt;
+&lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called &lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary translation method/function.&lt;/p&gt;
+&lt;!-- Data Transfer Object boilerplate pull quote/box copy --&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Data Transfer Objects&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Defining concrete syntax in high-level languages is so essential that a design pattern is devoted to it. The Data Transfer Object&lt;sup&gt;[&lt;a href="https://amzn.to/3SR8c73"&gt;ppoe&lt;/a&gt;]&lt;/sup&gt; design pattern describes declaring high-level types to describe aspects of concrete syntax.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This installment details the mapping and translation of Data Transfer Objects with a package named &lt;a href="https://github.com/riok/mapperly"&gt;&lt;code&gt;Mapperly&lt;/code&gt;&lt;/a&gt; (&lt;a href="https://www.nuget.org/packages/Riok.Mapperly/"&gt;Riok.Mapperly&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Mapperly accomplishes translation by being a .NET Source Generator, meaning the translation code is generated and exists when your application is compiled. The translation code, therefore, does not need to jump through a bunch of hoops by evaluating expressions and dynamically generating types and methods. Being a Source Generator makes Mapperly pleasantly different from other mappers like AutoMapper and Mapster. You have to declare the intent to translate from one type to another by declaring a partial method (in a partial class decorated with the &lt;code&gt;MapperAttribute&lt;/code&gt;) that tells Mapperly what the source and destination types are (the method that returns the &lt;em&gt;destination&lt;/em&gt; type and accepts the &lt;em&gt;source&lt;/em&gt; type as an argument.) The name of the class method is up to you. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
+public partial class AccountTranslator
+{
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mapperly determines how to translate each property based on their names and types (the default &lt;em&gt;convention&lt;/em&gt;). In our simple case, it would generate a method similar to:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;{
+    public partial class AccountTranslator
+    {
+        [global::System.CodeDom.Compiler.GeneratedCode(&amp;quot;Riok.Mapperly&amp;quot;, &amp;quot;4.1.0.0&amp;quot;)]
+        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
+        {
+            var target = new global::MapperlyTests.Application.AccountDto();
+            target.Id = account.Id;
+            target.Name = account.Name;
+            target.CreationDate = account.CreationDate;
+            return target;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mapperly supports immutable record types, so if you wanted to use &lt;code&gt;record&lt;/code&gt; with &lt;code&gt;AccountDto&lt;/code&gt; like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public record AccountDto(Guid Id, DateOnly CreationDate, string Name);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And with those immutable record types Mapperly will generate code that passes arguments to the constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;        [global::System.CodeDom.Compiler.GeneratedCode(&amp;quot;Riok.Mapperly&amp;quot;, &amp;quot;4.1.0.0&amp;quot;)]
+        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
+        {
+            var target = new global::MapperlyTests.Application.AccountDto(account.Id, account.CreationDate, account.Name);
+            return target;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Say goodbye to &lt;code&gt;ConstructUsing&lt;/code&gt; (as well as &lt;code&gt;ForMember&lt;/code&gt;, et al.)&lt;/p&gt;
+&lt;h2 id="mapping-by-convention"&gt;Mapping by Convention&lt;/h2&gt;
+&lt;p&gt;The raison d'etre of mapping/translation frameworks is to make translating one data type to another as simple as possible. A key feature of these frameworks is to map by convention, which automatically maps fields or properties based on criteria like name and data type. As we can see from the generated code above, Mapperly, by convention, figures out the source and target properties to translate. What's nice about Mapperly is that you can see the results of applying that convention by looking at the generated code (Ctrl-click the &lt;code&gt;partial&lt;/code&gt; method name to go to the generated code.)&lt;/p&gt;
+&lt;h2 id="custom-mapping"&gt;Custom Mapping&lt;/h2&gt;
+&lt;p&gt;When we start (greenfield) development, our DTOs are usually closely aligned with our domain objects, so by-convention mapping is our friend. However, an important reason for having two abstractions is that they can evolve independently. Eventually, as we gain a better understanding of the domain or clients of the communication channel, we will need to make changes that cause our DTO and Domain Objects to diverge. We can manage that divergence by extending the by-convention mapping to include custom mapping on a per-property basis. Mapperly supports this through members of the &lt;code&gt;Mapper&lt;/code&gt;-decorated class.&lt;/p&gt;
+&lt;p&gt;For example, we've gained a better understanding of the domain, and an Account doesn't necessarily have a &amp;quot;name&amp;quot; but has an associated account holder with a given and family name. That understanding may make its way into the domain like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Account(Guid id, DateOnly creationDate, string accountHolderGivenName, string accountHolderFamilyName)
+{
+	public Guid Id { get; } = id;
+	public string AccountHolderGivenName { get; private set; } = accountHolderGivenName;
+	public string AccountHolderFamilyName { get; private set; } = accountHolderFamilyName;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string accountHolderGivenName, string accountHolderFamilyName)
+	{
+		AccountHolderGivenName = accountHolderGivenName;
+		AccountHolderFamilyName = accountHolderFamilyName;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Receivers of our &lt;code&gt;AccountDto&lt;/code&gt; might be unable to accommodate that change immediately, so we may deal with that by mapping properties differently. Instead of including &lt;code&gt;FamilyName&lt;/code&gt; and &lt;code&gt;GivenName&lt;/code&gt; in this version of &lt;code&gt;AccountDto&lt;/code&gt;, we may concatenate the given and family name and assign it to &lt;code&gt;AccountDto.Name&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can configure this type of two properties to one property conversion with the &lt;code&gt;MapPropertyFromSource&lt;/code&gt; attribute. More than just the name of the two properties is needed for Mapperly to automatically figure out what to do (concatenate, concatenate with delimiter, etc.). So, we use &lt;code&gt;MapPropertyFromSource&lt;/code&gt; to point to a method that takes the source type and returns an instance of a type assignable to the destination property.  In this example, a &lt;code&gt;MapGivenFamilyNames&lt;/code&gt; method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	[MapPropertyFromSource(target: nameof(AccountDto.Name), Use = nameof(MapGivenFamilyNames))]
+	public partial AccountDto AccountToAccountDto(Account account);
+	private string MapGivenFamilyNames(Account account)
+	{
+		return account.AccountHolderGivenName + ' ' + account.AccountHolderFamilyName;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mapperly supports arrays of strings for &lt;code&gt;target&lt;/code&gt; so you can map to nested properties of properties.&lt;/p&gt;
+&lt;p&gt;Mapperly also supports property-to-property mapping of properties that a simple matching strategy wouldn't match.  Given the same client application constraints and the domain understanding uncovered that the &lt;code&gt;Name&lt;/code&gt; property doesn't fit in the ubiquitous language but &lt;code&gt;FullName&lt;/code&gt; does, we would use &lt;code&gt;MapPropertyAttribute&lt;/code&gt; to tell Mapperly how to assign the &lt;code&gt;AccountDto.Name&lt;/code&gt; property:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	[MapProperty(source: nameof(AccountDto.Name), target: nameof(Account.FullName))]
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;NOTE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;The constructor for &lt;code&gt;MapPropertyFromSourceAttribute&lt;/code&gt; has only one parameter, the &lt;code&gt;target&lt;/code&gt;.  The constructor for &lt;code&gt;MapPropertyAttribute&lt;/code&gt; has two, the &lt;code&gt;source&lt;/code&gt; and the &lt;code&gt;target&lt;/code&gt;, so it &lt;em&gt;may look like&lt;/em&gt; the parameters are in a different order. C#'s &lt;em&gt;named arguments&lt;/em&gt; shines here to clarify intent.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Technically, attributes like &lt;code&gt;MapPropertyFromSourceAttribute&lt;/code&gt; and &lt;code&gt;MapPropertyAttribute&lt;/code&gt; work with string names of classes and members. Use the &lt;code&gt;name of&lt;/code&gt; expression so that identifiers get used at compile-time, as seen in the above example.&lt;/p&gt;
+&lt;h2 id="but-wait-theres-more"&gt;But Wait, There's More&lt;/h2&gt;
+&lt;p&gt;A benefit of being a Source Generator is that Mapperly can generate compiler/analyzer warnings when not all properties are mapped from or to.  If you're following along and you updated &lt;code&gt;Account&lt;/code&gt;, renaming &lt;code&gt;Name&lt;/code&gt; to &lt;code&gt;FullName&lt;/code&gt;, you would have noticed RMG020 and RMG012 warnings:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../assets/mapperly-unmapped-member-warning.png" class="img-fluid" alt="RMG020 and RMG012 warnings" /&gt;&lt;/p&gt;
+&lt;h2 id="dependency-injections-with-mapperly"&gt;Dependency Injections with Mapperly&lt;/h2&gt;
+&lt;p&gt;Other mappers have initialization and startup requirements making their use in Dependency Injection more than just registering an implementation of an interface (&lt;code&gt;services.AddScoped&amp;lt;ITheInterface, TheImplementation&amp;gt;();&lt;/code&gt;) and require an &lt;code&gt;Add{Technology}()&lt;/code&gt; method call (like &lt;code&gt;AddMapster&lt;/code&gt; or &lt;code&gt;AddAutoMapper&lt;/code&gt;.) Since Mapperly generates the translation code at compilation, you only have to register the translating type (e.g., &lt;code&gt;services.AddScoped&amp;lt;AccountTranslator&amp;gt;()&lt;/code&gt;) and declare the dependency in the constructors of types that need to invoke translators (e.g., &lt;code&gt;public class AccountService(AccountTranslator accountTranslator){/*...*/}&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;If you're interface-obsessed when it comes to Dependency Injection, you're free to create an interface to use and configure your services appropriately, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public interface IAccountTranslator
+{
+	public AccountDto AccountToAccountDto(Account account);
+}
+//...
+[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+//...
+services.AddScoped&amp;lt;IAccountTranslator, AccountTranslator&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then declare the dependency in the constructors of types that need to invoke translators (e.g., &lt;code&gt;public class AccountService(IAccountTranslator accountTranslator){/*...*/}&lt;/code&gt;.)&lt;/p&gt;
+&lt;h2 id="where-does-mapping-and-translation-occur"&gt;Where Does Mapping and Translation Occur?&lt;/h2&gt;
+&lt;p&gt;Data transfer can occur in different layers. Data transfer triggers a website or API (presentation layer); the application layer requests external services via an infrastructure layer to transfer data to and from. I'm often asked where that mapping and translation source code should exist and in which project in the solution. It's important to remember that we're dealing with multiple layers. The presentation layer is typically where the process entry point is, so initialization (DI container configuration) occurs here. That initialization depends at least indirectly on the translation code to configure services that perform the translation.&lt;/p&gt;
+&lt;p&gt;Translation of web/API models exist in the presentation layer because that's where &lt;em&gt;that&lt;/em&gt; data transfer occurs. It can get complex when more layers are in their own project or are their own artifact. I recommend that DTOs live in the project where the data transfer occurs because they should be viewed as an implementation detail of the facade/adapter performing the data transfer. This typically means that the translation codes lives along side the DTOs because you want to keep implementation details encapsulated. The translation should be made available through an interface that is configured by your Dependency Injection container. I'll leave the complexity of doing that in the context of project-scoped layers for another post.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;NOTE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;Regardless of whether you have multiple presentation layers or an independent application layer, translation logic &lt;em&gt;should not&lt;/em&gt; be a responsibility in the Domain layer.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Naming things: Actions</title>
 			<link>http://blog.peterritchie.com/posts/naming-things--generic-actions</link>
@@ -1972,175 +2123,6 @@ Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. T
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;There are many areas of clarification with Azure Administrator Associate.  Future posts on the subject will address clarifications involving important explicit limits, restrictions, constraints, rules, etc.&lt;/p&gt;
 &lt;p&gt;Are there other implicit aspects of Azure administration that can be made explicit?&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Fundamental ASP.Net Minimal API Integration Tests</title>
-			<link>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</link>
-			<description>&lt;p&gt;&lt;img src="/assets/robotic%20computing%20testing.png" class="img-fluid" alt="Robotic computing testing"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/fundamental-webapi-integration-tests</guid>
-			<pubDate>Thu, 03 Nov 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/robotic%20computing%20testing.png" class="img-fluid" alt="Robotic computing testing" /&gt;&lt;/p&gt;
-&lt;p&gt;I've been involved with some fairly large projects that involved RESTful APIs. When dealing with multiple team members, multiple teams, and OpenAPI specs, there can be many risks. Even when an OpenAPI specification is generated from source code, what the code does can easily be unaligned with the spec. Luckily the spec is a machine-readable contract of the &lt;em&gt;intent and purpose&lt;/em&gt; of the API.&lt;/p&gt;
-&lt;p&gt;Automated testing to the rescue! With ASP.NET, you can inject into and observe the middleware pipeline. ASP.NET integration tests are a common way of verifying the pipeline and how it is used. We can create integration tests that process the OpenAPI spec and verify operations are working as expected in various ways. This article dives into a couple of these ways.&lt;/p&gt;
-&lt;h2 id="fundamental-api-integration-tests"&gt;Fundamental API Integration Tests&lt;/h2&gt;
-&lt;p&gt;With a functioning Web API and an OpenAPI specification that describes it there are some fundamental things we can verify:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The generated OpenAPI document is valid&lt;/li&gt;
-&lt;li&gt;The paths have endpoints implemented&lt;/li&gt;
-&lt;li&gt;The operations respond with the correct type of response&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;First, let's set up our solution, projects, and integration testing scaffolding.&lt;/p&gt;
-&lt;h2 id="setting-up-the-solution-and-projects"&gt;Setting Up the Solution and Projects&lt;/h2&gt;
-&lt;p&gt;We're dealing with a Web API and integration tests, so let's create a Web API project and make the &lt;code&gt;Program&lt;/code&gt; class &lt;code&gt;public&lt;/code&gt;. You can do that manually in Visual Studio; but for consistency, the CLI is powerful (I'm being intentional with framework versions and some configuration options--appending &lt;code&gt;public partial class Program { }&lt;/code&gt; to Program.cs to make the class public):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet new solution
-dotnet new webapi -o WebApi --use-minimal-apis true --framework net6.0 --use-program-main false
-echo public partial class Program { } &amp;gt;&amp;gt; WebApi\Program.cs
-dotnet sln add WebApi\WebApi.csproj
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next, we want to add a test project. xUnit is my go-to, so we'll use that and add a reference to the Web API project. Again, in the CLI:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet new xunit -o IntegrationTests --framework net6.0
-del IntegrationTests\UnitTest1.cs
-dotnet add IntegrationTests\IntegrationTests.csproj reference WebApi\WebApi.csproj
-dotnet sln add IntegrationTests\IntegrationTests.csproj
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For ASP.Net integration tests, we will use &lt;code&gt;WebApplicationFactory&amp;lt;T&amp;gt;&lt;/code&gt;, which requires a reference to &lt;code&gt;Microsoft.AspNetCore.Mvc.Testing&lt;/code&gt;. In addition, to process OpenAPI documents, we'll need the &lt;code&gt;Microsoft.OpenApi.Readers&lt;/code&gt; package. Again, via the CLI:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.OpenApi.Readers
-dotnet add IntegrationTests\IntegrationTests.csproj package Microsoft.AspNetCore.Mvc.Testing
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="integration-test-scaffolding"&gt;Integration Test Scaffolding&lt;/h2&gt;
-&lt;p&gt;I got into some of the scaffolding of ASP.NET 6 integration tests in &lt;a href="#setting-up-the-solution-and-projects"&gt;Setting Up the Solution and Projects&lt;/a&gt; concerning the required package references. the &lt;code&gt;Microsoft.AspNetCore.Mvc.Testing&lt;/code&gt; package is required so that we may use the &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"&gt;&lt;code&gt;WebApplicationFactory&amp;lt;TEntryPoint&amp;gt;&lt;/code&gt;&lt;/a&gt; class--which allows us to bootstrap a web application in memory, specifically for testing.&lt;/p&gt;
-&lt;p&gt;We'll use &lt;code&gt;WebApplicationFactory&lt;/code&gt; to create an instance of an &lt;code&gt;HttpClient&lt;/code&gt; test fake that works with our in-memory host. In addition, we'll override &lt;code&gt;WebApplicationFactory&lt;/code&gt; to get at some of the Swashbuckle details from the pipeline. We're interested in the generated OpenAPI document for processing and the name of that document to generate the OpenAPI specification URI for verification. Here's an example of a &lt;code&gt;WebApplicationFactory&lt;/code&gt; implementation that does what we need:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class MyWebApplicationFactory : WebApplicationFactory&amp;lt;Program&amp;gt;
-{
-	public OpenApiDocument? OpenApiDocument { get; private set; }
-	public string OpenApiDocumentName { get; private set; } = string.Empty;
-
-	protected override IHost CreateHost(IHostBuilder builder)
-	{
-		var host = base.CreateHost(builder);
-		using var scope = host.Services.CreateScope();
-		var sp = scope.ServiceProvider;
-		var swaggerGeneratorOptions = sp.GetRequiredService&amp;lt;IOptions&amp;lt;SwaggerGeneratorOptions&amp;gt;&amp;gt;().Value;
-		OpenApiDocumentName = swaggerGeneratorOptions.SwaggerDocs.First().Key ?? string.Empty;
-		var swaggerProvider = sp.GetRequiredService&amp;lt;ISwaggerProvider&amp;gt;();
-		OpenApiDocument = swaggerProvider.GetSwagger(OpenApiDocumentName);
-
-		return host;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The important parts are the &lt;code&gt;OpenApiDocument&lt;/code&gt; and &lt;code&gt;OpenApiDocumentName&lt;/code&gt; properties.&lt;/p&gt;
-&lt;p&gt;Now that we've got integration testing scaffolded let's create a test base class to make creating multiple integration tests clean and tidy.&lt;/p&gt;
-&lt;h2 id="some-test-conventions"&gt;Some Test Conventions&lt;/h2&gt;
-&lt;p&gt;Automated testing classes and methods offer an opportunity to isolate and categorize tests to reduce work and clarify what is being tested (more importantly, what isn't passing). I tend towards a given/when/then structure when designing tests. The test class encapsulates the given/when (as well as the &lt;em&gt;arrange&lt;/em&gt; from arrange/act/assert) whose name is suffixed with &amp;quot;Should.&amp;quot; Each test method in the class is then given a name that describes the &lt;em&gt;then&lt;/em&gt; condition. I try to ensure that there is one condition and thus one assert per method. YMMV.&lt;/p&gt;
-&lt;p&gt;For the tests I want to describe in this article, I've created a base class to encapsulate related given/when scenarios (or &lt;em&gt;shoulds&lt;/em&gt;) that require the details we're accessing with the &lt;code&gt;WebApplicationFactory&amp;lt;Program&amp;gt;&lt;/code&gt; implementation. Naming is hard, so I'm starting simple with a &lt;code&gt;WebApiShouldBase&lt;/code&gt; class that encapsulates the parts we're getting with &lt;code&gt;MyWebApplicationFactory&lt;/code&gt; and an ability to get a stream to the &amp;quot;live&amp;quot; OpenAPI spec document (JSON). It also deals with the responsibility of owning those things (e.g., disposal):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class WebApiShouldBase : IDisposable
-{
-	private readonly string openApiSpecUriText;
-
-	protected readonly HttpClient WebApiClient;
-	protected OpenApiDocument? OpenApiDocument { get; }
-	protected Task&amp;lt;Stream&amp;gt; GetOpenApiDocumentStreamAsync() =&amp;gt; WebApiClient.GetStreamAsync(openApiSpecUriText);
-
-	protected WebApiShouldBase()
-	{
-		var factory = new MyWebApplicationFactory();
-		WebApiClient = factory.CreateClient();
-		OpenApiDocument = factory.OpenApiDocument;
-		this.openApiSpecUriText = $&amp;quot;/swagger/{factory.OpenApiDocumentName}/swagger.json&amp;quot;;
-	}
-
-	protected virtual void Dispose(bool isDisposing)
-	{
-		if (isDisposing)
-		{
-			Dispose();
-		}
-	}
-
-	public void Dispose() =&amp;gt; WebApiClient.Dispose();
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The important parts are the &lt;code&gt;OpenApiDocument&lt;/code&gt; property which re-surfaces the &lt;code&gt;MyWebApplicationFactory.OpenApiDocument&lt;/code&gt; to implementors, the &lt;code&gt;WebApiClient&lt;/code&gt; property to access the API, and the &lt;code&gt;GetOpenApiDocumentStreamAsync&lt;/code&gt; method that holds the OpenAPI spec document that the API provides. This class hides things like the URI to the swagger.json, the use of &lt;code&gt;MyWebApplicationFactory&lt;/code&gt;, disposal, etc.&lt;/p&gt;
-&lt;p&gt;With that, let's start doing some tests!&lt;/p&gt;
-&lt;h2 id="verifying-the-generated-openapi-is-valid"&gt;Verifying The Generated OpenAPI Is Valid&lt;/h2&gt;
-&lt;p&gt;&amp;quot;Valid&amp;quot; is subjective with OpenAPI. An OpenAPI spec is very &lt;em&gt;forgiving&lt;/em&gt; in allowing for many opinions on what a &lt;em&gt;good&lt;/em&gt; API looks like. I'm not going to go deep on what &lt;em&gt;good&lt;/em&gt; might mean; just dive into facilitating validation of that generated document. The fact that there is an OpenApiDocument instance, and a raw OpenAPI specification, is an implementation detail. We'll use that OpenApiDocument instance shortly, but I want to ensure that the raw document meets some minimum requirements. For this example, the OpenAPI document is processed, not errors we detected, and there &lt;em&gt;are&lt;/em&gt; paths. Very simple:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
-	public async Task ProduceValidOpenApi()
-	{
-		var readerResult = await new OpenApiStreamReader()
-			.ReadAsync(await GetOpenApiDocumentStreamAsync().ConfigureAwait(false)).ConfigureAwait(false);
-		Assert.NotNull(OpenApiDocument);
-		Assert.NotEmpty(readerResult.OpenApiDocument.Paths);
-		Assert.Empty(readerResult.OpenApiDiagnostic.Errors);
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Client requirements can be less strict than development requirements (development objectives), and there may be different subsets of requirements in the case of multiple clients. This example doesn't implement that specifically but does provide the means to do it (by adding distinct test methods.)&lt;/p&gt;
-&lt;p&gt;OpenAPI.Net has can do very complex verification and validation, but I expect that sort of testing to be performed at a different level--I want to make sure client-oriented tests are handled here.&lt;/p&gt;
-&lt;h2 id="verifying-the-paths-have-endpoints-implemented"&gt;Verifying The Paths Have Endpoints Implemented&lt;/h2&gt;
-&lt;p&gt;Publishing an API with paths and operations, and hosting an API that hasn't implemented those operations is silly. So the next test verifies they are implemented (at least the GET operations) as specified:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
-	public async Task EndpointsRespondOkToGet()
-	{
-		Assert.NotNull(OpenApiDocument);
-		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&amp;gt; w.Value.Operations.ContainsKey(OperationType.Get));
-
-		foreach (var (requestUriText, _) in pathsWithGetOperations)
-		{
-			var response = await WebApiClient.GetAsync(requestUriText).ConfigureAwait(false);
-			Assert.True(response.IsSuccessStatusCode);
-		}
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;GET operations are &lt;em&gt;easy&lt;/em&gt;; they shouldn't have a request body and almost always have a success response specified. In the future, I can dive into other types of operations like POST, how to extract samples from the OpenAPI specification, and how to verify operations with request data and or error responses.&lt;/p&gt;
-&lt;h2 id="verifying-the-operations-respond-with-the-correct-type-of-response"&gt;Verifying The Operations Respond With The Correct Type Of Response&lt;/h2&gt;
-&lt;p&gt;HTTP, and thus OpenAPI, don't enforce that any operation responds with anything in particular. But, if you're reading &lt;em&gt;this&lt;/em&gt; blog, you are probably of the opinion that given the opportunity to specify behavior, you should be at least as detailed in specifying the type and schema of the responses.  I'll leave out validating response schema in this article, but I will show verifying that each request responds with the correct media type. For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;	[Fact]
-	public async Task EndpointsRespondWithCorrectMediaTypeToGet()
-	{
-		Assert.NotNull(OpenApiDocument);
-		var pathsWithGetOperations = OpenApiDocument.Paths.Where(w =&amp;gt; w.Value.Operations.ContainsKey(OperationType.Get));
-
-		foreach (var (requestUriText, pathItem) in pathsWithGetOperations)
-		{
-			var responseContentType = pathItem.Operations[OperationType.Get]
-				.Responses[OkResponseCodeText]
-				.Content
-				.Single().Key;
-
-			var request = new HttpRequestMessage
-			{
-				Method = HttpMethod.Get,
-				RequestUri = new Uri(requestUriText, UriKind.Relative),
-				Headers =
-				{
-					{
-						HttpRequestHeader.Accept.ToString(),
-						responseContentType
-					}
-				}
-			};
-			var response = await WebApiClient.SendAsync(request).ConfigureAwait(false);
-			Assert.True(response.Content.Headers.ContentType?.MediaType ==
-			            responseContentType);
-		}
-	}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="caveats"&gt;Caveats&lt;/h2&gt;
-&lt;p&gt;Of course, you can have or create an OpenAPI that does little more than document an endpoint and ignore that there are operations and those operations do specific things.&lt;/p&gt;
-&lt;p&gt;This article is an overview. I recognize that Swashbuckle and &lt;del&gt;Swagger&lt;/del&gt;OpenAPI support in ASP.NET is powerful, but this article doesn't take into account many things you can do with it (like multiple OpenAPI documents.)&lt;/p&gt;
-&lt;p&gt;I also recognize that operations that take no parameters are rare, but I trust that my readers are good with taking on that as an exercise. Or, at least let me know if that's detail I should post in the future.&lt;/p&gt;
-&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
-&lt;p&gt;This article provides a very high-level overview of integration testing ASP.NET minimal APIs. We then got into some details of general Web API integration tests that focus on OpenAPI specification aspects of the Web API middleware.&lt;/p&gt;
-&lt;p&gt;What sort of automated testing of an API specification do you see as beneficial to your projects?&lt;/p&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-6.0"&gt;Integration tests in ASP.NET Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1?view=aspnetcore-6.0"&gt;&lt;code&gt;WebApplicationFactory&amp;lt;TEntryPoint&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The source for the examples, including the creation scripts can be found at &lt;a href="https://github.com/peteraritchie/fundamental-webapi-integration-testing"&gt;https://github.com/peteraritchie/fundamental-webapi-integration-testing&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>

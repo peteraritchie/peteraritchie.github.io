@@ -1,0 +1,360 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Working With DTO Auto Translators -- Mapperly</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Working With DTO Auto Translators -- Mapperly" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Working With DTO Auto Translators -- Mapperly</h1>
+    <div class="meta">        
+Published on Thursday, November 7, 2024<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/Mapperly" class="btn btn-default btn-xs">Mapperly</a>
+                    <a role="button" href="/tags/Mapping" class="btn btn-default btn-xs">Mapping</a>
+                    <a role="button" href="/tags/Nov-2024" class="btn btn-default btn-xs">Nov 2024</a>
+                    <a role="button" href="/tags/Translation" class="btn btn-default btn-xs">Translation</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation" /></p>
+<!-- Mapping/Translation series intro boilerplate -->
+<p>Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called <em>abstract syntax</em>, which is purposely devoid of the specifics (<em>concrete syntax</em>) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary translation method/function.</p>
+<!-- Data Transfer Object boilerplate pull quote/box copy -->
+<table class="table">
+<thead>
+<tr>
+<th>Data Transfer Objects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defining concrete syntax in high-level languages is so essential that a design pattern is devoted to it. The Data Transfer Object<sup>[<a href="https://amzn.to/3SR8c73">ppoe</a>]</sup> design pattern describes declaring high-level types to describe aspects of concrete syntax.</td>
+</tr>
+</tbody>
+</table>
+<p>This installment details the mapping and translation of Data Transfer Objects with a package named <a href="https://github.com/riok/mapperly"><code>Mapperly</code></a> (<a href="https://www.nuget.org/packages/Riok.Mapperly/">Riok.Mapperly</a>).</p>
+<p>Mapperly accomplishes translation by being a .NET Source Generator, meaning the translation code is generated and exists when your application is compiled. The translation code, therefore, does not need to jump through a bunch of hoops by evaluating expressions and dynamically generating types and methods. Being a Source Generator makes Mapperly pleasantly different from other mappers like AutoMapper and Mapster. You have to declare the intent to translate from one type to another by declaring a partial method (in a partial class decorated with the <code>MapperAttribute</code>) that tells Mapperly what the source and destination types are (the method that returns the <em>destination</em> type and accepts the <em>source</em> type as an argument.) The name of the class method is up to you. For example:</p>
+<pre><code class="language-csharp">[Mapper]
+public partial class AccountTranslator
+{
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+</code></pre>
+<p>Mapperly determines how to translate each property based on their names and types (the default <em>convention</em>). In our simple case, it would generate a method similar to:</p>
+<pre><code class="language-csharp">{
+    public partial class AccountTranslator
+    {
+        [global::System.CodeDom.Compiler.GeneratedCode(&quot;Riok.Mapperly&quot;, &quot;4.1.0.0&quot;)]
+        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
+        {
+            var target = new global::MapperlyTests.Application.AccountDto();
+            target.Id = account.Id;
+            target.Name = account.Name;
+            target.CreationDate = account.CreationDate;
+            return target;
+        }
+    }
+</code></pre>
+<p>Mapperly supports immutable record types, so if you wanted to use <code>record</code> with <code>AccountDto</code> like this:</p>
+<pre><code class="language-csharp">public record AccountDto(Guid Id, DateOnly CreationDate, string Name);
+</code></pre>
+<p>And with those immutable record types Mapperly will generate code that passes arguments to the constructor:</p>
+<pre><code class="language-csharp">        [global::System.CodeDom.Compiler.GeneratedCode(&quot;Riok.Mapperly&quot;, &quot;4.1.0.0&quot;)]
+        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
+        {
+            var target = new global::MapperlyTests.Application.AccountDto(account.Id, account.CreationDate, account.Name);
+            return target;
+        }
+</code></pre>
+<p>Say goodbye to <code>ConstructUsing</code> (as well as <code>ForMember</code>, et al.)</p>
+<h2 id="mapping-by-convention">Mapping by Convention</h2>
+<p>The raison d'etre of mapping/translation frameworks is to make translating one data type to another as simple as possible. A key feature of these frameworks is to map by convention, which automatically maps fields or properties based on criteria like name and data type. As we can see from the generated code above, Mapperly, by convention, figures out the source and target properties to translate. What's nice about Mapperly is that you can see the results of applying that convention by looking at the generated code (Ctrl-click the <code>partial</code> method name to go to the generated code.)</p>
+<h2 id="custom-mapping">Custom Mapping</h2>
+<p>When we start (greenfield) development, our DTOs are usually closely aligned with our domain objects, so by-convention mapping is our friend. However, an important reason for having two abstractions is that they can evolve independently. Eventually, as we gain a better understanding of the domain or clients of the communication channel, we will need to make changes that cause our DTO and Domain Objects to diverge. We can manage that divergence by extending the by-convention mapping to include custom mapping on a per-property basis. Mapperly supports this through members of the <code>Mapper</code>-decorated class.</p>
+<p>For example, we've gained a better understanding of the domain, and an Account doesn't necessarily have a &quot;name&quot; but has an associated account holder with a given and family name. That understanding may make its way into the domain like this:</p>
+<pre><code class="language-csharp">public class Account(Guid id, DateOnly creationDate, string accountHolderGivenName, string accountHolderFamilyName)
+{
+	public Guid Id { get; } = id;
+	public string AccountHolderGivenName { get; private set; } = accountHolderGivenName;
+	public string AccountHolderFamilyName { get; private set; } = accountHolderFamilyName;
+	public DateOnly CreationDate { get; } = creationDate;
+
+	public void ChangeName(string accountHolderGivenName, string accountHolderFamilyName)
+	{
+		AccountHolderGivenName = accountHolderGivenName;
+		AccountHolderFamilyName = accountHolderFamilyName;
+	}
+}
+</code></pre>
+<p>Receivers of our <code>AccountDto</code> might be unable to accommodate that change immediately, so we may deal with that by mapping properties differently. Instead of including <code>FamilyName</code> and <code>GivenName</code> in this version of <code>AccountDto</code>, we may concatenate the given and family name and assign it to <code>AccountDto.Name</code>.</p>
+<p>You can configure this type of two properties to one property conversion with the <code>MapPropertyFromSource</code> attribute. More than just the name of the two properties is needed for Mapperly to automatically figure out what to do (concatenate, concatenate with delimiter, etc.). So, we use <code>MapPropertyFromSource</code> to point to a method that takes the source type and returns an instance of a type assignable to the destination property.  In this example, a <code>MapGivenFamilyNames</code> method:</p>
+<pre><code class="language-csharp">[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	[MapPropertyFromSource(target: nameof(AccountDto.Name), Use = nameof(MapGivenFamilyNames))]
+	public partial AccountDto AccountToAccountDto(Account account);
+	private string MapGivenFamilyNames(Account account)
+	{
+		return account.AccountHolderGivenName + ' ' + account.AccountHolderFamilyName;
+	}
+}
+</code></pre>
+<p>Mapperly supports arrays of strings for <code>target</code> so you can map to nested properties of properties.</p>
+<p>Mapperly also supports property-to-property mapping of properties that a simple matching strategy wouldn't match.  Given the same client application constraints and the domain understanding uncovered that the <code>Name</code> property doesn't fit in the ubiquitous language but <code>FullName</code> does, we would use <code>MapPropertyAttribute</code> to tell Mapperly how to assign the <code>AccountDto.Name</code> property:</p>
+<pre><code class="language-csharp">[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	[MapProperty(source: nameof(AccountDto.Name), target: nameof(Account.FullName))]
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">NOTE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">The constructor for <code>MapPropertyFromSourceAttribute</code> has only one parameter, the <code>target</code>.  The constructor for <code>MapPropertyAttribute</code> has two, the <code>source</code> and the <code>target</code>, so it <em>may look like</em> the parameters are in a different order. C#'s <em>named arguments</em> shines here to clarify intent.</td>
+</tr>
+</tbody>
+</table>
+<p>Technically, attributes like <code>MapPropertyFromSourceAttribute</code> and <code>MapPropertyAttribute</code> work with string names of classes and members. Use the <code>name of</code> expression so that identifiers get used at compile-time, as seen in the above example.</p>
+<h2 id="but-wait-theres-more">But Wait, There's More</h2>
+<p>A benefit of being a Source Generator is that Mapperly can generate compiler/analyzer warnings when not all properties are mapped from or to.  If you're following along and you updated <code>Account</code>, renaming <code>Name</code> to <code>FullName</code>, you would have noticed RMG020 and RMG012 warnings:</p>
+<p><img src="../assets/mapperly-unmapped-member-warning.png" class="img-fluid" alt="RMG020 and RMG012 warnings" /></p>
+<h2 id="dependency-injections-with-mapperly">Dependency Injections with Mapperly</h2>
+<p>Other mappers have initialization and startup requirements making their use in Dependency Injection more than just registering an implementation of an interface (<code>services.AddScoped&lt;ITheInterface, TheImplementation&gt;();</code>) and require an <code>Add{Technology}()</code> method call (like <code>AddMapster</code> or <code>AddAutoMapper</code>.) Since Mapperly generates the translation code at compilation, you only have to register the translating type (e.g., <code>services.AddScoped&lt;AccountTranslator&gt;()</code>) and declare the dependency in the constructors of types that need to invoke translators (e.g., <code>public class AccountService(AccountTranslator accountTranslator){/*...*/}</code>.)</p>
+<p>If you're interface-obsessed when it comes to Dependency Injection, you're free to create an interface to use and configure your services appropriately, for example:</p>
+<pre><code class="language-csharp">public interface IAccountTranslator
+{
+	public AccountDto AccountToAccountDto(Account account);
+}
+//...
+[Mapper]
+public partial class AccountTranslator
+	: IAccountTranslator
+{
+	public partial AccountDto AccountToAccountDto(Account account);
+}
+//...
+services.AddScoped&lt;IAccountTranslator, AccountTranslator&gt;();
+</code></pre>
+<p>Then declare the dependency in the constructors of types that need to invoke translators (e.g., <code>public class AccountService(IAccountTranslator accountTranslator){/*...*/}</code>.)</p>
+<h2 id="where-does-mapping-and-translation-occur">Where Does Mapping and Translation Occur?</h2>
+<p>Data transfer can occur in different layers. Data transfer triggers a website or API (presentation layer); the application layer requests external services via an infrastructure layer to transfer data to and from. I'm often asked where that mapping and translation source code should exist and in which project in the solution. It's important to remember that we're dealing with multiple layers. The presentation layer is typically where the process entry point is, so initialization (DI container configuration) occurs here. That initialization depends at least indirectly on the translation code to configure services that perform the translation.</p>
+<p>Translation of web/API models exist in the presentation layer because that's where <em>that</em> data transfer occurs. It can get complex when more layers are in their own project or are their own artifact. I recommend that DTOs live in the project where the data transfer occurs because they should be viewed as an implementation detail of the facade/adapter performing the data transfer. This typically means that the translation codes lives along side the DTOs because you want to keep implementation details encapsulated. The translation should be made available through an interface that is configured by your Dependency Injection container. I'll leave the complexity of doing that in the context of project-scoped layers for another post.</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align: center;">NOTE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Regardless of whether you have multiple presentation layers or an independent application layer, translation logic <em>should not</em> be a responsibility in the Domain layer.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'working-with-dto-auto-translators--mapperly'
+    'Working With DTO Auto Translators -- Mapperly'
+    'http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('11/7/24');
+    console.info('working-with-dto-auto-translators--mapperly');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Working With DTO Auto Translators -- Mapperly';
+    var disqus_url = 'http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'working-with-dto-auto-translators--mapperly';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2024
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
