@@ -16,10 +16,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.802
-    - name: set environment
-      run: export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
     - name: Install Wyam
-      run: dotnet tool install --tool-path . wyam.tool
+      run: |
+        export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+        dotnet tool install --tool-path . wyam.tool
     - name: Publish blog
       run: |
         ./wyam -r blog -t CleanBlog
