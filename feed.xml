@@ -4,9 +4,107 @@
 		<title>Peter Ritchie's Blog</title>
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
-		<copyright>2024</copyright>
-		<pubDate>Thu, 07 Nov 2024 19:48:24 GMT</pubDate>
-		<lastBuildDate>Thu, 07 Nov 2024 19:48:24 GMT</lastBuildDate>
+		<copyright>2025</copyright>
+		<pubDate>Fri, 17 Jan 2025 21:04:56 GMT</pubDate>
+		<lastBuildDate>Fri, 17 Jan 2025 21:04:56 GMT</lastBuildDate>
+		<item>
+			<title>Announcing ConsoleApplicationBuilder, DI in console applications, simply</title>
+			<link>http://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder</link>
+			<description>&lt;p&gt;&lt;img src="../assets/announcing-ConsoleApplicationBuilder.png" class="img-fluid" alt="Configurable Console Application"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder</guid>
+			<pubDate>Fri, 17 Jan 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/announcing-ConsoleApplicationBuilder.png" class="img-fluid" alt="Configurable Console Application" /&gt;&lt;/p&gt;
+&lt;p&gt;A recent interaction reminded me that using things like &lt;code&gt;IServiceCollection&lt;/code&gt; to get dependency injection or &lt;code&gt;ConfigurationManager&lt;/code&gt; to use appsettings.json and &lt;code&gt;IOptions&amp;lt;T&amp;gt;&lt;/code&gt; in a .NET console application is a lot of work. You can use things like &lt;a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/workers"&gt;console worker project&lt;/a&gt;, but if you're implementing a simple console application, a background process seems over the top and unnatural.&lt;/p&gt;
+&lt;p&gt;I've added DI and configuration to console applications in the past, but it has always been troublesome and problematic. I had considered just documenting that process but thought the amount of work to simply create a NuGet package to do it for me seemed like it was about the same amount of work. A couple of weeks ago I started creating &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt;—a type that implements similar functionality to &lt;code&gt;WebApplicationBuilder&lt;/code&gt; and &lt;code&gt;HostApplicationBuilder&lt;/code&gt; (that &lt;code&gt;WebApplicationBuilder&lt;/code&gt; leverages). This post announces the result of that effort.&lt;/p&gt;
+&lt;p&gt;TL;DR: &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; and the associated &lt;code&gt;dotnet new&lt;/code&gt; project template enable the use of DI in console applications simply and succinctly:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program(ILogger&amp;lt;Program&amp;gt; logger)
+{
+    static void Main(string[] args)
+    {
+        var builder = ConsoleApplication.CreateBuilder(args);
+        var program = builder.Build&amp;lt;Program&amp;gt;();
+        program.Run();
+    }
+
+    private void Run()
+    {
+        logger.LogInformation(&amp;quot;Hello, World!&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; is open-source and available on &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder"&gt;GitHub&lt;/a&gt;; you can find similar details there.&lt;/p&gt;
+&lt;p&gt;What prompted my latest foray into DI in a non-background console application was to inject a configured &lt;code&gt;HttpClient&lt;/code&gt; into the application. &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; supports this easily and naturally:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program(ILogger&amp;lt;Program&amp;gt; logger, HttpClient httpClient)
+{
+    static async Task Main(string[] args)
+    {
+        var builder = ConsoleApplication.CreateBuilder(args);
+        builder.Services.AddHttpClient&amp;lt;Program&amp;gt;(httpClient =&amp;gt;
+        {
+            httpClient.BaseAddress = new Uri(&amp;quot;https://jsonplaceholder.typicode.com&amp;quot;);
+        });
+        var program = builder.Build&amp;lt;Program&amp;gt;();
+        await program.Run();
+    }
+
+    private async Task Run()
+    {
+        logger.LogInformation(&amp;quot;Hello, World!&amp;quot;);
+        logger.LogInformation(await httpClient.GetStringAsync(&amp;quot;todos/3&amp;quot;));
+    }
+}
+
+## `dotnet new` Project Template
+
+The `dotnet new consoleapp` project template supports appsettings out of the box and is installed like other `dotnet new` project templates:
+
+```powershell
+dotnet new install PRI.ConsoleApplicationBuilder.Templates
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And to create a new console application that supports DI, Configuration, appsettings, etc., is as simple as:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new consoleapp -o Peter.ConsoleApp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="consoleapplicationbuilder-without-dotnet-new-consoleapp-project-template"&gt;&lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; Without &lt;code&gt;dotnet new consoleapp&lt;/code&gt; Project Template&lt;/h2&gt;
+&lt;p&gt;When I implemented the &lt;code&gt;dotnet new consoleapp&lt;/code&gt; project template, I wanted to make the created &lt;code&gt;Program&lt;/code&gt; class as simple as possible, so I chose to re-use the Program class and build an instance of that class to inject services like &lt;code&gt;ILogger&amp;lt;Program&amp;gt;&lt;/code&gt;. However, you don't need to use the template to use &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt;, and you don't need to re-use &lt;code&gt;Program&lt;/code&gt; as the type that it will build. You can add a reference to the &lt;code&gt;PRI.ConsoleApplicationBuilder&lt;/code&gt; NuGet package and build a different type. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program
+{
+    static async Task Main(string[] args)
+    {
+        var builder = ConsoleApplication.CreateBuilder(args);
+        builder.Services.AddHttpClient&amp;lt;ToDoAdapter&amp;gt;(httpClient =&amp;gt;
+        {
+	        httpClient.BaseAddress = new Uri(&amp;quot;https://jsonplaceholder.typicode.com&amp;quot;);
+        });
+        var adapter = builder.Build&amp;lt;ToDoAdapter&amp;gt;();
+		var todoText = await adapter.GetToDo(1);
+	}
+}
+
+internal sealed class ToDoAdapter(ILogger&amp;lt;ToDoAdapter&amp;gt; logger, HttpClient httpClient)
+{
+	public async Task&amp;lt;string&amp;gt; GetToDo(int id)
+	{
+		if(logger.IsEnabled(LogLevel.Information))
+		{
+			logger.LogInformation(&amp;quot;Getting todo with id {Id}&amp;quot;, id);
+		}
+		var response = await httpClient.GetAsync($&amp;quot;todos/{id}&amp;quot;);
+		response.EnsureSuccessStatusCode();
+		string responseText = await response.Content.ReadAsStringAsync();
+		if (logger.IsEnabled(LogLevel.Information))
+		{
+			logger.LogInformation(&amp;quot;Got response {ResponseText}&amp;quot;, responseText);
+		}
+		return responseText;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, instead of building a &lt;code&gt;Program&lt;/code&gt; instance, we're building a &lt;code&gt;ToDoAdapter&lt;/code&gt; instance that is injected with a configured logger and an specific HTTP client. Be sure to also add a reference to &lt;code&gt;Microsoft.Extensions.Http&lt;/code&gt; if you want to use that code.&lt;/p&gt;
+&lt;p&gt;So, as you can see, &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; is very flexible.&lt;/p&gt;
+&lt;h2 id="feedback"&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;I'd love to hear your feedback, good or bad. I've modeled &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; as closely as possible to &lt;code&gt;WebApplicationBuilder&lt;/code&gt; and &lt;code&gt;HostApplicationBuilder&lt;/code&gt; so it follows their conventions, and usage should feel natural. But I'm open to suggestions on how to improve it. You can log questions and issues on &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Working With DTO Auto Translators -- Mapperly</title>
 			<link>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly</link>
@@ -2095,34 +2193,6 @@ Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. T
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things I Learned Attempting Azure Administrator Associate - Part 1</title>
-			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</link>
-			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate</guid>
-			<pubDate>Tue, 20 Dec 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png" class="img-fluid" alt="person going through the process of certifying knowledge" /&gt;&lt;/p&gt;
-&lt;p&gt;I recently earned certification for Azure Administrator Associate.  My goal is to make my experience and skills more verifiable in areas like application solution architecture.  Azure Administrator Associate is a prerequisite for Azure Solutions Architect Expert and DevOps Engineer Expert (I imagine it's a prerequisite for all Azure * {Expert|Associate} certs.)&lt;/p&gt;
-&lt;p&gt;Certifications aren't perfect, &amp;quot;certification&amp;quot; has different meanings to the observer and the certification itself. Most certifications bring with them an expected minimum understanding of the subject.  Does it mean the earner will do everything perfectly with the subject?  Of course not, but it gives the person a certain vocabulary to communicate more efficiently on the subject.&lt;/p&gt;
-&lt;p&gt;The road to Azure Administrator Associate was interesting, and sharing some notable information would be helpful for others.&lt;/p&gt;
-&lt;h2 id="making-the-implicit-explicit"&gt;Making The Implicit Explicit&lt;/h2&gt;
-&lt;p&gt;The key to good communication is clearly understanding a subject and eliminating assumptions and misunderstandings. While understanding what is expected of a certified Azure Administrator Associate, I noticed some knowledge that I realized is typically implicit. Another way of looking at the following is that each starts with &amp;quot;It may seem obvious, but...&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Implicit knowledge is knowledge obtained through incidental activities; knowledge gained without awareness of learning is occurring.&lt;/p&gt;
-&lt;h3 id="line-of-business-lob-applications"&gt;Line of Business (LoB) Applications&lt;/h3&gt;
-&lt;p&gt;Line of Business (LoB) applications is ubiquitous in the computing industry.  Everyone knows what it &lt;em&gt;means&lt;/em&gt;, but if you ask two people to define it, you'll get more than one answer.  While agreement/standardization on what a LoB application is isn't going to happen any time soon, there are certain truths about LoB applications:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;An in-house, custom web application&lt;/li&gt;
-&lt;li&gt;Not accessible via the Internet, either behind a firewall or strict access control (authentication and authorization)&lt;/li&gt;
-&lt;li&gt;Access &lt;em&gt;may&lt;/em&gt; occur via an application gateway or load balancer&lt;/li&gt;
-&lt;li&gt;Specific to the company, business area, or industry&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="azcopy"&gt;AzCopy&lt;/h3&gt;
-&lt;p&gt;AzCopy works with Azure storage but only Azure Blob Storage and Azure Files.&lt;/p&gt;
-&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;There are many areas of clarification with Azure Administrator Associate.  Future posts on the subject will address clarifications involving important explicit limits, restrictions, constraints, rules, etc.&lt;/p&gt;
-&lt;p&gt;Are there other implicit aspects of Azure administration that can be made explicit?&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
