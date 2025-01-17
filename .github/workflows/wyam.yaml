@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 2.1.802
     - name: Install Wyam
       run: |
-        DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
+        $export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
         dotnet tool install --tool-path . wyam.tool
     - name: Publish blog
       run: |
