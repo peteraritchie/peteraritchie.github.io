@@ -3,7 +3,7 @@ layout: post
 title: 'Announcing ConsoleApplicationBuilder, DI in console applications, simply'
 categories: ['.NET', 'C#', 'ConsoleApplicationBuilder', 'Jan 2025']
 comments: true
-excerpt: A recent interaction reminded me that using things like IServiceCollection to get dependency injection or ConfigurationManager to use appsettings.json and IOptions<T> in a .NET console application is a lot of work, so I created ConsoleApplicationBuilder
+excerpt: A recent interaction reminded me that using things like IServiceCollection to get dependency injection or ConfigurationManager to use appsettings.json and IOptions<T> in a .NET console application is a lot of work, so I created ConsoleApplicationBuilder.
 tags: ['.NET', 'C#', 'ConsoleApplicationBuilder']
 ---
 ![Configurable Console Application](../assets/announcing-ConsoleApplicationBuilder.png)
