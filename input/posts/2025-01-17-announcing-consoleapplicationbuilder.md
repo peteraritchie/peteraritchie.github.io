@@ -55,6 +55,7 @@ class Program(ILogger<Program> logger, HttpClient httpClient)
         logger.LogInformation(await httpClient.GetStringAsync("todos/3"));
     }
 }
+```
 
 ## `dotnet new` Project Template
 
