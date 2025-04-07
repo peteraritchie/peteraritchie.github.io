@@ -5,8 +5,208 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 17 Jan 2025 21:18:08 GMT</pubDate>
-		<lastBuildDate>Fri, 17 Jan 2025 21:18:08 GMT</lastBuildDate>
+		<pubDate>Mon, 07 Apr 2025 13:58:44 GMT</pubDate>
+		<lastBuildDate>Mon, 07 Apr 2025 13:58:44 GMT</lastBuildDate>
+		<item>
+			<title>Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade</title>
+			<link>http://blog.peterritchie.com/posts/announcing-commandlineextensions</link>
+			<description>&lt;p&gt;&lt;img src="../assets/CommandLineExtensions-example.png" class="img-fluid" alt="CommandLineExtensions"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/announcing-commandlineextensions</guid>
+			<pubDate>Mon, 07 Apr 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/CommandLineExtensions-example.png" class="img-fluid" alt="CommandLineExtensions" /&gt;&lt;/p&gt;
+&lt;h2 id="mission-inspiration"&gt;Mission, Inspiration&lt;/h2&gt;
+&lt;p&gt;The mission of CommandLineExtensions is to help make command-line argument parsing simpler while leveraging Microsoft-supported &lt;code&gt;System.CommandLine&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The inspiration for CommandLineExtensions spawns from ConsoleApplicationBuilder, which makes it easier to create console applications that utilize modern .NET patterns and practices like Dependency Injection, Configuration, etc. Console applications revolve around command-line options and arguments, and more easily integrating them with modern .NET patterns and practices is essential.&lt;/p&gt;
+&lt;p&gt;ConsoleApplicationBuilder is a .NET Dependency Injection (&lt;code&gt;IServiceCollection&lt;/code&gt;) extension with a fluent interface to give console application startup a similar fluent experience as other .NET frameworks. CommandLineExtensions continues that goal by providing fluent .NET Dependency Injection interface extensions to define options and arguments for console applications.&lt;/p&gt;
+&lt;h2 id="why-use-commandlineextensions"&gt;Why Use CommandLineExtensions&lt;/h2&gt;
+&lt;p&gt;If what ConsoleApplicationBuilder does doesn't interest you, neither will CommandLineExtensions. Without ConsoleApplicationBuilder CommandLineExtensions is just a builder pattern facade over System.CommandLine that requires a &lt;code&gt;IServiceCollection&lt;/code&gt; implementation. System.CommandLine is an established library and provides a ton of value to .NET console application developers. A builder facade that enables support for DI might only be a subtle improvement for many. I get that; I started this because it interested me.&lt;/p&gt;
+&lt;p&gt;If integrating with modern .NET practices like DI, configuration, and application settings is important to you, here are some benefits of using CommandLineExtensions to define command-line options and arguments (or &amp;quot;parameters&amp;quot;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;simplified configuration into &amp;quot;parts&amp;quot; or &amp;quot;phases&amp;quot; as contextual guardrails to enforce constraints like type safety&lt;/li&gt;
+&lt;li&gt;integration with established .NET patterns and practices&lt;/li&gt;
+&lt;li&gt;multi-step, piecemeal definition of command-line parameters improving readability.&lt;/li&gt;
+&lt;li&gt;Semantically independent of System.CommandLine API, allowing you to focus on the configurability important to your app&lt;/li&gt;
+&lt;li&gt;fluency of the interface frees you from instantiating multiple framework objects unrelated to your app&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="simple-multi-step-piecemeal-definition-of-parameters"&gt;Simple Multi-step, Piecemeal Definition of Parameters&lt;/h3&gt;
+&lt;p&gt;CommandLineExtensions provides fluent interface to configure command-line parameters in a sequence of phases or steps. A simple example of configuring the root command to take a file option and configure a handler delegate. The &lt;code&gt;WithOption&lt;/code&gt; call begins a context (phase) that configures the current strongly-typed option. Within this context, the call to &lt;code&gt;WithHandler&lt;/code&gt; is strongly-typed to the single option type of &lt;code&gt;FileInfo?&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;builder.Services.AddCommand()
+    .WithDescription(&amp;quot;Sample app for System.CommandLine&amp;quot;)
+    .WithOption&amp;lt;FileInfo?&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;The file to read and display on the console.&amp;quot;)
+    .WithHandler(file =&amp;gt; 
+    {
+        ReadFile(file!);
+    });
+return builder.Build&amp;lt;RootCommand&amp;gt;.Invoke(args);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To do same thing with only System.CommandLine is possible with an explicitly instantiated &lt;code&gt;Option&amp;lt;FileInfo?&amp;gt;&lt;/code&gt; re-used in the call to &lt;code&gt;SetHandler&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
+    name: &amp;quot;--file&amp;quot;,
+    description: &amp;quot;The file to read and display on the console.&amp;quot;);
+
+var rootCommand = new RootCommand(&amp;quot;Sample app for System.CommandLine&amp;quot;);
+rootCommand.AddOption(fileOption);
+
+rootCommand.SetHandler((file) =&amp;gt; 
+    { 
+        ReadFile(file!); 
+    },
+    fileOption);
+
+return await rootCommand.InvokeAsync(args);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The phased or stepwise approach might be more apparent when dealing with multiple commands or subcommands:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand() // 👈 Start root command context
+	.WithSubcommand&amp;lt;ReadCommand&amp;gt;()  // 👈 start read subcommand context
+		.WithArgument&amp;lt;FileInfo&amp;gt;(&amp;quot;file&amp;quot;, &amp;quot;file path to process&amp;quot;)
+		.WithSubcommandHandler(file =&amp;gt; Console.WriteLine($&amp;quot;read &amp;lt;file&amp;gt; argument = {file.Name}&amp;quot;))
+	.WithSubcommand&amp;lt;WriteCommand&amp;gt;()  // 👈 start write subcommand context
+		.WithArgument&amp;lt;FileInfo&amp;gt;(&amp;quot;file&amp;quot;, &amp;quot;file path to process.&amp;quot;)
+		.WithArgument&amp;lt;string&amp;gt;(&amp;quot;text&amp;quot;, &amp;quot;text to write to file, quoted.&amp;quot;)
+		.WithSubcommandHandler((file, text) =&amp;gt; Console.WriteLine($&amp;quot;write &amp;lt;file&amp;gt; argument = {file.Name} with text '{text}'.&amp;quot;))
+	.WithHandler(() =&amp;gt; Console.WriteLine(&amp;quot;Please choose read or write subcommand.&amp;quot;));
+
+return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first call to &lt;code&gt;WithSubcommandHandler&lt;/code&gt; has the context of a single parameter of type &lt;code&gt;FileInfo&lt;/code&gt; and expects a delegate that takes a single argument of type &lt;code&gt;FileInfo&lt;/code&gt;. The only thing that will compile here is a delegate with a single parameter. The second independent call to &lt;code&gt;WithSubcommandHandler&lt;/code&gt; has a different context, one with two parameters: one of type &lt;code&gt;FileInfo&lt;/code&gt; and one of type &lt;code&gt;string&lt;/code&gt;. There is no way to mix up assigning a delegate to the wrong subcommand.&lt;/p&gt;
+&lt;h3 id="example-dependency-injection"&gt;Example: Dependency Injection&lt;/h3&gt;
+&lt;p&gt;CommandLineExtensions can do what it does through dependency injection--building up a configuration context to the point where a command is built and the required dependencies are resolved and instantiated. Put another way: all the types you use with CommandLineExtensions are resolved via the dependency injection container. If you want to use &lt;code&gt;ILogger&amp;lt;T&amp;gt;&lt;/code&gt; in a command handler, simply include it as a constructor parameter, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class LoggingCommandHandler(ILogger&amp;lt;LoggingCommandHandler&amp;gt; logger) : ICommandHandler&amp;lt;FileInfo&amp;gt;
+{
+    public int Execute(FileInfo fileInfo)
+    {
+        Console.WriteLine(
+            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
+        return 0;
+    }
+}
+//...
+public class Program
+{
+    public int Main(string[] args)
+    {
+        var builder = ConsoleApplication.CreateBuilder(args);
+        builder.Services.AddCommand()
+            .WithDescription(&amp;quot;Dependency Injection sample&amp;quot;)
+            .WithOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;)
+            .WithHandler&amp;lt;LoggingCommandHandler&amp;gt;();
+        return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A similar&lt;super&gt;*&lt;/super&gt; thing in System.CommandLine would require code like the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Program
+{
+    public int Main(string[] args)
+    {
+        var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
+            name: &amp;quot;--file&amp;quot;,
+            description: &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;);
+
+        var rootCommand = new RootCommand(&amp;quot;Dependency Injection sample&amp;quot;);
+        rootCommand.Add(fileOption);
+
+        rootCommand.SetHandler((fileOptionValue, logger) =&amp;gt;
+            {
+                DoRootCommand(fileOptionValue!, logger);
+            },
+            fileOption, new MyCustomBinder());
+
+        rootCommand.Invoke(args);
+
+        return 0;
+    }
+    static void DoRootCommand(FileInfo aFile, ILogger logger)
+    {
+        Console.WriteLine($&amp;quot;File = {aFile?.FullName}&amp;quot;);
+        logger.LogCritical(&amp;quot;Test message&amp;quot;);
+    }
+}
+
+public class MyCustomBinder : BinderBase&amp;lt;ILogger&amp;gt;
+{
+    protected override ILogger GetBoundValue(
+        BindingContext bindingContext) =&amp;gt; GetLogger(bindingContext);
+
+    ILogger GetLogger(BindingContext bindingContext)
+    {
+        using ILoggerFactory loggerFactory = LoggerFactory.Create(
+            builder =&amp;gt; builder.AddConsole());
+        ILogger logger = loggerFactory.CreateLogger(&amp;quot;LoggerCategory&amp;quot;);
+        return logger;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;*: &lt;code&gt;ILogger&amp;lt;T&amp;gt;&lt;/code&gt; injection is accomplished, but without using Microsoft.Extensions.DependencyInjection.&lt;/p&gt;
+&lt;h2 id="caveats"&gt;Caveats&lt;/h2&gt;
+&lt;p&gt;This is an MVP to gauge interest and to get feedback. It's functional, but minimal in a few ways.&lt;/p&gt;
+&lt;h3 id="limited-optionsarguments"&gt;Limited Options/Arguments&lt;/h3&gt;
+&lt;p&gt;Parameters are limited to two per command. Two is much lower than the System.CommandLine's limit of eight. Support for more than two will be added in the near future.&lt;/p&gt;
+&lt;h3 id="default-value-factories"&gt;Default Value Factories&lt;/h3&gt;
+&lt;p&gt;Default value factories are not supported. System.CommandLine supports default values for options via a factory method, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
+    name: &amp;quot;--file&amp;quot;,
+    description: &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;);
+fileOption.SetDefaultValueFactory(() =&amp;gt; $&amp;quot;{DateTime.Now:MMMM}&amp;quot;); // 👈 delegate to create a new value
+var rootCommand = new RootCommand(&amp;quot;Do something with a file.&amp;quot;);
+rootCommand.Add(fileOption);
+
+rootCommand.SetHandler(fileOptionValue =&amp;gt;
+    {
+        Console.WriteLine($&amp;quot;Received {fileOptionValue} for file name.&amp;quot;);
+    },
+    fileOption);
+
+return rootCommand.Invoke(args);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Default values for options &lt;em&gt;are&lt;/em&gt; supported.  For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithOption&amp;lt;FileInfo?&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;)
+    .WithDefault($&amp;quot;{DateTime.Now:MMMM}&amp;quot;) // 👈 create default value here
+    .WithHandler(fileOptionValue =&amp;gt;
+        {
+            Console.WriteLine($&amp;quot;Received {fileOptionValue} for file name.&amp;quot;);
+        });
+return builder.Build&amp;lt;RootCommand&amp;gt;.Invoke(args);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The vision is that CommandLineExtensions be very loosely coupled to System.CommandLine--in most cases, it is coupled only to &lt;em&gt;concepts&lt;/em&gt; (like &lt;em&gt;by name&lt;/em&gt;--sometimes referred to as Connascence of Name). Toward that vision, the CommandLineExtensions fluent interface doesn't use System.CommandLine types directly, so there is no way to use pre-defined types like closed-generic types implementing &lt;code&gt;Option&amp;lt;T&amp;gt;&lt;/code&gt;. I've considered that, and if you feel that's important, please thumb up this issue: &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues/13"&gt;&lt;code&gt;Consider supporting Option&amp;lt;T&amp;gt;-derived types.&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;Getting started with CommandLineExtensions is very easy. It begins with either creating a console application with ConsoleApplicationBuilder dotnet new template or adding the ConsoleApplicationBuilder NuGet package to an existing console application. (For more information, please see &lt;a href="https://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder"&gt;Announcing ConsoleApplicationBuilder, DI in console applications, simply&lt;/a&gt;.) Then add the &lt;a href="https://www.nuget.org/packages/PRI.CommandLineExtensions"&gt;PRI.CommandLineExtensions&lt;/a&gt; NuGet package.&lt;/p&gt;
+&lt;p&gt;Configuring command-line parameters starts by adding a command; if you don't have a &amp;quot;command,&amp;quot; the implied command is a &lt;em&gt;root command&lt;/em&gt; added with the bare &lt;code&gt;AddCommand()&lt;/code&gt; extension method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand() // 👈 step 1, configure a command
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, you can start adding options (named parameters) or arguments (unnamed parameters). For example, if you want to accept a required file name on the command-line with a command-line option of &lt;code&gt;--file&lt;/code&gt;, you could do this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;) // 👈 step 2, add an option
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, you need to configure what you want to process the parameter value with--a command handler:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;)
+    .WithHandler(fileInfo =&amp;gt; // 👈 step 3, configure the handler, accepting the parameter value
+        Console.WriteLine(
+            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Configuring a handler completes the configuration of that command.&lt;/p&gt;
+&lt;p&gt;And finally, you build or resolve the command and execute it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;)
+    .WithHandler(fileInfo =&amp;gt;
+        Console.WriteLine(
+            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
+return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args); // 👈 step 4, invoke the handler with the command-line arguments
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;CommandLineExtensions creates a fluent interface for System.CommandLine, offering a simpler way to define and support command-line options and arguments. CommandLineExtensions doesn't support all the features of System.CommandLine but provides support for defining command-line options and arguments for all but very complex scenarios.&lt;/p&gt;
+&lt;p&gt;For more information and examples, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/blob/main/src/CommandLineExtensions/README.md"&gt;CommandLineExtensions README.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For support, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;ConsoleApplicationBuilder GitHub issues&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Announcing ConsoleApplicationBuilder, DI in console applications, simply</title>
 			<link>http://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder</link>
@@ -53,13 +253,10 @@
         logger.LogInformation(await httpClient.GetStringAsync(&amp;quot;todos/3&amp;quot;));
     }
 }
-
-## `dotnet new` Project Template
-
-The `dotnet new consoleapp` project template supports appsettings out of the box and is installed like other `dotnet new` project templates:
-
-```powershell
-dotnet new install PRI.ConsoleApplicationBuilder.Templates
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="dotnet-new-project-template"&gt;&lt;code&gt;dotnet new&lt;/code&gt; Project Template&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;dotnet new consoleapp&lt;/code&gt; project template supports appsettings out of the box and is installed like other &lt;code&gt;dotnet new&lt;/code&gt; project templates:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new install PRI.ConsoleApplicationBuilder.Templates
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And to create a new console application that supports DI, Configuration, appsettings, etc., is as simple as:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new consoleapp -o Peter.ConsoleApp
@@ -2031,168 +2228,6 @@ Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. T
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;... with no way to enable full solution analysis in a way that this notice recognizes and goes away.&lt;/p&gt;
 &lt;p&gt;I'd appreciate any advice to resolve that that doesn't involve clicking &lt;strong&gt;Don't show again&lt;/strong&gt;.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things I Learned Attempting Azure Administrator Associate - Part 2 - Storage</title>
-			<link>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate-part-2</link>
-			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png" class="img-fluid" alt="distributed cloud data storage"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-i-learned-attempting-azure-administrator-associate-part-2</guid>
-			<pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png" class="img-fluid" alt="distributed cloud data storage" /&gt;&lt;/p&gt;
-&lt;p&gt;Azure Administrator Associate certification is about the skills required to be an Azure account, subscription, tenant, etc., administrator. If your end goal is to develop applications on Azure, that involves a lot of &lt;em&gt;administration&lt;/em&gt; of Azure resources. Regardless of your plan, storage administration is nuanced. This post focuses on some of those nuances, nuances that may not be apparent in the documentation.&lt;/p&gt;
-&lt;h3 id="overview"&gt;Overview&lt;/h3&gt;
-&lt;!--capabilities--&gt;
-&lt;p&gt;Azure provides storage services for Files, Blobs, Queues, and Tables. Files are blobs that support access via SMB protocol, AKA File Shares. Blobs are web resources that support access via a URI (HTTP). Blob Storage supports two types of blobs: block blobs and page blobs. Table Storage supports key-based relational and document access. Queues support access to ephemeral messages.&lt;/p&gt;
-&lt;p&gt;Azure Files has a File Sync feature that supports file-level replication across Windows Servers. The Azure File endpoint is also called the Cloud Endpoint and is part of a Sync Group that includes one or more Windows Server file shares.&lt;/p&gt;
-&lt;p&gt;There are two performance options for Storage Accounts: Standard (general purpose v2) and Premium (for low latency.)&lt;/p&gt;
-&lt;!--tiers/skus--&gt;
-&lt;p&gt;Storage has a couple of storage tiers: Standard and Premium. Storage tiers provide different functionality at different costs. Blob Storage has several access tiers: Hot, Cool, and Archive. Access tiers offer a way to communicate the frequency and type of data access to reduce storage costs. Access tiers can be used to implement a lifecycle for data, moving to lower-cost tiers over time to reduce cost.&lt;/p&gt;
-&lt;!--durability/high-availability--&gt;
-&lt;p&gt;Storage supports data redundancy that makes copies of data to avoid loss due to infrastructure failure. There are several options: Locally-Redundant Storage (LRS), Zone-Redundant storage (ZRS), Geo-Redundant Storage (GRS), and Geo-Zone-Redundant Storage (GZRS). LRS stores three copies of the data asynchronously within a single data center. ZRS duplicates those 3 LRS copies across three availability zones (clusters) in a region. GRS duplicates those 3 LRS asynchronously to a single zone in a secondary region. GZRS duplicates the ZRS data across zones within the secondary region.&lt;/p&gt;
-&lt;!--data protection--&gt;
-&lt;p&gt;Recovery Services is the service responsible for storing backups and recovery points. Recovery Services stores data within Recovery Services Vaults.&lt;/p&gt;
-&lt;p&gt;Encryption scopes logically group blobs or containers and assign an encryption key specific to that scope.&lt;/p&gt;
-&lt;!--access control--&gt;
-&lt;p&gt;There are a couple options for controlling access to data: Azure AD accounts/groups or Shared Access Signatures (SAS). Azure AD Groups provide a more manageable way to control Azure AD account access to data (than simply Azure AD accounts). SAS provides a granular means to provide delegate access to external entities.&lt;/p&gt;
-&lt;h3 id="notable-information"&gt;Notable information &lt;!--TIL--&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;LRS protects against rack-level hardware failure (so, if you want data-center-wide failure protection, LRS is insufficient).&lt;/li&gt;
-&lt;li&gt;LRS is supported for Standard File and Standard Block Blob account types (otherwise, GRS is the default.)&lt;/li&gt;
-&lt;li&gt;ZRS protects against data loss due to data center failure (so, if you want region-wide failure protection, ZRS is insufficient)&lt;/li&gt;
-&lt;li&gt;GRS protects against region failure.&lt;/li&gt;
-&lt;li&gt;GRS and GZRS secondary regions are pre-defined, forcing your data into a specific region.&lt;/li&gt;
-&lt;li&gt;GZRS protects against region failure and simultaneous data center failure in the secondary region.&lt;/li&gt;
-&lt;li&gt;When defining a data lifecycle, in the case of a tie, the option that results in the least cost will be chosen.&lt;/li&gt;
-&lt;li&gt;Migrating from LRS to GRS is supported with a feature called &amp;quot;Live Migration.&amp;quot; Migration from LRS in other scenarios (e.g. to ZRS) must be done manually. Since Premium Storage accounts do not support LRS, Live Migration does not support Premium Storage accounts.&lt;/li&gt;
-&lt;li&gt;Live migration supports the use case of a storage account failure of GRS-replicated data. GRS is a second LRS in a secondary region. If a region fails, GRS reduces to LRS, so recovering means using Live Migration.&lt;/li&gt;
-&lt;li&gt;Durability is not backup; it provides access to data when infrastructure recoverability isn't an option. Apart from Live Migration, &lt;em&gt;restoration&lt;/em&gt; is limited to manually copying live data when needed.&lt;/li&gt;
-&lt;li&gt;Durability does not protect against application-level failure; use backups or custom (application-level) durability in those scenarios.&lt;/li&gt;
-&lt;li&gt;Encryption scopes are useful for providing logical data tenancy.&lt;/li&gt;
-&lt;li&gt;Files added/modified in a File Share are only detected and replicated to the Windows Server file shares once every 24 hours (i.e., only visible after 24 hours).&lt;/li&gt;
-&lt;li&gt;Adding a file share to a Sync Group acts like all the files and folders within the file share were just added, replicating to the cloud endpoint and any other file shares.&lt;/li&gt;
-&lt;li&gt;When applying &lt;em&gt;least privilege&lt;/em&gt; to storage accounts, the &lt;strong&gt;Reader&lt;/strong&gt; role is also required on the Azure AD account if the Azure AD account needs to navigate storage resources in the Azure Portal.&lt;/li&gt;
-&lt;li&gt;Asynchronous data redundancy options introduce the possibility of data loss. If the asynchronous duplication to the secondary region did not complete, it is out of sync with the last state of the primary region. Application-level logic is required to prevent loss of data in this scenario.&lt;/li&gt;
-&lt;li&gt;The Archive tier does not have immediate access; it must be &lt;em&gt;rehydrated&lt;/em&gt; to a cool/hot tier first (usually with a Copy Blob operation of up to 15 hours completion time).&lt;/li&gt;
-&lt;li&gt;File Share storage may be backed up to Recover Service vaults, but Blob Storage may not.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This table summarizes the types of storage accounts and the features/redundancy that each support.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Account&lt;/th&gt;
-&lt;th&gt;Redundancy&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;block blob&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;page blob&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;append blob&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;file share&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;queue&lt;/th&gt;
-&lt;th style="text-align: center;"&gt;table&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Standard account&lt;/td&gt;
-&lt;td&gt;LRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Standard account&lt;/td&gt;
-&lt;td&gt;GRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Standard account&lt;/td&gt;
-&lt;td&gt;GAZRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Standard account&lt;/td&gt;
-&lt;td&gt;RA-GZRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium Block blobs account&lt;/td&gt;
-&lt;td&gt;LRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium Block blobs account&lt;/td&gt;
-&lt;td&gt;ZRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium File shares account&lt;/td&gt;
-&lt;td&gt;LRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium File shares account&lt;/td&gt;
-&lt;td&gt;ZRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium Page blobs account&lt;/td&gt;
-&lt;td&gt;LRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Premium Page blobs account&lt;/td&gt;
-&lt;td&gt;ZRS&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☑&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;td style="text-align: center;"&gt;☐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
 </content:encoded>
 		</item>
 	</channel>

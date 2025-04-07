@@ -1,0 +1,406 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/announcing-commandlineextensions" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade</h1>
+    <div class="meta">        
+Published on Monday, April 7, 2025<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
+                    <a role="button" href="/tags/ConsoleApplicationBuilder" class="btn btn-default btn-xs">ConsoleApplicationBuilder</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/CommandLineExtensions-example.png" class="img-fluid" alt="CommandLineExtensions" /></p>
+<h2 id="mission-inspiration">Mission, Inspiration</h2>
+<p>The mission of CommandLineExtensions is to help make command-line argument parsing simpler while leveraging Microsoft-supported <code>System.CommandLine</code>.</p>
+<p>The inspiration for CommandLineExtensions spawns from ConsoleApplicationBuilder, which makes it easier to create console applications that utilize modern .NET patterns and practices like Dependency Injection, Configuration, etc. Console applications revolve around command-line options and arguments, and more easily integrating them with modern .NET patterns and practices is essential.</p>
+<p>ConsoleApplicationBuilder is a .NET Dependency Injection (<code>IServiceCollection</code>) extension with a fluent interface to give console application startup a similar fluent experience as other .NET frameworks. CommandLineExtensions continues that goal by providing fluent .NET Dependency Injection interface extensions to define options and arguments for console applications.</p>
+<h2 id="why-use-commandlineextensions">Why Use CommandLineExtensions</h2>
+<p>If what ConsoleApplicationBuilder does doesn't interest you, neither will CommandLineExtensions. Without ConsoleApplicationBuilder CommandLineExtensions is just a builder pattern facade over System.CommandLine that requires a <code>IServiceCollection</code> implementation. System.CommandLine is an established library and provides a ton of value to .NET console application developers. A builder facade that enables support for DI might only be a subtle improvement for many. I get that; I started this because it interested me.</p>
+<p>If integrating with modern .NET practices like DI, configuration, and application settings is important to you, here are some benefits of using CommandLineExtensions to define command-line options and arguments (or &quot;parameters&quot;):</p>
+<ul>
+<li>simplified configuration into &quot;parts&quot; or &quot;phases&quot; as contextual guardrails to enforce constraints like type safety</li>
+<li>integration with established .NET patterns and practices</li>
+<li>multi-step, piecemeal definition of command-line parameters improving readability.</li>
+<li>Semantically independent of System.CommandLine API, allowing you to focus on the configurability important to your app</li>
+<li>fluency of the interface frees you from instantiating multiple framework objects unrelated to your app</li>
+</ul>
+<h3 id="simple-multi-step-piecemeal-definition-of-parameters">Simple Multi-step, Piecemeal Definition of Parameters</h3>
+<p>CommandLineExtensions provides fluent interface to configure command-line parameters in a sequence of phases or steps. A simple example of configuring the root command to take a file option and configure a handler delegate. The <code>WithOption</code> call begins a context (phase) that configures the current strongly-typed option. Within this context, the call to <code>WithHandler</code> is strongly-typed to the single option type of <code>FileInfo?</code>:</p>
+<pre><code class="language-csharp">builder.Services.AddCommand()
+    .WithDescription(&quot;Sample app for System.CommandLine&quot;)
+    .WithOption&lt;FileInfo?&gt;(&quot;--file&quot;, &quot;The file to read and display on the console.&quot;)
+    .WithHandler(file =&gt; 
+    {
+        ReadFile(file!);
+    });
+return builder.Build&lt;RootCommand&gt;.Invoke(args);
+</code></pre>
+<p>To do same thing with only System.CommandLine is possible with an explicitly instantiated <code>Option&lt;FileInfo?&gt;</code> re-used in the call to <code>SetHandler</code>:</p>
+<pre><code class="language-csharp">var fileOption = new Option&lt;FileInfo?&gt;(
+    name: &quot;--file&quot;,
+    description: &quot;The file to read and display on the console.&quot;);
+
+var rootCommand = new RootCommand(&quot;Sample app for System.CommandLine&quot;);
+rootCommand.AddOption(fileOption);
+
+rootCommand.SetHandler((file) =&gt; 
+    { 
+        ReadFile(file!); 
+    },
+    fileOption);
+
+return await rootCommand.InvokeAsync(args);
+</code></pre>
+<p>The phased or stepwise approach might be more apparent when dealing with multiple commands or subcommands:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand() // 👈 Start root command context
+	.WithSubcommand&lt;ReadCommand&gt;()  // 👈 start read subcommand context
+		.WithArgument&lt;FileInfo&gt;(&quot;file&quot;, &quot;file path to process&quot;)
+		.WithSubcommandHandler(file =&gt; Console.WriteLine($&quot;read &lt;file&gt; argument = {file.Name}&quot;))
+	.WithSubcommand&lt;WriteCommand&gt;()  // 👈 start write subcommand context
+		.WithArgument&lt;FileInfo&gt;(&quot;file&quot;, &quot;file path to process.&quot;)
+		.WithArgument&lt;string&gt;(&quot;text&quot;, &quot;text to write to file, quoted.&quot;)
+		.WithSubcommandHandler((file, text) =&gt; Console.WriteLine($&quot;write &lt;file&gt; argument = {file.Name} with text '{text}'.&quot;))
+	.WithHandler(() =&gt; Console.WriteLine(&quot;Please choose read or write subcommand.&quot;));
+
+return builder.Build&lt;RootCommand&gt;().Invoke(args);
+</code></pre>
+<p>The first call to <code>WithSubcommandHandler</code> has the context of a single parameter of type <code>FileInfo</code> and expects a delegate that takes a single argument of type <code>FileInfo</code>. The only thing that will compile here is a delegate with a single parameter. The second independent call to <code>WithSubcommandHandler</code> has a different context, one with two parameters: one of type <code>FileInfo</code> and one of type <code>string</code>. There is no way to mix up assigning a delegate to the wrong subcommand.</p>
+<h3 id="example-dependency-injection">Example: Dependency Injection</h3>
+<p>CommandLineExtensions can do what it does through dependency injection--building up a configuration context to the point where a command is built and the required dependencies are resolved and instantiated. Put another way: all the types you use with CommandLineExtensions are resolved via the dependency injection container. If you want to use <code>ILogger&lt;T&gt;</code> in a command handler, simply include it as a constructor parameter, for example:</p>
+<pre><code class="language-csharp">public class LoggingCommandHandler(ILogger&lt;LoggingCommandHandler&gt; logger) : ICommandHandler&lt;FileInfo&gt;
+{
+    public int Execute(FileInfo fileInfo)
+    {
+        Console.WriteLine(
+            $&quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&quot;));
+        return 0;
+    }
+}
+//...
+public class Program
+{
+    public int Main(string[] args)
+    {
+        var builder = ConsoleApplication.CreateBuilder(args);
+        builder.Services.AddCommand()
+            .WithDescription(&quot;Dependency Injection sample&quot;)
+            .WithOption&lt;FileInfo&gt;(&quot;--file&quot;, &quot;An option whose argument is parsed as a FileInfo&quot;)
+            .WithHandler&lt;LoggingCommandHandler&gt;();
+        return builder.Build&lt;RootCommand&gt;().Invoke(args);
+    }
+}
+</code></pre>
+<p>A similar<super>*</super> thing in System.CommandLine would require code like the following:</p>
+<pre><code class="language-csharp">public class Program
+{
+    public int Main(string[] args)
+    {
+        var fileOption = new Option&lt;FileInfo?&gt;(
+            name: &quot;--file&quot;,
+            description: &quot;An option whose argument is parsed as a FileInfo&quot;);
+
+        var rootCommand = new RootCommand(&quot;Dependency Injection sample&quot;);
+        rootCommand.Add(fileOption);
+
+        rootCommand.SetHandler((fileOptionValue, logger) =&gt;
+            {
+                DoRootCommand(fileOptionValue!, logger);
+            },
+            fileOption, new MyCustomBinder());
+
+        rootCommand.Invoke(args);
+
+        return 0;
+    }
+    static void DoRootCommand(FileInfo aFile, ILogger logger)
+    {
+        Console.WriteLine($&quot;File = {aFile?.FullName}&quot;);
+        logger.LogCritical(&quot;Test message&quot;);
+    }
+}
+
+public class MyCustomBinder : BinderBase&lt;ILogger&gt;
+{
+    protected override ILogger GetBoundValue(
+        BindingContext bindingContext) =&gt; GetLogger(bindingContext);
+
+    ILogger GetLogger(BindingContext bindingContext)
+    {
+        using ILoggerFactory loggerFactory = LoggerFactory.Create(
+            builder =&gt; builder.AddConsole());
+        ILogger logger = loggerFactory.CreateLogger(&quot;LoggerCategory&quot;);
+        return logger;
+    }
+}
+</code></pre>
+<p>*: <code>ILogger&lt;T&gt;</code> injection is accomplished, but without using Microsoft.Extensions.DependencyInjection.</p>
+<h2 id="caveats">Caveats</h2>
+<p>This is an MVP to gauge interest and to get feedback. It's functional, but minimal in a few ways.</p>
+<h3 id="limited-optionsarguments">Limited Options/Arguments</h3>
+<p>Parameters are limited to two per command. Two is much lower than the System.CommandLine's limit of eight. Support for more than two will be added in the near future.</p>
+<h3 id="default-value-factories">Default Value Factories</h3>
+<p>Default value factories are not supported. System.CommandLine supports default values for options via a factory method, for example:</p>
+<pre><code class="language-csharp">var fileOption = new Option&lt;FileInfo?&gt;(
+    name: &quot;--file&quot;,
+    description: &quot;An option whose argument is parsed as a FileInfo&quot;);
+fileOption.SetDefaultValueFactory(() =&gt; $&quot;{DateTime.Now:MMMM}&quot;); // 👈 delegate to create a new value
+var rootCommand = new RootCommand(&quot;Do something with a file.&quot;);
+rootCommand.Add(fileOption);
+
+rootCommand.SetHandler(fileOptionValue =&gt;
+    {
+        Console.WriteLine($&quot;Received {fileOptionValue} for file name.&quot;);
+    },
+    fileOption);
+
+return rootCommand.Invoke(args);
+</code></pre>
+<p>Default values for options <em>are</em> supported.  For example:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithOption&lt;FileInfo?&gt;(&quot;--file&quot;, &quot;An option whose argument is parsed as a FileInfo&quot;)
+    .WithDefault($&quot;{DateTime.Now:MMMM}&quot;) // 👈 create default value here
+    .WithHandler(fileOptionValue =&gt;
+        {
+            Console.WriteLine($&quot;Received {fileOptionValue} for file name.&quot;);
+        });
+return builder.Build&lt;RootCommand&gt;.Invoke(args);
+</code></pre>
+<p>The vision is that CommandLineExtensions be very loosely coupled to System.CommandLine--in most cases, it is coupled only to <em>concepts</em> (like <em>by name</em>--sometimes referred to as Connascence of Name). Toward that vision, the CommandLineExtensions fluent interface doesn't use System.CommandLine types directly, so there is no way to use pre-defined types like closed-generic types implementing <code>Option&lt;T&gt;</code>. I've considered that, and if you feel that's important, please thumb up this issue: <a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues/13"><code>Consider supporting Option&lt;T&gt;-derived types.</code></a></p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Getting started with CommandLineExtensions is very easy. It begins with either creating a console application with ConsoleApplicationBuilder dotnet new template or adding the ConsoleApplicationBuilder NuGet package to an existing console application. (For more information, please see <a href="https://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder">Announcing ConsoleApplicationBuilder, DI in console applications, simply</a>.) Then add the <a href="https://www.nuget.org/packages/PRI.CommandLineExtensions">PRI.CommandLineExtensions</a> NuGet package.</p>
+<p>Configuring command-line parameters starts by adding a command; if you don't have a &quot;command,&quot; the implied command is a <em>root command</em> added with the bare <code>AddCommand()</code> extension method:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand() // 👈 step 1, configure a command
+</code></pre>
+<p>Then, you can start adding options (named parameters) or arguments (unnamed parameters). For example, if you want to accept a required file name on the command-line with a command-line option of <code>--file</code>, you could do this:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&lt;FileInfo&gt;(&quot;--file&quot;, &quot;file path to process&quot;) // 👈 step 2, add an option
+</code></pre>
+<p>Next, you need to configure what you want to process the parameter value with--a command handler:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&lt;FileInfo&gt;(&quot;--file&quot;, &quot;file path to process&quot;)
+    .WithHandler(fileInfo =&gt; // 👈 step 3, configure the handler, accepting the parameter value
+        Console.WriteLine(
+            $&quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&quot;));
+</code></pre>
+<p>Configuring a handler completes the configuration of that command.</p>
+<p>And finally, you build or resolve the command and execute it:</p>
+<pre><code class="language-csharp">var builder = ConsoleApplication.CreateBuilder(args);
+builder.Services.AddCommand()
+    .WithRequiredOption&lt;FileInfo&gt;(&quot;--file&quot;, &quot;file path to process&quot;)
+    .WithHandler(fileInfo =&gt;
+        Console.WriteLine(
+            $&quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&quot;));
+return builder.Build&lt;RootCommand&gt;().Invoke(args); // 👈 step 4, invoke the handler with the command-line arguments
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>CommandLineExtensions creates a fluent interface for System.CommandLine, offering a simpler way to define and support command-line options and arguments. CommandLineExtensions doesn't support all the features of System.CommandLine but provides support for defining command-line options and arguments for all but very complex scenarios.</p>
+<p>For more information and examples, please see <a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/blob/main/src/CommandLineExtensions/README.md">CommandLineExtensions README.md</a></p>
+<p>For support, please see <a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues">ConsoleApplicationBuilder GitHub issues</a></p>
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'announcing-commandlineextensions'
+    'Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade'
+    'http://blog.peterritchie.com/posts/announcing-commandlineextensions'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('4/7/25');
+    console.info('announcing-commandlineextensions');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade';
+    var disqus_url = 'http://blog.peterritchie.com/posts/announcing-commandlineextensions';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'announcing-commandlineextensions';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2025
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://dotnet.social/@peterritchie">dotnet.social</a>&nbsp;|&nbsp;<a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

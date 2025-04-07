@@ -135,13 +135,10 @@ Published on Friday, January 17, 2025<br>    </div>
         logger.LogInformation(await httpClient.GetStringAsync(&quot;todos/3&quot;));
     }
 }
-
-## `dotnet new` Project Template
-
-The `dotnet new consoleapp` project template supports appsettings out of the box and is installed like other `dotnet new` project templates:
-
-```powershell
-dotnet new install PRI.ConsoleApplicationBuilder.Templates
+</code></pre>
+<h2 id="dotnet-new-project-template"><code>dotnet new</code> Project Template</h2>
+<p>The <code>dotnet new consoleapp</code> project template supports appsettings out of the box and is installed like other <code>dotnet new</code> project templates:</p>
+<pre><code class="language-powershell">dotnet new install PRI.ConsoleApplicationBuilder.Templates
 </code></pre>
 <p>And to create a new console application that supports DI, Configuration, appsettings, etc., is as simple as:</p>
 <pre><code class="language-powershell">dotnet new consoleapp -o Peter.ConsoleApp
