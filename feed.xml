@@ -5,8 +5,40 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Mon, 07 Apr 2025 13:58:44 GMT</pubDate>
-		<lastBuildDate>Mon, 07 Apr 2025 13:58:44 GMT</lastBuildDate>
+		<pubDate>Mon, 14 Apr 2025 16:31:05 GMT</pubDate>
+		<lastBuildDate>Mon, 14 Apr 2025 16:31:05 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - April 14</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-14</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-14</guid>
+			<pubDate>Mon, 14 Apr 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/NihalJain/opensource-contributions-tracker/?tab=readme-ov-file"&gt;OpenSource Contributions Tracker&lt;/a&gt; by Nihal Jain&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/5-github-actions-every-maintainer-needs-to-know/"&gt;5 GitHub Actions every maintainer needs to know&lt;/a&gt; by Klint Finley &amp;amp; Gwen Davis&lt;/p&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://theburningmonk.com/2025/04/event-versioning-strategies-for-event-driven-architectures/"&gt;Event versioning strategies for event-driven architectures&lt;/a&gt; by Yan Cui&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/04/01/ports-and-fat-adapters/"&gt;Ports and fat adapters&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/04/09/adopting-mcp-is-a-bad-idea/"&gt;Adopting MCP is a Bad Idea&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250325-understanding-antiforgery-in-aspnetcore/"&gt;Understanding Anti-Forgery in ASP.NET Core&lt;/a&gt; by Maarten Balliauw&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/dotnet/core/blob/main/release-notes%2F10.0%2Fpreview%2Fpreview3%2Fcsharp.md"&gt;C# 14 updates in .NET 10 Preview 3 - Release Notes&lt;/a&gt; by various&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://woodruff.dev/dotnet-new-meet-cargo-new-a-tale-of-two-clis/"&gt;dotnet new, Meet cargo new: A Tale of Two CLIs&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://youtube.com/watch?v=ta08IEQcyxU"&gt;Back to Basics: Debugging in Visual Studio | Coding Shorts 117&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/modeling-your-environment-with-aspire-24e986752485"&gt;Modeling Your Environment with Aspire&lt;/a&gt; by David Fowler&lt;/p&gt;
+&lt;!--## Design
+
+## Mobile
+--&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/03/24/standup-revisited/"&gt;My New Favorite Question for the Daily Standup&lt;/a&gt; by Mike Eaton&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/03/27/working-with-dotnet-10-without-mucking-up-your-machine"&gt;Working with dotnet 10 Without Mucking Up Your Machine&lt;/a&gt; by Joe Guadagno&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.quad9.net/"&gt;Quad9 - A public and free DNS service for a better security and privacy&lt;/a&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade</title>
 			<link>http://blog.peterritchie.com/posts/announcing-commandlineextensions</link>
@@ -2189,45 +2221,6 @@ The Domain-Driven Design book (the &amp;quot;Blue Book&amp;quot;) includes &amp;
 &lt;p&gt;Sometimes you've got overloaded terms like &amp;quot;loan&amp;quot;; sometimes, you have different terms like different &lt;em&gt;rules&lt;/em&gt;. Different rules are typically applied in different scenarios or involve different parameters. Different rules offer a window into recognizing different contexts with a boundary in-between. You may recognize concepts like this (events, operations, rules/invariants) from the larger list I mentioned above. A Ubiquitous Language can also account for individuals and entities, commands (often related to an activity), views (reports, screens, results), collaborations, and attributes or properties attributed to individuals and entities. Additionally, attributes or properties can be involved in criteria, and categories or subtypes may group individuals and entities.&lt;/p&gt;
 &lt;p&gt;Working towards a Ubiquitous Language is working towards concepts more independent from each other. Independent concepts are themselves individual contexts. Any defined concept has a defined context with understandable boundaries. Keeping the complexity of one context bound from others keeps the essential complexity within that context and reduces the accidental complexity that arises from blended contexts.&lt;/p&gt;
 &lt;p&gt;Domain-Driven Design adds value when you have a minimal complexity, when a subject matter has multiple terms per classification. Terms can be classified as entities, processes, phases, events, rules, views, etc. The focus of this post was a level of complexity where boundaries are recognizable in the nuances of the vocabulary. In future posts, I'll dig deeper into different the subject matter (or domain) classifications, how you can isolate the complexities of each, and the parts of Domain-Driven Design that apply.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Installing .NET Framework 4.5 Targeting Pack</title>
-			<link>http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack</link>
-			<description>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/installing-dotnet-framework-4-5-targeting-pack</guid>
-			<pubDate>Sun, 05 Feb 2023 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="/assets/DALL%C2%B7E-2023-02-05-13.14.52--ludites-frustration-with-errors-in-integrated-development-environments-(IDE)-pencil-and-watercolor.png" class="img-fluid" alt="When working in an IDE seems like working with crayons" /&gt;&lt;/p&gt;
-&lt;p&gt;Something came up with a client around Live Dependency Validation in Visual Studio recently.  Digging into it I ran into several issues, one of which was the error:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Severity	Code	Description	Project	File	Line	Suppression State
-Error		The reference assemblies for .NETFramework,Version=v4.5 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download .NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks	DependencyValidation	C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets	1229	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;.NET Framework 4.5 has been out of support since 2016, so its targetting pack isn't available for download.  I found a couple blogs posts about editing the modelproj file to add things like &lt;code&gt;ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch&lt;/code&gt; or a &lt;code&gt;PackageReference&lt;/code&gt; to &lt;code&gt;microsoft.netframework.referenceassemblies.net45&lt;/code&gt; but neither worked.&lt;/p&gt;
-&lt;p&gt;One of the features of Visual Studio Installers is that they can be a one-stop-shop for all the things you're going to need to develop software (with or without Visual Studio).  One of these features is to install .NET targeting packs!  Although the latest version of Visual Studio doesn't include out-of-support components, prior versions of Visual Studio are available.  Visual Studio 2019 came out before .NET Framework 4.5 was completely unsupported (i.e. still had the option of paid support) so it offers the ability to install some targetting packs that are currently out of support.&lt;/p&gt;
-&lt;p&gt;You can download older versions of Visual Studio via &lt;a href="https://bit.ly/vs-old"&gt;https://visualstudio.microsoft.com/vs/older-downloads/&lt;/a&gt;, which seems to redirect you eventually to Visual Studio Subscriptions downloads.  For our purposes, Visual Studio Community Editions works fine.&lt;/p&gt;
-&lt;p&gt;To install, run the Visual Studio installer that you've downloaded (if you already have 2019 installed, run the already installed Visual Studio Installer and click &lt;strong&gt;Modify&lt;/strong&gt;) then click &lt;strong&gt;Continue&lt;/strong&gt; to go past the &lt;em&gt;set up a view things&lt;/em&gt; dialog. (if you have VS 2022 installed, this seems to do nothing.)&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Make sure you don't change any of the &lt;em&gt;workloads&lt;/em&gt; (if you have Visual Studio 2019 install already, some may be checked--don't uncheck them, that will uninstall them).&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;img src="/assets/vs2019-installer-45-targetting-pack.png" class="img-fluid" alt="Visual Studio Installer" /&gt;&lt;/p&gt;
-&lt;p&gt;Click on the &lt;strong&gt;Individual Components&lt;/strong&gt; tab at the top (to the right of &lt;em&gt;Workloads&lt;/em&gt; and to the left of &lt;em&gt;Language packs&lt;/em&gt;.)  In the .NET section, find an check &lt;strong&gt;.NET Framework 4.5 targetting pack&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Click &lt;strong&gt;Install&lt;/strong&gt; or &lt;strong&gt;Install while downloading&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Once completed, you now have the .NET Framework 4.5 targetting pack.  If you're doing this in response to a .NET Framework 4.5 targetting pack error message in Visual Studio, exit and re-start Visual Studio--the error should go away (it does with the modelproj error.)&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Incidentally, the other issues I encountered are:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Full solution analysis for C# is currently disabled. You may not be seeing all possible dependency validation issues in C# projects. Options... Don't show again 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;... with no way to enable full solution analysis in a way that this notice recognizes and goes away.&lt;/p&gt;
-&lt;p&gt;I'd appreciate any advice to resolve that that doesn't involve clicking &lt;strong&gt;Don't show again&lt;/strong&gt;.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
