@@ -4,8 +4,44 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-04-14T16:31:05Z</updated>
+	<updated>2025-04-22T20:29:56Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-22</id>
+		<title>Things That Caught My Attention Last Week - April 22</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-22" />
+		<updated>2025-04-22T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/03/17/build-or-adopt--stop-building-your-own-plumbing/"&gt;Build or Adopt: Stop Building Your Own Plumbing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/"&gt;What the heck is MCP and why is everyone talking about it?&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://nuke.build/"&gt;Smart automation for DevOps teams and CI/CD pipelines&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/shouldly/shouldly"&gt;Shouldy - The way assertions should be.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/module-initializers"&gt;Module Initializers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=xcpgTVueu-A"&gt;The End of .NET Free Open-Source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=s7vSG5IFn74"&gt;Test out .NET 10 Previews in Dev Containers &amp;amp; Codespaces in Minutes!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-preview-3/"&gt;.NET 10 Preview 3 is now available!&lt;/a&gt;&lt;/p&gt;
+&lt;!-- ## Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://ronjeffries.com/articles/019-01ff/story-points/Index.html#"&gt;Story Points Revisited&lt;/a&gt;&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://woodruff.dev/ownership-in-rust-the-most-c-ish-thing-ive-loved-and-i-mean-that-in-a-good-way/"&gt;Ownership in Rust: The Most C++-ish Thing I’ve Loved (and I Mean That in a Good Way)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.conventionalcommits.org/en/v1.0.0/"&gt;Conventional Commits&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://philiplaine.com/posts/getting-forked-by-microsoft/"&gt;Getting Forked by Microsoft&lt;/a&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-14</id>
 		<title>Things That Caught My Attention Last Week - April 14</title>
@@ -2196,30 +2232,5 @@ Client2&lt;--API:&lt;color:#red&gt;""412 Precondition Failed\nBasis version of r
 &lt;p&gt;The Aggregate and Service patterns model parts of the domain similarly but provide a means to recognize separate parts of the domain: independent of the level at which they apply as well as how they affect state.  Service operates at a higher level to model an activity, a collaboration of objects.  An aggregate is the composition of several domain objects that must abide by the same invariants and be consistent in the presence of each other.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain &lt;em&gt;concepts&lt;/em&gt;. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1</id>
-		<title>Being Successful With Domain-Driven Design: Minimal Complexity, Part 1</title>
-		<link href="http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-1" />
-		<updated>2023-05-19T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="/assets/concepts-contexts-and-boundaries.jpg" class="img-fluid" alt="Concepts, Context, and Boundaries. Abstract Thought" /&gt;
-The Domain-Driven Design book (the &amp;quot;Blue Book&amp;quot;) includes &amp;quot;Tackling complexity at the heart of software&amp;quot; in the title. While &amp;quot;complexity&amp;quot; can be subjective, the takeaway is that Domain-Driven Design intends to address complex software systems. The principles and practices in Domain-Driven Design have their complexities, so for Domain-Driven Design to add value, it needs to address existing/expected complexity and attempt to be net-positive for simplicity.&lt;/p&gt;
-&lt;p&gt;Interestingly, the title of the Blue Book alludes to questions about &lt;em&gt;what&lt;/em&gt; complexity is at the heart of software. Subjectively subjective, but we can look to the intent of some of the patterns and practices to deduce some types of complexity that Domain-Driven Design adequately addresses in the design of software systems.&lt;/p&gt;
-&lt;p&gt;For this series, I'll tranche away some of the patterns as essential complexity (essential complexity of &lt;em&gt;both&lt;/em&gt; Domain-Driven design and the design of almost all software design):  Entities, Value Objects, Modules, Layered Architecture, Factories, and Repositories. Any modular software system must deal with identity, value, creation, and storage. There's nothing new about layered architecture, but Domain-Driven Design does detail the isolation of specific responsibilities (like Domain and Infrastructure) that I'll cover. Practices like Side-Effect Free Functions, Standalone Classes, Intention-Revealing Interfaces, Continuous Integration, Assertions, and Declarative Style are aspects of long-championed techniques like cohesion, loose-coupling, naming standards, or functional programming (in my opinion).&lt;/p&gt;
-&lt;p&gt;None of what I've tranched off are unimportant, but they have been tried and true before Domain-Driven Design, and I want to focus on added value in Domain-Driven Design. To that end, I'll focus on Ubiquitous Language, Bounded Context, Context Map, Aggregates, Services, Domain Layer, Generic Subdomains, Segregated Core, Anti-Corruption Layer, and Core Domain; and touch on Evolving Order.&lt;/p&gt;
-&lt;h3 id="clean-concepts-contexts-and-boundaries"&gt;Clean Concepts, Contexts, and Boundaries&lt;/h3&gt;
-&lt;p&gt;If I had to distill the intent of Domain-Driven Design to a single statement, it might be &amp;quot;be explicit.&amp;quot;  Or, more explicitly: &amp;quot;Be explicit with boundaries.&amp;quot;  Software systems are not the only source (or victim) of complexity. There's a whole science devoted to it: Complex Adaptive Systems. Not to oversimplify Complex Adaptive Systems, but systems with sufficient complexity are inherently unpredictable and exhibit &lt;em&gt;emergent behavior&lt;/em&gt;, among other things. Meaning that complex systems will do what they're going to do, and we can only sometimes predict what they will do. Sometimes that emergent behavior is beneficial; sometimes, it isn't. To make systems more predictable (and get the benefits that provides), we have to reduce complexity. The complexity of complex systems arises from the number of dependencies, relationships, and interactions. Each unbounded interconnection increases complexity exponentially.&lt;/p&gt;
-&lt;p&gt;Complex adaptive systems theory is why explicit boundaries are a major aspect of how Domain-Driven Design combats complexity in software to produce more reliable and robust systems. Explicitness is important here; we're not looking for any-old boundaries. We're looking to constrain and isolate areas of the system based on purpose, meaning, and intent. We could chalk this up as simply an exercise in cohesion, but Domain-Driven Design focuses on getting to and clarifying that purpose, meaning, and intent.&lt;/p&gt;
-&lt;p&gt;Explicitness starts with unambiguous concepts, descriptions, and terms. If people aren't communicating the same concept things aren't going to get simpler. I speak about &lt;em&gt;Naming Things&lt;/em&gt;, and part of what makes that difficult, I've decided, is language (or English). Stemming from human nature, we try to classify an ever-increasing set of concepts with a finite set of words, syntax, and semantics. The first step to explicit boundaries is the agreement on what they are: agreement on the concepts and to which explicit context they apply—the Ubiquitous Language.&lt;/p&gt;
-&lt;p&gt;The value of Ubiquitous Language isn't just that there is an agreed-upon vocabulary. The added value to a Ubiquitous Language is what it accounts for. The Ubiquitous Language recognizes classifications of concepts, classifications common to most software systems. Classifications that the Ubiquitous Language fosters and isolates: individuals, invariants and consistency rules, operations, processes, collaborations, commands, events, views, and values/properties. By &amp;quot;individuals,&amp;quot; I don't just mean people, but anything that exhibits individuality (aka &amp;quot;entity.&amp;quot;)&lt;/p&gt;
-&lt;p&gt;Imagine an amorphous &amp;quot;loan&amp;quot; concept in the financial industry. People apply for loans, obtain loans, and pay back loans. Getting a loan involves evaluating personal information (credit rating, assets, liabilities, etc.). Paying back a loan consists of a term, an interest rate, a payment schedule, etc. Credit rating, assets, liabilities, term, interest rate, and payment schedule are six interconnected concepts. With six concepts (with each having five interconnections to the others), there are 30 interconnections. Or 30 complexity points. But, if we think of these six concepts as two different semi-independent contexts: &amp;quot;loan application&amp;quot; and &amp;quot;loan servicing,&amp;quot; we end up with two contexts (and one interconnection) with three concepts (or three interconnections) totaling six interconnections. We've gone from 30 complexity points to 6 simply by defining the actual contexts better. In other words, we're being more explicit.&lt;/p&gt;
-&lt;p&gt;Explicitness like this--delineating elements of a set into two groups connected by a specific relationship--is creating a boundary between two contexts. This is a very simple example of Bounded Context. As the name implies, Bounded Context is an explicit contextual boundary: where one context ends and another begins. This is a domain's macro level, recognizing that Loan Servicing can only happen after Loan Application is successful. This particular boundary is based on a temporal or procedural boundary. Phases or steps are a good way of organizing domains into bounded contexts.&lt;/p&gt;
-&lt;p&gt;In these two contexts, the word &amp;quot;loan&amp;quot; exists in both. The word &amp;quot;loan&amp;quot; is used in the application context as well as in the servicing context. But, in the application context, the meaning is really &amp;quot;loan application,&amp;quot; and in the servicing context, it really means &amp;quot;serviced loan&amp;quot;. Understanding that servicing depends on an approval event in a loan application phase (or activity) allows us to realize an explicit boundary. Sometimes it's as easy as this, but often it's not. There are other ways of teasing out boundaries (or contexts), almost always involving vocabulary elements.&lt;/p&gt;
-&lt;p&gt;Sometimes you've got overloaded terms like &amp;quot;loan&amp;quot;; sometimes, you have different terms like different &lt;em&gt;rules&lt;/em&gt;. Different rules are typically applied in different scenarios or involve different parameters. Different rules offer a window into recognizing different contexts with a boundary in-between. You may recognize concepts like this (events, operations, rules/invariants) from the larger list I mentioned above. A Ubiquitous Language can also account for individuals and entities, commands (often related to an activity), views (reports, screens, results), collaborations, and attributes or properties attributed to individuals and entities. Additionally, attributes or properties can be involved in criteria, and categories or subtypes may group individuals and entities.&lt;/p&gt;
-&lt;p&gt;Working towards a Ubiquitous Language is working towards concepts more independent from each other. Independent concepts are themselves individual contexts. Any defined concept has a defined context with understandable boundaries. Keeping the complexity of one context bound from others keeps the essential complexity within that context and reduces the accidental complexity that arises from blended contexts.&lt;/p&gt;
-&lt;p&gt;Domain-Driven Design adds value when you have a minimal complexity, when a subject matter has multiple terms per classification. Terms can be classified as entities, processes, phases, events, rules, views, etc. The focus of this post was a level of complexity where boundaries are recognizable in the nuances of the vocabulary. In future posts, I'll dig deeper into different the subject matter (or domain) classifications, how you can isolate the complexities of each, and the parts of Domain-Driven Design that apply.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="/assets/concepts-contexts-and-boundaries.jpg" class="img-fluid" alt="Concepts, Context, and Boundaries. Abstract Thought"&gt;
-The Domain-Driven Design book (the "Blue Book") includes "Tackling complexity at the heart of software" in the title. While "complexity" can be subjective, the takeaway is that Domain-Driven Design intends to address complex software systems. The principles and practices in Domain-Driven Design have their complexities, so for Domain-Driven Design to add value, it needs to address existing/expected complexity and attempt to be net-positive for simplicity.&lt;/p&gt;</summary>
 	</entry>
 </feed>
