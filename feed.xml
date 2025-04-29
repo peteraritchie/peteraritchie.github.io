@@ -5,8 +5,50 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 22 Apr 2025 20:29:56 GMT</pubDate>
-		<lastBuildDate>Tue, 22 Apr 2025 20:29:56 GMT</lastBuildDate>
+		<pubDate>Tue, 29 Apr 2025 16:08:00 GMT</pubDate>
+		<lastBuildDate>Tue, 29 Apr 2025 16:08:00 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - April 29</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-29</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-29</guid>
+			<pubDate>Tue, 29 Apr 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Architecture --&gt;
+&lt;h2 id="presenting"&gt;Presenting&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2025/04/23/why-i-do-both-written-content-and-videos.html"&gt;Why I Do Both Written Content and Videos&lt;/a&gt; by Sarah &amp;quot;Sadukie&amp;quot; Dutkiewicz&lt;/p&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://newsletter.techworld-with-milan.com/p/why-csharp"&gt;Why C#?&lt;/a&gt; by Dr Milan Milanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=6KUheTnNY3M"&gt;How Does a Domain Model Serialize Itself? IT DOES NOT!&lt;/a&gt; by Zoran on C#&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=Hxfu_KEa4uA"&gt;Why is .NET so Insanely Fast? with Stephen Toub&lt;/a&gt; by Keep Coding Podcast&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://khalidabuhakmeh.com/server-sent-events-in-aspnet-core-and-dotnet-10"&gt;Server-Sent Events in ASP.NET Core and .NET 10&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/model-run-ship-the-new-way-to-build-distributed-apps-48d67286a665"&gt;Model. Run. Ship. The New Way to Build Distributed Apps&lt;/a&gt; by David Fowler&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250422-authorization-policy-tag-helper-aspnetcore-razor-view/"&gt;Authorization Policy TagHelpers for ASP.NET Core Razor Views&lt;/a&gt; by Duende Software&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/going-beyond-singleton-scoped-and-transient-lifetimes/"&gt;Going beyond singleton, scoped, and transient lifetimes—tenant, pooled, and drifter&lt;/a&gt; by Andrew Lock | .NET Escapades&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/refactoring-overgrown-bounded-contexts-in-modular-monoliths"&gt;Refactoring Overgrown Bounded Contexts in Modular Monoliths&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!--## DevOps
+
+## Design
+
+## Mobile
+--&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://reflection.ed.ac.uk/reflectors-toolkit/reflecting-on-experience/four-f"&gt;The four F's of active reviewing&lt;/a&gt; by The University of Edinburgh&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-growing-medium-for-api-ecosystems"&gt;The Growing Medium for API Ecosystems - Why shared state matters more than ever&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/04/28/no-auth-on-initial-mcp-was-not-a-bug-it-was-a-feature/"&gt;No Auth on Initial MCP Was Not A Bug, It Was A Feature&lt;/a&gt; by API Evangelist (Kin Lane)&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://woodruff.dev/rust-structs-vs-c-classes-less-is-more/"&gt;Rust Structs vs C# Classes: Less is More&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.neowin.net/news/jetbrains-sunsets-another-product-citing-lower-than-expected-adoption-rates/"&gt;JetBrains sunsets another product citing lower than expected adoption rates&lt;/a&gt; by Neowin&lt;/p&gt;
+&lt;!-- ## Windows --&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.howtogeek.com/how-i-lie-to-secure-my-online-accounts/"&gt;How I Secure My Online Accounts By Telling Lies&lt;/a&gt; by How-To Geek&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.com/2025/04/22/ssl_com_validation_flaw/"&gt;Bug hunter tricked SSL.com into issuing cert for Alibaba Cloud domain in 5 steps&lt;/a&gt; by The Register&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - April 22</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-22</link>
@@ -2208,30 +2250,6 @@ Client2&lt;--API:&lt;color:#red&gt;""412 Precondition Failed\nBasis version of r
 &lt;p&gt;Communications with a customer/supplier model within the same organization can be informal. What the team is working on and how they interact with customers might be more like partnerships; teams may work closely together to implement and integrate components. The number of customers or distance from customers can impact this informalness. The further away a customer is (different division, different organization, different company) may impose more formality to the relationship. The work product of the supplier team may be viewed more like a product. And while customers may drive that product, it may be much more formal to the point where the component is independent of any single customer. This type of relationship may be structured more like a service with a very specific or well-specified interface. Moving towards a well-specified interface is the intent of an Open Host Service where the component is remotely accessed (a service) with a specified protocol and interface.&lt;/p&gt;
 &lt;p&gt;As a customer has less influence on a service, they may become completely dependent on the supplier team to provide the capabilities they require. They accept the risk that the supplier team may not provide the necessary capabilities in the future. This is extreme, and either no organization would accept this risk, or it is a temporary relationship. In reality, the different models aren't mutually exclusive, but there is a tendency towards one of them. e.g., a relationship tends to be less like a customer/supplier relationship and more like one completely conforming to another. The recognition of this relationship is called the Conformist model.&lt;/p&gt;
 &lt;p&gt;highlight: Recognize change will happen but don't try to create a design that accommodates all change.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Being Successful with Domain-Driven Design: Minimal Complexity, Part 2</title>
-			<link>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2</link>
-			<description>&lt;p&gt;In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain &lt;em&gt;concepts&lt;/em&gt;. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/Being-Successful-With-Domain-Driven-Design--Minimal-Complexity-Part-2</guid>
-			<pubDate>Mon, 29 May 2023 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain &lt;em&gt;concepts&lt;/em&gt;. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):&lt;/p&gt;
-&lt;p&gt;&lt;img src="/assets/ddd-pattern-language.png" class="img-fluid" alt="ddd-pattern-language" /&gt;&lt;/p&gt;
-&lt;p&gt;Isolating individual concepts, naming them, and detailing how they relate allows each to be thought about independently.  We can focus on parts of &amp;quot;Domain-Driven Design&amp;quot; because a Context Map details that isolation.&lt;/p&gt;
-&lt;p&gt;I'll dig deeper into the Aggregate and Service patterns in this part two. Aggregate and Service enable and embody major domain concepts.&lt;/p&gt;
-&lt;p&gt;An aggregate is the realization of a logical consistency boundary and the operations contributing to that consistency. An aggregate is a composition of several domain objects: At least one entity object and usually several value objects. Each domain object maintains its own consistency (it has invariants.) A date is a composition of a day, month, and year, but February 31, 1981 is not a valid date.  We differentiate an aggregate from any grouping of domain objects because of the invariants and rules beyond that of simply a collection of consistent domain objects. An aggregate models that cross-object consistency requirement.&lt;/p&gt;
-&lt;p&gt;Aggregates map to major domain concepts and significant domain behavior associated with a particular domain object (the root). The root is the object of behavior and acts as a gateway to the other objects the aggregate comprises. The root takes on the responsibility of maintaining the consistency of the entire aggregate. The complexity of that composition and the consistency are separated from complexities outside the natural boundary of the aggregate.&lt;/p&gt;
-&lt;p&gt;An aggregate is not a design choice; it is a natural role that a major domain entity plays in the domain that requires recognition in a domain model. Some domain entities naturally take on certain behavior that affects other domain objects. All the behavior must happen in certain ways and have expectedly consistent results. Those consistent results (or state) abide by rules and invariants--it's consistent &lt;em&gt;because&lt;/em&gt;... With a loan application, for example, there's no such thing as having negative assets (particularly: it's not a consistent loan application when it contains assets with negative value.) If you &lt;em&gt;owe&lt;/em&gt; money, that's a liability.&lt;/p&gt;
-&lt;p&gt;When understanding and modeling a domain, I like to accurately map behavior to domain concepts that logically have that (or any) behavior. Sometimes it's easy to mis-associate behavior with static concepts when those are the major concepts in the domain. A loan, for example, is a major concept in many financial domains, but it does not exhibit behavior; it's static. A loan is the subject of many behaviors in a financial domain but is just a contract (or a specification.) We know we have complexity to deal with. Mis-associating behavior reduces clarity, making things needlessly more complex.&lt;/p&gt;
-&lt;p&gt;Starting out understanding a domain, I find focusing primarily on behavior and activities useful. Everything else in a domain is ultimately the subject of a behavior or activity, so I don't model them explicitly. For example, the role of underwriter &lt;em&gt;approves&lt;/em&gt; a loan application. A loan application can be approved when the following rules are satisfied: a) the Debt-To-Income Ratio is below 43%, and b) etc... Debt-To-Income Ratio is modeled as an attribute of a loan application and covered in the activity of Approving a Loan. Information that isn't the object of a behavior also adds needless complexity.&lt;/p&gt;
-&lt;p&gt;When certain logic doesn't require a single object or doesn't require a &lt;em&gt;particular state&lt;/em&gt; and requires &lt;em&gt;particular objects&lt;/em&gt;, it might not be accurate to model the logic as part of an &lt;em&gt;aggregate&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;A Service is the realization of a collaboration between several objects. The concept of that service exists because it is not the natural behavior of a domain &lt;em&gt;entity&lt;/em&gt;. A Domain Service is the realization of a collaboration between one or more domain entities. It involves business logic and or business rules that may affect the state of those domain entities. An application service is the realization of a collaboration between one or more domain services, domain objects, and an infrastructure service. And an infrastructure service is a collaboration with a framework or the &amp;quot;outside.&amp;quot;  The Service pattern recognizes complexity by isolating logic that is otherwise unrelated.&lt;/p&gt;
-&lt;p&gt;Look again at the Domain-Driven Design pattern language. If we always had to deal with all the complexities detailed in that diagram, it would be much harder to get things done promptly. The fact that the concepts are delineated and we can deal with them in isolation simplifies working with them. Separating interaction-only logic into a separate service from the object behavior affecting their state means we can think about and work with those concepts in isolation. Those concepts are now more loosely-coupled, and we obtain the benefits of loose coupling.&lt;/p&gt;
-&lt;p&gt;These definitions are easy enough to understand but can be confusing when it comes time to put them into practice. Sometimes the confusion stems from a backward approach to implementing software systems. Teams work backward from patterns when looking for the opportunity to use patterns. It's more successful in understanding the domain and then matching domain concepts to patterns and practices. For example, I've seen people approach a domain with questions like &amp;quot;What are all the entities?&amp;quot; or &amp;quot;What are all the services?&amp;quot;  While we might be able to answer those questions after we've understood the domain and started to design solutions, approaching it from that perspective at that stage of understanding can pervert the interpretation of the domain. Services can be hard to recognize and implement when the domain concepts are not yet clearly isolated.&lt;/p&gt;
-&lt;p&gt;Sometimes it can be easy to delineate interaction logic in a collaboration from the business logic; often, it is not. In a financial domain, &lt;em&gt;transferring funds&lt;/em&gt; as a capability can be easily viewed as the behavior of an account, for example. It involves accounts, obviously, so why would it not be an &lt;em&gt;account behavior&lt;/em&gt;? But what happens when transferring funds? The situation's complexity comes from the fact that more than one account is involved, and the consistency of each account needs to be managed independently of the other(s).  A funds transfer succeeds or fails, but has no state of its own--any change in state is encapsulated in the objects participating in the collaboration.&lt;/p&gt;
-&lt;p&gt;A clear understanding of the domain concepts is vital to project the isolation of those concepts into design elements more accurately. Modeling domain knowledge requires the delineation and understanding of the concepts as well as correctly associating all the behavior and attributes of those concepts. Maintaining this model is a process of managing complexity, but it only happens in stages. Managing these complexities is an ongoing and iterative process. The more complex a domain is, knowledge fragmentation amongst domain experts is more likely. It's highly unlikely that a single person completely understands the domain. This knowledge fragmentation is one reason we model the domain iteratively, recognizing that understanding evolves over time.&lt;/p&gt;
-&lt;p&gt;The Aggregate and Service patterns model parts of the domain similarly but provide a means to recognize separate parts of the domain: independent of the level at which they apply as well as how they affect state.  Service operates at a higher level to model an activity, a collaboration of objects.  An aggregate is the composition of several domain objects that must abide by the same invariants and be consistent in the presence of each other.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
