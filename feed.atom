@@ -4,8 +4,52 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-05-06T13:40:45Z</updated>
+	<updated>2025-05-14T12:35:38Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-11</id>
+		<title>Things That Caught My Attention Last Week - May 11</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-11" />
+		<updated>2025-05-11T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source --&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/from-anemic-models-to-behavior-driven-models-a-practical-ddd-refactor-in-csharp"&gt;From Anemic Models to Behavior-Driven Models: A Practical DDD Refactor in C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-new-ai-chat-template/"&gt;Exploring the new AI chat template&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/intent-vs-mechanics-the-power-of-abstraction-in-aspire-d14a33aab6bb"&gt;Intent vs. Mechanics: The Power of Abstraction in Aspire&lt;/a&gt; by David Fowler&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/11/managing-auto-creation-of-database-or-message-broker-resources-in-the-critter-stack-vnext/"&gt;Managing Auto Creation of Database or Message Broker Resources in the Critter Stack vNext&lt;/a&gt; by Jeremy Miller&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=rPNdlLwBnW4"&gt;What we learned about event sourcing and DDD while building a bank&lt;/a&gt; by Thomas Bøgh Fangel&lt;/p&gt;
+&lt;!-- ## DevOps --&gt;
+&lt;!-- ## Design
+
+## Mobile
+
+## Agile/Work Life --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://leanpub.com/api-extension-patterns"&gt;Handy API Extension Patterns [Leanpub PDF/iPad/Kindle]&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://tyk.io/blog/how-do-you-futureproof-an-enterprise-api-landscape/"&gt;How do you futureproof an enterprise API landscape?&lt;/a&gt; by Tyk API Gateway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/09/governaing-api-authentication/"&gt;Governing API Authentication&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/use-openapi-overlays-today/"&gt;Use OpenAPI Overlays Today&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-may-2025/"&gt;Azure Developer CLI (azd) - May 2025&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/fabric-mirroring-for-azure-cosmos-db-public-preview-refresh-now-live-with-new-features/"&gt;Fabric Mirroring for Azure Cosmos DB: Public Preview Refresh Now Live with New Features&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/pull-request-etiquette/"&gt;Pull Request Etiquette&lt;/a&gt; by Scott DePouw&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://woodruff.dev/traits-in-rust-interfaces-that-do-more/"&gt;Traits in Rust: Interfaces That Do More&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250508-00/?p=111162"&gt;Why doesn't Clipboard History capture rapid changes to clipboard contents?&lt;/a&gt; by The Old New Thing&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.troyhunt.com/passkeys-for-normal-people/"&gt;Passkeys for Normal People&lt;/a&gt; by Troy Hunt&lt;/p&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://ashley.dev/posts/what-even-is-vibe-coding/"&gt;What Even Is Vibe Coding?&lt;/a&gt; by ashley.dev&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/is-ai-making-your-organization-fragile-or-more-resilient/"&gt;Is AI Making Your Organization Fragile or More Resilient&lt;/a&gt; by Mark Levison&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-4</id>
 		<title>Things That Caught My Attention Last Week - May 4</title>
@@ -2157,99 +2201,5 @@ public partial class AppointmentRequestEntityTranslator : ITranslator&amp;lt;App
 &lt;p&gt;In a future post, I will show an example of a repository implementation that uses Entity Framework and its expectations for concurrency tokens.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/farside-etags-in-asp-dot-net.jpg" class="img-fluid" alt="lots of things going on at the same time, in the style of Farside"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/http-and-etag-header-fields</id>
-		<title>HTTP and ETag Header Fields</title>
-		<link href="http://blog.peterritchie.com/posts/http-and-etag-header-fields" />
-		<updated>2023-06-15T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite" /&gt;&lt;/p&gt;
-&lt;p&gt;Update: corrected mention of &lt;code&gt;412&lt;/code&gt; in the context of &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;If-Modified-Since&lt;/code&gt; to &lt;code&gt;304&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Over the last four-plus years, I have been almost exclusively working on some sort of *-as-a-Service (*aaS)—for example, Mortgage Origination as a Service, Insurance Claims as a Service. I always see a couple of things when implementing Web (HTTP) services: the &lt;em&gt;reinvention of the wheel&lt;/em&gt; and recognizing the problem ETags solves after publishing a specification (sometimes both).&lt;/p&gt;
-&lt;p&gt;With *aaS as a Web API, the intention is to have multiple API clients providing access to representations of shared resources. Early in projects like this involves an initial (single) client, so the chances of a client having a stale resource representation are slim. When another client starts to use the API and an update gets accidentally overwritten, things get needlessly complicated.&lt;/p&gt;
-&lt;p&gt;I've seen teams address this problem in a number of ways, often involving a date-time stamp. With multiple clients on an API, scalability is an issue, and a date-time stamp can mean different things to different servers (as we'll see below). You need a single authority for a resource's last modified date-time to avoid exchanging one problem for another. See &lt;a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.2.2"&gt;Last-Modified/Comparison&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;The creators of HTTP encountered this issue and added features to HTTP to deal with this (I assume that's why they added these features). I don't know when these features were devised, but they proposed them in 1997. So, they've been in the wild for at least 25 years with the entire web as a test bed. So, many brilliant people either created or scrutinized the solution. i.e., it's a wheel.&lt;/p&gt;
-&lt;p&gt;The HTTP features are &lt;em&gt;ETags&lt;/em&gt; and &lt;em&gt;conditional requests&lt;/em&gt; and enable &lt;em&gt;optimistic concurrency&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id="etags"&gt;ETags&lt;/h2&gt;
-&lt;p&gt;An &lt;a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.3"&gt;ETag&lt;/a&gt; (AKA entity-tag) addresses the &amp;quot;lost update&amp;quot; problem where there are two clients of an API that have received the representation of a version of an entity. Still, another client updates the entity before the other: the second update causes the first the be &amp;quot;lost.&amp;quot; See the following diagram for a visualization:&lt;/p&gt;
-&lt;p&gt;&lt;img src="./assets/lost-update-sequence.png" class="img-fluid" alt="Lost-update" /&gt;&lt;/p&gt;
-&lt;p&gt;An ETag addresses accidental overwrite by &lt;em&gt;versioning&lt;/em&gt; the resource with an entity-tag (a hash of the representation, a version, etc.). When a client requests a resource, the server may include an ETag validator header field with an entity-tag value in the response. The URI of the resource, along with that entity-tag, constitutes an identifier for a particular version of an entity.&lt;/p&gt;
-&lt;p&gt;When a client requests a change to the entity, it includes the entity-tag as a basis version with a conditional header field (like &lt;code&gt;If-Match&lt;/code&gt;.)  The server responds with &lt;code&gt;412 (Precondition Failed)&lt;/code&gt;, and the client can retrieve the latest version, re-apply their change, and re-send. See the following diagram for a visualization:&lt;/p&gt;
-&lt;p&gt;&lt;img src="./assets/lost-update-solution-sequence.png" class="img-fluid" alt="Lost-update" /&gt;&lt;/p&gt;
-&lt;h2 id="falling-back-to-date-and-time"&gt;Falling back to date and time&lt;/h2&gt;
-&lt;p&gt;Even if you use date and time, &lt;strong&gt;HTTP also covers you with other precondition header fields involving modification date&lt;/strong&gt;. The &lt;code&gt;If-Unmodified-Since&lt;/code&gt; and &lt;code&gt;If-Modified-Since&lt;/code&gt; precondition header fields allow you to pass modification date preconditions to make a request conditional. When the precondition isn't met, a &lt;code&gt;412 (Precondition Failed)&lt;/code&gt; status code will be in the response, or for &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;HEAD&lt;/code&gt;, a &lt;code&gt;304 (Not Modified)&lt;/code&gt; status code will be in the response.&lt;/p&gt;
-&lt;p&gt;The initial GET of a resource that supports modification dates in conditional requests will include a &lt;code&gt;Last-Modified&lt;/code&gt; header field validator. The &lt;code&gt;Last-Modified&lt;/code&gt; validator is in the form of an &lt;a href="https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.1.1"&gt;HTTP-date&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="being-successful"&gt;Being Successful&lt;/h2&gt;
-&lt;p&gt;RFC 7232, the HTTP 1.1 specification, section 2.3 describes the &lt;em&gt;entity-tag&lt;/em&gt;:&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;An entity-tag is an opaque validator for differentiating between multiple representations of the same resource, regardless of whether those multiple representations are due to resource state changes over time, content negotiation resulting in multiple representations being valid at the same time, or both.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This means that the ETag value depends on the content-type, so two &lt;strong&gt;different representations of the same resource should have different ETag values&lt;/strong&gt; (e.g., one gzip encoded, one not.)&lt;/p&gt;
-&lt;p&gt;This also means that the ETag value is opaque to requestors but does point out that one of the intents of ETags to be &lt;strong&gt;an alternative to using a date-time stamp due to lack of accuracy&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id="patch"&gt;PATCH&lt;/h3&gt;
-&lt;p&gt;Using &lt;code&gt;PATCH&lt;/code&gt; with something like &lt;a href="https://jsonpatch.com/"&gt;JSONPatch&lt;/a&gt; may seem to help alleviate conflicts by providing more granularity in what is changing. Technically true, to implement this would be non-trivial. The ETag specifics a tag of that edition of the entire resource, not any one field. While comparing a change against a delta between two editions of a resource (keeping in mind those editions may not be adjacent) might be one technique for dealing with that, &lt;strong&gt;creating deltas between arbitrary versions of the same resource is non-trivial&lt;/strong&gt;. You could introduce that sort of thing. Something like event-sourcing might enable that. But remember that there may be interdependencies between properties of a resource, and just because the current request changes a property that hasn't changed since the resource was retrieved doesn't mean there isn't still a conflict.&lt;/p&gt;
-&lt;h3 id="last-modified"&gt;Last-Modified&lt;/h3&gt;
-&lt;p&gt;Remember that &lt;code&gt;Last-Modified&lt;/code&gt; uses &lt;a href="https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.1.1"&gt;HTTP-date&lt;/a&gt; format, so &lt;strong&gt;&lt;code&gt;Last-Modified&lt;/code&gt; only supports second granularity&lt;/strong&gt;. With multiple origin servers, more than second granularity may be needed to be accurate 100% of the time.&lt;/p&gt;
-&lt;h4 id="if-unmodified-since"&gt;If-Unmodified-Since&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;If-Unmodified-Since&lt;/code&gt; is used with state-changing methods like PUT, POST, DELETE, and PATCH to avoid accidental overrides (lost updates). &lt;code&gt;If-Unmodified-Since&lt;/code&gt; imposes the precondition &lt;em&gt;update this entity only if it hasn't changed since the provided date-time&lt;/em&gt;. &lt;strong&gt;Use &lt;code&gt;If-Unmodified-Since&lt;/code&gt; to avoid lost update problems when second granularity is not a problem&lt;/strong&gt;.&lt;/p&gt;
-&lt;h4 id="if-modified-since"&gt;If-Modified-Since&lt;/h4&gt;
-&lt;p&gt;When used with &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;HEAD&lt;/code&gt;, the &lt;code&gt;If-Modified-Since&lt;/code&gt; header field imposes the precondition &lt;em&gt;respond with &lt;code&gt;304 (Not Modified)&lt;/code&gt; and not with an entity representation if the modification date of the identified resource is not more recent than the date provided&lt;/em&gt;. &lt;strong&gt;Use &lt;code&gt;If-Modified-Since&lt;/code&gt; to avoid re-transferring the same data&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id="conflict"&gt;&lt;code&gt;409 (Conflict)&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;409 (Conflict)&lt;/code&gt; may sound like an appropriate response to a conditional PUT/POST/PATCH request, except that &lt;code&gt;412 (Precondition Failed)&lt;/code&gt; is expected. &lt;strong&gt;Response status code &lt;a href="https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8"&gt;&lt;code&gt;409&lt;/code&gt;&lt;/a&gt; should be used when something about the current state of the resource means that the server cannot change it&lt;/strong&gt;. Also, if you have chosen not to use HTTP precondition features and have included something &lt;em&gt;in the representation of the entity&lt;/em&gt; for versioning (like last-modified-date, see above), then &lt;code&gt;409 (Conflict)&lt;/code&gt; is appropriate to signify a potential accidental overwrite or lost update.&lt;/p&gt;
-&lt;h3 id="leveraging-existing-implementations"&gt;Leveraging Existing Implementations&lt;/h3&gt;
-&lt;p&gt;Azure Cosmos DB implements ETags and &lt;code&gt;Last-Modified&lt;/code&gt; to be leveraged to support the versioning of resources in your Web API. Technically the ETag is a version of the representation that Cosmos DB provides, so consider generating a new ETag based on what Cosmos DB provides, especially if you support more than one content-type (like XML). Suppose you have the concept of a database DTO or database models different from your MVC models. In that case, you should consider custom entity-tag generation based on the Cosmos-supplied entity-tag.&lt;/p&gt;
-&lt;p&gt;To leverage the Cosmos-supplied entity-tag, retain it and re-send it in any state-changing requests to Cosmos in the &lt;code&gt;If-Match&lt;/code&gt; header field. If the entity-tags do not match, Cosmos DB will respond with &lt;code&gt;412&lt;/code&gt;, and the Cosmos DB library will throw a &lt;code&gt;CosmosException&lt;/code&gt; with &lt;code&gt;StatusCode&lt;/code&gt; == &lt;code&gt;HttpStatusCode.PreconditionFailed&lt;/code&gt;.&lt;/p&gt;
-&lt;!--
-title Lost Update Problem
-
-participant "Client 1" as Client1
-participant "Client 2" as Client2
-participant API
-
-Client1-&gt;API:""GET /resource/123""
-activate Client1
-Client1&lt;--API:""200 OK""\n//resource v1 representation//
-
-create Client2
-Client2-&gt;API:""GET /resource/123""
-activate Client2
-Client2&lt;--API:""200 OK""\n//resource v1 representation//
-Client1-&gt;API:""PUT /resource/123""
-Client1&lt;--API:""200 OK""\n//resource v2 representation//
-deactivateafter Client1
-destroyafter Client1
-
-Client2-#red&gt;API:""PUT /resource/123""
-note over Client1,API#pink:Client 2 is updating the resource based from **v1**, not **v2**:\n&lt;align:center&gt;the v2 update is "lost" to //Client 2//&lt;/align&gt;
-Client2&lt;--API:""200 OK""\n//resource v3 representation//
-
---&gt;
-&lt;!--
-title Lost Update Solution
-
-participant "Client 1" as Client1
-participant "Client 2" as Client2
-participant API
-
-Client1-&gt;API:""GET /resource/123""
-activate Client1
-Client1&lt;--API:""200 OK""\n//resource v1 representation//
-
-create Client2
-Client2-&gt;API:""GET /resource/123""
-activate Client2
-Client2&lt;--API:""200 OK""\n//resource v1 representation//
-Client1-&gt;API:""PUT /resource/123\nIf-Match: v1""
-Client1&lt;--API:""200 OK""\n//resource v2 representation//
-deactivateafter Client1
-destroyafter Client1
-
-Client2-&gt;API:""PUT /resource/123\nIf-Match: v1""
-
-Client2&lt;--API:&lt;color:#red&gt;""412 Precondition Failed\nBasis version of resource is out of date""&lt;/color&gt;
---&gt;
-&lt;h2 id="references"&gt;References&lt;/h2&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/accidental-overwrite.jpg" class="img-fluid" alt="A stuffed tiger corrupted appearance due to accidental overwrite"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
