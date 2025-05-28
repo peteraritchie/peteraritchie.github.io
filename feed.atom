@@ -4,8 +4,62 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-05-19T16:59:03Z</updated>
+	<updated>2025-05-28T13:55:41Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-25</id>
+		<title>Things That Caught My Attention Last Week - May 25</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-25" />
+		<updated>2025-05-26T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dev.to/shayy/the-serverless-dream-is-dead-2945"&gt;The Serverless Dream Is Dead - DEV Community&lt;/a&gt; by Shayan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://event-driven.io/en/event_stores_are_key_value_stores/"&gt;Event stores are key-value databases, and why that matters&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://microservices.io/post/architecture/2025/03/23/andrew-harmel-law-architecture-advice-process.html"&gt;Harmel-Law's architecture advice process and fast flow&lt;/a&gt; by Chris Richardson&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=W-f9MHB-5TQ&amp;amp;list=PLdo4fOcmZ0oXeSG8BgCVru3zQtw_K4ANY&amp;amp;index=71"&gt;Advanced Pattern Matching in C#&lt;/a&gt; by Oliver Sturm&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/21/message-concurrency-parallelism-and-ordering-with-wolverine/"&gt;Message Concurrency, Parallelism, and Ordering with Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://steven-giesel.com/blogPost/e2552b7a-293a-4f46-892f-95a0cd677e4d?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky"&gt;Writing new guards with extensions in C# 14&lt;/a&gt; by Steve Giesel&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://woodruff.dev/evolve-your-c-code-with-ai-a-5-week-genetic-algorithms-bootcamp-for-developers/"&gt;Evolve Your C# Code with AI: A 5-Week Genetic Algorithms Bootcamp for Developers&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://khalidabuhakmeh.com/server-sent-events-in-aspnet-core-and-dotnet-10"&gt;Server-Sent Events in ASP.NET Core and .NET 10&lt;/a&gt; by  Khalid Abuhakme&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/22/critter-stack-release-plans/"&gt;Critter Stack Release Plans&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-a-custom-domain-events-dispatcher-in-dotnet"&gt;Building a Custom Domain Events Dispatcher in .NET&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/from-anemic-models-to-behavior-driven-models-a-practical-ddd-refactor-in-csharp?utm_source=LinkedIn&amp;amp;utm_medium=social&amp;amp;utm_campaign=19.05.2025"&gt;From Anemic Models to Behavior-Driven Models: A Practical DDD Refactor in C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.therecord.com/news/waterloo-region/iron-ring-turns-100/article_f5953e86-e1b4-5bc2-aac7-82595524f814.html"&gt;Iron Ring symbolizes for engineers&lt;/a&gt; by The Record&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/api-design-reviews-dont-have-to-be-hard/"&gt;API Design Reviews Don't Have to be Hard&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/confluent-cloud-releases-managed-v2-kafka-connector-for-azure-cosmos-db/"&gt;Confluent Cloud Releases Managed V2 Kafka Connector for Azure Cosmos DB&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.jetbrains.com/resharper/vscode/?utm_campaign=resharper&amp;amp;utm_content=link&amp;amp;utm_medium=social&amp;amp;utm_source=bluesky&amp;amp;utm_term=rs-vsc-launch"&gt;ReSharper for Visual Studio Code&lt;/a&gt; by Jetbrains&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.forbes.com/sites/zakdoffman/2025/05/19/microsoft-confirms-emergency-update-for-windows-users/"&gt;Microsoft Confirms Emergency Update For Windows Users&lt;/a&gt; by Forbes&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250523-00/?p=111216"&gt;How can I detect if one of my helper processes is launching child processes?&lt;/a&gt; by The Old New Thing&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.psychologytoday.com/us/blog/the-algorithmic-mind/202505/ai-weakens-critical-thinking-and-how-to-rebuild-it"&gt;AI Weakens Critical Thinking. This Is How to Rebuild It | Psychology Today&lt;/a&gt; by Psychology Today&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://theconversation.com/evidence-shows-ai-systems-are-already-too-much-like-humans-will-that-be-a-problem-256980"&gt;Evidence shows AI systems are already too much like humans. Will that be a problem?&lt;/a&gt; by The Conversation&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/the-byte/klarna-ceo-bragged-replacing-workers-ai-losses"&gt;CEO Who Bragged About Replacing Human Workers With AI Realizes He Made a Terrible Mistake&lt;/a&gt; by Futurism&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://thenewstack.io/ai-driven-software-why-a-strong-ci-cd-foundation-is-essential/"&gt;AI-Driven Software: Why a Strong CI/CD Foundation Is Essential&lt;/a&gt; by The New Stack&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/mcp-windows-new-com-andrew-clinick-fcwxc/"&gt;MCP on Windows: The New COM?&lt;/a&gt; by Andrew Clinick&lt;/p&gt;
+&lt;h2 id="social-media"&gt;Social Media&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://techcrunch.com/2025/05/22/bluesky-will-begin-verifying-notable-users/"&gt;Bluesky will begin verifying 'notable' users&lt;/a&gt; by TechCrunch&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-18</id>
 		<title>Things That Caught My Attention Last Week - May 18</title>
@@ -1704,29 +1758,5 @@ foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOptio
 &lt;p&gt;I look forward to your feedback and comments.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/entity-framework-in-aspire</id>
-		<title>Entity Framework in .NET Aspire</title>
-		<link href="http://blog.peterritchie.com/posts/entity-framework-in-aspire" />
-		<updated>2023-11-29T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/entity-framework-in-aspire.jpg" class="img-fluid" alt="A path through the infrastructure" /&gt;&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;.NET Aspire is an opinionated, cloud ready stack for building observable, production ready, distributed applications.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview"&gt;.NET Aspire&lt;/a&gt; is currently in preview and focuses on &lt;em&gt;simplifying the developer experience&lt;/em&gt; with &lt;em&gt;orchestration&lt;/em&gt; and &lt;em&gt;automatic service discovery&lt;/em&gt; features. There's a huge potential for .NET Aspire beyond this initial valuable feature set.&lt;/p&gt;
-&lt;p&gt;Being in preview, .NET Aspire may not yet support all the scenarios or workloads you may be comfortable with. It's an opinionated framework, which means differences of opinion are natural and expected. Currently, one of those opinions seems to be a focus on containers. The sample solutions that the new &lt;code&gt;dotnet&lt;/code&gt; templates provide are a great example of the benefits of containerization. The .NET Aspire starter solution that &lt;code&gt;dotnet new --use-redis-cache --output AspireStarter&lt;/code&gt; generates, out of the box, is something that, when debugged, will download, run, and utilize a Docker Redis image. (I've worked with teams where getting each member productive in a development environment has ended up being days of work.) The AppHost component of a .NET Aspire solution codifies abstract aspects of the architectural decisions that automates the generation and deployment of a development environment&amp;lt;(!--and configuration provides the details from future decisions about other environments--&amp;gt;.)&lt;/p&gt;
-&lt;p&gt;A container focus is empowered by .NET Aspire's &lt;em&gt;orchestration&lt;/em&gt; features. An independent orchestration responsibility enables better separation of &lt;em&gt;release and deploy&lt;/em&gt; concerns from &lt;em&gt;build and test&lt;/em&gt; concerns; &lt;em&gt;shifting right&lt;/em&gt; those decisions that release and deploy depend on. (i.e., the ability to develop, execute, and evaluate solutions are discernibly &lt;em&gt;left&lt;/em&gt; of release and operation.) Containers are an established method of componentizing a distributed system with independent servers (sometimes called &amp;quot;tiers.&amp;quot;) This provides flexibility to deploy and execute in a development environment even before architectural decisions about a production topology have been considered. For example, debugging the .NET Aspire starter app automatically spins up a Redis container in Docker, but it's extremely unlikely that's how it will be deployed in production. In production, will there be one only Redis instance? If you have many instances, what sort of gateway or reverse proxy to that pool of instances will be utilized? Will it be on-prem or cloud? Will it be Azure, AWS, or Google Cloud? The beauty of Aspire's orchestration feature is that it doesn't matter yet; you can configure orchestration to &lt;em&gt;figure it out at run-time&lt;/em&gt;, one environment at a time!&lt;/p&gt;
-&lt;p&gt;But, with every decision comes compromise. Technologies that depend on the physical resources that come from those decisions (that we're now effectively deferring) introduce some challenges with some existing software development idioms. A chicken-and-egg situation: if how to connect to physical resources may only be known at run-time, what happens to design-time technologies that depend on that connection information?&lt;/p&gt;
-&lt;p&gt;One popular technology in .NET, Entity Framework, suffers one of those challenges in .NET Aspire (Possibly only in &lt;em&gt;code-first&lt;/em&gt; scenarios. Many Entity Framework examples detail adding Entity Framework support to an existing component (resource, like console app, ASP.NET Core web API, Razor app, etc.), creating a circular dependency between its project and the existence of an executing database (i.e., a valid database connection string.) In database-first, you have an existing application with existing physical databases and practices to utilize them in a development environment. With .NET Aspire, developers are &lt;em&gt;shifted left&lt;/em&gt; from the decisions that provide the resources that things like &lt;code&gt;migrations add &amp;lt;migration-name&amp;gt;&lt;/code&gt; and &lt;code&gt;dotnet ef database update&lt;/code&gt; require to function properly.&lt;/p&gt;
-&lt;p&gt;To be clear, the way .NET Aspire works is that the orchestration (AppHost) executes, figures out the various connection strings, and overrides the &lt;code&gt;appsettings&lt;/code&gt; by setting environment variables before running the other components. The premise behind this means that at run-time, whatever is in &lt;code&gt;appsettings&lt;/code&gt; is ignored. &lt;code&gt;dotnet ef&lt;/code&gt; command doesn't execute at run-time; it effectively runs at design-time and gets its configuration from &lt;code&gt;appsettings&lt;/code&gt;, so it's out of sync with reality.&lt;/p&gt;
-&lt;p&gt;The basic guidance is to &lt;em&gt;abstract those types of dependencies as .NET Aspire resources&lt;/em&gt;. Nothing new conceptually, but this might be an application of the principles of abstraction at a level less commonly applied. Refining that guidance to using Entity Framework: &lt;em&gt;the database should be an independent resource&lt;/em&gt;. Independent resources are modeled in .NET as either separate projects or separate solutions. Luckily, an &lt;a href="https://github.com/dotnet/aspire-samples/tree/main/samples/eShopLite"&gt;.NET Aspire sample&lt;/a&gt; addresses this. Let's look into the details.&lt;/p&gt;
-&lt;p&gt;The structure of the eShopLite sample overlaps with the .NET Aspire starter &lt;code&gt;dotnet new&lt;/code&gt; template. It has a Blazor web frontend, a web API, an Aspire AppHost, and an Aspire service defaults project. Additionally, there is a shopping cart service (BasketService), and the catalog database (CatalogDb) project is an abstraction of the database resource.&lt;/p&gt;
-&lt;p&gt;The CatalogDb looks very similar to what you'd end up with following &lt;a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&amp;amp;tabs=visual-studio"&gt;Tutorial: Create a web API with ASP.NET Core&lt;/a&gt;: an ASP.NET Core web API that leverages Entity Framework, and is effectively a gateway to a backend database. Although, that tutorial uses Entity Framework &lt;em&gt;in-memory&lt;/em&gt; rather than via PostgreSQL. The way eShopLite supports Entity Framework is through the CatalogDb project. CatalogDb is like a stub project to the rest of the solution: Aspire doesn't execute it, but CatalogService depends upon it for the database model classes and &lt;code&gt;DbContext&lt;/code&gt; (utilized more like a class library.)  Nothing connects to the CatalogDb &lt;em&gt;web API&lt;/em&gt;. The CatalogDb project contains all the Entity Framework design-time details and references, allowing you to utilize Entity Framework's features like &lt;code&gt;migrations add &amp;lt;migration-name&amp;gt;&lt;/code&gt; and &lt;code&gt;dotnet ef database update&lt;/code&gt;. The target of Entity Framework operations like migration add and database update would depend on the configuration in &lt;code&gt;appsettings.json&lt;/code&gt;. Initialization/seeding of the data is handled in &lt;code&gt;CatalogDbInitializer&lt;/code&gt; within CatalogDb, as well as migrations at run-time (startup). CatalogDb &lt;code&gt;appsettings&lt;/code&gt; connection strings must be in sync with the run-time values for &lt;code&gt;ef&lt;/code&gt; commands to work.&lt;/p&gt;
-&lt;p&gt;In summary, if you want to utilize Entity Framework in a basic .NET Aspire application, &lt;a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-8.0&amp;amp;tabs=visual-studio"&gt;adding a project&lt;/a&gt; to contain the entity models, context, and Entity Framework references and supporting a database engine container is a recommended place to get started. I suspect this guidance may be refined as .NET Aspire evolves.&lt;/p&gt;
-&lt;p&gt;I'm still wrapping my head around how .NET Aspire can support other non-containerized workloads like Azure SQL. Still, a containerized design melds nicely with the idea of independent resources (or nodes) in .NET Aspire.  .NET Aspire also helps to more clearly delineate concerns like design, build, test, release, and deploy. As with .NET Aspire, containerization is an easier starting point for someone interested in distributed applications.&lt;/p&gt;
-&lt;p&gt;I look forward to how .NET Aspire evolves.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/entity-framework-in-aspire.jpg" class="img-fluid" alt="A path through the infrastructure"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
