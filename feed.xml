@@ -5,8 +5,53 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Wed, 28 May 2025 13:55:41 GMT</pubDate>
-		<lastBuildDate>Wed, 28 May 2025 13:55:41 GMT</lastBuildDate>
+		<pubDate>Tue, 03 Jun 2025 20:52:15 GMT</pubDate>
+		<lastBuildDate>Tue, 03 Jun 2025 20:52:15 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - June 1</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-1</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-1</guid>
+			<pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dev.to/shayy/the-serverless-dream-is-dead-2945"&gt;The Serverless Dream Is Dead&lt;/a&gt; by Shayan&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/automating-null-forgiving-operator-removal-in-csharp-projects.htm"&gt;Automating Null-Forgiving Operator Removal in C# Projects&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devclass.com/2025/05/29/microsoft-designates-blazor-as-its-main-future-investment-in-web-ui-for-net/"&gt;Microsoft designates Blazor as its main future investment in Web UI for .NET&lt;/a&gt; by Tim Anderson&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/converting-a-docker-compose-file-to-aspire/"&gt;Converting a docker-compose file to .NET Aspire&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250527-the-role-of-authenticationproperties-in-aspnet-core/"&gt;The role of AuthenticationProperties in ASP.NET Core&lt;/a&gt; by Maarten Balliauw&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.financialexpress.com/life/technology-microsoft-ceo-satya-nadella-reveals-why-6000-employees-were-laid-off-chief-product-officer-shares-key-advice-for-coders-3862902/"&gt;Microsoft CEO Satya Nadella reveals why 6,000 employees were laid off, Chief Product Officer shares key advice for coders&lt;/a&gt; by The Financial Express&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/30/ontological-vs-epistemological-api-governance/"&gt;Ontological vs Epistemological API Governance&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/powering-real-time-messaging-at-scale-with-azure-cosmos-db/"&gt;Powering Real-Time Messaging at Scale with Azure Cosmos DB &lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;!-- ## Software Development
+ --&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250526-00/?p=111218"&gt;Why does EnumProcessModules report no modules on a process that was created suspended? &lt;/a&gt; by The Old New Thing&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-with-github-repositories-your-path-to-agentic-ai/"&gt;Azure DevOps with GitHub Repositories - Your path to Agentic AI&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://vladikk.com/2025/05/26/with-ai-everything-is-complicated/"&gt;With AI, everything is so complicated... and this is great news!&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
+&lt;!-- 
+## Social Media --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - May 25</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-25</link>
@@ -1631,133 +1676,6 @@ else
 &lt;li&gt;[1]: &lt;a href="https://amzn.to/3KkcnDT"&gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://wiki.c2.com/?ReplaceDataValueWithObject"&gt;Replace Data Value With Object Refactoring&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>A tool to help contributing to many Git repos</title>
-			<link>http://blog.peterritchie.com/posts/contributing-to-many-git-repos</link>
-			<description>&lt;p&gt;&lt;img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/contributing-to-many-git-repos</guid>
-			<pubDate>Thu, 30 Nov 2023 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/contributing-to-many-git-repos.jpg" class="img-fluid" alt="Source code from many sources" /&gt;&lt;/p&gt;
-&lt;p&gt;I've contributed to many Git repos over the years. Doing this means I work in a code base for a little while, switch to another, and often eventually switch back.&lt;/p&gt;
-&lt;h2 id="collaborating-with-others"&gt;Collaborating with Others&lt;/h2&gt;
-&lt;p&gt;In the repos that I work in, many have multiple contributors. The contributions to those repos can be prolific, and if the repo is using a workflow that uses feature or topic branches, branches come and go quite often. &lt;code&gt;git fetch&lt;/code&gt; by default (or with no other options) gets all branches so you'll have other team members' branches after a fetch--which can be used to do a deep dive on a PR.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;You could choose not to use the &lt;code&gt;git fetch&lt;/code&gt; defaults and have it only get a particular branch. This can typically be done with &lt;code&gt;git fetch origin main&lt;/code&gt; (depending on how you've named your remotes and your branches.)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;p&gt;I work with many organizations and rarely is there one repo (yes, I know, there's this thing called a &amp;quot;monorepo&amp;quot;; but I find that organizations that can make this work need to be very technically savy, with products/technologies geared towards developers, and only a few of the organizations I work with are at that level.) With remote work being what it is (I'm often working at a different time than other contributors), when I return to work with an organization's code, I usually need to update several repos.&lt;/p&gt;
-&lt;p&gt;|Why not do a &lt;code&gt;git pull&lt;/code&gt; instead of &lt;code&gt;git fetch&lt;/code&gt;?|
-|:-:|
-What I'm contributing to, what I may be reviewing, and whether I'm connected, are variable enough that I've built a habit only to pull when I'm ready to merge and deal with potential conflicts. If I have conflicts, I must resolve them (or abort: &lt;code&gt;git merge --abort&lt;/code&gt; or &lt;code&gt;git fetch origin&lt;/code&gt; and &lt;code&gt;git reset --hard origin&lt;/code&gt;) before doing anything else. This means I must commit to resolving those conflicts before switching to another branch to review or work with it. (Yes, I could re-clone in a different place, but frequent-fetch&amp;gt;abort&amp;gt;clone in terms of effort and risk.)}&lt;/p&gt;
-&lt;h1 id="a-tool-to-help"&gt;A tool to help&lt;/h1&gt;
-&lt;p&gt;When I re-start work (or maybe I'm coming off a vacation), going to each repo dir to perform &lt;code&gt;git fetch&lt;/code&gt; is tedious. I've developed a Powershell script to do that. I'll walk through the script after the code (commented code available &lt;a href="https://github.com/peteraritchie/pri.powershell/blob/main/git/fetch-all.ps1"&gt;here&lt;/a&gt;.)&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-powershell"&gt;using namespace System.IO;
-param (
-    [switch]$WhatIf,
-    [switch]$Verbose,
-    [switch]$Quiet
-    )
-$currentDir = (get-location).Path;
-
-if($Verbose.IsPresent) {
-    $VerbosePreference = &amp;quot;Continue&amp;quot;;
-}
-
-function Build-Command {
-    $expression = 'git fetch';
-    if($Quiet.IsPresent) {
-        $expression += ' -q';
-    }
-    if($Verbose.IsPresent) {
-        $expression += ' -v --progress';
-    }
-    if($WhatIf.IsPresent) {
-        $expression += ' --dry-run';
-    }
-    $expression += &amp;quot; origin&amp;quot;;
-    return $expression;
-}
-
-foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
-    $dir = get-item -Force $item;
-    Push-Location $dir.Parent;
-    try {
-        Write-Verbose &amp;quot;fetching in $((Get-Location).Path)...&amp;quot;;
-        $expression = Build-Command;
-
-        Invoke-expression $expression;
-
-    } finally {
-        Pop-Location;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;First, I'm translating the PowerShell idioms &lt;code&gt;WhatIf&lt;/code&gt;, &lt;code&gt;Verbose&lt;/code&gt;, and &lt;code&gt;Quiet&lt;/code&gt; to common Git options &lt;code&gt;--dry-run&lt;/code&gt;, &lt;code&gt;--verbose&lt;/code&gt; (&lt;code&gt;-v&lt;/code&gt;), and &lt;code&gt;--quiet&lt;/code&gt; (&lt;code&gt;-q&lt;/code&gt;). The &lt;code&gt;Build-Command&lt;/code&gt; builds up the expression we want to use to invoke git. I've included the &lt;code&gt;--progress&lt;/code&gt; option with &lt;code&gt;git fetch&lt;/code&gt; to display progress when&lt;code&gt;-Verbose&lt;/code&gt; is specified. Next, I'm looping through all directories, looking for a &lt;code&gt;.git&lt;/code&gt; directory. I'm using &lt;code&gt;System.IO.GetDirectories&lt;/code&gt; instead of &lt;code&gt;Get-ChildItem&lt;/code&gt; because it's much faster. For each directory that contains a &lt;code&gt;.git&lt;/code&gt; subdirectory, Git &lt;code&gt;fetch&lt;/code&gt; is invoked. This allows me to fetch several Git repos within the hierarchy of the current directory.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="text-align: center;"&gt;Organizaing Code Locally&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style="text-align: center;"&gt;I work with my code (spikes, libraries, experiments, etc.), open-source projects, and multiple clients. All these diverge from one another at one level in my directory structure. e.g. I may have a &lt;code&gt;src&lt;/code&gt; subdiretory in my home directory; and &lt;code&gt;oss&lt;/code&gt;, &lt;code&gt;experiments&lt;/code&gt;, and &lt;code&gt;client&lt;/code&gt; subdirectories within &lt;code&gt;src&lt;/code&gt;, so I can choose to fetch from all the repos recursively in each of those subdirectories--if I'm returning to work on an OSS project after being away from OSS for a while, I just &lt;code&gt;fetch-all.ps&lt;/code&gt; within the &lt;code&gt;oss&lt;/code&gt; subdirectory.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;By default (or with no other options), &lt;code&gt;git fetch&lt;/code&gt; does not delete corresponding local branches that have been removed from a remote. So, new branches will be downloaded, but those that were removed will remain.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;To also remove local branches removed from the remote, you can include a purge option with &lt;code&gt;git fetch&lt;/code&gt;: &lt;code&gt;git fetch --prune&lt;/code&gt; or &lt;code&gt;git fetch -p&lt;/code&gt;.&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;p&gt;If I'm reviewing a PR, I don't necessarily want removed remote branches to be removed locally &lt;em&gt;all the time&lt;/em&gt;. So, I like pruning separately from fetching. The following is the script for that (other than Build-Command, it has the same structure and flow as &lt;code&gt;fetch-all.ps1&lt;/code&gt; (so I won't walk through this snippet.)&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-PowerShell"&gt;using namespace System.IO;
-param (
-    [switch]$WhatIf,
-    [switch]$Verbose
-    )
-$currentDir = (get-location).Path;
-
-if($Verbose.IsPresent) {
-    $VerbosePreference = &amp;quot;Continue&amp;quot;;
-}
-
-function Build-Command {
-    $expression = 'git remote';
-    if($Verbose.IsPresent) {
-        $expression += ' -v';
-    }
-    $expression += ' prune';
-    if($WhatIf.IsPresent) {
-        $expression += ' --dry-run';
-    }
-    $expression += ' origin';
-    return $expression;
-}
-
-foreach($item in $([Directory]::GetDirectories($currentDir, '.git', [SearchOption]::AllDirectories);)) {
-    $dir = get-item -Force $item;
-    Push-Location $dir.Parent;
-    try {
-        Write-Verbose &amp;quot;pruning in $((Get-Location).Path)...&amp;quot;;
-        $expression = Build-Command;
-
-        Invoke-expression $expression;
-    } finally {
-        Pop-Location;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Separating pruning from fetching also allows me to prune at a wider scope than fetching. e.g. &lt;code&gt;c:\Users\peter\src\client .\fetch-all.ps1&lt;/code&gt; and &lt;code&gt;c:\Users\peter\src .prune-all.ps1&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;I look forward to your feedback and comments.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
