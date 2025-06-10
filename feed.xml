@@ -5,8 +5,65 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 03 Jun 2025 20:52:15 GMT</pubDate>
-		<lastBuildDate>Tue, 03 Jun 2025 20:52:15 GMT</lastBuildDate>
+		<pubDate>Tue, 10 Jun 2025 20:55:24 GMT</pubDate>
+		<lastBuildDate>Tue, 10 Jun 2025 20:55:24 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - June 8</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-8</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-8</guid>
+			<pubDate>Mon, 09 Jun 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;!-- ## Architecture
+ --&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=52b-StTWuCY"&gt;AspiriFridays with David, Damian, and Maddy - Sean from SCT Software&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/catching-up-on-microsoft-build-2025-essential-sessions-for-dotnet-developers/?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky"&gt;Catch Up on Microsoft Build 2025: Essential Sessions for .NET Developers&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=ssqGEBW-gpo&amp;amp;t=15s"&gt;What's Next in C#&lt;/a&gt; by Mads Torgersen and Dustin Campbell&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-1-the-survival-of-the-fittest-code-why-learn-genetic-algorithms-in-c/"&gt;Day 1: The Survival of the Fittest Code: Why Learn Genetic Algorithms in C#?&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/06/09/song-recommendations-from-combinators/"&gt;Song recommendations from combinators&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/creating-your-first-sample-game-with-monogame/"&gt;Creating your first sample game with MonoGame&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250603-testing-duende-identityserver-login-flow-with-a-net-10-dotnet-run-appcs/"&gt;Testing Duende IdentityServer Login Flow With a .NET 10 dotnet run app.cs&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/05/low-ceremony-railway-programming-with-wolverine/"&gt;Low Ceremony Railway Programming with Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://tahahussain.substack.com/p/how-to-survive-and-thrive-in-a-toxic?triedRedirect=true"&gt;How to Survive (and Thrive) in a Toxic Workplace.&lt;/a&gt; by Taha Hussain&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://nordicapis.com/10-signs-you-might-need-api-governance/"&gt;10+ Signs You Might Need API Governance&lt;/a&gt; by Bill Doerrfeld&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.apimatic.io/blog/mastering-api-governance"&gt;Mastering API Governance for Digital Transformation&lt;/a&gt; by Sid Maestre&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-may-2025/"&gt;Azure SDK Release (May 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/building-a-modern-python-api-with-azure-cosmos-db-a-5-part-video-series/"&gt;Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/restricting-pat-creation-in-azure-devops-is-now-in-preview/"&gt;Restricting PAT Creation in Azure DevOps Is Now in Preview&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250606-00/?p=111254"&gt;Why does C++ think my class is copy-constructible when it can't be copy-constructed?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;timkleier/vertical-and-horizontal-slices-45b7d435ac35"&gt;Vertical AND Horizontal Slices in Agile Software Development&lt;/a&gt; by Tim Kleier&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/06/02/ai-learning-plan/"&gt;Copilot Helped Me Create an AI Learning Plan&lt;/a&gt; by Micheal Eaton&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/genai-is-the-new-offshoring/"&gt;GenAI is the new Offshoring&lt;/a&gt; by Steve Smith&lt;/p&gt;
+&lt;!-- 
+## Social Media --&gt;
+&lt;h2 id="online-tools"&gt;Online Tools&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://pocketcal.com/#N4IgziBcIEwAwwKwFo4DZUEYQBoQHMoBtUAYyjjwCdiiAOHOgXR3p0xiaYF8eg"&gt;PocketCal&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
+&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/debunking-the-filter-early-join-later-sql-performance-myth"&gt;Debunking the &amp;quot;Filter Early, JOIN Later&amp;quot; SQL Performance Myth&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - June 1</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-1</link>
@@ -1600,81 +1657,6 @@ else
 &lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/method-group-natural-type-improvements"&gt;Method group natural type improvements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/7429"&gt;[Proposal]: Method group natural type improvements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/dotnet/csharplang/issues/7684"&gt;Open issue: evaluation of implicit indexers in object initializers&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Dealing with Primitive Obsession with Entity Framework Core</title>
-			<link>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</link>
-			<description>&lt;p&gt;&lt;img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/dealing-with-primitive-obsession-with-entity-framework-core</guid>
-			<pubDate>Wed, 22 May 2024 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/obsessed-with-primitive-shapes.png" class="img-fluid" alt="obsessed only with creating with primitive shapes" /&gt;&lt;/p&gt;
-&lt;p&gt;Unlike object-oriented languages, serialization and data transfer are limited to a small set of primitive types. These primitive types are often text, numbers (integers, floating point), booleans, arrays, etc. Sometimes, you're fortunate enough to have a more modern framework and have fancy types like date, time, and date/time, UUID/GUID, monetary, or binary data.&lt;/p&gt;
-&lt;p&gt;Primitive types are &lt;em&gt;value types&lt;/em&gt;—they don't have identity semantics, and their equality/equivalence is based on their &lt;em&gt;value&lt;/em&gt;. Entity Framework Core supports &lt;em&gt;value types&lt;/em&gt; as attributes but only insomuch as what the underlying provider supports. Any complex types are &amp;quot;entities&amp;quot; in Entity Framework, despite not having an &amp;quot;identity&amp;quot;.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Note&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Every type that Entity Framework is configured to recognize is an &lt;em&gt;Entity&lt;/em&gt; (e.g., via &lt;code&gt;ModelBuilder.Entity&amp;lt;T&amp;gt;()&lt;/code&gt; or &lt;code&gt;IEntityTypeConfiguration&amp;lt;T&amp;gt;&lt;/code&gt;), despite an entity traditionally (English definition, philosophically, ontologically, or even entity-relationship diagrams) being an individual/instance with an independent (of its attributes) existence.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Domains invariably have many value types. Some may be complex (multiple attributes), and some may be simple (subsets of primitive types.) Even &lt;em&gt;simple&lt;/em&gt; domain value types have unique semantics—that constrain value validity. A common value type &lt;em&gt;Name&lt;/em&gt;, for example, is textual and thus can be implemented with a textual primitive type (like &lt;code&gt;string&lt;/code&gt; or &lt;code&gt;VARCHAR&lt;/code&gt;.) A textual primitive type like &lt;code&gt;string&lt;/code&gt; is a sequence of characters up to 2,146,483,647 characters of any value. This is unrealistic for a &amp;quot;name&amp;quot; in most domains: e.g., a name over 2 billion characters in length or containing characters like &lt;code&gt;%'&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, or &lt;code&gt;&amp;gt;&lt;/code&gt; is problematic. Unlike how an integer is not a valid text value, and there exists no way to assign an integer to a string (e.g., &lt;code&gt;string text = 1;&lt;/code&gt; is not valid and cannot be compiled and thus never be executed), re-using a primitive type for &lt;em&gt;domain types&lt;/em&gt; with validity (consistency) constraints means instances of these domain values may not be valid (e.g., &lt;code&gt;name = &amp;quot;%&amp;quot;&lt;/code&gt; or &lt;code&gt;name = new string('&amp;lt;', int.MaxValue);&lt;/code&gt;) until being checked. Enter &lt;strong&gt;Primitive Obsession&lt;/strong&gt;.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Hint&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Entity Framework &amp;quot;entities&amp;quot; are not the same as Domain-Driven Design &amp;quot;entities.&amp;quot; Despite being based on relational entities, Entity Framework considers groups of nested (owned) attributes to be entities even if they don't map to their own table (with key.)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id="primitive-obsession"&gt;Primitive Obsession&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Primitive Obsession&lt;/em&gt; is a type of code smell&lt;span title="Fowler, M. (2018). &amp;quot;Refactoring: Improving the Design of Existing Code&amp;quot; "&gt;&lt;sup&gt;&lt;a href="https://amzn.to/3KkcnDT"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/span&gt; where—in an object-oriented context—something that realistically  has unique behavior and semantics has been implemented with a primitive type that doesn't guard that concept's invariants. Primitive Obsession recommends that invariants be abstracted within a unique type so that invalid or inconsistent instances of that type cannot exist.&lt;/p&gt;
-&lt;h3 id="value-object-mapping-in-entity-framework"&gt;Value Object Mapping in Entity Framework&lt;/h3&gt;
-&lt;p&gt;Fortunately, Entity Framework Core supports mapping from domain-specific value types to database primitive types. The domain-specific types then maintain their consistency, and correct usage is enforced.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Note&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;The converse is also important; not all uses of primitive types need to be abstracted away within a custom domain type. For example, a domain type may have attributes that realistically won't have values outside a specific range, but a type does not need to be created to abstract a primitive type. For example, making a &lt;code&gt;Length&lt;/code&gt; value type that wraps an integer value that provides no added value increases complexity rather than reduces it.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;I've encountered some complex domains that treat identity very specifically. In cases like this, custom value types like &lt;em&gt;Identifier&lt;/em&gt; that may use one of many primitive types are created to abstract the underlying primitive type. For example, a high-level view of an Identifier class (that doesn't include details like validation, parsing, etc.):&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public record Identifier&amp;lt;T&amp;gt; where T : struct, IEquatable&amp;lt;T&amp;gt;
-{
-    private readonly T _value;
-    public Identifier(T value) =&amp;gt; _value = value;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Implemented as a &lt;code&gt;record&lt;/code&gt;, &lt;code&gt;Identifer&amp;lt;T&amp;gt;&lt;/code&gt; operates as a value type (&lt;code&gt;struct&lt;/code&gt;, at the runtime level to implement a domain-level &lt;em&gt;value type&lt;/em&gt;) and provides equality and isolation (&lt;code&gt;Identifier&amp;lt;int&amp;gt;&lt;/code&gt; is not the same as &lt;code&gt;Identifier&amp;lt;Guid&amp;gt;&lt;/code&gt;. They cannot be equal, or compared.)&lt;/p&gt;
-&lt;p&gt;Inferring the mapping of instances of this type to primitive database column types isn't possible (and EF will let you know with an &lt;code&gt;InvalidOperationException&lt;/code&gt; detailing &lt;em&gt;The 'Identifier' property 'ShippingCompany.Identifier' could not be mapped because the database provider does not support this type.&lt;/em&gt; We need to tell Entity Framework Core how to map to a type the database provider supports. This is done with the &lt;code&gt;PropertyBuilder&amp;lt;TProperty&amp;gt;.HasConversion&lt;/code&gt; method when configuring the containing entity type.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder
-        .Entity&amp;lt;ShippingCompany&amp;gt;()
-        .Property(e =&amp;gt; e.Identifer)
-        .HasConversion(identifier =&amp;gt; identifer.Value, value =&amp;gt; new Identifier&amp;lt;Guid&amp;gt;(value));
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The above shows how you can address Primitive Obsession when using Entity Framework but, it assumes that you're directly persisting domain objects through Entity Framework. Focusing on behavior over attributes in a domain may not make all domain objects persistable by Entity Framework. Still, you can at least push off the mapping of non-primitive value types to Entity Framework if you don't want to introduce another layer of mapping (treating the types persisted via Entity Framework as persistence DTOs).  You could still have a non-primitive-DTO (e.g., &lt;code&gt;IdentifierDto&lt;/code&gt;) persisted through Entity Framework.  I'll leave it up to you to decide if that's &amp;quot;proper&amp;quot; for your domain.&lt;/p&gt;
-&lt;h3 id="references"&gt;References&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;[1]: &lt;a href="https://amzn.to/3KkcnDT"&gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://wiki.c2.com/?ReplaceDataValueWithObject"&gt;Replace Data Value With Object Refactoring&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content:encoded>
 		</item>
