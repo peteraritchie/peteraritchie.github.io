@@ -5,8 +5,65 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 17 Jun 2025 20:19:25 GMT</pubDate>
-		<lastBuildDate>Tue, 17 Jun 2025 20:19:25 GMT</lastBuildDate>
+		<pubDate>Mon, 23 Jun 2025 21:07:06 GMT</pubDate>
+		<lastBuildDate>Mon, 23 Jun 2025 21:07:06 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - June 15</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</guid>
+			<pubDate>Mon, 23 Jun 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;!-- ## Architecture
+ --&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=lgacB-sfCMg"&gt;Was I Wrong About Blazor?&lt;/a&gt; by Shaun Wildermuth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/entomy/real-traits-in-c-4fpk"&gt;Real Traits in C#&lt;/a&gt; by Patrick Kelly&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.devleader.ca/how-to-tame-async-void-in-c-93fffd557729"&gt;How to Tame “async void” in C#&lt;/a&gt; by Dev Leader&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/task-whenall-vs-parallel-foreach/"&gt;Task.WhenAll or Parallel.ForEach?&lt;/a&gt; by Fati Iseni&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-9-using-genetic-algorithms-uniform-crossover-in-c/"&gt;Day 9: Using Genetic Algorithm's Uniform Crossover in C#&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/06/22/using-certificates-for-authentication-with-microsoft-identity-library"&gt;Using Certificates for Authentication with Microsoft Identity Library&lt;/a&gt; by Joe Guadagno&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://duendesoftware.com/blog/20250617-what-is-an-oauth-20-and-openid-connect-client"&gt;What is an OAuth 2.0 and OpenID Connect Client?&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/22/wire-up-xunit-logging-for-crazy-integration-testing/"&gt;Wire Up XUnit Logging for Crazy Integration Testing&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/monitoring-dotnet-applications-with-opentelemetry-and-grafana"&gt;Monitoring .NET Applications with OpenTelemetry and Grafana&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/agent-mode-is-now-generally-available-with-mcp-support/"&gt;Agent mode is now generally available with MCP support&lt;/a&gt; by Rhea Patel, Filisha Shah, and Allie Barry&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=rPNdlLwBnW4"&gt;What we learned about event sourcing and DDD while building a bank&lt;/a&gt; by Thomas Bøgh Fangel&lt;/p&gt;
+&lt;!-- ## DevOps
+ --&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.bytebytego.com/p/oop-design-patterns-and-anti-patterns"&gt;OOP Design Patterns and Anti-Patterns: What Works and What Fails&lt;/a&gt; by ByteByteGo&lt;/p&gt;
+&lt;!-- ## Mobile
+
+## Agile/Work Life
+
+## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-mcp-server-public-preview/"&gt;Azure DevOps MCP Server, Public Preview&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250619-00/?p=111285"&gt;Learning to read C++ compiler errors: Ambiguous symbol errors after including a header file&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/working-with-stacked-branches-in-git-part-1/"&gt;Working with stacked branches in git (Part 1)&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-openmcp/"&gt;OpenAPI 🤝 OpenMCP&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - June 15</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-15</link>
@@ -1559,39 +1616,6 @@ else
 &lt;li&gt;&lt;a href="https://www.youtube.com/live/48CWnYfTZhk?si=cgzeQ7kiEBmvS-s_"&gt;YouTube - Let's Learn .NET: Aspire (Tiếng Việt)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.postsharp.net/aspire-caching-metalama"&gt;Metalama - Simplify Your .NET Aspire Caching With Metalama&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://jeffreyfritz.com/2024/07/adding-antivirus-to-net-aspire-systems/"&gt;Fritz on the Web - Adding Antivirus to .NET Aspire Systems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Aspiring Links for Week Ending June 14, 2024</title>
-			<link>http://blog.peterritchie.com/posts/aspiring-links-2024-06-14</link>
-			<description>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/aspiring-links-2024-06-14</guid>
-			<pubDate>Fri, 14 Jun 2024 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links" /&gt;&lt;/p&gt;
-&lt;p&gt;Using PostgreSQL with .NET and Entra ID (Blog)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/using-postgre-sql-with-dotnet-and-entra-id/"&gt;https://devblogs.microsoft.com/dotnet/using-postgre-sql-with-dotnet-and-entra-id/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Official .NET Aspire Learning Path at Microsoft Learn (Site)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/"&gt;https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;My First look at .NET Aspire. What's with the Hype? by CodeOpinion (Video)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/maVXnkYEDIE?si=7AkKulcvVOgnxmVz"&gt;https://youtu.be/maVXnkYEDIE?si=7AkKulcvVOgnxmVz&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Instant OpenTelemetry Dashboard for JavaScript Developers with Aspire (Video)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/YKraN1ZETpw?si=XZUWcnZMtpzl7ztT"&gt;https://youtu.be/YKraN1ZETpw?si=XZUWcnZMtpzl7ztT&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;.NET Aspire: Your Gateway to Cloud-Native Success (Blog)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://riasolutionsgroup.com/2024/06/11/using-dynatrace-to-navigate-the-microservices-maze/"&gt;https://riasolutionsgroup.com/2024/06/11/using-dynatrace-to-navigate-the-microservices-maze/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Aspirant - Extensions for .NET Aspire (GitHub Repo)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/aspirant-project/aspirant"&gt;https://github.com/aspirant-project/aspirant&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content:encoded>
 		</item>
