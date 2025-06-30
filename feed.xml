@@ -5,8 +5,78 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Mon, 23 Jun 2025 21:07:06 GMT</pubDate>
-		<lastBuildDate>Mon, 23 Jun 2025 21:07:06 GMT</lastBuildDate>
+		<pubDate>Mon, 30 Jun 2025 20:58:29 GMT</pubDate>
+		<lastBuildDate>Mon, 30 Jun 2025 20:58:29 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - June 29</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-29</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-29</guid>
+			<pubDate>Mon, 30 Jun 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/ShareX/ShareX?tab=readme-ov-file"&gt;ShareX/ShareX: ShareX is a free and open-source application that enables users to capture or record any area of their screen with a single keystroke. It also supports uploading images, text, and various file types to a wide range of destinations.&lt;/a&gt; by ShareX&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/apple/container"&gt;apple/container: A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon.&lt;/a&gt; by Apple&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://alexthemark.substack.com/p/direct-file-is-open-source"&gt;Direct File is Open Source!&lt;/a&gt; by Alex Mark&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/23/oss-project-lessons-learned-with-david-giard/"&gt;OSS Project Lessons Learned with David Giard&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.infoq.com/articles/decentralized-architecture-advice-process/"&gt;Decentralized Architecture Needs More Than Autonomy&lt;/a&gt; by Lindsey Tibbitts&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-12-genetic-algorithms-elitism-for-evolution-survival-of-the-fittest/"&gt;Day 12: Genetic Algorithms' Elitism for Evolution Survival of the Fittest&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/tools-used/"&gt;Steve Smith's Tools Used&lt;/a&gt; by Steve Smith&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.c-sharpcorner.com/article/health-checks-in-net-8-web-api-a-comprehensive-guide/"&gt;Health Checks in .NET 8  Web API: A Comprehensive Guide&lt;/a&gt; by Ayush Gupta&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/understanding-wolverine-aggregatehandler-workflow-martin-major-8qlnf/"&gt;Understanding Wolverine: AggregateHandler Workflow&lt;/a&gt; by Martin Major&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://isaacl.dev/gmy"&gt;Upgrade Your Application and Prepare for the Future with .NET Aspire&lt;/a&gt; by Mike Yeager&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/microsoft/CsWin32?tab=readme-ov-file"&gt;microsoft/CsWin32: A source generator to add a user-defined set of Win32 P/Invoke methods and supporting types to a C# project.&lt;/a&gt; by Microsoft&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-in-dev-container/"&gt;Exploring new .NET releases with Dev Containers&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2024/06/10/sneak-peek-of-strong-typed-identifiers-in-marten/"&gt;Sneak Peek of Strong Typed Identifiers in Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/testcontainers-best-practices-dotnet-integration-testing"&gt;Testcontainers Best Practices for .NET Integration Testing&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+ --&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://draft.io/example/example-mapping"&gt;Example Mapping&lt;/a&gt; by Gojko Adzic&lt;/p&gt;
+&lt;!-- ## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/introducing-her-executive-ascent-built-women-who-done-lori-lalonde-rlxkc/"&gt;Introducing Her Executive Ascent: Built for Women Who Are Done Waiting&lt;/a&gt; by Lori Lalonde&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.psychologytoday.com/ca/blog/well-being-is-foundational-of-leadership/202506/how-to-reinvent-meeting-culture-from-draining"&gt;How to Reinvent Meeting Culture: From Draining to Energizing&lt;/a&gt; by Jamie Shapiro Ph.D.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1955"&gt;Frictionless Development with Nicole Forsgren&lt;/a&gt; by .NET Rocks&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ashley.dev/posts/the-high-cost-of-being-low-maintenance/"&gt;The High Cost of Being Low Maintenance&lt;/a&gt; by Ashley Willis&lt;/p&gt;
+&lt;!-- ## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/introducing-the-azure-storage-connector-for-pytorch/"&gt;Introducing the Azure Storage Connector for PyTorch&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/removing-azure-resource-manager-reliance-on-azure-devops-sign-ins/"&gt;Removing Azure Resource Manager reliance on Azure DevOps sign-ins&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://spectrum.ieee.org/nist-quantum-random-number-generator"&gt;NIST's Quantum Random Number Generator Is Free to Use&lt;/a&gt; by Edd Gent&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/working-with-stacked-branches-in-git-part-2/"&gt;Working with stacked branches in git (Part 2)&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-exclude-your-windows-app-from-screen-capture-and-recall.htm"&gt;How to Exclude Your Windows App from Screen Capture and Recall&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.reuters.com/legal/litigation/anthropic-wins-key-ruling-ai-authors-copyright-lawsuit-2025-06-24/"&gt;Anthropic wins key US ruling on AI training in authors' copyright lawsuit&lt;/a&gt; by Blake Brittain&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://analyticsindiamag.com/ai-news-updates/vibe-coder-gets-legal-notice-from-docusign/"&gt;Vibe Coder Gets Legal Notice From DocuSign&lt;/a&gt; by Supreeth Koundinya&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes"&gt;Augmented Coding: Beyond the Vibes&lt;/a&gt; by Kent Beck&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.groktop.us/duolingos-ai-first-disaster-a-cautionary-tale-of-what-happens-when-you-replace-rather-than-partner/"&gt;Duolingo's $7B AI Disaster: Enterprise Lessons for AI Implementation&lt;/a&gt; by Magnus Hedemark&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/from-sheet-music-to-source-code"&gt;From sheet music to source code&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.quantamagazine.org/how-does-graph-theory-shape-our-world-20250626/"&gt;How Does Graph Theory Shape Our World?&lt;/a&gt; by Janna Levin, Steve Strogatz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.tomshardware.com/software/png-has-been-updated-for-the-first-time-in-22-years-new-spec-supports-hdr-and-animation"&gt;PNG has been updated for the first time in 22 years&lt;/a&gt; by Jowi Morale&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - June 15</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</link>
@@ -1593,30 +1663,6 @@ else
 &lt;/table&gt;
 &lt;p&gt;This example is covered in some common patterns in the proposal and only covers a part of what's possible with Type Unions (that part is &lt;em&gt;struct unions&lt;/em&gt;.) What's nice about this proposed feature is that it also considers union classes, ad hoc unions, and a limited ability to create custom unions (e.g., &lt;code&gt;ClosedAttribute&lt;/code&gt; and &lt;code&gt;UnionAttribute&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;What's also nice about this proposal is that it considers records, refs, boxing, nullability, co-/contra-variance (with ad hoc unions), exhaustiveness, nullability, equivalence, and assignability. The proposal might only do &lt;em&gt;most&lt;/em&gt; of what you'd expect, but it does what is correct and useful.&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Aspiring Links for Period Ending July 14, 2024</title>
-			<link>http://blog.peterritchie.com/posts/aspiring-links-2024-07-14</link>
-			<description>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/aspiring-links-2024-07-14</guid>
-			<pubDate>Sun, 14 Jul 2024 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/aspiring-links.png" class="img-fluid" alt="A made from chain links" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://visualstudiomagazine.com/Articles/2024/06/28/net-aspire.aspx"&gt;Visual Studio Magazine - Microsoft Making Big .NET Aspire Push, So What Is It?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/live/YXCqkJLL3XE?si=MmW-KmBtkQnXvmXi"&gt;YouTube - Learn C# with CSharpFritz: Basics of .NET Aspire - Part 1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/hTtlBlsy1WA?si=nQYJggHvNg4gNkXx"&gt;YouTube - What is Dev Time Orchestration in .NET Aspire?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/fYqnWmhR-HU?si=vQogEpoNDNbmawhc"&gt;YouTube - Meet .NET Aspire&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/qtUgntF21Uw?si=WsVnZ2UPBWPw3dN-"&gt;YouTube - What are .NET Aspire components?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/lCzQ2yQr6JE?si=b3WEiW1ZX6lYjVY0"&gt;YouTube - How to deploy .NET Aspire applications?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/_DzGe2DXrKk?si=hdIRJaoUKiJrSS6h"&gt;YouTube - What is .NET Aspire telemetry?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/DzUhBG7uKUk?si=Sto7FpG7-dG51-8n"&gt;YouTube - What are .NET Aspire service defaults?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://youtu.be/qT6AXCLrZtw?si=ADHbcJLQ9HoR3XM1"&gt;YouTube - Technology and Friends - Scott Hunter on .NET Aspire&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/live/PUCU9ZOOgQ8?si=OgYaSvjqYPDpAJMr"&gt;YouTube - Let's Learn .NET Aspire (Português)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.youtube.com/live/48CWnYfTZhk?si=cgzeQ7kiEBmvS-s_"&gt;YouTube - Let's Learn .NET: Aspire (Tiếng Việt)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.postsharp.net/aspire-caching-metalama"&gt;Metalama - Simplify Your .NET Aspire Caching With Metalama&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://jeffreyfritz.com/2024/07/adding-antivirus-to-net-aspire-systems/"&gt;Fritz on the Web - Adding Antivirus to .NET Aspire Systems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content:encoded>
 		</item>
 	</channel>
