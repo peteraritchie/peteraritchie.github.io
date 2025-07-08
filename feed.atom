@@ -4,8 +4,68 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-06-30T20:58:29Z</updated>
+	<updated>2025-07-08T16:18:07Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-6</id>
+		<title>Things That Caught My Attention Last Week - July 6</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-6" />
+		<updated>2025-07-07T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://docs.clearlydefined.io/docs/resources/faq"&gt;FAQ | ClearlyDefined Docs&lt;/a&gt; by ClearlyDefined&lt;/p&gt;
+&lt;!-- ## Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-find-public-symbols-that-can-be-internal-using-roslyn.htm"&gt;How to Find Public Symbols That Can Be Internal Using Roslyn&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2025/06/importing-json-files-into-csharp/"&gt;Importing JSON Files Into A C# Project&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.linkedin.com/posts/hemal-varambhia-a4a81822_chatgpt-translation-layer-placement-in-activity-7346669860241719296-7abf"&gt;Inspired by Alistair Cockburn and Juan Manuel Garrido de Paz's book &amp;quot;Hexagonal Architecture Explained,&amp;quot; I thought I'd converse with ChatGPT about where a DDD translation layer could live&lt;/a&gt; by Hemal Varambhia&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://sloanreview.mit.edu/article/how-leaders-fight-back-against-overwork/"&gt;How Leaders Fight Back Against Overwork&lt;/a&gt; by Melissa Swift&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://particular.net/blog/antirequirements"&gt;Using anti-requirements to find system boundaries&lt;/a&gt; by Andreas Öhlund and David Boike&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jdmeier.com/sara-ford-learning-agile/"&gt;Sara Ford on Learning Agile at Microsoft&lt;/a&gt; by JD Meier&lt;/p&gt;
+&lt;!-- ## REST/APIs
+
+## Azure
+ --&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mbrizic.com/blog/react-is-insane/"&gt;React Still Feels Insane And No One Is Talking About It&lt;/a&gt; by Mario Brizic&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://newsletter.shehackspurple.ca/c/secure-coding-guideline"&gt;Secure Coding Guideline&lt;/a&gt; by Tanya Janca&lt;/p&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://shayne.dev/blog/end-of-code/"&gt;The End of Code as We Know It&lt;/a&gt; by Shayne Sweeney&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gizmodo.com/free-lunch-is-over-for-the-ai-that-broke-the-web-2000623837"&gt;Free Lunch Is Over for the AI That Broke the Web&lt;/a&gt; by Luc Olinga&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/openai-forensic-psychiatrist"&gt;OpenAI Says It's Hired a Forensic Psychiatrist as Its Users Keep Sliding Into Mental Health Crises&lt;/a&gt; by Frank Landymore&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.aol.com/asked-chatgpt-avoid-being-replaced-180058408.html"&gt;I Asked ChatGPT How I Can Avoid Being Replaced by AI - It Gave Me 4 Great Tips&lt;/a&gt; by Nicole Spector&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://appetals.com/promptguide/"&gt;The Missing Guide to Prompt Engineering&lt;/a&gt; by Ishwar Jwa&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://metapress.com/chatgpt-vs-claude-vs-gemini-i-used-all-three-to-save-10-hours-a-week-heres-what-actually-worked/"&gt;ChatGPT vs Claude vs Gemini: I Used All Three to Save 10 Hours a Week - Here's What Actually Worked&lt;/a&gt; by Lakisha Davis&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.windowscentral.com/software-apps/microsoft-has-a-new-way-to-use-ai-in-onenote-but-a-dumb-feature-excites-me-more"&gt;Microsoft has a new way to use AI in OneNote ' but a &amp;quot;dumb&amp;quot; feature excites me more&lt;/a&gt; by Sean Endicott&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.bbc.com/news/articles/cyvm1dyp9v2o"&gt;I'm being paid to fix issues caused by AI&lt;/a&gt; by Suzanne Bearne&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+ --&gt;
+&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-a-new-ide-for-postgresql-in-vs-code-from-microsoft/4414648"&gt;Announcing a new IDE for PostgreSQL in VS Code from Microsoft&lt;/a&gt; by JoshMSFT&lt;/p&gt;
+&lt;!-- ## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://itnext.io/cs-treatment-of-void-is-not-broken-b1d44b6dd576"&gt;C's treatment of &lt;code&gt;void *&lt;/code&gt; is not broken&lt;/a&gt; by Christopher Bazley&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.sciencealert.com/a-strange-phrase-keeps-turning-up-in-scientific-papers-but-why"&gt;A Strange Phrase Keeps Turning Up in Scientific Papers, But Why?&lt;/a&gt; by Aaron J. Snoswell et al&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-29</id>
 		<title>Things That Caught My Attention Last Week - June 29</title>
@@ -1592,76 +1652,5 @@ public interface IClientRepository
 &lt;/ul&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions</id>
-		<title>What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?</title>
-		<link href="http://blog.peterritchie.com/posts/what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions" />
-		<updated>2024-08-13T00:00:00Z</updated>
-		<content>&lt;!--what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions--&gt;
-&lt;p&gt;&lt;img src="../assets/views-through-different-lenses.jpg" class="img-fluid" alt="views through different lenses" /&gt;&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://github.com/dotnet/csharplang/blob/18a527bcc1f0bdaf542d8b9a189c50068615b439/proposals/TypeUnions.md"&gt;rumor&lt;/a&gt; is that a &lt;em&gt;type union&lt;/em&gt; feature may make its way into the next version of C#. The next version of C# will be 13, and C# has been around since 2000. What do type unions mean to C#?&lt;/p&gt;
-&lt;p&gt;The concepts behind type unions have probably been around as long as programming languages. Some languages refer to them with different terms. Ada, Pascal, and Modula-2 refer to them as &lt;em&gt;variant records&lt;/em&gt; (like &lt;em&gt;variants&lt;/em&gt; in COM), Algo refers to them as &lt;em&gt;united modes&lt;/em&gt;, F#, and CORBA refer to them as discriminated unions and other languages refer to them as tagged unions (like Python and TypeScript). Some languages have a discriminator (tag) support in their enumerations feature (like Swift, Rust, and Haxe). You might also see discriminated union-&lt;em&gt;like&lt;/em&gt; support in other technologies like Swagger and OpenAPI.&lt;/p&gt;
-&lt;p&gt;If you're familiar with C/C++, you may be familiar with unions; they're similar--their data types that define the type (or a block of memory) can be one of multiple types. C/C++ unions don't have a tag or discriminator or track what the union's storage &lt;em&gt;means&lt;/em&gt;). So, the code that uses the union has to figure out how to access data in the union correctly. I.e., the code that uses a union C/C++ must have its own discriminator/tag.&lt;/p&gt;
-&lt;p&gt;C# never truly had the concept of a C/C++ union because of increased memory safety—accessing memory in many different ways wasn't considered &lt;em&gt;safe&lt;/em&gt;. You can fake C/C++ style unions in C# with &lt;code&gt;StructLayoutAttribute&lt;/code&gt; and &lt;code&gt;LayoutKind.Explicit&lt;/code&gt;. But I, for one, wouldn't recommend implementing discriminated unions that way.&lt;/p&gt;
-&lt;p&gt;There have been some quasi-discriminated union implementations out there like &lt;code&gt;Result&amp;lt;T&amp;gt;&lt;/code&gt; and &lt;code&gt;Optional&amp;lt;T&amp;gt;&lt;/code&gt;. I call these &lt;em&gt;quasi&lt;/em&gt; because they're very special-case. Most &lt;code&gt;Result&amp;lt;T&amp;gt;&lt;/code&gt; implementations are discriminated unions because of the &lt;code&gt;Status&lt;/code&gt; or &lt;code&gt;IsSuccess&lt;/code&gt; properties that allow a consumer of an instance to tell whether to access the success or the error information. &lt;code&gt;Optional&amp;lt;T&amp;gt;&lt;/code&gt; is like &lt;code&gt;Nullable&amp;lt;T&amp;gt;&lt;/code&gt; with a discriminator &lt;code&gt;HasValue&lt;/code&gt;, but more semantically aligned with an &lt;em&gt;optional value&lt;/em&gt; (that could also be nullable).&lt;/p&gt;
-&lt;h2 id="will-c-get-discriminated-unions-or-type-unions"&gt;Will C# Get &lt;em&gt;Discriminated Unions&lt;/em&gt; or &lt;em&gt;Type Unions&lt;/em&gt;?&lt;/h2&gt;
-&lt;p&gt;The proposal for C# uses &amp;quot;Type Union&amp;quot; because the discriminator isn't explicit. The union object (or, more accurately, the C# compiler) knows the instance type and allows the use of existing C# type-matching features (like &lt;code&gt;is&lt;/code&gt;). The proposed syntax for declaring a Type Union is similar to declaring a single-level inheritance hierarchy that cannot be inherited from and behaves as if it is &lt;em&gt;closed&lt;/em&gt;. In fact, BCL support for the concept will use a &lt;code&gt;ClosedAttribute&lt;/code&gt; to declare Type Unions in a Common Type System way.&lt;/p&gt;
-&lt;p&gt;Without a Type Union feature, something with a discriminator (specifically something like &lt;a href="https://blog.nimblepros.com/blogs/getting-started-with-ardalis-result/"&gt;&lt;code&gt;Result&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;, is used like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;// makes use of predefined union &amp;quot;Result&amp;lt;T&amp;gt;&amp;quot;
-public Result&amp;lt;Resource&amp;gt; GetResource(Guid id)
-{
-   var resource = _context.Resources.SingleOrDefault(e =&amp;gt; e.Id == id);
-   if(resource == null) return new Result&amp;lt;Resource&amp;gt;.NotFound;
-   return new Result&amp;lt;Resource&amp;gt;(resource);
-}
-
-//... 
-
-var result = GetResource(id);
-if(result.Status == ResultStatus.Ok)
-{
-  result.Value.Description = newDescription;
-  UpdateResource(result.Value);
-}
-else
-{
-  CreateResource(new Resource(id){Description = newDescription};
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With the proposed C# syntax, you'd declare a type union something like this, and for the point of comparison, I'll do one possible, simplified Type Union implementation of &lt;code&gt;Result&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public union struct Result&amp;lt;TValue&amp;gt;
-{
-  Success(TValue value);
-  Failure(ErrorCode errorCode);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As a &lt;em&gt;Type Union&lt;/em&gt;, this declares a union &lt;code&gt;Result&lt;/code&gt; and member types &lt;code&gt;Success&lt;/code&gt; and &lt;code&gt;Failure&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Creating an instance is similar to:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;Result&amp;lt;Resource&amp;gt; result = Succes(resource);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;Result&amp;lt;Resource&amp;gt; result = Failure(ErrorCode.NotFound);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Instantiating one of the types and assigning it to an instance of the union—much like assigning a subclass to an instance of the base class.&lt;/p&gt;
-&lt;p&gt;And use the instance like:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;if(result is Failure f) { /*...*/ }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;NOTE&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;These examples were written without access to the feature in the language. Based solely on documentation, expect syntax errors when the feature is released.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;This example is covered in some common patterns in the proposal and only covers a part of what's possible with Type Unions (that part is &lt;em&gt;struct unions&lt;/em&gt;.) What's nice about this proposed feature is that it also considers union classes, ad hoc unions, and a limited ability to create custom unions (e.g., &lt;code&gt;ClosedAttribute&lt;/code&gt; and &lt;code&gt;UnionAttribute&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;What's also nice about this proposal is that it considers records, refs, boxing, nullability, co-/contra-variance (with ad hoc unions), exhaustiveness, nullability, equivalence, and assignability. The proposal might only do &lt;em&gt;most&lt;/em&gt; of what you'd expect, but it does what is correct and useful.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/views-through-different-lenses.jpg" class="img-fluid" alt="views through different lenses"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
