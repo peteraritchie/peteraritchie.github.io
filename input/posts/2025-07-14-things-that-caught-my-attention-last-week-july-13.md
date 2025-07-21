@@ -26,7 +26,7 @@ tags: ['Random']
 
 [The Ultimate .NET 2025 Roadmap](https://antondevtips.com/roadmap/dotnet?utm_source=linkedin&utm_medium=social&utm_campaign=dotnet-roadmap-2025) by Anton Martyniuk
 
-[Critter Stack Futures for the rest of 2025 ΓÇô The Shade Tree Developer](https://jeremydmiller.com/2025/07/11/critter-stack-futures-for-the-rest-of-2025/) by Jeremy D. Miller
+[Critter Stack Futures for the rest of 2025](https://jeremydmiller.com/2025/07/11/critter-stack-futures-for-the-rest-of-2025/) by Jeremy D. Miller
 
 [Vibe Coding a BINGO Caller](https://sadukie.com/2025/07/11/vibe-coding-bingo.html) by Sarah Dutkiewicz
 
