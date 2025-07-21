@@ -12,10 +12,10 @@ tags: ['Random']
 
 [How I Prioritize OSS Bugs](https://jeremydmiller.com/2025/07/20/how-i-prioritize-oss-bugs/) by Jeremy D. Miller
 
-## Architecture
+<!-- ## Architecture
 
 ## Presenting
-
+ -->
 ## .NET
 
 [Microsoft Resiliency Extensions and Polly Part 1 - Building Your First Resilience Pipeline](https://blog.nimblepros.com/blogs/building-your-first-resilience-pipeline/) by Jeff Zuerlein
@@ -32,12 +32,12 @@ tags: ['Random']
 
 [EventStorming: enhancing knowledge transfer in complex domains](https://www.osedea.com/insight/how-eventstorming-facilitated-knowledge-transfer-and-discovery) by Alizée Gottardo
 
-## DevOps
+<!-- ## DevOps
 
 ## Software Design
 
 ## Mobile
-
+ -->
 ## Agile/Work Life
 
 [Microsoft says AI saved it $500 million - despite it also confirming massive job cuts](https://www.techradar.com/pro/microsoft-says-ai-saved-it-usd500-million-despite-it-also-confirming-massive-job-cuts) by Craig Hale
@@ -52,32 +52,32 @@ tags: ['Random']
 
 [Why ownership is the key to successful APIs](https://architecturalbytes.substack.com/p/why-ownership-is-the-key-to-successful?subscribe_prompt=free) by Daniel Kocot
 
-[Focusing on Capabilities Is a Win\](https://mamund.substack.com/p/focusing-on-capabilities-is-a-win) by Mike Amundsen
+[Focusing on Capabilities Is a Win](https://mamund.substack.com/p/focusing-on-capabilities-is-a-win) by Mike Amundsen
 
 ## Azure
 
 [Build reliable Go applications: Configuring Azure Cosmos DB Go SDK for real-world scenarios](https://devblogs.microsoft.com/cosmosdb/build-reliable-go-applications-configuring-azure-cosmos-db-go-sdk-for-real-world-scenarios/) by Azure Cosmos DB Blog
 
-## Software Development
-
+<!-- ## Software Development
+ -->
 ## Windows
 
 [You can use a file as a synchronization object, too](https://devblogs.microsoft.com/oldnewthing/20140905-00/?p=63) by Raymond Chen
 
-## Security
-
+<!-- ## Security
+ -->
 ## AI
 
 [AI coding tools can slow down seasoned developers by 19%](https://www.infoworld.com/article/4020931/ai-coding-tools-can-slow-down-seasoned-developers-by-19.html) by Gyana Swain
 
-## Social Media
+<!-- ## Social Media
 
 ## Online Tools
 
 ## Databases
 
 ## Cloud
-
+ -->
 ## Computing
 
 [The case of the invalid instruction exception on an instruction that should never have executed](https://devblogs.microsoft.com/oldnewthing/20250718-00/?p=111390) by Raymond Chen
