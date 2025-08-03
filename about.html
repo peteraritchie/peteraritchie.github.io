@@ -84,8 +84,75 @@
                         <div class="row">
                                 <div id="content" class="col-md-12">
                                         <h3 id="more-information">More Information</h3>
-<p>Peter Ritchie has been in the software industry for 25 years. Before Quicken Loans, Peter operated a software consulting company specializing in distributed applications and agile software development. Peter is a book author, open-source author, international speaker, blogger, and Microsoft MVP in C#.</p>
+<p>Peter has over 35 years of experience designing, developing, and delivering software solutions for enterprise customers. Peter is also a <a href="#books">book author</a>, <a href="#github-repositories">open-source author</a>, <a href="#speaking-engagements">international speaker</a>, blogger, and has been awarded Microsoft MVP in C#.</p>
 <p>Peter has spoken internationally on a variety of topics including unit test design and management, asynchronous programming, advanced .NET language features and syntax, concurrent and parallel programming and distributed design.</p>
+<h3 id="services">Services</h3>
+<ul>
+<li>Codebase assessment and recommendations
+<ul>
+<li>Leverage Peter's 35 years experience working with dozens of enterprises to expose key areas of improvement and modernization recommendations.</li>
+</ul>
+</li>
+<li>Domain analysis
+<ul>
+<li>Leverage Peter's experience analyzing domains to inventory vocabulary, entities, events, actions/commands, processes, and rules with an eye towards comprehensive and maintainable software design.</li>
+</ul>
+</li>
+<li>Custom architecture
+<ul>
+<li>Leverage Peter's experience working with enterprise distributed cloud applications to create/review system architectures geared towards <strong>implementation and long-term maintenance</strong> using <strong>tried and true patterns and practices</strong>.</li>
+</ul>
+</li>
+<li>Custom design
+<ul>
+<li>Leverage Peter's experience designing software solutions, from architecture to class-level design.</li>
+</ul>
+</li>
+<li>Application development
+<ul>
+<li>Leverage Peter's experience developing full stack applications.</li>
+</ul>
+</li>
+<li>Agile team mentoring
+<ul>
+<li>Leverage Peter's experience working with dozens of agile teams to guide teams on their agile journey: improving how they collaborate and iteratively deliver value.</li>
+</ul>
+</li>
+<li>Agile team building
+<ul>
+<li>Leverage Peter's experience working with dozens of agile teams to help build out new agile teams from elaborating team mission/charter to evaluating and organizing team members.</li>
+</ul>
+</li>
+<li>Custom code analyzers and fixes (for example <a href="https://marketplace.visualstudio.com/items?itemName=peterritchie.pec1">PRI Essentials - CodeAnalyzers</a> and <a href="https://github.com/peteraritchie/Messaging.Patterns/tree/master/PRI.Messaging.Patterns.Analyzer">Messaging.Patterns</a>)</li>
+<li>Development Team Leadership
+<ul>
+<li>Leverage Peter's experience working with and leading software development teams.</li>
+</ul>
+</li>
+<li>Defining and establishing team development practices
+<ul>
+<li>Leverage Peter's experience with what has and hasn't worked in a variety of enterprises to establish or improve development practices.</li>
+</ul>
+</li>
+<li>Custom training
+<ul>
+<li>Leverage Peter's experience delivering software solutions to improve your team with custom training on topics such as:
+<ul>
+<li>Agile methodologies</li>
+<li>Architectural Recommended Practices</li>
+<li>Being successful with ASP.NET</li>
+<li>Being successful with APIs</li>
+<li>Being successful with Domain-Driven Design</li>
+<li>Being successful with Clean Architecture</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="patents">Patents</h3>
+<ul>
+<li><a href="https://patents.google.com/patent/US10042949B1/en">Extracting data sets from external data stores</a></li>
+</ul>
 <h3 id="books">Books</h3>
 <ul>
 <li><a href="http://bit.ly/c13trs">Refactoring with Microsoft Visual Studio 2010</a></li>
@@ -99,7 +166,6 @@
 <li><a href="https://msdn.microsoft.com/en-us/library/dn169621.aspx">Enterprise Library 6</a></li>
 <li><a href="http://shop.oreilly.com/product/0636920027812.do">Head First C#</a></li>
 <li><a href="https://www.pearsonhighered.com/program/Magennis-LINQ-to-Objects-Using-C-4-0-Using-and-Extending-LINQ-to-Objects-and-Parallel-LINQ-PLINQ/PGM263943.html">LINQ to Objects</a></li>
-<li></li>
 </ul>
 <h3 id="articles">Articles</h3>
 <ul>
@@ -108,7 +174,7 @@
 <h3 id="podcasts">Podcasts</h3>
 <ul>
 <li><a href="https://channel9.msdn.com/Blogs/Technology-and-Friends/tf250">Technology and Friends Episode 250</a></li>
-<li><a href="">Deep Fried Bytes</a></li>
+<li>Deep Fried Bytes</li>
 </ul>
 <h3 id="community-profiles">Community Profiles</h3>
 <ul>
@@ -133,11 +199,25 @@
 <li>Prairie DevCon</li>
 <li>Microsoft TechDays 2008 (Track co-chair)</li>
 </ul>
-<h3 id="github-repositories">Github Repositories</h3>
-<p>{% for repository in site.github.public_repositories %}</p>
+<h3 id="nuget-packages">NuGet Packages</h3>
 <ul>
-<li>[{{ repository.name }}]({{ repository.html_url }})
-{% endfor %}</li>
+<li><a href="https://www.nuget.org/packages/PRI.ConsoleApplicationBuilder">Pri.ConsoleApplicationBuilder</a> - A small framework that enables dependency injection in console applications, simply.</li>
+<li><a href="https://www.nuget.org/packages/PRI.ConsoleApplicationBuilder.Templates">Pri.ConsoleApplicationBuilder.Templates</a> a <code>dotnet new</code> template for <a href="https://www.nuget.org/packages/PRI.ConsoleApplicationBuilder">PRI.ConsoleApplicationBuilder</a></li>
+<li><a href="https://www.nuget.org/packages/PRI.CommandLineExtensions">Pri.CommandLineExtensions</a> - A small framework that builds off of <a href="https://www.nuget.org/packages/PRI.ConsoleApplicationBuilder">PRI.ConsoleApplicationBuilder</a> to make supporting command line arguments easier.</li>
+<li><a href="https://www.nuget.org/packages/Pri.LongPath">Pri.LongPath</a> - a small library offering <em>drop-in</em> support for working with files with &quot;long paths&quot; (&gt;256 characters)</li>
+<li><a href="https://www.nuget.org/packages/PRI.Messaging.Patterns">Pri.Messaging.Patterns</a> - a small framework of messaging patterns for use with messaging abstractions from <a href="https://www.nuget.org/packages/PRI.Messaging.Primitives">PRI.Messaging.Primitives</a></li>
+</ul>
+<h3 id="tools-extensions">Tools &amp; Extensions</h3>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=peterritchie.pec1">PRI Essentials - CodeAnalyzers</a> - .NET Code Analyzers and Fixers for method naming, ASP.NET recommended practices, and other code fixes.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=peterritchie.ofwe1">PRI Essentials - Open Files With Errors</a> - A Visual Studio Extension to add the option to open all the files listed in the Error List pane. [<a href="https://github.com/peteraritchie/EffectiveExtensions">src</a>]</li>
+</ul>
+<h3 id="github-repositories">Github Repositories</h3>
+<ul>
+<li><a href="https://github.com/peteraritchie/ConsoleApplicationBuilder">ConsoleApplicationBuilder</a> - A small framework that enables dependency injection in console applications, simply.</li>
+<li><a href="https://github.com/peteraritchie/LongPath">LongPath</a> - a small library offering <em>drop-in</em> support for working with files with &quot;long paths&quot; (&gt;256 characters)</li>
+<li><a href="https://github.com/peteraritchie/Messaging.Patterns">Messaging.Patterns</a></li>
+<li><a href="https://github.com/peteraritchie/Messaging.Primitives">Messaging.Primitives</a></li>
 </ul>
 
                                 </div>
