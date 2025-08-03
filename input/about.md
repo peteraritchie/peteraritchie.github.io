@@ -10,6 +10,11 @@ Peter has over 35 years of experience designing, developing, and delivering soft
 
 Peter has spoken internationally on a variety of topics including unit test design and management, asynchronous programming, advanced .NET language features and syntax, concurrent and parallel programming and distributed design.
 
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+
 ### Services
 
 * Codebase assessment and recommendations
