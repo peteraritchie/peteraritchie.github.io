@@ -4,8 +4,67 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-08-03T20:28:10Z</updated>
+	<updated>2025-08-04T19:25:31Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-3</id>
+		<title>Things That Caught My Attention Last Week - August 4</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-3" />
+		<updated>2025-08-04T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scaling-multi-tenant-go-applications-choosing-the-right-database-partitioning-approach/"&gt;Scaling multi-tenant Go applications: Choosing the right database partitioning approach&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.dennisdoomen.com/2025/06/library-starter-kit.html"&gt;Kickstarting your libraries with the .NET Library Starter Kit&lt;/a&gt; by Dennis Doomen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.jetbrains.com/dotnet/2025/07/15/dotinsights-july-2025/"&gt;dotInsights | July 2025 | The .NET Tools Blog&lt;/a&gt; by Rachel Appel&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-18-mapping-cities-visualizing-tsp-evolution-in-net/"&gt;Day 18: Mapping Cities: Visualizing TSP Evolution in .NET&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-5-running-one-off-dotnet-tools-with-dnx/"&gt;Running one-off .NET tools with dnx&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/aspire-a-modern-devops-toolchain-fa5aac019d64"&gt;Aspire: A Modern DevOps Toolchain&lt;/a&gt; by David Fowler&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/07/27/metadata-tracking-improvements-in-marten/"&gt;Metadata Tracking Improvements in Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/how-to-keep-your-data-boundaries-intact-in-a-modular-monolith"&gt;How to Keep Your Data Boundaries Intact in a Modular Monolith&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://safedelusion.com/"&gt;SAFe Delusion&lt;/a&gt; by Naked Agility&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250728-00/?p=111415"&gt;API design note: Don't make up multiple names for the same thing&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/top-5-best-api-docs-tools/"&gt;The 5 Best API Docs Tools in 2025&lt;/a&gt; by Phil Sturgeon, Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-july-2025/"&gt;Azure SDK Release (July 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250801-00/?p=111427"&gt;Two related questions about keeping track of PIDs of IPC clients&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.com/2025/07/25/opinion_column_vibe_coding/"&gt;Vibe coding might cause problems down the road&lt;/a&gt; by Steven J. Vaughan-Nichols&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://preslav.me/2025/07/26/claude-code-token-burn-slow-down-hooks/"&gt;Hitting the Brakes on Claude Code&lt;/a&gt; by Preslav Rachev&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+ --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-27</id>
 		<title>Things That Caught My Attention Last Week - July 27</title>
@@ -1272,55 +1331,5 @@ services.AddScoped&amp;lt;IAccountTranslator, AccountTranslator&amp;gt;();
 &lt;/table&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/naming-things--generic-actions</id>
-		<title>Naming things: Actions</title>
-		<link href="http://blog.peterritchie.com/posts/naming-things--generic-actions" />
-		<updated>2024-10-24T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/overwhelming-possibilities.png" class="img-fluid" alt="Overwhelming Possibilities" /&gt;&lt;/p&gt;
-&lt;p&gt;A few years ago, I decided to look into &lt;em&gt;why&lt;/em&gt; naming is hard. That spawned a conference talk that I've done several times. Part of what I present in that talk is my observations of working with many teams regarding establishing names for generic actions applicable in their unique domain.&lt;/p&gt;
-&lt;h2 id="actions-activities-operations-events-occurrences-oh-my"&gt;Actions, Activities, Operations, Events, Occurrences, Oh My&lt;/h2&gt;
-&lt;p&gt;Generic actions have many synonyms. Without considering different words to mean the same thing, the names of things in the code related to generic actions added a noticeable cognitive load to the initial understanding of the domain. Let's look at what I mean by &lt;em&gt;generic actions&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In a domain, things &lt;em&gt;happen&lt;/em&gt; to domain objects. Many of these actions can be considered &amp;quot;updates,&amp;quot; but it's more fine-grained. For example, here's a table of some verbs that could mean some sort of &lt;em&gt;update&lt;/em&gt; in most domains:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-text"&gt;Add     Create   Generate  Build   Construct  Initialize  Make    Establish
-Update  Change   Modify    Mutate  Alter      Revise      Adjust  Transform
-Delete  Destroy  Remove    Erase   Move       Release     Pull    Withdraw
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It's extremely unlikely that there are 24 distinct mutating actions in any domain. Most domains work on a CRUD model where, besides Read, there are &lt;code&gt;Create&lt;/code&gt;, &lt;code&gt;Update&lt;/code&gt;, and &lt;code&gt;Delete&lt;/code&gt;. Unfortunately, three mutating actions are typically too coarse-grained and can be unrepresentative of the domain language.&lt;/p&gt;
-&lt;p&gt;Spending a short time creating a happy medium is valuable: making a brief list of the terms used for the generic domain actions. The list should be imperative verbs that can be (or are) transitive (that is, they can refer to an object. e.g., &amp;quot;arrive&amp;quot; is a verb that cannot be transitive).&lt;/p&gt;
-&lt;p&gt;Once there is agreement on the generic actions that apply to the domain, establishing a similar list of events further increases value. That list should be the action verbs in past participle form. For example, if &amp;quot;create&amp;quot; is an action in the domain, then the event that describes it would be the past participle form of &amp;quot;create&amp;quot;: &amp;quot;created.&amp;quot;&lt;/p&gt;
-&lt;h2 id="example"&gt;Example&lt;/h2&gt;
-&lt;p&gt;Each domain is unique, so make sure these terms work for yours.&lt;/p&gt;
-&lt;h3 id="actions"&gt;Actions&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Create&lt;/code&gt;&lt;/strong&gt; - to bring something into existence. Contrast with Add. See also &lt;code&gt;Destroy&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Add&lt;/code&gt;&lt;/strong&gt; - to add something (already created) to a container or collection. See also &lt;code&gt;Remove&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Update&lt;/code&gt;&lt;/strong&gt; - to change the value of one or properties of an object. Contrast with &lt;code&gt;Change&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Change&lt;/code&gt;&lt;/strong&gt; - to replace an entire instance with another instance.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Delete&lt;/code&gt;&lt;/strong&gt; - to remove access to something in some context. Contrast with &lt;code&gt;Destroy&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Destroy&lt;/code&gt;&lt;/strong&gt; - to eliminate something from existence, the opposite of Create. Contrast with &lt;code&gt;Delete&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Remove&lt;/code&gt;&lt;/strong&gt; - to remove something from a container or collection, the opposite of Add. Contrast with &lt;code&gt;Delete&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Modify&lt;/code&gt;&lt;/strong&gt; - to modify the structure or schema of something. Contrast with &lt;code&gt;Update&lt;/code&gt; and &lt;code&gt;Change&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This list should be a stretch for most domains. Many domains don't have a concept of &lt;em&gt;modifying&lt;/em&gt; schema or &lt;em&gt;changing&lt;/em&gt; instances. Further still, I have found that most domains either &lt;code&gt;Delete&lt;/code&gt; or &lt;code&gt;Destroy&lt;/code&gt; data. This leaves &lt;code&gt;Create&lt;/code&gt;, &lt;code&gt;Delete&lt;/code&gt;, &lt;code&gt;Add&lt;/code&gt;, &lt;code&gt;Remove&lt;/code&gt;, and &lt;code&gt;Update&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Remember that this example list is designed to be generic--actions not likely to be domain-specific. In your ubiquitous language, you will still have other terms to refer to domain-specific actions. e.g., you may &lt;code&gt;Correct&lt;/code&gt; an Address in the domain to signify an &lt;code&gt;Update&lt;/code&gt; or &lt;code&gt;Change&lt;/code&gt; to an Address to differentiate it from a &lt;code&gt;Move&lt;/code&gt; concept. Or a domain might have a &lt;code&gt;Restore&lt;/code&gt; behavior as a specialized type of &lt;code&gt;Update&lt;/code&gt; or &lt;code&gt;Change&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;I recommend establishing a similar list of event names that is effectively the same list of verbs for the actions but in past participle form:&lt;/p&gt;
-&lt;h3 id="events"&gt;Events&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Created&lt;/code&gt;&lt;/strong&gt; - something was brought into existence. Contrast with &lt;code&gt;Added&lt;/code&gt;. See also &lt;code&gt;Destroyed&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Added&lt;/code&gt;&lt;/strong&gt; - something (already created) was added to a container or collection. See also &lt;code&gt;Removed&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Updated&lt;/code&gt;&lt;/strong&gt; - the value of one or properties of an object was changed. Contrast with &lt;code&gt;Changed&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Changed&lt;/code&gt;&lt;/strong&gt; - an entire instance was replaced with another instance.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Deleted&lt;/code&gt;&lt;/strong&gt; - access to something was removed in some context. Contrast with &lt;code&gt;Destroyed&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Destroyed&lt;/code&gt;&lt;/strong&gt; - something was eliminated from existence, the opposite of &lt;code&gt;Created&lt;/code&gt;. Contrast with &lt;code&gt;Deleted&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Removed&lt;/code&gt;&lt;/strong&gt; - something was removed from a container or collection, the opposite of &lt;code&gt;Added&lt;/code&gt;. Contrast with &lt;code&gt;Deleted&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;Modified&lt;/code&gt;&lt;/strong&gt; - the structure or schema of something was modified. Contrast with &lt;code&gt;Updated&lt;/code&gt; and &lt;code&gt;Changed&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This list of events could be similarly optimized as &lt;code&gt;Created&lt;/code&gt;, &lt;code&gt;Deleted&lt;/code&gt;, &lt;code&gt;Added&lt;/code&gt;, &lt;code&gt;Removed&lt;/code&gt;, and &lt;code&gt;Updated&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;My experience has been that establishing and communicating lists like these work well in avoiding ambiguity and establishing clarity. Most domains are complex, but clarifying the names of generic actions can make a noticeable difference in understandability and approachability. I've even found that this level of attention to naming makes the code base more agile.&lt;/p&gt;
-&lt;p&gt;In the comments, I'd love to hear what generic actions apply to your domain if these don't apply.&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/overwhelming-possibilities.png" class="img-fluid" alt="Overwhelming Possibilities"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
