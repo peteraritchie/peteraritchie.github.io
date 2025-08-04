@@ -76,17 +76,16 @@ Peter has spoken internationally on a variety of topics including unit test desi
 * [Twitter](http://twitter.com/peterritchie)
 * [Facebook](http://facebook.com/peter-ritchie)
 
-### Speaking Engagements
+### Past Speaking Engagements
+* Prairie DevCon
 * KCDC
 * Music City Code
-* Detroit.Code
-#### Past
-* TechEd
-* CodeMash
 * Desert Code Camp
+* CodeMash
+* Detroit.Code
+* TechEd
 * Ottawa Code Camp
 * DevTeach
-* Prairie DevCon
 * Microsoft TechDays 2008 (Track co-chair)
 
 ### NuGet Packages
