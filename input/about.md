@@ -107,3 +107,6 @@ Peter has spoken internationally on a variety of topics including unit test desi
 * [LongPath](https://github.com/peteraritchie/LongPath) - a small library offering _drop-in_ support for working with files with "long paths" (>256 characters)
 * [Messaging.Patterns](https://github.com/peteraritchie/Messaging.Patterns)
 * [Messaging.Primitives](https://github.com/peteraritchie/Messaging.Primitives)
+
+> [!TIP]
+> A tip.
