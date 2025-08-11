@@ -4,8 +4,66 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-08-08T20:30:28Z</updated>
+	<updated>2025-08-11T19:24:34Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10</id>
+		<title>Things That Caught My Attention Last Week - August 11</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10" />
+		<updated>2025-08-11T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://bpbonline.com/products/introduction-to-net-aspire?utm_source=blog.peterritchie.com"&gt;Introduction to .NET Aspire&lt;/a&gt; (book) by Naga Santhosh Reddy Vootukuri, Tommaso Stocchi&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://victorfrye.com/blog/posts/aspire-roadmap-2025?utm_source=blog.peterritchie.com"&gt;Aspire Roadmap 2025: Code-first DevOps, polyglot, and AI&lt;/a&gt; by  Victor Frye&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ndepend.com/c-14-extension-members-also-known-as-extension-everything/?utm_source=blog.peterritchie.com"&gt;C# 14 Extension Members: Also Known as Extension Everything&lt;/a&gt; by Patrick Smacchia&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-20-constraint-handling-in-fitness-functions-penalizing-bad-solutions/?utm_source=blog.peterritchie.com"&gt;Day 20: Constraint Handling in Fitness Functions: Penalizing Bad Solutions&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-august-2025-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework August 2025 servicing releases updates&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-6-passkey-support-for-aspnetcore-identity/?utm_source=blog.peterritchie.com"&gt;Passkey support for ASP.NET Core identity&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://timharford.com/2025/05/the-value-of-institutional-memory/?utm_source=blog.peterritchie.com"&gt;The value of institutional memory&lt;/a&gt; by Tim Harford&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/goodbye-apiary-io/?utm_source=blog.peterritchie.com"&gt;Goodbye Apiary.io, You'll Be Missed&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-5-most-common-rest-api-design-mistakes-and-how-to-avoid-them?utm_source=blog.peterritchie.com"&gt;The 5 Most Common REST API Design Mistakes (and How to Avoid Them)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scalable-ai-with-azure-cosmos-db-video-series/?utm_source=blog.peterritchie.com"&gt;Scalable AI with Azure Cosmos DB - Video Series&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/automate-your-open-source-dependency-scanning-with-advanced-security/?utm_source=blog.peterritchie.com"&gt;Automate your open-source dependency scanning with Advanced Security&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.windowslatest.com/2025/08/08/download-windows-10-iso-version-22h2-before-end-of-support/?utm_source=blog.peterritchie.com"&gt;Download Windows 10 ISO files, save a copy before end of support&lt;/a&gt; by Abhijith M B&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.wired.com/story/openais-gpt-5-is-here/?utm_source=blog.peterritchie.com"&gt;OpenAI Finally Launched GPT-5. Here's Everything You Need to Know&lt;/a&gt; by Kylie Robison&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.404media.co/more-than-130-000-claude-grok-chatgpt-and-other-llm-chats-readable-on-archive-org/?utm_source=blog.peterritchie.com"&gt;More than 130,000 Claude, Grok, ChatGPT, and Other LLM Chats Readable on Archive.org&lt;/a&gt; by Joseph Cox&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.commodore.net/?utm_source=blog.peterritchie.com"&gt;Commodore&lt;/a&gt; by Commodore&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250808-00/?p=111447?utm_source=blog.peterritchie.com"&gt;Under what conditions could a Read File or Write File fail to transfer all of the bytes, and how do I detect that?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Podcasts --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-3</id>
 		<title>Things That Caught My Attention Last Week - August 4</title>
@@ -1180,156 +1238,5 @@ internal sealed class ToDoAdapter(ILogger&amp;lt;ToDoAdapter&amp;gt; logger, Htt
 &lt;p&gt;I'd love to hear your feedback, good or bad. I've modeled &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; as closely as possible to &lt;code&gt;WebApplicationBuilder&lt;/code&gt; and &lt;code&gt;HostApplicationBuilder&lt;/code&gt; so it follows their conventions, and usage should feel natural. But I'm open to suggestions on how to improve it. You can log questions and issues on &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/announcing-ConsoleApplicationBuilder.png" class="img-fluid" alt="Configurable Console Application"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly</id>
-		<title>Working With DTO Auto Translators -- Mapperly</title>
-		<link href="http://blog.peterritchie.com/posts/working-with-dto-auto-translators--mapperly" />
-		<updated>2024-11-07T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation" /&gt;&lt;/p&gt;
-&lt;!-- Mapping/Translation series intro boilerplate --&gt;
-&lt;p&gt;Modern software applications heavily rely on external services, making data transfer a crucial aspect of application functionality. Invariably, data transfer involves translating an internal representation of information to data compatible with a particular communication channel. High-level programming languages empower programmers to model abstractions in high-level types independent of lower-level implementation details. This internal representation of data is sometimes called &lt;em&gt;abstract syntax&lt;/em&gt;, which is purposely devoid of the specifics (&lt;em&gt;concrete syntax&lt;/em&gt;) required by the channel and, or the receiver. Translation from one syntax to another must first map source data elements to target data elements. That mapping includes the necessary translation method/function.&lt;/p&gt;
-&lt;!-- Data Transfer Object boilerplate pull quote/box copy --&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Data Transfer Objects&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Defining concrete syntax in high-level languages is so essential that a design pattern is devoted to it. The Data Transfer Object&lt;sup&gt;[&lt;a href="https://amzn.to/3SR8c73"&gt;ppoe&lt;/a&gt;]&lt;/sup&gt; design pattern describes declaring high-level types to describe aspects of concrete syntax.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;This installment details the mapping and translation of Data Transfer Objects with a package named &lt;a href="https://github.com/riok/mapperly"&gt;&lt;code&gt;Mapperly&lt;/code&gt;&lt;/a&gt; (&lt;a href="https://www.nuget.org/packages/Riok.Mapperly/"&gt;Riok.Mapperly&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Mapperly accomplishes translation by being a .NET Source Generator, meaning the translation code is generated and exists when your application is compiled. The translation code, therefore, does not need to jump through a bunch of hoops by evaluating expressions and dynamically generating types and methods. Being a Source Generator makes Mapperly pleasantly different from other mappers like AutoMapper and Mapster. You have to declare the intent to translate from one type to another by declaring a partial method (in a partial class decorated with the &lt;code&gt;MapperAttribute&lt;/code&gt;) that tells Mapperly what the source and destination types are (the method that returns the &lt;em&gt;destination&lt;/em&gt; type and accepts the &lt;em&gt;source&lt;/em&gt; type as an argument.) The name of the class method is up to you. For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
-public partial class AccountTranslator
-{
-	public partial AccountDto AccountToAccountDto(Account account);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Mapperly determines how to translate each property based on their names and types (the default &lt;em&gt;convention&lt;/em&gt;). In our simple case, it would generate a method similar to:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;{
-    public partial class AccountTranslator
-    {
-        [global::System.CodeDom.Compiler.GeneratedCode(&amp;quot;Riok.Mapperly&amp;quot;, &amp;quot;4.1.0.0&amp;quot;)]
-        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
-        {
-            var target = new global::MapperlyTests.Application.AccountDto();
-            target.Id = account.Id;
-            target.Name = account.Name;
-            target.CreationDate = account.CreationDate;
-            return target;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Mapperly supports immutable record types, so if you wanted to use &lt;code&gt;record&lt;/code&gt; with &lt;code&gt;AccountDto&lt;/code&gt; like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public record AccountDto(Guid Id, DateOnly CreationDate, string Name);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And with those immutable record types Mapperly will generate code that passes arguments to the constructor:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;        [global::System.CodeDom.Compiler.GeneratedCode(&amp;quot;Riok.Mapperly&amp;quot;, &amp;quot;4.1.0.0&amp;quot;)]
-        public partial global::MapperlyTests.Application.AccountDto AccountToAccountDto(global::MapperlyTests.Domain.Account account)
-        {
-            var target = new global::MapperlyTests.Application.AccountDto(account.Id, account.CreationDate, account.Name);
-            return target;
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Say goodbye to &lt;code&gt;ConstructUsing&lt;/code&gt; (as well as &lt;code&gt;ForMember&lt;/code&gt;, et al.)&lt;/p&gt;
-&lt;h2 id="mapping-by-convention"&gt;Mapping by Convention&lt;/h2&gt;
-&lt;p&gt;The raison d'etre of mapping/translation frameworks is to make translating one data type to another as simple as possible. A key feature of these frameworks is to map by convention, which automatically maps fields or properties based on criteria like name and data type. As we can see from the generated code above, Mapperly, by convention, figures out the source and target properties to translate. What's nice about Mapperly is that you can see the results of applying that convention by looking at the generated code (Ctrl-click the &lt;code&gt;partial&lt;/code&gt; method name to go to the generated code.)&lt;/p&gt;
-&lt;h2 id="custom-mapping"&gt;Custom Mapping&lt;/h2&gt;
-&lt;p&gt;When we start (greenfield) development, our DTOs are usually closely aligned with our domain objects, so by-convention mapping is our friend. However, an important reason for having two abstractions is that they can evolve independently. Eventually, as we gain a better understanding of the domain or clients of the communication channel, we will need to make changes that cause our DTO and Domain Objects to diverge. We can manage that divergence by extending the by-convention mapping to include custom mapping on a per-property basis. Mapperly supports this through members of the &lt;code&gt;Mapper&lt;/code&gt;-decorated class.&lt;/p&gt;
-&lt;p&gt;For example, we've gained a better understanding of the domain, and an Account doesn't necessarily have a &amp;quot;name&amp;quot; but has an associated account holder with a given and family name. That understanding may make its way into the domain like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Account(Guid id, DateOnly creationDate, string accountHolderGivenName, string accountHolderFamilyName)
-{
-	public Guid Id { get; } = id;
-	public string AccountHolderGivenName { get; private set; } = accountHolderGivenName;
-	public string AccountHolderFamilyName { get; private set; } = accountHolderFamilyName;
-	public DateOnly CreationDate { get; } = creationDate;
-
-	public void ChangeName(string accountHolderGivenName, string accountHolderFamilyName)
-	{
-		AccountHolderGivenName = accountHolderGivenName;
-		AccountHolderFamilyName = accountHolderFamilyName;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Receivers of our &lt;code&gt;AccountDto&lt;/code&gt; might be unable to accommodate that change immediately, so we may deal with that by mapping properties differently. Instead of including &lt;code&gt;FamilyName&lt;/code&gt; and &lt;code&gt;GivenName&lt;/code&gt; in this version of &lt;code&gt;AccountDto&lt;/code&gt;, we may concatenate the given and family name and assign it to &lt;code&gt;AccountDto.Name&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;You can configure this type of two properties to one property conversion with the &lt;code&gt;MapPropertyFromSource&lt;/code&gt; attribute. More than just the name of the two properties is needed for Mapperly to automatically figure out what to do (concatenate, concatenate with delimiter, etc.). So, we use &lt;code&gt;MapPropertyFromSource&lt;/code&gt; to point to a method that takes the source type and returns an instance of a type assignable to the destination property.  In this example, a &lt;code&gt;MapGivenFamilyNames&lt;/code&gt; method:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
-public partial class AccountTranslator
-	: IAccountTranslator
-{
-	[MapPropertyFromSource(target: nameof(AccountDto.Name), Use = nameof(MapGivenFamilyNames))]
-	public partial AccountDto AccountToAccountDto(Account account);
-	private string MapGivenFamilyNames(Account account)
-	{
-		return account.AccountHolderGivenName + ' ' + account.AccountHolderFamilyName;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Mapperly supports arrays of strings for &lt;code&gt;target&lt;/code&gt; so you can map to nested properties of properties.&lt;/p&gt;
-&lt;p&gt;Mapperly also supports property-to-property mapping of properties that a simple matching strategy wouldn't match.  Given the same client application constraints and the domain understanding uncovered that the &lt;code&gt;Name&lt;/code&gt; property doesn't fit in the ubiquitous language but &lt;code&gt;FullName&lt;/code&gt; does, we would use &lt;code&gt;MapPropertyAttribute&lt;/code&gt; to tell Mapperly how to assign the &lt;code&gt;AccountDto.Name&lt;/code&gt; property:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;[Mapper]
-public partial class AccountTranslator
-	: IAccountTranslator
-{
-	[MapProperty(source: nameof(AccountDto.Name), target: nameof(Account.FullName))]
-	public partial AccountDto AccountToAccountDto(Account account);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="text-align: center;"&gt;NOTE&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style="text-align: center;"&gt;The constructor for &lt;code&gt;MapPropertyFromSourceAttribute&lt;/code&gt; has only one parameter, the &lt;code&gt;target&lt;/code&gt;.  The constructor for &lt;code&gt;MapPropertyAttribute&lt;/code&gt; has two, the &lt;code&gt;source&lt;/code&gt; and the &lt;code&gt;target&lt;/code&gt;, so it &lt;em&gt;may look like&lt;/em&gt; the parameters are in a different order. C#'s &lt;em&gt;named arguments&lt;/em&gt; shines here to clarify intent.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Technically, attributes like &lt;code&gt;MapPropertyFromSourceAttribute&lt;/code&gt; and &lt;code&gt;MapPropertyAttribute&lt;/code&gt; work with string names of classes and members. Use the &lt;code&gt;name of&lt;/code&gt; expression so that identifiers get used at compile-time, as seen in the above example.&lt;/p&gt;
-&lt;h2 id="but-wait-theres-more"&gt;But Wait, There's More&lt;/h2&gt;
-&lt;p&gt;A benefit of being a Source Generator is that Mapperly can generate compiler/analyzer warnings when not all properties are mapped from or to.  If you're following along and you updated &lt;code&gt;Account&lt;/code&gt;, renaming &lt;code&gt;Name&lt;/code&gt; to &lt;code&gt;FullName&lt;/code&gt;, you would have noticed RMG020 and RMG012 warnings:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../assets/mapperly-unmapped-member-warning.png" class="img-fluid" alt="RMG020 and RMG012 warnings" /&gt;&lt;/p&gt;
-&lt;h2 id="dependency-injections-with-mapperly"&gt;Dependency Injections with Mapperly&lt;/h2&gt;
-&lt;p&gt;Other mappers have initialization and startup requirements making their use in Dependency Injection more than just registering an implementation of an interface (&lt;code&gt;services.AddScoped&amp;lt;ITheInterface, TheImplementation&amp;gt;();&lt;/code&gt;) and require an &lt;code&gt;Add{Technology}()&lt;/code&gt; method call (like &lt;code&gt;AddMapster&lt;/code&gt; or &lt;code&gt;AddAutoMapper&lt;/code&gt;.) Since Mapperly generates the translation code at compilation, you only have to register the translating type (e.g., &lt;code&gt;services.AddScoped&amp;lt;AccountTranslator&amp;gt;()&lt;/code&gt;) and declare the dependency in the constructors of types that need to invoke translators (e.g., &lt;code&gt;public class AccountService(AccountTranslator accountTranslator){/*...*/}&lt;/code&gt;.)&lt;/p&gt;
-&lt;p&gt;If you're interface-obsessed when it comes to Dependency Injection, you're free to create an interface to use and configure your services appropriately, for example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public interface IAccountTranslator
-{
-	public AccountDto AccountToAccountDto(Account account);
-}
-//...
-[Mapper]
-public partial class AccountTranslator
-	: IAccountTranslator
-{
-	public partial AccountDto AccountToAccountDto(Account account);
-}
-//...
-services.AddScoped&amp;lt;IAccountTranslator, AccountTranslator&amp;gt;();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then declare the dependency in the constructors of types that need to invoke translators (e.g., &lt;code&gt;public class AccountService(IAccountTranslator accountTranslator){/*...*/}&lt;/code&gt;.)&lt;/p&gt;
-&lt;h2 id="where-does-mapping-and-translation-occur"&gt;Where Does Mapping and Translation Occur?&lt;/h2&gt;
-&lt;p&gt;Data transfer can occur in different layers. Data transfer triggers a website or API (presentation layer); the application layer requests external services via an infrastructure layer to transfer data to and from. I'm often asked where that mapping and translation source code should exist and in which project in the solution. It's important to remember that we're dealing with multiple layers. The presentation layer is typically where the process entry point is, so initialization (DI container configuration) occurs here. That initialization depends at least indirectly on the translation code to configure services that perform the translation.&lt;/p&gt;
-&lt;p&gt;Translation of web/API models exist in the presentation layer because that's where &lt;em&gt;that&lt;/em&gt; data transfer occurs. It can get complex when more layers are in their own project or are their own artifact. I recommend that DTOs live in the project where the data transfer occurs because they should be viewed as an implementation detail of the facade/adapter performing the data transfer. This typically means that the translation codes lives along side the DTOs because you want to keep implementation details encapsulated. The translation should be made available through an interface that is configured by your Dependency Injection container. I'll leave the complexity of doing that in the context of project-scoped layers for another post.&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="text-align: center;"&gt;NOTE&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style="text-align: center;"&gt;Regardless of whether you have multiple presentation layers or an independent application layer, translation logic &lt;em&gt;should not&lt;/em&gt; be a responsibility in the Domain layer.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/mapping-translation.png" class="img-fluid" alt="Complicated translation"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
