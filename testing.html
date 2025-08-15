@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Pass-through Constructors</title>
+        <title>Peter Ritchie&#x27;s Blog - Testing</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Pass-through Constructors" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Testing" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://blog.peterritchie.com/posts/Pass-through-Constructors" />
+        <meta property="og:url" content="http://blog.peterritchie.com/testing" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -73,22 +73,9 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-
-    
-<div class="post-heading">
-    <h1>Pass-through Constructors</h1>
-    <div class="meta">        
-Published on Friday, November 21, 2008<br>    </div>
-        <div class="tags">
-                    <a role="button" href="/tags/NET-Development" class="btn btn-default btn-xs">.NET Development</a>
-                    <a role="button" href="/tags/C%23" class="btn btn-default btn-xs">C#</a>
-                    <a role="button" href="/tags/Definition" class="btn btn-default btn-xs">Definition</a>
-                    <a role="button" href="/tags/November-2008" class="btn btn-default btn-xs">November 2008</a>
-                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
-                    <a role="button" href="/tags/msmvps" class="btn btn-default btn-xs">msmvps</a>
-        </div>     
-</div>
-                                        </div>
+<div class="site-heading">
+    <h1>Testing</h1>
+</div>                                            </div>
                                 </div>
                         </div>
                 </header>
@@ -97,73 +84,11 @@ Published on Friday, November 21, 2008<br>    </div>
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        
+                                        <!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
 
-<p><a href="http://blogs.msmvps.com/peterritchie/2008/11/21/pass-through-constructors/" title="Permalink to Pass-through Constructors">Source</a></p>
-<h1 id="pass-through-constructors">Pass-through Constructors</h1>
-<p>Pass-through constructors is a term I use to describe parameterized constructors that have none of their own logic and simply pass parameters to the base class. For example:</p>
-<p>public class BaseClass</p>
-<p>{</p>
-<p>private String text;</p>
-<p>public BaseClass(String text)</p>
-<p>{</p>
-<p>this.text = text;</p>
-<p>}</p>
-<p>}</p>
-<p>public class DerivedClass : BaseClass</p>
-<p>{</p>
-<p>public DerivedClass(String text)</p>
-<p>: base(text)</p>
-<p>{</p>
-<p>}</p>
-<p>}</p>
-
-
-<div id="disqus_thread"></div>  
-<!--
-    'Pass-through-Constructors'
-    'Pass-through Constructors'
-    'http://blog.peterritchie.com/posts/Pass-through-Constructors'
--->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-
-    var fromJekyllDate = new Date('Wed Feb 01 2022');
-    var publishedDate = new Date('11/21/08');
-    console.info('Pass-through-Constructors');
-
-    var disqus_identifier = '';
-    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Pass-through Constructors';
-    var disqus_url = 'http://blog.peterritchie.com/posts/Pass-through-Constructors';
-
-    if(publishedDate < fromJekyllDate)
-    {
-        disqus_url = disqus_url.replace('/posts', '');
-        disqus_url = disqus_url + '/';
-    }
-    else
-    {
-        //var disqus_identifier = 'Pass-through-Constructors';
-    }
-    console.info(disqus_identifier);
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-    
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>
