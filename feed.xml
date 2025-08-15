@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 15 Aug 2025 19:36:40 GMT</pubDate>
-		<lastBuildDate>Fri, 15 Aug 2025 19:36:40 GMT</lastBuildDate>
+		<pubDate>Fri, 15 Aug 2025 19:40:04 GMT</pubDate>
+		<lastBuildDate>Fri, 15 Aug 2025 19:40:04 GMT</lastBuildDate>
 		<item>
 			<title>Software Architecture Fundamentals - System of Record</title>
 			<link>http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record</link>
@@ -87,7 +87,7 @@ Conflicts between transactions (non-atomic updates) is a common concurrency scen
 &lt;p&gt;I hope this post conveys that any-old-data source is not good enough and that persisting and maintaining business information deserves attention in order to provide useful software systems.&lt;/p&gt;
 &lt;blockquote class="blockquote"&gt;
 &lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
-I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;!-- Calendly inline widget begin --&gt;
 &lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
