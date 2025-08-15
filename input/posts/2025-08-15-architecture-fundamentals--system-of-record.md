@@ -3,7 +3,7 @@ layout: post
 title: 'Software Architecture Fundamentals - System of Record'
 categories: ['Architecture', 'Fundamentals', 'August 2025']
 comments: true
-excerpt: '.'
+excerpt: 'A System of Record captures, validates, updates, and stores authoritative records for a specific type of business entity. A System of Record is an operational data source (not directly used for reporting or analytics) because its focus is on recording the outcome of business transactions upon entities.'
 tags: ['Software Architecture', 'Fundamentals', 'System of Record']
 ---
 I've worked with many teams to deliver large distributed operational systems that, during development, required obtaining specific types of business data from other parts of the enterprise. Too often, the team has to resort to _discovering_ a data source that suits their requirements &mdash; they may know about other subsystems but not how to obtain the necessary data. They search repos, browse database servers, analyze schema, etc. Their only available criterion is whether tables, columns, and fields have names similar enough to what they're looking for.
