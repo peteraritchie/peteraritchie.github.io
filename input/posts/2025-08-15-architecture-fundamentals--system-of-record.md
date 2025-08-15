@@ -88,7 +88,7 @@ I've touched on "reporting" and "analytics" above, but I want to be very clear a
 I hope this post conveys that any-old-data source is not good enough and that persisting and maintaining business information deserves attention in order to provide useful software systems.
 
 > **If you find this useful**  
-> I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See [About](about) for information about the services I provide.
+> I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See [About](/about) for information about the services I provide.
 <!-- Calendly inline widget begin -->
 <div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
