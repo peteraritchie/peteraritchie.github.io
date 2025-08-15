@@ -1,0 +1,295 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Software Architecture Fundamentals - System of Record</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Software Architecture Fundamentals - System of Record" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/testing">Testing</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Software Architecture Fundamentals - System of Record</h1>
+    <div class="meta">        
+Published on Friday, August 15, 2025<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/Fundamentals" class="btn btn-default btn-xs">Fundamentals</a>
+                    <a role="button" href="/tags/Software-Architecture" class="btn btn-default btn-xs">Software Architecture</a>
+                    <a role="button" href="/tags/System-of-Record" class="btn btn-default btn-xs">System of Record</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>I've worked with many teams to deliver large distributed operational systems that, during development, required obtaining specific types of business data from other parts of the enterprise. Too often, the team has to resort to <em>discovering</em> a data source that suits their requirements — they may know about other subsystems but not how to obtain the necessary data. They search repos, browse database servers, analyze schema, etc. Their only available criterion is whether tables, columns, and fields have names similar enough to what they're looking for.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE</strong><br />
+For this post, I'll refer to a particular type of business information, an <strong>entity</strong>. You might not use that term, and that's fine.<br />
+An <em>entity</em> is an object that has an identity and a life cycle. An entity maintains its identity through various states and changes to its attributes throughout its life cycle. An entity has consistency rules that govern its state (the value of its attributes) and how the state may change.</p>
+</blockquote>
+<p>Although I've worked with teams that <em>discovered</em> data sources many times, doing this is problematic. I get involved in dealing with the problems that result, maybe you've encountered them as well:</p>
+<ul>
+<li>You have to make multiple request to different data sources to get a complete view of an entity. <!-- race conditions access multiple data sources --></li>
+<li>Some data has invalid or unsupported values requiring transformation or enrichment to be compatible with downstream systems. <!-- unaligned data --></li>
+<li>Requests to the data source sometimes fail because the expected structure of the request or response has changed without warning. <!-- unaligned schema/versioning --></li>
+<li>The data source has high latency or is unable to support the load, resulting in <code>429 Too Many Requests</code> errors. <!-- unaligned reliability --></li>
+<li>The received information includes sensitive information that your system should not have access to causing security concerns. <!-- unaligned permissions --></li>
+<li>Decisions stall because technical stakeholders disagree on whether the data source is &quot;correct&quot; while providing no alternatives. <!-- misaligned architecture --></li>
+</ul>
+<!-- unaligned intents -->
+<p>The disadvantage of <em>discovering</em> an appropriate data source is that it is based solely on the physical structure of a database (the name and types of columns and the relationships between them, i.e., the <em>schema</em>). <strong>A schema describes implementation well, but cannot communicate intent to discern fit-for-purpose accurately</strong>. While you can get the data points you need, you don't know if that's the intended purpose of this data source and its data points. Making decisions without knowing intent often leads to issues we'll describe shortly, the biggest being not knowing if the data source will be supported as long as you need it. The intent of the provided data points could not have taken into account your app's needs. As a result, you can't be sure what you're getting is actually what you need. In some cases, a data source doesn't have all the data points you need.</p>
+<!-- race conditions access multiple data sources -->
+<p>It's tempting to accept a data source that doesn't have all the data points you need, especially if you can get the remaining data points from another data source. With no single data source providing a complete view of the entity, multiple data sources often have overlapping information, which is, by definition, duplicate data. This introduces another dilemma: what should happen if two duplicate data points have different values? The bigger issue with this method of hydrating an entity is the inherent race condition that accessing duplicate data involves. Data duplicated across sources is data whose updates are uncoordinated, resulting in an unaligned view of the entity. This unaligned view can lead to <em>read tearing</em>, e.g., both data sources A and B updated information related to a particular entity, but your system retrieved information from A before the update and B after the update, and your system is now responsible for detecting the problem and taking corrective action. <strong>Writes across data sources are non-atomic, resulting in a fictitious (inconsistent) view of the entity</strong>.</p>
+<blockquote class="blockquote">
+<p><strong>INFO:</strong><br />
+Conflicts between transactions (non-atomic updates) is a common concurrency scenario. This scenario has many established solusions, like optimistic concurrency control implemtnations such as HTTPs <code>ETag</code> and <code>If-*</code> headers.</p>
+</blockquote>
+<!-- unaligned data -->
+<p>In addition to these data sources not providing a true <em>view</em> of the entity, <strong>discovered data sources couldn't have implemented all the consistency rules that your system may depend on</strong>. Independent of the above race conditions, this leaves your system liable for detecting entities in an inconsistent state and taking corrective action. This unconstrained data means performing translation, doing transformations, or enriching the data received from these data sources. Unconstrained data also means forever <strong>playing catch-up with all unpredictable inconsistencies as they appear</strong>, and the possibility that no corrective action can fix some without intervention.</p>
+<!-- unaligned schema/versioning -->
+<p>The fact that a data source exists indicates that it serves some purpose, unaligned with yours. Services, software, information, and data are <em>products</em>. Products, like entities, endure over time, evolving and changing. The reasons and schedule by which discovered data sources evolve are independent of the system you're trying to develop. <strong>The independent evolution of pre-existing data sources will cause adverse effects on your system</strong>. For example, data sources may need to change their interface or schema for reasons unbeknownst to you. These changes may cause sudden catastrophic failure or hard-to-find data inconsistency issues. <strong>Issues arising from changes in an upstream data source never designed to support your system will not occur on your terms</strong>.</p>
+<!-- unaligned reliability -->
+<p>Using a discovered data source means becoming an unintended client of the data source. That may be fine; most services can tolerate traffic fluctuations. But that system has not accounted for traffic from your system. If you're maintaining an SLA for your system, your reliability target will now depend on the reliability of these data sources. Without knowing what reliability targets they have, <strong>you will no longer be able to commit to your reliability targets</strong>. You may get reliability targets for these data sources, and if those reliability targets are below yours, you'll have to adjust yours. You <em>could</em> spend time collaborating with all the data sources to improve their reliability targets. Alternatively, you may have to throttle your use of the data source by naively caching, which <strong>can introduce issues with out-of-date data and cache invalidation</strong>.</p>
+<blockquote class="blockquote">
+<p><strong>INFO</strong> - Calculating Effective Reliability<br />
+<img src="https://blog.peterritchie.com/assets/calculating-effective-reliability.png" alt="How downstream reliability targets affect overall reliability and how effective reliability can be calculated." style="min-height: 10em; max-height: 75vmin; width: auto;"></p>
+</blockquote>
+<!-- unaligned permissions -->
+<p>Authentication will be data source specific, with different authorization than what your system provides (i.e., service versus user). A different authorization scope could accidentally <strong>authorize access to sensitive data (like internal, confidential, or restricted data)</strong>. It may not seem like a big deal; you're not using it, right? But all the information you receive has to pass through the infrastructure and frameworks your system uses. Infrastructure and frameworks process this data, and some of that processing is logging. If you're not expecting sensitive information, your system isn't handling it correctly. A SecOps review can raise <strong>security &quot;recommendations&quot; that will be very difficult to remediate</strong>. You might even have to <em>discover</em> an alternative source.</p>
+<!-- misaligned architecture -->
+<p>After encountering or avoiding all the above scenarios, you might still feel justified in using discovered data sources. Your system's deployment to and use of infrastructure should catch the attention of people responsible for established data sensitivity and performance policies. This attention can lead to an evaluation of the architectural decision to use the discovered data source. That evaluation might result in feedback like &quot;you shouldn't be using that data source for that&quot; when you think you're about to deliver a solution. My experience has been that often alternatives are not provided, leaving you to deal with the consequences.</p>
+<h2 id="systems-of-record">Systems of Record</h2>
+<p>The approach I recommend—instead of <em>discovering</em> data sources and all the disadvantages that come with it—is to design a <strong>System of Record</strong> for that type of business information.</p>
+<p>A System of Record captures, validates, updates, and stores authoritative records for a specific type of business entity. A System of Record is an operational data source (not directly used for reporting or analytics) because its focus is on recording the outcome of business transactions upon entities.</p>
+<p>There are a couple of approaches realizing a System of Record. In the case of a discovered data source (that contains all the necessary datapoints), someone can <strong>propose that the discovered data source take on the responsibility of being a system of record for that business entity</strong>. If an existing candidate isn't available, someone can <strong>propose creating a new system that takes on the responsibility of being a system of record for that business entity</strong>. Organizations need to <strong>manage Systems of Record as products</strong>. Products endure over time, have contractual agreements with clients/customers, respond to evolving needs and environments, etc.</p>
+<!--make sure this list makes it clear what deferentiates this definition of SoR (or why if it's needed). -->
+<p>A System of Record should:</p>
+<ul>
+<li>have clear, accountable ownership.</li>
+<li>provide operations to correctly, reliably, and robustly capture and update an entity.</li>
+<li>authorize and audit the operations performed on an entity.</li>
+<li>be interoperable with downstream and analytical systems.</li>
+<li>focus on operational data, isolating it from analytical data.</li>
+</ul>
+<blockquote class="blockquote">
+<p>have clear, accountable ownership.</p>
+</blockquote>
+<p>A System of Record has a clear intent and scope to manage specific entity information (realizing the subsequent attributes of a System of Record). It needs to have a dedicated development team, business owner, etc. (i.e., have a &quot;Product Charter&quot; and the executive sponsorship to empower it)</p>
+<blockquote class="blockquote">
+<p>provide operations to correctly, reliably, and robustly capture and update an entity.</p>
+</blockquote>
+<p>All the business rules around modifications and validation are the responsibility of the System of Record, ensuring accurate, complete, and validated information through durable and isolated operations.</p>
+<blockquote class="blockquote">
+<p>authorize and audit the operations performed on an entity.</p>
+</blockquote>
+<p>The integrity of business information needs to be maintained, preventing unauthorized and conflicting updates. The source of updates to information should be forensically analyzable. Systems of Records must adhere to regulatory and retention policies when updating information.</p>
+<blockquote class="blockquote">
+<p>be interoperable with downstream and analytical systems.</p>
+</blockquote>
+<p>The structure and format of information provided by a System of Record should be the standard by which all downstream systems align, ensuring interoperability.</p>
+<blockquote class="blockquote">
+<p>focus on operational data, isolating it from analytical data.</p>
+</blockquote>
+<p>I've touched on &quot;reporting&quot; and &quot;analytics&quot; above, but I want to be very clear about how important it is to separate operational systems from analytical systems. Don't get me wrong, analytical data is <em>based</em> on operational data, but operational data involves effectively-<em>atomic</em> business transactions upon individual entities (&quot;effectively&quot; atomic because they need to <em>appear</em> atomic, but implementation in distributed systems means transaction state is sometimes persisted in a database and shared across processes). Organizations must make analytical data available intentionally. E.g., aggregations involve many entities across periods (like monthly rollups), and an ETL process must aggregate data only once per period. ETL processes must support <em>multiple</em> independent Systems of Record.</p>
+<img src="https://blog.peterritchie.com/assets/sor-data-architecture.png" alt="Example data architecture that leverages Systems of Record." style="min-height: 10em; max-height: 75vmin; width: auto;">
+<p>I hope this post conveys that any-old-data source is not good enough and that persisting and maintaining business information deserves attention in order to provide useful software systems.</p>
+<blockquote class="blockquote">
+<p><strong>If you find this useful</strong><br />
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See <a href="about">About</a> for information about the services I provide.</p>
+</blockquote>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'architecture-fundamentals--system-of-record'
+    'Software Architecture Fundamentals - System of Record'
+    'http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('8/15/25');
+    console.info('architecture-fundamentals--system-of-record');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Software Architecture Fundamentals - System of Record';
+    var disqus_url = 'http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'architecture-fundamentals--system-of-record';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2025
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>&nbsp;|&nbsp;<a rel="me" href="https://bsky.app/profile/peterritchie.com">Bluesky</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+

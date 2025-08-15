@@ -5,8 +5,96 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 15 Aug 2025 19:13:43 GMT</pubDate>
-		<lastBuildDate>Fri, 15 Aug 2025 19:13:43 GMT</lastBuildDate>
+		<pubDate>Fri, 15 Aug 2025 19:25:59 GMT</pubDate>
+		<lastBuildDate>Fri, 15 Aug 2025 19:25:59 GMT</lastBuildDate>
+		<item>
+			<title>Software Architecture Fundamentals - System of Record</title>
+			<link>http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record</link>
+			<description>&lt;p&gt;I've worked with many teams to deliver large distributed operational systems that, during development, required obtaining specific types of business data from other parts of the enterprise. Too often, the team has to resort to &lt;em&gt;discovering&lt;/em&gt; a data source that suits their requirements — they may know about other subsystems but not how to obtain the necessary data. They search repos, browse database servers, analyze schema, etc. Their only available criterion is whether tables, columns, and fields have names similar enough to what they're looking for.&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record</guid>
+			<pubDate>Fri, 15 Aug 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I've worked with many teams to deliver large distributed operational systems that, during development, required obtaining specific types of business data from other parts of the enterprise. Too often, the team has to resort to &lt;em&gt;discovering&lt;/em&gt; a data source that suits their requirements — they may know about other subsystems but not how to obtain the necessary data. They search repos, browse database servers, analyze schema, etc. Their only available criterion is whether tables, columns, and fields have names similar enough to what they're looking for.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;&lt;br /&gt;
+For this post, I'll refer to a particular type of business information, an &lt;strong&gt;entity&lt;/strong&gt;. You might not use that term, and that's fine.&lt;br /&gt;
+An &lt;em&gt;entity&lt;/em&gt; is an object that has an identity and a life cycle. An entity maintains its identity through various states and changes to its attributes throughout its life cycle. An entity has consistency rules that govern its state (the value of its attributes) and how the state may change.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Although I've worked with teams that &lt;em&gt;discovered&lt;/em&gt; data sources many times, doing this is problematic. I get involved in dealing with the problems that result, maybe you've encountered them as well:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You have to make multiple request to different data sources to get a complete view of an entity. &lt;!-- race conditions access multiple data sources --&gt;&lt;/li&gt;
+&lt;li&gt;Some data has invalid or unsupported values requiring transformation or enrichment to be compatible with downstream systems. &lt;!-- unaligned data --&gt;&lt;/li&gt;
+&lt;li&gt;Requests to the data source sometimes fail because the expected structure of the request or response has changed without warning. &lt;!-- unaligned schema/versioning --&gt;&lt;/li&gt;
+&lt;li&gt;The data source has high latency or is unable to support the load, resulting in &lt;code&gt;429 Too Many Requests&lt;/code&gt; errors. &lt;!-- unaligned reliability --&gt;&lt;/li&gt;
+&lt;li&gt;The received information includes sensitive information that your system should not have access to causing security concerns. &lt;!-- unaligned permissions --&gt;&lt;/li&gt;
+&lt;li&gt;Decisions stall because technical stakeholders disagree on whether the data source is &amp;quot;correct&amp;quot; while providing no alternatives. &lt;!-- misaligned architecture --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- unaligned intents --&gt;
+&lt;p&gt;The disadvantage of &lt;em&gt;discovering&lt;/em&gt; an appropriate data source is that it is based solely on the physical structure of a database (the name and types of columns and the relationships between them, i.e., the &lt;em&gt;schema&lt;/em&gt;). &lt;strong&gt;A schema describes implementation well, but cannot communicate intent to discern fit-for-purpose accurately&lt;/strong&gt;. While you can get the data points you need, you don't know if that's the intended purpose of this data source and its data points. Making decisions without knowing intent often leads to issues we'll describe shortly, the biggest being not knowing if the data source will be supported as long as you need it. The intent of the provided data points could not have taken into account your app's needs. As a result, you can't be sure what you're getting is actually what you need. In some cases, a data source doesn't have all the data points you need.&lt;/p&gt;
+&lt;!-- race conditions access multiple data sources --&gt;
+&lt;p&gt;It's tempting to accept a data source that doesn't have all the data points you need, especially if you can get the remaining data points from another data source. With no single data source providing a complete view of the entity, multiple data sources often have overlapping information, which is, by definition, duplicate data. This introduces another dilemma: what should happen if two duplicate data points have different values? The bigger issue with this method of hydrating an entity is the inherent race condition that accessing duplicate data involves. Data duplicated across sources is data whose updates are uncoordinated, resulting in an unaligned view of the entity. This unaligned view can lead to &lt;em&gt;read tearing&lt;/em&gt;, e.g., both data sources A and B updated information related to a particular entity, but your system retrieved information from A before the update and B after the update, and your system is now responsible for detecting the problem and taking corrective action. &lt;strong&gt;Writes across data sources are non-atomic, resulting in a fictitious (inconsistent) view of the entity&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;INFO:&lt;/strong&gt;&lt;br /&gt;
+Conflicts between transactions (non-atomic updates) is a common concurrency scenario. This scenario has many established solusions, like optimistic concurrency control implemtnations such as HTTPs &lt;code&gt;ETag&lt;/code&gt; and &lt;code&gt;If-*&lt;/code&gt; headers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- unaligned data --&gt;
+&lt;p&gt;In addition to these data sources not providing a true &lt;em&gt;view&lt;/em&gt; of the entity, &lt;strong&gt;discovered data sources couldn't have implemented all the consistency rules that your system may depend on&lt;/strong&gt;. Independent of the above race conditions, this leaves your system liable for detecting entities in an inconsistent state and taking corrective action. This unconstrained data means performing translation, doing transformations, or enriching the data received from these data sources. Unconstrained data also means forever &lt;strong&gt;playing catch-up with all unpredictable inconsistencies as they appear&lt;/strong&gt;, and the possibility that no corrective action can fix some without intervention.&lt;/p&gt;
+&lt;!-- unaligned schema/versioning --&gt;
+&lt;p&gt;The fact that a data source exists indicates that it serves some purpose, unaligned with yours. Services, software, information, and data are &lt;em&gt;products&lt;/em&gt;. Products, like entities, endure over time, evolving and changing. The reasons and schedule by which discovered data sources evolve are independent of the system you're trying to develop. &lt;strong&gt;The independent evolution of pre-existing data sources will cause adverse effects on your system&lt;/strong&gt;. For example, data sources may need to change their interface or schema for reasons unbeknownst to you. These changes may cause sudden catastrophic failure or hard-to-find data inconsistency issues. &lt;strong&gt;Issues arising from changes in an upstream data source never designed to support your system will not occur on your terms&lt;/strong&gt;.&lt;/p&gt;
+&lt;!-- unaligned reliability --&gt;
+&lt;p&gt;Using a discovered data source means becoming an unintended client of the data source. That may be fine; most services can tolerate traffic fluctuations. But that system has not accounted for traffic from your system. If you're maintaining an SLA for your system, your reliability target will now depend on the reliability of these data sources. Without knowing what reliability targets they have, &lt;strong&gt;you will no longer be able to commit to your reliability targets&lt;/strong&gt;. You may get reliability targets for these data sources, and if those reliability targets are below yours, you'll have to adjust yours. You &lt;em&gt;could&lt;/em&gt; spend time collaborating with all the data sources to improve their reliability targets. Alternatively, you may have to throttle your use of the data source by naively caching, which &lt;strong&gt;can introduce issues with out-of-date data and cache invalidation&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;INFO&lt;/strong&gt; - Calculating Effective Reliability&lt;br /&gt;
+&lt;img src="https://blog.peterritchie.com/assets/calculating-effective-reliability.png" alt="How downstream reliability targets affect overall reliability and how effective reliability can be calculated." style="min-height: 10em; max-height: 75vmin; width: auto;"&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- unaligned permissions --&gt;
+&lt;p&gt;Authentication will be data source specific, with different authorization than what your system provides (i.e., service versus user). A different authorization scope could accidentally &lt;strong&gt;authorize access to sensitive data (like internal, confidential, or restricted data)&lt;/strong&gt;. It may not seem like a big deal; you're not using it, right? But all the information you receive has to pass through the infrastructure and frameworks your system uses. Infrastructure and frameworks process this data, and some of that processing is logging. If you're not expecting sensitive information, your system isn't handling it correctly. A SecOps review can raise &lt;strong&gt;security &amp;quot;recommendations&amp;quot; that will be very difficult to remediate&lt;/strong&gt;. You might even have to &lt;em&gt;discover&lt;/em&gt; an alternative source.&lt;/p&gt;
+&lt;!-- misaligned architecture --&gt;
+&lt;p&gt;After encountering or avoiding all the above scenarios, you might still feel justified in using discovered data sources. Your system's deployment to and use of infrastructure should catch the attention of people responsible for established data sensitivity and performance policies. This attention can lead to an evaluation of the architectural decision to use the discovered data source. That evaluation might result in feedback like &amp;quot;you shouldn't be using that data source for that&amp;quot; when you think you're about to deliver a solution. My experience has been that often alternatives are not provided, leaving you to deal with the consequences.&lt;/p&gt;
+&lt;h2 id="systems-of-record"&gt;Systems of Record&lt;/h2&gt;
+&lt;p&gt;The approach I recommend—instead of &lt;em&gt;discovering&lt;/em&gt; data sources and all the disadvantages that come with it—is to design a &lt;strong&gt;System of Record&lt;/strong&gt; for that type of business information.&lt;/p&gt;
+&lt;p&gt;A System of Record captures, validates, updates, and stores authoritative records for a specific type of business entity. A System of Record is an operational data source (not directly used for reporting or analytics) because its focus is on recording the outcome of business transactions upon entities.&lt;/p&gt;
+&lt;p&gt;There are a couple of approaches realizing a System of Record. In the case of a discovered data source (that contains all the necessary datapoints), someone can &lt;strong&gt;propose that the discovered data source take on the responsibility of being a system of record for that business entity&lt;/strong&gt;. If an existing candidate isn't available, someone can &lt;strong&gt;propose creating a new system that takes on the responsibility of being a system of record for that business entity&lt;/strong&gt;. Organizations need to &lt;strong&gt;manage Systems of Record as products&lt;/strong&gt;. Products endure over time, have contractual agreements with clients/customers, respond to evolving needs and environments, etc.&lt;/p&gt;
+&lt;!--make sure this list makes it clear what deferentiates this definition of SoR (or why if it's needed). --&gt;
+&lt;p&gt;A System of Record should:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;have clear, accountable ownership.&lt;/li&gt;
+&lt;li&gt;provide operations to correctly, reliably, and robustly capture and update an entity.&lt;/li&gt;
+&lt;li&gt;authorize and audit the operations performed on an entity.&lt;/li&gt;
+&lt;li&gt;be interoperable with downstream and analytical systems.&lt;/li&gt;
+&lt;li&gt;focus on operational data, isolating it from analytical data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;have clear, accountable ownership.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A System of Record has a clear intent and scope to manage specific entity information (realizing the subsequent attributes of a System of Record). It needs to have a dedicated development team, business owner, etc. (i.e., have a &amp;quot;Product Charter&amp;quot; and the executive sponsorship to empower it)&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;provide operations to correctly, reliably, and robustly capture and update an entity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All the business rules around modifications and validation are the responsibility of the System of Record, ensuring accurate, complete, and validated information through durable and isolated operations.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;authorize and audit the operations performed on an entity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The integrity of business information needs to be maintained, preventing unauthorized and conflicting updates. The source of updates to information should be forensically analyzable. Systems of Records must adhere to regulatory and retention policies when updating information.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;be interoperable with downstream and analytical systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The structure and format of information provided by a System of Record should be the standard by which all downstream systems align, ensuring interoperability.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;focus on operational data, isolating it from analytical data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I've touched on &amp;quot;reporting&amp;quot; and &amp;quot;analytics&amp;quot; above, but I want to be very clear about how important it is to separate operational systems from analytical systems. Don't get me wrong, analytical data is &lt;em&gt;based&lt;/em&gt; on operational data, but operational data involves effectively-&lt;em&gt;atomic&lt;/em&gt; business transactions upon individual entities (&amp;quot;effectively&amp;quot; atomic because they need to &lt;em&gt;appear&lt;/em&gt; atomic, but implementation in distributed systems means transaction state is sometimes persisted in a database and shared across processes). Organizations must make analytical data available intentionally. E.g., aggregations involve many entities across periods (like monthly rollups), and an ETL process must aggregate data only once per period. ETL processes must support &lt;em&gt;multiple&lt;/em&gt; independent Systems of Record.&lt;/p&gt;
+&lt;img src="https://blog.peterritchie.com/assets/sor-data-architecture.png" alt="Example data architecture that leverages Systems of Record." style="min-height: 10em; max-height: 75vmin; width: auto;"&gt;
+&lt;p&gt;I hope this post conveys that any-old-data source is not good enough and that persisting and maintaining business information deserves attention in order to provide useful software systems.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - August 11</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10</link>
@@ -1143,101 +1231,6 @@ return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args); // 👈 step 4, 
 &lt;p&gt;CommandLineExtensions creates a fluent interface for System.CommandLine, offering a simpler way to define and support command-line options and arguments. CommandLineExtensions doesn't support all the features of System.CommandLine but provides support for defining command-line options and arguments for all but very complex scenarios.&lt;/p&gt;
 &lt;p&gt;For more information and examples, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/blob/main/src/CommandLineExtensions/README.md"&gt;CommandLineExtensions README.md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;For support, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;ConsoleApplicationBuilder GitHub issues&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Announcing ConsoleApplicationBuilder, DI in console applications, simply</title>
-			<link>http://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder</link>
-			<description>&lt;p&gt;&lt;img src="../assets/announcing-ConsoleApplicationBuilder.png" class="img-fluid" alt="Configurable Console Application"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder</guid>
-			<pubDate>Fri, 17 Jan 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/announcing-ConsoleApplicationBuilder.png" class="img-fluid" alt="Configurable Console Application" /&gt;&lt;/p&gt;
-&lt;p&gt;A recent interaction reminded me that using things like &lt;code&gt;IServiceCollection&lt;/code&gt; to get dependency injection or &lt;code&gt;ConfigurationManager&lt;/code&gt; to use appsettings.json and &lt;code&gt;IOptions&amp;lt;T&amp;gt;&lt;/code&gt; in a .NET console application is a lot of work. You can use things like &lt;a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/workers"&gt;console worker project&lt;/a&gt;, but if you're implementing a simple console application, a background process seems over the top and unnatural.&lt;/p&gt;
-&lt;p&gt;I've added DI and configuration to console applications in the past, but it has always been troublesome and problematic. I had considered just documenting that process but thought the amount of work to simply create a NuGet package to do it for me seemed like it was about the same amount of work. A couple of weeks ago I started creating &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt;—a type that implements similar functionality to &lt;code&gt;WebApplicationBuilder&lt;/code&gt; and &lt;code&gt;HostApplicationBuilder&lt;/code&gt; (that &lt;code&gt;WebApplicationBuilder&lt;/code&gt; leverages). This post announces the result of that effort.&lt;/p&gt;
-&lt;p&gt;TL;DR: &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; and the associated &lt;code&gt;dotnet new&lt;/code&gt; project template enable the use of DI in console applications simply and succinctly:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program(ILogger&amp;lt;Program&amp;gt; logger)
-{
-    static void Main(string[] args)
-    {
-        var builder = ConsoleApplication.CreateBuilder(args);
-        var program = builder.Build&amp;lt;Program&amp;gt;();
-        program.Run();
-    }
-
-    private void Run()
-    {
-        logger.LogInformation(&amp;quot;Hello, World!&amp;quot;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; is open-source and available on &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder"&gt;GitHub&lt;/a&gt;; you can find similar details there.&lt;/p&gt;
-&lt;p&gt;What prompted my latest foray into DI in a non-background console application was to inject a configured &lt;code&gt;HttpClient&lt;/code&gt; into the application. &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; supports this easily and naturally:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program(ILogger&amp;lt;Program&amp;gt; logger, HttpClient httpClient)
-{
-    static async Task Main(string[] args)
-    {
-        var builder = ConsoleApplication.CreateBuilder(args);
-        builder.Services.AddHttpClient&amp;lt;Program&amp;gt;(httpClient =&amp;gt;
-        {
-            httpClient.BaseAddress = new Uri(&amp;quot;https://jsonplaceholder.typicode.com&amp;quot;);
-        });
-        var program = builder.Build&amp;lt;Program&amp;gt;();
-        await program.Run();
-    }
-
-    private async Task Run()
-    {
-        logger.LogInformation(&amp;quot;Hello, World!&amp;quot;);
-        logger.LogInformation(await httpClient.GetStringAsync(&amp;quot;todos/3&amp;quot;));
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="dotnet-new-project-template"&gt;&lt;code&gt;dotnet new&lt;/code&gt; Project Template&lt;/h2&gt;
-&lt;p&gt;The &lt;code&gt;dotnet new consoleapp&lt;/code&gt; project template supports appsettings out of the box and is installed like other &lt;code&gt;dotnet new&lt;/code&gt; project templates:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new install PRI.ConsoleApplicationBuilder.Templates
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And to create a new console application that supports DI, Configuration, appsettings, etc., is as simple as:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-powershell"&gt;dotnet new consoleapp -o Peter.ConsoleApp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="consoleapplicationbuilder-without-dotnet-new-consoleapp-project-template"&gt;&lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; Without &lt;code&gt;dotnet new consoleapp&lt;/code&gt; Project Template&lt;/h2&gt;
-&lt;p&gt;When I implemented the &lt;code&gt;dotnet new consoleapp&lt;/code&gt; project template, I wanted to make the created &lt;code&gt;Program&lt;/code&gt; class as simple as possible, so I chose to re-use the Program class and build an instance of that class to inject services like &lt;code&gt;ILogger&amp;lt;Program&amp;gt;&lt;/code&gt;. However, you don't need to use the template to use &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt;, and you don't need to re-use &lt;code&gt;Program&lt;/code&gt; as the type that it will build. You can add a reference to the &lt;code&gt;PRI.ConsoleApplicationBuilder&lt;/code&gt; NuGet package and build a different type. For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;class Program
-{
-    static async Task Main(string[] args)
-    {
-        var builder = ConsoleApplication.CreateBuilder(args);
-        builder.Services.AddHttpClient&amp;lt;ToDoAdapter&amp;gt;(httpClient =&amp;gt;
-        {
-	        httpClient.BaseAddress = new Uri(&amp;quot;https://jsonplaceholder.typicode.com&amp;quot;);
-        });
-        var adapter = builder.Build&amp;lt;ToDoAdapter&amp;gt;();
-		var todoText = await adapter.GetToDo(1);
-	}
-}
-
-internal sealed class ToDoAdapter(ILogger&amp;lt;ToDoAdapter&amp;gt; logger, HttpClient httpClient)
-{
-	public async Task&amp;lt;string&amp;gt; GetToDo(int id)
-	{
-		if(logger.IsEnabled(LogLevel.Information))
-		{
-			logger.LogInformation(&amp;quot;Getting todo with id {Id}&amp;quot;, id);
-		}
-		var response = await httpClient.GetAsync($&amp;quot;todos/{id}&amp;quot;);
-		response.EnsureSuccessStatusCode();
-		string responseText = await response.Content.ReadAsStringAsync();
-		if (logger.IsEnabled(LogLevel.Information))
-		{
-			logger.LogInformation(&amp;quot;Got response {ResponseText}&amp;quot;, responseText);
-		}
-		return responseText;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here, instead of building a &lt;code&gt;Program&lt;/code&gt; instance, we're building a &lt;code&gt;ToDoAdapter&lt;/code&gt; instance that is injected with a configured logger and an specific HTTP client. Be sure to also add a reference to &lt;code&gt;Microsoft.Extensions.Http&lt;/code&gt; if you want to use that code.&lt;/p&gt;
-&lt;p&gt;So, as you can see, &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; is very flexible.&lt;/p&gt;
-&lt;h2 id="feedback"&gt;Feedback&lt;/h2&gt;
-&lt;p&gt;I'd love to hear your feedback, good or bad. I've modeled &lt;code&gt;ConsoleApplicationBuilder&lt;/code&gt; as closely as possible to &lt;code&gt;WebApplicationBuilder&lt;/code&gt; and &lt;code&gt;HostApplicationBuilder&lt;/code&gt; so it follows their conventions, and usage should feel natural. But I'm open to suggestions on how to improve it. You can log questions and issues on &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
