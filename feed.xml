@@ -5,8 +5,67 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 15 Aug 2025 19:40:04 GMT</pubDate>
-		<lastBuildDate>Fri, 15 Aug 2025 19:40:04 GMT</lastBuildDate>
+		<pubDate>Wed, 20 Aug 2025 15:42:01 GMT</pubDate>
+		<lastBuildDate>Wed, 20 Aug 2025 15:42:01 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - August 17</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17</guid>
+			<pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.axios.com/2025/08/11/github-ceo-dohmke-step-down?utm_source=blog.peterritchie.com"&gt;Exclusive: GitHub CEO to step down&lt;/a&gt; by Ina Fried&lt;/p&gt;
+&lt;!-- ## Architecture
+
+## Presenting --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-generative-ai-applications-with-github-models-and-dotnet-aspire?utm_source=blog.peterritchie.com"&gt;Building Generative AI Applications With GitHub Models and .NET Aspire&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.dennisdoomen.com/2025/06/library-starter-kit.html?utm_source=blog.peterritchie.com"&gt;Kickstarting your libraries with the .NET Library Starter Kit&lt;/a&gt; by Dennis Doomen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-23-introduction-to-non-dominated-sorting-genetic-algorithm-ii-nsga-ii-in-c/?utm_source=blog.peterritchie.com"&gt;Day 23: Introduction to Non-dominated Sorting Genetic Algorithm II (NSGA-II) in C#&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/07/01/pondering-about-using-ai-for-coding/?utm_source=blog.peterritchie.com"&gt;Pondering About Using AI for Coding&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-preview-7/?utm_source=blog.peterritchie.com"&gt;.NET 10 Preview 7 is now available!&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/running-dotnet-in-the-browser-without-blazor/?utm_source=blog.peterritchie.com"&gt;Running .NET in the browser without Blazor&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/08/15/need-some-feedback-on-near-term-wolverine-work/?utm_source=blog.peterritchie.com"&gt;Need Some Feedback on Near Term Wolverine Work&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://martinfowler.com/articles/impact-intel.html?utm_source=blog.peterritchie.com"&gt;The Reformist CTO's Guide to Impact Intelligence&lt;/a&gt; by Sriram Narayan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://timharford.com/2025/05/the-value-of-institutional-memory/?utm_source=blog.peterritchie.com"&gt;The value of institutional memory&lt;/a&gt; by Tim Harford&lt;/p&gt;
+&lt;!-- ## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/data-encryption-with-customer-managed-key-cmk-for-azure-cosmos-db-for-mongodb-vcore/?utm_source=blog.peterritchie.com"&gt;Data encryption with customer-managed key (CMK) for Azure Cosmos DB for MongoDB vCore&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-developer-cli-from-dev-to-prod-with-azure-devops-pipelines/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI: From Dev to Prod with Azure DevOps Pipelines&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250811-00/?p=111451?utm_source=blog.peterritchie.com"&gt;Thoughts on creating a tracking pointer class, part 1: Concept art&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blogs.newardassociates.com/blog/2025/why-writing-matters.html?utm_source=blog.peterritchie.com"&gt;Why Writing Matters (to the Technical Professional)&lt;/a&gt; by Ted Neward&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+
+## AI
+
+## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.quantamagazine.org/new-method-is-the-fastest-way-to-find-the-best-routes-20250806/?utm_source=blog.peterritchie.com"&gt;New Method Is the Fastest Way To Find the Best Routes&lt;/a&gt; by Ben Brubaker&lt;/p&gt;
+&lt;h2 id="podcasts"&gt;Podcasts&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1961?utm_source=blog.peterritchie.com"&gt;Event Sourcing with Hannes Lowette&lt;/a&gt; by .NET Rocks&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Software Architecture Fundamentals - System of Record</title>
 			<link>http://blog.peterritchie.com/posts/architecture-fundamentals--system-of-record</link>
@@ -1031,206 +1090,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/03/27/working-with-dotnet-10-without-mucking-up-your-machine"&gt;Working with dotnet 10 Without Mucking Up Your Machine&lt;/a&gt; by Joe Guadagno&lt;/p&gt;
 &lt;h2 id="security"&gt;Security&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.quad9.net/"&gt;Quad9 - A public and free DNS service for a better security and privacy&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Announcing CommandLineExtensions, a .NET DI Compatible System.CommandLine Facade</title>
-			<link>http://blog.peterritchie.com/posts/announcing-commandlineextensions</link>
-			<description>&lt;p&gt;&lt;img src="../assets/CommandLineExtensions-example.png" class="img-fluid" alt="CommandLineExtensions"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/announcing-commandlineextensions</guid>
-			<pubDate>Mon, 07 Apr 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/CommandLineExtensions-example.png" class="img-fluid" alt="CommandLineExtensions" /&gt;&lt;/p&gt;
-&lt;h2 id="mission-inspiration"&gt;Mission, Inspiration&lt;/h2&gt;
-&lt;p&gt;The mission of CommandLineExtensions is to help make command-line argument parsing simpler while leveraging Microsoft-supported &lt;code&gt;System.CommandLine&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The inspiration for CommandLineExtensions spawns from ConsoleApplicationBuilder, which makes it easier to create console applications that utilize modern .NET patterns and practices like Dependency Injection, Configuration, etc. Console applications revolve around command-line options and arguments, and more easily integrating them with modern .NET patterns and practices is essential.&lt;/p&gt;
-&lt;p&gt;ConsoleApplicationBuilder is a .NET Dependency Injection (&lt;code&gt;IServiceCollection&lt;/code&gt;) extension with a fluent interface to give console application startup a similar fluent experience as other .NET frameworks. CommandLineExtensions continues that goal by providing fluent .NET Dependency Injection interface extensions to define options and arguments for console applications.&lt;/p&gt;
-&lt;h2 id="why-use-commandlineextensions"&gt;Why Use CommandLineExtensions&lt;/h2&gt;
-&lt;p&gt;If what ConsoleApplicationBuilder does doesn't interest you, neither will CommandLineExtensions. Without ConsoleApplicationBuilder CommandLineExtensions is just a builder pattern facade over System.CommandLine that requires a &lt;code&gt;IServiceCollection&lt;/code&gt; implementation. System.CommandLine is an established library and provides a ton of value to .NET console application developers. A builder facade that enables support for DI might only be a subtle improvement for many. I get that; I started this because it interested me.&lt;/p&gt;
-&lt;p&gt;If integrating with modern .NET practices like DI, configuration, and application settings is important to you, here are some benefits of using CommandLineExtensions to define command-line options and arguments (or &amp;quot;parameters&amp;quot;):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;simplified configuration into &amp;quot;parts&amp;quot; or &amp;quot;phases&amp;quot; as contextual guardrails to enforce constraints like type safety&lt;/li&gt;
-&lt;li&gt;integration with established .NET patterns and practices&lt;/li&gt;
-&lt;li&gt;multi-step, piecemeal definition of command-line parameters improving readability.&lt;/li&gt;
-&lt;li&gt;Semantically independent of System.CommandLine API, allowing you to focus on the configurability important to your app&lt;/li&gt;
-&lt;li&gt;fluency of the interface frees you from instantiating multiple framework objects unrelated to your app&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="simple-multi-step-piecemeal-definition-of-parameters"&gt;Simple Multi-step, Piecemeal Definition of Parameters&lt;/h3&gt;
-&lt;p&gt;CommandLineExtensions provides fluent interface to configure command-line parameters in a sequence of phases or steps. A simple example of configuring the root command to take a file option and configure a handler delegate. The &lt;code&gt;WithOption&lt;/code&gt; call begins a context (phase) that configures the current strongly-typed option. Within this context, the call to &lt;code&gt;WithHandler&lt;/code&gt; is strongly-typed to the single option type of &lt;code&gt;FileInfo?&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;builder.Services.AddCommand()
-    .WithDescription(&amp;quot;Sample app for System.CommandLine&amp;quot;)
-    .WithOption&amp;lt;FileInfo?&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;The file to read and display on the console.&amp;quot;)
-    .WithHandler(file =&amp;gt; 
-    {
-        ReadFile(file!);
-    });
-return builder.Build&amp;lt;RootCommand&amp;gt;.Invoke(args);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To do same thing with only System.CommandLine is possible with an explicitly instantiated &lt;code&gt;Option&amp;lt;FileInfo?&amp;gt;&lt;/code&gt; re-used in the call to &lt;code&gt;SetHandler&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
-    name: &amp;quot;--file&amp;quot;,
-    description: &amp;quot;The file to read and display on the console.&amp;quot;);
-
-var rootCommand = new RootCommand(&amp;quot;Sample app for System.CommandLine&amp;quot;);
-rootCommand.AddOption(fileOption);
-
-rootCommand.SetHandler((file) =&amp;gt; 
-    { 
-        ReadFile(file!); 
-    },
-    fileOption);
-
-return await rootCommand.InvokeAsync(args);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The phased or stepwise approach might be more apparent when dealing with multiple commands or subcommands:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand() // 👈 Start root command context
-	.WithSubcommand&amp;lt;ReadCommand&amp;gt;()  // 👈 start read subcommand context
-		.WithArgument&amp;lt;FileInfo&amp;gt;(&amp;quot;file&amp;quot;, &amp;quot;file path to process&amp;quot;)
-		.WithSubcommandHandler(file =&amp;gt; Console.WriteLine($&amp;quot;read &amp;lt;file&amp;gt; argument = {file.Name}&amp;quot;))
-	.WithSubcommand&amp;lt;WriteCommand&amp;gt;()  // 👈 start write subcommand context
-		.WithArgument&amp;lt;FileInfo&amp;gt;(&amp;quot;file&amp;quot;, &amp;quot;file path to process.&amp;quot;)
-		.WithArgument&amp;lt;string&amp;gt;(&amp;quot;text&amp;quot;, &amp;quot;text to write to file, quoted.&amp;quot;)
-		.WithSubcommandHandler((file, text) =&amp;gt; Console.WriteLine($&amp;quot;write &amp;lt;file&amp;gt; argument = {file.Name} with text '{text}'.&amp;quot;))
-	.WithHandler(() =&amp;gt; Console.WriteLine(&amp;quot;Please choose read or write subcommand.&amp;quot;));
-
-return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The first call to &lt;code&gt;WithSubcommandHandler&lt;/code&gt; has the context of a single parameter of type &lt;code&gt;FileInfo&lt;/code&gt; and expects a delegate that takes a single argument of type &lt;code&gt;FileInfo&lt;/code&gt;. The only thing that will compile here is a delegate with a single parameter. The second independent call to &lt;code&gt;WithSubcommandHandler&lt;/code&gt; has a different context, one with two parameters: one of type &lt;code&gt;FileInfo&lt;/code&gt; and one of type &lt;code&gt;string&lt;/code&gt;. There is no way to mix up assigning a delegate to the wrong subcommand.&lt;/p&gt;
-&lt;h3 id="example-dependency-injection"&gt;Example: Dependency Injection&lt;/h3&gt;
-&lt;p&gt;CommandLineExtensions can do what it does through dependency injection--building up a configuration context to the point where a command is built and the required dependencies are resolved and instantiated. Put another way: all the types you use with CommandLineExtensions are resolved via the dependency injection container. If you want to use &lt;code&gt;ILogger&amp;lt;T&amp;gt;&lt;/code&gt; in a command handler, simply include it as a constructor parameter, for example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class LoggingCommandHandler(ILogger&amp;lt;LoggingCommandHandler&amp;gt; logger) : ICommandHandler&amp;lt;FileInfo&amp;gt;
-{
-    public int Execute(FileInfo fileInfo)
-    {
-        Console.WriteLine(
-            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
-        return 0;
-    }
-}
-//...
-public class Program
-{
-    public int Main(string[] args)
-    {
-        var builder = ConsoleApplication.CreateBuilder(args);
-        builder.Services.AddCommand()
-            .WithDescription(&amp;quot;Dependency Injection sample&amp;quot;)
-            .WithOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;)
-            .WithHandler&amp;lt;LoggingCommandHandler&amp;gt;();
-        return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;A similar&lt;super&gt;*&lt;/super&gt; thing in System.CommandLine would require code like the following:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;public class Program
-{
-    public int Main(string[] args)
-    {
-        var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
-            name: &amp;quot;--file&amp;quot;,
-            description: &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;);
-
-        var rootCommand = new RootCommand(&amp;quot;Dependency Injection sample&amp;quot;);
-        rootCommand.Add(fileOption);
-
-        rootCommand.SetHandler((fileOptionValue, logger) =&amp;gt;
-            {
-                DoRootCommand(fileOptionValue!, logger);
-            },
-            fileOption, new MyCustomBinder());
-
-        rootCommand.Invoke(args);
-
-        return 0;
-    }
-    static void DoRootCommand(FileInfo aFile, ILogger logger)
-    {
-        Console.WriteLine($&amp;quot;File = {aFile?.FullName}&amp;quot;);
-        logger.LogCritical(&amp;quot;Test message&amp;quot;);
-    }
-}
-
-public class MyCustomBinder : BinderBase&amp;lt;ILogger&amp;gt;
-{
-    protected override ILogger GetBoundValue(
-        BindingContext bindingContext) =&amp;gt; GetLogger(bindingContext);
-
-    ILogger GetLogger(BindingContext bindingContext)
-    {
-        using ILoggerFactory loggerFactory = LoggerFactory.Create(
-            builder =&amp;gt; builder.AddConsole());
-        ILogger logger = loggerFactory.CreateLogger(&amp;quot;LoggerCategory&amp;quot;);
-        return logger;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;*: &lt;code&gt;ILogger&amp;lt;T&amp;gt;&lt;/code&gt; injection is accomplished, but without using Microsoft.Extensions.DependencyInjection.&lt;/p&gt;
-&lt;h2 id="caveats"&gt;Caveats&lt;/h2&gt;
-&lt;p&gt;This is an MVP to gauge interest and to get feedback. It's functional, but minimal in a few ways.&lt;/p&gt;
-&lt;h3 id="limited-optionsarguments"&gt;Limited Options/Arguments&lt;/h3&gt;
-&lt;p&gt;Parameters are limited to two per command. Two is much lower than the System.CommandLine's limit of eight. Support for more than two will be added in the near future.&lt;/p&gt;
-&lt;h3 id="default-value-factories"&gt;Default Value Factories&lt;/h3&gt;
-&lt;p&gt;Default value factories are not supported. System.CommandLine supports default values for options via a factory method, for example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var fileOption = new Option&amp;lt;FileInfo?&amp;gt;(
-    name: &amp;quot;--file&amp;quot;,
-    description: &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;);
-fileOption.SetDefaultValueFactory(() =&amp;gt; $&amp;quot;{DateTime.Now:MMMM}&amp;quot;); // 👈 delegate to create a new value
-var rootCommand = new RootCommand(&amp;quot;Do something with a file.&amp;quot;);
-rootCommand.Add(fileOption);
-
-rootCommand.SetHandler(fileOptionValue =&amp;gt;
-    {
-        Console.WriteLine($&amp;quot;Received {fileOptionValue} for file name.&amp;quot;);
-    },
-    fileOption);
-
-return rootCommand.Invoke(args);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Default values for options &lt;em&gt;are&lt;/em&gt; supported.  For example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand()
-    .WithOption&amp;lt;FileInfo?&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;An option whose argument is parsed as a FileInfo&amp;quot;)
-    .WithDefault($&amp;quot;{DateTime.Now:MMMM}&amp;quot;) // 👈 create default value here
-    .WithHandler(fileOptionValue =&amp;gt;
-        {
-            Console.WriteLine($&amp;quot;Received {fileOptionValue} for file name.&amp;quot;);
-        });
-return builder.Build&amp;lt;RootCommand&amp;gt;.Invoke(args);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The vision is that CommandLineExtensions be very loosely coupled to System.CommandLine--in most cases, it is coupled only to &lt;em&gt;concepts&lt;/em&gt; (like &lt;em&gt;by name&lt;/em&gt;--sometimes referred to as Connascence of Name). Toward that vision, the CommandLineExtensions fluent interface doesn't use System.CommandLine types directly, so there is no way to use pre-defined types like closed-generic types implementing &lt;code&gt;Option&amp;lt;T&amp;gt;&lt;/code&gt;. I've considered that, and if you feel that's important, please thumb up this issue: &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues/13"&gt;&lt;code&gt;Consider supporting Option&amp;lt;T&amp;gt;-derived types.&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
-&lt;p&gt;Getting started with CommandLineExtensions is very easy. It begins with either creating a console application with ConsoleApplicationBuilder dotnet new template or adding the ConsoleApplicationBuilder NuGet package to an existing console application. (For more information, please see &lt;a href="https://blog.peterritchie.com/posts/announcing-consoleapplicationbuilder"&gt;Announcing ConsoleApplicationBuilder, DI in console applications, simply&lt;/a&gt;.) Then add the &lt;a href="https://www.nuget.org/packages/PRI.CommandLineExtensions"&gt;PRI.CommandLineExtensions&lt;/a&gt; NuGet package.&lt;/p&gt;
-&lt;p&gt;Configuring command-line parameters starts by adding a command; if you don't have a &amp;quot;command,&amp;quot; the implied command is a &lt;em&gt;root command&lt;/em&gt; added with the bare &lt;code&gt;AddCommand()&lt;/code&gt; extension method:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand() // 👈 step 1, configure a command
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then, you can start adding options (named parameters) or arguments (unnamed parameters). For example, if you want to accept a required file name on the command-line with a command-line option of &lt;code&gt;--file&lt;/code&gt;, you could do this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand()
-    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;) // 👈 step 2, add an option
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next, you need to configure what you want to process the parameter value with--a command handler:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand()
-    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;)
-    .WithHandler(fileInfo =&amp;gt; // 👈 step 3, configure the handler, accepting the parameter value
-        Console.WriteLine(
-            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Configuring a handler completes the configuration of that command.&lt;/p&gt;
-&lt;p&gt;And finally, you build or resolve the command and execute it:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-csharp"&gt;var builder = ConsoleApplication.CreateBuilder(args);
-builder.Services.AddCommand()
-    .WithRequiredOption&amp;lt;FileInfo&amp;gt;(&amp;quot;--file&amp;quot;, &amp;quot;file path to process&amp;quot;)
-    .WithHandler(fileInfo =&amp;gt;
-        Console.WriteLine(
-            $&amp;quot;File {fileInfo.Name} is {fileInfo.Length} bytes in size and was created on {fileInfo.CreationTime}.&amp;quot;));
-return builder.Build&amp;lt;RootCommand&amp;gt;().Invoke(args); // 👈 step 4, invoke the handler with the command-line arguments
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
-&lt;p&gt;CommandLineExtensions creates a fluent interface for System.CommandLine, offering a simpler way to define and support command-line options and arguments. CommandLineExtensions doesn't support all the features of System.CommandLine but provides support for defining command-line options and arguments for all but very complex scenarios.&lt;/p&gt;
-&lt;p&gt;For more information and examples, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/blob/main/src/CommandLineExtensions/README.md"&gt;CommandLineExtensions README.md&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;For support, please see &lt;a href="https://github.com/peteraritchie/ConsoleApplicationBuilder/issues"&gt;ConsoleApplicationBuilder GitHub issues&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
