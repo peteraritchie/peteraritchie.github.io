@@ -5,8 +5,81 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Wed, 20 Aug 2025 15:42:01 GMT</pubDate>
-		<lastBuildDate>Wed, 20 Aug 2025 15:42:01 GMT</lastBuildDate>
+		<pubDate>Tue, 26 Aug 2025 14:11:34 GMT</pubDate>
+		<lastBuildDate>Tue, 26 Aug 2025 14:11:34 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - August 24</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-25</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-25</guid>
+			<pubDate>Sun, 24 Aug 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-real-cost-of-abstractions-in-dotnet?utm_source=blog.peterritchie.com"&gt;The Real Cost of Abstractions in .NET&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/create-c-nested-files-in-visual-studio-3j20?utm_source=blog.peterritchie.com"&gt;Create C# nested files in Visual Studio&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/automatically-install-visual-studio-security-updates-through-microsoft-update/?utm_source=blog.peterritchie.com"&gt;Keep Visual Studio automatically updated and secure through Microsoft Update&lt;/a&gt; by Christine Ruana&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/accessing-windows-known-folders-in-csharp-with-shgetknownfolderpath.htm?utm_source=blog.peterritchie.com"&gt;Accessing Windows Known Folders in C# with SHGetKnownFolderPath&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=6S4G4h295GU?utm_source=blog.peterritchie.com"&gt;Visual Studio for Visual Studio Code Users&lt;/a&gt; (Video) by Microsoft Visual Studio&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-25-scaling-up-parallelizing-genetic-algorithms-loops-in-net-with-parallel-foreach/?utm_source=blog.peterritchie.com"&gt;Day 25: Scaling Up: Parallelizing Genetic Algorithms Loops in .NET with Parallel.ForEach&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/08/23/my-jetbrains-rider-plugins-august-2025-edition?utm_source=blog.peterritchie.com"&gt;My JetBrains Rider Plugins&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-test-with-mtp/?utm_source=blog.peterritchie.com"&gt;Enhance your CLI testing workflow with the new dotnet test&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/better-control-over-your-copilot-code-suggestions/?utm_source=blog.peterritchie.com"&gt;Better Control over Your Copilot Code Suggestions&lt;/a&gt; by Simona Liao&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/converting-an-xunit-project-to-tunit/?utm_source=blog.peterritchie.com"&gt;Converting an xUnit test project to TUnit&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/08/18/operations-that-span-multiple-event-streams-with-the-critter-stack/?utm_source=blog.peterritchie.com"&gt;Operations that Span Multiple Event Streams with the Critter Stack&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-developer-cli-from-dev-to-prod-with-azure-devops-pipelines/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI: From Dev to Prod with Azure DevOps Pipelines&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-august-2025/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (August 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/everyone-is-talkin-bout-vibes/?utm_source=blog.peterritchie.com"&gt;Everyone is talking about vibes&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cppblog/announcing-proxy-4-the-next-leap-in-c-polymorphism/?utm_source=blog.peterritchie.com"&gt;Announcing Proxy 4: The Next Leap in C++ Polymorphism&lt;/a&gt; by Mingxin Wang&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;tpierrain/outbox-pattern-survival-guide-6ad4b57ef189?utm_source=blog.peterritchie.com"&gt;Outbox Pattern Survival Guide&lt;/a&gt; by Thomas Pierrain&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250822-00/?p=111494?utm_source=blog.peterritchie.com"&gt;Thoughts on creating a tracking pointer class, part 10: Proper conversion&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.com/2025/08/21/aws_ceo_entry_level_jobs_opinion/?utm_source=blog.peterritchie.com"&gt;AWS CEO says AI replacing junior staff is 'dumbest idea'&lt;/a&gt; by Simon Sharwood&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://venturebeat.com/ai/nightshade-the-free-tool-that-poisons-ai-models-is-now-available-for-artists-to-use/?utm_source=blog.peterritchie.com"&gt;AI-poisoning tool Nightshade now available for artists to use&lt;/a&gt; by Carl Franzen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://defector.com/it-took-many-years-and-billions-of-dollars-but-microsoft-finally-invented-a-calculator-that-is-wrong-sometimes?giftLink=50fb6d3bb4d7516dfa13deb4e27638de?utm_source=blog.peterritchie.com"&gt;It Took Many Years And Billions Of Dollars, But Microsoft Finally Invented A Calculator That Is Wrong Sometimes&lt;/a&gt; by Barry Petchesky&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nymag.com/intelligencer/article/suddenly-silicon-valley-is-lowering-ai-expectations.html?utm_source=blog.peterritchie.com"&gt;Suddenly, Silicon Valley Is Lowering AI Expectations&lt;/a&gt; by  John Herrman&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.com/2025/08/18/generative_ai_zero_return_95_percent/?utm_source=blog.peterritchie.com"&gt;Generative AI does nothing for 95 percent of companies&lt;/a&gt; by Thomas Claburn&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.entrepreneur.com/business-news/most-companies-saw-zero-return-on-ai-investments-study/496144?utm_source=blog.peterritchie.com"&gt;Most Companies Saw Zero Return on AI Investments: Study&lt;/a&gt; by Sherin Shibu&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://sloanreview.mit.edu/article/the-hidden-costs-of-coding-with-generative-ai/?utm_source=blog.peterritchie.com"&gt;The Hidden Costs of Coding With Generative AI&lt;/a&gt; by Edward Anderson, Geoffrey Parker, and Burcu Tan&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+ --&gt;
+&lt;h2 id="other-link-collections"&gt;Other Link Collections&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/08/18/Interesting-links-of-the-week-2025-34/?utm_source=blog.peterritchie.com"&gt;Interesting links of the week 2025-34&lt;/a&gt; by Micheal Eaton&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - August 17</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17</link>
@@ -1058,38 +1131,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://woodruff.dev/ownership-in-rust-the-most-c-ish-thing-ive-loved-and-i-mean-that-in-a-good-way/"&gt;Ownership in Rust: The Most C++-ish Thing I’ve Loved (and I Mean That in a Good Way)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.conventionalcommits.org/en/v1.0.0/"&gt;Conventional Commits&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://philiplaine.com/posts/getting-forked-by-microsoft/"&gt;Getting Forked by Microsoft&lt;/a&gt;&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - April 14</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-14</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-14</guid>
-			<pubDate>Mon, 14 Apr 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/NihalJain/opensource-contributions-tracker/?tab=readme-ov-file"&gt;OpenSource Contributions Tracker&lt;/a&gt; by Nihal Jain&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/5-github-actions-every-maintainer-needs-to-know/"&gt;5 GitHub Actions every maintainer needs to know&lt;/a&gt; by Klint Finley &amp;amp; Gwen Davis&lt;/p&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://theburningmonk.com/2025/04/event-versioning-strategies-for-event-driven-architectures/"&gt;Event versioning strategies for event-driven architectures&lt;/a&gt; by Yan Cui&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/04/01/ports-and-fat-adapters/"&gt;Ports and fat adapters&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/04/09/adopting-mcp-is-a-bad-idea/"&gt;Adopting MCP is a Bad Idea&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250325-understanding-antiforgery-in-aspnetcore/"&gt;Understanding Anti-Forgery in ASP.NET Core&lt;/a&gt; by Maarten Balliauw&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/dotnet/core/blob/main/release-notes%2F10.0%2Fpreview%2Fpreview3%2Fcsharp.md"&gt;C# 14 updates in .NET 10 Preview 3 - Release Notes&lt;/a&gt; by various&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/dotnet-new-meet-cargo-new-a-tale-of-two-clis/"&gt;dotnet new, Meet cargo new: A Tale of Two CLIs&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://youtube.com/watch?v=ta08IEQcyxU"&gt;Back to Basics: Debugging in Visual Studio | Coding Shorts 117&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/modeling-your-environment-with-aspire-24e986752485"&gt;Modeling Your Environment with Aspire&lt;/a&gt; by David Fowler&lt;/p&gt;
-&lt;!--## Design
-
-## Mobile
---&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/03/24/standup-revisited/"&gt;My New Favorite Question for the Daily Standup&lt;/a&gt; by Mike Eaton&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/03/27/working-with-dotnet-10-without-mucking-up-your-machine"&gt;Working with dotnet 10 Without Mucking Up Your Machine&lt;/a&gt; by Joe Guadagno&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.quad9.net/"&gt;Quad9 - A public and free DNS service for a better security and privacy&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
