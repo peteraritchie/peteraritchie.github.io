@@ -20,7 +20,8 @@ There's a saying:
 
 One of the goals of agile software development is to ensure we're focusing on the right thing and to be able to quickly pivot when we realize we may be working on the wrong thing. Let's explore ways to improve the likelihood of focusing on the right things early in an agile context, enabling us as software developers to achieve greater success.
 
-A user story takes the form
+A user story takes the form:
+
 ![User story template as a PostIt](../assets/user-story-postit.png)
 
 For example:
