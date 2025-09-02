@@ -3,7 +3,7 @@ layout: post
 title: 'Being A Successful Software Developer - Agilely Managing Expectations'
 categories: ['September 2025']
 comments: true
-excerpt: 'The more measurable business goals and objectives that are known during estimation and before implementation has begun, the more likely it is that you'll implement functionality that stakeholders will find valuable and useful.'
+excerpt: 'The more measurable business goals and objectives that are known during estimation and before implementation has begun, the more likely it is that you''ll implement functionality that stakeholders will find valuable and useful.'
 tags: ['Software Development', 'Agile', 'Managing Expectations']
 ---
 ![agile work item hierarchy](../assets/agile-work-items.png)
