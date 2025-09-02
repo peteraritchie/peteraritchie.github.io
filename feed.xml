@@ -5,8 +5,75 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 26 Aug 2025 14:11:34 GMT</pubDate>
-		<lastBuildDate>Tue, 26 Aug 2025 14:11:34 GMT</lastBuildDate>
+		<pubDate>Tue, 02 Sep 2025 20:02:18 GMT</pubDate>
+		<lastBuildDate>Tue, 02 Sep 2025 20:02:18 GMT</lastBuildDate>
+		<item>
+			<title>Being A Successful Software Developer - Agilely Managing Expectations</title>
+			<link>http://blog.peterritchie.com/posts/being-a-successful-software-developer--agilely-managing-expectations</link>
+			<description>&lt;p&gt;&lt;img src="../assets/agile-work-items.png" class="img-fluid" alt="agile work item hierarchy"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/being-a-successful-software-developer--agilely-managing-expectations</guid>
+			<pubDate>Tue, 02 Sep 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/agile-work-items.png" class="img-fluid" alt="agile work item hierarchy" /&gt;&lt;/p&gt;
+&lt;p&gt;Being a successful software developer is about developing and delivering software that stakeholders find valuable and useful. Getting objective expectations of value from stakeholders can sometimes be difficult. This isn't necessarily a failing of the stakeholder; sometimes, it can be hard to clearly communicate expectations because assumptions and implicit information can lead your audience to have less exact goals. I work with teams frequently challenged with accurately meeting expectations. This post explores some of the particularly helpful techniques.&lt;/p&gt;
+&lt;h2 id="level-setting"&gt;Level-setting&lt;/h2&gt;
+&lt;p&gt;The context in which I'll be discussing involves agile techniques for describing and managing requirements, but they are applicable regardless of how you refer to requirements or organize them. A generally accepted method of managing requirements is to have a &lt;strong&gt;product backlog&lt;/strong&gt; and a &lt;strong&gt;sprint backlog&lt;/strong&gt; that contain &lt;strong&gt;user stories&lt;/strong&gt;. A user story's purpose is &lt;em&gt;to describe a desired capability, from the perspective of a type of stakeholder (role), that provides a tangible benefit&lt;/em&gt;. In addition to a product backlog, a sprint backlog, and user stories, organizations organize the software development efforts with &lt;strong&gt;epics&lt;/strong&gt; and &lt;strong&gt;features&lt;/strong&gt;. Epics and features help break down work into manageable chunks--aligning it by common purpose. An epic may contain several features related to one another. The epic may also have a theme or strategic goal. A feature is a set of functionality that provides value to stakeholders.&lt;/p&gt;
+&lt;p&gt;There's a saying:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;There is no right way to do the wrong thing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One of the goals of agile software development is to ensure we're focusing on the right thing and to be able to quickly pivot when we realize we may be working on the wrong thing. Let's explore ways to improve the likelihood of focusing on the right things early in an agile context, enabling us as software developers to achieve greater success.&lt;/p&gt;
+&lt;p&gt;A user story takes the form:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../assets/user-story-postit.png" class="img-fluid" alt="User story template as a PostIt" /&gt;&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; &lt;em&gt;website user&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;I want&lt;/strong&gt; &lt;em&gt;to recover my password&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;so that&lt;/strong&gt; &lt;em&gt;I can access my account if I forget it&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Although this story sounds complete, measuring its success ultimately hinges on whether the functionality exists, which is lacking in testability. Specifically, it lacks positive testability. As it stands, we can only test that the functionality doesn't crash rather than verifying the value it should provide. With no way to verify the added value, it's also challenging to quantifiably trace that back to an epic in terms of its contribution to a strategic goal. Some teams don't drill down to more detail than a user story with this level of detail (some may have less detail, such as a functional work-item like &amp;quot;Password Reset&amp;quot;).&lt;/p&gt;
+&lt;p&gt;A common way to make it easier to evaluate work completed against a requirement, such as a user story, is to include a series of acceptance criteria.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;As a developer looking to ensure that what they ultimately implement is fit for purpose, collaborating with users/owners on acceptance criteria is very helpful.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A popular format for acceptance criteria is Given/When/Then (or Gherkin syntax), which details preconditions, actions, and expected outcomes. The general format is
+Given &amp;lt;some context&amp;gt;, When &amp;lt;some action is carried out&amp;gt;, Then &amp;lt;outcome is observed&amp;gt;. For example:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt;: &lt;em&gt;the user navigates to the login page&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;When&lt;/strong&gt;: &lt;em&gt;the user selects the &amp;quot;Forgot Password&amp;quot; option and enters a valid email address&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;Then&lt;/strong&gt;: &lt;em&gt;the system sends the password recovery link to the entered email&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;User stories can easily fall prey to rote creation from a vague checklist item, such as &amp;quot;password reset&amp;quot;. This one simple Given/When/Then example has provided important expectations, including &lt;em&gt;where password reset can occur&lt;/em&gt;, that &lt;em&gt;an email address is required to reset a password&lt;/em&gt;, and that &lt;em&gt;the system will send an email to authenticate the correct user&lt;/em&gt;. But a single Given/When/Then scenario is insufficient to represent realistic expectations. For this user story, scenarios covering receipt of the email and performing the reset are necessary to round out the happy-path expectations. For example&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; &lt;em&gt;the user has entered a valid registered email address on the password recovery page&lt;/em&gt;.&lt;br /&gt;
+&lt;strong&gt;When&lt;/strong&gt; &lt;em&gt;they submit the form&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;Then&lt;/strong&gt; &lt;em&gt;they should receive a confirmation message that a password reset email has been sent&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;and&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; &lt;em&gt;the user has received the password reset email&lt;/em&gt;.&lt;br /&gt;
+&lt;strong&gt;When&lt;/strong&gt; &lt;em&gt;they click the link in the email and enter a new password&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;Then&lt;/strong&gt; &lt;em&gt;their password will be updated, and they should be able to log in with the new password&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="../assets/user-story-with-acceptance-criteria-postit.png" class="img-fluid" alt="User story with acceptance criteria example as PostIte" /&gt;&lt;/p&gt;
+&lt;h2 id="eliciting-acceptance-criteria"&gt;Eliciting Acceptance Criteria&lt;/h2&gt;
+&lt;p&gt;These acceptance criteria may be obvious now that you see them, but when all you've got is a user story, a feature, and an epic, what can we do to get quality acceptance criteria? Fortunately, this example provides some hints. Given/When/Then, &amp;quot;Given&amp;quot; are preconditions; so asking about what preconditions must exist is a good start. &amp;quot;Preconditions&amp;quot; might come across as overly technical, so questions like &amp;quot;&lt;strong&gt;Where would this functionality exist?&lt;/strong&gt;&amp;quot;, &amp;quot;&lt;strong&gt;How would the user reach this functionality?&lt;/strong&gt;&amp;quot; or &amp;quot;&lt;strong&gt;What needs to happen for this functionality to be enabled?&amp;quot;&lt;/strong&gt; have served me well.&lt;/p&gt;
+&lt;p&gt;While working through these questions with the product owner and other stakeholders provides valuable insights for implementing a fit-for-purpose solution, we still lack positive verifiability. We can verify that the functionality achieves the outcomes we've specified, but &lt;strong&gt;what is the value of the outcomes of this functionality&lt;/strong&gt;? Pose this question to stakeholders in an effort to discover something quantifiably measurable. Since clearer outcomes are part of the more detailed scenarios, those newly elicited outcomes can hint at more criteria, from the point of view of quality attributes.&lt;/p&gt;
+&lt;p&gt;Any functionality (i.e., your work) is judged on quality attributes such as its correctness, performance, usability, security, and reliability, to name a few. These quality attributes serve as a great inspiration for eliciting measurable details. So, asking questions about response times, clarity about the type of user/role, error conditions, negative scenarios, etc. For example, you could expand a Given/When/Then scenario to include performance criteria:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt; &lt;em&gt;the user has entered a valid registered email address on the password recovery page&lt;/em&gt;.&lt;br /&gt;
+&lt;strong&gt;When&lt;/strong&gt; &lt;em&gt;they submit the form&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;Then&lt;/strong&gt; &lt;em&gt;they should receive a confirmation message that a password reset email has been sent&lt;/em&gt;.&lt;br /&gt;
+&lt;u&gt;&lt;strong&gt;And&lt;/strong&gt; the confirmation email is sent within 2 minutes&lt;/u&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Or you could update the main scenario with a clearer role:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;Given&lt;/strong&gt;: &lt;em&gt;&lt;u&gt;an unverified user&lt;/u&gt; navigates to the login page&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;When&lt;/strong&gt;: &lt;em&gt;the user selects the &amp;quot;Forgot Password&amp;quot; option and enters a valid email address&lt;/em&gt;,&lt;br /&gt;
+&lt;strong&gt;Then&lt;/strong&gt;: &lt;em&gt;the system sends the password recovery link to the entered email&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;No matter where you find inspiration for measurability, it's in relation to a goal and or objective. The more measurable business goals and objectives that are known during estimation and before implementation has begun, the more likely it is that you'll implement functionality that stakeholders will find valuable and useful. The criteria exist, and they can manifest in either expectation details or the need to refine an implementation. Think shift-left.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - August 24</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-25</link>
@@ -1095,42 +1162,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;h2 id="security"&gt;Security&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.howtogeek.com/how-i-lie-to-secure-my-online-accounts/"&gt;How I Secure My Online Accounts By Telling Lies&lt;/a&gt; by How-To Geek&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.theregister.com/2025/04/22/ssl_com_validation_flaw/"&gt;Bug hunter tricked SSL.com into issuing cert for Alibaba Cloud domain in 5 steps&lt;/a&gt; by The Register&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - April 22</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-22</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-22</guid>
-			<pubDate>Tue, 22 Apr 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/03/17/build-or-adopt--stop-building-your-own-plumbing/"&gt;Build or Adopt: Stop Building Your Own Plumbing&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/"&gt;What the heck is MCP and why is everyone talking about it?&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://nuke.build/"&gt;Smart automation for DevOps teams and CI/CD pipelines&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/shouldly/shouldly"&gt;Shouldy - The way assertions should be.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/module-initializers"&gt;Module Initializers&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=xcpgTVueu-A"&gt;The End of .NET Free Open-Source&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=s7vSG5IFn74"&gt;Test out .NET 10 Previews in Dev Containers &amp;amp; Codespaces in Minutes!&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-preview-3/"&gt;.NET 10 Preview 3 is now available!&lt;/a&gt;&lt;/p&gt;
-&lt;!-- ## Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://ronjeffries.com/articles/019-01ff/story-points/Index.html#"&gt;Story Points Revisited&lt;/a&gt;&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/ownership-in-rust-the-most-c-ish-thing-ive-loved-and-i-mean-that-in-a-good-way/"&gt;Ownership in Rust: The Most C++-ish Thing I’ve Loved (and I Mean That in a Good Way)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.conventionalcommits.org/en/v1.0.0/"&gt;Conventional Commits&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://philiplaine.com/posts/getting-forked-by-microsoft/"&gt;Getting Forked by Microsoft&lt;/a&gt;&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
