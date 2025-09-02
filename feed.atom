@@ -4,7 +4,7 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-09-02T20:02:18Z</updated>
+	<updated>2025-09-02T20:43:08Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/being-a-successful-software-developer--agilely-managing-expectations</id>
@@ -70,6 +70,14 @@ Given &amp;lt;some context&amp;gt;, When &amp;lt;some action is carried out&amp;
 &lt;strong&gt;Then&lt;/strong&gt;: &lt;em&gt;the system sends the password recovery link to the entered email&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;No matter where you find inspiration for measurability, it's in relation to a goal and or objective. The more measurable business goals and objectives that are known during estimation and before implementation has begun, the more likely it is that you'll implement functionality that stakeholders will find valuable and useful. The criteria exist, and they can manifest in either expectation details or the need to refine an implementation. Think shift-left.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/agile-work-items.png" class="img-fluid" alt="agile work item hierarchy"&gt;&lt;/p&gt;</summary>
 	</entry>
