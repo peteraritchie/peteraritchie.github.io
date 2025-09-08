@@ -4,8 +4,75 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-09-02T20:43:08Z</updated>
+	<updated>2025-09-08T18:51:48Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7</id>
+		<title>Things That Caught My Attention Last Week - September 7</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7" />
+		<updated>2025-09-08T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/?utm_source=blog.peterritchie.com"&gt;Microsoft Releases Historic 6502 BASIC - Microsoft Open Source Blog&lt;/a&gt; by  Scott Hanselman, Stacey Haffner&lt;/p&gt;
+&lt;!-- ## Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/the-value-of-custom-exceptions/?utm_source=blog.peterritchie.com"&gt;The Value of Custom Exceptions&lt;/a&gt; by Scott DePouw&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/09/05/sneak-peek-at-the-signalr-integration-in-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Sneak Peek at the SignalR Integration in Wolverine 5.0&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/net-aspire-why-we-should-consider-it/?utm_source=blog.peterritchie.com"&gt;.NET Aspire - Why We Should Consider It And How To Get Started&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/iis-support-blog/capture-net-memory-dump-on-linux/4401935?utm_source=blog.peterritchie.com"&gt;Capture .NET Memory Dump on Linux&lt;/a&gt; by meenakshiBalekar&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/using-multiple-loopback-addresses-for-socket-binding.htm?utm_medium=social&amp;amp;utm_source=bluesky?utm_source=blog.peterritchie.com"&gt;Using Multiple Loopback Addresses for Socket Binding&lt;/a&gt; by Gérald Barré
+&lt;a href="https://andrewlock.net/converting-an-xunit-project-to-tunit/?utm_source=blog.peterritchie.com"&gt;Converting an xUnit test project to TUnit&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/09/01/song-recommendations-with-c-free-monads/?utm_source=blog.peterritchie.com"&gt;Song recommendations with C# free monads&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/getting-started-with-the-aspire-cli/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-27-logging-and-monitoring-genetic-progress-over-generations/?utm_source=blog.peterritchie.com"&gt;Day 27: Logging and Monitoring Genetic Progress Over Generations&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/boost-your-copilot-collaboration-with-reusable-prompt-files/?utm_source=blog.peterritchie.com"&gt;Boost Your Copilot Collaboration with Reusable Prompt Files&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/using-and-authoring-dotnet-tools/?utm_source=blog.peterritchie.com"&gt;Using and authoring .NET tools&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-semantic-search-with-amazon-s3-vectors?utm_source=blog.peterritchie.com"&gt;Building Semantic Search with Amazon S3 Vectors&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://newsletter.pragmaticengineer.com/p/state-of-the-tech-market-in-2025?utm_source=blog.peterritchie.com"&gt;State of the software engineering job market in 2025&lt;/a&gt; by Gergely Orosz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2025/08/31/eat-sleep-code-and-other-negative-culture-signs.html?utm_source=blog.peterritchie.com"&gt;Eat. Sleep. Code. and Other Negative Culture Signs&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/playwright-does-api-testing-now/?utm_source=blog.peterritchie.com"&gt;Playwright Does API Testing Now?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-august-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) - August 2025&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/?utm_source=blog.peterritchie.com"&gt;Secure Your Connections with Entra ID Support in the DocumentDB VS Code Extension&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250905-00/?p=111560?utm_source=blog.peterritchie.com"&gt;The case of the crash on a null pointer even though we checked it for null&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.npr.org/2025/09/05/g-s1-87367/anthropic-authors-settlement-pirated-chatbot-training-material?utm_source=blog.peterritchie.com"&gt;Anthropic to pay authors $1.5 billion in settlement over chatbot training material&lt;/a&gt; by The Associated Press&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1/?utm_source=blog.peterritchie.com"&gt;Addressing the unauthorized issuance of multiple TLS certificates for 1.1.1.1&lt;/a&gt; by Joe Abley, Thibault Meunier, Vicky Shrestha, Bas Westerbaan&lt;/p&gt;
+&lt;!-- ## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/being-a-successful-software-developer--agilely-managing-expectations</id>
 		<title>Being A Successful Software Developer - Agilely Managing Expectations</title>
@@ -1126,48 +1193,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250505-00/?p=111143"&gt;What were the intended uses of those icons in moricons.dll?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
 &lt;!-- ## Security --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-29</id>
-		<title>Things That Caught My Attention Last Week - April 29</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-29" />
-		<updated>2025-04-29T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
-
-## Architecture --&gt;
-&lt;h2 id="presenting"&gt;Presenting&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/04/23/why-i-do-both-written-content-and-videos.html"&gt;Why I Do Both Written Content and Videos&lt;/a&gt; by Sarah &amp;quot;Sadukie&amp;quot; Dutkiewicz&lt;/p&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://newsletter.techworld-with-milan.com/p/why-csharp"&gt;Why C#?&lt;/a&gt; by Dr Milan Milanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=6KUheTnNY3M"&gt;How Does a Domain Model Serialize Itself? IT DOES NOT!&lt;/a&gt; by Zoran on C#&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=Hxfu_KEa4uA"&gt;Why is .NET so Insanely Fast? with Stephen Toub&lt;/a&gt; by Keep Coding Podcast&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://khalidabuhakmeh.com/server-sent-events-in-aspnet-core-and-dotnet-10"&gt;Server-Sent Events in ASP.NET Core and .NET 10&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/model-run-ship-the-new-way-to-build-distributed-apps-48d67286a665"&gt;Model. Run. Ship. The New Way to Build Distributed Apps&lt;/a&gt; by David Fowler&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250422-authorization-policy-tag-helper-aspnetcore-razor-view/"&gt;Authorization Policy TagHelpers for ASP.NET Core Razor Views&lt;/a&gt; by Duende Software&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/going-beyond-singleton-scoped-and-transient-lifetimes/"&gt;Going beyond singleton, scoped, and transient lifetimes—tenant, pooled, and drifter&lt;/a&gt; by Andrew Lock | .NET Escapades&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/refactoring-overgrown-bounded-contexts-in-modular-monoliths"&gt;Refactoring Overgrown Bounded Contexts in Modular Monoliths&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!--## DevOps
-
-## Design
-
-## Mobile
---&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://reflection.ed.ac.uk/reflectors-toolkit/reflecting-on-experience/four-f"&gt;The four F's of active reviewing&lt;/a&gt; by The University of Edinburgh&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-growing-medium-for-api-ecosystems"&gt;The Growing Medium for API Ecosystems - Why shared state matters more than ever&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/04/28/no-auth-on-initial-mcp-was-not-a-bug-it-was-a-feature/"&gt;No Auth on Initial MCP Was Not A Bug, It Was A Feature&lt;/a&gt; by API Evangelist (Kin Lane)&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/rust-structs-vs-c-classes-less-is-more/"&gt;Rust Structs vs C# Classes: Less is More&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.neowin.net/news/jetbrains-sunsets-another-product-citing-lower-than-expected-adoption-rates/"&gt;JetBrains sunsets another product citing lower than expected adoption rates&lt;/a&gt; by Neowin&lt;/p&gt;
-&lt;!-- ## Windows --&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.howtogeek.com/how-i-lie-to-secure-my-online-accounts/"&gt;How I Secure My Online Accounts By Telling Lies&lt;/a&gt; by How-To Geek&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.theregister.com/2025/04/22/ssl_com_validation_flaw/"&gt;Bug hunter tricked SSL.com into issuing cert for Alibaba Cloud domain in 5 steps&lt;/a&gt; by The Register&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
