@@ -5,8 +5,70 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Mon, 08 Sep 2025 18:51:48 GMT</pubDate>
-		<lastBuildDate>Mon, 08 Sep 2025 18:51:48 GMT</lastBuildDate>
+		<pubDate>Tue, 09 Sep 2025 17:40:26 GMT</pubDate>
+		<lastBuildDate>Tue, 09 Sep 2025 17:40:26 GMT</lastBuildDate>
+		<item>
+			<title>System of Record And Source of Single Truth Are Not The Same</title>
+			<link>http://blog.peterritchie.com/posts/system-of-record-and-source-of-truth-are-not-the-same</link>
+			<description>&lt;p&gt;I &lt;a href="/posts/architecture-fundamentals--system-of-record"&gt;recently blogged&lt;/a&gt; about the importance of distinct and isolated subsystems where real-time data transactions that apply to a particular business data entity are processed, known as a System of Record. Someone referenced that post and incorrectly implied that I was suggesting a Single Source of Truth. I didn't delve deeper into Single Source of Truth in that post to keep it concise. Still, I was careful to suggest "how important it is to separate operational systems from analytical systems" and that analytical systems "must support multiple independent Systems of Record." And in fact, I diagrammed information refinement and how it progresses within enterprises. That diagram isolated Systems of Record from a Single Source of Truth and isolated Operational Systems from Analytical Systems. In this post, I want to detail how and why a &lt;strong&gt;Single Source of Truth is different from Systems of Record&lt;/strong&gt;.&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/system-of-record-and-source-of-truth-are-not-the-same</guid>
+			<pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;I &lt;a href="/posts/architecture-fundamentals--system-of-record"&gt;recently blogged&lt;/a&gt; about the importance of distinct and isolated subsystems where real-time data transactions that apply to a particular business data entity are processed, known as a System of Record. Someone referenced that post and incorrectly implied that I was suggesting a Single Source of Truth. I didn't delve deeper into Single Source of Truth in that post to keep it concise. Still, I was careful to suggest &amp;quot;how important it is to separate operational systems from analytical systems&amp;quot; and that analytical systems &amp;quot;must support multiple independent Systems of Record.&amp;quot; And in fact, I diagrammed information refinement and how it progresses within enterprises. That diagram isolated Systems of Record from a Single Source of Truth and isolated Operational Systems from Analytical Systems. In this post, I want to detail how and why a &lt;strong&gt;Single Source of Truth is different from Systems of Record&lt;/strong&gt;.&lt;/p&gt;
+&lt;img src="/assets/sor-data-architecture.png" alt="Example data architecture that leverages Systems of Record." style="min-height: 10em; max-height: 75vmin; width: auto;"&gt;
+&lt;p&gt;A System of Record is an operational system with a data store (an &lt;em&gt;operational data store&lt;/em&gt;) that captures, validates, updates, and stores authoritative records focused &lt;em&gt;only on a specific type of business data entity&lt;/em&gt;. &lt;strong&gt;A System of Record is not used directly for reporting&lt;/strong&gt; or analytics. As an operational data store, it supports the execution of one part of day-to-day business processes involved in the production of goods or services within an enterprise. Operational systems are optimized to ensure specific &lt;strong&gt;business operations execute in real-time as quickly and reliably as possible&lt;/strong&gt;. Additionally, as business records, information in a System of Record has applicable retention requirements. While Systems of Record may purge information for maintainability, often enterprises must retain information in such systems for regulatory and compliance purposes.&lt;/p&gt;
+&lt;p&gt;Reflecting on the outcome of those operations is distinctly different from executing those operations: analyzing metrics and trends in the production of goods or services, and strategizing how to guide or improve active operations. &lt;strong&gt;Analytics involves viewing the metadata about, the historic results of, and the context around operational business activities in multidimensional groups&lt;/strong&gt; to support decision-making about past business transactions. For example, in an e-commerce site, operational activities involve facilitating the purchase/sale of products. Analytics enables historical analysis of those sales across dimensions like time (months, quarters, etc.), demographics (region, customer segment, etc.), strategy (e.g., campaigns), etc. That is, a view of performance from the singular perspective of the entire enterprise, across different departments/verticals. The information retention constraints of the source system should not limit the extent to which historical analysis should go. This holistic view is the &lt;em&gt;truth&lt;/em&gt; that needs to be consistently available across the enterprise: &lt;em&gt;The Single Source of Truth&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;A Single Source of Truth is a single analytical view of an enterprise across different departments/verticals.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Analytics isn't useful without the data a System of Record provides, but business records alone are not enough to make decisions across those dimensions. The information from business records needs to be aggregated and combined with information from other parts of the enterprise to produce those dimensions. The process of aggregating information from business records needs to occur independently of the operational system because not all the necessary information is at the individual business record level. e.g., campaign timeframes are overlaid over a range of transactions across multiple operational systems (information aggregated across operational systems). Remember that business operations must execute in real-time as quickly and reliably as possible, regardless of whether analytics data is being processed.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Impacting a sale today due to a query that aggregates data from last month does not make good business sense.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To maintain the independence of all data sources, the processing involved in aggregating and populating analytical systems is kept as isolated as possible. &lt;strong&gt;Data lakes and data warehouses separate a Single Source of Truth from source Systems of Record to achieve this isolation.&lt;/strong&gt;. Data lakes are updated with operational data only as needed. Extract, Transform, and Load (ETL) processes consume data from data lakes and other sources to update data warehouses that ultimately populate the analytical systems. This type of information refinement pipeline minimizes the impact on operational systems.&lt;/p&gt;
+&lt;p&gt;Systems of Record differ from a Single Source of Truth in the same ways operational data differs from analytical data:&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: left;"&gt;Attribute&lt;/th&gt;
+&lt;th style="text-align: left;"&gt;Operational Data&lt;/th&gt;
+&lt;th style="text-align: left;"&gt;Analytical Data&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left;"&gt;Goal&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Daily efficiency and immediate actions.&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Long-term strategy and decision-making.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left;"&gt;Data&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Real-time, transactional.&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Historical, aggregated.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left;"&gt;Performance&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Write-intensive, speed-focused.&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Read-intensive, query-focused.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: left;"&gt;Audience&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Customers, front-line staff.&lt;/td&gt;
+&lt;td style="text-align: left;"&gt;Data analysts, business strategists.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I have found that &amp;quot;Single Source of Truth&amp;quot; is used to refer to any data source. Sometimes &amp;quot;Source of Truth&amp;quot; is used interchangeably. This is unfortunate because it leads to confusion, ultimately resulting in poor architectures.&lt;/p&gt;
+&lt;p&gt;Personally, I purposefully avoid using the phrase &amp;quot;Source of Truth&amp;quot; to avoid confusion with &amp;quot;Single Source of Truth&amp;quot; and refer to &amp;quot;Single Source of Truth&amp;quot; only as an isolated analytical system separate from &amp;quot;Systems of Record.&amp;quot;&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - September 7</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7</link>
@@ -1151,50 +1213,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;h2 id="ai"&gt;AI&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://ashley.dev/posts/what-even-is-vibe-coding/"&gt;What Even Is Vibe Coding?&lt;/a&gt; by ashley.dev&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/is-ai-making-your-organization-fragile-or-more-resilient/"&gt;Is AI Making Your Organization Fragile or More Resilient&lt;/a&gt; by Mark Levison&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - May 4</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-4</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-4</guid>
-			<pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://medium.com/javarevisited/unleashing-the-power-of-event-storming-e475be7826cc"&gt;Unleashing the Power of Event Storming&lt;/a&gt; by Noah Hsu&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/stateless-parts-stateful-wholes"&gt;Stateless Parts, Stateful Wholes&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://kalele.io/vaughn-vernon-on-why-the-outbox-pattern-falls-short-and-the-smarter-alternative-for-event-driven-systems/"&gt;Vaughn Vernon on Why the Outbox Pattern Falls Short – And the Smarter Alternative for Event-Driven Systems&lt;/a&gt; by Nicole Andrade&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/event-driven-architecture-in-dotnet-with-rabbitmq"&gt;Event-Driven Architecture in .NET with RabbitMQ&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;h2 id="presenting"&gt;Presenting&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://gamma.app/"&gt;Gamma is your AI design partner for effortless presentations, websites, social media posts, and more—so you can focus on what you do best.&lt;/a&gt; by Gamma&lt;/p&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://developers.redhat.com/articles/2025/04/21/c-13-advanced-features"&gt;Some more C# 13&lt;/a&gt; by Tom Deseyn&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=2EGzAPhz2nE"&gt;Turbocharged: Writing High-Performance C# and .NET Code - Steve Gordon - NDC Porto 2024&lt;/a&gt; by Steve Gordon&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dotnet.github.io/dotNext/"&gt;.NEXT 5.x&lt;/a&gt; by .NEXT&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/05/05/song-recommendations-as-a-c-impureim-sandwich/"&gt;Song recommendations as a C# Impureim Sandwich&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250430-managing-openapi-specifications-with-backend-for-frontend-and-swagger-ui"&gt;Managing OpenAPI Specifications with Backend For Frontend and Swagger UI&lt;/a&gt; by Khalid Abuhakmeh and Erwin van der Valk&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/04/30/huge-wolverine-3-13-release/"&gt;Huge Wolverine 3.13 Release&lt;/a&gt; by Jeremy Miller&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=4UHhaOCjMgY&amp;amp;list=WL&amp;amp;index=16"&gt;How to understand almost anything - Markus Völter - DDD Europe&lt;/a&gt; by Markus Völter&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://vladikk.com/2025/04/05/f1-ddd/"&gt;F1 + DDD: All Models are Wrong, Some are Dangerous&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
-&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/introducing-azure-devops-id-token-refresh-and-terraform-task-version-5/"&gt;Introducing Azure DevOps ID Token Refresh and Terraform Task Version 5&lt;/a&gt; by Jared Holgate and Eric van Wijk&lt;/p&gt;
-&lt;!-- ## Design
-
-## Mobile
-
-## Agile/Work Life --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/02/api-governance-rules-from-the-netherlands/"&gt;API Governance Rules from the Netherlands&lt;/a&gt; by API Evangelist&lt;/p&gt;
-&lt;!-- ## Azure --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/panic-vs-exceptions-stop-the-world-or-handle-it/"&gt;Panic! vs Exceptions: Stop the World or Handle It?&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.prairiedevcon.com/"&gt;Prairie Dev Con Winnipeg&lt;/a&gt; by Prairie Dev Con&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/05/04/stir-trek-2025-recap.html"&gt;Stir Trek 2025 recap&lt;/a&gt; by Sarah &amp;quot;Sadukie&amp;quot; Dutkiewicz&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250505-00/?p=111143"&gt;What were the intended uses of those icons in moricons.dll?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Security --&gt;
 </content:encoded>
 		</item>
 	</channel>
