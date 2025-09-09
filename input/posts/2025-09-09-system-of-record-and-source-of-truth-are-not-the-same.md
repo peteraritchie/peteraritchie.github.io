@@ -4,7 +4,7 @@ title: 'System of Record And Source of Single Truth Are Not The Same'
 categories: ['September 2025']
 comments: true
 excerpt: 'A System of Record is one of many operational systems that owns the transactions applied to a specific subset of business entity data. Single Source of Truth is an analytical system that aggregates operational and reference data from multiple sources for reporting and decision support.'
-tags: [''Software Architecture', 'Fundamentals', 'System of Record', 'Single Source of Truth']
+tags: ['Software Architecture', 'Fundamentals', 'System of Record', 'Single Source of Truth']
 ---
 
 I [recently blogged](/posts/architecture-fundamentals--system-of-record) about the importance of distinct and isolated subsystems where real-time data transactions that apply to a particular business data entity are processed, known as a System of Record. Someone referenced that post and incorrectly implied that I was suggesting a Single Source of Truth. I didn't delve deeper into Single Source of Truth in that post to keep it concise. Still, I was careful to suggest "how important it is to separate operational systems from analytical systems" and that analytical systems "must support multiple independent Systems of Record." And in fact, I diagrammed information refinement and how it progresses within enterprises. That diagram isolated Systems of Record from a Single Source of Truth and isolated Operational Systems from Analytical Systems. In this post, I want to detail how and why a **Single Source of Truth is different from Systems of Record**.
