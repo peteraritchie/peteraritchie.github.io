@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Entity Framework Petition of Vote of Non Confidence'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Microsoft', 'Software Development', 'msmvps', 'June 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Microsoft', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/06/25/entity-framework-petition-of-vote-of-non-confidence/ "Permalink to Entity Framework Petition of Vote of Non Confidence")
 

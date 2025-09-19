@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Community'
-tags: ['Uncategorized', 'msmvps', 'March 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/03/19/community/ "Permalink to Community")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Mapping to Your Database is a Private Affair'
-tags: ['Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'WCF', 'msmvps', 'March 2011']
+tags: ['Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'WCF', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/03/26/mapping-to-your-database-is-a-private-affair/ "Permalink to Mapping to Your Database is a Private Affair")
 

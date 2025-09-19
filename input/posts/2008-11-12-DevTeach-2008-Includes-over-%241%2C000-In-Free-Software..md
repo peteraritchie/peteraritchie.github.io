@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DevTeach 2008 Includes over $1,000 In Free Software.'
-tags: ['.NET Development', 'DevTeach YUL 2008', 'msmvps', 'November 2008']
+tags: ['.NET Development', 'DevTeach YUL 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/13/devteach-2008-includes-over-1-000-in-free-software/ "Permalink to DevTeach 2008 Includes over $1,000 In Free Software.")
 

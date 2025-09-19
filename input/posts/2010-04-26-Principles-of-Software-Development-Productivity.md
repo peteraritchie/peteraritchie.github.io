@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Principles of Software Development Productivity'
-tags: ['Uncategorized', 'msmvps', 'April 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/26/principles-of-software-development-productivity/ "Permalink to Principles of Software Development Productivity")
 

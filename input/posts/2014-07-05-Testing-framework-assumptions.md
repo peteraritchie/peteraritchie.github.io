@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Testing framework assumptions'
-tags: ['Uncategorized', 'msmvps', 'July 2014']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/07/05/testing-framework-assumptions/ "Permalink to Testing framework assumptions")
 

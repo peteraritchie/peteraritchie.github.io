@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Pontificating Virtual Parameterized Constructors in C#'
-tags: ['AntiPattern', 'C#', 'OOD', 'Patterns', 'Pontification', 'Software Development', 'msmvps', 'November 2008']
+tags: ['AntiPattern', 'C#', 'OOD', 'Patterns', 'Pontification', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/18/pontificating-virtual-parameterized-constructors-in-c/ "Permalink to Pontificating Virtual Parameterized Constructors in C#")
 

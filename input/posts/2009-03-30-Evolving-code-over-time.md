@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Evolving code over time'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps', 'March 2009']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/03/30/evolving-code-over-time/ "Permalink to Evolving code over time")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Writing Solid Code'
-tags: ['C#', 'C++', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'October 2006']
+tags: ['C#', 'C++', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/10/16/writing-solid-code/ "Permalink to Writing Solid Code")
 

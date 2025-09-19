@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Location of unit tests.'
-tags: ['.NET Development', 'Design/Coding Guidance', 'General', 'Pontification', 'TDD', 'msmvps', 'August 2008']
+tags: ['.NET Development', 'Design/Coding Guidance', 'General', 'Pontification', 'TDD', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/20/location-of-unit-tests/ "Permalink to Location of unit tests.")
 

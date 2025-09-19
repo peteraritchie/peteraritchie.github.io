@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Thread synchronization of atomic invariants in .NET 4.5'
-tags: ['.NET 4.5', '.NET Development', 'C#', 'Concurrency', 'DevCenterPost', 'Multithreaded', 'Software Development Guidance', 'msmvps', 'September 2012']
+tags: ['.NET 4.5', '.NET Development', '.NET', 'C#', 'Concurrency', 'DevCenterPost', 'Multithreaded', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/09/09/thread-synchronization-of-atomic-invariants-in-net-4-5/ "Permalink to Thread synchronization of atomic invariants in .NET 4.5")
 

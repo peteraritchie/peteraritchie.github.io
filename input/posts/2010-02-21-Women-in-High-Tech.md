@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Women in High Tech'
-tags: ['Uncategorized', 'msmvps', 'February 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/21/women-in-high-tech/ "Permalink to Women in High Tech")
 

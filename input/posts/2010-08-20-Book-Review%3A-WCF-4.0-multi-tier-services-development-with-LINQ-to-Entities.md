@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Book Review: WCF 4.0 multi-tier services development with LINQ-to-Entities'
-tags: ['.NET 4.0', 'Book Review', 'C#', 'Software Development', 'msmvps', 'August 2010']
+tags: ['.NET', '.NET 4.0', 'Book Review', 'C#', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/08/20/book-review-wcf-4-0-multi-tier-services-development-with-linq-to-entities/ "Permalink to Book Review: WCF 4.0 multi-tier services development with LINQ-to-Entities")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio Revert-to-saved macros'
-tags: ['.NET Development', 'Visual Studio 2005', 'msmvps', 'July 2006']
+tags: ['.NET Development', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/07/27/visual-studio-revert-to-saved-macros/ "Permalink to Visual Studio Revert-to-saved macros")
 

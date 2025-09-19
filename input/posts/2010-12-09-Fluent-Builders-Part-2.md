@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Fluent Builders Part 2'
-tags: ['Uncategorized', 'msmvps', 'December 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/12/09/fluent-builders-part-2/ "Permalink to Fluent Builders Part 2")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Microsoft Open Source Lab'
-tags: ['Microsoft', 'Open Source', 'msmvps', 'March 2007']
+tags: ['Microsoft', 'Open Source', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/03/16/microsoft-open-source-lab/ "Permalink to Microsoft Open Source Lab")
 

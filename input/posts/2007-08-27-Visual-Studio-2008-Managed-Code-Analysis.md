@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio 2008 Managed Code Analysis'
-tags: ['Visual Studio 2008', 'msmvps', 'August 2007']
+tags: ['Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/08/27/visual-studio-2008-managed-code-analysis/ "Permalink to Visual Studio 2008 Managed Code Analysis")
 

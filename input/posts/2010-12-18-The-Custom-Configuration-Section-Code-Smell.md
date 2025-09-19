@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Custom Configuration Section Code Smell'
-tags: ['.NET 4.0', '.NET Development', 'Code Smells', 'Software Development Guidance', 'Software Development Principles', 'Unity 2.0', 'msmvps', 'December 2010']
+tags: ['.NET 4.0', '.NET Development', '.NET', 'Code Smells', 'Software Development Guidance', 'Software Development Principles', 'Unity 2.0', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/12/18/the-custom-configuration-section-code-smell/ "Permalink to The Custom Configuration Section Code Smell")
 

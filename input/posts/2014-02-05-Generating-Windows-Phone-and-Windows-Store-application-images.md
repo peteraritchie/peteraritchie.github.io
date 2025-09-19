@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Generating Windows Phone and Windows Store application images'
-tags: ['.NET Development', 'Software Development', 'Windows Phone 8.0', 'Windows Store', 'msmvps', 'February 2014']
+tags: ['.NET Development', '.NET', 'Software Development', 'Windows Phone 8.0', 'Windows Store', 'msmvps']
 disqus_id: "1301 http://blog.peterritchie.com/?p=1301"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/05/generating-windows-phone-and-windows-store-application-images/ "Permalink to Generating Windows Phone and Windows Store application images")

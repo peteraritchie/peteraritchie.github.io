@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The weather outside is frightful'
-tags: ['Uncategorized', 'msmvps', 'February 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/10/the-weather-outside-is-frightful/ "Permalink to The weather outside is frightful")
 

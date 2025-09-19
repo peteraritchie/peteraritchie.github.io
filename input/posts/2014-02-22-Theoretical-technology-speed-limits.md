@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Theoretical technology speed limits'
-tags: ['Non-development', 'Random', 'msmvps', 'February 2014']
+tags: ['Non-development', 'Random', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/22/theoretical-technology-speed-limits/ "Permalink to Theoretical technology speed limits")
 

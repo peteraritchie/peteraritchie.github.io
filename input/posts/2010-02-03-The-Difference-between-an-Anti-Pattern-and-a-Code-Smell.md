@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Difference between an Anti-Pattern and a Code Smell'
-tags: ['AntiPattern', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'msmvps', 'February 2010']
+tags: ['AntiPattern', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/03/the-difference-between-an-anti-pattern-and-a-code-smell/ "Permalink to The Difference between an Anti-Pattern and a Code Smell")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'And the winners are…'
-tags: ['Uncategorized', 'msmvps', 'November 2012']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/11/06/and-the-winners-are/ "Permalink to And the winners are…")
 

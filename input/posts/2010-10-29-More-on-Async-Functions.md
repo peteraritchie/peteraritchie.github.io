@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'More on Async Functions'
-tags: ['Async Functions', 'C#', 'C# 5', 'DevCenterPost', 'Visual Studio vNext', 'msmvps', 'October 2010']
+tags: ['.NET', 'Async Functions', 'C#', 'C# 5', 'DevCenterPost', 'Visual Studio vNext', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/10/29/more-on-async-functions/ "Permalink to More on Async Functions")
 

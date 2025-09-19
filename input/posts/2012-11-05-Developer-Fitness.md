@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Developer Fitness'
-tags: ['health/fitness', 'Non-development', 'msmvps', 'November 2012']
+tags: ['health/fitness', 'Non-development', 'msmvps']
 disqus_id: "151 http://pri-blog.azurewebsites.net/?p=151"
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/11/05/developer-fitness/ "Permalink to Developer Fitness")

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'ITSWITCH #1: Answer'
-tags: ['.NET 2.0', '.NET Development', 'C#', 'Design/Coding Guidance', 'ITSWITCH Answer', 'Pop Quiz', 'Software Development', 'msmvps', 'July 2008']
+tags: ['.NET 2.0', '.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'ITSWITCH Answer', 'Pop Quiz', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/28/itswitch-1-answer/ "Permalink to ITSWITCH #1: Answer")
 

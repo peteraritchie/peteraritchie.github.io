@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Hosted MongoDB'
-tags: ['Uncategorized', 'msmvps', 'May 2011']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/05/22/hosted-mongodb/ "Permalink to Hosted MongoDB")
 

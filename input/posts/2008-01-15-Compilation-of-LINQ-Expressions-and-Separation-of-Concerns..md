@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Compilation of LINQ Expressions and Separation of Concerns.'
-tags: ['Uncategorized', 'msmvps', 'January 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/15/compiled-linq-expressions-and-separation-of-concerns/ "Permalink to Compilation of LINQ Expressions and Separation of Concerns.")
 

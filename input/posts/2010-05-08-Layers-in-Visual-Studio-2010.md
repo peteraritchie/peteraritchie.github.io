@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Layers in Visual Studio 2010'
-tags: ['DevCenterPost', 'msmvps', 'May 2010', 'Visual Studio 2010']
+tags: ['.NET', 'DevCenterPost', 'msmvps', 'Visual Studio 2010']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/05/08/layers-in-visual-studio-2010/ "Permalink to Layers in Visual Studio 2010")
 

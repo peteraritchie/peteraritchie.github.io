@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Effective Blogger'
-tags: ['Apps', 'Windows Store', 'msmvps', 'March 2014']
+tags: ['Apps', 'Windows Store', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/03/27/effective-blogger/ "Permalink to Effective Blogger")
 

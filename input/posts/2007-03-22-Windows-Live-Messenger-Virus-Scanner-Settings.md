@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows Live Messenger Virus Scanner Settings'
-tags: ['Non-development', 'msmvps', 'March 2007']
+tags: ['Non-development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/03/22/windows-live-messenger-virus-scanner-settings/ "Permalink to Windows Live Messenger Virus Scanner Settings")
 

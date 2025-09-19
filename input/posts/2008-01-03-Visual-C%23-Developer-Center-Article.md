@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual C# Developer Center Article'
-tags: ['.NET 3.5', '.NET Development', 'C#', 'C# 3.0', 'msmvps', 'January 2008']
+tags: ['.NET 3.5', '.NET Development', 'C#', '.NET', 'C# 3.0', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/03/visual-c-developer-center-article/ "Permalink to Visual C# Developer Center Article")
 

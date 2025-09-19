@@ -4,7 +4,7 @@ title: 'Entity Framework in .NET Aspire'
 categories: ['.NET', 'Aspire', 'Entity Framework']
 comments: true
 excerpt: If you want to utilize Entity Framework in a .NET Aspire application, adding a project to contain the entity models, context, and Entity Framework references and supporting a database engine container is a recommended place to get started.
-tags: ['October 2023', '.NET', 'Aspire', 'Entity Framework']
+tags: ['.NET', 'Aspire', 'Entity Framework']
 ---
 ![A path through the infrastructure](../assets/entity-framework-in-aspire.jpg)
 

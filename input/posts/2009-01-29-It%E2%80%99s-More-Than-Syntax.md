@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'It’s More Than Syntax'
-tags: ['Software Development', 'msmvps', 'January 2009']
+tags: ['Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/01/29/it-s-more-than-syntax/ "Permalink to It’s More Than Syntax")
 

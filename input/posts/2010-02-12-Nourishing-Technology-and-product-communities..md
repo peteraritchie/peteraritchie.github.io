@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Nourishing Technology and product communities.'
-tags: ['Uncategorized', 'msmvps', 'February 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/12/nourishing-technology-and-product-communities/ "Permalink to Nourishing Technology and product communities.")
 

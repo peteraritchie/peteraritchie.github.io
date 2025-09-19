@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Maxim’s of Object-Oriented Design – Layers'
-tags: ['Uncategorized', 'msmvps', 'February 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/06/good-object-oriented-design-layers/ "Permalink to Maxim’s of Object-Oriented Design – Layers")
 

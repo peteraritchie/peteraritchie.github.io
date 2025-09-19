@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Trials and Tribulations of DataGridView, Column Selections, and Sorting'
-tags: ['.NET 3.5', '.NET Development', 'C#', 'Connect Issue', 'Framework Bug', 'Software Development', 'Visual Studio 2008 SP1', 'msmvps', 'August 2008']
+tags: ['.NET 3.5', '.NET Development', 'C#', '.NET', 'Connect Issue', 'Framework Bug', 'Software Development', 'Visual Studio 2008 SP1', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/26/trials-and-tribulations-of-datagridview-column-selections-and-sorting/ "Permalink to Trials and Tribulations of DataGridView, Column Selections, and Sorting")
 

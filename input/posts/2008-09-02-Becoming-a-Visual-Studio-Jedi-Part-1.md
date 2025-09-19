@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Becoming a Visual Studio Jedi Part 1'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'Visual Studio 2008', 'msmvps', 'September 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/09/02/becoming-a-visual-studio-jedi/ "Permalink to Becoming a Visual Studio Jedi Part 1")
 

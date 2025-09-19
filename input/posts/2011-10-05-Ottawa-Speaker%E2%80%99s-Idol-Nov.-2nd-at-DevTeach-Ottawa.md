@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Ottawa Speaker’s Idol Nov. 2nd at DevTeach Ottawa'
-tags: ['DevTeach', 'DevTeach YOW 2011', 'msmvps', 'October 2011']
+tags: ['DevTeach', 'DevTeach YOW 2011', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/10/05/ottawa-speaker-s-idol-nov-2nd-at-devteach-ottawa/ "Permalink to Ottawa Speaker’s Idol Nov. 2nd at DevTeach Ottawa")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio Orcas == Visual Studio 2008'
-tags: ['Visual Studio Orcas', 'msmvps', 'July 2007', 'Visual Studio 2008']
+tags: ['Visual Studio Orcas', 'msmvps', 'Visual Studio 2008']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/07/11/visual-studio-orcas-visual-studio-2008/ "Permalink to Visual Studio Orcas == Visual Studio 2008")
 

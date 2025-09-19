@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Microsoft Symbol Server EULA Circa VS 2005'
-tags: ['Uncategorized', 'msmvps', 'January 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/03/microsoft-symbol-server-eula-circa-vs-2005/ "Permalink to Microsoft Symbol Server EULA Circa VS 2005")
 

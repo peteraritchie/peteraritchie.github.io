@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Save CBitmap to File'
-tags: ['C++', 'MFC', 'Software Development', 'msmvps', 'September 2006']
+tags: ['C++', 'MFC', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/25/save-cbitmap-to-file/ "Permalink to Save CBitmap to File")
 

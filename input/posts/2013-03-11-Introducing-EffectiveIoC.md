@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Introducing EffectiveIoC'
-tags: ['.NET 4.0', '.NET 4.5', '.NET Development', 'C#', 'EffectiveIoC', 'msmvps', 'March 2013']
+tags: ['.NET 4.0', '.NET 4.5', '.NET Development', '.NET', 'C#', 'EffectiveIoC', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2013/03/11/introducing-effectiveioc/ "Permalink to Introducing EffectiveIoC")
 

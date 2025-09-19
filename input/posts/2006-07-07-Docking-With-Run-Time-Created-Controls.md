@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Docking With Run-Time-Created Controls'
-tags: ['.NET Development', 'C#', 'Software Development', 'WinForms', 'msmvps', 'July 2006']
+tags: ['.NET Development', 'C#', '.NET', 'Software Development', 'WinForms', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/07/07/runtimedockfill/ "Permalink to Docking With Run-Time-Created Controls")
 

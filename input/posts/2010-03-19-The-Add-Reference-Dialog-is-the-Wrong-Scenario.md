@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Add Reference Dialog is the Wrong Scenario'
-tags: ['Uncategorized', 'msmvps', 'March 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/03/19/the-add-reference-dialog-is-the-wrong-scenario/ "Permalink to The Add Reference Dialog is the Wrong Scenario")
 

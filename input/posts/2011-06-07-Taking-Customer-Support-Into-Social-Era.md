@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Taking Customer Support Into Social Era'
-tags: ['Non-development', 'Pontification', 'msmvps', 'June 2011']
+tags: ['Non-development', 'Pontification', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/06/07/taking-customer-support-into-social-era/ "Permalink to Taking Customer Support Into Social Era")
 

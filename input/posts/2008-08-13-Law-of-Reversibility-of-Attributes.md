@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Law of Reversibility of Attributes'
-tags: ['Design/Coding Guidance', 'Software Development', 'msmvps', 'August 2008']
+tags: ['Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/13/law-of-reversibility-of-attributes/ "Permalink to Law of Reversibility of Attributes")
 

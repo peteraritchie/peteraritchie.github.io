@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Misapplied "Premature Optimization"'
-tags: ['Uncategorized', 'msmvps', 'October 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/10/29/misapplied-quot-premature-optimization-quot/ "Permalink to Misapplied "Premature Optimization"")
 

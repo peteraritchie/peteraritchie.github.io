@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Heartbleed: Caveat Emptor'
-tags: ['Heartbleed', 'Security', 'msmvps', 'April 2014']
+tags: ['Heartbleed', 'Security', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/18/heartbleed-caveat-emptor/ "Permalink to Heartbleed: Caveat Emptor")
 

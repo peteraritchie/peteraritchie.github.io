@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '"Object is currently in use elsewhere" error.'
-tags: ['.NET Development', 'C#', 'DevCenterPost', 'WinForms', 'msmvps', 'January 2008']
+tags: ['.NET Development', 'C#', '.NET', 'DevCenterPost', 'WinForms', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/28/quot-object-is-currently-in-use-elsewhere-quot-error/ "Permalink to "Object is currently in use elsewhere" error.")
 

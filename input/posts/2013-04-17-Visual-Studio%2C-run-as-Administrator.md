@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio, run as Administrator'
-tags: ['.NET Development', 'Visual Studio 2012', 'msmvps', 'April 2013']
+tags: ['.NET Development', '.NET', 'Visual Studio 2012', 'msmvps']
 disqus_id: "821 http://blog.peterritchie.com/?p=821"
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/04/17/visual-studio-run-as-administrator/ "Permalink to Visual Studio, run as Administrator")

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Certification Caveats'
-tags: ['Opinion', 'Rant', 'msmvps', 'May 2011']
+tags: ['Opinion', 'Rant', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/05/12/certification-caveats/ "Permalink to Certification Caveats")
 

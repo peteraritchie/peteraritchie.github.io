@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Introduction to messaging primitives'
-tags: ['.NET Development', 'Message-oriented', 'Software Development', 'msmvps', 'September 2016']
+tags: ['.NET Development', '.NET', 'Message-oriented', 'Software Development', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2016/09/30/introduction-to-messaging-primitives/ "Permalink to Introduction to messaging primitives")
 

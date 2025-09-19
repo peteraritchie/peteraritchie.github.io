@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Oww, my brain hurts.  Extension methods *will* cause me grief.'
-tags: ['.NET 3.x', '.NET Development', 'C#', 'msmvps', 'May 2007']
+tags: ['.NET 3.x', '.NET Development', 'C#', '.NET', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/05/31/oww-my-brain-hurts-extension-methods-will-cause-me-grief/ "Permalink to Oww, my brain hurts. Extension methods *will* cause me grief.")
 

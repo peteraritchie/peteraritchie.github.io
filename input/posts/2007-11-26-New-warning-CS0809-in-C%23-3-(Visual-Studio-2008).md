@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'New warning CS0809 in C# 3 (Visual Studio 2008)'
-tags: ['.NET 3.5', 'C#', 'C# 3.0', 'C# 3.0 Breaking Changes', 'Design/Coding Guidance', 'Visual Studio 2008', 'msmvps', 'November 2007']
+tags: ['.NET 3.5', 'C#', 'C# 3.0', 'C# 3.0 Breaking Changes', 'Design/Coding Guidance', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/11/26/new-warning-cs0809-in-c-3-visual-studio-2008/ "Permalink to New warning CS0809 in C# 3 (Visual Studio 2008)")
 

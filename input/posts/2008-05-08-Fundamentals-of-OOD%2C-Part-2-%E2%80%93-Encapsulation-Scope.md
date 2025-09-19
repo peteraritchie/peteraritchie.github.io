@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Fundamentals of OOD, Part 2 – Encapsulation Scope'
-tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'msmvps', 'May 2008']
+tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/05/08/fundamentals-of-ood-part-2-encapsulation-scope/ "Permalink to Fundamentals of OOD, Part 2 – Encapsulation Scope")
 

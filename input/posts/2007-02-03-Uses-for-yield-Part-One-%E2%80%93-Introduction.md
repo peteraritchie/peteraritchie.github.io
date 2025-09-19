@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Uses for yield Part One – Introduction'
-tags: ['Uncategorized', 'msmvps', 'February 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/02/03/uses-for-yield-part-one-introduction/ "Permalink to Uses for yield Part One – Introduction")
 

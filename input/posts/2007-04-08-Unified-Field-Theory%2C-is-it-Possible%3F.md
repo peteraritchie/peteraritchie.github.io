@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Unified Field Theory, is it Possible?'
-tags: ['Pontification', 'Software Development', 'msmvps', 'April 2007']
+tags: ['Pontification', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/04/08/unified-field-theory-is-it-possible/ "Permalink to Unified Field Theory, is it Possible?")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Protecting intellectual properties in .NET, Part 1.'
-tags: ['.NET 2.0', '.NET Development', 'Software Development', 'msmvps', 'September 2006']
+tags: ['.NET 2.0', '.NET Development', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/09/protecting-intellectual-properties-in-net/ "Permalink to Protecting intellectual properties in .NET, Part 1.")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'New Warning CS1060 in C# 3 (Visual Studio 2008)'
-tags: ['.NET 3.5', '.NET Development', 'C# 3.0 Breaking Changes', 'Software Development', 'Visual Studio 2008', 'msmvps', 'December 2007']
+tags: ['.NET 3.5', '.NET Development', 'C# 3.0 Breaking Changes', 'Software Development', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/12/09/new-warning-cs1060-in-c-3-visual-studio-2008/ "Permalink to New Warning CS1060 in C# 3 (Visual Studio 2008)")
 

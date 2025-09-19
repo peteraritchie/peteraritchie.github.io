@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'TechDays Canada 2009 Developer Foundations Call For Speakers'
-tags: ['Uncategorized', 'msmvps', 'August 2009']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/08/24/techdays-canada-2009-developer-foundations-call-for-speakers/ "Permalink to TechDays Canada 2009 Developer Foundations Call For Speakers")
 

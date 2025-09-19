@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Testing Strategies Involving Async Functions'
-tags: ['.NET Development', 'Async Functions', 'C# 5', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'TDD', 'Unit Testing', 'msmvps', 'November 2010']
+tags: ['.NET Development', '.NET', 'Async Functions', 'C# 5', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'TDD', 'Unit Testing', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/11/04/testing-strategies-involving-async-functions/ "Permalink to Testing Strategies Involving Async Functions")
 

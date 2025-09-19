@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'What Are the Proposed C# Type Unions and How Do They Relate to Discriminated Unions?'
-categories: ['.NET', 'C#', 'Aspire']
+categories: ['Aug 2024', '.NET', 'C#', 'Aspire']
 comments: true
 excerpt: .
-tags: ['Aug 2024', '.NET', 'C#', '.NET', 'C# 13']
+tags: ['.NET', 'C#', '.NET', 'C# 13']
 ---
 <!--what-are-the-proposed-csharp-type-unions-and-how-do-they-relate-to-discriminated-unions-->
 ![views through different lenses](../assets/views-through-different-lenses.jpg)

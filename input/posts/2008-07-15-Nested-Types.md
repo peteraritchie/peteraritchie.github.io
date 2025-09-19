@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Nested Types'
-tags: ['.NET 3.5', '.NET Development', 'Asynchronous Programming Model (APM)', 'C#', 'C# 3.0', 'Design/Coding Guidance', 'Software Development', 'TCP', 'Visual Studio 2008', 'msmvps', 'July 2008']
+tags: ['.NET 3.5', '.NET Development', 'Asynchronous Programming Model (APM)', 'C#', 'C# 3.0', 'Design/Coding Guidance', 'Software Development', 'TCP', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/15/nested-types/ "Permalink to Nested Types")
 

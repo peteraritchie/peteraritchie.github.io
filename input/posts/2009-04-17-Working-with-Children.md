@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Working with Children'
-tags: ['Uncategorized', 'msmvps', 'April 2009']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/04/17/working-with-children/ "Permalink to Working with Children")
 

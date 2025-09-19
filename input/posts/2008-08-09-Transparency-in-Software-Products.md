@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Transparency in Software Products'
-tags: ['Uncategorized', 'msmvps', 'August 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/09/transparency-in-software-products/ "Permalink to Transparency in Software Products")
 

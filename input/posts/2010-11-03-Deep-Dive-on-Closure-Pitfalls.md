@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Deep Dive on Closure Pitfalls'
-tags: ['.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET 4.0', '.NET Development', 'C#', 'C# 3.0', 'C# 4', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'msmvps', 'November 2010']
+tags: ['.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET 4.0', '.NET Development', 'C#', '.NET', 'C# 3.0', 'C# 4', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/11/03/deep-dive-on-closure-pitfals/ "Permalink to Deep Dive on Closure Pitfalls")
 

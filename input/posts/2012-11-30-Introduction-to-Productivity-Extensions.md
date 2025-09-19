@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Introduction to Productivity Extensions'
-tags: ['.NET Development', 'C#', 'Open Source', 'Visual Studio 2010', 'Visual Studio 2012', 'msmvps', 'November 2012']
+tags: ['.NET Development', '.NET', 'C#', 'Open Source', 'Visual Studio 2010', 'Visual Studio 2012', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/11/30/introduction-to-productivity-extensions/ "Permalink to Introduction to Productivity Extensions")
 

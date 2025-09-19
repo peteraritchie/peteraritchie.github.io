@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'My Wishlist for C# 4'
-tags: ['C#', 'C# 4', 'Pontification', 'msmvps', 'February 2008']
+tags: ['C#', 'C# 4', 'Pontification', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/12/my-wishlist-for-c-4/ "Permalink to My Wishlist for C# 4")
 

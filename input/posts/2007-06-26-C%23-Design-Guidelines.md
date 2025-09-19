@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'C# Design Guidelines'
-tags: ['Uncategorized', 'msmvps', 'June 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/06/26/c-design-guidelines/ "Permalink to C# Design Guidelines")
 

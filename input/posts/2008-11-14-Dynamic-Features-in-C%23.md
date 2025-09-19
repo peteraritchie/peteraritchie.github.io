@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dynamic Features in C#'
-tags: ['C# 4', 'msmvps', 'November 2008']
+tags: ['C# 4', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/14/dynamic-features-in-c/ "Permalink to Dynamic Features in C#")
 

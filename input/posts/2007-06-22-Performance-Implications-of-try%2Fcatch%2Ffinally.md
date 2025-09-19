@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Performance Implications of try/catch/finally'
-tags: ['.NET 2.0', '.NET Development', 'C#', 'Design/Coding Guidance', 'msmvps', 'June 2007']
+tags: ['.NET 2.0', '.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/06/22/performance-implications-of-try-catch-finally/ "Permalink to Performance Implications of try/catch/finally")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'visual studio jedi 2'
-tags: ['Uncategorized', 'msmvps', 'November 2008', 'Visual Studio 2008']
+tags: ['Uncategorized', 'msmvps', 'Visual Studio 2008']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/14/visual-studio-jedi-2/ "Permalink to visual studio jedi 2")
 

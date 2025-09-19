@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dispose Pattern and “Set large fields to null”'
-tags: ['.NET 4.0', 'C#', 'DevCenterPost', 'Pontification', 'msmvps', 'April 2012']
+tags: ['.NET 4.0', '.NET', 'C#', 'DevCenterPost', 'Pontification', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/04/26/dispose-pattern-and-set-large-fields-to-null/ "Permalink to Dispose Pattern and “Set large fields to null”")
 

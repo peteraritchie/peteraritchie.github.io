@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Azure Table Storage and the Great Certificate Expiry of 2013'
-tags: ['.NET 4.0', '.NET 4.5', 'Azure', 'C#', 'msmvps', 'March 2013']
+tags: ['.NET 4.0', '.NET 4.5', '.NET', 'Azure', 'C#', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2013/03/01/azure-table-storage-and-the-great-certificate-expiry-of-2013/ "Permalink to Azure Table Storage and the Great Certificate Expiry of 2013")
 

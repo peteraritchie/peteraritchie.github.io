@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Routing and Remote Access, NAT, and Internet connection sharing.'
-tags: ['General', 'msmvps', 'July 2006']
+tags: ['General', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/07/15/routing-and-remote-access-nat-and-internet-connection-sharing/ "Permalink to Routing and Remote Access, NAT, and Internet connection sharing.")
 

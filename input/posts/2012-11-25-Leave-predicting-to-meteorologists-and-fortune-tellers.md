@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Leave predicting to meteorologists and fortune-tellers'
-tags: ['Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'msmvps', 'November 2012']
+tags: ['Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/11/25/leave-predicting-to-meteorologists-and-fortune-tellers/ "Permalink to Leave predicting to meteorologists and fortune-tellers")
 

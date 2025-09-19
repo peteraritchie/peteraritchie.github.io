@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dogfooding'
-tags: ['Non-development', 'msmvps', 'November 2006']
+tags: ['Non-development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/11/16/dogfooding/ "Permalink to Dogfooding")
 

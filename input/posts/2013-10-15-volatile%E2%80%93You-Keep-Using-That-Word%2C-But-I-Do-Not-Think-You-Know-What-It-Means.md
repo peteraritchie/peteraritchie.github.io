@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'volatile–You Keep Using That Word, But I Do Not Think You Know What It Means'
-tags: ['C/C++', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Win32', 'msmvps', 'October 2013']
+tags: ['C/C++', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Win32', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/10/15/volatileyou-keep-using-that-word-but-i-do-not-think-you-know-what-it-means/ "Permalink to volatile–You Keep Using That Word, But I Do Not Think You Know What It Means")
 

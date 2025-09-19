@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Platform Developer Creativity'
-tags: ['Uncategorized', 'msmvps', 'April 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/10/platform-developer-creativity/ "Permalink to Platform Developer Creativity")
 

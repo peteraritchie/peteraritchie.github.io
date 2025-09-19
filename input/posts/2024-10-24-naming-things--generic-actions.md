@@ -4,7 +4,7 @@ title: 'Naming things: Actions'
 categories: ['Naming Things']
 comments: true
 excerpt: "Naming is hard and easy to get wrong, leading to hard-to-understand code. Getting agreement on generic action names can ... and make naming other things less paralyzing"
-tags: ['Oct 2024', 'Naming Things', 'DDD', 'Domain-Driven Design']
+tags: ['Naming Things', 'DDD', 'Domain-Driven Design']
 ---
 ![Overwhelming Possibilities](../assets/overwhelming-possibilities.png)
 

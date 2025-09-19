@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Spaces or Tabs?'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Microsoft', 'msmvps', 'May 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Microsoft', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/05/26/spaces-or-tabs/ "Permalink to Spaces or Tabs?")
 

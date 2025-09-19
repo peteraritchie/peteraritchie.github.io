@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Drag and drop of control selections onto forms designer toolbox'
-tags: ['Connect Suggestion', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio vNext', 'msmvps', 'August 2008']
+tags: ['Connect Suggestion', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio vNext', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/21/drag-and-drop-of-control-selections-onto-forms-designer-toolbox/ "Permalink to Drag and drop of control selections onto forms designer toolbox")
 

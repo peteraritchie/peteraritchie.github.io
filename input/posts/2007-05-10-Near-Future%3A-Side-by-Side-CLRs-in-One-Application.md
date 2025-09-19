@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Near Future: Side by Side CLRs in One Application'
-tags: ['.NET 3.x', '.NET Development', 'SilverLight', 'msmvps', 'May 2007']
+tags: ['.NET 3.x', '.NET Development', 'SilverLight', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/05/10/near-future-side-by-side-clrs-in-one-application/ "Permalink to Near Future: Side by Side CLRs in One Application")
 

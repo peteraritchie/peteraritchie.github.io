@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows XP Professional EULA'
-tags: ['Uncategorized', 'msmvps', 'March 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/03/28/windows-xp-professional-eula/ "Permalink to Windows XP Professional EULA")
 

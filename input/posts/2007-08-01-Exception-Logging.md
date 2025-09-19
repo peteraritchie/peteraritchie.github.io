@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Exception Logging'
-tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'August 2007']
+tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/08/01/exception-logging/ "Permalink to Exception Logging")
 

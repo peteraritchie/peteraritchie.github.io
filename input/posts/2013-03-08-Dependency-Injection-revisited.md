@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dependency Injection'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'msmvps', 'March 2013']
+tags: ['.NET Development', '.NET', 'C#', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'msmvps']
 disqus_id: "71 http://pri-blog.azurewebsites.net/?p=71"
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/03/08/dependency-injection/ "Permalink to Dependency Injection")

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'BigInteger is not in .NET Framework 3.5'
-tags: ['.NET 3.5', 'msmvps', 'December 2007']
+tags: ['.NET 3.5', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/12/13/biginteger-is-not-in-net-framework-3-5/ "Permalink to BigInteger is not in .NET Framework 3.5")
 

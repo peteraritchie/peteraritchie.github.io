@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'How Hard Could It Be Indeed: Another sub-standard web site.'
-tags: ['Poor UI', 'msmvps', 'June 2008']
+tags: ['Poor UI', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/06/02/how-hard-could-it-be-indeed-another-sub-standard-web-site/ "Permalink to How Hard Could It Be Indeed: Another sub-standard web site.")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'C#, Async, Limits, oh my!'
-tags: ['.NET Development', 'Async Functions', 'C#', 'Visual Studio', 'msmvps', 'January 2012']
+tags: ['.NET Development', '.NET', 'Async Functions', 'C#', 'Visual Studio', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/01/19/c-async-limits-oh-my/ "Permalink to C#, Async, Limits, oh my!")
 

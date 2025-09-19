@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N — first glance.'
-tags: ['.NET Development', 'C#', 'CodeRush Refactor! Pro', 'EffectiveIoC', 'Resharper', 'Software Development', 'msmvps', 'June 2008']
+tags: ['.NET Development', 'C#', '.NET', 'CodeRush Refactor! Pro', 'EffectiveIoC', 'Resharper', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/06/25/comparing-coderush-refactor-pro-and-resharper-4-part-1-or-n-first-glance/ "Permalink to Comparing CodeRush Refactor! Pro and Resharper 4, part 1 or N — first glance.")
 

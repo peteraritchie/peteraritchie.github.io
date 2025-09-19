@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Writing Libraries with Visual C++'
-tags: ['Uncategorized', 'msmvps', 'October 2006']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/10/12/writing-libraries-with-visual-c/ "Permalink to Writing Libraries with Visual C++")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Flaws in the Microsoft Connect Process'
-tags: ['Uncategorized', 'msmvps', 'April 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/15/flaws-in-the-microsoft-connect-process/ "Permalink to Flaws in the Microsoft Connect Process")
 

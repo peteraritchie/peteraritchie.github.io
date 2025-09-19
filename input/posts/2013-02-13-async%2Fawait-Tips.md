@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'async/await Tips'
-tags: ['.NET 4.5', 'async', 'C#', 'C# 5', 'Visual Studio 2012', 'msmvps', 'February 2013']
+tags: ['.NET 4.5',  '.NET','async', 'C#', 'C# 5', 'Visual Studio 2012', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2013/02/13/async-await-gotchas/ "Permalink to async/await Tips")
 

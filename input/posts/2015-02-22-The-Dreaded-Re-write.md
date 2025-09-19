@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Dreaded Re-write'
-tags: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development Guidance', 'Software Development Practices', 'msmvps', 'February 2015']
+tags: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development Guidance', 'Software Development Practices', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2015/02/22/the-dreaded-re-write/ "Permalink to The Dreaded Re-write")
 

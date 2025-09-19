@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'HTTP and ETag Header Fields'
-categories: ['ASP.NET', 'HTTP', 'Azure', 'Cosmos DB']
+categories: ['June 2023', 'ASP.NET', 'HTTP', 'Azure', 'Cosmos DB']
 comments: true
 excerpt: An ETag addresses accidental overwrite by versioning the resource with an entity-tag (a hash of the representation, a version, etc.).
-tags: ['June 2023', 'ASP.NET', 'HTTP', 'Azure', 'Cosmos DB', 'Optimistic Concurrency']
+tags: ['ASP.NET', 'HTTP', 'Azure', 'Cosmos DB', 'Optimistic Concurrency']
 ---
 ![A stuffed tiger corrupted appearance due to accidental overwrite](../assets/accidental-overwrite.jpg)
 

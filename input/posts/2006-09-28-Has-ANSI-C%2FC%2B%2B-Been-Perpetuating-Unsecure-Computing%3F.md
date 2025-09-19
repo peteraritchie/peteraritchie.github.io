@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Has ANSI C/C++ Been Perpetuating Unsecure Computing?'
-tags: ['C++', 'Software Development', 'msmvps', 'September 2006']
+tags: ['C++', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/28/has-ansi-cc-been-perpetuating-unsecure-computing/ "Permalink to Has ANSI C/C++ Been Perpetuating Unsecure Computing?")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Trace to output window without adding code.'
-tags: ['Interesting Find', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps', 'June 2008']
+tags: ['Interesting Find', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/06/13/trace-to-output-window-without-adding-code/ "Permalink to Trace to output window without adding code.")
 

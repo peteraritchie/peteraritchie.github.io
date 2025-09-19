@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DevTeach Toronto 2008'
-tags: ['.NET Development', 'DevTeach', 'msmvps', 'May 2008']
+tags: ['.NET Development', 'DevTeach', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/05/16/devteach-toronto-2008/ "Permalink to DevTeach Toronto 2008")
 

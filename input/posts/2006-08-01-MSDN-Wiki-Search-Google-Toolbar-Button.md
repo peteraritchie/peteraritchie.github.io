@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'MSDN Wiki Search Google Toolbar Button'
-tags: ['Uncategorized', 'msmvps', 'August 2006']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/08/01/msdn-wiki-search-google-toolbar-button/ "Permalink to MSDN Wiki Search Google Toolbar Button")
 

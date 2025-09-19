@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The case of the not-so-useful XBF error'
-tags: ['.NET Development', 'C#', 'Windows Store', 'XAML', 'msmvps', 'March 2014']
+tags: ['.NET Development', '.NET', 'C#', 'Windows Store', 'XAML', 'msmvps']
 disqus_id: "1471 http://blog.peterritchie.com/?p=1471"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/03/23/the-case-of-the-not-so-useful-xbf-error/ "Permalink to The case of the not-so-useful XBF error")

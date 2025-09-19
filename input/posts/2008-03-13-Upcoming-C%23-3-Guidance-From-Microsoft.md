@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Upcoming C# 3 Guidance From Microsoft'
-tags: ['.NET 3.5', '.NET Development', 'C# 3.0', 'Design/Coding Guidance', 'DevCenterPost', 'msmvps', 'March 2008']
+tags: ['.NET 3.5', '.NET Development', 'C# 3.0', 'Design/Coding Guidance', 'DevCenterPost', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/03/13/upcoming-c-3-guidance-from-microsoft/ "Permalink to Upcoming C# 3 Guidance From Microsoft")
 

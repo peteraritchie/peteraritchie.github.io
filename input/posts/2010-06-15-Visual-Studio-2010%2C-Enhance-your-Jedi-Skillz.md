@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio 2010, Enhance your Jedi Skillz'
-tags: ['.NET Development', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'msmvps', 'June 2010']
+tags: ['.NET Development', '.NET', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/06/15/visual-studio-2010-enhance-your-jedi-skillz/ "Permalink to Visual Studio 2010, Enhance your Jedi Skillz")
 

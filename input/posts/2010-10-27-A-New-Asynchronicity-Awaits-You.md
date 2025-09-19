@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'A New Asynchronicity Awaits You'
-tags: ['C#', 'DevCenterPost', 'Software Development', 'Visual Studio vNext', 'msmvps', 'October 2010']
+tags: ['.NET', 'C#', 'DevCenterPost', 'Software Development', 'Visual Studio vNext', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/10/28/a-new-synchronicity-awaits-you/ "Permalink to A New Asynchronicity Awaits You")
 

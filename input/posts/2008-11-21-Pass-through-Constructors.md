@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Pass-through Constructors'
-tags: ['.NET Development', 'C#', 'Definition', 'Software Development', 'msmvps', 'November 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Definition', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/21/pass-through-constructors/ "Permalink to Pass-through Constructors")
 

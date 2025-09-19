@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  '"No "Add Method Stub" When Passing or Assigning Delegates"'
-tags: ['.NET Development', 'Product Bugs', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps', 'February 2008']
+tags: ['.NET Development', 'Product Bugs', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/15/no-quot-add-method-stub-quot-when-passing-or-assigning-delegates/ "Permalink to No "Add Method Stub" When Passing or Assigning Delegates")
 

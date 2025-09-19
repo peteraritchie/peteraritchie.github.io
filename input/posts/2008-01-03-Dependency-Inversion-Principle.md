@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dependency Inversion Principle'
-tags: ['Uncategorized', 'msmvps', 'January 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/03/dependency-inversion-principle/ "Permalink to Dependency Inversion Principle")
 

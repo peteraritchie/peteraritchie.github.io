@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Refactoring with Visual Studio 2010'
-tags: ['.NET Development', 'C#', 'Refactoring with Visual Studio 2010', 'Visual Studio 2010', 'msmvps', 'May 2010']
+tags: ['.NET Development', 'C#', '.NET', 'Refactoring with Visual Studio 2010', 'Visual Studio 2010', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/05/17/refactoring-with-visual-studio-2010/ "Permalink to Refactoring with Visual Studio 2010")
 

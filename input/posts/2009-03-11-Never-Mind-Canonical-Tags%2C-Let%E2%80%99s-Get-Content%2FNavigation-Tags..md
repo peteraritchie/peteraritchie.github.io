@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Never Mind Canonical Tags, Let’s Get Content/Navigation Tags.'
-tags: ['Non-development', 'Pontification', 'msmvps', 'March 2009']
+tags: ['Non-development', 'Pontification', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/03/11/never-mind-canonical-tags-let-s-get-content-navigation-tags/ "Permalink to Never Mind Canonical Tags, Let’s Get Content/Navigation Tags.")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DevTeach Comes to Ottawa!'
-tags: ['DevTeach', 'DevTeach YOW 2011', 'Software Development', 'msmvps', 'October 2011']
+tags: ['DevTeach', 'DevTeach YOW 2011', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/10/13/devteach-comes-to-ottawa/ "Permalink to DevTeach Comes to Ottawa!")
 

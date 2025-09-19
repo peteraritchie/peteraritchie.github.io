@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'If You’re Using “#if DEBUG”, You’re Doing it Wrong'
-tags: ['.NET Development', 'C#', 'Code Contracts', 'DbC', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles', 'msmvps', 'November 2011']
+tags: ['.NET Development', 'C#', '.NET', 'Code Contracts', 'DbC', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/11/24/if-you-re-using-if-debug-you-re-doing-it-wrong/ "Permalink to If You’re Using “#if DEBUG”, You’re Doing it Wrong")
 

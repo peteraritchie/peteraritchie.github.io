@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Why is immutability important.'
-tags: ['Uncategorized', 'msmvps', 'January 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/07/why-is-immutability-important/ "Permalink to Why is immutability important.")
 

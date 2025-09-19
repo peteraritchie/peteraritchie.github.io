@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Who’s Referencing Whom?'
-tags: ['.NET 2.0', '.NET Development', 'Debugging', 'Visual Studio 2005', 'msmvps', 'October 2007']
+tags: ['.NET 2.0', '.NET Development', 'Debugging', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/10/12/who-s-referencing-whom/ "Permalink to Who’s Referencing Whom?")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio 2005 Clean doesn’t clean everything'
-tags: ['C#', 'Visual Studio 2005', 'msmvps', 'November 2006']
+tags: ['C#', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/11/16/visual-studio-2005-clean-doesn-t-clean-everything/ "Permalink to Visual Studio 2005 Clean doesn’t clean everything")
 

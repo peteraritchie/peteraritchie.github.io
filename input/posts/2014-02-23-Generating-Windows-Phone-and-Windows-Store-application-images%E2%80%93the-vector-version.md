@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Generating Windows Phone and Windows Store application images–the vector version'
-tags: ['.NET Development', 'Software Development', 'Windows Phone 8.0', 'Windows Store', 'msmvps', 'February 2014']
+tags: ['.NET Development', '.NET', 'Software Development', 'Windows Phone 8.0', 'Windows Store', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/24/generating-windows-phone-and-windows-store-application-imagesthe-vector-version/ "Permalink to Generating Windows Phone and Windows Store application images–the vector version")
 

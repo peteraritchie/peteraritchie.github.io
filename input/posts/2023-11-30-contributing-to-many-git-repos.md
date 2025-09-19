@@ -4,7 +4,7 @@ title: 'A tool to help contributing to many Git repos'
 categories: ['Git']
 comments: true
 excerpt: I contribute to a variety of Git repos.  When I re-start work (or maybe I'm coming off a vacation), going to each repo dir to perform git fetch is tedious. I've developed a Powershell script to do that.
-tags: ['October 2023', 'Git']
+tags: ['Git']
 ---
 ![Source code from many sources](../assets/contributing-to-many-git-repos.jpg)
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Bye bye, eBay'
-tags: ['Security', 'msmvps', 'May 2014']
+tags: ['Security', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/05/25/bye-bye-ebay/ "Permalink to Bye bye, eBay")
 

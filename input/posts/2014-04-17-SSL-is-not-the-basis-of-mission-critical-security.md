@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'SSL is not the basis of mission critical security'
-tags: ['Heartbleed', 'Security', 'Uncategorized', 'msmvps', 'April 2014']
+tags: ['Heartbleed', 'Security', 'Uncategorized', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/17/ssl-is-not-the-basis-of-mission-critical-security/ "Permalink to SSL is not the basis of mission critical security")
 

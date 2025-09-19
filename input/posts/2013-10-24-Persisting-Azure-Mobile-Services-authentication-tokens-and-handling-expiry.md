@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Persisting Azure Mobile Services authentication tokens and handling expiry'
-tags: ['.NET Development', 'Azure', 'Azure Mobile Services', 'C#', 'Mobile', 'Visaul Studio 2013', 'Visual Studio 2010', 'Windows Phone', 'Windows Phone 7.1', 'msmvps', 'October 2013']
+tags: ['.NET Development', '.NET', 'Azure', 'Azure Mobile Services', 'C#', 'Mobile', 'Visual Studio 2013', 'Visual Studio 2010', 'Windows Phone', 'Windows Phone 7.1', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/10/24/persisting-azure-mobile-services-authentication-tokens-and-handling-expiry/ "Permalink to Persisting Azure Mobile Services authentication tokens and handling expiry")
 

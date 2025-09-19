@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Working with Subversion Part 2 (or Subversion for the Less Subversive)'
-tags: ['General', 'SCC', 'Software Development', 'Software Development Workflow', 'Subversion', 'SVN', 'msmvps', 'November 2011']
+tags: ['General', 'SCC', 'Software Development', 'Software Development Workflow', 'Subversion', 'SVN', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/11/17/working-with-subversion-part-2-or-subversion-for-the-less-subversive/ "Permalink to Working with Subversion Part 2 (or Subversion for the Less Subversive)")
 

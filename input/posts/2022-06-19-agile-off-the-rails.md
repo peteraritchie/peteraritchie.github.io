@@ -4,7 +4,7 @@ title: 'As a Delivery Team Member, I Want To Know if My Organization''s Agile In
 categories: ['Workplace']
 comments: true
 excerpt: "As a delivery team member, I want to know if my organization's agile initiative is off the rails, so that I may compensate for it."
-tags: ['Workplace', 'Agile', 'June 2022']
+tags: ['Workplace', 'Agile']
 ---
 ![concentration](/assets/adult-gd72730acb_1920.jpg)
 

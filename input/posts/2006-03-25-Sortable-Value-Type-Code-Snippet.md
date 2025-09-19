@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Sortable Value Type Code Snippet'
-tags: ['.NET Development', 'C#', 'Software Development', 'msmvps', 'March 2006']
+tags: ['.NET Development', 'C#', '.NET', 'Software Development', 'msmvps']
 ---
 $&
 I was reading [Krzysztof Cwalina][1] and [Brad Abrams'][2] book [_Framework Design Guidelines : Conventions, Idioms, and Patterns for Reusable .NET Libraries_][3] (Guidelines) the other day. I was reading through the value type design guidelines and thought I should review some of the code I was currently working on to make sure my value types were complete.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'More Windows SDK Functions That Are Not Safe'
-tags: ['Software Development', 'msmvps', 'September 2006']
+tags: ['Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/27/more-windows-sdk-functions-that-are-not-safe/ "Permalink to More Windows SDK Functions That Are Not Safe")
 

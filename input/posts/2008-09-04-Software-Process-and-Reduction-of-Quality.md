@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Software Process and Reduction of Quality'
-tags: ['General', 'Software Development', 'msmvps', 'September 2008']
+tags: ['General', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/09/04/software-process-and-reduction-of-quality/ "Permalink to Software Process and Reduction of Quality")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Getting the most out of Reflector'
-tags: ['Uncategorized', 'msmvps', 'August 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/08/getting-the-most-out-of-reflector/ "Permalink to Getting the most out of Reflector")
 

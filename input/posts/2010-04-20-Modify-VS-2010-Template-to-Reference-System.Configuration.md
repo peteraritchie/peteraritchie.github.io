@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Modify VS 2010 Template to Reference System.Configuration'
-tags: ['.NET Development', 'C#', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'WinForms', 'msmvps', 'April 2010']
+tags: ['.NET Development', 'C#', '.NET', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'WinForms', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/20/modify-vs-2010-template-to-reference-system-configuration/ "Permalink to Modify VS 2010 Template to Reference System.Configuration")
 

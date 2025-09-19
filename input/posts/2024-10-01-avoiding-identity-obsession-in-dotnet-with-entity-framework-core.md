@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Avoiding Identity Obsession in .NET with Entity Framework Core'
-categories: ['Domain-Driven Design']
+categories: ['Oct 2024', 'Domain-Driven Design']
 comments: true
 excerpt: 
-tags: ['Oct 2024', 'Identity Obsession', 'DDD', 'Domain-Driven Design', '.NET', 'C#', 'EFCore']
+tags: ['Identity Obsession', 'DDD', 'Domain-Driven Design', '.NET', 'C#', 'EFCore']
 ---
 ![Complicated translation](../assets/technological-layers.png)
 

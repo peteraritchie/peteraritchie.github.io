@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Fundamentals of OOD Part 3: Method Cohesion'
-tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'OOD', 'Software Development', 'msmvps', 'June 2008']
+tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'OOD', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/06/10/fundamentals-of-ood-part-3-method-cohesion/ "Permalink to Fundamentals of OOD Part 3: Method Cohesion")
 

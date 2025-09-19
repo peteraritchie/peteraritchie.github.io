@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Reducing code-bloat with anonymous methods'
-tags: ['Uncategorized', 'msmvps', 'February 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/02/06/reducing-code-bloat-with-anonymous-methods/ "Permalink to Reducing code-bloat with anonymous methods")
 

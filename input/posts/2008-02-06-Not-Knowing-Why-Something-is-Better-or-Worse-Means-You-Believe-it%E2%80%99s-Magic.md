@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Not Knowing Why Something is Better or Worse Means You Believe it’s Magic'
-tags: ['Software Development', 'msmvps', 'February 2008']
+tags: ['Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/06/not-knowing-why-something-is-better-or-worse-means-you-believe-it-s-magic/ "Permalink to Not Knowing Why Something is Better or Worse Means You Believe it’s Magic")
 

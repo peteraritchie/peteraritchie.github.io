@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Apple’s New iPhone SDK Licensing Changes are a Potential Win for Microsoft.'
-tags: ['Uncategorized', 'msmvps', 'April 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/13/apple-s-new-iphone-sdk-licensing-changes-are-a-potential-win-for-microsoft/ "Permalink to Apple’s New iPhone SDK Licensing Changes are a Potential Win for Microsoft.")
 

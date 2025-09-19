@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'What do the icons on your Windows Phone 8.1 mean?'
-tags: ['Windows Phone 8.1', 'msmvps', 'April 2014']
+tags: ['Windows Phone 8.1', '.NET', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/29/what-do-the-icons-on-your-windows-phone-8-1-mean/ "Permalink to What do the icons on your Windows Phone 8.1 mean?")
 

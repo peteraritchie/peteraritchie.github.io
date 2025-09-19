@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Overcoming problems with MethodInfo.Invoke of methods with by-reference value type arguments'
-tags: ['.NET Development', 'C#', 'DevCenterPost', 'Software Development', 'msmvps', 'April 2008']
+tags: ['.NET Development', 'C#', '.NET', 'DevCenterPost', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/04/29/overcoming-problems-with-methodinfo-invoke-of-methods-with-by-reference-value-type-arguments/ "Permalink to Overcoming problems with MethodInfo.Invoke of methods with by-reference value type arguments")
 

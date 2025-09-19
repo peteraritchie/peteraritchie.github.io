@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Maslow’s Hammer'
-tags: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Tips', 'msmvps', 'August 2014']
+tags: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Tips', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/08/12/maslows-hammer/ "Permalink to Maslow’s Hammer")
 

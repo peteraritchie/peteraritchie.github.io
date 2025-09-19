@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Much needed feedback on Connect feedback.'
-tags: ['.NET Development', 'Software Development', 'Visual Studio 2005', 'msmvps', 'January 2007']
+tags: ['.NET Development', 'Software Development', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/01/20/much-needed-feedback-on-connect-feedback/ "Permalink to Much needed feedback on Connect feedback.")
 

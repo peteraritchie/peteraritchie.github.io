@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Single-Entry, Single-Exit, Should It Still Be Applicable In Object-oriented Languages?'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'March 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/03/07/single-entry-single-exit-should-it-still-be-applicable-in-object-oriented-languages/ "Permalink to Single-Entry, Single-Exit, Should It Still Be Applicable In Object-oriented Languages?")
 

@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'ETags in ASP.NET Core'
-categories: ['ASP.NET', 'ETag', 'Azure', 'Cosmos DB', 'Domain-Driven Design', 'Repository', 'Application Service']
+categories: ['June 2023', 'ASP.NET', 'ETag', 'Azure', 'Cosmos DB', 'Domain-Driven Design', 'Repository', 'Application Service']
 comments: true
 excerpt: Dealing with concurrency issues and implementing concurrency control can be intimidating. In this post, I make it less intimidating by clarifying some specifics by showing an example implementation with ASP.NET Core and Azure Cosmos DB. Additionally, the Domain-Driven Design patterns Repository and Application Service are used to isolate etag implementation details from the Web API to delegate that to Azure Cosmos.
-tags: ['June 2023', 'ASP.NET', 'ETag', 'Azure', 'Cosmos DB', 'Optimistic Concurrency', 'Domain-Driven Design', 'Repository', 'Application Service']
+tags: ['ASP.NET', 'ETag', 'Azure', 'Cosmos DB', 'Optimistic Concurrency', 'Domain-Driven Design', 'Repository', 'Application Service']
 ---
 ![lots of things going on at the same time, in the style of Farside](../assets/farside-etags-in-asp-dot-net.jpg)
 

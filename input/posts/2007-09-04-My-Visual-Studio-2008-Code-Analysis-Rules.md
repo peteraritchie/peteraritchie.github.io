@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'My Visual Studio 2008 Code Analysis Rules'
-tags: ['Code Analysis Rules', 'Software Development', 'Visual Studio 2008', 'msmvps', 'September 2007']
+tags: ['Code Analysis Rules', 'Software Development', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/09/04/my-visual-studio-2008-code-analysis-rules/ "Permalink to My Visual Studio 2008 Code Analysis Rules")
 

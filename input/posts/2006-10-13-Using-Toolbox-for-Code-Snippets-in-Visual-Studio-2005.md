@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Using Toolbox for Code Snippets in Visual Studio 2005'
-tags: ['Interesting Find', 'Software Development', 'Visual Studio 2005', 'msmvps', 'October 2006']
+tags: ['Interesting Find', 'Software Development', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/10/13/using-toolbox-for-code-snippets-in-visual-studio-2005/ "Permalink to Using Toolbox for Code Snippets in Visual Studio 2005")
 

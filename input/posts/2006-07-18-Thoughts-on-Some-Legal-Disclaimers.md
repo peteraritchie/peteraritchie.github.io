@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Thoughts on Some Legal Disclaimers'
-tags: ['Non-development', 'msmvps', 'July 2006']
+tags: ['Non-development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/07/18/thoughts-on-some-legal-disclaimers/ "Permalink to Thoughts on Some Legal Disclaimers")
 

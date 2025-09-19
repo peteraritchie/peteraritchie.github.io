@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Dependency Injection'
-tags: ['.NET Development', 'C#', 'Patterns', 'Software Development', 'msmvps', 'December 2007']
+tags: ['.NET Development', 'C#', '.NET', 'Patterns', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/12/13/dependancy-injection/ "Permalink to Dependency Injection")
 

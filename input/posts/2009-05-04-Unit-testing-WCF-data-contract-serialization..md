@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Unit testing WCF data contract serialization.'
-tags: ['C#', 'WCF', 'msmvps', 'May 2009']
+tags: ['C#', 'WCF', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/05/04/unit-testing-wcf-data-contract-serialization/ "Permalink to Unit testing WCF data contract serialization.")
 

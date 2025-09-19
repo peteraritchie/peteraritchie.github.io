@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Time to replace UPS batteries…'
-tags: ['Humourous', 'Non-development', 'msmvps', 'August 2006']
+tags: ['Humourous', 'Non-development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/08/06/time-to-replace-ups-batteries/ "Permalink to Time to replace UPS batteries…")
 

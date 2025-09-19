@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Observation as Scientific Proof'
-tags: ['Uncategorized', 'msmvps', 'January 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/25/observation-as-scientific-proof/ "Permalink to Observation as Scientific Proof")
 

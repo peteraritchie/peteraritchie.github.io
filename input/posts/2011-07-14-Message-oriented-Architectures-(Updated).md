@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Message-oriented Architectures (Updated)'
-tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps', 'July 2011']
+tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/07/14/message-oriented-architectures/ "Permalink to Message-oriented Architectures (Updated)")
 

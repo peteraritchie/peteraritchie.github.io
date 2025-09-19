@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Religion of Class Member Prefixing'
-tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'June 2007']
+tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/06/17/the-religion-of-class-member-prefixing/ "Permalink to The Religion of Class Member Prefixing")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Sudden "…you must have Terminal Server User Access permissions on this computer." Error.'
-tags: ['Small Business Server 2003 R2', 'Software Development', 'Team Foundation Server', 'msmvps', 'February 2007']
+tags: ['Small Business Server 2003 R2', 'Software Development', 'Team Foundation Server', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/02/03/sudden-you-must-have-terminal-server-user-access-permissions-on-this-computer-error/ "Permalink to Sudden "…you must have Terminal Server User Access permissions on this computer." Error.")
 

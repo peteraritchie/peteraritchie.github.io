@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Accessing Private Fields and Properties'
-tags: ['.NET 4.0', '.NET Development', 'C#', 'Productivity Extensions', 'msmvps', 'April 2013']
+tags: ['.NET 4.0', '.NET Development', '.NET', 'C#', 'Productivity Extensions', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/04/03/accessing-private-fields-and-properties/ "Permalink to Accessing Private Fields and Properties")
 

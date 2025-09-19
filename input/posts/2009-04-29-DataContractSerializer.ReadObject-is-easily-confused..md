@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DataContractSerializer.ReadObject is easily confused.'
-tags: ['.NET 3.5', 'C#', 'WCF', 'msmvps', 'April 2009']
+tags: ['.NET 3.5', 'C#', 'WCF', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/04/29/datacontractserializer-readobject-is-easily-confused/ "Permalink to DataContractSerializer.ReadObject is easily confused.")
 

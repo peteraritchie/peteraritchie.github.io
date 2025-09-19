@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Comparing BackgroundWorker and async/await'
-tags: ['Software Development', 'msmvps', 'April 2014']
+tags: ['Software Development', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/30/comparing-backgroundworker-and-asyncawait/ "Permalink to Comparing BackgroundWorker and async/await")
 

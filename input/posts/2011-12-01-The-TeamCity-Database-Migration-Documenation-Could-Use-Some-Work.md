@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The TeamCity Database Migration Documenation Could Use Some Work'
-tags: ['Uncategorized', 'msmvps', 'December 2011']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/12/01/the-teamcity-database-migration-documenation-could-use-some-work/ "Permalink to The TeamCity Database Migration Documenation Could Use Some Work")
 

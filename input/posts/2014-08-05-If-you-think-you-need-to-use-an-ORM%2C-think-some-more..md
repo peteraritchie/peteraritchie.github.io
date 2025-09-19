@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'If you think you need to use an ORM, think some more.'
-tags: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'msmvps', 'August 2014']
+tags: ['Architecture', 'Design/Coding Guidance', 'Software Development', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/08/05/if-you-think-you-need-to-use-an-orm-think-some-more/ "Permalink to If you think you need to use an ORM, think some more.")
 

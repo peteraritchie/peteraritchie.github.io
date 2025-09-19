@@ -2,7 +2,7 @@
 layout: post
 title: 'RESTful Versioning'
 comments: true
-tags: ['REST', 'Versioning', 'November 2019']
+tags: ['REST', 'Versioning']
 ---
 Versioning is not new.  Versioning seems to be one of those things that people find hard to do or difficult to fully understand, especially with services and APIs.  RESTful versioning seems to be in the realm of Tabs v Spaces, but I want to detail my related observations (mostly of other's writings, but with some added color).
 

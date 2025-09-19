@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Pot to Kettle: "You’re Black"'
-tags: ['Uncategorized', 'msmvps', 'September 2006']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/29/pot-to-kettle-youre-black/ "Permalink to Pot to Kettle: "You’re Black"")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Why Fundamentals are Important to Microsoft’s Bottom-line'
-tags: ['Uncategorized', 'msmvps', 'July 2009']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/07/23/why-fundamentals-are-important-to-microsoft-s-bottom-line/ "Permalink to Why Fundamentals are Important to Microsoft’s Bottom-line")
 

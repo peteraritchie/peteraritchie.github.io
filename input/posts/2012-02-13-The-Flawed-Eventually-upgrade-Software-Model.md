@@ -3,7 +3,7 @@ layout: post
 title: 'The Flawed Eventually-upgrade Software Model'
 RedirectFrom:
     - 2012/02/13/the-flawed-eventually-upgrade-software-model
-tags: ['General', 'Pontification', 'msmvps', 'February 2012']
+tags: ['General', 'Pontification', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/02/13/the-flawed-eventually-upgrade-software-model/ "Permalink to The Flawed Eventually-upgrade Software Model")
 

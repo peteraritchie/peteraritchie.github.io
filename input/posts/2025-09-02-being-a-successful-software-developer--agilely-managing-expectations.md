@@ -53,7 +53,7 @@ and
 > **When** _they click the link in the email and enter a new password_,  
 > **Then** _their password will be updated, and they should be able to log in with the new password_.
 
-![User story with acceptance criteria example as PostIte](../assets/user-story-with-acceptance-criteria-postit.png)
+![User story with acceptance criteria example as PostIt](../assets/user-story-with-acceptance-criteria-postit.png)
 ## Eliciting Acceptance Criteria  
 
 These acceptance criteria may be obvious now that you see them, but when all you've got is a user story, a feature, and an epic, what can we do to get quality acceptance criteria? Fortunately, this example provides some hints. Given/When/Then, "Given" are preconditions; so asking about what preconditions must exist is a good start. "Preconditions" might come across as overly technical, so questions like "**Where would this functionality exist?**", "**How would the user reach this functionality?**" or "**What needs to happen for this functionality to be enabled?"** have served me well.

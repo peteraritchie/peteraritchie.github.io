@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Unable to resolve reference refs/remotes/origin/master'
-tags: ['GIT', 'Software Development', 'msmvps', 'February 2014']
+tags: ['GIT', 'Software Development', 'msmvps']
 disqus_id: "1431 http://blog.peterritchie.com/?p=1431"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/27/unable-to-resolve-reference-refsremotesoriginmaster/ "Permalink to Unable to resolve reference refs/remotes/origin/master")

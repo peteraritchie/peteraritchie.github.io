@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Developing Windows Services in Visual Studio'
-tags: ['C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010', 'msmvps', 'February 2011']
+tags: ['C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/02/09/developing-windows-services-in-visual-studio/ "Permalink to Developing Windows Services in Visual Studio")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Avoid the volatile Modifier'
-tags: ['.NET Development', 'C#', 'Multithreaded', 'Software Development', 'Software Development Guidance', 'Visual Studio', 'msmvps', 'January 2012']
+tags: ['.NET Development', 'C#', '.NET', 'Multithreaded', 'Software Development', 'Software Development Guidance', 'Visual Studio', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/01/25/avoid-the-volatile-modifier/ "Permalink to Avoid the volatile Modifier")
 

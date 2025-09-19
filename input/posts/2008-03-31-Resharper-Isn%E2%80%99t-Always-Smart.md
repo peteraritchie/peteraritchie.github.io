@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Resharper Isn’t Always Smart'
-tags: ['C#', 'Product Bugs', 'Resharper', 'msmvps', 'March 2008']
+tags: ['C#', 'Product Bugs', 'Resharper', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/03/31/resharper-isn-t-always-smart/ "Permalink to Resharper Isn’t Always Smart")
 

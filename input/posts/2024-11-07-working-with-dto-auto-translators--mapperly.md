@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Working With DTO Auto Translators -- Mapperly'
-categories: ['.NET', 'C#', 'DTOs', 'Mapping/Translation']
+categories: ['Nov 2024', '.NET', 'C#', 'DTOs', 'Mapping/Translation']
 comments: true
 excerpt: 
-tags: ['Nov 2024', '.NET', 'C#', 'Mapperly', 'Mapping', 'Translation']
+tags: ['.NET', 'C#', 'Mapperly', 'Mapping', 'Translation']
 ---
 ![Complicated translation](../assets/mapping-translation.png)
 

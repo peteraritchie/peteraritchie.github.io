@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows Store production mill'
-tags: ['.NET Development', 'C#', 'Tips', 'Windows Store', 'XAML', 'msmvps', 'April 2014']
+tags: ['.NET Development', '.NET', 'C#', 'Tips', 'Windows Store', 'XAML', 'msmvps']
 disqus_id: "1921 http://blog.peterritchie.com/?p=1921"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/30/windows-store-production-mill/ "Permalink to Windows Store production mill")

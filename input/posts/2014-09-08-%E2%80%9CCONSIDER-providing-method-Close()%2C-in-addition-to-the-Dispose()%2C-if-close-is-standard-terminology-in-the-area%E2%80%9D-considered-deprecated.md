@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '“CONSIDER providing method Close(), in addition to the Dispose(), if close is standard terminology in the area” considered deprecated'
-tags: ['.NET 4.5', 'C#', 'Design/Coding Guidance', 'msmvps', 'September 2014']
+tags: ['.NET 4.5', '.NET', 'C#', 'Design/Coding Guidance', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/09/08/consider-providing-method-close-in-addition-to-the-dispose-if-close-is-standard-terminology-in-the-area-considered-deprecated/ "Permalink to “CONSIDER providing method Close(), in addition to the Dispose(), if close is standard terminology in the area” considered deprecated")
 

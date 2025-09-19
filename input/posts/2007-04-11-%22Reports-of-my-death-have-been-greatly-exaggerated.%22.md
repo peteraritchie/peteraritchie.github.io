@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Reports of my death have been greatly exaggerated.'
-tags: ['Uncategorized', 'msmvps', 'April 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/04/11/reports-of-my-death-have-been-greatly-exaggerated/ "Permalink to "Reports of my death have been greatly exaggerated."")
 

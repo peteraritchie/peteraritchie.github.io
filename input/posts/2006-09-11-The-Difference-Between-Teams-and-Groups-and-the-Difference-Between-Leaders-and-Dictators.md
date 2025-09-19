@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Difference Between Teams and Groups and the Difference Between Leaders and Dictators'
-tags: ['Software Development', 'msmvps', 'September 2006']
+tags: ['Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/11/the-difference-between-teams-and-groups-and-the-difference-between-leaders-and-dictators/ "Permalink to The Difference Between Teams and Groups and the Difference Between Leaders and Dictators")
 

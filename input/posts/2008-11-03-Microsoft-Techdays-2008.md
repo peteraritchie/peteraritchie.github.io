@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Microsoft Techdays 2008'
-tags: ['techdays2008', 'msmvps', 'November 2008']
+tags: ['techdays2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/03/microsoft-techdays-2008/ "Permalink to Microsoft Techdays 2008")
 

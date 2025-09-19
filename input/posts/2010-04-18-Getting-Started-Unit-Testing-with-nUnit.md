@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Getting Started Unit Testing with nUnit'
-tags: ['Uncategorized', 'msmvps', 'April 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/04/18/getting-started-unit-testing-with-nunit/ "Permalink to Getting Started Unit Testing with nUnit")
 

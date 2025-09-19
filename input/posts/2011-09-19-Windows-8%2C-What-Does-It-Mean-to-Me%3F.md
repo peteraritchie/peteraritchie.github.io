@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows 8, What Does It Mean to Me?'
-tags: ['DevCenterPost', 'Software Development', 'Visual Studio 2011', 'Visual Studio vNext', 'Windows 8', 'msmvps', 'September 2011']
+tags: ['DevCenterPost', '.NET', 'Software Development', 'Visual Studio 2011', 'Visual Studio vNext', 'Windows 8', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/09/19/windows-8-what-does-it-mean-to-me/ "Permalink to Windows 8, What Does It Mean to Me?")
 

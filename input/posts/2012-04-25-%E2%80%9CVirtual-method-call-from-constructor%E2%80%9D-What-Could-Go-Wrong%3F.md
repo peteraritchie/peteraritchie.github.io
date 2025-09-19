@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '“Virtual method call from constructor” What Could Go Wrong?'
-tags: ['.NET Development', 'C#', 'Code Analysis/FxCop Warning Resolutions', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio', 'msmvps', 'April 2012']
+tags: ['.NET Development', 'C#', '.NET', 'Code Analysis/FxCop Warning Resolutions', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'Visual Studio', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/04/25/virtual-method-call-from-constructor-what-could-go-wrong/ "Permalink to “Virtual method call from constructor” What Could Go Wrong?")
 

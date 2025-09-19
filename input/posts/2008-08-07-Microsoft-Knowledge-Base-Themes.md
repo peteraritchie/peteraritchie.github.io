@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Microsoft Knowledge Base Themes'
-tags: ['Uncategorized', 'msmvps', 'August 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/07/microsoft-knowledge-base-themes/ "Permalink to Microsoft Knowledge Base Themes")
 

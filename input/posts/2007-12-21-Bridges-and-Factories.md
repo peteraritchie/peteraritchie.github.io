@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Bridges and Factories'
-tags: ['.NET Development', 'C#', 'Patterns', 'msmvps', 'December 2007']
+tags: ['.NET Development', 'C#', '.NET', 'Patterns', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/12/21/bridges-and-factories/ "Permalink to Bridges and Factories")
 

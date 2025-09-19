@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Enterprise Service Buses, Brokers, Message Queues, Oh My!'
-tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps', 'September 2011']
+tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/09/18/enterprise-service-buses-brokers-message-queues-oh-my/ "Permalink to Enterprise Service Buses, Brokers, Message Queues, Oh My!")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'What Code Comments are Not For.'
-tags: ['Uncategorized', 'msmvps', 'January 2012']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/01/30/what-code-comments-are-not-for/ "Permalink to What Code Comments are Not For.")
 

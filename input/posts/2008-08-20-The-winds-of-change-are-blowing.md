@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The winds of change are blowing'
-tags: ['ALT.NET', 'Design/Coding Guidance', 'Kaikaku', 'Kaizen', 'Software Development', 'msmvps', 'August 2008']
+tags: ['ALT.NET', 'Design/Coding Guidance', 'Kaikaku', 'Kaizen', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/20/the-winds-of-change-are-blowing/ "Permalink to The winds of change are blowing")
 

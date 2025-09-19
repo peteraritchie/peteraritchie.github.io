@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Robustness with RabbitMQ in .NET'
-tags: ['Message-Oriented Architectures', 'RabbitMQ', 'msmvps', 'May 2011']
+tags: ['Message-Oriented Architectures', 'RabbitMQ', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/05/22/robustness-with-rabbitmq-in-net/ "Permalink to Robustness with RabbitMQ in .NET")
 

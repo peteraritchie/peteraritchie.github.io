@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Fundamentals of Object-Oriented Design (OOD) Part 1'
-tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'msmvps', 'May 2008']
+tags: ['C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/05/01/fundamentals-of-object-oriented-design-ood-part-1/ "Permalink to Fundamentals of Object-Oriented Design (OOD) Part 1")
 

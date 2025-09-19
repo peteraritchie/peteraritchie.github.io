@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Formatting/parsing for a specific culture redux'
-tags: ['.NET 2.0', '.NET Development', 'C#', 'DevCenterPost', 'Framework Bug', 'msmvps', 'January 2008']
+tags: ['.NET 2.0', '.NET Development', 'C#', '.NET', 'DevCenterPost', 'Framework Bug', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/01/22/formatting-parsing-for-a-specific-culture-redux/ "Permalink to Formatting/parsing for a specific culture redux")
 

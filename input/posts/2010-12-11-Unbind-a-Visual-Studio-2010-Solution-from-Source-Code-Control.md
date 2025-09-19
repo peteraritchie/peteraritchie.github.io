@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Unbind a Visual Studio 2010 Solution from Source Code Control'
-tags: ['.NET Development', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'msmvps', 'December 2010']
+tags: ['.NET Development', '.NET', 'DevCenterPost', 'Software Development', 'Visual Studio 2010', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/12/11/unbind-a-visual-studio-2010-solution-from-source-code-control/ "Permalink to Unbind a Visual Studio 2010 Solution from Source Code Control")
 

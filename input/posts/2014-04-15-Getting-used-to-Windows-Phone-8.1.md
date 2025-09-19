@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Getting used to Windows Phone 8.1'
-tags: ['Windows Phone', 'Windows Phone 8.1', 'msmvps', 'April 2014']
+tags: ['Windows Phone', 'Windows Phone 8.1', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/15/getting-used-to-windows-phone-8-1/ "Permalink to Getting used to Windows Phone 8.1")
 

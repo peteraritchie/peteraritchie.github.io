@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Working with Resharper’s External Annotation XML Files'
-tags: ['.NET Development', 'Resharper', 'Software Development', 'Visual Studio 2008', 'msmvps', 'July 2008']
+tags: ['.NET Development', 'Resharper', 'Software Development', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/21/working-with-resharper-s-external-annotation-xml-files/ "Permalink to Working with Resharper’s External Annotation XML Files")
 

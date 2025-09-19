@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Win a free copy of Visual Studio 2010 Best Practices'
-tags: ['Visual Studio 2010', 'Visual studio 2010 Best Practices', 'msmvps', 'September 2012']
+tags: ['Visual Studio 2010', '.NET', 'Visual studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/09/25/win-a-free-copy-of-visual-studio-2010-best-practices/ "Permalink to Win a free copy of Visual Studio 2010 Best Practices")
 

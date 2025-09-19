@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Changing TextBox Text as an Undo-able Action'
-tags: ['.NET 2.0', '.NET Development', 'C#', 'Software Development', 'WinForms', 'msmvps', 'September 2006']
+tags: ['.NET 2.0', '.NET Development', 'C#', '.NET', 'Software Development', 'WinForms', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/10/changing-textbox-text-as-an-undo-able-action/ "Permalink to Changing TextBox Text as an Undo-able Action")
 

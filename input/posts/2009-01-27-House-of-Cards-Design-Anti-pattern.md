@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'House of Cards Design Anti-pattern'
-tags: ['AntiPattern', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'January 2009']
+tags: ['AntiPattern', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/01/27/house-of-cards-design-anti-pattern/ "Permalink to House of Cards Design Anti-pattern")
 

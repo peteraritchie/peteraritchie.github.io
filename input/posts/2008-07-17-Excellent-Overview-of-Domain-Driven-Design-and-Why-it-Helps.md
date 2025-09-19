@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Excellent Overview of Domain-Driven Design and Why it Helps'
-tags: ['DDD', 'OOD', 'Software Development', 'msmvps', 'July 2008']
+tags: ['DDD', 'OOD', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/17/excellent-overview-of-domain-driven-design-and-why-it-helps/ "Permalink to Excellent Overview of Domain-Driven Design and Why it Helps")
 

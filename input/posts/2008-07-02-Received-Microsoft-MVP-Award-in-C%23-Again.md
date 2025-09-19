@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Received Microsoft MVP Award in C# Again'
-tags: ['Microsoft', 'MVP', 'msmvps', 'July 2008']
+tags: ['Microsoft', 'MVP', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/02/received-microsoft-mvp-award-in-c-again/ "Permalink to Received Microsoft MVP Award in C# Again")
 

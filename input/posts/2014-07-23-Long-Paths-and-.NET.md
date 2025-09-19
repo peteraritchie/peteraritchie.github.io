@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Long Paths and .NET'
-tags: ['.NET 4.5', '.NET Development', 'C#', 'LongPath', 'Open Source', 'Software Development', 'msmvps', 'July 2014']
+tags: ['.NET 4.5', '.NET Development', '.NET', 'C#', 'LongPath', 'Open Source', 'Software Development', 'msmvps']
 disqus_id: "2121 http://blog.peterritchie.com/?p=2121"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/07/23/long-paths-and-net/ "Permalink to Long Paths and .NET")

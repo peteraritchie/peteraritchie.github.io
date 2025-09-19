@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'IDisposable and Class Hierarchies'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development Guidance', 'msmvps', 'January 2013']
+tags: ['.NET Development', '.NET', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2013/01/21/idisposable-and-class-hierarchies/ "Permalink to IDisposable and Class Hierarchies")
 

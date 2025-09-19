@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Playing with LINQ'
-tags: ['Uncategorized', 'msmvps', 'February 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/08/playing-with-linq/ "Permalink to Playing with LINQ")
 

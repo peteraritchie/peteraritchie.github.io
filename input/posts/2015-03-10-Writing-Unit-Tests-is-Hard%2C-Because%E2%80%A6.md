@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Writing Unit Tests is Hard, Because…'
-tags: ['Uncategorized', 'msmvps', 'March 2015']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2015/03/10/writing-unit-tests-is-hard-because/ "Permalink to Writing Unit Tests is Hard, Because…")
 

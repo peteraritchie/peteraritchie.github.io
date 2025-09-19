@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'CoDe Magazine Article.'
-tags: ['.NET 3.5', '.NET Development', 'C# 3.0', 'msmvps', 'February 2008']
+tags: ['.NET 3.5', '.NET Development', 'C# 3.0', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/04/code-magazine-article/ "Permalink to CoDe Magazine Article.")
 

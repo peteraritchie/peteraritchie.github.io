@@ -4,7 +4,7 @@ title: ' Data URLs in Markdown'
 categories: ['Workplace']
 comments: true
 excerpt: "Data URLs embed data within the URI instead of being a link. Data URLs can be used to embed images into a web page. Data URLs can be used for images in markdown."
-tags: ['Markdown', 'Tips & Tricks', 'June 2022']
+tags: ['Markdown', 'Tips & Tricks']
 ---
 
 - Data URLs embed data within the URI instead of being a link

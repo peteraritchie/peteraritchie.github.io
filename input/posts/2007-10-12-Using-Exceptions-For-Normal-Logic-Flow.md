@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Using Exceptions For Normal Logic Flow'
-tags: ['.NET 2.0', '.NET Development', 'C#', 'Rant', 'msmvps', 'October 2007']
+tags: ['.NET 2.0', '.NET Development', 'C#', '.NET', 'Rant', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/10/12/using-exceptions-for-normal-logic-flow/ "Permalink to Using Exceptions For Normal Logic Flow")
 

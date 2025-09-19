@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Interesting Find for Command Prompt junkies'
-tags: ['Interesting Find', 'msmvps', 'July 2006']
+tags: ['Interesting Find', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/07/14/interesting-find-for-command-prompt-junkies/ "Permalink to Interesting Find for Command Prompt junkies")
 

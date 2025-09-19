@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Era of Usability'
-tags: ['General', 'Non-development', 'Pontification', 'Software', 'Usability', 'msmvps', 'April 2011']
+tags: ['General', 'Non-development', 'Pontification', 'Software', 'Usability', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/04/24/the-era-of-usability/ "Permalink to The Era of Usability")
 

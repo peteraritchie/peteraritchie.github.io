@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'MEF is not An IoC container; but MEF uses IoC'
-tags: ['Uncategorized', 'msmvps', 'February 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/24/mef-is-not-an-ioc-container-but-mef-uses-ioc/ "Permalink to MEF is not An IoC container; but MEF uses IoC")
 

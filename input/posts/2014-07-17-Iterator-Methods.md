@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Iterator Methods'
-tags: ['.NET Development', 'C#', 'msmvps', 'July 2014']
+tags: ['.NET Development', '.NET', 'C#', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/07/17/iterator-methods/ "Permalink to Iterator Methods")
 

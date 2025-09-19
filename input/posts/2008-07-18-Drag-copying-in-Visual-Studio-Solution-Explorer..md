@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Drag-copying in Visual Studio Solution Explorer.'
-tags: ['.NET 3.5', '.NET Development', 'Poor UI', 'Product Bugs', 'Software Development', 'Visual Studio 2008', 'msmvps', 'July 2008']
+tags: ['.NET 3.5', '.NET Development', 'Poor UI', 'Product Bugs', 'Software Development', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/18/drag-copying-in-visual-studio-solution-explorer/ "Permalink to Drag-copying in Visual Studio Solution Explorer.")
 

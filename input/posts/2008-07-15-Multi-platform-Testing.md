@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Multi-platform Testing'
-tags: ['Uncategorized', 'msmvps', 'July 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/07/15/multi-platform-testing/ "Permalink to Multi-platform Testing")
 

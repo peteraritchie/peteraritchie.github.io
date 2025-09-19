@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Closure Tip'
-tags: ['Uncategorized', 'msmvps', 'October 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/10/27/closure-tip/ "Permalink to Closure Tip")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Message-Oriented Architecture is a Misleading Term'
-tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps', 'August 2011']
+tags: ['Architecture', 'Distributed Systems', 'Message-Oriented Architectures', 'MOM', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/08/03/message-oriented-architecture-is-a-misleading-term/ "Permalink to Message-Oriented Architecture is a Misleading Term")
 

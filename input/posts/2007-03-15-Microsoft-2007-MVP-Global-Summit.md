@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Microsoft 2007 MVP Global Summit'
-tags: ['MVP', 'msmvps', 'March 2007']
+tags: ['MVP', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/03/15/microsoft-2007-mvp-global-summit/ "Permalink to Microsoft 2007 MVP Global Summit")
 

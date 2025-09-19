@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'On performance of immutable collections'
-tags: ['Multithreaded', 'msmvps', 'April 2014']
+tags: ['Multithreaded', '.NET', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/04/20/on-performance-of-immutable-collections/ "Permalink to On performance of immutable collections")
 

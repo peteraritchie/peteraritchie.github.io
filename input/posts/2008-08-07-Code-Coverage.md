@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Code Coverage'
-tags: ['Uncategorized', 'msmvps', 'August 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/07/code-coverage/ "Permalink to Code Coverage")
 

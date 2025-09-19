@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Criteria for Success'
-tags: ['Design/Coding Guidance', 'General', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps', 'May 2011']
+tags: ['Design/Coding Guidance', 'General', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/05/07/criteria-for-success/ "Permalink to Criteria for Success")
 

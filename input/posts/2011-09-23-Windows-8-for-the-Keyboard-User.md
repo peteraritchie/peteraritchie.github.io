@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows 8 for the Keyboard User'
-tags: ['Uncategorized', 'msmvps', 'September 2011']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/09/23/windows-8-for-the-keyboard-user/ "Permalink to Windows 8 for the Keyboard User")
 

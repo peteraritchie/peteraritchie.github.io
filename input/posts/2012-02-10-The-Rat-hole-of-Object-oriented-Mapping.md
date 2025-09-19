@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Rat-hole of Object-oriented Mapping'
-tags: ['.NET Development', 'Architecture', 'Code Smells', 'Design/Coding Guidance', 'Patterns', 'Pontification', 'Software Development', 'Software Development Guidance', 'msmvps', 'February 2012']
+tags: ['.NET Development', '.NET', 'Architecture', 'Code Smells', 'Design/Coding Guidance', 'Patterns', 'Pontification', 'Software Development', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/02/10/the-rat-hole-of-object-oriented-mapping/ "Permalink to The Rat-hole of Object-oriented Mapping")
 

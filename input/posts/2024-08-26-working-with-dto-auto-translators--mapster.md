@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Working With DTO Auto Translators -- Mapster'
-categories: ['.NET', 'C#', 'DTOs', 'Mapping/Translation']
+categories: ['Aug 2024', '.NET', 'C#', 'DTOs', 'Mapping/Translation']
 comments: true
 excerpt: 
-tags: ['Aug 2024', '.NET', 'C#', 'Mapster', 'Mapping', 'Translation']
+tags: ['.NET', 'C#', 'Mapster', 'Mapping', 'Translation']
 ---
 ![Complicated translation](../assets/mapping-translation.png)
 

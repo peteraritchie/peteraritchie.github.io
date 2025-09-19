@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Code Analysis: How to Correctly Resolve CA1300 – "Specify MessageBox Options"'
-tags: ['C#', 'Code Analysis/FxCop Warning Resolutions', 'Visual Studio 2005', 'msmvps', 'October 2006']
+tags: ['C#', 'Code Analysis/FxCop Warning Resolutions', 'Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/10/15/code-analysis-how-to-correctly-resolve-ca1300-specify-messagebox-options/ "Permalink to Code Analysis: How to Correctly Resolve CA1300 – "Specify MessageBox Options"")
 

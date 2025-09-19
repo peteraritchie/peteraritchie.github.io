@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Formatting/parsing for a specific culture'
-tags: ['.NET Development', 'C#', 'DevCenterPost', 'msmvps', 'December 2007']
+tags: ['.NET Development', 'C#', '.NET', 'DevCenterPost', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/12/27/formatting-parsing-for-a-specific-culture/ "Permalink to Formatting/parsing for a specific culture")
 

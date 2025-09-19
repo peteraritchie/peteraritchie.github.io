@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Not Only SQL'
-tags: ['Uncategorized', 'msmvps', 'March 2011']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/03/06/not-only-sql/ "Permalink to Not Only SQL")
 

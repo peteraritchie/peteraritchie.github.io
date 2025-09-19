@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Unable To Step Into .NET Source'
-tags: ['.NET Development', 'Visual Studio 2008', 'Visual Studio 2008 SP1', 'msmvps', 'November 2008']
+tags: ['.NET Development', 'Visual Studio 2008', 'Visual Studio 2008 SP1', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/11/24/unable-to-step-into-net-source/ "Permalink to Unable To Step Into .NET Source")
 

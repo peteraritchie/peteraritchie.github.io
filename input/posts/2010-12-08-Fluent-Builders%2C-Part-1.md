@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Fluent Builders, Part 1'
-tags: ['.NET 4.0', '.NET Development', 'C#', 'C# 4', 'Patterns', 'Software Development', 'msmvps', 'December 2010']
+tags: ['.NET 4.0', '.NET Development', 'C#', '.NET', 'C# 4', 'Patterns', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/12/08/fluent-builders-part-1/ "Permalink to Fluent Builders, Part 1")
 

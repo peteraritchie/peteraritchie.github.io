@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DevTeach 2010 Toronto'
-tags: ['DevTeach YYZ 2010 Toronto', 'msmvps', 'December 2009']
+tags: ['DevTeach YYZ 2010 Toronto', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/12/18/devteach-2010-toronto/ "Permalink to DevTeach 2010 Toronto")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Now Blogging in WordPress from Azure'
-tags: ['Azure', 'Random', 'msmvps', 'March 2013']
+tags: ['Azure', 'Random', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/03/22/now-blogging-in-wordpress-from-azure-2/ "Permalink to Now Blogging in WordPress from Azure")
 

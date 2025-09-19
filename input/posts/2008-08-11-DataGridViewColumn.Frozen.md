@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DataGridViewColumn.Frozen'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'August 2008']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/11/datagridviewcolumn-frozen/ "Permalink to DataGridViewColumn.Frozen")
 

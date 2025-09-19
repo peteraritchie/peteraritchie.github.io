@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Bugs Are Features Too'
-tags: ['Microsoft', 'Product Bugs', 'Software Development', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps', 'September 2008']
+tags: ['Microsoft', 'Product Bugs', 'Software Development', 'Visual Studio 2005', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/09/09/bugs-are-features-too/ "Permalink to Bugs Are Features Too")
 

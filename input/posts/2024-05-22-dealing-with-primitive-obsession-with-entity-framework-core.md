@@ -4,7 +4,7 @@ title: 'Dealing with Primitive Obsession with Entity Framework Core'
 categories: ['DDD', 'Code Smells', 'Entity Framework', 'Domain-Driven Design']
 comments: true
 excerpt: Primitive Obsession is when intrinsic types are used to represent values in a domain that may be better served by a Value Object. This post shows how you can deal with addressing Primitive Obsession while still persisting data via Entity Framework Core.
-tags: ['May 2024', 'DDD', 'Code Smells', 'Domain-Driven Design', 'Entity Framework']
+tags: ['.NET', 'DDD', 'Code Smells', 'Domain-Driven Design', 'Entity Framework']
 ---
 ![obsessed only with creating with primitive shapes](../assets/obsessed-with-primitive-shapes.png)
 

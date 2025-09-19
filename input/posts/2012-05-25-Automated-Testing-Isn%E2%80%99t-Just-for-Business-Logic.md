@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Automated Testing Isn’t Just for Business Logic'
-tags: ['.NET Development', 'C#', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'TDD', 'Unit Testing', 'msmvps', 'May 2012']
+tags: ['.NET Development', 'C#', '.NET', 'DevCenterPost', 'Software Development', 'Software Development Guidance', 'TDD', 'Unit Testing', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/05/25/automated-testing-isn-t-just-for-business-logic/ "Permalink to Automated Testing Isn’t Just for Business Logic")
 

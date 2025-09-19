@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The case of the enigmatic error 0x89721200'
-tags: ['.NET Development', 'Software Development', 'Visaul Studio 2013', 'Windows Phone', 'Windows Phone 8.0', 'msmvps', 'February 2014']
+tags: ['.NET Development', '.NET', 'Software Development', 'Visual Studio 2013', 'Windows Phone', 'Windows Phone 8.0', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/02/02/the-case-of-the-enigmatic-error-0x89721200/ "Permalink to The case of the enigmatic error 0x89721200")
 

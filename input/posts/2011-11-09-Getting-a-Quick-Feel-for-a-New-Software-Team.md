@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Getting a Quick Feel for a New Software Team'
-tags: ['Uncategorized', 'msmvps', 'November 2011']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/11/09/getting-a-quick-feel-for-a-new-software-team/ "Permalink to Getting a Quick Feel for a New Software Team")
 

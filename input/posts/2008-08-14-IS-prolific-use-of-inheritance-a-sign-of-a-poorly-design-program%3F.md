@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'IS prolific use of inheritance a sign of a poorly design program?'
-tags: ['Uncategorized', 'msmvps', 'August 2008']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/14/is-inheritance-a-sign-of-a-poorly-design-program/ "Permalink to IS prolific use of inheritance a sign of a poorly design program?")
 

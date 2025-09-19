@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Developing with Source Code Control – Best Practices Part 2'
-tags: ['Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps', 'March 2009']
+tags: ['Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/03/11/developing-with-source-code-control-best-practices-part-2/ "Permalink to Developing with Source Code Control – Best Practices Part 2")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'New Contributor to the C# Developer Centre'
-tags: ['C# 3.0', 'C# Nugget', 'Visual Studio 2008', 'msmvps', 'October 2007']
+tags: ['C# 3.0', 'C# Nugget', 'Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/10/25/new-contributor-to-the-c-developer-centre/ "Permalink to New Contributor to the C# Developer Centre")
 

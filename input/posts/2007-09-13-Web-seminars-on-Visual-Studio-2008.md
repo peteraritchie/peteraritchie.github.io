@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Web seminars on Visual Studio 2008'
-tags: ['Visual Studio 2008', 'msmvps', 'September 2007']
+tags: ['Visual Studio 2008', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/09/13/web-seminars-on-visual-studio-2008/ "Permalink to Web seminars on Visual Studio 2008")
 

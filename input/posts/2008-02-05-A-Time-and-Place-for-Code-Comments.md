@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'A Time and Place for Code Comments'
-tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'February 2008']
+tags: ['C#', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/05/a-time-and-place-for-code-comments/ "Permalink to A Time and Place for Code Comments")
 

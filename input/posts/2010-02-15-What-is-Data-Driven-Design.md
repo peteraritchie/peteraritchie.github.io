@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'What is Data-Driven Design'
-tags: ['Uncategorized', 'msmvps', 'February 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/02/15/what-is-data-driven-design/ "Permalink to What is Data-Driven Design")
 

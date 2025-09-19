@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Licences for Microsoft products'
-tags: ['.NET Development', 'C#', 'msmvps', 'March 2008']
+tags: ['.NET Development', 'C#', '.NET', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/03/28/licences-for-microsoft-products/ "Permalink to Licences for Microsoft products")
 

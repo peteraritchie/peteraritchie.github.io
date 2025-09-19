@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Schedule at Least a Three Hours When Installing Visual Studio 2005 Service Pack 1 Beta'
-tags: ['Visual Studio 2005', 'msmvps', 'September 2006']
+tags: ['Visual Studio 2005', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/09/27/schedule-at-least-a-three-hours-when-installing-visual-studio-2005-service-pack-1-beta/ "Permalink to Schedule at Least a Three Hours When Installing Visual Studio 2005 Service Pack 1 Beta")
 

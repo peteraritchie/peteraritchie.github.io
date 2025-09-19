@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '“Explicit” Tests with Resharper'
-tags: ['.NET Development', 'Software Development', 'Software Development Workflow', 'Unit Testing', 'Visual Studio', 'Visual Studio 2010 Best Practices', 'msmvps', 'November 2011']
+tags: ['.NET Development', '.NET', 'Software Development', 'Software Development Workflow', 'Unit Testing', 'Visual Studio', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2011/11/15/explicit-tests-with-resharper/ "Permalink to “Explicit” Tests with Resharper")
 

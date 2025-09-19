@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio 2005 Service Pack 1 Beta'
-tags: ['Visual Studio 2005', 'Visual Studio 2005 Service Pack 1 Beta', 'msmvps', 'October 2006']
+tags: ['Visual Studio 2005', 'Visual Studio 2005 Service Pack 1 Beta', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2006/10/10/visual-studio-2005-service-pack-1-beta/ "Permalink to Visual Studio 2005 Service Pack 1 Beta")
 

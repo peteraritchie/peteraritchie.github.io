@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Software Design Priniples and Terminology'
-tags: ['Uncategorized', 'msmvps', 'June 2007']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/06/12/software-design-priniples-and-terminology/ "Permalink to Software Design Priniples and Terminology")
 

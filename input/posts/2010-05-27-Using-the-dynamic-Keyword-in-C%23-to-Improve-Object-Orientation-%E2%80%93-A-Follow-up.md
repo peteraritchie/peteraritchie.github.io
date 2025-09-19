@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Using the dynamic Keyword in C# to Improve Object Orientation – A Follow-up'
-tags: ['.NET 4.0', 'C#', 'C# 4.0', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development', 'Visual Studio 2010', 'msmvps', 'May 2010']
+tags: ['.NET 4.0', '.NET', 'C#', 'C# 4.0', 'Design/Coding Guidance', 'DevCenterPost', 'Patterns', 'Software Development', 'Visual Studio 2010', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/05/27/using-the-dynamic-keyword-in-c-to-improve-object-orientation-a-follow-up/ "Permalink to Using the dynamic Keyword in C# to Improve Object Orientation – A Follow-up")
 

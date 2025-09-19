@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '"Invalid menu handle" Opening Downloaded .ZIP Files (IE6, XPSP2)'
-tags: ['Non-development', 'msmvps', 'May 2007']
+tags: ['Non-development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/05/29/quot-invalid-menu-handle-quot-opening-downloaded-zip-files-ie6-xpsp2/ "Permalink to "Invalid menu handle" Opening Downloaded .ZIP Files (IE6, XPSP2)")
 

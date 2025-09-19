@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Accumulative Construction'
-tags: ['.NET Development', 'C#', 'Design/Coding Guidance', 'Software Development', 'msmvps', 'May 2007']
+tags: ['.NET Development', 'C#', '.NET', 'Design/Coding Guidance', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2007/05/18/accumulative-construction/ "Permalink to Accumulative Construction")
 

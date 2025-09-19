@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Was Patching XP the wrong choice?'
-tags: ['Non-development', 'Pontification', 'msmvps', 'May 2014']
+tags: ['Non-development', 'Pontification', 'msmvps']
 disqus_id: "1951 http://blog.peterritchie.com/?p=1951"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/05/02/was-patching-xp-the-wrong-choice/ "Permalink to Was Patching XP the wrong choice?")

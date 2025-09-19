@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'RFC: Conditionals on false'
-tags: ['C#', 'Reader Questions', 'msmvps', 'May 2008']
+tags: ['C#', 'Reader Questions', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/05/11/rfc-conditionals-on-false/ "Permalink to RFC: Conditionals on false")
 

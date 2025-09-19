@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Testing the Units'
-tags: ['Software Development', 'Unit Testing', 'msmvps', 'February 2008']
+tags: ['Software Development', 'Unit Testing', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/02/06/unit-testing-the-units/ "Permalink to Testing the Units")
 

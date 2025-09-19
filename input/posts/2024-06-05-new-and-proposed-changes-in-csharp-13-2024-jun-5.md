@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'New And Proposed Changes For C# 13 - June 5, 2024'
-categories: ['.NET', 'C#', '.NET 9', 'C# 13']
+categories: ['June 2024', '.NET', 'C#', '.NET 9', 'C# 13']
 comments: true
 excerpt: C# 13 preview offers several improvements that prove to be exciting.
-tags: ['June 2024', '.NET', 'C#', '.NET 9', 'C# 13']
+tags: ['.NET', 'C#', '.NET 9', 'C# 13']
 ---
 ![Extensions, extensions, extensions](../assets/types-of-extensions.png)
 

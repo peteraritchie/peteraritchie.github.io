@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows Azure PowerShell'
-tags: ['Uncategorized', 'msmvps', 'October 2013']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2013/10/29/windows-azure-powershell/ "Permalink to Windows Azure PowerShell")
 

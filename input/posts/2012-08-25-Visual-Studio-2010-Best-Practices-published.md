@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Visual Studio 2010 Best Practices published'
-tags: ['C#', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles', 'Visual Studio 2010', 'Visual Studio 2010 Best Practices', 'Visual studio 2010 Best Practices', 'msmvps', 'August 2012']
+tags: ['C#', '.NET', 'DevCenterPost', 'Software Development Guidance', 'Software Development Principles', 'Visual Studio 2010', 'Visual Studio 2010 Best Practices', 'Visual studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2012/08/25/visual-studio-2010-best-practices-published/ "Permalink to Visual Studio 2010 Best Practices published")
 

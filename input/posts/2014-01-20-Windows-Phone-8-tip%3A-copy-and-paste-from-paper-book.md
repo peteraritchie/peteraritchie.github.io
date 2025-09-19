@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Windows Phone 8 tip: copy and paste from paper book'
-tags: ['Mobile', 'Non-development', 'msmvps', 'January 2014']
+tags: ['Mobile', 'Non-development', 'msmvps']
 disqus_id: "1221 http://blog.peterritchie.com/?p=1221"
 ---
 [Source](http://pr-blog.azurewebsites.net/2014/01/20/windows-phone-8-tip-copy-and-paste-from-paper-book/ "Permalink to Windows Phone 8 tip: copy and paste from paper book")

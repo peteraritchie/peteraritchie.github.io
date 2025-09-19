@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Best Practices'
-tags: ['Uncategorized', 'msmvps', 'June 2010']
+tags: ['Uncategorized', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2010/06/14/best-practices/ "Permalink to Best Practices")
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The Dispose Pattern as an anti-pattern'
-tags: ['.NET Development', 'AntiPattern', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'msmvps', 'January 2013']
+tags: ['.NET Development', '.NET', 'AntiPattern', 'C#', 'Design/Coding Guidance', 'DevCenterPost', 'Software Development Guidance', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2013/01/20/the-dispose-pattern-as-an-anti-pattern/ "Permalink to The Dispose Pattern as an anti-pattern")
 

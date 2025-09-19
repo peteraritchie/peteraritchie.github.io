@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Extra Features: One of the Lean 7 Wastes of Software'
-tags: ['Lean', 'Software Development', 'msmvps', 'August 2008']
+tags: ['Lean', 'Software Development', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2008/08/18/extra-features-one-of-the-lean-7-wastes-of-software/ "Permalink to Extra Features: One of the Lean 7 Wastes of Software")
 

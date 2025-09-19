@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Seam expansion'
-tags: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Software Development Principles', 'msmvps', 'February 2015']
+tags: ['Architecture', 'Design/Coding Guidance', 'Patterns', 'Software Development', 'Software Development Guidance', 'Software Development Practices', 'Software Development Principles', 'msmvps']
 ---
 [Source](http://pr-blog.azurewebsites.net/2015/02/17/seam-expansion/ "Permalink to Seam expansion")
 
