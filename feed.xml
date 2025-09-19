@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 09 Sep 2025 17:40:26 GMT</pubDate>
-		<lastBuildDate>Tue, 09 Sep 2025 17:40:26 GMT</lastBuildDate>
+		<pubDate>Fri, 19 Sep 2025 16:11:01 GMT</pubDate>
+		<lastBuildDate>Fri, 19 Sep 2025 16:11:01 GMT</lastBuildDate>
 		<item>
 			<title>System of Record And Source of Single Truth Are Not The Same</title>
 			<link>http://blog.peterritchie.com/posts/system-of-record-and-source-of-truth-are-not-the-same</link>
@@ -183,7 +183,7 @@ Given &amp;lt;some context&amp;gt;, When &amp;lt;some action is carried out&amp;
 &lt;strong&gt;When&lt;/strong&gt; &lt;em&gt;they click the link in the email and enter a new password&lt;/em&gt;,&lt;br /&gt;
 &lt;strong&gt;Then&lt;/strong&gt; &lt;em&gt;their password will be updated, and they should be able to log in with the new password&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src="../assets/user-story-with-acceptance-criteria-postit.png" class="img-fluid" alt="User story with acceptance criteria example as PostIte" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../assets/user-story-with-acceptance-criteria-postit.png" class="img-fluid" alt="User story with acceptance criteria example as PostIt" /&gt;&lt;/p&gt;
 &lt;h2 id="eliciting-acceptance-criteria"&gt;Eliciting Acceptance Criteria&lt;/h2&gt;
 &lt;p&gt;These acceptance criteria may be obvious now that you see them, but when all you've got is a user story, a feature, and an epic, what can we do to get quality acceptance criteria? Fortunately, this example provides some hints. Given/When/Then, &amp;quot;Given&amp;quot; are preconditions; so asking about what preconditions must exist is a good start. &amp;quot;Preconditions&amp;quot; might come across as overly technical, so questions like &amp;quot;&lt;strong&gt;Where would this functionality exist?&lt;/strong&gt;&amp;quot;, &amp;quot;&lt;strong&gt;How would the user reach this functionality?&lt;/strong&gt;&amp;quot; or &amp;quot;&lt;strong&gt;What needs to happen for this functionality to be enabled?&amp;quot;&lt;/strong&gt; have served me well.&lt;/p&gt;
 &lt;p&gt;While working through these questions with the product owner and other stakeholders provides valuable insights for implementing a fit-for-purpose solution, we still lack positive verifiability. We can verify that the functionality achieves the outcomes we've specified, but &lt;strong&gt;what is the value of the outcomes of this functionality&lt;/strong&gt;? Pose this question to stakeholders in an effort to discover something quantifiably measurable. Since clearer outcomes are part of the more detailed scenarios, those newly elicited outcomes can hint at more criteria, from the point of view of quality attributes.&lt;/p&gt;
