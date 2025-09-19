@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'A Upcoming Pandemic of Domain Anaemia'
-tags: ['.NET Development', 'ALT.NET', 'AntiPattern', 'DDD', 'Design/Coding Guidance', 'Microsoft', 'Microsoft Patterns and Practices', 'OOD', 'Patterns', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps', 'January 2009']
+tags: ['.NET', '.NET Development', 'ALT.NET', 'AntiPattern', 'DDD', 'Design/Coding Guidance', 'Microsoft', 'Microsoft Patterns and Practices', 'OOD', 'Patterns', 'Software Development', 'Software Development Guidance', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/01/29/a-upcoming-pandemic-of-domain-anaemia/ "Permalink to A Upcoming Pandemic of Domain Anaemia")
 

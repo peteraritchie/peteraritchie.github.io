@@ -4,7 +4,7 @@ title: 'Supporting Structured Dynamic Configuration in ASP.NET Core appsettings'
 categories: ['.NET', 'ASP.NET', '.NET Core', 'ASP.NET Core', 'Guidance', 'Visual Studio', 'Options', 'Configuration']
 comments: true
 excerpt: "A detailed look at not having to bind each and every appsettings key/value to a class member and support more dynamic configurations."
-tags: ['September 2018']
+tags: ['.NET', 'ASP.NET', '.NET Core', 'ASP.NET Core', 'Guidance', 'Visual Studio', 'Options', 'Configuration']
 ---
 
 ## Configuration in ASP.NET Core, a Brief Retrospection

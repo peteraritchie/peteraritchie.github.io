@@ -4,7 +4,7 @@ title: 'Being Successful with Domain-Driven Design: Minimal Complexity, Part 3'
 categories: ['Domain-Driven Design', 'DDD']
 comments: true
 excerpt: The concepts and their consistency boundaries are only a couple of things that contribute to the complexity of non-trivial domains. For example, the work required to implement a domain is independent of its concepts and consistency boundaries. Additionally, the system's quality attributes and technical constraints are major influencers on the internal structure of that system.
-tags: ['June 2023']
+tags: ['Domain-Driven Design', 'DDD']
 ---
 ![complex-relationships](/assets/complex-relationships.jpg)
 

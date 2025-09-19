@@ -4,7 +4,7 @@ title: 'Fundamental Quality Attributes of Technology Systems'
 categories: ['Quality Attributes', 'Architecture']
 comments: true
 excerpt: "Customers expect features that operate without fault or error, operate consistently within expectations, operate within resource constraints, and protect from unauthorized access."
-tags: ['September 2022']
+tags: ['Quality Attributes', 'Architecture']
 ---
 What are quality attributes? The term "non-functional requirements" has been more prevalent, but that is a technologist's term. The first time you bring up "non-functional requirements" with a customer, there's always confusion, then concern. I've heard more than once, "we want something functional."
 

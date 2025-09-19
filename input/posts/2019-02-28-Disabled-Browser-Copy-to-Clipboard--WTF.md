@@ -4,7 +4,7 @@ title: 'Disabled Browser Copy-to-Clipboard: WTF?'
 categories: ['Life Hacks']
 comments: true
 excerpt: "Re-enable copy-to clipboard on those annoying websites!"
-tags: ['February 2019']
+tags: ['Life Hacks']
 ---
 Seriously, web sites that disable copy-to-clipboard?  What do they think they are protecting?  It's very annoying.
 

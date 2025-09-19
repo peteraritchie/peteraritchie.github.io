@@ -4,7 +4,7 @@ title: 'What Is Architecture'
 categories: ['Architecture', 'Software Development']
 comments: true
 excerpt: "Digging a little deeper into architectural concepts and details."
-tags: ['December 2017']
+tags: ['Architecture', 'Software Development']
 ---
 Getting someone to explain architecture is sometimes like asking them what *disinterested* means or whether *irregardless* is a word. The number of answers you get from people has a complexity O(n log n) to the number of people you ask.
  

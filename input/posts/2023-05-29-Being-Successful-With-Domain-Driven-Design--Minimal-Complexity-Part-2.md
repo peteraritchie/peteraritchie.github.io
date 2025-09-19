@@ -4,7 +4,7 @@ title: 'Being Successful with Domain-Driven Design: Minimal Complexity, Part 2'
 categories: ['Domain-Driven Design', 'DDD']
 comments: true
 excerpt: The Aggregate and Service patterns model parts of the domain similarly but provide a means to recognize separate parts of the domain&#58; independent of the level at which they apply as well as how they affect state.  Service operates at a higher level to model an activity, a collaboration of objects.  An aggregate is the composition of several domain objects that must abide by the same invariants and be consistent in the presence of each other.
-tags: ['May 2023']
+tags: ['Domain-Driven Design', 'DDD']
 ---
 In part one, I talked about the complexity in the language used to communicate the domain. Domain-Driven Design (DDD) deals with that complexity by isolating the concepts in a clear language that domain experts understand. Ubiquitous Language helps form the basis of all the other patterns and practices in Domain-Driven Design through the clear isolation of domain _concepts_. The DDD pattern language context map provides a good example of isolating concepts (in this case, Domain-Driven Design concepts):
 

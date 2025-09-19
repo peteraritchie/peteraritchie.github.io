@@ -4,7 +4,7 @@ title: 'Being Successful With Domain-Driven Design: Minimal Complexity, Part 1'
 categories: ['Domain-Driven Design', 'DDD']
 comments: true
 excerpt: Working towards a Ubiquitous Language is working towards concepts more independent from each other. Independent concepts are themselves individual contexts. Any defined concept has a defined context with understandable boundaries. Keeping the complexity of one context bound from others keeps the essential complexity within that context and reduces the accidental complexity that arises from blended contexts.
-tags: ['May 2023']
+tags: ['Domain-Driven Design', 'DDD']
 ---
 ![Concepts, Context, and Boundaries. Abstract Thought](/assets/concepts-contexts-and-boundaries.jpg)
 The Domain-Driven Design book (the "Blue Book") includes "Tackling complexity at the heart of software" in the title. While "complexity" can be subjective, the takeaway is that Domain-Driven Design intends to address complex software systems. The principles and practices in Domain-Driven Design have their complexities, so for Domain-Driven Design to add value, it needs to address existing/expected complexity and attempt to be net-positive for simplicity.

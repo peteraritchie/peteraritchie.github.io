@@ -4,7 +4,7 @@ title: 'Fundamental ASP.Net Minimal API Integration Tests'
 categories: ['C#', 'ASP.NET 6', 'Minimal APIs', 'Integration Testing']
 comments: true
 excerpt: "ASP.NET integration tests are a common way of verifying the pipeline and how it is used. We can create integration tests that process the OpenAPI spec and verify operations are working as expected in various ways."
-tags: ['November 2022']
+tags: ['.NET', 'C#', 'ASP.NET 6', 'Minimal APIs', 'Integration Testing']
 ---
 ![Robotic computing testing](/assets/robotic%20computing%20testing.png)
 

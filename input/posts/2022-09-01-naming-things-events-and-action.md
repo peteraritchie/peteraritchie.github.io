@@ -4,7 +4,7 @@ title: 'Naming Things - Common Actions and Events'
 categories: ['Naming Things', 'Architecture']
 comments: true
 excerpt: "One aspect of making it easier to name things is to settle on some common terms, avoiding confusing synonyms.  In this case common actions and events."
-tags: ['September 2022']
+tags: ['Naming Things', 'Architecture']
 ---
 In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.
 

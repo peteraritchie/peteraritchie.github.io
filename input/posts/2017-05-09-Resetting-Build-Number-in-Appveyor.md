@@ -4,7 +4,7 @@ title: 'Resetting Build Number in Appveyor'
 categories: ['Appveyor CI']
 comments: true
 excerpt: "How to reset the build number in AppVeyor when your major version number changes."
-tags: ['May 2017']
+tags: ['Appveyor CI']
 ---
 I've been using [AppVeyor](http://ci.appveyor.com) for a while now to be my CI platform of choice for my OSS projects.  It's like any other tool.  It works, and does a lot of things very well.  I recently bumped some major version numbers up and realized that some things AppVeyor was automating weren't completely automated.
 

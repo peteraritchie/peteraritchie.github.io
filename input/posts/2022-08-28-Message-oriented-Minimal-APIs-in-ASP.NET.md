@@ -4,7 +4,7 @@ title: 'Message-oriented Minimal APIs in ASP.NET Core'
 categories: ['ASP.NET', 'Minimal APIs', 'Event-Oriented']
 comments: true
 excerpt: "Simplifying the implementation of APIs with ASP.NET Minimal APIs and event-orientation."
-tags: ['August 2022']
+tags: ['.NET', 'ASP.NET', 'Minimal APIs', 'Event-Oriented']
 ---
 TL;DR - [go to the implementation details](#implementation-details)
 

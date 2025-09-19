@@ -4,7 +4,7 @@ title: 'Visual Studio Performance with Microsoft Defender'
 categories: ['Developer Experience', 'Optimization']
 comments: true
 excerpt: "Improve Visual Studio build times with Windows Virus & Threat Protection exclusions."
-tags: ['October 2022']
+tags: ['Developer Experience', 'Optimization']
 ---
 ![Antivirus Exclusion Developer Dall-E image](/assets/antivirus%20exclusion%20developer.png)
 

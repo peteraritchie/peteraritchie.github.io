@@ -6,7 +6,7 @@ comments: true
 RedirectFrom:
     - Service-Oriented-is-Declarative-Not-Imperative/
 excerpt: "The subtleness of service-orientation, how it can be undermined and how to recognize and address it."
-tags: ['June 2019']
+tags: ['SOA', 'declarative', 'guidance']
 ---
 In this post, I'd like to address a challenge that I've witnessed in the understanding of service-oriented and implementations of it.  
 The issue I've seen in the design approach of services and service-oriented systems.  Programmers and engineers can easily view each service as a function.  Services are perceived as being composed together within a set of functions commanding specific state changes to achieve one of a smaller set of final states.  

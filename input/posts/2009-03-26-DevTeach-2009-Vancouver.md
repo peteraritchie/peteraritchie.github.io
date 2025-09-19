@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'DevTeach 2009 Vancouver'
-tags: ['.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET Development', 'C#', '.NET', 'C# 3.0', 'DDD', 'Design/Coding Guidance', 'DevTeach', 'Software Development', 'Software Development Guidance', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio 2010 Best Practices', 'msmvps', 'March 2009']
+tags: ['.NET', '.NET 2.0', '.NET 3.5', '.NET 3.x', '.NET Development', 'C#', '.NET', 'C# 3.0', 'DDD', 'Design/Coding Guidance', 'DevTeach', 'Software Development', 'Software Development Guidance', 'Visual Studio 2005', 'Visual Studio 2008', 'Visual Studio 2010 Best Practices', 'msmvps']
 ---
 [Source](http://blogs.msmvps.com/peterritchie/2009/03/26/devteach-2009-vancouver/ "Permalink to DevTeach 2009 Vancouver")
 

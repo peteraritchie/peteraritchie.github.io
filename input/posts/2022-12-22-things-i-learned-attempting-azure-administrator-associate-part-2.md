@@ -4,7 +4,7 @@ title: 'Things I Learned Attempting Azure Administrator Associate - Part 2 - Sto
 categories: ['Azure', 'Azure Administrator Associate (AZ-104)']
 comments: true
 excerpt: Azure Administrator Associate certification is about the skills required to be an Azure account, subscription, tenant, etc., administrator. If your end goal is to develop applications on Azure, that involves a lot of administration of Azure resources. Regardless of your plan, storage administration is nuanced. This post focuses on some of those nuances, nuances that may not be apparent in the documentation
-tags: ['December 2022']
+tags: ['Azure', 'Azure Administrator Associate (AZ-104)']
 ---
 ![distributed cloud data storage](/assets/DALL·E-2022-12-22-17.03.40--distributed-cloud-data-storage-in-the-style-of-salvator-dali.png)
 

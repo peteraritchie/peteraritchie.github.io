@@ -4,7 +4,7 @@ title: 'Comments in Markdown'
 categories: ['Odds', 'Hacks', 'Markdown']
 comments: true
 excerpt: "Hacks for putting comments into markdown that won't appear when rendered."
-tags: ['December 2017']
+tags: ['Odds', 'Hacks', 'Markdown']
 ---
 I was authoring some markdown the other day, and I wanted to make a note to myself about something I needed to return to later, when I came back to the document.  I thought to myself that this seems like a comment, something I don't want to see in the rendered markdown, just in the "source".
 

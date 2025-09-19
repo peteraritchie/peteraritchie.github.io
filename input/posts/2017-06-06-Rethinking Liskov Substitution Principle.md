@@ -4,7 +4,7 @@ title: 'Rethinking the Liskov Substitution  Principle'
 categories: ['SOLID', 'Principles', 'Distributed Computing']
 comments: true
 excerpt: "Liskov Substitution isn't just about object-oriented design."
-tags: ['June 2017']
+tags: ['SOLID', 'Principles', 'Distributed Computing']
 ---
 Barbara Liskov's famous principle (named Liskov Substitution Principle by Robert Martin) came out of the area of [data abstraction][] as it applies to a hierarchy of data types.  At the time (around 1987-1994) the idea was someone absorbed by software language advancements of the day, primarily object-orientation.  The principle got heavily associated with OOD and OOP and many people left it at that. But, I suggest that Liskov Substitution Principle (LSP) is wider appeal than just in the design of objects/classes.
 

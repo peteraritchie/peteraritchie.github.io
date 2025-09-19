@@ -4,7 +4,7 @@ title: 'Things I Learned Attempting Azure Administrator Associate - Part 1'
 categories: ['Azure', 'Azure Administrator Associate (AZ-104)']
 comments: true
 excerpt: "."
-tags: ['December 2022']
+tags: ['Azure', 'Azure Administrator Associate (AZ-104)']
 ---
 ![person going through the process of certifying knowledge](/assets/DALL·E-2022-12-20-15.03.33---A-woman-going-through-the-process-of-certifying-knowledge.png)
 

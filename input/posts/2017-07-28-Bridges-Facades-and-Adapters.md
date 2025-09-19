@@ -4,7 +4,7 @@ title: 'Bridges, Facades, and Adapters'
 categories: ['Software', 'Patterns']
 comments: true
 excerpt: "Avoiding confusing when dealing with the structural patterns Bridge, Façade, and Adapter."
-tags: ['July 2017']
+tags: ['Software', 'Patterns']
 ---
 I try to keep up with my craft by doing a fair amount of reading.  And to be honest, patterns are a great tool for me to communicate with my teams and members of the community in order to convey complex concepts.  Some patterns are easy to grok, but some are very subtle.  Bridge, Adapter, and Façade are such subtle structural patterns that I've noticed considerable confusion in some of the material I've read and with some of the people I talked to.  These patterns are very similar in some ways, but have very different applications.  I hope to reduce the confusion of these patterns with this post.
 

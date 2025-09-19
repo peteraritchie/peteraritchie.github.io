@@ -4,7 +4,7 @@ title: 'Domain-Oriented Observability: The Decorative Way'
 categories: ['Patterns', 'Decorator', 'Observability']
 comments: true
 excerpt: "When separating non-domain logic from domain logic, make use patterns for full separation."
-tags: ['April 2019']
+tags: ['Patterns', 'Decorator', 'Observability']
 ---
 I read an interesting article by Pete Hodgson on Martin Fowler's blog/site titled [Domain-Oriented Observability](https://martinfowler.com/articles/domain-oriented-observability.html).  In this article, Pete suggests separating the responsibility of observability out of a domain class that might initially look like this:
 ```java

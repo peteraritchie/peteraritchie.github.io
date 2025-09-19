@@ -3,8 +3,8 @@ layout: post
 title: 'Deeper Understanding of The Bridge Pattern'
 categories: ['Patterns', 'Bridge', 'Design', 'Provider Model', 'Provider']
 comments: true
-excerpt: "Loosely coupled and abstractions are hard enough to grok for many people.  The Bridge Pattern takes it to the next level by abstacting abstractions from other abstractions.  Let's dig deeper to help make it more consumable and less academic."
-tags: ['August 2018']
+excerpt: "Loosely coupled and abstractions are hard enough to grok for many people.  The Bridge Pattern takes it to the next level by abstracting abstractions from other abstractions.  Let's dig deeper to help make it more consumable and less academic."
+tags: ['Patterns', 'Bridge', 'Design', 'Provider Model', 'Provider']
 ---
 One of the biggest roadblocks in creating software that stands the test of time is the trouble many people have separating concept from actuality.  To some degree this is a basic human trait.  Shopping for a new house for example, it's common for someone not to buy a house simply because of the colors of the walls despite the triviality of re-painting (or the fact you probably will regardless).  In software, it's common for the separation between abstractions and implementation details to end up bleeding across.  So, it's no surprise that some patterns (or patterns in general?) are hard to truly understand and commonly mis-implemented.  The [Bridge Pattern][Bridge Pattern] is one of the prime examples, from my experience.
 

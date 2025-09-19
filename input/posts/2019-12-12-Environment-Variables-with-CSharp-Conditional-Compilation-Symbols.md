@@ -4,7 +4,7 @@ title: 'Environment Variables with C# Conditional Compilation Symbols'
 categories: ['C#', 'Visual Studio']
 comments: true
 excerpt: "This how you can get Visual Studio to create compilation symbols based on environment variables like `USERNAME`"
-tags: ['December 2019']
+tags: ['.NET', 'C#', 'Visual Studio']
 ---
 Have you ever thought, it would be nice to have a symbol like `PETERRIT` that is unique to your domain account that you could use for code that YOU maybe working on but don't want to break the build?
 

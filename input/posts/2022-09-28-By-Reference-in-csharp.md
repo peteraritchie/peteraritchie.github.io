@@ -4,7 +4,7 @@ title: 'By Reference in C#'
 categories: ['C#']
 comments: true
 excerpt: "Binding affects the compile-time usage of an identifier because of the run-time lifetime of the resources it is bound to."
-tags: ['September 2022']
+tags: ['C#', '.NET']
 ---
 I became aware recently that there were many C# compiler errors that do not have a corresponding documentation page.  That documentation is open-source and I chose to spend some time contributing some pages for the community. Looking at a language feature from the perspective of its compile-time errors is rather enlightening, so I'd though I'd write a bit about these features in hopes of offering a better understanding for my readers.
 
