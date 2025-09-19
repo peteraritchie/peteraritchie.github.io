@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Identity Obsession and Domain-Driven Design'
-categories: [['Sept 2024', 'Domain-Driven Design']
+categories: ['Sept 2024', 'Domain-Driven Design']
 comments: true
 excerpt: 
-tags: 'Identity', 'DDD', 'Domain-Driven Design', '.NET', 'C#']
+tags: ['Identity', 'DDD', 'Domain-Driven Design', '.NET', 'C#']
 ---
 ![Complicated translation](../assets/mind-map.png)
 
