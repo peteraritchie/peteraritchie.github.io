@@ -4,7 +4,7 @@ title: 'Multi-targeting in Visual Studio 2017'
 categories: ['June 2017', 'Multi-targeting', '.NET Core', '.NET Standard', 'Visual Studio 2017']
 comments: true
 excerpt: "An effective way to target multiple platforms in Visual Studio 2017 and easily generate a Nuget package."
-tags: ['Visual Studio 2017', '.NET]
+tags: ['Visual Studio 2017', '.NET']
 ---
 I've got a few OSS projects on the go that have evolved over time enough that some target more than one version of .NET.  Recently I started adding support to some of those projects for .NET Standard and .NET Core. Traditionally I've attempted to support multiple targets with multiple projects: since there's a single target framework in a project.  This has served me well over the years.  Here's some details:
 
