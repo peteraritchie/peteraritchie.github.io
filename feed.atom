@@ -4,7 +4,7 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-09-19T16:37:09Z</updated>
+	<updated>2025-09-25T19:01:14Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/system-of-record-and-source-of-truth-are-not-the-same</id>
@@ -134,6 +134,87 @@ I'm a freelance software architect. If you find this post useful and think I can
  --&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/being-a-successful-software-developer--inspiration-for-clear-expectations</id>
+		<title>Being A Successful Software Developer - Inspiration for Clear Expectations</title>
+		<link href="http://blog.peterritchie.com/posts/being-a-successful-software-developer--inspiration-for-clear-expectations" />
+		<updated>2025-09-02T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/agile-work-items.png" class="img-fluid" alt="agile work item hierarchy" /&gt;&lt;/p&gt;
+&lt;p&gt;In a &lt;a href="/posts/being-a-successful-software-developer--agilely-managing-expectations"&gt;prior post&lt;/a&gt;, I discussed agilely managing expectations, where I touched on ensuring user stories include measurable expectation detail by way of acceptance criteria. I detailed how the Gherkin or Given/When/Then format accommodates preconditions, actions, postconditions, and quantifiers. Being able to format the expectations you've gathered is the easy part; the hard part is eliciting those expectations. If you don't already have a set of requirements with the level of detail typically seen in Given/When/Then format, that means no one has discussed expectations at that level of detail. This post will explore some strategies I've used to successfully collaborate with subject matter experts and product owners, helping them set clear expectations.&lt;/p&gt;
+&lt;p&gt;I've worked with many clients across a diverse range of industries. I have some clients across the same industry, but I wouldn't call myself a domain expert in the domain where nearly all of my clients operate. However, when I start working with a client, I still need to become proficient enough to be productive right away. Let's explore some ways to uncover what inspires expectations.&lt;/p&gt;
+&lt;p&gt;Those with knowledge of what is needed are very close to the domain and naturally make assumptions, inadvertently leaving out information. We first have to recognize that and try to tease out implicit information to make it explicit. We technical folk want to work with &amp;quot;standard&amp;quot; user stories in a backlog, along with Feature and Epic descriptions.&lt;/p&gt;
+&lt;img src="/assets/agile-work-items.png" alt="Agile work item hierarchy." style="min-height: 10em; max-height: 75vmin; width: auto;"&gt;
+&lt;h2 id="epics-and-features-are-more-than-groupings"&gt;Epics And Features Are More Than Groupings&lt;/h2&gt;
+&lt;p&gt;It's easy to view Epics and Features as groupings, but they also represent business needs. Epics and Features both can represent a capability that the business is hoping to obtain. Alternatively, Epics can describe a Strategic Objective of the company. In either case, these needs serve as inspiration for the things under them. Like any hierarchy of goals and objectives, an objective at one level is a goal of the level below it. For example, an Epic may have a Strategic Objective of &amp;quot;Increase Response times by an average of 20%&amp;quot;, which will lead to the creation of Features aimed at increasing response times. Features under that Epic should have a &lt;em&gt;goal&lt;/em&gt; to contribute to that 20% increase. Stories under that Feature should have measurable &lt;em&gt;objectives&lt;/em&gt; (quantifiable acceptance criteria) that contribute to that 20% increase.&lt;/p&gt;
+&lt;p&gt;At one level, during Story evaluation/refinement, we should be asking ourselves and the subject matter experts: &amp;quot;Is this user Story well aligned with the parent Feature?&amp;quot; That ensures the Story is relevant, but it also ensures the Story is making forward progress on the goals of that Feature. Ensuring forward progress on Feature goals ensures we're addressing the Strategic Objectives of the Epic.&lt;/p&gt;
+&lt;p&gt;In addition to the Initiative, Epic, Strategic Objective, or Feature, the product and organization are driven by business motivations. These motivations are in addition to the effort of delivering software in the future and are typically focused on the present or operational aspects. Both the organization and the product have a purpose: a Vision and or a Mission. Additionally, an organization has Values that guide all its actions.&lt;/p&gt;
+&lt;p&gt;This post focuses on being in the context of assessing or refining a User Story (or backlog item). Change happens, and it rarely occurs at scheduled intervals, such as Epic planning or Feature planning. S;print planning is the last point at which the team can recognize change before committing to sprint work. Change can affect more than User Stories; it impacts Features, Epics, the Epic's Strategic Objective, the purpose of the current project, the Product, and even the Vision and Mission of the organization. Therefore, a User Story might feel out of alignment for various reasons, and the assessment should cascade up the hierarchy until everyone involved is comfortable that alignment has been reached.&lt;/p&gt;
+&lt;h2 id="project-goals-and-objectives"&gt;Project Goals And Objectives&lt;/h2&gt;
+&lt;p&gt;Project goals and objectives are often quantitative in nature, such as &amp;quot;increase customer retention by 10%&amp;quot; or &amp;quot;improve performance by 25%.&amp;quot; In cases like this, a proxy that represents the objective and can be measured against a target needs to be agreed upon. If it's not obvious, it's important to ask subject matter experts how implementing or using this functionality would impact that objective. e.g.: &amp;quot;How will we know that this functionality has increased customer retention?&amp;quot; or &amp;quot;How will we know that this functionality has improved performance?&amp;quot; Often, what this really means is asking, &amp;quot;How do we currently measure, and what is the baseline to compare to?&amp;quot;&lt;/p&gt;
+&lt;p&gt;For example, you can't specifically measure that functionality has improved customer retention, but you can measure the usage of a Feature. So, acceptance criteria can include usage metrics, such as amounts or durations. These metrics are somewhat one-way, but they do measure that the customer is engaged. When aggregated with usage measures of other functionality, they indicate how engaged the customer is, which can be compared over time.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Getting someone's heart rate involves taking their pulse over a period of time, which &lt;em&gt;leads&lt;/em&gt; to calculating their heart rate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Usage measures in this case are &lt;em&gt;leading indicators&lt;/em&gt; that analysts can use to predict customer retention.&lt;/p&gt;
+&lt;h2 id="organizational-vision"&gt;Organizational Vision&lt;/h2&gt;
+&lt;p&gt;Vision can be subjective and thus qualitative. Assessment of alignment to Vision goes towards whether the functionality is relevant or not. How relevant functionality aids in prioritization, and even deferring functionality entirely.&lt;/p&gt;
+&lt;h2 id="organizational-mission"&gt;Organizational Mission&lt;/h2&gt;
+&lt;p&gt;A mission describes what an organization or product does. This also goes towards whether the proposed functionality is relevant or not—the result of assessing alignment aids in deciding whether implementing proposed functionality should be deferred or prioritized lower than other efforts.&lt;/p&gt;
+&lt;h2 id="organizational-values"&gt;Organizational Values&lt;/h2&gt;
+&lt;p&gt;Values that apply to the acceptance criteria for functionality can sometimes be abstract and high-level. However, they can sometimes offer insight into how we can verify functionality. For example, a value like &amp;quot;integrity&amp;quot; or &amp;quot;promote transparency and trust&amp;quot; might lead to acceptance criteria like &amp;quot;confidential information is not stored in clear text&amp;quot; or &amp;quot;passwords are not stored.&amp;quot;&lt;/p&gt;
+&lt;p&gt;Although these motivations influence and guide how the business operates, they also shape what is expected of the software's functionality and quality.&lt;/p&gt;
+&lt;h2 id="project-scope"&gt;Project Scope&lt;/h2&gt;
+&lt;p&gt;A Project Scope details what is and isn't included in the deliverables or outcomes of the project. It should be clear what success or acceptance looks like for project completion.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;There is no right way to do the wrong thing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While this post details how to enhance User Stories with measurable acceptance criteria, we must also recognize that the needs detailed in the product backlog may no longer be relevant. In cases like this, those Stories (and even Features and Epics) should be removed or deferred.&lt;/p&gt;
+&lt;h2 id="user-story-unaligned-with-feature"&gt;User Story Unaligned With Feature&lt;/h2&gt;
+&lt;p&gt;Although some user stories have an obvious functional or enabling motive, we typically want quantitative acceptance criteria for the User Story. Those quantifiers should align with the qualifiers and quantifiers of the parent Feature.&lt;/p&gt;
+&lt;p&gt;A goal or criterion of a Feature might be to improve performance, for example. A Story that contributes to that Feature should have quantifiable acceptance criteria that measure how the Story contributes to improved performance. That User Story might be to add search indexing functionality. The purpose of search indexing may be to improve the performance of the existing search functionality. That existing functionality should have a performance baseline (i.e., the subject of the assessment that search performance was too slow), and to prove that time spent implementing search indexing was successful, there should be a quantifiable amount by which search performance should improve.&lt;/p&gt;
+&lt;p&gt;Some questions I've found to be valuable at uncovering missing expectations or clarifying expectations:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;What are we hoping to achieve with this functionality?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;I'm not clear on how this functionality contributes to &amp;quot;Feature X&amp;quot;, could you help me understand?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If it's hard to get a quantifiable amount of anything for the acceptance criteria of a Story or, especially, if it's difficult to get measurable acceptance criteria for many of the User Stories for a Feature, then that Feature may be unaligned with its parent Epic.&lt;/p&gt;
+&lt;h2 id="feature-unaligned-with-epic"&gt;Feature Unaligned With Epic&lt;/h2&gt;
+&lt;p&gt;Again, change happens at any time, and that can affect the relevance of an Epic or Feature. In the context of User Story assessment, sprint planning, or backlog refinement, a change in circumstances may reveal misalignment introduced by the change. When it feels like the Feature of a Story you're assessing seems misaligned, here are some questions that have worked for me to gain clarity:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;What will this Feature enable users to accomplish?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;What new ability will this Feature give to users?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;I'm not clear on how this Feature contributes to the Strategic Objective of &amp;quot;objective&amp;quot;, could you help me understand?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="epicfeaturestory-unaligned-with-product-vision-goals-or-scope"&gt;Epic/Feature/Story Unaligned With Product Vision, Goals, or Scope&lt;/h2&gt;
+&lt;p&gt;Change may impact Project Goals or Project Scope, which might manifest as unclear Epics or Features. If you're questioning the relevance of Feature and its overarching Epic, it may be due to misaligned Project Goals or Project Scope. If a Feature is no longer relevant but is clearly within the project's scope, it's time to reassess the Project Scope. Some questions that have helped me realize Project Scope is misaligned:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;What capability will the organization obtain by successfully completing this Epic?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;What user behavior do we hope to change by successfully completing this Epic?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="epicfeaturestory-unaligned-with-project-purpose"&gt;Epic/Feature/Story Unaligned With Project Purpose&lt;/h2&gt;
+&lt;p&gt;Change can be so impactful as to bring into question the purpose of the current project. That impact may require reassessment of the project. A project should have a Project Charter that details the Project Purpose, Project Goals, the Project Scope, etc. Change that impact the project's purpose may indicate that replanning the project is necessary.&lt;/p&gt;
+&lt;p&gt;I've not been in a situation where a project needed to be replanned that wasn't driven by the business. It should be obvious that a project is unlikely to succeed and will either be abandoned or replanned. If not, I'd question how the Features and Stories will realize the Project Purpose. If the Project Goals are unattainable, bringing light to that should be enough to get recognition that the project should be abandoned.&lt;/p&gt;
+&lt;h2 id="prioritization"&gt;Prioritization&lt;/h2&gt;
+&lt;p&gt;Business motivations go towards the ability to prioritize Stories and Features. Stories and Features that contribute to specific goals or objectives can be prioritized above other functionality. Functionality that doesn't align with Values or Purpose (such as Vision or Mission) or is outside the scope can be deferred or canceled, ensuring efforts are focused on the right functionality.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/agile-work-items.png" class="img-fluid" alt="agile work item hierarchy"&gt;&lt;/p&gt;</summary>
 	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/being-a-successful-software-developer--agilely-managing-expectations</id>
@@ -1167,50 +1248,6 @@ Philippe Vaillancourt&lt;/p&gt;
  --&gt;
 &lt;h2 id="ai"&gt;AI&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://martinfowler.com/articles/exploring-gen-ai/software-supply-chain-attack-surface.html"&gt;Coding Assistants Threaten the Software Supply Chain&lt;/a&gt; by Jim Gumbley, Lilly Ryan&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-11</id>
-		<title>Things That Caught My Attention Last Week - May 11</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-11" />
-		<updated>2025-05-11T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/from-anemic-models-to-behavior-driven-models-a-practical-ddd-refactor-in-csharp"&gt;From Anemic Models to Behavior-Driven Models: A Practical DDD Refactor in C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-new-ai-chat-template/"&gt;Exploring the new AI chat template&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/intent-vs-mechanics-the-power-of-abstraction-in-aspire-d14a33aab6bb"&gt;Intent vs. Mechanics: The Power of Abstraction in Aspire&lt;/a&gt; by David Fowler&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/11/managing-auto-creation-of-database-or-message-broker-resources-in-the-critter-stack-vnext/"&gt;Managing Auto Creation of Database or Message Broker Resources in the Critter Stack vNext&lt;/a&gt; by Jeremy Miller&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=rPNdlLwBnW4"&gt;What we learned about event sourcing and DDD while building a bank&lt;/a&gt; by Thomas Bøgh Fangel&lt;/p&gt;
-&lt;!-- ## DevOps --&gt;
-&lt;!-- ## Design
-
-## Mobile
-
-## Agile/Work Life --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://leanpub.com/api-extension-patterns"&gt;Handy API Extension Patterns [Leanpub PDF/iPad/Kindle]&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://tyk.io/blog/how-do-you-futureproof-an-enterprise-api-landscape/"&gt;How do you futureproof an enterprise API landscape?&lt;/a&gt; by Tyk API Gateway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/09/governaing-api-authentication/"&gt;Governing API Authentication&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/use-openapi-overlays-today/"&gt;Use OpenAPI Overlays Today&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-may-2025/"&gt;Azure Developer CLI (azd) - May 2025&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/fabric-mirroring-for-azure-cosmos-db-public-preview-refresh-now-live-with-new-features/"&gt;Fabric Mirroring for Azure Cosmos DB: Public Preview Refresh Now Live with New Features&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/pull-request-etiquette/"&gt;Pull Request Etiquette&lt;/a&gt; by Scott DePouw&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/traits-in-rust-interfaces-that-do-more/"&gt;Traits in Rust: Interfaces That Do More&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250508-00/?p=111162"&gt;Why doesn't Clipboard History capture rapid changes to clipboard contents?&lt;/a&gt; by The Old New Thing&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.troyhunt.com/passkeys-for-normal-people/"&gt;Passkeys for Normal People&lt;/a&gt; by Troy Hunt&lt;/p&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://ashley.dev/posts/what-even-is-vibe-coding/"&gt;What Even Is Vibe Coding?&lt;/a&gt; by ashley.dev&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/is-ai-making-your-organization-fragile-or-more-resilient/"&gt;Is AI Making Your Organization Fragile or More Resilient&lt;/a&gt; by Mark Levison&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
