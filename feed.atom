@@ -4,8 +4,71 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-09-25T21:02:29Z</updated>
+	<updated>2025-09-30T15:26:39Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28</id>
+		<title>Things That Caught My Attention Last Week - September 28</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28" />
+		<updated>2025-09-30T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/why-fractional-architecture-is-the-future-of-technology-strategy/?utm_source=blog.peterritchie.com"&gt;Why Fractional Architecture is the Future of Technology Strategy&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/announcing-dotnet-aspire-95/?utm_source=blog.peterritchie.com"&gt;Announcing Aspire 9.5&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/enhancements-to-xaml-live-preview-in-visual-studio-for-net-maui/?utm_source=blog.peterritchie.com"&gt;Enhancements to XAML Live Preview in Visual Studio for .NET MAUI&lt;/a&gt; by Rachel Kang&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/sleep-pc-a-dotnet-tool-to-make-windows-sleep-after-a-timeout/?utm_source=blog.peterritchie.com"&gt;sleep-pc: a .NET Native AOT tool to make Windows sleep after a timeout&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/09/28/last-sprint-to-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Last Sprint to Wolverine 5.0&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-secure-apis-with-role-based-access-control-in-aspnetcore?utm_source=blog.peterritchie.com"&gt;Building Secure APIs with Role-Based Access Control in ASP.NET Core&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/09/26/trust-is-the-secret-ingredient-missing-in-api-discovery-copy/?utm_source=blog.peterritchie.com"&gt;Selfish Standardization Using JSON-LD for Job Postings&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-hypermedia-commons-we-missed?utm_source=blog.peterritchie.com"&gt;The Hypermedia Commons We Missed&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/streaming-data-with-rest-apis/?utm_source=blog.peterritchie.com"&gt;Streaming Data with REST APIs&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-boards-integration-with-github-copilot-private-preview/?utm_source=blog.peterritchie.com"&gt;Azure Boards integration with GitHub Copilot (Private Preview)&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/ardalis-fall-2025-speaking-tour/?utm_source=blog.peterritchie.com"&gt;Ardalis Fall 2025 Speaking Tour&lt;/a&gt; by Steve Smith&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.computerworld.com/article/4059383/openai-admits-ai-hallucinations-are-mathematically-inevitable-not-just-engineering-flaws.html?utm_source=blog.peterritchie.com"&gt;OpenAI admits AI hallucinations are mathematically inevitable, not just engineering flaws&lt;/a&gt; by Gyana Swain&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/ceos-ai-disaster?utm_source=blog.peterritchie.com"&gt;CEOs Are Obsessed With AI, But Their Pushes to Use It Keep Ending in Disaster&lt;/a&gt; by Joe Wilkins&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://levelup.gitconnected.com/the-death-of-programmers-again-f550c4d729a2?utm_source=blog.peterritchie.com"&gt;The death of programmers, again. Is Vibe Coding the new VB?&lt;/a&gt; by Lewis Cunningham&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/openai-mistake-hallucinations?utm_source=blog.peterritchie.com"&gt;OpenAI Realizes It Made a Terrible Mistake&lt;/a&gt; by Victor Tangermann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kalele.io/thoughts-regarding-software-development-with-ai/?utm_source=blog.peterritchie.com"&gt;Thoughts Regarding Software Development with AI | Kalele&lt;/a&gt; by Vaughn Vernon&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://techcrunch.com/2025/09/19/meta-cto-explains-why-the-smart-glasses-demos-failed-at-meta-connect-and-it-wasnt-the-wi-fi/?utm_source=blog.peterritchie.com"&gt;Meta CTO explains why the smart glasses demos failed at Meta Connect - and it wasn't the Wi-Fi&lt;/a&gt; by&lt;/p&gt;
+&lt;!-- ## Podcasts
+
+## Other Link Collections
+ --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/being-a-successful-software-developer--inspiration-for-clear-expectations</id>
 		<title>Being A Successful Software Developer - Inspiration for Clear Expectations</title>
@@ -1205,49 +1268,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/mcp-windows-new-com-andrew-clinick-fcwxc/"&gt;MCP on Windows: The New COM?&lt;/a&gt; by Andrew Clinick&lt;/p&gt;
 &lt;h2 id="social-media"&gt;Social Media&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://techcrunch.com/2025/05/22/bluesky-will-begin-verifying-notable-users/"&gt;Bluesky will begin verifying 'notable' users&lt;/a&gt; by TechCrunch&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-18</id>
-		<title>Things That Caught My Attention Last Week - May 18</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-18" />
-		<updated>2025-05-19T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/cqrs-pattern-the-way-it-should-have-been-from-the-start"&gt;CQRS Pattern the Way It Should've Been From the Start&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250513-duende-identityserver-and-otel-metrics-traces-and-logs-in-the-net-aspire-dashboard/"&gt;Duende IdentityServer and OTel Metrics, Traces, and Logs in the .NET Aspire Dashboard&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/taming-manifest-sprawl-with-aspire-1ad938379433"&gt;Taming Manifest Sprawl with Aspire | by David Fowler | May, 2025 | Medium&lt;/a&gt; by David Fowl&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/15/wolverine-4-is-bringing-multi-tenancy-to-ef-core/"&gt;Wolverine 4 is Bringing Multi-Tenancy to EF Core&lt;/a&gt; by Jeremy Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/ardalis-specification-v9-release/"&gt;Ardalis Specification v9 Released&lt;/a&gt; by Steve Smith&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/using-the-new-ai-template-to-create-a-chatbot-about-a-website/"&gt;Using the new AI template to create a chatbot about a website&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
- --&gt;
-&lt;!-- ## DevOps
- ## Design
-
-## Mobile--&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://queen-of-questions.kit.com/posts/my-team-member-is-suffering-how-can-i-help"&gt;My team member is suffering. How can I help??&lt;/a&gt; by Clare Sudbery&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/12/embracing-rather-than-overcoming-team-boundaries/"&gt;Embracing Rather Than Overcoming Team Boundaries&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.cnbc.com/2025/05/13/microsoft-is-cutting-3percent-of-workers-across-the-software-company.html"&gt;Microsoft laying off about 6,000 people, or 3% of its workforce&lt;/a&gt; by CNBC&lt;/p&gt;
-&lt;!-- ## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/build-2025-preview-transform-your-ai-apps-and-agents-with-azure-cosmos-db/"&gt;Build 2025 Preview: Transform Your AI Apps and Agents with Azure Cosmos DB&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://deviq.com/practices/code-readability"&gt;Code Readability&lt;/a&gt; by DevIQ&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/iterators-and-functional-combinators/"&gt;Rust Iterators and Functional Combinators&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250514-00/?p=111178"&gt;If I mark my thread pool callback as long-running, does it still count toward the thread pool thread limit?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://martinfowler.com/articles/exploring-gen-ai/software-supply-chain-attack-surface.html"&gt;Coding Assistants Threaten the Software Supply Chain&lt;/a&gt; by Jim Gumbley, Lilly Ryan&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
