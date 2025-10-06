@@ -5,8 +5,71 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 30 Sep 2025 15:26:39 GMT</pubDate>
-		<lastBuildDate>Tue, 30 Sep 2025 15:26:39 GMT</lastBuildDate>
+		<pubDate>Mon, 06 Oct 2025 15:25:32 GMT</pubDate>
+		<lastBuildDate>Mon, 06 Oct 2025 15:25:32 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - October 3</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-3</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-3</guid>
+			<pubDate>Mon, 06 Oct 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/james-gould/azure-keyvault-emulator?utm_source=blog.peterritchie.com"&gt;GitHub - james-gould/azure-keyvault-emulator: An emulator for Azure Key Vault. Compatible with the Azure Client SDK, runnable with Docker or .NET Aspire.&lt;/a&gt; by James Gould&lt;/p&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/bringing-simplicity-first-to-the-page-my-upcoming-book/?utm_source=blog.peterritchie.com"&gt;Bringing Simplicity-First to the Page: My Upcoming Book&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://jaliyaudagedara.blogspot.com/2025/09/ef-core-100-support-for-complex-types.html?utm_source=blog.peterritchie.com"&gt;Jaliya's Blog: EF Core 10.0: Support for Complex Types without using Owned Entities&lt;/a&gt; by Jaliya Udagedara&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/introducing-microsoft-agent-framework-preview/?utm_source=blog.peterritchie.com"&gt;Introducing Microsoft Agent Framework (Preview): Making AI Agents Simple for Every Developer&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/roadmap-for-ai-in-visual-studio-october/?utm_source=blog.peterritchie.com"&gt;Roadmap for AI in Visual Studio (October)&lt;/a&gt; by Rhea Patel&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/easily-publishing-nuget-packages-from-github-actions-with-trusted-publishing/?utm_source=blog.peterritchie.com"&gt;Publishing NuGet packages from GitHub actions the easy way with Trusted Publishing&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/09/30/celebrating-martens-10th-birthday/?utm_source=blog.peterritchie.com"&gt;Celebrating Marten's 10th Birthday!&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/using-stored-procedures-and-functions-with-ef-core-and-postgresql?utm_source=blog.peterritchie.com"&gt;Using Stored Procedures and Functions With EF Core and PostgreSQL&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+ --&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.hello2morrow.com/2025/10/how-to-break-a-big-ball-of-mud/?utm_source=blog.peterritchie.com"&gt;How to Break a Big Ball of Mud?&lt;/a&gt; by Alexander von Zitzewitz&lt;/p&gt;
+&lt;!-- ## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://a.bigmachine.io/posts/walking-the-walk?utm_source=blog.peterritchie.com"&gt;Walking the Walk&lt;/a&gt; by Rob Conery&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://robconery.com/the-imposters-breakthrough/?utm_source=blog.peterritchie.com"&gt;The Imposter's Breakthrough&lt;/a&gt; by Rob Conery&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-3-2-finally/?utm_source=blog.peterritchie.com"&gt;OpenAPI 3.2... Finally!&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-september-2025/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (September 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/09/22/its-striking-so-quickly-the-industry-forgets-that-lines-of-code-isnt-a-measure-of-productivity/?utm_source=blog.peterritchie.com"&gt;It's striking so quickly the industry forgets that lines of code isn't a measure of productivity&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/unlock-vss-benefits-myvisualstudio/?utm_source=blog.peterritchie.com"&gt;The $150 Secret Hiding in Plain Sight&lt;/a&gt; by Jim Harrer&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://abovethelaw.com/2025/10/stanford-study-ai-generated-workslop-actually-making-productivity-worse/?utm_source=blog.peterritchie.com"&gt;Stanford Study: ‘AI’ Generated ‘Workslop’ Actually Making Productivity Worse&lt;/a&gt; by Techdirt&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.inceptionpoint.ai/inside-the-ai-slopocalypse/?utm_source=blog.peterritchie.com"&gt;Inside the AI Slopocalypse: Why We're Not Backing Down&lt;/a&gt; by Inception Point AI&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/correctness-isnt-competence?utm_source=blog.peterritchie.com"&gt;Correctness Isn't Competence&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251003-00/?p=111650?utm_source=blog.peterritchie.com"&gt;Can we get weak functions for static linking? The Visual C++ compiler says &amp;quot;We have weak functions at home&amp;quot;&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - September 28</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28</link>
@@ -1216,60 +1279,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://vladikk.com/2025/05/26/with-ai-everything-is-complicated/"&gt;With AI, everything is so complicated... and this is great news!&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
 &lt;!-- 
 ## Social Media --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - May 25</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-25</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-25</guid>
-			<pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://dev.to/shayy/the-serverless-dream-is-dead-2945"&gt;The Serverless Dream Is Dead - DEV Community&lt;/a&gt; by Shayan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://event-driven.io/en/event_stores_are_key_value_stores/"&gt;Event stores are key-value databases, and why that matters&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://microservices.io/post/architecture/2025/03/23/andrew-harmel-law-architecture-advice-process.html"&gt;Harmel-Law's architecture advice process and fast flow&lt;/a&gt; by Chris Richardson&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=W-f9MHB-5TQ&amp;amp;list=PLdo4fOcmZ0oXeSG8BgCVru3zQtw_K4ANY&amp;amp;index=71"&gt;Advanced Pattern Matching in C#&lt;/a&gt; by Oliver Sturm&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/21/message-concurrency-parallelism-and-ordering-with-wolverine/"&gt;Message Concurrency, Parallelism, and Ordering with Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://steven-giesel.com/blogPost/e2552b7a-293a-4f46-892f-95a0cd677e4d?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky"&gt;Writing new guards with extensions in C# 14&lt;/a&gt; by Steve Giesel&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://woodruff.dev/evolve-your-c-code-with-ai-a-5-week-genetic-algorithms-bootcamp-for-developers/"&gt;Evolve Your C# Code with AI: A 5-Week Genetic Algorithms Bootcamp for Developers&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://khalidabuhakmeh.com/server-sent-events-in-aspnet-core-and-dotnet-10"&gt;Server-Sent Events in ASP.NET Core and .NET 10&lt;/a&gt; by  Khalid Abuhakme&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/05/22/critter-stack-release-plans/"&gt;Critter Stack Release Plans&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-a-custom-domain-events-dispatcher-in-dotnet"&gt;Building a Custom Domain Events Dispatcher in .NET&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/from-anemic-models-to-behavior-driven-models-a-practical-ddd-refactor-in-csharp?utm_source=LinkedIn&amp;amp;utm_medium=social&amp;amp;utm_campaign=19.05.2025"&gt;From Anemic Models to Behavior-Driven Models: A Practical DDD Refactor in C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.therecord.com/news/waterloo-region/iron-ring-turns-100/article_f5953e86-e1b4-5bc2-aac7-82595524f814.html"&gt;Iron Ring symbolizes for engineers&lt;/a&gt; by The Record&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/api-design-reviews-dont-have-to-be-hard/"&gt;API Design Reviews Don't Have to be Hard&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/confluent-cloud-releases-managed-v2-kafka-connector-for-azure-cosmos-db/"&gt;Confluent Cloud Releases Managed V2 Kafka Connector for Azure Cosmos DB&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.jetbrains.com/resharper/vscode/?utm_campaign=resharper&amp;amp;utm_content=link&amp;amp;utm_medium=social&amp;amp;utm_source=bluesky&amp;amp;utm_term=rs-vsc-launch"&gt;ReSharper for Visual Studio Code&lt;/a&gt; by Jetbrains&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.forbes.com/sites/zakdoffman/2025/05/19/microsoft-confirms-emergency-update-for-windows-users/"&gt;Microsoft Confirms Emergency Update For Windows Users&lt;/a&gt; by Forbes&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250523-00/?p=111216"&gt;How can I detect if one of my helper processes is launching child processes?&lt;/a&gt; by The Old New Thing&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.psychologytoday.com/us/blog/the-algorithmic-mind/202505/ai-weakens-critical-thinking-and-how-to-rebuild-it"&gt;AI Weakens Critical Thinking. This Is How to Rebuild It | Psychology Today&lt;/a&gt; by Psychology Today&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://theconversation.com/evidence-shows-ai-systems-are-already-too-much-like-humans-will-that-be-a-problem-256980"&gt;Evidence shows AI systems are already too much like humans. Will that be a problem?&lt;/a&gt; by The Conversation&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://futurism.com/the-byte/klarna-ceo-bragged-replacing-workers-ai-losses"&gt;CEO Who Bragged About Replacing Human Workers With AI Realizes He Made a Terrible Mistake&lt;/a&gt; by Futurism&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://thenewstack.io/ai-driven-software-why-a-strong-ci-cd-foundation-is-essential/"&gt;AI-Driven Software: Why a Strong CI/CD Foundation Is Essential&lt;/a&gt; by The New Stack&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/mcp-windows-new-com-andrew-clinick-fcwxc/"&gt;MCP on Windows: The New COM?&lt;/a&gt; by Andrew Clinick&lt;/p&gt;
-&lt;h2 id="social-media"&gt;Social Media&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://techcrunch.com/2025/05/22/bluesky-will-begin-verifying-notable-users/"&gt;Bluesky will begin verifying 'notable' users&lt;/a&gt; by TechCrunch&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
