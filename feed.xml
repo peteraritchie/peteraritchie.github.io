@@ -5,8 +5,73 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Mon, 06 Oct 2025 15:25:32 GMT</pubDate>
-		<lastBuildDate>Mon, 06 Oct 2025 15:25:32 GMT</lastBuildDate>
+		<pubDate>Wed, 15 Oct 2025 15:55:40 GMT</pubDate>
+		<lastBuildDate>Wed, 15 Oct 2025 15:55:40 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - October 12</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-12</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-12</guid>
+			<pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://opensource.guide/security-best-practices-for-your-project/?utm_source=blog.peterritchie.com"&gt;Security Best Practices for your Project&lt;/a&gt; by Open Source Guides&lt;/p&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/secure-application-development-starts-with-architecture/?utm_source=blog.peterritchie.com"&gt;Secure Application Development Starts With Architecture&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dotnetfoundation.org/news-events/detail/automapper-graduates-from-the-.net-foundation?utm_source=blog.peterritchie.com"&gt;AutoMapper Graduates from the .NET Foundation&lt;/a&gt; by .NET Foundation Board&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://duendesoftware.com/blog/20251009-spectre-console-open-source-sponsorship?utm_source=blog.peterritchie.com"&gt;Duende Software - Spectre.Console - Open Source Sponsorship&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.elmah.io/penhow-i-reduced-api-response-time-by-70-in-a-large-net-project/?utm_source=blog.peterritchie.com"&gt;How I Reduced API Response Time by 70% in a Large .NET Project&lt;/a&gt; by Ali Hamza Ansari&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/06/aspire-publish-vs-deploy/?utm_source=blog.peterritchie.com"&gt;Design flashpoint: &lt;code&gt;aspire publish&lt;/code&gt; vs &lt;code&gt;aspire deploy&lt;/code&gt;&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/preparing-for-dotnet-10-gc/?utm_source=blog.peterritchie.com"&gt;Preparing for the .NET 10 GC (DATAS)&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-dev-test-benefit-explained/?utm_source=blog.peterritchie.com"&gt;Visual Studio Dev/Test Benefit Explained&lt;/a&gt; by Jim Harrer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/fixing-an-old-dotnet-core-native-library-loading-issue-on-alpine/?utm_source=blog.peterritchie.com"&gt;Fixing an old .NET Core native library loading issue on Alpine&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-find-an-available-network-port-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;How to Find an Available Network Port for a server in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/08/marten-8-12-with-new-plumbing/?utm_source=blog.peterritchie.com"&gt;Marten 8.12 with New Plumbing&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-fast-serverless-apis-with-minimal-apis-on-aws-lambda?utm_source=blog.peterritchie.com"&gt;Building Fast Serverless APIs With Minimal APIs on AWS Lambda&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+ --&gt;
+&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/announcing-the-new-azure-devops-server-rc-release/?utm_source=blog.peterritchie.com"&gt;Announcing the new Azure DevOps Server RC Release&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;!-- ## Software Design
+
+## Mobile
+
+## Agile/Work Life
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/ai-driven-api-design?utm_source=blog.peterritchie.com"&gt;AI-Driven API Design&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/stream-geojson-rest-api/?utm_source=blog.peterritchie.com"&gt;Stream GeoJSON in a HTTP/REST API&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;!-- ## Azure
+ --&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251013-00/?p=111677?utm_source=blog.peterritchie.com"&gt;API design principle: Don't tempt people to divide by zero&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blogs.newardassociates.com/blog/2025/devrel-patterns-published.html?utm_source=blog.peterritchie.com"&gt;DevRel Activity Patterns... published&lt;/a&gt; by Ted Neward&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://spectrum.ieee.org/learning-coding-age-of-ai?utm_source=blog.peterritchie.com"&gt;Is It Still Worth Learning Coding in the Age of AI?&lt;/a&gt; by Rahul Pandey&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.cio.com/article/4066681/ai-could-prove-cios-worst-tech-debt-yet.html?utm_source=blog.peterritchie.com"&gt;AI could prove CIOs' worst tech debt yet&lt;/a&gt; by Grant Gross&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - October 3</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-3</link>
@@ -1234,51 +1299,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://pocketcal.com/#N4IgziBcIEwAwwKwFo4DZUEYQBoQHMoBtUAYyjjwCdiiAOHOgXR3p0xiaYF8eg"&gt;PocketCal&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
 &lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/debunking-the-filter-early-join-later-sql-performance-myth"&gt;Debunking the &amp;quot;Filter Early, JOIN Later&amp;quot; SQL Performance Myth&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - June 1</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-1</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-1</guid>
-			<pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://dev.to/shayy/the-serverless-dream-is-dead-2945"&gt;The Serverless Dream Is Dead&lt;/a&gt; by Shayan&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/automating-null-forgiving-operator-removal-in-csharp-projects.htm"&gt;Automating Null-Forgiving Operator Removal in C# Projects&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devclass.com/2025/05/29/microsoft-designates-blazor-as-its-main-future-investment-in-web-ui-for-net/"&gt;Microsoft designates Blazor as its main future investment in Web UI for .NET&lt;/a&gt; by Tim Anderson&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/converting-a-docker-compose-file-to-aspire/"&gt;Converting a docker-compose file to .NET Aspire&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250527-the-role-of-authenticationproperties-in-aspnet-core/"&gt;The role of AuthenticationProperties in ASP.NET Core&lt;/a&gt; by Maarten Balliauw&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.financialexpress.com/life/technology-microsoft-ceo-satya-nadella-reveals-why-6000-employees-were-laid-off-chief-product-officer-shares-key-advice-for-coders-3862902/"&gt;Microsoft CEO Satya Nadella reveals why 6,000 employees were laid off, Chief Product Officer shares key advice for coders&lt;/a&gt; by The Financial Express&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/05/30/ontological-vs-epistemological-api-governance/"&gt;Ontological vs Epistemological API Governance&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/powering-real-time-messaging-at-scale-with-azure-cosmos-db/"&gt;Powering Real-Time Messaging at Scale with Azure Cosmos DB &lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;!-- ## Software Development
- --&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250526-00/?p=111218"&gt;Why does EnumProcessModules report no modules on a process that was created suspended? &lt;/a&gt; by The Old New Thing&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-with-github-repositories-your-path-to-agentic-ai/"&gt;Azure DevOps with GitHub Repositories - Your path to Agentic AI&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://vladikk.com/2025/05/26/with-ai-everything-is-complicated/"&gt;With AI, everything is so complicated... and this is great news!&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
-&lt;!-- 
-## Social Media --&gt;
 </content:encoded>
 		</item>
 	</channel>
