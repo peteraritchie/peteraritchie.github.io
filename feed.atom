@@ -4,8 +4,68 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-10-15T15:55:40Z</updated>
+	<updated>2025-10-21T16:44:21Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-19</id>
+		<title>Things That Caught My Attention Last Week - October 19</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-19" />
+		<updated>2025-10-21T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/licensing-compliance-in-the-courtroom-why-it-matters-more-than-you-think/?utm_source=blog.peterritchie.com"&gt;Licensing Compliance in the Courtroom: Why It Matters More Than You Think&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;!-- ## Software Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=FuXx-N2-zoM?utm_source=blog.peterritchie.com"&gt;YouTube - WITHOUT Entity Framework Core?! - Using DbUp For Database Migrations&lt;/a&gt; by Dev Leader&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-october-2025-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework October 2025 servicing releases updates&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/understanding-when-type-fullname-returns-null-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;Understanding When Type.FullName Returns Null in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/16/migrationsthe-critter-stack-way/?utm_source=blog.peterritchie.com"&gt;Migrations the &amp;quot;Critter Stack&amp;quot; Way&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/6-steps-for-setting-up-a-new-dotnet-project-the-right-way?utm_source=blog.peterritchie.com"&gt;6 Steps for Setting Up a New .NET Project the Right Way&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/10/14/applying-domain-driven-design-to-integration-and-consumption/?utm_source=blog.peterritchie.com"&gt;Applying Domain-Driven Driven Design to Integration and Consumption&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2025/10/17/letting-go-of-a-domain.html?utm_source=blog.peterritchie.com"&gt;Letting Go of a Domain&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/13/openapi-xml-generator/?utm_source=blog.peterritchie.com"&gt;The docs write themselves: from XML doc comments to OpenAPI specs&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/goodbye-stoplight/?utm_source=blog.peterritchie.com"&gt;Goodbye Stoplight?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-october-2025/?utm_source=blog.peterritchie.com"&gt;Announcing the October 2025 Release: Azure Developer CLI (azd)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/boost-your-azure-cosmos-db-efficiency-with-azure-advisor-insights/?utm_source=blog.peterritchie.com"&gt;Boost your Azure Cosmos DB Efficiency with Azure Advisor Insights&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/modernizing-authentication-for-legacy-visual-studio-clients/?utm_source=blog.peterritchie.com"&gt;Modernizing Authentication for Legacy Visual Studio Clients&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/10/15/result-isomorphism/?utm_source=blog.peterritchie.com"&gt;Result isomorphism&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251015-00/?p=111686?utm_source=blog.peterritchie.com"&gt;Why can you increment a reference count with relaxed semantics, but you have to decrement with release semantics?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- 
+## Windows
+
+## Security --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://spectrum.ieee.org/learning-coding-age-of-ai?utm_source=blog.peterritchie.com"&gt;Is It Still Worth Learning Coding in the Age of AI? - IEEE Spectrum&lt;/a&gt; by Rahul Pandey&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-12</id>
 		<title>Things That Caught My Attention Last Week - October 12</title>
@@ -1240,63 +1300,6 @@ Philippe Vaillancourt&lt;/p&gt;
  --&gt;
 &lt;h2 id="cloud"&gt;Cloud&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.bleepingcomputer.com/news/google/google-links-massive-cloud-outage-to-api-management-issue/"&gt;Google links massive cloud outage to API management issue&lt;/a&gt; by Sergiu Gatlan&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-8</id>
-		<title>Things That Caught My Attention Last Week - June 8</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-8" />
-		<updated>2025-06-09T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;!-- ## Architecture
- --&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=52b-StTWuCY"&gt;AspiriFridays with David, Damian, and Maddy - Sean from SCT Software&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/catching-up-on-microsoft-build-2025-essential-sessions-for-dotnet-developers/?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky"&gt;Catch Up on Microsoft Build 2025: Essential Sessions for .NET Developers&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=ssqGEBW-gpo&amp;amp;t=15s"&gt;What's Next in C#&lt;/a&gt; by Mads Torgersen and Dustin Campbell&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-1-the-survival-of-the-fittest-code-why-learn-genetic-algorithms-in-c/"&gt;Day 1: The Survival of the Fittest Code: Why Learn Genetic Algorithms in C#?&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/06/09/song-recommendations-from-combinators/"&gt;Song recommendations from combinators&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/creating-your-first-sample-game-with-monogame/"&gt;Creating your first sample game with MonoGame&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250603-testing-duende-identityserver-login-flow-with-a-net-10-dotnet-run-appcs/"&gt;Testing Duende IdentityServer Login Flow With a .NET 10 dotnet run app.cs&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/05/low-ceremony-railway-programming-with-wolverine/"&gt;Low Ceremony Railway Programming with Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://tahahussain.substack.com/p/how-to-survive-and-thrive-in-a-toxic?triedRedirect=true"&gt;How to Survive (and Thrive) in a Toxic Workplace.&lt;/a&gt; by Taha Hussain&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://nordicapis.com/10-signs-you-might-need-api-governance/"&gt;10+ Signs You Might Need API Governance&lt;/a&gt; by Bill Doerrfeld&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.apimatic.io/blog/mastering-api-governance"&gt;Mastering API Governance for Digital Transformation&lt;/a&gt; by Sid Maestre&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-may-2025/"&gt;Azure SDK Release (May 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/building-a-modern-python-api-with-azure-cosmos-db-a-5-part-video-series/"&gt;Building a Modern Python API with Azure Cosmos DB: A 5-Part Video Series&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/restricting-pat-creation-in-azure-devops-is-now-in-preview/"&gt;Restricting PAT Creation in Azure DevOps Is Now in Preview&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250606-00/?p=111254"&gt;Why does C++ think my class is copy-constructible when it can't be copy-constructed?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;timkleier/vertical-and-horizontal-slices-45b7d435ac35"&gt;Vertical AND Horizontal Slices in Agile Software Development&lt;/a&gt; by Tim Kleier&lt;/p&gt;
-&lt;!-- ## Windows
- --&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/06/02/ai-learning-plan/"&gt;Copilot Helped Me Create an AI Learning Plan&lt;/a&gt; by Micheal Eaton&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/genai-is-the-new-offshoring/"&gt;GenAI is the new Offshoring&lt;/a&gt; by Steve Smith&lt;/p&gt;
-&lt;!-- 
-## Social Media --&gt;
-&lt;h2 id="online-tools"&gt;Online Tools&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://pocketcal.com/#N4IgziBcIEwAwwKwFo4DZUEYQBoQHMoBtUAYyjjwCdiiAOHOgXR3p0xiaYF8eg"&gt;PocketCal&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/debunking-the-filter-early-join-later-sql-performance-myth"&gt;Debunking the &amp;quot;Filter Early, JOIN Later&amp;quot; SQL Performance Myth&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
