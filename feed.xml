@@ -5,8 +5,70 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 21 Oct 2025 16:44:21 GMT</pubDate>
-		<lastBuildDate>Tue, 21 Oct 2025 16:44:21 GMT</lastBuildDate>
+		<pubDate>Wed, 29 Oct 2025 18:50:23 GMT</pubDate>
+		<lastBuildDate>Wed, 29 Oct 2025 18:50:23 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - October 26</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26</guid>
+			<pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/make-your-github-profile-update-itself-wordpress-posts-github-releases-linkedin-newsletters/?utm_source=blog.peterritchie.com"&gt;Make Your GitHub Profile Update Itself (WordPress posts, GitHub releases, LinkedIn newsletters)&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4064273/8-platform-engineering-anti-patterns.html?utm_source=blog.peterritchie.com"&gt;8 platform engineering anti-patterns&lt;/a&gt; by Bill Doerrfeld&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=66-6C5c1zmg?utm_source=blog.peterritchie.com"&gt;All About Code Cleanup&lt;/a&gt; (YouTube) by Microsoft Visual Studio&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/10/27/a-small-update/?utm_source=blog.peterritchie.com"&gt;A Small Update&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/announcing-sponsorship-on-nugetdotorg-for-maintainer-appreciation/?utm_source=blog.peterritchie.com"&gt;Announcing Sponsorship on NuGet.org&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/modernizing-visual-studio-extension-compatibility-effortless-migration-for-extension-developers-and-users/?utm_source=blog.peterritchie.com"&gt;Modernizing Visual Studio Extension Compatibility: Effortless Migration for Extension Developers and Users&lt;/a&gt; by
+Tina Schrepfer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/adding-metadata-to-fallback-endpoints-in-aspnetcore/?utm_source=blog.peterritchie.com"&gt;Adding metadata to fallback endpoints in ASP.NET Core&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/thread-safe-initialization-with-lazyinitializer.htm?utm_source=blog.peterritchie.com"&gt;Thread-Safe Initialization with LazyInitializer&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/20/aspire-deployment-state/?utm_source=blog.peterritchie.com"&gt;Cache me if you can: a look at deployment state in Aspire&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/26/using-signalr-with-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Using SignalR with Wolverine 5.0 ΓÇô The Shade Tree Developer&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-interface-is-no-longer-the-code?utm_source=blog.peterritchie.com"&gt;The Interface Is No Longer the Code&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Azure
+ --&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251023-00/?p=111716?utm_source=blog.peterritchie.com"&gt;Windows Runtime design principle: Properties can be set in any order&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.makeuseof.com/run-these-useful-windows-pc-maintenance-commands-regularly/?utm_source=blog.peterritchie.com"&gt;Don't let your PC suffer, run these Windows commands regularly&lt;/a&gt; by Pankil Shah&lt;/p&gt;
+&lt;!-- ## Security
+
+## AI
+
+## Social Media
+
+## Online Tools
+ --&gt;
+&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=hhSJtMUY_6E?utm_source=blog.peterritchie.com"&gt;Compare PostgreSQL Databases in Seconds&lt;/a&gt; (YouTube) by Database Star&lt;/p&gt;
+&lt;h2 id="cloud"&gt;Cloud&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.crn.com/news/cloud/2025/aws-outage-was-inevitable-says-former-aws-google-exec?utm_source=blog.peterritchie.com"&gt;AWS Outage Was 'Inevitable,' Says Former AWS, Google Exec&lt;/a&gt; by Mark Haranas&lt;/p&gt;
+&lt;!-- ## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - October 19</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-19</link>
@@ -1249,59 +1311,6 @@ Philippe Vaillancourt&lt;/p&gt;
 
 ## Cloud
  --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - June 15</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-15</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-15</guid>
-			<pubDate>Mon, 16 Jun 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;!-- ## Architecture
- --&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://softdevbytes.com/aspnet-pdf-guide-building-an-invoice-app-with-questpdf/"&gt;ASP.NET PDF Guide: Building an Invoice App with QuestPDF&lt;/a&gt; by Adesina Omoniyi&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dnfprojects.org/"&gt;Projects - .NET Foundation Project Trends&lt;/a&gt; by .NET Foundation&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-7-putting-it-together-simulating-your-first-ga-cycle-in-net/"&gt;Day 7: Putting It Together: Simulating Your First GA Cycle in .NET&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/converting-an-xna-game-to-monogame/"&gt;Converting a Microsoft XNA 3.1 game to MonoGame&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/run-csharp-scripts-with-dotnet-run-app-no-project-files-needed"&gt;Run C# Scripts With dotnet run app.cs (No Project Files Needed)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.duendesoftware.com/posts/20250610-monitoring-duende-identityserver-license-usage-with-aspnet-core-health-checks/"&gt;Monitoring Duende IdentityServer License Usage with ASP.NET Core Health Checks&lt;/a&gt; by Maarten Balliauw&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/06/14/why-engineers-need-more-than-one-road.html"&gt;Why Engineers Need More Than One Road | The Adventures of Sadukie&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/06/11/can-we-have-a-converstion-about-api-discovery-integration-and-consumption/"&gt;Can We Have a Conversation About API Discovery, Integration, and Consumption?&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/june-patches-for-azure-devops-server-4/"&gt;June Patches for Azure DevOps Server&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;!-- ## Software Development
- --&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=NfBXDEgm6VY"&gt;Windows Kernel Programming with Rust&lt;/a&gt; by Matthias Heiden&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250613-00/?p=111268"&gt;Thread pool threads are like preschool: Leave things the way you found them&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Security
-## AI
-
- --&gt;
-&lt;!-- 
-## Social Media --&gt;
-&lt;!-- ## Online Tools
-
-## Databases
- --&gt;
-&lt;h2 id="cloud"&gt;Cloud&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.bleepingcomputer.com/news/google/google-links-massive-cloud-outage-to-api-management-issue/"&gt;Google links massive cloud outage to API management issue&lt;/a&gt; by Sergiu Gatlan&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
