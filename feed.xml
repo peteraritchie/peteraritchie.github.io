@@ -5,8 +5,76 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Wed, 29 Oct 2025 18:50:23 GMT</pubDate>
-		<lastBuildDate>Wed, 29 Oct 2025 18:50:23 GMT</lastBuildDate>
+		<pubDate>Tue, 04 Nov 2025 18:22:58 GMT</pubDate>
+		<lastBuildDate>Tue, 04 Nov 2025 18:22:58 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - November 2</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-2</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-2</guid>
+			<pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Software Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/28/wolverine-does-more-to-simplify-server-side-code/?utm_source=blog.peterritchie.com"&gt;Wolverine Does More to Simplify Server Side Code&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/whats-new-in-ef-core-10-leftjoin-and-rightjoin-operators-in-linq?utm_source=blog.peterritchie.com"&gt;What's New in EF Core 10: LeftJoin and RightJoin Operators in LINQ&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/understanding-the-worst-dotnet-vulnerability-request-smuggling-and-cve-2025-55315/?utm_source=blog.peterritchie.com"&gt;Understanding the worst .NET vulnerability ever: request smuggling and CVE-2025-55315&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/flushing-disk-caches-on-windows-a-comprehensive-guide.htm?utm_source=blog.peterritchie.com"&gt;Flushing Disk Caches on Windows: A Comprehensive Guide&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/introducing-custom-agents-for-dotnet-developers-csharp-expert-winforms-expert/?utm_source=blog.peterritchie.com"&gt;Introducing Custom Agents for .NET Developers: C# Expert &amp;amp; WinForms Expert&lt;/a&gt; by Wendy Breiding (SHE/HER)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/join-us-at-net-conf-dive-into-the-future-of-development-with-visual-studio-2026/?utm_source=blog.peterritchie.com"&gt;Join us at .NET Conf: Dive into the future of development with Visual Studio 2026&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-october-update/?utm_source=blog.peterritchie.com"&gt;Visual Studio 2022 17.14 October Update&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://bartwullems.blogspot.com/2025/10/catching-dependency-injection.html?utm_source=blog.peterritchie.com"&gt;Catching dependency injection configuration errors early&lt;/a&gt; by Bart Wullems&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;denmaklucky/whats-new-in-net-10-0907cffb7372?utm_source=blog.peterritchie.com"&gt;What's new in .NET 10. Explore the most interesting new...&lt;/a&gt; by Denis Makarenko&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/double-dispatch-in-ddd/?utm_source=blog.peterritchie.com"&gt;Double Dispatch in DDD&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.liminalarc.co/2025/10/the-future-of-agile-isnt-agile/?utm_source=blog.peterritchie.com"&gt;The Future of Agile Isn't &amp;quot;agile&amp;quot; &lt;/a&gt; by Leonard Greski&lt;/p&gt;
+&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://tidyfirst.substack.com/p/pitching-hackathon-ideas-oxymoron?triedRedirect=true?utm_source=blog.peterritchie.com"&gt;Pitching Hackathon Ideas: Oxymoron&lt;/a&gt; by Kent Beck&lt;/p&gt;
+&lt;!-- ## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/failures-happen-in-cloud-but-how-azure-cosmos-db-keeps-your-applications-online/?utm_source=blog.peterritchie.com"&gt;Failures Happen in Cloud, but how Azure Cosmos DB keeps your Applications Online&lt;/a&gt; by Hari Sudan S&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-copilot-coding-agent-config/?utm_source=blog.peterritchie.com"&gt;Introducing the azd extension to configure GitHub Copilot coding agent integration with Azure&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://compositecode.blog/2025/10/30/reflection-on-solid-decades/?utm_source=blog.peterritchie.com"&gt;Rethinking SOLID Principles in the Age of AI Development&lt;/a&gt; by Adron Hall&lt;/p&gt;
+&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251028-00/?p=111733?utm_source=blog.peterritchie.com"&gt;How did the Windows 95 user interface code get brought to the Windows NT code base?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.makeuseof.com/free-tool-tells-exactly-whats-slowing-pc/?utm_source=blog.peterritchie.com"&gt;This free tool tells you exactly what's slowing down your PC&lt;/a&gt; by Yadullah Abidi&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.makeuseof.com/windows-11-function-killing-your-battery-disable-it/?utm_source=blog.peterritchie.com"&gt;This One Windows 11 Function Is Killing Your Battery. Here's How to Disable It&lt;/a&gt; by Yadullah Abidi&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/27/aspire-deploy-cli-ux/?utm_source=blog.peterritchie.com"&gt;How I used AI to redesign Aspire's deploy CLI command&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/better-ai-code-starts-here?utm_source=blog.peterritchie.com"&gt;Better AI Code Starts Here&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - October 26</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26</link>
@@ -1254,63 +1322,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.quantamagazine.org/how-does-graph-theory-shape-our-world-20250626/"&gt;How Does Graph Theory Shape Our World?&lt;/a&gt; by Janna Levin, Steve Strogatz&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.tomshardware.com/software/png-has-been-updated-for-the-first-time-in-22-years-new-spec-supports-hdr-and-animation"&gt;PNG has been updated for the first time in 22 years&lt;/a&gt; by Jowi Morale&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - June 15</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</guid>
-			<pubDate>Mon, 23 Jun 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;!-- ## Architecture
- --&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=lgacB-sfCMg"&gt;Was I Wrong About Blazor?&lt;/a&gt; by Shaun Wildermuth&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/entomy/real-traits-in-c-4fpk"&gt;Real Traits in C#&lt;/a&gt; by Patrick Kelly&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.devleader.ca/how-to-tame-async-void-in-c-93fffd557729"&gt;How to Tame “async void” in C#&lt;/a&gt; by Dev Leader&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/task-whenall-vs-parallel-foreach/"&gt;Task.WhenAll or Parallel.ForEach?&lt;/a&gt; by Fati Iseni&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-9-using-genetic-algorithms-uniform-crossover-in-c/"&gt;Day 9: Using Genetic Algorithm's Uniform Crossover in C#&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/06/22/using-certificates-for-authentication-with-microsoft-identity-library"&gt;Using Certificates for Authentication with Microsoft Identity Library&lt;/a&gt; by Joe Guadagno&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://duendesoftware.com/blog/20250617-what-is-an-oauth-20-and-openid-connect-client"&gt;What is an OAuth 2.0 and OpenID Connect Client?&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/22/wire-up-xunit-logging-for-crazy-integration-testing/"&gt;Wire Up XUnit Logging for Crazy Integration Testing&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/monitoring-dotnet-applications-with-opentelemetry-and-grafana"&gt;Monitoring .NET Applications with OpenTelemetry and Grafana&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/agent-mode-is-now-generally-available-with-mcp-support/"&gt;Agent mode is now generally available with MCP support&lt;/a&gt; by Rhea Patel, Filisha Shah, and Allie Barry&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=rPNdlLwBnW4"&gt;What we learned about event sourcing and DDD while building a bank&lt;/a&gt; by Thomas Bøgh Fangel&lt;/p&gt;
-&lt;!-- ## DevOps
- --&gt;
-&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.bytebytego.com/p/oop-design-patterns-and-anti-patterns"&gt;OOP Design Patterns and Anti-Patterns: What Works and What Fails&lt;/a&gt; by ByteByteGo&lt;/p&gt;
-&lt;!-- ## Mobile
-
-## Agile/Work Life
-
-## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-mcp-server-public-preview/"&gt;Azure DevOps MCP Server, Public Preview&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250619-00/?p=111285"&gt;Learning to read C++ compiler errors: Ambiguous symbol errors after including a header file&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/working-with-stacked-branches-in-git-part-1/"&gt;Working with stacked branches in git (Part 1)&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-openmcp/"&gt;OpenAPI 🤝 OpenMCP&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
 </content:encoded>
 		</item>
 	</channel>
