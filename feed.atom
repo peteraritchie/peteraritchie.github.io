@@ -4,8 +4,75 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2025</rights>
-	<updated>2025-11-04T18:22:58Z</updated>
+	<updated>2025-11-12T20:15:24Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-9</id>
+		<title>Things That Caught My Attention Last Week - November 9</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-9" />
+		<updated>2025-11-12T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/four-faces-of-resilience?utm_source=blog.peterritchie.com"&gt;Four Faces of Resilience&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/03/empirical-characterization-testing/?utm_source=blog.peterritchie.com"&gt;Empirical Characterization Testing&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/asp-net-core-project-details-log?utm_source=blog.peterritchie.com"&gt;ASP .NET Core Project details&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/copilot-studio-dotnet-wasm/?utm_source=blog.peterritchie.com"&gt;How Copilot Studio uses .NET and WebAssembly for performance and innovation&lt;/a&gt; by Daniel Roth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/roadmap-for-ai-in-visual-studio-november/?utm_source=blog.peterritchie.com"&gt;Roadmap for AI in Visual Studio (November)&lt;/a&gt; by Rhea Patel&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/use-timespan-or-specify-units-in-duration-properties-and-parameters/?utm_source=blog.peterritchie.com"&gt;Use TimeSpan Or Specify Units In Duration Properties And Parameters&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-9-easier-reflection-with-unsafeaccessortype/?utm_source=blog.peterritchie.com"&gt;Easier reflection with [UnsafeAccessorType] in .NET 10&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/03/aspire-pipelines/?utm_source=blog.peterritchie.com"&gt;Pipe dreams to pipeline realities: an Aspire Pipelines story&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/11/05/critter-stack-gets-better-for-testing/?utm_source=blog.peterritchie.com"&gt;The Critter Stack Gets Even Better at Testing&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-idempotent-consumer-pattern-in-dotnet-and-why-you-need-it?utm_source=blog.peterritchie.com"&gt;The Idempotent Consumer Pattern in .NET (And Why You Need It)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+ --&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://planetscale.com/blog/the-slotted-counter-pattern?utm_source=blog.peterritchie.com"&gt;The Slotted Counter Pattern&lt;/a&gt; by Sam Lambert&lt;/p&gt;
+&lt;!-- ## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/04/openapi-extensions-to-generate-what-you-need-for-ai-integration/?utm_source=blog.peterritchie.com"&gt;OpenAPI Extensions to Generate What You Need for AI Integration&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-developer-cli-azure-container-apps-dev-to-prod-deployment-with-layered-infrastructure/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI: Azure Container Apps Dev-to-Prod Deployment with Layered Infrastructure&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.manning.com/books/fabulous-adventures-in-data-structures-and-algorithms?utm_source=blog.peterritchie.com"&gt;Fabulous Adventures in Data Structures and Algorithms&lt;/a&gt; by Eric Lippert&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251107-00/?p=111774?utm_source=blog.peterritchie.com"&gt;Non-recursively deleting a binary tree in constant space: Restructuring the tree&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/using-git-conditional-includes-for-multiple-configurations.htm?utm_source=blog.peterritchie.com"&gt;Using Git Conditional Includes for Multiple Configurations&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.marktechpost.com/2025/11/04/comparing-the-top-7-large-language-models-llms-systems-for-coding-in-2025/?utm_source=blog.peterritchie.com"&gt;Comparing the Top 7 Large Language Models LLMs/Systems for Coding in 2025 &lt;/a&gt; by Michal Sutter&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://arxiv.org/abs/2508.14511?utm_source=blog.peterritchie.com"&gt;What You See Is What It Does: A Structural Pattern for Legible Software&lt;/a&gt; by Eagon Meng, Daniel Jackson&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kalele.io/the-genai-abstraction-and-the-hard-truth/?utm_source=blog.peterritchie.com"&gt;The GenAI Abstraction and the Hard Truth&lt;/a&gt; by Vaughn Vernon&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-2</id>
 		<title>Things That Caught My Attention Last Week - November 2</title>
@@ -1250,76 +1317,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://itnext.io/cs-treatment-of-void-is-not-broken-b1d44b6dd576"&gt;C's treatment of &lt;code&gt;void *&lt;/code&gt; is not broken&lt;/a&gt; by Christopher Bazley&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.sciencealert.com/a-strange-phrase-keeps-turning-up-in-scientific-papers-but-why"&gt;A Strange Phrase Keeps Turning Up in Scientific Papers, But Why?&lt;/a&gt; by Aaron J. Snoswell et al&lt;/p&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-29</id>
-		<title>Things That Caught My Attention Last Week - June 29</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-29" />
-		<updated>2025-06-30T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/ShareX/ShareX?tab=readme-ov-file"&gt;ShareX/ShareX: ShareX is a free and open-source application that enables users to capture or record any area of their screen with a single keystroke. It also supports uploading images, text, and various file types to a wide range of destinations.&lt;/a&gt; by ShareX&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/apple/container"&gt;apple/container: A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon.&lt;/a&gt; by Apple&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://alexthemark.substack.com/p/direct-file-is-open-source"&gt;Direct File is Open Source!&lt;/a&gt; by Alex Mark&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/06/23/oss-project-lessons-learned-with-david-giard/"&gt;OSS Project Lessons Learned with David Giard&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.infoq.com/articles/decentralized-architecture-advice-process/"&gt;Decentralized Architecture Needs More Than Autonomy&lt;/a&gt; by Lindsey Tibbitts&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-12-genetic-algorithms-elitism-for-evolution-survival-of-the-fittest/"&gt;Day 12: Genetic Algorithms' Elitism for Evolution Survival of the Fittest&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/tools-used/"&gt;Steve Smith's Tools Used&lt;/a&gt; by Steve Smith&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.c-sharpcorner.com/article/health-checks-in-net-8-web-api-a-comprehensive-guide/"&gt;Health Checks in .NET 8  Web API: A Comprehensive Guide&lt;/a&gt; by Ayush Gupta&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/understanding-wolverine-aggregatehandler-workflow-martin-major-8qlnf/"&gt;Understanding Wolverine: AggregateHandler Workflow&lt;/a&gt; by Martin Major&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://isaacl.dev/gmy"&gt;Upgrade Your Application and Prepare for the Future with .NET Aspire&lt;/a&gt; by Mike Yeager&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/microsoft/CsWin32?tab=readme-ov-file"&gt;microsoft/CsWin32: A source generator to add a user-defined set of Win32 P/Invoke methods and supporting types to a C# project.&lt;/a&gt; by Microsoft&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-in-dev-container/"&gt;Exploring new .NET releases with Dev Containers&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2024/06/10/sneak-peek-of-strong-typed-identifiers-in-marten/"&gt;Sneak Peek of Strong Typed Identifiers in Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/testcontainers-best-practices-dotnet-integration-testing"&gt;Testcontainers Best Practices for .NET Integration Testing&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
- --&gt;
-&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://draft.io/example/example-mapping"&gt;Example Mapping&lt;/a&gt; by Gojko Adzic&lt;/p&gt;
-&lt;!-- ## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/introducing-her-executive-ascent-built-women-who-done-lori-lalonde-rlxkc/"&gt;Introducing Her Executive Ascent: Built for Women Who Are Done Waiting&lt;/a&gt; by Lori Lalonde&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.psychologytoday.com/ca/blog/well-being-is-foundational-of-leadership/202506/how-to-reinvent-meeting-culture-from-draining"&gt;How to Reinvent Meeting Culture: From Draining to Energizing&lt;/a&gt; by Jamie Shapiro Ph.D.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1955"&gt;Frictionless Development with Nicole Forsgren&lt;/a&gt; by .NET Rocks&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ashley.dev/posts/the-high-cost-of-being-low-maintenance/"&gt;The High Cost of Being Low Maintenance&lt;/a&gt; by Ashley Willis&lt;/p&gt;
-&lt;!-- ## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/introducing-the-azure-storage-connector-for-pytorch/"&gt;Introducing the Azure Storage Connector for PyTorch&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/removing-azure-resource-manager-reliance-on-azure-devops-sign-ins/"&gt;Removing Azure Resource Manager reliance on Azure DevOps sign-ins&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://spectrum.ieee.org/nist-quantum-random-number-generator"&gt;NIST's Quantum Random Number Generator Is Free to Use&lt;/a&gt; by Edd Gent&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/working-with-stacked-branches-in-git-part-2/"&gt;Working with stacked branches in git (Part 2)&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-exclude-your-windows-app-from-screen-capture-and-recall.htm"&gt;How to Exclude Your Windows App from Screen Capture and Recall&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.reuters.com/legal/litigation/anthropic-wins-key-ruling-ai-authors-copyright-lawsuit-2025-06-24/"&gt;Anthropic wins key US ruling on AI training in authors' copyright lawsuit&lt;/a&gt; by Blake Brittain&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://analyticsindiamag.com/ai-news-updates/vibe-coder-gets-legal-notice-from-docusign/"&gt;Vibe Coder Gets Legal Notice From DocuSign&lt;/a&gt; by Supreeth Koundinya&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes"&gt;Augmented Coding: Beyond the Vibes&lt;/a&gt; by Kent Beck&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.groktop.us/duolingos-ai-first-disaster-a-cautionary-tale-of-what-happens-when-you-replace-rather-than-partner/"&gt;Duolingo's $7B AI Disaster: Enterprise Lessons for AI Implementation&lt;/a&gt; by Magnus Hedemark&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/from-sheet-music-to-source-code"&gt;From sheet music to source code&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.quantamagazine.org/how-does-graph-theory-shape-our-world-20250626/"&gt;How Does Graph Theory Shape Our World?&lt;/a&gt; by Janna Levin, Steve Strogatz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.tomshardware.com/software/png-has-been-updated-for-the-first-time-in-22-years-new-spec-supports-hdr-and-animation"&gt;PNG has been updated for the first time in 22 years&lt;/a&gt; by Jowi Morale&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
