@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Wed, 12 Nov 2025 20:15:24 GMT</pubDate>
-		<lastBuildDate>Wed, 12 Nov 2025 20:15:24 GMT</lastBuildDate>
+		<pubDate>Thu, 20 Nov 2025 17:44:45 GMT</pubDate>
+		<lastBuildDate>Thu, 20 Nov 2025 17:44:45 GMT</lastBuildDate>
 		<item>
 			<title>Things That Caught My Attention Last Week - November 9</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-9</link>
@@ -57,6 +57,76 @@
 &lt;p&gt;&lt;a href="https://www.marktechpost.com/2025/11/04/comparing-the-top-7-large-language-models-llms-systems-for-coding-in-2025/?utm_source=blog.peterritchie.com"&gt;Comparing the Top 7 Large Language Models LLMs/Systems for Coding in 2025 &lt;/a&gt; by Michal Sutter&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://arxiv.org/abs/2508.14511?utm_source=blog.peterritchie.com"&gt;What You See Is What It Does: A Structural Pattern for Legible Software&lt;/a&gt; by Eagon Meng, Daniel Jackson&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://kalele.io/the-genai-abstraction-and-the-hard-truth/?utm_source=blog.peterritchie.com"&gt;The GenAI Abstraction and the Hard Truth&lt;/a&gt; by Vaughn Vernon&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Things That Caught My Attention Last Week - November 16</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-16</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-16</guid>
+			<pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Software Architecture --&gt;
+&lt;p&gt;&lt;a href="https://www.linkedin.com/pulse/your-team-cannot-draw-architecture-from-memory-already-woodruff-zuzrc/?utm_source=blog.peterritchie.com"&gt;If Your Team Cannot Draw the Architecture From Memory, It Is Already Too Complex&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://roxeem.com/2025/11/08/incremental-source-generators-in-net/?utm_source=blog.peterritchie.com"&gt;Incremental Source Generators in .NET&lt;/a&gt; by Roxeem&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://code.soundaranbu.com/state-of-nativeaot-net10?utm_source=blog.peterritchie.com"&gt;State of Native AOT in .NET 10&lt;/a&gt; by Soundar Anbalagan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/the-ardalis-cli/?utm_source=blog.peterritchie.com"&gt;The Ardalis Cli&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ndepend.com/modern-net-reflection-with-unsafeaccessor/?utm_source=blog.peterritchie.com"&gt;Modern .NET Reflection with UnsafeAccessor&lt;/a&gt; by NDepend&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/10/100-coverage-is-not-that-trivial/?utm_source=blog.peterritchie.com"&gt;100% coverage is not that trivial&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/github-copilot-testing-for-dotnet/?utm_source=blog.peterritchie.com"&gt;Supercharge Your Test Coverage with GitHub Copilot Testing for .NET&lt;/a&gt; by McKenna Barlow&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/a-first-look-at-the-all%e2%80%91new-ux-in-visual-studio-2026/?utm_source=blog.peterritchie.com"&gt;A first look at the all-new UX in Visual Studio 2026&lt;/a&gt; by Ruben Rios&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/csharp-14-extension-members-enhancing-polyfill-libraries.htm?utm_source=blog.peterritchie.com"&gt;C# 14 Extension Members: Enhancing Polyfill Libraries&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/10/aspnetcore-ten/?utm_source=blog.peterritchie.com"&gt;And just like that .NET 10 ships tomorrow&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/exploring-csharp-file-based-apps-in-dotnet-10?utm_source=blog.peterritchie.com"&gt;Exploring C# File-based Apps in .NET 10&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/clean-up-bloated-cqrs-handlers/?utm_source=blog.peterritchie.com"&gt;Clean Up Bloated CQRS Handlers&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/making-your-apis-ai-ready?utm_source=blog.peterritchie.com"&gt;Making Your APIs AI-Ready&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/13/api-discovery-will-need-to-be-contextual-and-ephemeral/?utm_source=blog.peterritchie.com"&gt;API Discovery Will Need To Be Contextual and Ephemeral&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/configuring-advanced-high-availability-features-in-azure-cosmos-db-sdks/?utm_source=blog.peterritchie.com"&gt;Configuring Advanced High Availability Features in Azure Cosmos DB SDKs&lt;/a&gt; by Theo van Kraay&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/november-patches-for-azure-devops-server-2/?utm_source=blog.peterritchie.com"&gt;November Patches for Azure DevOps Server&lt;/a&gt; by Gloridel Morales&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251114-00/?p=111792?utm_source=blog.peterritchie.com"&gt;I can use WM_COPYDATA to send a block of data to another window, but how does it send data back?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.commitstrip.com/en/2016/08/25/a-very-comprehensive-and-precise-spec/?utm_source=blog.peterritchie.com"&gt;A very comprehensive and precise spec&lt;/a&gt; by CommitStrip&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ainativedev.io/news/spec-driven-development-10-things-you-need-to-know-about-specs?utm_source=blog.peterritchie.com"&gt;Spec-Driven Development: 10 things you need to know about specs&lt;/a&gt; by Patrick Debois&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://news.mit.edu/2025/mit-researchers-propose-new-model-for-legible-modular-software-1106?utm_source=blog.peterritchie.com"&gt;MIT researchers propose a new model for legible, modular software&lt;/a&gt; by Rachel Gordon&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
@@ -1259,66 +1329,6 @@ Philippe Vaillancourt&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/building-event-driven-go-applications-with-azure-cosmos-db-and-azure-functions/"&gt;Building Event-Driven Go applications with Azure Cosmos DB and Azure Functions&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
 &lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250708-00/?p=111357"&gt;A walkthrough of the original Microsoft Building 3&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - July 6</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-6</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-6</guid>
-			<pubDate>Mon, 07 Jul 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://docs.clearlydefined.io/docs/resources/faq"&gt;FAQ | ClearlyDefined Docs&lt;/a&gt; by ClearlyDefined&lt;/p&gt;
-&lt;!-- ## Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-find-public-symbols-that-can-be-internal-using-roslyn.htm"&gt;How to Find Public Symbols That Can Be Internal Using Roslyn&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2025/06/importing-json-files-into-csharp/"&gt;Importing JSON Files Into A C# Project&lt;/a&gt; by Barret Blake&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.linkedin.com/posts/hemal-varambhia-a4a81822_chatgpt-translation-layer-placement-in-activity-7346669860241719296-7abf"&gt;Inspired by Alistair Cockburn and Juan Manuel Garrido de Paz's book &amp;quot;Hexagonal Architecture Explained,&amp;quot; I thought I'd converse with ChatGPT about where a DDD translation layer could live&lt;/a&gt; by Hemal Varambhia&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://sloanreview.mit.edu/article/how-leaders-fight-back-against-overwork/"&gt;How Leaders Fight Back Against Overwork&lt;/a&gt; by Melissa Swift&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://particular.net/blog/antirequirements"&gt;Using anti-requirements to find system boundaries&lt;/a&gt; by Andreas Öhlund and David Boike&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jdmeier.com/sara-ford-learning-agile/"&gt;Sara Ford on Learning Agile at Microsoft&lt;/a&gt; by JD Meier&lt;/p&gt;
-&lt;!-- ## REST/APIs
-
-## Azure
- --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mbrizic.com/blog/react-is-insane/"&gt;React Still Feels Insane And No One Is Talking About It&lt;/a&gt; by Mario Brizic&lt;/p&gt;
-&lt;!-- ## Windows
- --&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://newsletter.shehackspurple.ca/c/secure-coding-guideline"&gt;Secure Coding Guideline&lt;/a&gt; by Tanya Janca&lt;/p&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://shayne.dev/blog/end-of-code/"&gt;The End of Code as We Know It&lt;/a&gt; by Shayne Sweeney&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://gizmodo.com/free-lunch-is-over-for-the-ai-that-broke-the-web-2000623837"&gt;Free Lunch Is Over for the AI That Broke the Web&lt;/a&gt; by Luc Olinga&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://futurism.com/openai-forensic-psychiatrist"&gt;OpenAI Says It's Hired a Forensic Psychiatrist as Its Users Keep Sliding Into Mental Health Crises&lt;/a&gt; by Frank Landymore&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.aol.com/asked-chatgpt-avoid-being-replaced-180058408.html"&gt;I Asked ChatGPT How I Can Avoid Being Replaced by AI - It Gave Me 4 Great Tips&lt;/a&gt; by Nicole Spector&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://appetals.com/promptguide/"&gt;The Missing Guide to Prompt Engineering&lt;/a&gt; by Ishwar Jwa&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://metapress.com/chatgpt-vs-claude-vs-gemini-i-used-all-three-to-save-10-hours-a-week-heres-what-actually-worked/"&gt;ChatGPT vs Claude vs Gemini: I Used All Three to Save 10 Hours a Week - Here's What Actually Worked&lt;/a&gt; by Lakisha Davis&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.windowscentral.com/software-apps/microsoft-has-a-new-way-to-use-ai-in-onenote-but-a-dumb-feature-excites-me-more"&gt;Microsoft has a new way to use AI in OneNote ' but a &amp;quot;dumb&amp;quot; feature excites me more&lt;/a&gt; by Sean Endicott&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.bbc.com/news/articles/cyvm1dyp9v2o"&gt;I'm being paid to fix issues caused by AI&lt;/a&gt; by Suzanne Bearne&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
- --&gt;
-&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-a-new-ide-for-postgresql-in-vs-code-from-microsoft/4414648"&gt;Announcing a new IDE for PostgreSQL in VS Code from Microsoft&lt;/a&gt; by JoshMSFT&lt;/p&gt;
-&lt;!-- ## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://itnext.io/cs-treatment-of-void-is-not-broken-b1d44b6dd576"&gt;C's treatment of &lt;code&gt;void *&lt;/code&gt; is not broken&lt;/a&gt; by Christopher Bazley&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.sciencealert.com/a-strange-phrase-keeps-turning-up-in-scientific-papers-but-why"&gt;A Strange Phrase Keeps Turning Up in Scientific Papers, But Why?&lt;/a&gt; by Aaron J. Snoswell et al&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
