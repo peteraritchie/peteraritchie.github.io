@@ -5,8 +5,74 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Thu, 20 Nov 2025 18:13:42 GMT</pubDate>
-		<lastBuildDate>Thu, 20 Nov 2025 18:13:42 GMT</lastBuildDate>
+		<pubDate>Wed, 26 Nov 2025 21:26:37 GMT</pubDate>
+		<lastBuildDate>Wed, 26 Nov 2025 21:26:37 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - November 23</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-23</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-23</guid>
+			<pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Software Architecture --&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/efmigrationstherightway?utm_source=blog.peterritchie.com"&gt;You're Probably Doing EF Migrations wrong...&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/reinventing-how-dotnet-builds-and-ships-again/?utm_source=blog.peterritchie.com"&gt;Reinventing how .NET Builds and Ships (Again)&lt;/a&gt; by Matt Mitchell&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/spend-less-time-upgrading-more-time-coding-in-visual-studio-2026/?utm_source=blog.peterritchie.com"&gt;Spend Less Time Upgrading, More Time Coding in Visual Studio 2026&lt;/a&gt; by Jason Chlus&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/how-to-update-net-on-wsl-or-ubuntu/?utm_source=blog.peterritchie.com"&gt;How to Update .NET on Wsl or Ubuntu&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/companies-using-dotnet-need-to-suck-it-up-and-pay-for-support/?utm_source=blog.peterritchie.com"&gt;Companies complaining .NET moves too fast should just pay for post-EOL support&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/optimize-guid-creation-performance-in-dotnet-applications.htm?utm_source=blog.peterritchie.com"&gt;Optimize GUID creation performance in .NET applications&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-false-comfort-of-the-happy-path-decoupling-your-services?utm_source=blog.peterritchie.com"&gt;The False Comfort of the &amp;quot;Happy Path&amp;quot;: Decoupling Your Services&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-november-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) Nov 2025 - Container Apps (GA), Layered Provisioning (Beta), Extension Framework, and Aspire 13&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/announcing-dynamic-data-masking-for-azure-cosmos-db-preview/?utm_source=blog.peterritchie.com"&gt;Announcing: Dynamic Data Masking for Azure Cosmos DB (Preview)&lt;/a&gt; by Sudhanshu Khera&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-and-github-repositories-next-steps-in-the-path-to-agentic-ai/?utm_source=blog.peterritchie.com"&gt;Azure DevOps and GitHub Repositories ' Next Steps in the Path to Agentic AI&lt;/a&gt; by Rajesh Ramamurthy&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/17/empirical-software-prototyping/?utm_source=blog.peterritchie.com"&gt;Empirical software prototyping&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251119-00/?p=111800?utm_source=blog.peterritchie.com"&gt;Is WriteProcessMemory faster than shared memory for transferring data between two processes?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/20/api-anatomy-mapopenapi/?utm_source=blog.peterritchie.com"&gt;Anatomy of an API: the small but mighty MapOpenApi()&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/teaching-the-machines-to-teach-us?utm_source=blog.peterritchie.com"&gt;Teaching the Machines to Teach Us Back&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/17/the-web-and-apis-werent-built-for-autonomous-agents-they-were-built-for-humans/?utm_source=blog.peterritchie.com"&gt;The Web and APIs Weren't Built for Autonomous Agents, They Were Built For Humans&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - November 16</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-16</link>
@@ -1265,70 +1331,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250718-00/?p=111390"&gt;The case of the invalid instruction exception on an instruction that should never have executed&lt;/a&gt; by Raymond Chen&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://kristoff.it/blog/asynchrony-is-not-concurrency/"&gt;Asynchrony is not Concurrency&lt;/a&gt; by Loris Cro&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - July 13</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-13</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-13</guid>
-			<pubDate>Mon, 14 Jul 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://academy.nimblepros.com/p/documenting-decisions-a-practical-guide-to-architecture-decision-records"&gt;Documenting Decisions: A Practical Guide to (Architecture) Decision&lt;/a&gt; by NimblePros&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/dealing-with-eventual-consistency"&gt;Dealing with Eventual Consistency, and Causal Consistency using Predictable Identifiers&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.jimmybogard.com/automapper-and-mediatr-roadmaps/"&gt;AutoMapper and MediatR Roadmaps&lt;/a&gt; by Jimmy Bogard&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/07/08/simplify-your-dot-net-development-with-aspire"&gt;Simplify Your .NET Development with Aspire&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://antondevtips.com/roadmap/dotnet?utm_source=linkedin&amp;amp;utm_medium=social&amp;amp;utm_campaign=dotnet-roadmap-2025"&gt;The Ultimate .NET 2025 Roadmap&lt;/a&gt; by Anton Martyniuk&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/07/11/critter-stack-futures-for-the-rest-of-2025/"&gt;Critter Stack Futures for the rest of 2025&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/07/11/vibe-coding-bingo.html"&gt;Vibe Coding a BINGO Caller&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/using-dotnet-aspire-with-the-docker-publisher"&gt;Using .NET Aspire With the Docker Publisher&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
- --&gt;
-&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/ddd-vs-sql/"&gt;How SQL is screwing up your DDD&lt;/a&gt; by Author image.
-Philippe Vaillancourt&lt;/p&gt;
-&lt;!-- ## Mobile
-
-## Agile/Work Life
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://architecturalbytes.substack.com/p/why-ownership-is-the-key-to-successful?subscribe_prompt=free"&gt;Why ownership is the key to successful APIs&lt;/a&gt; by Daniel Kocot&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/when-api-clients-have-a-mind-of-their"&gt;When API Clients Have a Mind of Their Own&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/07/07/there-is-only-api-consumption/"&gt;There Is Only API Consumption&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/design-for-caching-up-front/"&gt;Caching, up-front&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/markdown-support-arrives-for-work-items/"&gt;Markdown Support Arrives for Work Items&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://jsdate.wtf/"&gt;The JavaScript Date Quiz&lt;/a&gt; by Sam Rose&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://theconversation.com/does-ai-actually-boost-productivity-the-evidence-is-murky-260690"&gt;Does AI actually boost productivity? The evidence is murky&lt;/a&gt; by Kim Honey&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.techradar.com/pro/microsoft-says-ai-saved-it-usd500-million-despite-it-also-confirming-massive-job-cuts"&gt;Microsoft says AI saved it $500 million - despite it also confirming massive job cuts&lt;/a&gt; by&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=shOLHtyUaFg"&gt;Rethinking the AI coding payoff - YouTube&lt;/a&gt; by CNBC Television&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4020931/ai-coding-tools-can-slow-down-seasoned-developers-by-19.html"&gt;AI coding tools can slow down seasoned developers by 19%&lt;/a&gt; by Gyana Swain&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://martinfowler.com/articles/2025-nature-abstraction.html"&gt;LLMs bring new nature of abstraction&lt;/a&gt; by Martin Fowler&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/07/01/pondering-about-using-ai-for-coding/"&gt;Pondering About Using AI for Coding&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
- --&gt;
-&lt;h2 id="cloud"&gt;Cloud&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/building-event-driven-go-applications-with-azure-cosmos-db-and-azure-functions/"&gt;Building Event-Driven Go applications with Azure Cosmos DB and Azure Functions&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250708-00/?p=111357"&gt;A walkthrough of the original Microsoft Building 3&lt;/a&gt; by Raymond Chen&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
