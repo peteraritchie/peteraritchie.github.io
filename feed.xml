@@ -5,8 +5,76 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Wed, 26 Nov 2025 21:26:37 GMT</pubDate>
-		<lastBuildDate>Wed, 26 Nov 2025 21:26:37 GMT</lastBuildDate>
+		<pubDate>Fri, 05 Dec 2025 17:20:34 GMT</pubDate>
+		<lastBuildDate>Fri, 05 Dec 2025 17:20:34 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - December 1</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-1</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-1</guid>
+			<pubDate>Fri, 05 Dec 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://securityaffairs.com/185150/security/thousands-of-sensitive-secrets-published-on-jsonformatter-and-codebeautify.html?utm_source=blog.peterritchie.com"&gt;Thousands of sensitive secrets published on JSONFormatter and CodeBeautify&lt;/a&gt; by Pierluigi Paganini&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://about.gitlab.com/blog/gitlab-discovers-widespread-npm-supply-chain-attack/?utm_source=blog.peterritchie.com"&gt;GitLab discovers widespread npm supply chain attack&lt;/a&gt; by Daniel Abeles, Michael Henriksen&lt;/p&gt;
+&lt;!-- ## Open-source --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/vertical-slice-architecture-where-does-the-shared-logic-live?utm_source=blog.peterritchie.com"&gt;Vertical Slice Architecture: Where Does the Shared Logic Live?&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/efmigrationstherightway?utm_source=blog.peterritchie.com"&gt;You're Probably Doing EF Migrations wrong...&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-real-code-implementing-fowlers-ideas-in-c/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns, Real Code: Implementing Fowler's Ideas in C#&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-day-on-agentic-modernization-coming-soon/?utm_source=blog.peterritchie.com"&gt;.NET Day on Agentic Modernization Coming Soon&lt;/a&gt; by Matt Soucoup&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-built-for-the-speed-of-modern-development/?utm_source=blog.peterritchie.com"&gt;Visual Studio - Built for the Speed of Modern Development&lt;/a&gt; by Paul Chapman&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-boot-process-via-host-tracing/?utm_source=blog.peterritchie.com"&gt;Exploring the .NET boot process via host tracing&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/minimal-apis-cqrs-ddd-or-just-use-controllers/?utm_source=blog.peterritchie.com"&gt;Minimal APIs, CQRS, DDDΓÇª Or Just Use Controllers? - CodeOpinion&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+ --&gt;
+&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.psychologytoday.com/us/blog/our-invisible-work/202511/the-doer-delusion-mistaking-responsiveness-for-strategy?utm_source=blog.peterritchie.com"&gt;The Doer Delusion: Mistaking Responsiveness for Strategy&lt;/a&gt; by Janelle E. Wells, Ph.D., and Doreen MacAulay, Ph.D.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hbr.org/2025/11/leaders-assume-employees-are-excited-about-ai-theyre-wrong?utm_source=blog.peterritchie.com"&gt;Leaders Assume Employees Are Excited About AI. They're Wrong.&lt;/a&gt; by Deborah Lovich, Stephan Meier and Chenault Taylor&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/24/capabilities-are-about-having-an-honest-conversation-about-control/?utm_source=blog.peterritchie.com"&gt;Capabilities Are About Having An Honest Conversation About Control&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-november-2025/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (November 2025)&lt;/a&gt; by Ronnie Geraghty&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.hanselman.com/blog/automatically-signing-a-windows-exe-with-azure-trusted-signing-dotnet-sign-and-github-actions?utm_source=blog.peterritchie.com"&gt;Automatically Signing a Windows EXE with Azure Trusted Signing, dotnet sign, and GitHub Actions&lt;/a&gt; by Scott Hanselman&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://theaxolot.wordpress.com/2025/11/18/dont-refactor-like-uncle-bob-second-edition/?utm_source=blog.peterritchie.com"&gt;Don't Refactor Like Uncle Bob (Second Edition)&lt;/a&gt; by Axolot&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/24/result-is-the-most-boring-sum-type/?utm_source=blog.peterritchie.com"&gt;Result is the most boring sum type&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251127-00/?p=111817?utm_source=blog.peterritchie.com"&gt;Message-only windows are for messaging, not as a convenient victim for hosting UI&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/update-local-git-branches-without-switching.htm?utm_source=blog.peterritchie.com"&gt;Update Local Git Branches Without Switching&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/24/api-anatomy-server-sent-events/?utm_source=blog.peterritchie.com"&gt;Anatomy of an API: three ways to stream with ServerSentEvents()&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/artificial-intelligence/large-language-models-willnever-be-intelligent?utm_source=blog.peterritchie.com"&gt;Large Language Models Will Never Be Intelligent, Expert Says&lt;/a&gt; by Frank Landymore&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://tegabrain.com/Slop-Evader?utm_source=blog.peterritchie.com"&gt;Slop Evader&lt;/a&gt; by Tega Brain&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - November 23</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-23</link>
@@ -1273,64 +1341,6 @@ I'm a freelance software architect. If you find this post useful and think I can
  --&gt;
 &lt;h2 id="podcasts"&gt;Podcasts&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1960"&gt;AI Concerns with Mark Seemann&lt;/a&gt; by .NET Rocks&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - July 20</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-20</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-20</guid>
-			<pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/07/20/how-i-prioritize-oss-bugs/"&gt;How I Prioritize OSS Bugs&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;!-- ## Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/building-your-first-resilience-pipeline/"&gt;Microsoft Resiliency Extensions and Polly Part 1 - Building Your First Resilience Pipeline&lt;/a&gt; by Jeff Zuerlein&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeblog.jonskeet.uk/2025/07/19/unexpected-inconsistency-in-records/"&gt;Unexpected inconsistency in records&lt;/a&gt; by Jon Skeet&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-3-csharp-14-extensions-members/"&gt;C# 14 extension members; AKA extension everything&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2025/07/19/aspire-dashboard"&gt;Aspire Dashboard&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/pdf-reporting-in-dotnet-with-html-templates-and-puppeteersharp"&gt;PDF Reporting in .NET With HTML Templates and PuppeteerSharp (and it's free)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.osedea.com/insight/how-eventstorming-facilitated-knowledge-transfer-and-discovery"&gt;EventStorming: enhancing knowledge transfer in complex domains&lt;/a&gt; by Alizée Gottardo&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.techradar.com/pro/microsoft-says-ai-saved-it-usd500-million-despite-it-also-confirming-massive-job-cuts"&gt;Microsoft says AI saved it $500 million - despite it also confirming massive job cuts&lt;/a&gt; by Craig Hale&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/07/18/a-week-of-mondays.html"&gt;A Week of Mondays&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-3-2-is-here/"&gt;OpenAPI Spec 3.2 is coming&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://nordicapis.com/10-signs-you-might-need-api-governance/"&gt;10+ Signs You Might Need API Governance&lt;/a&gt; by Bill Doerrfeld&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://architecturalbytes.substack.com/p/why-ownership-is-the-key-to-successful?subscribe_prompt=free"&gt;Why ownership is the key to successful APIs&lt;/a&gt; by Daniel Kocot&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/focusing-on-capabilities-is-a-win"&gt;Focusing on Capabilities Is a Win&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/build-reliable-go-applications-configuring-azure-cosmos-db-go-sdk-for-real-world-scenarios/"&gt;Build reliable Go applications: Configuring Azure Cosmos DB Go SDK for real-world scenarios&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;!-- ## Software Development
- --&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20140905-00/?p=63"&gt;You can use a file as a synchronization object, too&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4020931/ai-coding-tools-can-slow-down-seasoned-developers-by-19.html"&gt;AI coding tools can slow down seasoned developers by 19%&lt;/a&gt; by Gyana Swain&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250718-00/?p=111390"&gt;The case of the invalid instruction exception on an instruction that should never have executed&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://kristoff.it/blog/asynchrony-is-not-concurrency/"&gt;Asynchrony is not Concurrency&lt;/a&gt; by Loris Cro&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
