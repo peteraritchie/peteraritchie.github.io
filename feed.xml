@@ -5,8 +5,76 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 05 Dec 2025 17:20:34 GMT</pubDate>
-		<lastBuildDate>Fri, 05 Dec 2025 17:20:34 GMT</lastBuildDate>
+		<pubDate>Fri, 12 Dec 2025 16:32:37 GMT</pubDate>
+		<lastBuildDate>Fri, 12 Dec 2025 16:32:37 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - December 8</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-8</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-8</guid>
+			<pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Software Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/debugging-entity-framework-core-8-real-world-query-anti-patterns-and-how-to-fix-them/?utm_source=blog.peterritchie.com"&gt;Debugging Entity Framework Core: 8 Real-World Query Anti=Patterns (and How to Fix Them)&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-conf-2025-recap/?utm_source=blog.peterritchie.com"&gt;.NET Conf 2025 Recap - Celebrating .NET 10, Visual Studio 2026, AI, Community, &amp;amp; More&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-november-update-visual-studio-2026-cloud-agent-preview-and-more/?utm_source=blog.peterritchie.com"&gt;Visual Studio 2026 November 2025 Update&lt;/a&gt; by Simona Liao&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/single-file-tests-in-dotnet-csharp/?utm_source=blog.peterritchie.com"&gt;Single File Test Suites in Dotnet Csharp&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/recent-updates-to-netescapaades-enumgenerators/?utm_source=blog.peterritchie.com"&gt;Recent updates to NetEscapades.EnumGenerators: [EnumMember] support, analyzers, and bug fixes&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/creating-a-custom-msbuild-sdk-to-reduce-boilerplate-in-dotnet-projects.htm?utm_source=blog.peterritchie.com"&gt;Creating a custom MSBuild SDK to reduce boilerplate in .NET projects&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/02/aspire-run-azure-functions/?utm_source=blog.peterritchie.com"&gt;How does Aspire launch the Azure Functions runtime when you call aspire run?&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/12/04/classic-net-domain-events-with-wolverine-and-ef-core/?utm_source=blog.peterritchie.com"&gt;&amp;quot;Classic&amp;quot; .NET Domain Events with Wolverine and EF Core&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2025/12/06/csadvent.html?utm_source=blog.peterritchie.com"&gt;C# Advent 2025 - St. Nicholas Goodies&lt;/a&gt; by sadukie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/dbcontext-is-not-thread-safe-parallelizing-ef-core-queries-the-right-way?utm_source=blog.peterritchie.com"&gt;DbContext is Not Thread-Safe: Parallelizing EF Core Queries the Right Way&lt;/a&gt; by Milan Jovanovié&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/domain-driven-design-misconceptions/?utm_source=blog.peterritchie.com"&gt;Domain-Driven Design Misconceptions&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+## REST/APIs
+
+## Azure
+
+ --&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.scrum.org/resources/blog/using-technical-debt-register-scrum?utm_source=blog.peterritchie.com"&gt;Using a &amp;quot;Technical Debt Register&amp;quot; in Scrum&lt;/a&gt; by Ian Mitchell&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/12/01/treat-test-code-like-production-code/?utm_source=blog.peterritchie.com"&gt;Treat test code like production code&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/thinking-in-systems?utm_source=blog.peterritchie.com"&gt;Thinking in Systems: A Retrospective on a Life Spent Trying to Understand How Things Fit Together (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-the-positive-power-of-llms?utm_source=blog.peterritchie.com"&gt;Shortwave: The Positive Power of LLMs&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - December 1</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-1</link>
@@ -1279,68 +1347,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 
 ## Podcasts
  --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - July 27</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-27</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-27</guid>
-			<pubDate>Mon, 28 Jul 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
-
-## Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/named-query-filters-in-ef-10-multiple-query-filters-per-entity"&gt;Named Query Filters in EF 10 (multiple query filters per entity)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/07/27/metadata-tracking-improvements-in-marten/"&gt;Metadata Tracking Improvements in Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/07/21/song-recommendations-with-c-reactive-extensions/"&gt;Song recommendations with C# Reactive Extensions&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-4-solving-the-source-generator-marker-attribute-problem-in-dotnet-10/"&gt;Solving the source generator 'marker attribute' problem in .NET 10&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeblog.jonskeet.uk/2025/07/19/unexpected-inconsistency-in-records/"&gt;Unexpected inconsistency in records&lt;/a&gt; by Jon Skeet&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-july-2025-servicing-updates/"&gt;.NET and .NET Framework July 2025 servicing releases updates&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.neowin.net/news/microsoft-is-planning-a-huge-upgrade-for-visual-studio/"&gt;Microsoft is planning a huge upgrade for Visual Studio&lt;/a&gt; by Usama Jawad&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.jetbrains.com/dotnet/2025/07/15/dotinsights-july-2025/"&gt;dotInsights | July 2025 | The .NET Tools Blog&lt;/a&gt; by Rachel Appel&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.osedea.com/insight/how-eventstorming-facilitated-knowledge-transfer-and-discovery"&gt;EventStorming: enhancing knowledge transfer in complex domains&lt;/a&gt; by Alizée Gottardo&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/building-your-first-resilience-pipeline/"&gt;Microsoft Resiliency Extensions and Polly Part 1 - Building Your First Resilience Pipeline&lt;/a&gt; by Jeff Zuerlein&lt;/p&gt;
-&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.codemag.com/Article/2507021/Git-Branching-Strategies"&gt;Git Branching Strategies&lt;/a&gt; by Sahil Malik&lt;/p&gt;
-&lt;!-- ## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/07/24/lightning-talk-on-kindness.html"&gt;The Lightning Talk on Kindess&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/07/22/the-intersection-of-api-rate-limits-plans-pricing-and-marketplace-working-things-out/"&gt;The Intersection of API Rate Limits, Plans &amp;amp; Pricing, and Marketplace Working Things Out&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/integration-testing-for-go-applications-using-testcontainers-and-containerized-databases/"&gt;Integration testing for Go applications using Testcontainers and containerized databases&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://medium.com/aia-sg-techblog/refactor-if-elseif-elseif-using-strategy-design-pattern-80c51913a539"&gt;Refactor if/elseif/elseif using Strategy Design Pattern&lt;/a&gt; by Sandesh Gaonkar&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/changelog/2025-07-23-github-spark-in-public-preview-for-copilot-pro-subscribers/"&gt;GitHub Spark in public preview for Copilot Pro+ subscribers&lt;/a&gt; by Github Changelog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250724-00/?p=111406"&gt;How can I wait until a named object (say a mutex) is created?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/install-nerd-fonts-terminal-icons-pwsh-7-win-11/"&gt;How to Install Nerd Fonts and Icons in PowerShell 7 on Windows 11&lt;/a&gt; by Steve Smith&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.theregister.com/2025/07/25/opinion_column_vibe_coding/"&gt;Vibe coding might cause problems down the road&lt;/a&gt; by Steven J. Vaughan-Nichols&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.theregister.com/2025/07/22/ai_anxiety_us_workers/"&gt;One in six US workers pretends to use AI to please bosses ΓÇó The Register&lt;/a&gt; by Danny Bradbury&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
- --&gt;
-&lt;h2 id="podcasts"&gt;Podcasts&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1960"&gt;AI Concerns with Mark Seemann&lt;/a&gt; by .NET Rocks&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
