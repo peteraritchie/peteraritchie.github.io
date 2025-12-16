@@ -5,8 +5,84 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Fri, 12 Dec 2025 16:32:37 GMT</pubDate>
-		<lastBuildDate>Fri, 12 Dec 2025 16:32:37 GMT</lastBuildDate>
+		<pubDate>Tue, 16 Dec 2025 18:08:07 GMT</pubDate>
+		<lastBuildDate>Tue, 16 Dec 2025 18:08:07 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - December 16</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-15</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-15</guid>
+			<pubDate>Tue, 16 Dec 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Software Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-minimal-api-service-layer-pattern-making-http-a-client-not-the-boss/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core Minimal API: Service Layer Pattern - Making HTTP a Client, Not the Boss&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/how-to-build-ios-widgets-with-dotnet-maui/?utm_source=blog.peterritchie.com"&gt;How to Build iOS Widgets with .NET MAUI&lt;/a&gt; by Toine de Boer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/behind-the-scenes-of-the-visual-studio-feedback-system/?utm_source=blog.peterritchie.com"&gt;Behind the scenes of the Visual Studio feedback system&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/resolving-overload-ambiguity-with-collection-expressions.htm?utm_source=blog.peterritchie.com"&gt;Resolving Overload Ambiguity with Collection Expressions&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/08/aspire-docker-compose/?utm_source=blog.peterritchie.com"&gt;How Aspire composes itself: an overview of Aspire's Docker Compose integration&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-new-slnx-solution-format-migration-guide?utm_source=blog.peterritchie.com"&gt;The New .slnx Solution Format (migration guide)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.pkgstore.io/publish?utm_source=blog.peterritchie.com"&gt;Publish - pkgstore&lt;/a&gt; by&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://chris-ayers.com/2025/12/11/aspire-cli-getting-started/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI - A Complete Guide&lt;/a&gt; by Chris Ayers&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/devlooped/nugetizer/?tab=readme-ov-file#-nugetizer?utm_source=blog.peterritchie.com"&gt;GitHub - devlooped/nugetizer: A simple to understand packing model for authoring NuGet packages&lt;/a&gt; by devlooped&lt;/p&gt;
+&lt;h2 id="conferences-and-speaking"&gt;Conferences and Speaking&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dylanbeattie.net/2025/12/08/so-you-want-to-speak-at-software-conferences.html?utm_source=blog.peterritchie.com"&gt;So You Want To Speak At Software Conferences?&lt;/a&gt; by Sylan Beattie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ndctoronto.com/?utm_source=blog.peterritchie.com"&gt;NDC Toronto 2026 | Conference for Software Developers&lt;/a&gt; by NDC&lt;/p&gt;
+&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/aggregates-in-ddd-model-rules-not-relationships/?utm_source=blog.peterritchie.com"&gt;Aggregates in DDD: Model Rules, Not Relationships&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+## REST/APIs
+
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-blue-green-aca-deployment/?utm_source=blog.peterritchie.com"&gt;Blue-green deployment in Azure Container Apps using Azure Developer CLI&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-becoming-a-search-native-database/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB : Becoming a Search-Native Database&lt;/a&gt; by Hari Sudan S&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/announcing-azure-devops-server-general-availability/?utm_source=blog.peterritchie.com"&gt;Announcing Azure DevOps Server General Availability&lt;/a&gt; by Gloridel Morales&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/12/08/pattern-guards-for-a-protocol/?utm_source=blog.peterritchie.com"&gt;Pattern guards for a protocol&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251215-00/?p=111869?utm_source=blog.peterritchie.com"&gt;The Windows clipboard automatic text conversion algorithm is path-dependent&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-beyond-hallucinations-the?utm_source=blog.peterritchie.com"&gt;Shortwave: Beyond Hallucinations: The Illusion of Understanding&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.guru3d.com/story/windows-11-script-emerges-claiming-to-strip-all-ai-features-from-the-os/?utm_source=blog.peterritchie.com"&gt;Windows 11 Script Emerges Claiming to Strip All AI Features From the OS&lt;/a&gt; by Hilbert Hagedoorn&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://simonwillison.net/2025/Dec/12/openai-skills/?utm_source=blog.peterritchie.com"&gt;OpenAI are quietly adopting skills, now available in ChatGPT and Codex CLI&lt;/a&gt; by Simon Willison&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/discussions/windows11/microsoft-finally-admits-almost-all-major-windows-11-core-features-are-broken/4475930?utm_source=blog.peterritchie.com"&gt;Microsoft finally admits almost all major Windows 11 core features are broken&lt;/a&gt; by Theo Dalton&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.zdnet.com/article/why-ai-agents-failed-to-take-over-in-2025-story-as-old-as-time-deloitte/?utm_source=blog.peterritchie.com"&gt;Why AI agents failed to take over in 2025 - it's 'a story as old as time,' says Deloitte&lt;/a&gt; by Sabrina Ortiz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4098925/is-vibe-coding-the-new-gateway-to-technical-debt.html?utm_source=blog.peterritchie.com"&gt;Is vibe coding the new gateway to technical debt?&lt;/a&gt; by Matthew Tyson&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - December 8</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-8</link>
@@ -1288,65 +1364,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;p&gt;&lt;a href="https://www.commodore.net/?utm_source=blog.peterritchie.com"&gt;Commodore&lt;/a&gt; by Commodore&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250808-00/?p=111447?utm_source=blog.peterritchie.com"&gt;Under what conditions could a Read File or Write File fail to transfer all of the bytes, and how do I detect that?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
 &lt;!-- ## Podcasts --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - August 4</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-3</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-3</guid>
-			<pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
- --&gt;
-&lt;h2 id="architecture"&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scaling-multi-tenant-go-applications-choosing-the-right-database-partitioning-approach/"&gt;Scaling multi-tenant Go applications: Choosing the right database partitioning approach&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.dennisdoomen.com/2025/06/library-starter-kit.html"&gt;Kickstarting your libraries with the .NET Library Starter Kit&lt;/a&gt; by Dennis Doomen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.jetbrains.com/dotnet/2025/07/15/dotinsights-july-2025/"&gt;dotInsights | July 2025 | The .NET Tools Blog&lt;/a&gt; by Rachel Appel&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-18-mapping-cities-visualizing-tsp-evolution-in-net/"&gt;Day 18: Mapping Cities: Visualizing TSP Evolution in .NET&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-5-running-one-off-dotnet-tools-with-dnx/"&gt;Running one-off .NET tools with dnx&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;davidfowl/aspire-a-modern-devops-toolchain-fa5aac019d64"&gt;Aspire: A Modern DevOps Toolchain&lt;/a&gt; by David Fowler&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/07/27/metadata-tracking-improvements-in-marten/"&gt;Metadata Tracking Improvements in Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/how-to-keep-your-data-boundaries-intact-in-a-modular-monolith"&gt;How to Keep Your Data Boundaries Intact in a Modular Monolith&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://safedelusion.com/"&gt;SAFe Delusion&lt;/a&gt; by Naked Agility&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250728-00/?p=111415"&gt;API design note: Don't make up multiple names for the same thing&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/top-5-best-api-docs-tools/"&gt;The 5 Best API Docs Tools in 2025&lt;/a&gt; by Phil Sturgeon, Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-july-2025/"&gt;Azure SDK Release (July 2025)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250801-00/?p=111427"&gt;Two related questions about keeping track of PIDs of IPC clients&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.theregister.com/2025/07/25/opinion_column_vibe_coding/"&gt;Vibe coding might cause problems down the road&lt;/a&gt; by Steven J. Vaughan-Nichols&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://preslav.me/2025/07/26/claude-code-token-burn-slow-down-hooks/"&gt;Hitting the Brakes on Claude Code&lt;/a&gt; by Preslav Rachev&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
- --&gt;
 </content:encoded>
 		</item>
 	</channel>
