@@ -5,8 +5,82 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2025</copyright>
-		<pubDate>Tue, 16 Dec 2025 18:08:07 GMT</pubDate>
-		<lastBuildDate>Tue, 16 Dec 2025 18:08:07 GMT</lastBuildDate>
+		<pubDate>Tue, 23 Dec 2025 19:40:24 GMT</pubDate>
+		<lastBuildDate>Tue, 23 Dec 2025 19:40:24 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - December 22</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-22</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-22</guid>
+			<pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Software Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-minimal-api-data-mapper-pattern/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core Minimal API: Data Mapper Pattern&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-azure-retry/?utm_source=blog.peterritchie.com"&gt;Microsoft.Testing.Platform Now Fully Supported in Azure DevOps&lt;/a&gt; by Youssef Fahmy&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-2026-debugging-with-copilot/?utm_source=blog.peterritchie.com"&gt;Visual Studio 2026: Debugging with Copilot&lt;/a&gt; by Harshada Hole&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/creating-a-dotnet-profiler-using-csharp-with-silhouette/?utm_source=blog.peterritchie.com"&gt;Creating a .NET CLR profiler using C# and NativeAOT with Silhouette&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/analysing-large-csv-files-with-local-llms?utm_source=blog.peterritchie.com"&gt;How to Analyse Large CSV Files with Local LLMs in C# (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/15/aspire-image-push/?utm_source=blog.peterritchie.com"&gt;Fixing Aspire's image problem: a look at container registry support in 13.1&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/asp-net-core-idisplaymetadataprovider-46al?utm_source=blog.peterritchie.com"&gt;ASP .NET Core IDisplayMetadataProvider&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/12/17/critter-stack-roadmap-for-2026/?utm_source=blog.peterritchie.com"&gt;Critter Stack Roadmap for 2026&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/server-sent-events-in-aspnetcore-and-dotnet-10?utm_source=blog.peterritchie.com"&gt;Server-Sent Events in ASP.NET Core and .NET 10&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+ --&gt;
+&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/the-new-test-run-hub-is-going-generally-available/?utm_source=blog.peterritchie.com"&gt;The New Test Run Hub is Going Generally Available!&lt;/a&gt; by Panagiotis Liaros&lt;/p&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.howtogeek.com/why-clean-code-might-be-holding-you-back/?utm_source=blog.peterritchie.com"&gt;Is clean code holding you back? The dangers of overthinking your code structure&lt;/a&gt; by Zunaid Ali&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/why-microservices-debates-miss-the-point/?utm_source=blog.peterritchie.com"&gt;Why &amp;quot;Microservices&amp;quot; Debates Miss the Point&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/design-first-ai-never/?utm_source=blog.peterritchie.com"&gt;Design First, AI Never&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/messagingonazureblog/announcing-general-availability-of-geo-replication-for-azure-service-bus-premium/4413164?utm_source=blog.peterritchie.com"&gt;Announcing General Availability of Geo-Replication for Azure Service Bus Premium&lt;/a&gt; by Eldert Grootenboer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-december-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) Dec 2025&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/janusgraph-azure-cassandra-graph-databases/?utm_source=blog.peterritchie.com"&gt;Unlock the power of distributed graph databases with JanusGraph and Azure Apache Cassandra&lt;/a&gt; by Srikanth Sridhar&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cassidoo.co/post/dot-github/?utm_source=blog.peterritchie.com"&gt;Configure your repositories with .github&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.zdnet.com/article/anthropic-claude-skills-update/?utm_source=blog.peterritchie.com"&gt;Claude's Skills just got easier to manage and share&lt;/a&gt; by Sabrina Ortiz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.theregister.com/2025/12/17/ai_code_bugs/?utm_source=blog.peterritchie.com"&gt;AI-authored code needs more attention, contains worse bugs&lt;/a&gt; by Thomas Claburn&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/yooi/beyond-coding-your-accountability-buddy-with-claude-code-skill-4omh?utm_source=blog.peterritchie.com"&gt;Beyond Coding: Your Accountability Buddy with Claude Code Skill&lt;/a&gt; by Ooi Yee Fei&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.404media.co/hack-reveals-the-a16z-backed-phone-farm-flooding-tiktok-with-ai-influencers/?utm_source=blog.peterritchie.com"&gt;Hack Reveals the a16z-Backed Phone Farm Flooding TikTok With AI Influencers&lt;/a&gt; by Emanuel Maiberg&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/policy-news-and-insights/the-future-of-ai-powered-software-optimization-and-how-it-can-help-your-team/?utm_source=blog.peterritchie.com"&gt;The future of AI-powered software optimization (and how it can help your team)&lt;/a&gt; by Paull Young&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - December 16</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-15</link>
@@ -1306,64 +1380,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
 &lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
 &lt;!-- Calendly inline widget end --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - August 11</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10</guid>
-			<pubDate>Mon, 11 Aug 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
-
-## Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://bpbonline.com/products/introduction-to-net-aspire?utm_source=blog.peterritchie.com"&gt;Introduction to .NET Aspire&lt;/a&gt; (book) by Naga Santhosh Reddy Vootukuri, Tommaso Stocchi&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://victorfrye.com/blog/posts/aspire-roadmap-2025?utm_source=blog.peterritchie.com"&gt;Aspire Roadmap 2025: Code-first DevOps, polyglot, and AI&lt;/a&gt; by  Victor Frye&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ndepend.com/c-14-extension-members-also-known-as-extension-everything/?utm_source=blog.peterritchie.com"&gt;C# 14 Extension Members: Also Known as Extension Everything&lt;/a&gt; by Patrick Smacchia&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-20-constraint-handling-in-fitness-functions-penalizing-bad-solutions/?utm_source=blog.peterritchie.com"&gt;Day 20: Constraint Handling in Fitness Functions: Penalizing Bad Solutions&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-august-2025-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework August 2025 servicing releases updates&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-dotnet-10-preview-features-6-passkey-support-for-aspnetcore-identity/?utm_source=blog.peterritchie.com"&gt;Passkey support for ASP.NET Core identity&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://timharford.com/2025/05/the-value-of-institutional-memory/?utm_source=blog.peterritchie.com"&gt;The value of institutional memory&lt;/a&gt; by Tim Harford&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/goodbye-apiary-io/?utm_source=blog.peterritchie.com"&gt;Goodbye Apiary.io, You'll Be Missed&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-5-most-common-rest-api-design-mistakes-and-how-to-avoid-them?utm_source=blog.peterritchie.com"&gt;The 5 Most Common REST API Design Mistakes (and How to Avoid Them)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scalable-ai-with-azure-cosmos-db-video-series/?utm_source=blog.peterritchie.com"&gt;Scalable AI with Azure Cosmos DB - Video Series&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/automate-your-open-source-dependency-scanning-with-advanced-security/?utm_source=blog.peterritchie.com"&gt;Automate your open-source dependency scanning with Advanced Security&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.windowslatest.com/2025/08/08/download-windows-10-iso-version-22h2-before-end-of-support/?utm_source=blog.peterritchie.com"&gt;Download Windows 10 ISO files, save a copy before end of support&lt;/a&gt; by Abhijith M B&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.wired.com/story/openais-gpt-5-is-here/?utm_source=blog.peterritchie.com"&gt;OpenAI Finally Launched GPT-5. Here's Everything You Need to Know&lt;/a&gt; by Kylie Robison&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.404media.co/more-than-130-000-claude-grok-chatgpt-and-other-llm-chats-readable-on-archive-org/?utm_source=blog.peterritchie.com"&gt;More than 130,000 Claude, Grok, ChatGPT, and Other LLM Chats Readable on Archive.org&lt;/a&gt; by Joseph Cox&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.commodore.net/?utm_source=blog.peterritchie.com"&gt;Commodore&lt;/a&gt; by Commodore&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250808-00/?p=111447?utm_source=blog.peterritchie.com"&gt;Under what conditions could a Read File or Write File fail to transfer all of the bytes, and how do I detect that?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Podcasts --&gt;
 </content:encoded>
 		</item>
 	</channel>
