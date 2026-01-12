@@ -5,8 +5,125 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Wed, 07 Jan 2026 17:00:13 GMT</pubDate>
-		<lastBuildDate>Wed, 07 Jan 2026 17:00:13 GMT</lastBuildDate>
+		<pubDate>Mon, 12 Jan 2026 21:36:52 GMT</pubDate>
+		<lastBuildDate>Mon, 12 Jan 2026 21:36:52 GMT</lastBuildDate>
+		<item>
+			<title>Announcing DotnetPsCmds - PowerShell CmdLets for .NET</title>
+			<link>http://blog.peterritchie.com/posts/announcing-dotnetpscmds-powershell-cmdlets-for-dotnet</link>
+			<description>&lt;p&gt;&lt;img src="../assets/dotnet-powershell-commands.png" class="img-fluid" alt="DotNet Powershell Commands"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/announcing-dotnetpscmds-powershell-cmdlets-for-dotnet</guid>
+			<pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/dotnet-powershell-commands.png" class="img-fluid" alt="DotNet Powershell Commands" /&gt;&lt;/p&gt;
+&lt;p&gt;Have you ever wondered why there aren't PowerShell Cmdlets similar to dotnet CLI commands?&lt;/p&gt;
+&lt;p&gt;I've played around with some PowerShell scripts—including some scripts for scaffolding various .NET projects—and some C#-based CmdLets for various things. But I decided to take that experience to the next level by publishing a PowerShell module that provides dotnet CLI functionality while leveraging PowerShell idioms and features.&lt;/p&gt;
+&lt;p&gt;PowerShell has some interesting features that can make working in the command-line and building scripts a little nicer. One of those features is pipelining. Cmd and Bash have pipes, I know; but PowerShell takes it a step further by supporting object-oriented pipelining. A PowerShell CmdLet can have a .NET object as output (not just text) and can be propagated through the PowerShell command pipeline.&lt;/p&gt;
+&lt;h2 id="mvp"&gt;MVP&lt;/h2&gt;
+&lt;p&gt;The initial (pre) release is very much an MVP--it provides what I consider minimal functionality to support scaffolding .NET solutions and projects.  It essentially wraps dotnet CLI commands adding some convenience and opinions (&amp;quot;opinionation&amp;quot;?) to defaults and some features.&lt;/p&gt;
+&lt;p&gt;To get started with the cmdlets, you can import the module from the PowerShell Gallery:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;Install-Module -Name Pri.Essentials.DotnetPsCmds
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As this release builds on the .NET CLI, the .NET CLI still needs to be installed.&lt;/p&gt;
+&lt;h3 id="creating-a-solution"&gt;Creating a Solution&lt;/h3&gt;
+&lt;p&gt;To create a solution in the current directory, with a solution name matching the name of the current directory (equivalent of &lt;code&gt;dotnet new sln&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$s = New-DotnetSolution;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output of this cmdlet is a object-oriented representation of the new solution.&lt;/p&gt;
+&lt;h3 id="creating-a-project"&gt;Creating a Project&lt;/h3&gt;
+&lt;p&gt;To create a project (a &lt;code&gt;classlib&lt;/code&gt; project) in a new &lt;code&gt;Domain&lt;/code&gt; directory with a project name of &lt;code&gt;MyProduct.Domain&lt;/code&gt; (equivalent of &lt;code&gt;dotnet new classlib -o Domain -n MyProduct.Domain&lt;/code&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output of this cmdlet is a object-oriented representation of the new project.&lt;/p&gt;
+&lt;h3 id="adding-package-references"&gt;Adding Package References&lt;/h3&gt;
+&lt;p&gt;With object instances of projects and solutions, we can now re-use those objects for other commands, like adding package references to a project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+Add-DotnetPackages -PackageIds NSubstitute -Project $t;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="adding-project-references"&gt;Adding Project References&lt;/h3&gt;
+&lt;p&gt;Similar to adding package references, project objects can be re-used when a project needs to reference another project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+Add-DotnetProjectReference -Project $d -TargetProject $t;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="leveraging-pipelining"&gt;Leveraging Pipelining&lt;/h3&gt;
+&lt;p&gt;DotNet PowerShell Commands support pipelining. For example, the output of &lt;code&gt;New-DotnetSolution&lt;/code&gt; can be piped to &lt;code&gt;New-DotnetProject&lt;/code&gt; to add the newly created project to the newly created solution:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;New-DotnetSolution | New-DotnetProject 'classlib' Domain MyProduct.Domain;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can store the solution object in a variable to enable adding multiple new projects to the solution:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$s = New-DotnetSolution;
+$s | New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$s | New-DotnetProject 'xunit' Test MyProduct.Tests;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And pipelining works with adding package references:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+$t | Add-DotnetPackages -PackageIds NSubstitute;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As well as project references:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+New-DotnetProject 'xunit' Tests MyProduct.Tests `
+    | Add-DotnetProjectReference -Project $d;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or with project references &lt;em&gt;&lt;strong&gt;and&lt;/strong&gt;&lt;/em&gt; package references:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$t = New-DotnetProject 'xunit' Tests MyProduct.Tests `
+    | Add-DotnetPackages NSubstitute `
+    | Add-DotnetProjectReference -Project $d;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="leveraging-objects"&gt;Leveraging Objects&lt;/h3&gt;
+&lt;p&gt;You can leverage properties of objects to avoid repeating yourself when creating solutions and projects with namespaces. For example, rather than having the &amp;quot;MyProduct&amp;quot; portion of the namespace/filename repeated, you can use the solution's &lt;code&gt;Name&lt;/code&gt; property (assuming the current directory has the correct name as the &amp;quot;product name&amp;quot;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$s = New-DotnetSolution;
+$d = $s | New-DotnetProject 'classlib' &amp;quot;Domain&amp;quot; &amp;quot;$($s.Name).Domain&amp;quot;;
+$t = $s | New-DotnetProject 'xunit' &amp;quot;Tests&amp;quot; &amp;quot;$($s.Name).Tests&amp;quot; `
+    | Add-DotnetPackages NSubstitute `
+    | Add-DotnetProjectReference -Project $d;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which, with equivalent to the following with &lt;code&gt;dotnet&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;dotnet new sln
+dotnet new classlib -o Domain -n MyProduct.Domain
+del Domain/Class1.cs
+dotnet sln add Domain --in-root
+dotnet new xunit -o Tests -n MyProduct.Tests
+del Tests/UnitTest1.cs
+dotnet add Tests package NSubstitute
+dotnet add Tests reference Domain
+dotnet sln add Tests --in-root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(For details on deleting Class1.cs and UnitTest1.cs, see below.)&lt;/p&gt;
+&lt;h2 id="opinionated"&gt;Opinionated&lt;/h2&gt;
+&lt;p&gt;I mentioned DotNet PowerShell Commands is opinionated in certain respects, here's where.&lt;/p&gt;
+&lt;h3 id="solution-folders-for-projects"&gt;Solution Folders For Projects&lt;/h3&gt;
+&lt;p&gt;I noticed recently that adding projects to a solution (&lt;code&gt;dotnet sln add&lt;/code&gt;) automatically creates solution folders for projects whose name wasn't identical to the parent folder &lt;em&gt;and doesn't add solution folders when the names are identical&lt;/em&gt;. (Using &lt;code&gt;-o&lt;/code&gt; &lt;em&gt;and&lt;/em&gt; &lt;code&gt;-n&lt;/code&gt; with &lt;code&gt;dotnet new &amp;lt;template&amp;gt;&lt;/code&gt; creates a project with a different name from the directory name.) Personally, I find it cumbersome to navigate the file system and especially repos like GitHub when I have project folders that match the project file name and fully-qualified project names (for the sake of default namespaces). e.g. &lt;code&gt;repos/Pri.Essentials.DotnetPsCmds/src/Pri.Essentials.DotnetPsCmds/Pri.Essentials.DotnetPsCmds.csproj&lt;/code&gt; and tend toward shortened directory names for navigability and readability (&lt;code&gt;repos/DotnetPsCmds/src/DotnetPsCmds/Pri.Essentials.DotnetPsCmds.csproj&lt;/code&gt;) because directory listings often just show a less than useful truncated list of folders that appear to have the same name (Maybe this is better solved with support for setting the default namespace when creating a project? But &lt;code&gt;dotnet&lt;/code&gt; doesn't support that. 😉)&lt;/p&gt;
+&lt;p&gt;&lt;img src="../assets/unreadable-folder-list.png" class="img-fluid" alt="Unreadable Folder List" /&gt;&lt;/p&gt;
+&lt;p&gt;The implementation for this currently manifests in DotNet PowerShell Commands by using &lt;code&gt;--in-root&lt;/code&gt; with &lt;code&gt;dotnet sln add&lt;/code&gt; to avoid the creation of solution folders with new projects.&lt;/p&gt;
+&lt;h3 id="class1.cs"&gt;&lt;code&gt;Class1.cs&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Personally, the first thing I do when creating a class library project via &lt;code&gt;dotnet&lt;/code&gt; or Visual Studio is to delete the &lt;code&gt;Class1.cs&lt;/code&gt; file. DotNet PowerShell Commands automatically deletes this file when it creates a &lt;code&gt;classlib&lt;/code&gt; project. I'm assuming users of DotNet PowerShell Commands are intermediate to advanced and feel the same way.&lt;/p&gt;
+&lt;h3 id="unittest1.cs"&gt;&lt;code&gt;UnitTest1.cs&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;DotNet PowerShell Commands does the same thing with &lt;code&gt;UnitTest1.cs&lt;/code&gt; in &lt;code&gt;xunit&lt;/code&gt;/&lt;code&gt;xunit3&lt;/code&gt; projects as it does with &lt;code&gt;Class1.cs&lt;/code&gt; in &lt;code&gt;classlib&lt;/code&gt; projects.&lt;/p&gt;
+&lt;h2 id="extra-features-so-far"&gt;Extra Features, So Far&lt;/h2&gt;
+&lt;p&gt;Over and above what &lt;code&gt;dotnet&lt;/code&gt; provides, DotNet PowerShell Commands also allows creating a custom solution folder when adding a project to a solution via &lt;code&gt;Add-DotnetProject&lt;/code&gt; (not to be confused with &lt;code&gt;New-DotnetProject&lt;/code&gt;). This is partially to circumvent the opinionated view that hardly anyone would want a solution folder per project by default. But this provides extra value in that if you use the same folder name with the addition multiple projects, all the projects will be grouped in the same solution folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-pwsh"&gt;$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$s = New-DotnetSolution;
+$s | Add-DotnetProject -Project $d -SolutionFolder MyFolder;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="more-details"&gt;More details&lt;/h2&gt;
+&lt;p&gt;For more details, please see the &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds#dotnet-powershell-cmdlets"&gt;open-source project on GitHub&lt;/a&gt;. In there you'll find a more thorough &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds#dotnet-powershell-cmdlets"&gt;README&lt;/a&gt; that goes into a bit more detail on CmdLets and examples. You can also create &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/issues"&gt;issues&lt;/a&gt; or &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/discussions"&gt;discussions&lt;/a&gt; with questions/suggestions in addition to &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/blob/main/CONTRIBUTING.md#contributing-to-this-net-project"&gt;contributing&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I'd like to pull together a simple roadmap for what I'm thinking for this in the near future. Some things I'm thinking so far are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;supporting &lt;code&gt;slnx&lt;/code&gt; files (by default?)&lt;/li&gt;
+&lt;li&gt;Templated solutions: creating all the parts of common solution templates in a single command.&lt;/li&gt;
+&lt;li&gt;supporting solution-level features like Directory.Build.props, global.json&lt;/li&gt;
+&lt;li&gt;GitHub repo features like workflows, dependabot, etc.&lt;/li&gt;
+&lt;li&gt;Support modifying project-level properties via commands (like &lt;code&gt;GenerateDocumentationFile&lt;/code&gt;, &lt;code&gt;PublishRepositoryUrl&lt;/code&gt;, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - January 5</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-5</link>
@@ -1311,65 +1428,6 @@ I'm a freelance software architect. If you find this post useful and think I can
  --&gt;
 &lt;h2 id="other-link-collections"&gt;Other Link Collections&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://samestuffdifferentday.net/2025/08/18/Interesting-links-of-the-week-2025-34/?utm_source=blog.peterritchie.com"&gt;Interesting links of the week 2025-34&lt;/a&gt; by Micheal Eaton&lt;/p&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - August 17</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17</guid>
-			<pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.axios.com/2025/08/11/github-ceo-dohmke-step-down?utm_source=blog.peterritchie.com"&gt;Exclusive: GitHub CEO to step down&lt;/a&gt; by Ina Fried&lt;/p&gt;
-&lt;!-- ## Architecture
-
-## Presenting --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-generative-ai-applications-with-github-models-and-dotnet-aspire?utm_source=blog.peterritchie.com"&gt;Building Generative AI Applications With GitHub Models and .NET Aspire&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.dennisdoomen.com/2025/06/library-starter-kit.html?utm_source=blog.peterritchie.com"&gt;Kickstarting your libraries with the .NET Library Starter Kit&lt;/a&gt; by Dennis Doomen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-23-introduction-to-non-dominated-sorting-genetic-algorithm-ii-nsga-ii-in-c/?utm_source=blog.peterritchie.com"&gt;Day 23: Introduction to Non-dominated Sorting Genetic Algorithm II (NSGA-II) in C#&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/07/01/pondering-about-using-ai-for-coding/?utm_source=blog.peterritchie.com"&gt;Pondering About Using AI for Coding&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-preview-7/?utm_source=blog.peterritchie.com"&gt;.NET 10 Preview 7 is now available!&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/running-dotnet-in-the-browser-without-blazor/?utm_source=blog.peterritchie.com"&gt;Running .NET in the browser without Blazor&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/08/15/need-some-feedback-on-near-term-wolverine-work/?utm_source=blog.peterritchie.com"&gt;Need Some Feedback on Near Term Wolverine Work&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://martinfowler.com/articles/impact-intel.html?utm_source=blog.peterritchie.com"&gt;The Reformist CTO's Guide to Impact Intelligence&lt;/a&gt; by Sriram Narayan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://timharford.com/2025/05/the-value-of-institutional-memory/?utm_source=blog.peterritchie.com"&gt;The value of institutional memory&lt;/a&gt; by Tim Harford&lt;/p&gt;
-&lt;!-- ## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/data-encryption-with-customer-managed-key-cmk-for-azure-cosmos-db-for-mongodb-vcore/?utm_source=blog.peterritchie.com"&gt;Data encryption with customer-managed key (CMK) for Azure Cosmos DB for MongoDB vCore&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-developer-cli-from-dev-to-prod-with-azure-devops-pipelines/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI: From Dev to Prod with Azure DevOps Pipelines&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250811-00/?p=111451?utm_source=blog.peterritchie.com"&gt;Thoughts on creating a tracking pointer class, part 1: Concept art&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blogs.newardassociates.com/blog/2025/why-writing-matters.html?utm_source=blog.peterritchie.com"&gt;Why Writing Matters (to the Technical Professional)&lt;/a&gt; by Ted Neward&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
-
-## AI
-
-## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.quantamagazine.org/new-method-is-the-fastest-way-to-find-the-best-routes-20250806/?utm_source=blog.peterritchie.com"&gt;New Method Is the Fastest Way To Find the Best Routes&lt;/a&gt; by Ben Brubaker&lt;/p&gt;
-&lt;h2 id="podcasts"&gt;Podcasts&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.dotnetrocks.com/details/1961?utm_source=blog.peterritchie.com"&gt;Event Sourcing with Hannes Lowette&lt;/a&gt; by .NET Rocks&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>

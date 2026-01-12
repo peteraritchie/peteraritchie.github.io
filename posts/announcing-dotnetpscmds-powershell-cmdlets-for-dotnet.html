@@ -1,0 +1,324 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Announcing DotnetPsCmds - PowerShell CmdLets for .NET</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Announcing DotnetPsCmds - PowerShell CmdLets for .NET" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/announcing-dotnetpscmds-powershell-cmdlets-for-dotnet" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/testing">Testing</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Announcing DotnetPsCmds - PowerShell CmdLets for .NET</h1>
+    <div class="meta">        
+Published on Monday, January 12, 2026<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/DotnetPsCmds" class="btn btn-default btn-xs">DotnetPsCmds</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p><img src="../assets/dotnet-powershell-commands.png" class="img-fluid" alt="DotNet Powershell Commands" /></p>
+<p>Have you ever wondered why there aren't PowerShell Cmdlets similar to dotnet CLI commands?</p>
+<p>I've played around with some PowerShell scripts—including some scripts for scaffolding various .NET projects—and some C#-based CmdLets for various things. But I decided to take that experience to the next level by publishing a PowerShell module that provides dotnet CLI functionality while leveraging PowerShell idioms and features.</p>
+<p>PowerShell has some interesting features that can make working in the command-line and building scripts a little nicer. One of those features is pipelining. Cmd and Bash have pipes, I know; but PowerShell takes it a step further by supporting object-oriented pipelining. A PowerShell CmdLet can have a .NET object as output (not just text) and can be propagated through the PowerShell command pipeline.</p>
+<h2 id="mvp">MVP</h2>
+<p>The initial (pre) release is very much an MVP--it provides what I consider minimal functionality to support scaffolding .NET solutions and projects.  It essentially wraps dotnet CLI commands adding some convenience and opinions (&quot;opinionation&quot;?) to defaults and some features.</p>
+<p>To get started with the cmdlets, you can import the module from the PowerShell Gallery:</p>
+<pre><code class="language-pwsh">Install-Module -Name Pri.Essentials.DotnetPsCmds
+</code></pre>
+<p>As this release builds on the .NET CLI, the .NET CLI still needs to be installed.</p>
+<h3 id="creating-a-solution">Creating a Solution</h3>
+<p>To create a solution in the current directory, with a solution name matching the name of the current directory (equivalent of <code>dotnet new sln</code>):</p>
+<pre><code class="language-pwsh">$s = New-DotnetSolution;
+</code></pre>
+<p>The output of this cmdlet is a object-oriented representation of the new solution.</p>
+<h3 id="creating-a-project">Creating a Project</h3>
+<p>To create a project (a <code>classlib</code> project) in a new <code>Domain</code> directory with a project name of <code>MyProduct.Domain</code> (equivalent of <code>dotnet new classlib -o Domain -n MyProduct.Domain</code>).</p>
+<pre><code class="language-pwsh">$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+</code></pre>
+<p>The output of this cmdlet is a object-oriented representation of the new project.</p>
+<h3 id="adding-package-references">Adding Package References</h3>
+<p>With object instances of projects and solutions, we can now re-use those objects for other commands, like adding package references to a project:</p>
+<pre><code class="language-pwsh">$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+Add-DotnetPackages -PackageIds NSubstitute -Project $t;
+</code></pre>
+<h3 id="adding-project-references">Adding Project References</h3>
+<p>Similar to adding package references, project objects can be re-used when a project needs to reference another project:</p>
+<pre><code class="language-pwsh">$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+Add-DotnetProjectReference -Project $d -TargetProject $t;
+</code></pre>
+<h3 id="leveraging-pipelining">Leveraging Pipelining</h3>
+<p>DotNet PowerShell Commands support pipelining. For example, the output of <code>New-DotnetSolution</code> can be piped to <code>New-DotnetProject</code> to add the newly created project to the newly created solution:</p>
+<pre><code class="language-pwsh">New-DotnetSolution | New-DotnetProject 'classlib' Domain MyProduct.Domain;
+</code></pre>
+<p>You can store the solution object in a variable to enable adding multiple new projects to the solution:</p>
+<pre><code class="language-pwsh">$s = New-DotnetSolution;
+$s | New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$s | New-DotnetProject 'xunit' Test MyProduct.Tests;
+</code></pre>
+<p>And pipelining works with adding package references:</p>
+<pre><code class="language-pwsh">$t = New-DotnetProject 'xunit' MyProduct/Tests MyProduct.Tests;
+$t | Add-DotnetPackages -PackageIds NSubstitute;
+</code></pre>
+<p>As well as project references:</p>
+<pre><code class="language-pwsh">$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+New-DotnetProject 'xunit' Tests MyProduct.Tests `
+    | Add-DotnetProjectReference -Project $d;
+</code></pre>
+<p>Or with project references <em><strong>and</strong></em> package references:</p>
+<pre><code class="language-pwsh">$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$t = New-DotnetProject 'xunit' Tests MyProduct.Tests `
+    | Add-DotnetPackages NSubstitute `
+    | Add-DotnetProjectReference -Project $d;
+</code></pre>
+<h3 id="leveraging-objects">Leveraging Objects</h3>
+<p>You can leverage properties of objects to avoid repeating yourself when creating solutions and projects with namespaces. For example, rather than having the &quot;MyProduct&quot; portion of the namespace/filename repeated, you can use the solution's <code>Name</code> property (assuming the current directory has the correct name as the &quot;product name&quot;):</p>
+<pre><code class="language-pwsh">$s = New-DotnetSolution;
+$d = $s | New-DotnetProject 'classlib' &quot;Domain&quot; &quot;$($s.Name).Domain&quot;;
+$t = $s | New-DotnetProject 'xunit' &quot;Tests&quot; &quot;$($s.Name).Tests&quot; `
+    | Add-DotnetPackages NSubstitute `
+    | Add-DotnetProjectReference -Project $d;
+</code></pre>
+<p>Which, with equivalent to the following with <code>dotnet</code>:</p>
+<pre><code class="language-pwsh">dotnet new sln
+dotnet new classlib -o Domain -n MyProduct.Domain
+del Domain/Class1.cs
+dotnet sln add Domain --in-root
+dotnet new xunit -o Tests -n MyProduct.Tests
+del Tests/UnitTest1.cs
+dotnet add Tests package NSubstitute
+dotnet add Tests reference Domain
+dotnet sln add Tests --in-root
+</code></pre>
+<p>(For details on deleting Class1.cs and UnitTest1.cs, see below.)</p>
+<h2 id="opinionated">Opinionated</h2>
+<p>I mentioned DotNet PowerShell Commands is opinionated in certain respects, here's where.</p>
+<h3 id="solution-folders-for-projects">Solution Folders For Projects</h3>
+<p>I noticed recently that adding projects to a solution (<code>dotnet sln add</code>) automatically creates solution folders for projects whose name wasn't identical to the parent folder <em>and doesn't add solution folders when the names are identical</em>. (Using <code>-o</code> <em>and</em> <code>-n</code> with <code>dotnet new &lt;template&gt;</code> creates a project with a different name from the directory name.) Personally, I find it cumbersome to navigate the file system and especially repos like GitHub when I have project folders that match the project file name and fully-qualified project names (for the sake of default namespaces). e.g. <code>repos/Pri.Essentials.DotnetPsCmds/src/Pri.Essentials.DotnetPsCmds/Pri.Essentials.DotnetPsCmds.csproj</code> and tend toward shortened directory names for navigability and readability (<code>repos/DotnetPsCmds/src/DotnetPsCmds/Pri.Essentials.DotnetPsCmds.csproj</code>) because directory listings often just show a less than useful truncated list of folders that appear to have the same name (Maybe this is better solved with support for setting the default namespace when creating a project? But <code>dotnet</code> doesn't support that. 😉)</p>
+<p><img src="../assets/unreadable-folder-list.png" class="img-fluid" alt="Unreadable Folder List" /></p>
+<p>The implementation for this currently manifests in DotNet PowerShell Commands by using <code>--in-root</code> with <code>dotnet sln add</code> to avoid the creation of solution folders with new projects.</p>
+<h3 id="class1.cs"><code>Class1.cs</code></h3>
+<p>Personally, the first thing I do when creating a class library project via <code>dotnet</code> or Visual Studio is to delete the <code>Class1.cs</code> file. DotNet PowerShell Commands automatically deletes this file when it creates a <code>classlib</code> project. I'm assuming users of DotNet PowerShell Commands are intermediate to advanced and feel the same way.</p>
+<h3 id="unittest1.cs"><code>UnitTest1.cs</code></h3>
+<p>DotNet PowerShell Commands does the same thing with <code>UnitTest1.cs</code> in <code>xunit</code>/<code>xunit3</code> projects as it does with <code>Class1.cs</code> in <code>classlib</code> projects.</p>
+<h2 id="extra-features-so-far">Extra Features, So Far</h2>
+<p>Over and above what <code>dotnet</code> provides, DotNet PowerShell Commands also allows creating a custom solution folder when adding a project to a solution via <code>Add-DotnetProject</code> (not to be confused with <code>New-DotnetProject</code>). This is partially to circumvent the opinionated view that hardly anyone would want a solution folder per project by default. But this provides extra value in that if you use the same folder name with the addition multiple projects, all the projects will be grouped in the same solution folder.</p>
+<pre><code class="language-pwsh">$d = New-DotnetProject 'classlib' Domain MyProduct.Domain;
+$s = New-DotnetSolution;
+$s | Add-DotnetProject -Project $d -SolutionFolder MyFolder;
+</code></pre>
+<h2 id="more-details">More details</h2>
+<p>For more details, please see the <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds#dotnet-powershell-cmdlets">open-source project on GitHub</a>. In there you'll find a more thorough <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds#dotnet-powershell-cmdlets">README</a> that goes into a bit more detail on CmdLets and examples. You can also create <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/issues">issues</a> or <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/discussions">discussions</a> with questions/suggestions in addition to <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds/blob/main/CONTRIBUTING.md#contributing-to-this-net-project">contributing</a>.</p>
+<p>I'd like to pull together a simple roadmap for what I'm thinking for this in the near future. Some things I'm thinking so far are:</p>
+<ul>
+<li>supporting <code>slnx</code> files (by default?)</li>
+<li>Templated solutions: creating all the parts of common solution templates in a single command.</li>
+<li>supporting solution-level features like Directory.Build.props, global.json</li>
+<li>GitHub repo features like workflows, dependabot, etc.</li>
+<li>Support modifying project-level properties via commands (like <code>GenerateDocumentationFile</code>, <code>PublishRepositoryUrl</code>, etc.)</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>If you find this useful</strong><br />
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See <a href="/about">About</a> for information about the services I provide.</p>
+</blockquote>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'announcing-dotnetpscmds-powershell-cmdlets-for-dotnet'
+    'Announcing DotnetPsCmds - PowerShell CmdLets for .NET'
+    'http://blog.peterritchie.com/posts/announcing-dotnetpscmds-powershell-cmdlets-for-dotnet'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/12/26');
+    console.info('announcing-dotnetpscmds-powershell-cmdlets-for-dotnet');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Announcing DotnetPsCmds - PowerShell CmdLets for .NET';
+    var disqus_url = 'http://blog.peterritchie.com/posts/announcing-dotnetpscmds-powershell-cmdlets-for-dotnet';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'announcing-dotnetpscmds-powershell-cmdlets-for-dotnet';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2026
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>&nbsp;|&nbsp;<a rel="me" href="https://bsky.app/profile/peterritchie.com">Bluesky</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
