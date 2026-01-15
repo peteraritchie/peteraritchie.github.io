@@ -9,8 +9,9 @@ tags: ['Random']
 ![caught-my-i](../assets/caught-i.png)
 
 <!-- ## Security
- -->
+
 ## Open-source
+ -->
 
 ## Software Architecture
 
