@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Tue, 20 Jan 2026 14:57:24 GMT</pubDate>
-		<lastBuildDate>Tue, 20 Jan 2026 14:57:24 GMT</lastBuildDate>
+		<pubDate>Tue, 20 Jan 2026 15:12:11 GMT</pubDate>
+		<lastBuildDate>Tue, 20 Jan 2026 15:12:11 GMT</lastBuildDate>
 		<item>
 			<title>Things That Caught My Attention Last Week - January 19</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-19</link>
@@ -78,468 +78,6 @@
 ## Other Link Collections
 
  --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features</title>
-			<link>http://blog.peterritchie.com/posts/introducing-productivity-extensions-source</link>
-			<description>&lt;p&gt;There are a few reasons developers need to work in .NET Standard. One is for writing PowerShell modules in C#, another is writing Roslyn Analyzers. .NET Standard is a formal specification of .NET APIs that are available on multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The last updated .NET Standard version (2.1) was released in September 2020.&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/introducing-productivity-extensions-source</guid>
-			<pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;There are a few reasons developers need to work in .NET Standard. One is for writing PowerShell modules in C#, another is writing Roslyn Analyzers. .NET Standard is a formal specification of .NET APIs that are available on multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The last updated .NET Standard version (2.1) was released in September 2020.&lt;/p&gt;
-&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible applications designed for past versions of .NET. e.g. an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same APIs that the application does.&lt;/p&gt;
-&lt;p&gt;.NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature &lt;code&gt;foreach&lt;/code&gt; depends on the types &lt;code&gt;IEnumerable&lt;/code&gt;, &lt;code&gt;IEnumerable&amp;lt;T&amp;gt;&lt;/code&gt;, &lt;code&gt;IEnumerator&lt;/code&gt;, and &lt;code&gt;IEnumerator&amp;lt;T&amp;gt;&lt;/code&gt;. Specifications like .NET Standard enable C# language features across .NET implementations by specifying a minimum set of APIs that are be implemented (including &lt;code&gt;IEnumerable&lt;/code&gt;, &lt;code&gt;IEnumerable&amp;lt;T&amp;gt;&lt;/code&gt;, &lt;code&gt;IEnumerator&lt;/code&gt;, and &lt;code&gt;IEnumerator&amp;lt;T&amp;gt;&lt;/code&gt;). But, languages evolve and improve over time similarly to base class libraries.&lt;/p&gt;
-&lt;p&gt;Since .NET Standard hasn't been updated since 2020, some new language features dependent upon types in a base class library aren't supported, despite the ability to use the latest version of the compiler when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; types. But to write a Powershell library that supports Windows Powershell and Powershell 7 you have to target .NET Standard whose API service was specified around August 2017--roughly two years before &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. &lt;code&gt;var lastWord = words[^1]&lt;/code&gt; or &lt;code&gt;var firstFourWords = words[0..3]&lt;/code&gt; will cause an errors (&lt;code&gt;Predefined type 'System.Index' is not defined or imported&lt;/code&gt; and &lt;code&gt;Predefined type 'System.Range' is not defined or imported&lt;/code&gt;, respectively).&lt;/p&gt;
-&lt;p&gt;Fortunately the compiler is a bit flexible with where those predefined types exist. We can't simply create a .NET Standard 2.0 library with Range and Index as public types because they will end up clashing if a modern version of .NET is used (e.g. in an XUnit test project). But, the .NET Standard 2.0 library can create internal versions of those classes that the compiler is happy to resolve to. But, everyone who authors a .NET Standard 2.0 library having to write their own Range and Index classes (as well as any other class that modern c# syntax requires, like &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt;, &lt;code&gt;DoesNotReturnAttribute&lt;/code&gt;, etc.) is &lt;em&gt;problematic&lt;/em&gt;, to say the least.&lt;/p&gt;
-&lt;p&gt;Fortunately .NET and NuGet packages support the concept of content- or source-only packages. Source-only packages are nuget packages that instead of packaging binaries like DLLs, they package source code. That's where Pri.ProductivityExtensions.Source comes in.&lt;/p&gt;
-&lt;p&gt;Pri.ProductivityExtensions.Source is a source-only NuGet package that includes the source code for various types created after .NET Standard 2.x to support C# language features (and maybe some helper extensions like &lt;code&gt;ArgumentException.ThrowIfNull&lt;/code&gt;).&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;.NET release&lt;/th&gt;
-&lt;th&gt;date&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 10&lt;/td&gt;
-&lt;td&gt;November 11, 2025&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 9&lt;/td&gt;
-&lt;td&gt;November 12, 2024&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 8&lt;/td&gt;
-&lt;td&gt;November 14, 2023&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 7&lt;/td&gt;
-&lt;td&gt;November 8, 2022&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 6&lt;/td&gt;
-&lt;td&gt;November 8, 2021&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 5&lt;/td&gt;
-&lt;td&gt;November 10, 2020&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core --&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;.NET Core release&lt;/th&gt;
-&lt;th&gt;date&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 3.1&lt;/td&gt;
-&lt;td&gt;December 3, 2019&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 3.0&lt;/td&gt;
-&lt;td&gt;September 23, 2019&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.2&lt;/td&gt;
-&lt;td&gt;December 4, 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.1&lt;/td&gt;
-&lt;td&gt;May 30, 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.0&lt;/td&gt;
-&lt;td&gt;August 14, 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 1.1&lt;/td&gt;
-&lt;td&gt;November 16, 2016&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 1.0&lt;/td&gt;
-&lt;td&gt;June 27, 2016&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core --&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;.NET Framework release&lt;/th&gt;
-&lt;th&gt;Date&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.8.1&lt;/td&gt;
-&lt;td&gt;August 9, 2022&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.8&lt;/td&gt;
-&lt;td&gt;April 18, 2019&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7.2&lt;/td&gt;
-&lt;td&gt;April 30, 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7.1&lt;/td&gt;
-&lt;td&gt;October 17, 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7&lt;/td&gt;
-&lt;td&gt;April 11, 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6.2&lt;/td&gt;
-&lt;td&gt;August 2, 2016&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6.1&lt;/td&gt;
-&lt;td&gt;November 30, 2015&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6&lt;/td&gt;
-&lt;td&gt;July 29, 2015&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5.2&lt;/td&gt;
-&lt;td&gt;May 5, 2014&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5.1&lt;/td&gt;
-&lt;td&gt;January 15, 2014&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5&lt;/td&gt;
-&lt;td&gt;October 9, 2012&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.0&lt;/td&gt;
-&lt;td&gt;April 12, 2010&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 3.5 SP1&lt;/td&gt;
-&lt;td&gt;November 19, 2007&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 3.0&lt;/td&gt;
-&lt;td&gt;November 21, 2006&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 2.0&lt;/td&gt;
-&lt;td&gt;February 17, 2006&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 1.1&lt;/td&gt;
-&lt;td&gt;April 9, 2003&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 1.0&lt;/td&gt;
-&lt;td&gt;January 15, 2002&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-framework --&gt;
-&lt;p&gt;Date | .NET Implementation (minimum) | C# Version | Language Feature | Most Reason .NET Standard
---- | --- |--- | --- | ---
-... | .NET Core 1.0, Framework 4.5 | ... | ... | .NET Standard 1.0 (August, 2016)
-... | .NET Core 1.1 | ... | ... | .NET Standard 1.1 (November, 2016)
-... | Framework 4.5.1 | ... | ... | .NET Standard 1.2 (December, 2016)
-... | Framework 4.6 | ... | ... | .NET Standard 1.3 (December, 2016)
-... | Framework 4.6.1 | ... | ... | .NET Standard 1.4 (May, 2017)
-... | .NET Core 2.0, Framework 4.6.1² | ... | ... | .NET Standard 1.5 (August, 2017)
-... | ? | ... | ... | .NET Standard 1.6 (June, 2016)
-... | .NET Core 2.0 | ... | ... | .NET Standard 2.0 (August, 2017)
-... | ... | ... | ... | .NET Standard 2.1 (November 2018)
-²: 4.7.2 is recommended instead of 4.6.1&lt;/p&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;.NET Standard Version&lt;/th&gt;
-&lt;th&gt;Date&lt;/th&gt;
-&lt;th&gt;Coinciding .NET Implementation&lt;/th&gt;
-&lt;th&gt;Coinciding C# Version&lt;/th&gt;
-&lt;th&gt;Language Feature&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.0&lt;/td&gt;
-&lt;td&gt;August, 2016&lt;/td&gt;
-&lt;td&gt;.NET Core 1.0&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.1&lt;/td&gt;
-&lt;td&gt;November, 2016&lt;/td&gt;
-&lt;td&gt;.NET Core 1.1&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.2&lt;/td&gt;
-&lt;td&gt;December, 2016&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.3&lt;/td&gt;
-&lt;td&gt;December, 2016&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.4&lt;/td&gt;
-&lt;td&gt;May, 2017&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.5&lt;/td&gt;
-&lt;td&gt;August, 2017&lt;/td&gt;
-&lt;td&gt;.NET Core 2.0&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 1.6&lt;/td&gt;
-&lt;td&gt;June, 2016&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 2.0&lt;/td&gt;
-&lt;td&gt;August, 2017&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Standard 2.1&lt;/td&gt;
-&lt;td&gt;November, 2018&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;td&gt;...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table class="table"&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;.NET Implementation&lt;/th&gt;
-&lt;th&gt;Date&lt;/th&gt;
-&lt;th&gt;Coinciding .NET Standard&lt;/th&gt;
-&lt;th&gt;Matching C# Version&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 10&lt;/td&gt;
-&lt;td&gt;November 11, 2025&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 14.0 Nov 2025&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 9&lt;/td&gt;
-&lt;td&gt;November 12, 2024&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 13.0 Nov 2024&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 8&lt;/td&gt;
-&lt;td&gt;November 14, 2023&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 12.0 Nov 2023&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 7&lt;/td&gt;
-&lt;td&gt;November 8, 2022&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 11.0 Nov 2022&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 6&lt;/td&gt;
-&lt;td&gt;November 8, 2021&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 10.0 Nov 2021&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET 5&lt;/td&gt;
-&lt;td&gt;November 10, 2020&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 9.0 Nov 2020&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 3.1&lt;/td&gt;
-&lt;td&gt;December 3, 2019&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 8.0 Sep 2019&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 3.0&lt;/td&gt;
-&lt;td&gt;September 23, 2019&lt;/td&gt;
-&lt;td&gt;.NET Standard 2.1 (May 2019)?&lt;/td&gt;
-&lt;td&gt;C# 8.0 Sep 2019&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.2&lt;/td&gt;
-&lt;td&gt;December 4, 2018&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.3 May 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.1&lt;/td&gt;
-&lt;td&gt;May 30, 2018&lt;/td&gt;
-&lt;td&gt;.NET Standard 2.0 (2018)?&lt;/td&gt;
-&lt;td&gt;C# 7.3 May 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 2.0&lt;/td&gt;
-&lt;td&gt;August 14, 2017&lt;/td&gt;
-&lt;td&gt;.NET Standard 2.0 (2017)?&lt;/td&gt;
-&lt;td&gt;C# 7.1 Aug 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 1.1&lt;/td&gt;
-&lt;td&gt;November 16, 2016&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.0 Mar 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Core 1.0&lt;/td&gt;
-&lt;td&gt;June 27, 2016&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.0 Mar 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.8.1&lt;/td&gt;
-&lt;td&gt;August 9, 2022&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;N/A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.8&lt;/td&gt;
-&lt;td&gt;April 18, 2019&lt;/td&gt;
-&lt;td&gt;.NET Standard 2.0 (2018)?&lt;/td&gt;
-&lt;td&gt;C# 7.3 May 2018&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7.2&lt;/td&gt;
-&lt;td&gt;April 30, 2018&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.2 Nov 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7.1&lt;/td&gt;
-&lt;td&gt;October 17, 2017&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.1 Aug 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.7&lt;/td&gt;
-&lt;td&gt;April 11, 2017&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 7.0 Mar 2017&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6.2&lt;/td&gt;
-&lt;td&gt;August 2, 2016&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;N/A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6.1&lt;/td&gt;
-&lt;td&gt;November 30, 2015&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;N/A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.6&lt;/td&gt;
-&lt;td&gt;July 29, 2015&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 6.0 Jul 2015&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5.2&lt;/td&gt;
-&lt;td&gt;May 5, 2014&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;N/A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5.1&lt;/td&gt;
-&lt;td&gt;January 15, 2014&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;N/A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.5&lt;/td&gt;
-&lt;td&gt;October 9, 2012&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 5.0 Aug 2012&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 4.0&lt;/td&gt;
-&lt;td&gt;April 12, 2010&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 4.0 Apr 2010&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 3.5 SP1&lt;/td&gt;
-&lt;td&gt;November 19, 2007&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 3.0 Nov 2007&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 3.0&lt;/td&gt;
-&lt;td&gt;November 21, 2006&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 2.0 Nov 2005&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 2.0&lt;/td&gt;
-&lt;td&gt;February 17, 2006&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 2.0 Nov 2005&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 1.1&lt;/td&gt;
-&lt;td&gt;April 9, 2003&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 1.1/1.2 Apr 2003&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;.NET Framework 1.0&lt;/td&gt;
-&lt;td&gt;January 15, 2002&lt;/td&gt;
-&lt;td&gt;---&lt;/td&gt;
-&lt;td&gt;C# 1.0 Jan 2002&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The last version .NET Standard release (2.1) was released in 2020. Since 2020, C# versions 10, 11, 12, 13, and 14 have been released. A lot has changed in 5 versions of C#, including the use of a multitude of APIs to enable various features. For example, in November 2020 &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt; was added to .NET 6 to enable the C# 10 compiler to pass along text symbolizing the expression used to calculate the value of an method parameter. Without a base class library that contains &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt;, C# can't generate intermediate language instructions to call methods that use it.&lt;/p&gt;
-&lt;p&gt;You may not have noticed in the above description but .NET Standard 2.1, .NET 5, and C# 10 were part of the same release, which means C# 10 features like &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt; cannot be used prior versions of .NET Standard (notably .NET Standard 2.0)&lt;/p&gt;
-&lt;p&gt;I detailed .NET Standard 2.1 was the last specification of common types that can be depended upon  across .NET implementations in September 2020 and C# 10 and .NET was released&lt;/p&gt;
-&lt;p&gt;While what can be considered common across multiple implementations of .NET,
-Since 2020 what could be considered common across multiple implementations of .NET has been frozen.
-With specifications of subsets of .NET APIs deemed immutable&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
-I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- Calendly inline widget begin --&gt;
-&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
-&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
-&lt;!-- Calendly inline widget end --&gt;
 </content:encoded>
 		</item>
 		<item>
@@ -1818,6 +1356,73 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
 &lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
 &lt;!-- Calendly inline widget end --&gt;
+</content:encoded>
+		</item>
+		<item>
+			<title>Things That Caught My Attention Last Week - September 7</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7</guid>
+			<pubDate>Mon, 08 Sep 2025 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/?utm_source=blog.peterritchie.com"&gt;Microsoft Releases Historic 6502 BASIC - Microsoft Open Source Blog&lt;/a&gt; by  Scott Hanselman, Stacey Haffner&lt;/p&gt;
+&lt;!-- ## Architecture
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/the-value-of-custom-exceptions/?utm_source=blog.peterritchie.com"&gt;The Value of Custom Exceptions&lt;/a&gt; by Scott DePouw&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/09/05/sneak-peek-at-the-signalr-integration-in-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Sneak Peek at the SignalR Integration in Wolverine 5.0&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/net-aspire-why-we-should-consider-it/?utm_source=blog.peterritchie.com"&gt;.NET Aspire - Why We Should Consider It And How To Get Started&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/iis-support-blog/capture-net-memory-dump-on-linux/4401935?utm_source=blog.peterritchie.com"&gt;Capture .NET Memory Dump on Linux&lt;/a&gt; by meenakshiBalekar&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/using-multiple-loopback-addresses-for-socket-binding.htm?utm_medium=social&amp;amp;utm_source=bluesky?utm_source=blog.peterritchie.com"&gt;Using Multiple Loopback Addresses for Socket Binding&lt;/a&gt; by Gérald Barré
+&lt;a href="https://andrewlock.net/converting-an-xunit-project-to-tunit/?utm_source=blog.peterritchie.com"&gt;Converting an xUnit test project to TUnit&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/09/01/song-recommendations-with-c-free-monads/?utm_source=blog.peterritchie.com"&gt;Song recommendations with C# free monads&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/getting-started-with-the-aspire-cli/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-27-logging-and-monitoring-genetic-progress-over-generations/?utm_source=blog.peterritchie.com"&gt;Day 27: Logging and Monitoring Genetic Progress Over Generations&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/boost-your-copilot-collaboration-with-reusable-prompt-files/?utm_source=blog.peterritchie.com"&gt;Boost Your Copilot Collaboration with Reusable Prompt Files&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/using-and-authoring-dotnet-tools/?utm_source=blog.peterritchie.com"&gt;Using and authoring .NET tools&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-semantic-search-with-amazon-s3-vectors?utm_source=blog.peterritchie.com"&gt;Building Semantic Search with Amazon S3 Vectors&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+ --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://newsletter.pragmaticengineer.com/p/state-of-the-tech-market-in-2025?utm_source=blog.peterritchie.com"&gt;State of the software engineering job market in 2025&lt;/a&gt; by Gergely Orosz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2025/08/31/eat-sleep-code-and-other-negative-culture-signs.html?utm_source=blog.peterritchie.com"&gt;Eat. Sleep. Code. and Other Negative Culture Signs&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/playwright-does-api-testing-now/?utm_source=blog.peterritchie.com"&gt;Playwright Does API Testing Now?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-august-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) - August 2025&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/?utm_source=blog.peterritchie.com"&gt;Secure Your Connections with Entra ID Support in the DocumentDB VS Code Extension&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250905-00/?p=111560?utm_source=blog.peterritchie.com"&gt;The case of the crash on a null pointer even though we checked it for null&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;!-- ## Windows
+
+## Security
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.npr.org/2025/09/05/g-s1-87367/anthropic-authors-settlement-pirated-chatbot-training-material?utm_source=blog.peterritchie.com"&gt;Anthropic to pay authors $1.5 billion in settlement over chatbot training material&lt;/a&gt; by The Associated Press&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+ --&gt;
+&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1/?utm_source=blog.peterritchie.com"&gt;Addressing the unauthorized issuance of multiple TLS certificates for 1.1.1.1&lt;/a&gt; by Joe Abley, Thibault Meunier, Vicky Shrestha, Bas Westerbaan&lt;/p&gt;
+&lt;!-- ## Podcasts
+
+## Other Link Collections
+
+ --&gt;
 </content:encoded>
 		</item>
 	</channel>
