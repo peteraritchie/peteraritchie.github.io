@@ -1,0 +1,670 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/introducing-productivity-extensions-source" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/testing">Testing</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features</h1>
+    <div class="meta">        
+Published on Monday, January 19, 2026<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/PriProductivityExtensions" class="btn btn-default btn-xs">Pri.ProductivityExtensions</a>
+                    <a role="button" href="/tags/PriProductivityExtensionsSource" class="btn btn-default btn-xs">Pri.ProductivityExtensions.Source</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>There are a few reasons developers need to work in .NET Standard. One is for writing PowerShell modules in C#, another is writing Roslyn Analyzers. .NET Standard is a formal specification of .NET APIs that are available on multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The last updated .NET Standard version (2.1) was released in September 2020.</p>
+<p>Targeting .NET Standard for a class library means that the library will be compatible applications designed for past versions of .NET. e.g. an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same APIs that the application does.</p>
+<p>.NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature <code>foreach</code> depends on the types <code>IEnumerable</code>, <code>IEnumerable&lt;T&gt;</code>, <code>IEnumerator</code>, and <code>IEnumerator&lt;T&gt;</code>. Specifications like .NET Standard enable C# language features across .NET implementations by specifying a minimum set of APIs that are be implemented (including <code>IEnumerable</code>, <code>IEnumerable&lt;T&gt;</code>, <code>IEnumerator</code>, and <code>IEnumerator&lt;T&gt;</code>). But, languages evolve and improve over time similarly to base class libraries.</p>
+<p>Since .NET Standard hasn't been updated since 2020, some new language features dependent upon types in a base class library aren't supported, despite the ability to use the latest version of the compiler when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the <code>Range</code> and <code>Index</code> types. But to write a Powershell library that supports Windows Powershell and Powershell 7 you have to target .NET Standard whose API service was specified around August 2017--roughly two years before <code>Range</code> and <code>Index</code> existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. <code>var lastWord = words[^1]</code> or <code>var firstFourWords = words[0..3]</code> will cause an errors (<code>Predefined type 'System.Index' is not defined or imported</code> and <code>Predefined type 'System.Range' is not defined or imported</code>, respectively).</p>
+<p>Fortunately the compiler is a bit flexible with where those predefined types exist. We can't simply create a .NET Standard 2.0 library with Range and Index as public types because they will end up clashing if a modern version of .NET is used (e.g. in an XUnit test project). But, the .NET Standard 2.0 library can create internal versions of those classes that the compiler is happy to resolve to. But, everyone who authors a .NET Standard 2.0 library having to write their own Range and Index classes (as well as any other class that modern c# syntax requires, like <code>CallerArgumentExpressionAttribute</code>, <code>DoesNotReturnAttribute</code>, etc.) is <em>problematic</em>, to say the least.</p>
+<p>Fortunately .NET and NuGet packages support the concept of content- or source-only packages. Source-only packages are nuget packages that instead of packaging binaries like DLLs, they package source code. That's where Pri.ProductivityExtensions.Source comes in.</p>
+<p>Pri.ProductivityExtensions.Source is a source-only NuGet package that includes the source code for various types created after .NET Standard 2.x to support C# language features (and maybe some helper extensions like <code>ArgumentException.ThrowIfNull</code>).</p>
+<table class="table">
+<thead>
+<tr>
+<th>.NET release</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET 10</td>
+<td>November 11, 2025</td>
+</tr>
+<tr>
+<td>.NET 9</td>
+<td>November 12, 2024</td>
+</tr>
+<tr>
+<td>.NET 8</td>
+<td>November 14, 2023</td>
+</tr>
+<tr>
+<td>.NET 7</td>
+<td>November 8, 2022</td>
+</tr>
+<tr>
+<td>.NET 6</td>
+<td>November 8, 2021</td>
+</tr>
+<tr>
+<td>.NET 5</td>
+<td>November 10, 2020</td>
+</tr>
+</tbody>
+</table>
+<!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core -->
+<table class="table">
+<thead>
+<tr>
+<th>.NET Core release</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET Core 3.1</td>
+<td>December 3, 2019</td>
+</tr>
+<tr>
+<td>.NET Core 3.0</td>
+<td>September 23, 2019</td>
+</tr>
+<tr>
+<td>.NET Core 2.2</td>
+<td>December 4, 2018</td>
+</tr>
+<tr>
+<td>.NET Core 2.1</td>
+<td>May 30, 2018</td>
+</tr>
+<tr>
+<td>.NET Core 2.0</td>
+<td>August 14, 2017</td>
+</tr>
+<tr>
+<td>.NET Core 1.1</td>
+<td>November 16, 2016</td>
+</tr>
+<tr>
+<td>.NET Core 1.0</td>
+<td>June 27, 2016</td>
+</tr>
+</tbody>
+</table>
+<!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core -->
+<table class="table">
+<thead>
+<tr>
+<th>.NET Framework release</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET Framework 4.8.1</td>
+<td>August 9, 2022</td>
+</tr>
+<tr>
+<td>.NET Framework 4.8</td>
+<td>April 18, 2019</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7.2</td>
+<td>April 30, 2018</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7.1</td>
+<td>October 17, 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7</td>
+<td>April 11, 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6.2</td>
+<td>August 2, 2016</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6.1</td>
+<td>November 30, 2015</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6</td>
+<td>July 29, 2015</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5.2</td>
+<td>May 5, 2014</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5.1</td>
+<td>January 15, 2014</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5</td>
+<td>October 9, 2012</td>
+</tr>
+<tr>
+<td>.NET Framework 4.0</td>
+<td>April 12, 2010</td>
+</tr>
+<tr>
+<td>.NET Framework 3.5 SP1</td>
+<td>November 19, 2007</td>
+</tr>
+<tr>
+<td>.NET Framework 3.0</td>
+<td>November 21, 2006</td>
+</tr>
+<tr>
+<td>.NET Framework 2.0</td>
+<td>February 17, 2006</td>
+</tr>
+<tr>
+<td>.NET Framework 1.1</td>
+<td>April 9, 2003</td>
+</tr>
+<tr>
+<td>.NET Framework 1.0</td>
+<td>January 15, 2002</td>
+</tr>
+</tbody>
+</table>
+<!-- from https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-framework -->
+<p>Date | .NET Implementation (minimum) | C# Version | Language Feature | Most Reason .NET Standard
+--- | --- |--- | --- | ---
+... | .NET Core 1.0, Framework 4.5 | ... | ... | .NET Standard 1.0 (August, 2016)
+... | .NET Core 1.1 | ... | ... | .NET Standard 1.1 (November, 2016)
+... | Framework 4.5.1 | ... | ... | .NET Standard 1.2 (December, 2016)
+... | Framework 4.6 | ... | ... | .NET Standard 1.3 (December, 2016)
+... | Framework 4.6.1 | ... | ... | .NET Standard 1.4 (May, 2017)
+... | .NET Core 2.0, Framework 4.6.1² | ... | ... | .NET Standard 1.5 (August, 2017)
+... | ? | ... | ... | .NET Standard 1.6 (June, 2016)
+... | .NET Core 2.0 | ... | ... | .NET Standard 2.0 (August, 2017)
+... | ... | ... | ... | .NET Standard 2.1 (November 2018)
+²: 4.7.2 is recommended instead of 4.6.1</p>
+<table class="table">
+<thead>
+<tr>
+<th>.NET Standard Version</th>
+<th>Date</th>
+<th>Coinciding .NET Implementation</th>
+<th>Coinciding C# Version</th>
+<th>Language Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET Standard 1.0</td>
+<td>August, 2016</td>
+<td>.NET Core 1.0</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 1.1</td>
+<td>November, 2016</td>
+<td>.NET Core 1.1</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 1.2</td>
+<td>December, 2016</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 1.3</td>
+<td>December, 2016</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 1.4</td>
+<td>May, 2017</td>
+<td>...</td>
+<td>...</td>
+<td></td>
+</tr>
+<tr>
+<td>.NET Standard 1.5</td>
+<td>August, 2017</td>
+<td>.NET Core 2.0</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 1.6</td>
+<td>June, 2016</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 2.0</td>
+<td>August, 2017</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>.NET Standard 2.1</td>
+<td>November, 2018</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr>
+<th>.NET Implementation</th>
+<th>Date</th>
+<th>Coinciding .NET Standard</th>
+<th>Matching C# Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET 10</td>
+<td>November 11, 2025</td>
+<td>---</td>
+<td>C# 14.0 Nov 2025</td>
+</tr>
+<tr>
+<td>.NET 9</td>
+<td>November 12, 2024</td>
+<td>---</td>
+<td>C# 13.0 Nov 2024</td>
+</tr>
+<tr>
+<td>.NET 8</td>
+<td>November 14, 2023</td>
+<td>---</td>
+<td>C# 12.0 Nov 2023</td>
+</tr>
+<tr>
+<td>.NET 7</td>
+<td>November 8, 2022</td>
+<td>---</td>
+<td>C# 11.0 Nov 2022</td>
+</tr>
+<tr>
+<td>.NET 6</td>
+<td>November 8, 2021</td>
+<td>---</td>
+<td>C# 10.0 Nov 2021</td>
+</tr>
+<tr>
+<td>.NET 5</td>
+<td>November 10, 2020</td>
+<td>---</td>
+<td>C# 9.0 Nov 2020</td>
+</tr>
+<tr>
+<td>.NET Core 3.1</td>
+<td>December 3, 2019</td>
+<td>---</td>
+<td>C# 8.0 Sep 2019</td>
+</tr>
+<tr>
+<td>.NET Core 3.0</td>
+<td>September 23, 2019</td>
+<td>.NET Standard 2.1 (May 2019)?</td>
+<td>C# 8.0 Sep 2019</td>
+</tr>
+<tr>
+<td>.NET Core 2.2</td>
+<td>December 4, 2018</td>
+<td>---</td>
+<td>C# 7.3 May 2018</td>
+</tr>
+<tr>
+<td>.NET Core 2.1</td>
+<td>May 30, 2018</td>
+<td>.NET Standard 2.0 (2018)?</td>
+<td>C# 7.3 May 2018</td>
+</tr>
+<tr>
+<td>.NET Core 2.0</td>
+<td>August 14, 2017</td>
+<td>.NET Standard 2.0 (2017)?</td>
+<td>C# 7.1 Aug 2017</td>
+</tr>
+<tr>
+<td>.NET Core 1.1</td>
+<td>November 16, 2016</td>
+<td>---</td>
+<td>C# 7.0 Mar 2017</td>
+</tr>
+<tr>
+<td>.NET Core 1.0</td>
+<td>June 27, 2016</td>
+<td>---</td>
+<td>C# 7.0 Mar 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.8.1</td>
+<td>August 9, 2022</td>
+<td>---</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>.NET Framework 4.8</td>
+<td>April 18, 2019</td>
+<td>.NET Standard 2.0 (2018)?</td>
+<td>C# 7.3 May 2018</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7.2</td>
+<td>April 30, 2018</td>
+<td>---</td>
+<td>C# 7.2 Nov 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7.1</td>
+<td>October 17, 2017</td>
+<td>---</td>
+<td>C# 7.1 Aug 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.7</td>
+<td>April 11, 2017</td>
+<td>---</td>
+<td>C# 7.0 Mar 2017</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6.2</td>
+<td>August 2, 2016</td>
+<td>---</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6.1</td>
+<td>November 30, 2015</td>
+<td>---</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>.NET Framework 4.6</td>
+<td>July 29, 2015</td>
+<td>---</td>
+<td>C# 6.0 Jul 2015</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5.2</td>
+<td>May 5, 2014</td>
+<td>---</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5.1</td>
+<td>January 15, 2014</td>
+<td>---</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>.NET Framework 4.5</td>
+<td>October 9, 2012</td>
+<td>---</td>
+<td>C# 5.0 Aug 2012</td>
+</tr>
+<tr>
+<td>.NET Framework 4.0</td>
+<td>April 12, 2010</td>
+<td>---</td>
+<td>C# 4.0 Apr 2010</td>
+</tr>
+<tr>
+<td>.NET Framework 3.5 SP1</td>
+<td>November 19, 2007</td>
+<td>---</td>
+<td>C# 3.0 Nov 2007</td>
+</tr>
+<tr>
+<td>.NET Framework 3.0</td>
+<td>November 21, 2006</td>
+<td>---</td>
+<td>C# 2.0 Nov 2005</td>
+</tr>
+<tr>
+<td>.NET Framework 2.0</td>
+<td>February 17, 2006</td>
+<td>---</td>
+<td>C# 2.0 Nov 2005</td>
+</tr>
+<tr>
+<td>.NET Framework 1.1</td>
+<td>April 9, 2003</td>
+<td>---</td>
+<td>C# 1.1/1.2 Apr 2003</td>
+</tr>
+<tr>
+<td>.NET Framework 1.0</td>
+<td>January 15, 2002</td>
+<td>---</td>
+<td>C# 1.0 Jan 2002</td>
+</tr>
+</tbody>
+</table>
+<p>The last version .NET Standard release (2.1) was released in 2020. Since 2020, C# versions 10, 11, 12, 13, and 14 have been released. A lot has changed in 5 versions of C#, including the use of a multitude of APIs to enable various features. For example, in November 2020 <code>CallerArgumentExpressionAttribute</code> was added to .NET 6 to enable the C# 10 compiler to pass along text symbolizing the expression used to calculate the value of an method parameter. Without a base class library that contains <code>CallerArgumentExpressionAttribute</code>, C# can't generate intermediate language instructions to call methods that use it.</p>
+<p>You may not have noticed in the above description but .NET Standard 2.1, .NET 5, and C# 10 were part of the same release, which means C# 10 features like <code>CallerArgumentExpressionAttribute</code> cannot be used prior versions of .NET Standard (notably .NET Standard 2.0)</p>
+<p>I detailed .NET Standard 2.1 was the last specification of common types that can be depended upon  across .NET implementations in September 2020 and C# 10 and .NET was released</p>
+<p>While what can be considered common across multiple implementations of .NET,
+Since 2020 what could be considered common across multiple implementations of .NET has been frozen.
+With specifications of subsets of .NET APIs deemed immutable</p>
+<blockquote class="blockquote">
+<p><strong>If you find this useful</strong><br />
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See <a href="/about">About</a> for information about the services I provide.</p>
+</blockquote>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'introducing-productivity-extensions-source'
+    'Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features'
+    'http://blog.peterritchie.com/posts/introducing-productivity-extensions-source'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/19/26');
+    console.info('introducing-productivity-extensions-source');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern Language Features';
+    var disqus_url = 'http://blog.peterritchie.com/posts/introducing-productivity-extensions-source';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'introducing-productivity-extensions-source';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2026
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>&nbsp;|&nbsp;<a rel="me" href="https://bsky.app/profile/peterritchie.com">Bluesky</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
