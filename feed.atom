@@ -4,14 +4,15 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-01-21T15:37:06Z</updated>
+	<updated>2026-01-21T15:48:06Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source</id>
 		<title>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features</title>
 		<link href="http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source" />
 		<updated>2026-01-21T00:00:00Z</updated>
-		<content>&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;
+		<content>&lt;p&gt;&lt;img src="../assets/dotnet-standard-errors.png" class="img-fluid" alt=".NET Standard compile errors" /&gt;&lt;/p&gt;
+&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;
 &lt;p&gt;There are a few reasons developers need to work in .NET Standard. A popular one is writing Roslyn analyzers, another is writing PowerShell modules (Cmdlets) in C#. .NET Standard is a formal specification of .NET APIs available across multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The latest version of .NET Standard (2.1) was released in September 2020.&lt;/p&gt;
 &lt;p&gt;Paradoxically, .NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature &lt;code&gt;foreach&lt;/code&gt; depends on the types &lt;code&gt;IEnumerable&lt;/code&gt;, &lt;code&gt;IEnumerable&amp;lt;T&amp;gt;&lt;/code&gt;, &lt;code&gt;IEnumerator&lt;/code&gt;, and &lt;code&gt;IEnumerator&amp;lt;T&amp;gt;&lt;/code&gt;. Specifications like .NET Standard enable C# language features across .NET implementations by including those dependent types in their specification. But languages evolve and improve over time, as do base class libraries.&lt;/p&gt;
 &lt;p&gt;Since .NET Standard was last updated in 2020, some new language features that depend on new types in the base class library have been introduced. Some of these new language features aren't necessarily supported in .NET Standard, even though you can use the latest compiler version when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; types. But to write a PowerShell library that supports Windows PowerShell and PowerShell 7, you have to target .NET Standard 2.0, whose API surface was specified around August 2017--roughly two years before &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. &lt;code&gt;var lastWord = words[^1]&lt;/code&gt; or &lt;code&gt;var firstFourWords = words[0..3]&lt;/code&gt; will cause errors (&lt;code&gt;Predefined type 'System.Index' is not defined or imported&lt;/code&gt;, and &lt;code&gt;Predefined type 'System.Range' is not defined or imported&lt;/code&gt;, respectively).&lt;/p&gt;
@@ -46,7 +47,7 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
 &lt;!-- Calendly inline widget end --&gt;
 </content>
-		<summary>&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;</summary>
+		<summary>&lt;p&gt;&lt;img src="../assets/dotnet-standard-errors.png" class="img-fluid" alt=".NET Standard compile errors"&gt;&lt;/p&gt;</summary>
 	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-19</id>
