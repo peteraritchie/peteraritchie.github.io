@@ -4,8 +4,50 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-01-20T15:12:11Z</updated>
+	<updated>2026-01-21T15:37:06Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source</id>
+		<title>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features</title>
+		<link href="http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source" />
+		<updated>2026-01-21T00:00:00Z</updated>
+		<content>&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;
+&lt;p&gt;There are a few reasons developers need to work in .NET Standard. A popular one is writing Roslyn analyzers, another is writing PowerShell modules (Cmdlets) in C#. .NET Standard is a formal specification of .NET APIs available across multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The latest version of .NET Standard (2.1) was released in September 2020.&lt;/p&gt;
+&lt;p&gt;Paradoxically, .NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature &lt;code&gt;foreach&lt;/code&gt; depends on the types &lt;code&gt;IEnumerable&lt;/code&gt;, &lt;code&gt;IEnumerable&amp;lt;T&amp;gt;&lt;/code&gt;, &lt;code&gt;IEnumerator&lt;/code&gt;, and &lt;code&gt;IEnumerator&amp;lt;T&amp;gt;&lt;/code&gt;. Specifications like .NET Standard enable C# language features across .NET implementations by including those dependent types in their specification. But languages evolve and improve over time, as do base class libraries.&lt;/p&gt;
+&lt;p&gt;Since .NET Standard was last updated in 2020, some new language features that depend on new types in the base class library have been introduced. Some of these new language features aren't necessarily supported in .NET Standard, even though you can use the latest compiler version when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; types. But to write a PowerShell library that supports Windows PowerShell and PowerShell 7, you have to target .NET Standard 2.0, whose API surface was specified around August 2017--roughly two years before &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. &lt;code&gt;var lastWord = words[^1]&lt;/code&gt; or &lt;code&gt;var firstFourWords = words[0..3]&lt;/code&gt; will cause errors (&lt;code&gt;Predefined type 'System.Index' is not defined or imported&lt;/code&gt;, and &lt;code&gt;Predefined type 'System.Range' is not defined or imported&lt;/code&gt;, respectively).&lt;/p&gt;
+&lt;p&gt;Fortunately, the compiler is flexible about where those predefined types are defined. Someone can't simply create a .NET Standard 2.0 library with Range and Index as public types, because they will clash with modern versions of .NET (e.g., in an XUnit test project). But the .NET Standard 2.0 library can create internal versions of those classes that the compiler is happy to resolve to. But having everyone who authors a .NET Standard 2.0 library write their own &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; classes (as well as any other class that modern C# syntax requires, like &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt;, &lt;code&gt;DoesNotReturnAttribute&lt;/code&gt;, etc.) is &lt;em&gt;problematic&lt;/em&gt;, to say the least.&lt;/p&gt;
+&lt;h2 id="content-only-nuget-packages"&gt;Content-only NuGet Packages&lt;/h2&gt;
+&lt;p&gt;.NET and NuGet packages support content- or source-only packages. Source-only packages are NuGet packages that, instead of packaging binaries like DLLs, package source code. Source-only packages don't add any assembly dependencies that require deployment.&lt;/p&gt;
+&lt;p&gt;That's where Pri.ProductivityExtensions.Source comes in. Pri.ProductivityExtensions.Source is a source-only NuGet package that includes the source code for various types created after .NET Standard 2.x to support C# language features (and some helper extensions like &lt;code&gt;ArgumentException.ThrowIfNull&lt;/code&gt; that depend on those features) that aren't available in .NET Standard.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Pri.ProductivityExtensions.Source&amp;quot; is also the ID of the package and can be found on NuGet.org &lt;a href="https://www.nuget.org/packages/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on NuGet.org"&gt;here&lt;/a&gt;. It can be added to a project via the .NET API: &lt;code&gt;dotnet add package Pri.ProductivityExtensions.Source&lt;/code&gt;, or via Package Manager Console: &lt;code&gt;Install-Package Pri.ProductivityExtensions.Source&lt;/code&gt;. It is open source, and the source code is available on &lt;a href="https://github.com/peteraritchie/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on GitHub"&gt;GitHub&lt;/a&gt;. For an example using Pri.ProductivityExtensions.Source see &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds"&gt;Pri.Essentials.DotnetPsCmds&lt;/a&gt;. And if you install &lt;a href="https://www.powershellgallery.com/packages/Pri.Essentials.DotnetPsCmds/" title="Pri.Essentials.DotnetPsCmds in PowerShell Gallery"&gt;DotnetPsCmds&lt;/a&gt;, you can install Pri.ProductivityExtensions.Source in PowerShell: &lt;code&gt;Add-DotnetPackages Pri.ProductivityExtensions.Source&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;When you reference Pri.ProductivityExtensions.Source, it causes the content (source code) to be considered part of the target project. The source code remains in the &lt;code&gt;.nuget&lt;/code&gt; cache and is not copied alongside the rest of your source code so no new source code needs to be committed to revision control.&lt;/p&gt;
+&lt;p&gt;The types included in Pri.ProductivityExtensions.Source are &lt;code&gt;internal&lt;/code&gt;, so they won't clash if Pri.ProductivityExtensions.Source is referenced in a project targeting a modern .NET implementation. Although I don't recommend using Pri.ProductivityExtensions.Source in a .NET Standard class library that is targeting a modern .NET implementation because it will resolve to Pri.ProductivityExtensions.Source instead of the .NET implementation's.&lt;/p&gt;
+&lt;p&gt;If you've created a .NET Standard library and have wanted to use the latest version of the compiler but start receiving compiler errors like &lt;code&gt;The type or namespace name 'CallerArgumentExpressionAttribute' does not exist in the namespace 'System.Runtime.CompilerServices' (are you missing an assembly reference?)&lt;/code&gt; or the other aforementioned errors, fear not, you simply need to reference Pri.ProductivityExtensions.Source!&lt;/p&gt;
+&lt;p&gt;Pri.ProductivityExtensions.Source enables the following modern C# compiler features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ranges and indices&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[CallerArgumentExpression]&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/caller-argument-expression" title="Caller argument expression - C# feature specifications"&gt;🔗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[DoesNotReturn]&lt;/code&gt; &lt;a href="https://github.com/dotnet/roslyn/issues/127" title="Proposal: [DoesNotReturn]"&gt;🔗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[NotNullWhen]&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/attributes/nullable-analysis" title="Attributes for null-state static analysis interpreted by the C# compiler"&gt;🔗&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, Pri.ProductivityExtensions.Source includes the following helper methods that otherwise depend on newer language-dependent types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ArgumentException.ThrowIfNullOrWhiteSpace(string?, string?)&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentexception.throwifnullorwhitespace?view=net-10.0" title="ArgumentException.ThrowIfNullOrWhiteSpace(String, String) Method"&gt;🔗&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ArgumentNullException.ThrowIfNull(object?, string?)&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception.throwifnull?view=net-10.0" title="ArgumentNullException.ThrowIfNull Method"&gt;🔗&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="understanding-c-timeline-since-last.net-standard"&gt;Understanding C# Timeline Since Last .NET Standard&lt;/h2&gt;
+&lt;p&gt;The last version of .NET Standard (2.1) was released in 2020. Since 2020, C# versions 10, 11, 12, 13, and 14 have been released. A lot has changed across 5 versions of C#, including the use of numerous APIs to enable various features. There isn't a complete list of base-class APIs that the C# compiler depends on.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- Calendly inline widget begin --&gt;
+&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
+&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
+&lt;!-- Calendly inline widget end --&gt;
+</content>
+		<summary>&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-19</id>
 		<title>Things That Caught My Attention Last Week - January 19</title>
@@ -1356,72 +1398,5 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;!-- Calendly inline widget end --&gt;
 </content>
 		<summary>&lt;p&gt;I &lt;a href="/posts/architecture-fundamentals--system-of-record"&gt;recently blogged&lt;/a&gt; about the importance of distinct and isolated subsystems where real-time data transactions that apply to a particular business data entity are processed, known as a System of Record. Someone referenced that post and incorrectly implied that I was suggesting a Single Source of Truth. I didn't delve deeper into Single Source of Truth in that post to keep it concise. Still, I was careful to suggest "how important it is to separate operational systems from analytical systems" and that analytical systems "must support multiple independent Systems of Record." And in fact, I diagrammed information refinement and how it progresses within enterprises. That diagram isolated Systems of Record from a Single Source of Truth and isolated Operational Systems from Analytical Systems. In this post, I want to detail how and why a &lt;strong&gt;Single Source of Truth is different from Systems of Record&lt;/strong&gt;.&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7</id>
-		<title>Things That Caught My Attention Last Week - September 7</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7" />
-		<updated>2025-09-08T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://opensource.microsoft.com/blog/2025/09/03/microsoft-open-source-historic-6502-basic/?utm_source=blog.peterritchie.com"&gt;Microsoft Releases Historic 6502 BASIC - Microsoft Open Source Blog&lt;/a&gt; by  Scott Hanselman, Stacey Haffner&lt;/p&gt;
-&lt;!-- ## Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/the-value-of-custom-exceptions/?utm_source=blog.peterritchie.com"&gt;The Value of Custom Exceptions&lt;/a&gt; by Scott DePouw&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/09/05/sneak-peek-at-the-signalr-integration-in-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Sneak Peek at the SignalR Integration in Wolverine 5.0&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/net-aspire-why-we-should-consider-it/?utm_source=blog.peterritchie.com"&gt;.NET Aspire - Why We Should Consider It And How To Get Started&lt;/a&gt; by Barret Blake&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/blog/iis-support-blog/capture-net-memory-dump-on-linux/4401935?utm_source=blog.peterritchie.com"&gt;Capture .NET Memory Dump on Linux&lt;/a&gt; by meenakshiBalekar&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/using-multiple-loopback-addresses-for-socket-binding.htm?utm_medium=social&amp;amp;utm_source=bluesky?utm_source=blog.peterritchie.com"&gt;Using Multiple Loopback Addresses for Socket Binding&lt;/a&gt; by Gérald Barré
-&lt;a href="https://andrewlock.net/converting-an-xunit-project-to-tunit/?utm_source=blog.peterritchie.com"&gt;Converting an xUnit test project to TUnit&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/09/01/song-recommendations-with-c-free-monads/?utm_source=blog.peterritchie.com"&gt;Song recommendations with C# free monads&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/getting-started-with-the-aspire-cli/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/day-27-logging-and-monitoring-genetic-progress-over-generations/?utm_source=blog.peterritchie.com"&gt;Day 27: Logging and Monitoring Genetic Progress Over Generations&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/boost-your-copilot-collaboration-with-reusable-prompt-files/?utm_source=blog.peterritchie.com"&gt;Boost Your Copilot Collaboration with Reusable Prompt Files&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/using-and-authoring-dotnet-tools/?utm_source=blog.peterritchie.com"&gt;Using and authoring .NET tools&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-semantic-search-with-amazon-s3-vectors?utm_source=blog.peterritchie.com"&gt;Building Semantic Search with Amazon S3 Vectors&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://newsletter.pragmaticengineer.com/p/state-of-the-tech-market-in-2025?utm_source=blog.peterritchie.com"&gt;State of the software engineering job market in 2025&lt;/a&gt; by Gergely Orosz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/08/31/eat-sleep-code-and-other-negative-culture-signs.html?utm_source=blog.peterritchie.com"&gt;Eat. Sleep. Code. and Other Negative Culture Signs&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/playwright-does-api-testing-now/?utm_source=blog.peterritchie.com"&gt;Playwright Does API Testing Now?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-august-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) - August 2025&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/?utm_source=blog.peterritchie.com"&gt;Secure Your Connections with Entra ID Support in the DocumentDB VS Code Extension&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20250905-00/?p=111560?utm_source=blog.peterritchie.com"&gt;The case of the crash on a null pointer even though we checked it for null&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.npr.org/2025/09/05/g-s1-87367/anthropic-authors-settlement-pirated-chatbot-training-material?utm_source=blog.peterritchie.com"&gt;Anthropic to pay authors $1.5 billion in settlement over chatbot training material&lt;/a&gt; by The Associated Press&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
- --&gt;
-&lt;h2 id="computing"&gt;Computing&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.cloudflare.com/unauthorized-issuance-of-certificates-for-1-1-1-1/?utm_source=blog.peterritchie.com"&gt;Addressing the unauthorized issuance of multiple TLS certificates for 1.1.1.1&lt;/a&gt; by Joe Abley, Thibault Meunier, Vicky Shrestha, Bas Westerbaan&lt;/p&gt;
-&lt;!-- ## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>

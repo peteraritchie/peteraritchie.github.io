@@ -1,0 +1,250 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+        <title>Peter Ritchie&#x27;s Blog - Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features</title>
+        <meta name="description" content="Peter Ritchie" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+
+        <link type="application/rss+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.xml" />
+                <link type="application/atom+xml" rel="alternate" title="Peter Ritchie&#x27;s Blog" href="/feed.atom" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/highlight.css" rel="stylesheet">
+        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
+        <link href="/assets/css/master.css" rel="stylesheet" />
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="/assets/css/override.css" rel="stylesheet" />
+
+
+        <meta name="application-name" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
+        <meta name="msapplication-starturl" content="/" />
+
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source" />
+        <!-- TODO: More social graph meta tags -->
+
+        
+
+
+        </head>
+        <body>
+                
+                <!-- Navigation -->
+                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+                        <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="/">Peter Ritchie&#x27;s Blog</a>
+                                </div>
+                        
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+                                                        <li><a href="/posts">Archive</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/testing">Testing</a></li>
+ 
+                                        </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container -->
+                </nav>
+                
+                <!-- Page Header -->
+                <header class="intro-header" id="intro-header">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-12">
+
+    
+<div class="post-heading">
+    <h1>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features</h1>
+    <div class="meta">        
+Published on Wednesday, January 21, 2026<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NET" class="btn btn-default btn-xs">.NET</a>
+                    <a role="button" href="/tags/PriProductivityExtensions" class="btn btn-default btn-xs">Pri.ProductivityExtensions</a>
+                    <a role="button" href="/tags/PriProductivityExtensionsSource" class="btn btn-default btn-xs">Pri.ProductivityExtensions.Source</a>
+                    <a role="button" href="/tags/Software-Development" class="btn btn-default btn-xs">Software Development</a>
+        </div>     
+</div>
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                
+                <!-- Main Content -->
+                <div class="container">
+                        <div class="row">
+                                <div id="content" class="col-md-12">
+                                        
+
+<p>Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.</p>
+<p>There are a few reasons developers need to work in .NET Standard. A popular one is writing Roslyn analyzers, another is writing PowerShell modules (Cmdlets) in C#. .NET Standard is a formal specification of .NET APIs available across multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The latest version of .NET Standard (2.1) was released in September 2020.</p>
+<p>Paradoxically, .NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature <code>foreach</code> depends on the types <code>IEnumerable</code>, <code>IEnumerable&lt;T&gt;</code>, <code>IEnumerator</code>, and <code>IEnumerator&lt;T&gt;</code>. Specifications like .NET Standard enable C# language features across .NET implementations by including those dependent types in their specification. But languages evolve and improve over time, as do base class libraries.</p>
+<p>Since .NET Standard was last updated in 2020, some new language features that depend on new types in the base class library have been introduced. Some of these new language features aren't necessarily supported in .NET Standard, even though you can use the latest compiler version when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the <code>Range</code> and <code>Index</code> types. But to write a PowerShell library that supports Windows PowerShell and PowerShell 7, you have to target .NET Standard 2.0, whose API surface was specified around August 2017--roughly two years before <code>Range</code> and <code>Index</code> existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. <code>var lastWord = words[^1]</code> or <code>var firstFourWords = words[0..3]</code> will cause errors (<code>Predefined type 'System.Index' is not defined or imported</code>, and <code>Predefined type 'System.Range' is not defined or imported</code>, respectively).</p>
+<p>Fortunately, the compiler is flexible about where those predefined types are defined. Someone can't simply create a .NET Standard 2.0 library with Range and Index as public types, because they will clash with modern versions of .NET (e.g., in an XUnit test project). But the .NET Standard 2.0 library can create internal versions of those classes that the compiler is happy to resolve to. But having everyone who authors a .NET Standard 2.0 library write their own <code>Range</code> and <code>Index</code> classes (as well as any other class that modern C# syntax requires, like <code>CallerArgumentExpressionAttribute</code>, <code>DoesNotReturnAttribute</code>, etc.) is <em>problematic</em>, to say the least.</p>
+<h2 id="content-only-nuget-packages">Content-only NuGet Packages</h2>
+<p>.NET and NuGet packages support content- or source-only packages. Source-only packages are NuGet packages that, instead of packaging binaries like DLLs, package source code. Source-only packages don't add any assembly dependencies that require deployment.</p>
+<p>That's where Pri.ProductivityExtensions.Source comes in. Pri.ProductivityExtensions.Source is a source-only NuGet package that includes the source code for various types created after .NET Standard 2.x to support C# language features (and some helper extensions like <code>ArgumentException.ThrowIfNull</code> that depend on those features) that aren't available in .NET Standard.</p>
+<p>&quot;Pri.ProductivityExtensions.Source&quot; is also the ID of the package and can be found on NuGet.org <a href="https://www.nuget.org/packages/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on NuGet.org">here</a>. It can be added to a project via the .NET API: <code>dotnet add package Pri.ProductivityExtensions.Source</code>, or via Package Manager Console: <code>Install-Package Pri.ProductivityExtensions.Source</code>. It is open source, and the source code is available on <a href="https://github.com/peteraritchie/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on GitHub">GitHub</a>. For an example using Pri.ProductivityExtensions.Source see <a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds">Pri.Essentials.DotnetPsCmds</a>. And if you install <a href="https://www.powershellgallery.com/packages/Pri.Essentials.DotnetPsCmds/" title="Pri.Essentials.DotnetPsCmds in PowerShell Gallery">DotnetPsCmds</a>, you can install Pri.ProductivityExtensions.Source in PowerShell: <code>Add-DotnetPackages Pri.ProductivityExtensions.Source</code>.</p>
+<p>When you reference Pri.ProductivityExtensions.Source, it causes the content (source code) to be considered part of the target project. The source code remains in the <code>.nuget</code> cache and is not copied alongside the rest of your source code so no new source code needs to be committed to revision control.</p>
+<p>The types included in Pri.ProductivityExtensions.Source are <code>internal</code>, so they won't clash if Pri.ProductivityExtensions.Source is referenced in a project targeting a modern .NET implementation. Although I don't recommend using Pri.ProductivityExtensions.Source in a .NET Standard class library that is targeting a modern .NET implementation because it will resolve to Pri.ProductivityExtensions.Source instead of the .NET implementation's.</p>
+<p>If you've created a .NET Standard library and have wanted to use the latest version of the compiler but start receiving compiler errors like <code>The type or namespace name 'CallerArgumentExpressionAttribute' does not exist in the namespace 'System.Runtime.CompilerServices' (are you missing an assembly reference?)</code> or the other aforementioned errors, fear not, you simply need to reference Pri.ProductivityExtensions.Source!</p>
+<p>Pri.ProductivityExtensions.Source enables the following modern C# compiler features:</p>
+<ul>
+<li>Ranges and indices</li>
+<li><code>[CallerArgumentExpression]</code> <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/caller-argument-expression" title="Caller argument expression - C# feature specifications">🔗</a></li>
+<li><code>[DoesNotReturn]</code> <a href="https://github.com/dotnet/roslyn/issues/127" title="Proposal: [DoesNotReturn]">🔗</a></li>
+<li><code>[NotNullWhen]</code> <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/attributes/nullable-analysis" title="Attributes for null-state static analysis interpreted by the C# compiler">🔗</a></li>
+</ul>
+<p>Additionally, Pri.ProductivityExtensions.Source includes the following helper methods that otherwise depend on newer language-dependent types:</p>
+<ul>
+<li><code>ArgumentException.ThrowIfNullOrWhiteSpace(string?, string?)</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentexception.throwifnullorwhitespace?view=net-10.0" title="ArgumentException.ThrowIfNullOrWhiteSpace(String, String) Method">🔗</a></li>
+<li><code>ArgumentNullException.ThrowIfNull(object?, string?)</code> <a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception.throwifnull?view=net-10.0" title="ArgumentNullException.ThrowIfNull Method">🔗</a></li>
+</ul>
+<h2 id="understanding-c-timeline-since-last.net-standard">Understanding C# Timeline Since Last .NET Standard</h2>
+<p>The last version of .NET Standard (2.1) was released in 2020. Since 2020, C# versions 10, 11, 12, 13, and 14 have been released. A lot has changed across 5 versions of C#, including the use of numerous APIs to enable various features. There isn't a complete list of base-class APIs that the C# compiler depends on.</p>
+<blockquote class="blockquote">
+<p><strong>If you find this useful</strong><br />
+I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See <a href="/about">About</a> for information about the services I provide.</p>
+</blockquote>
+<!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Calendly inline widget end -->
+
+
+<div id="disqus_thread"></div>  
+<!--
+    'Introducing-Pri.ProductivityExtensions.Source'
+    'Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features'
+    'http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source'
+-->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    var fromJekyllDate = new Date('Wed Feb 01 2022');
+    var publishedDate = new Date('1/21/26');
+    console.info('Introducing-Pri.ProductivityExtensions.Source');
+
+    var disqus_identifier = '';
+    var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
+    var disqus_title = 'Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features';
+    var disqus_url = 'http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source';
+
+    if(publishedDate < fromJekyllDate)
+    {
+        disqus_url = disqus_url.replace('/posts', '');
+        disqus_url = disqus_url + '/';
+    }
+    else
+    {
+        //var disqus_identifier = 'Introducing-Pri.ProductivityExtensions.Source';
+    }
+    console.info(disqus_identifier);
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                </div>
+                        </div>
+                </div>
+                
+                <hr>
+                
+                <!-- Footer -->
+                <footer>
+                        <div class="container">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright text-muted">
+                        Copyright © Peter Ritchie&#x27;s Blog 2026
+                        <br />
+                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
+                        |
+                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
+                        <br />
+                        <strong><a href="https://wyam.io">Generated by "Wyam"</a></strong>
+                        <br/>
+                        <a rel="me" href="https://mastodon.social/@peterritchie">Mastodon.social</a>&nbsp;|&nbsp;<a rel="me" href="https://fosstodon.org/@peterritchie">fosstodon.org</a>&nbsp;|&nbsp;<a rel="me" href="https://twitter.com/peterritchie">Twitter</a>&nbsp;|&nbsp;<a rel="me" href="https://www.linkedin.com/in/peteraritchie/">LinkedIn</a>&nbsp;|&nbsp;<a rel="me" href="https://bsky.app/profile/peterritchie.com">Bluesky</a>
+                    </p>
+                </div>
+        </div>
+</div>
+                </footer> 
+
+                <script src="/assets/js/jquery.min.js"></script>
+                <script src="/assets/js/bootstrap.min.js"></script>     
+                <script src="/assets/js/highlight.pack.js"></script>   
+                <script src="/assets/js/clean-blog.js"></script>
+                <script src="/assets/js/d3.v3.min.js"></script>
+                <script src="/assets/js/trianglify.min.js"></script>
+                <script src="/assets/js/Please-compressed.js"></script>
+                <script src="/assets/js/background-check.min.js"></script>
+
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+                        <script src="/assets/js/html5shiv.js"></script>
+                        <script src="/assets/js/respond.min.js"></script>
+                <![endif]-->
+                
+                
+                <script>hljs.initHighlightingOnLoad();</script>
+
+                        <script type="text/javascript">                
+                                // Header background                        
+                                var colors = Please.make_color({
+                                        colors_returned: 3,
+                                        saturation: .6
+                                });
+                                var t = new Trianglify({
+                                        x_gradient: colors,
+                                        y_gradient: ["#FFFFFF"]
+                                });
+                                var header = document.getElementById("intro-header");
+                                var pattern = t.generate(header.clientWidth, header.clientHeight);
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                        </script>
+
+                <script>
+                        BackgroundCheck.init({
+                                targets: '.intro-header,.navbar',
+                                images: '.intro-header'
+                        });
+                </script>
+        </body>
+</html>
+
