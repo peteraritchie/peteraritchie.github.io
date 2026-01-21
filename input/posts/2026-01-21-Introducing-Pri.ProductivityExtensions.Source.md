@@ -6,6 +6,8 @@ comments: true
 excerpt: 'Pri.ProductivityExtensions.Source is a .NET Standard 2.0 package that enables modern C# language features when writing Roslyn analyzers and PowerShell modules in C#.'
 tags: ['Software Development', 'Pri.ProductivityExtensions', 'Pri.ProductivityExtensions.Source', '.NET']
 ---
+![.NET Standard compile errors](../assets/dotnet-standard-errors.png)
+
 Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.
 
 There are a few reasons developers need to work in .NET Standard. A popular one is writing Roslyn analyzers, another is writing PowerShell modules (Cmdlets) in C#. .NET Standard is a formal specification of .NET APIs available across multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The latest version of .NET Standard (2.1) was released in September 2020.
