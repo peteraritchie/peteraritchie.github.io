@@ -5,8 +5,75 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Wed, 18 Feb 2026 20:31:21 GMT</pubDate>
-		<lastBuildDate>Wed, 18 Feb 2026 20:31:21 GMT</lastBuildDate>
+		<pubDate>Mon, 23 Feb 2026 21:45:50 GMT</pubDate>
+		<lastBuildDate>Mon, 23 Feb 2026 21:45:50 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - February 22</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-22</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-22</guid>
+			<pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cassidoo.co/post/passkeys/?utm_source=blog.peterritchie.com"&gt;How passkeys work&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/securing-the-ai-software-supply-chain-security-results-across-67-open-source-projects/?utm_source=blog.peterritchie.com"&gt;Securing the AI software supply chain: Security results across 67 open source projects&lt;/a&gt; by Gregg Cochran&lt;/p&gt;
+&lt;h2 id="domain-driven-design-cqrs"&gt;Domain-Driven Design, CQRS&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/read-replicas-are-not-cqrs-stop-confusing-this/?utm_source=blog.peterritchie.com"&gt;Read Replicas Are NOT CQRS (Stop Confusing This)&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/where-vertical-slices-fit-inside-the-modular-monolith-architecture?utm_source=blog.peterritchie.com"&gt;Where Vertical Slices Fit Inside the Modular Monolith Architecture&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/02/19/using-the-azure-service-bus-emulator-for-local-wolverine-development/?utm_source=blog.peterritchie.com"&gt;Using the Azure Service Bus Emulator for Local Wolverine Development&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/validating-powershell-script-syntax-in-github-actions-workflows.htm?utm_source=blog.peterritchie.com"&gt;Validating PowerShell script syntax in GitHub Actions workflows&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/ef-core-hasqueryfilter-ii-39gf?utm_source=blog.peterritchie.com"&gt;EF Core HasQueryFilter II&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/creating-standard-and-observable-instruments/?utm_source=blog.peterritchie.com"&gt;Creating standard and &amp;quot;observable&amp;quot; instruments&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/custom-agents-in-visual-studio-built-in-and-build-your-own-agents/?utm_source=blog.peterritchie.com"&gt;Custom Agents in Visual Studio: Built in and Build-Your-Own agents&lt;/a&gt; by Rhea Patel&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/rest-is-dead-again/?utm_source=blog.peterritchie.com"&gt;Is REST Dead... Again?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-jmespath-query-support/?utm_source=blog.peterritchie.com"&gt;JMESPath support comes to azd JSON output&lt;/a&gt; by Scott Addie&lt;/p&gt;
+&lt;!-- ## Software Development
+ --&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-ai-fatigue-and-the-long?utm_source=blog.peterritchie.com"&gt;Shortwave: AI fatigue and the long middle of adoption&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.xda-developers.com/microsoft-backing-off-its-ai-everywhere-plan-is-too-little-too-late/?utm_source=blog.peterritchie.com"&gt;Microsoft's backing off on its &amp;quot;AI everywhere&amp;quot; plan is too little, too late&lt;/a&gt; by Simon Batt&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.cio.com/article/4129620/agentic-ai-fails-without-an-architecture-of-flow-to-eliminate-the-friction-tax.html?utm_source=blog.peterritchie.com"&gt;Agentic AI fails without an architecture of flow to eliminate the friction tax&lt;/a&gt; by David Smith&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+ --&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - February 15</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-15</link>
@@ -1360,71 +1427,6 @@ Tina Schrepfer&lt;/p&gt;
 ## Podcasts
 
 ## Other Link Collections --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - October 12</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-12</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-12</guid>
-			<pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://opensource.guide/security-best-practices-for-your-project/?utm_source=blog.peterritchie.com"&gt;Security Best Practices for your Project&lt;/a&gt; by Open Source Guides&lt;/p&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/secure-application-development-starts-with-architecture/?utm_source=blog.peterritchie.com"&gt;Secure Application Development Starts With Architecture&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://dotnetfoundation.org/news-events/detail/automapper-graduates-from-the-.net-foundation?utm_source=blog.peterritchie.com"&gt;AutoMapper Graduates from the .NET Foundation&lt;/a&gt; by .NET Foundation Board&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://duendesoftware.com/blog/20251009-spectre-console-open-source-sponsorship?utm_source=blog.peterritchie.com"&gt;Duende Software - Spectre.Console - Open Source Sponsorship&lt;/a&gt; by Khalid Abuhakmeh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.elmah.io/penhow-i-reduced-api-response-time-by-70-in-a-large-net-project/?utm_source=blog.peterritchie.com"&gt;How I Reduced API Response Time by 70% in a Large .NET Project&lt;/a&gt; by Ali Hamza Ansari&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/06/aspire-publish-vs-deploy/?utm_source=blog.peterritchie.com"&gt;Design flashpoint: &lt;code&gt;aspire publish&lt;/code&gt; vs &lt;code&gt;aspire deploy&lt;/code&gt;&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/preparing-for-dotnet-10-gc/?utm_source=blog.peterritchie.com"&gt;Preparing for the .NET 10 GC (DATAS)&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-dev-test-benefit-explained/?utm_source=blog.peterritchie.com"&gt;Visual Studio Dev/Test Benefit Explained&lt;/a&gt; by Jim Harrer&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/fixing-an-old-dotnet-core-native-library-loading-issue-on-alpine/?utm_source=blog.peterritchie.com"&gt;Fixing an old .NET Core native library loading issue on Alpine&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/how-to-find-an-available-network-port-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;How to Find an Available Network Port for a server in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/08/marten-8-12-with-new-plumbing/?utm_source=blog.peterritchie.com"&gt;Marten 8.12 with New Plumbing&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/building-fast-serverless-apis-with-minimal-apis-on-aws-lambda?utm_source=blog.peterritchie.com"&gt;Building Fast Serverless APIs With Minimal APIs on AWS Lambda&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
- --&gt;
-&lt;h2 id="devops"&gt;DevOps&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/announcing-the-new-azure-devops-server-rc-release/?utm_source=blog.peterritchie.com"&gt;Announcing the new Azure DevOps Server RC Release&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
-&lt;!-- ## Software Design
-
-## Mobile
-
-## Agile/Work Life
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/ai-driven-api-design?utm_source=blog.peterritchie.com"&gt;AI-Driven API Design&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/stream-geojson-rest-api/?utm_source=blog.peterritchie.com"&gt;Stream GeoJSON in a HTTP/REST API&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
-&lt;!-- ## Azure
- --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251013-00/?p=111677?utm_source=blog.peterritchie.com"&gt;API design principle: Don't tempt people to divide by zero&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blogs.newardassociates.com/blog/2025/devrel-patterns-published.html?utm_source=blog.peterritchie.com"&gt;DevRel Activity Patterns... published&lt;/a&gt; by Ted Neward&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://spectrum.ieee.org/learning-coding-age-of-ai?utm_source=blog.peterritchie.com"&gt;Is It Still Worth Learning Coding in the Age of AI?&lt;/a&gt; by Rahul Pandey&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.cio.com/article/4066681/ai-could-prove-cios-worst-tech-debt-yet.html?utm_source=blog.peterritchie.com"&gt;AI could prove CIOs' worst tech debt yet&lt;/a&gt; by Grant Gross&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
- --&gt;
 </content:encoded>
 		</item>
 	</channel>
