@@ -5,8 +5,86 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Fri, 06 Mar 2026 14:35:46 GMT</pubDate>
-		<lastBuildDate>Fri, 06 Mar 2026 14:35:46 GMT</lastBuildDate>
+		<pubDate>Tue, 10 Mar 2026 17:13:15 GMT</pubDate>
+		<lastBuildDate>Tue, 10 Mar 2026 17:13:15 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - March 8</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-8</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-8</guid>
+			<pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/htmxrazor-1-2-0-toast-notifications-pagination-and-the-end-of-css-specificity-fights/?utm_source=blog.peterritchie.com"&gt;htmxRazor 1.2.0: Toast Notifications, Pagination, and the End of CSS Specificity Fights&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/5-architecture-tests-you-should-add-to-your-dotnet-projects?utm_source=blog.peterritchie.com"&gt;5 Architecture Tests You Should Add to Your .NET Projects&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/parse-dont-guess?utm_source=blog.peterritchie.com"&gt;Parse, Don't Guess&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/vertical-slices-doesnt-mean-share-nothing/?utm_source=blog.peterritchie.com"&gt;Vertical Slices doesn't mean &amp;quot;Share Nothing&amp;quot;&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://irina.codes/async-does-not-mean-scalable/?utm_source=blog.peterritchie.com"&gt;Async Does Not Mean Scalable&lt;/a&gt; by Irina Scurtu&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/03/06/fun-five-year-retrospective-on-marten-adoption/?utm_source=blog.peterritchie.com"&gt;Fun Five Year Retrospective on Marten Adoption&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-dev-essentials-free-practical-tools-for-every-developer/?utm_source=blog.peterritchie.com"&gt;Visual Studio Dev Essentials: Free, Practical Tools for Every Developer&lt;/a&gt; by Jim Harrer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/extend-your-coding-agent-with-dotnet-skills/?utm_source=blog.peterritchie.com"&gt;Extend your coding agent with .NET Skills&lt;/a&gt; by Tim Heuer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/release-v10-of-the-official-mcp-csharp-sdk/?utm_source=blog.peterritchie.com"&gt;Release v1.0 of the official MCP C# SDK&lt;/a&gt; by Mike Kistler&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/essential-visual-studio-extensions-4loh?utm_source=blog.peterritchie.com"&gt;Essential Visual Studio Extensions&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/03/value-of-immutability/?utm_source=blog.peterritchie.com"&gt;The Value of Immutability in .NET&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/product-backlog-refinement-hell-solutions/?utm_source=blog.peterritchie.com"&gt;Product Backlog Refinement Hell: 3 Problems and Solutions&lt;/a&gt; by Mark Levison&lt;/p&gt;
+&lt;!-- ## Project Management/Administration
+
+## REST/APIs
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-appservice-swap/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd): One command to swap Azure App Service slots&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/we-are-still-engineers?utm_source=blog.peterritchie.com"&gt;We are still engineers&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/visualize-github-actions-runs-with-meziantou-githubactionstracing.htm?utm_source=blog.peterritchie.com"&gt;Visualize GitHub Actions runs with Meziantou.GitHubActionsTracing&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/security/how-to-scan-for-vulnerabilities-with-github-security-labs-open-source-ai-powered-framework/?utm_source=blog.peterritchie.com"&gt;How to scan for vulnerabilities with GitHub Security Lab’s open source AI-powered framework&lt;/a&gt; by Man Yue Mo, Peter Stöckli&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260309-00/?p=112118?utm_source=blog.peterritchie.com"&gt;Learning to read C++ compiler errors: Ambiguous overloaded operator&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260306-00/?p=112116?utm_source=blog.peterritchie.com"&gt;When Read­Directory­ChangesW reports that a deletion occurred, how can I learn more about the deleted thing?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://cassidoo.co/post/css-wavy-art/?utm_source=blog.peterritchie.com"&gt;Making art with CSS gradients and corner-shape and skew, oh my&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/03/03/in-defence-of-correctness/?utm_source=blog.peterritchie.com"&gt;In defence of correctness&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/the-end-of-coding-wrong-question?utm_source=blog.peterritchie.com"&gt;The End of Coding? Wrong Question&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://vladikk.com/2026/03/10/ai-ooda/?utm_source=blog.peterritchie.com"&gt;The Missing Link in Vibe Coding: Feedback Loops&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nick-tune.me/blog/2026-03-04-event-sourced-claude-code-workflows/?utm_source=blog.peterritchie.com"&gt;Event-sourced Claude Code workflows&lt;/a&gt; by Nick Tune&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/signal-ping-skill-still-sets-the?utm_source=blog.peterritchie.com"&gt;Signal ping : Skill still sets the ceiling&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/03/09/which-of-these-languages-are-best-for-ai/?utm_source=blog.peterritchie.com"&gt;Which of these languages are best for AI?&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - March 1</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-1%20copy</link>
@@ -1374,68 +1452,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 ## Cloud
 
 ## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - October 26</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26</guid>
-			<pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/make-your-github-profile-update-itself-wordpress-posts-github-releases-linkedin-newsletters/?utm_source=blog.peterritchie.com"&gt;Make Your GitHub Profile Update Itself (WordPress posts, GitHub releases, LinkedIn newsletters)&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4064273/8-platform-engineering-anti-patterns.html?utm_source=blog.peterritchie.com"&gt;8 platform engineering anti-patterns&lt;/a&gt; by Bill Doerrfeld&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=66-6C5c1zmg?utm_source=blog.peterritchie.com"&gt;All About Code Cleanup&lt;/a&gt; (YouTube) by Microsoft Visual Studio&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2025/10/27/a-small-update/?utm_source=blog.peterritchie.com"&gt;A Small Update&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/announcing-sponsorship-on-nugetdotorg-for-maintainer-appreciation/?utm_source=blog.peterritchie.com"&gt;Announcing Sponsorship on NuGet.org&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/modernizing-visual-studio-extension-compatibility-effortless-migration-for-extension-developers-and-users/?utm_source=blog.peterritchie.com"&gt;Modernizing Visual Studio Extension Compatibility: Effortless Migration for Extension Developers and Users&lt;/a&gt; by
-Tina Schrepfer&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/adding-metadata-to-fallback-endpoints-in-aspnetcore/?utm_source=blog.peterritchie.com"&gt;Adding metadata to fallback endpoints in ASP.NET Core&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/thread-safe-initialization-with-lazyinitializer.htm?utm_source=blog.peterritchie.com"&gt;Thread-Safe Initialization with LazyInitializer&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/20/aspire-deployment-state/?utm_source=blog.peterritchie.com"&gt;Cache me if you can: a look at deployment state in Aspire&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/26/using-signalr-with-wolverine-5-0/?utm_source=blog.peterritchie.com"&gt;Using SignalR with Wolverine 5.0 ΓÇô The Shade Tree Developer&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-interface-is-no-longer-the-code?utm_source=blog.peterritchie.com"&gt;The Interface Is No Longer the Code&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;!-- ## Azure
- --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251023-00/?p=111716?utm_source=blog.peterritchie.com"&gt;Windows Runtime design principle: Properties can be set in any order&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.makeuseof.com/run-these-useful-windows-pc-maintenance-commands-regularly/?utm_source=blog.peterritchie.com"&gt;Don't let your PC suffer, run these Windows commands regularly&lt;/a&gt; by Pankil Shah&lt;/p&gt;
-&lt;!-- ## Security
-
-## AI
-
-## Social Media
-
-## Online Tools
- --&gt;
-&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=hhSJtMUY_6E?utm_source=blog.peterritchie.com"&gt;Compare PostgreSQL Databases in Seconds&lt;/a&gt; (YouTube) by Database Star&lt;/p&gt;
-&lt;h2 id="cloud"&gt;Cloud&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.crn.com/news/cloud/2025/aws-outage-was-inevitable-says-former-aws-google-exec?utm_source=blog.peterritchie.com"&gt;AWS Outage Was 'Inevitable,' Says Former AWS, Google Exec&lt;/a&gt; by Mark Haranas&lt;/p&gt;
-&lt;!-- ## Computing
 
 ## Podcasts
 
