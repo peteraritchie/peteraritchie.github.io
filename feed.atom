@@ -4,8 +4,92 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-03-10T17:13:15Z</updated>
+	<updated>2026-03-16T14:42:57Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-15</id>
+		<title>Things That Caught My Attention Last Week - March 15</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-15" />
+		<updated>2026-03-16T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/htmxrazor-v1-3-0-data-table-accessibility-and-modern-css/?utm_source=blog.peterritchie.com"&gt;htmxRazor v1.3.0: Data Table, Accessibility, and Modern CSS&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/implementing-rfc-compliant-http-caching-for-httpclient-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;Implementing RFC-compliant HTTP caching for HttpClient in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/03/15/validation-options-in-wolverine/?utm_source=blog.peterritchie.com"&gt;Validation Options in Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/optimizing-bulk-database-updates-in-dotnet?utm_source=blog.peterritchie.com"&gt;Optimizing Bulk Database Updates in .NET: From Naive to Lightning-Fast&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/modernize-dotnet-anywhere-with-ghcp/?utm_source=blog.peterritchie.com"&gt;Modernize .NET Anywhere with GitHub Copilot&lt;/a&gt; by Mika Dumont&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-0-5-oob-release-macos-debugger-fix/?utm_source=blog.peterritchie.com"&gt;.NET 10.0.5 Out-of-Band Release - macOS Debugger Fix&lt;/a&gt; by Rahul Bhandari (MSFT)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.tabsoverspaces.com/233963-dnsendpoint-where-have-you-been?utm_source=blog.peterritchie.com"&gt;DnsEndPoint – where have you been?&lt;/a&gt; by Jiří Činčura&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-11-preview-2/?utm_source=blog.peterritchie.com"&gt;.NET 11 Preview 2 is now available!&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-march-2026-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework March 2026 servicing releases updates&lt;/a&gt; by Rahul Bhandari (MSFT)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/03/10/new-improvements-to-martens-linq-support/?utm_source=blog.peterritchie.com"&gt;New Improvements to Marten’s LINQ Support&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://platform.uno/blog/configuring-claude-code-for-real-net-projects/?utm_source=blog.peterritchie.com"&gt;Configuring Claude Code for Real .NET Projects&lt;/a&gt; by Matt Mattei&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile --&gt;
+&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
+&lt;!-- ## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-tools-is-growing/?utm_source=blog.peterritchie.com"&gt;OpenAPI.tools is Growing&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/podcast/supergood-is-building-unofficial-apis-for-everything/?utm_source=blog.peterritchie.com"&gt;Supergood is building unofficial APIs for everything&lt;/a&gt; by Mike Bifulco&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-mirroring-fabric-private-networks-ga/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB Mirroring in Microsoft Fabric: Private Network Support Now Generally Available&lt;/a&gt; by Jai Maldonado&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/march-patches-for-azure-devops-server-4/?utm_source=blog.peterritchie.com"&gt;March Patches for Azure DevOps Server&lt;/a&gt; by Gloridel Morales&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-ai-agent-logs-status/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd): Debug hosted AI agents from your terminal&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-conf-2026-preview/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB Conf 2026 Preview: What to Expect&lt;/a&gt; by Jay Gordon&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/pushing-skills-to-a-new-level-5cdj?utm_source=blog.peterritchie.com"&gt;Pushing skills to a new level&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://vladikk.com/2026/03/15/machine-errors/?utm_source=blog.peterritchie.com"&gt;Machine Errors and Non-Deterministic Humans&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260313-00/?p=112138?utm_source=blog.peterritchie.com"&gt;Windows stack limit checking retrospective: MIPS&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/behavioural-inference-systems-blog?utm_source=blog.peterritchie.com"&gt;Behavioural Inference: How I Learned to Stop Worrying and Love Probabilistic Systems (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/company-news/github-availability-report-february-2026/?utm_source=blog.peterritchie.com"&gt;GitHub availability report: February 2026&lt;/a&gt; by Jakub Oleksy&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/company-news/addressing-githubs-recent-availability-issues-2/?utm_source=blog.peterritchie.com"&gt;Addressing GitHub’s recent availability issues&lt;/a&gt; by Vlad Fedorov&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260311-00/?p=112134?utm_source=blog.peterritchie.com"&gt;How do compilers ensure that large stack allocations do not skip over the guard page?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/03/i-made-an-api/?utm_source=blog.peterritchie.com"&gt;I Made an API&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.xda-developers.com/obsidian-cli-is-the-new-best-way-to-automate-your-notes/?utm_source=blog.peterritchie.com"&gt;Obsidian CLI is the new best way to automate your notes&lt;/a&gt; by Patrick Hearn&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/interactive-rubber-ducking-with-genai?utm_source=blog.peterritchie.com"&gt;Interactive Rubber Ducking with GenAI&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/weizenbaums-four-warnings-for-the?utm_source=blog.peterritchie.com"&gt;Weizenbaum’s Four Warnings for the AI Era&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://thenewstack.io/jetbrains-names-the-debt-ai-agents-leave-behind?utm_source=blog.peterritchie.com"&gt;JetBrains names the debt AI agents leave behind&lt;/a&gt; by Darryl K. Taft&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/the-era-of-ai-as-text-is-over-execution-is-the-new-interface/?utm_source=blog.peterritchie.com"&gt;The era of “AI as text” is over. Execution is the new interface&lt;/a&gt; by Gwen Davis&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://futurism.com/future-society/ai-bubble-billionaires-burst?utm_source=blog.peterritchie.com"&gt;Tech Billionaires Are Quietly Rooting for AI Bubble to Collapse&lt;/a&gt; by Joe Wilkins&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-8</id>
 		<title>Things That Caught My Attention Last Week - March 8</title>
@@ -1373,74 +1457,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;p&gt;&lt;a href="https://www.marktechpost.com/2025/11/04/comparing-the-top-7-large-language-models-llms-systems-for-coding-in-2025/?utm_source=blog.peterritchie.com"&gt;Comparing the Top 7 Large Language Models LLMs/Systems for Coding in 2025 &lt;/a&gt; by Michal Sutter&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://arxiv.org/abs/2508.14511?utm_source=blog.peterritchie.com"&gt;What You See Is What It Does: A Structural Pattern for Legible Software&lt;/a&gt; by Eagon Meng, Daniel Jackson&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://kalele.io/the-genai-abstraction-and-the-hard-truth/?utm_source=blog.peterritchie.com"&gt;The GenAI Abstraction and the Hard Truth&lt;/a&gt; by Vaughn Vernon&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-2</id>
-		<title>Things That Caught My Attention Last Week - November 2</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-2" />
-		<updated>2025-11-04T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
-
-## Software Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/10/28/wolverine-does-more-to-simplify-server-side-code/?utm_source=blog.peterritchie.com"&gt;Wolverine Does More to Simplify Server Side Code&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/whats-new-in-ef-core-10-leftjoin-and-rightjoin-operators-in-linq?utm_source=blog.peterritchie.com"&gt;What's New in EF Core 10: LeftJoin and RightJoin Operators in LINQ&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/understanding-the-worst-dotnet-vulnerability-request-smuggling-and-cve-2025-55315/?utm_source=blog.peterritchie.com"&gt;Understanding the worst .NET vulnerability ever: request smuggling and CVE-2025-55315&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/flushing-disk-caches-on-windows-a-comprehensive-guide.htm?utm_source=blog.peterritchie.com"&gt;Flushing Disk Caches on Windows: A Comprehensive Guide&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/introducing-custom-agents-for-dotnet-developers-csharp-expert-winforms-expert/?utm_source=blog.peterritchie.com"&gt;Introducing Custom Agents for .NET Developers: C# Expert &amp;amp; WinForms Expert&lt;/a&gt; by Wendy Breiding (SHE/HER)&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/join-us-at-net-conf-dive-into-the-future-of-development-with-visual-studio-2026/?utm_source=blog.peterritchie.com"&gt;Join us at .NET Conf: Dive into the future of development with Visual Studio 2026&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-october-update/?utm_source=blog.peterritchie.com"&gt;Visual Studio 2022 17.14 October Update&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://bartwullems.blogspot.com/2025/10/catching-dependency-injection.html?utm_source=blog.peterritchie.com"&gt;Catching dependency injection configuration errors early&lt;/a&gt; by Bart Wullems&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://medium.com/&amp;#64;denmaklucky/whats-new-in-net-10-0907cffb7372?utm_source=blog.peterritchie.com"&gt;What's new in .NET 10. Explore the most interesting new...&lt;/a&gt; by Denis Makarenko&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/double-dispatch-in-ddd/?utm_source=blog.peterritchie.com"&gt;Double Dispatch in DDD&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
- --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.liminalarc.co/2025/10/the-future-of-agile-isnt-agile/?utm_source=blog.peterritchie.com"&gt;The Future of Agile Isn't &amp;quot;agile&amp;quot; &lt;/a&gt; by Leonard Greski&lt;/p&gt;
-&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://tidyfirst.substack.com/p/pitching-hackathon-ideas-oxymoron?triedRedirect=true?utm_source=blog.peterritchie.com"&gt;Pitching Hackathon Ideas: Oxymoron&lt;/a&gt; by Kent Beck&lt;/p&gt;
-&lt;!-- ## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/failures-happen-in-cloud-but-how-azure-cosmos-db-keeps-your-applications-online/?utm_source=blog.peterritchie.com"&gt;Failures Happen in Cloud, but how Azure Cosmos DB keeps your Applications Online&lt;/a&gt; by Hari Sudan S&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-copilot-coding-agent-config/?utm_source=blog.peterritchie.com"&gt;Introducing the azd extension to configure GitHub Copilot coding agent integration with Azure&lt;/a&gt; by Kristen Womack&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://compositecode.blog/2025/10/30/reflection-on-solid-decades/?utm_source=blog.peterritchie.com"&gt;Rethinking SOLID Principles in the Age of AI Development&lt;/a&gt; by Adron Hall&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251028-00/?p=111733?utm_source=blog.peterritchie.com"&gt;How did the Windows 95 user interface code get brought to the Windows NT code base?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.makeuseof.com/free-tool-tells-exactly-whats-slowing-pc/?utm_source=blog.peterritchie.com"&gt;This free tool tells you exactly what's slowing down your PC&lt;/a&gt; by Yadullah Abidi&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.makeuseof.com/windows-11-function-killing-your-battery-disable-it/?utm_source=blog.peterritchie.com"&gt;This One Windows 11 Function Is Killing Your Battery. Here's How to Disable It&lt;/a&gt; by Yadullah Abidi&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/10/27/aspire-deploy-cli-ux/?utm_source=blog.peterritchie.com"&gt;How I used AI to redesign Aspire's deploy CLI command&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/better-ai-code-starts-here?utm_source=blog.peterritchie.com"&gt;Better AI Code Starts Here&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
