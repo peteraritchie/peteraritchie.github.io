@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Things That Caught My Attention The Last Week - April 5'
+title: 'Things That Caught My Attention Last Week - April 5'
 categories: ['Uncategorized', 'April 2026']
 comments: true
 excerpt: 'Sites that I found interesting last week.'
