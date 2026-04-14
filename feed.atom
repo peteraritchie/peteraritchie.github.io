@@ -4,8 +4,83 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-04-06T18:28:17Z</updated>
+	<updated>2026-04-14T19:16:52Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-12</id>
+		<title>Things That Caught My Attention Last Week - April 12</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-12" />
+		<updated>2026-04-14T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/passive-aggresive-event?utm_source=blog.peterritchie.com"&gt;Anti-patterns in event modelling - Passive-Aggressive Events&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/why-clean-code-is-killing-your-velocity/?utm_source=blog.peterritchie.com"&gt;Why &amp;quot;Clean Code&amp;quot; is Killing Your Velocity&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/csharp-15-union-types/?utm_source=blog.peterritchie.com"&gt;Explore union types in C# 15&lt;/a&gt; by Bill Wagner&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/suppressing-roslyn-analyzer-warnings-programmatically-using-diagnosticsuppressor.htm?utm_source=blog.peterritchie.com"&gt;Suppressing Roslyn Analyzer Warnings Programmatically using DiagnosticSuppressor&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/04/12/the-fastest-possible-http-queries-with-marten/?utm_source=blog.peterritchie.com"&gt;The Fastest Possible HTTP Queries with Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/implementing-the-saga-pattern-with-wolverine?utm_source=blog.peterritchie.com"&gt;Implementing the Saga Pattern With Wolverine&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/04/ef-migrations-best-practices/?utm_source=blog.peterritchie.com"&gt;EF Core Migrations Best Practices&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/how-to-delete-and-update-millions-of-rows-in-ef-core-without-loading-a-single-entity/?utm_source=blog.peterritchie.com"&gt;How to Delete and Update Millions of Rows in EF Core Without Loading a Single Entity&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/aspnet-core-2-3-end-of-support/?utm_source=blog.peterritchie.com"&gt;ASP.NET Core 2.3 end of support announcement&lt;/a&gt; by Daniel Roth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/take-full-control-of-your-floating-windows-in-visual-studio/?utm_source=blog.peterritchie.com"&gt;Take full control of your floating windows in Visual Studio&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/04/08/you-see-a-spec-i-see-a-common-language-and-a-common-understanding/?utm_source=blog.peterritchie.com"&gt;You See a Spec, I See a Common Language, and a Common Understanding&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/announcing-azure-mcp-server-2-0-stable-release/?utm_source=blog.peterritchie.com"&gt;Announcing Azure MCP Server 2.0 Stable Release for Self-Hosted Agentic Cloud Automation&lt;/a&gt; by Sandeep Sen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scalable-ai-with-azure-cosmos-db-tredence-intelligent-document-processing-idp-march-2026/?utm_source=blog.peterritchie.com"&gt;Scalable AI with Azure Cosmos DB: Tredence Intelligent Document Processing (IDP)&lt;/a&gt; by Manish Sharma&lt;/p&gt;
+&lt;!--## Software Development
+
+ ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/old-protocols-new-pipes?utm_source=blog.peterritchie.com"&gt;Old Protocols, New Pipes&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://hbr.org/2026/04/to-succeed-with-ai-youve-got-to-nail-the-basics?utm_source=blog.peterritchie.com"&gt;To Succeed with AI, You’ve Got to Nail the Basics&lt;/a&gt; by Thomas C. Redman&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.techcentral.ie/forget-ai-slop-were-entering-our-generative-smog-era/?utm_source=blog.peterritchie.com"&gt;Forget AI slop. We’re entering our generative smog era&lt;/a&gt; by Niall Kitson&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=yO_TH3R8KMw?utm_source=blog.peterritchie.com"&gt;On .NET Live - AI offers benefits, but at what cost? - YouTube&lt;/a&gt; by Steve Smith&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/04/13/secret-agentic-ai/?utm_source=blog.peterritchie.com"&gt;Secret agentic AI&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2026/04/12/ai-is-it-that-intelligent/?utm_source=blog.peterritchie.com"&gt;How Intelligent is AI?&lt;/a&gt; by Shawn Wildermuth&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-5</id>
 		<title>Things That Caught My Attention Last Week - April 5</title>
@@ -1425,72 +1500,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;h2 id="ai"&gt;AI&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://futurism.com/artificial-intelligence/large-language-models-willnever-be-intelligent?utm_source=blog.peterritchie.com"&gt;Large Language Models Will Never Be Intelligent, Expert Says&lt;/a&gt; by Frank Landymore&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://tegabrain.com/Slop-Evader?utm_source=blog.peterritchie.com"&gt;Slop Evader&lt;/a&gt; by Tega Brain&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-23</id>
-		<title>Things That Caught My Attention Last Week - November 23</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-23" />
-		<updated>2025-11-26T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Open-source
-
-## Software Architecture --&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/efmigrationstherightway?utm_source=blog.peterritchie.com"&gt;You're Probably Doing EF Migrations wrong...&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/reinventing-how-dotnet-builds-and-ships-again/?utm_source=blog.peterritchie.com"&gt;Reinventing how .NET Builds and Ships (Again)&lt;/a&gt; by Matt Mitchell&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/spend-less-time-upgrading-more-time-coding-in-visual-studio-2026/?utm_source=blog.peterritchie.com"&gt;Spend Less Time Upgrading, More Time Coding in Visual Studio 2026&lt;/a&gt; by Jason Chlus&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/how-to-update-net-on-wsl-or-ubuntu/?utm_source=blog.peterritchie.com"&gt;How to Update .NET on Wsl or Ubuntu&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/companies-using-dotnet-need-to-suck-it-up-and-pay-for-support/?utm_source=blog.peterritchie.com"&gt;Companies complaining .NET moves too fast should just pay for post-EOL support&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/optimize-guid-creation-performance-in-dotnet-applications.htm?utm_source=blog.peterritchie.com"&gt;Optimize GUID creation performance in .NET applications&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-false-comfort-of-the-happy-path-decoupling-your-services?utm_source=blog.peterritchie.com"&gt;The False Comfort of the &amp;quot;Happy Path&amp;quot;: Decoupling Your Services&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-november-2025/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) Nov 2025 - Container Apps (GA), Layered Provisioning (Beta), Extension Framework, and Aspire 13&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/announcing-dynamic-data-masking-for-azure-cosmos-db-preview/?utm_source=blog.peterritchie.com"&gt;Announcing: Dynamic Data Masking for Azure Cosmos DB (Preview)&lt;/a&gt; by Sudhanshu Khera&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-and-github-repositories-next-steps-in-the-path-to-agentic-ai/?utm_source=blog.peterritchie.com"&gt;Azure DevOps and GitHub Repositories ' Next Steps in the Path to Agentic AI&lt;/a&gt; by Rajesh Ramamurthy&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/17/empirical-software-prototyping/?utm_source=blog.peterritchie.com"&gt;Empirical software prototyping&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251119-00/?p=111800?utm_source=blog.peterritchie.com"&gt;Is WriteProcessMemory faster than shared memory for transferring data between two processes?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/20/api-anatomy-mapopenapi/?utm_source=blog.peterritchie.com"&gt;Anatomy of an API: the small but mighty MapOpenApi()&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;!-- ## Windows
-
-## Security
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/teaching-the-machines-to-teach-us?utm_source=blog.peterritchie.com"&gt;Teaching the Machines to Teach Us Back&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/17/the-web-and-apis-werent-built-for-autonomous-agents-they-were-built-for-humans/?utm_source=blog.peterritchie.com"&gt;The Web and APIs Weren't Built for Autonomous Agents, They Were Built For Humans&lt;/a&gt; by Kin Lane&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
