@@ -4,8 +4,88 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-04-14T19:16:52Z</updated>
+	<updated>2026-04-22T18:53:40Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-19</id>
+		<title>Things That Caught My Attention Last Week - April 19</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-19" />
+		<updated>2026-04-22T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/security/application-security/how-exposed-is-your-code-find-out-in-minutes-for-free/?utm_source=blog.peterritchie.com"&gt;How exposed is your code? Find out in minutes—for free&lt;/a&gt; by Dorothy Pearce, Eric Tooley&lt;/p&gt;
+&lt;!-- ## Open-source
+
+## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/yoda-principle-for-better-integrations?utm_source=blog.peterritchie.com"&gt;Yoda Principle for better integrations&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/evaluating-cron-and-rrule-expressions-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;Evaluating CRON and RRule expressions in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/why-i-switched-to-primary-constructors-for-di-in-csharp?utm_source=blog.peterritchie.com"&gt;Why I Switched to Primary Constructors for DI in C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;h2 id="githib"&gt;GitHib&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/company-news/bringing-more-transparency-to-githubs-status-page/?utm_source=blog.peterritchie.com"&gt;Bringing more transparency to GitHub’s status page&lt;/a&gt; by Jakub Oleksy&lt;/p&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/its-time-for-a-visual-studio-upgrade?utm_source=blog.peterritchie.com"&gt;It's Time for a Visual Studio Upgrade&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2024/07/13/docker-volume-location-on-windows?utm_source=blog.peterritchie.com"&gt;Docker Volume Location on Windows&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/from-ai-to-net-20-vs-live-las-vegas-sessions-you-can-watch-now/?utm_source=blog.peterritchie.com"&gt;From AI to .NET: 20 VS Live! Las Vegas Sessions You Can Watch Now&lt;/a&gt; by Jim Harrer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/pin-clustering-in-dotnet-maui-maps/?utm_source=blog.peterritchie.com"&gt;Pin Clustering in .NET MAUI Maps&lt;/a&gt; by David Ortinau&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/04/15/critter-stack-sample-projects-and-our-curated-ai-skills/?utm_source=blog.peterritchie.com"&gt;Critter Stack Sample Projects and Our Curated AI Skills&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/stop-hunting-bugs-meet-the-new-visual-studio-debugger-agent/?utm_source=blog.peterritchie.com"&gt;Stop Hunting Bugs: Meet the New Visual Studio Debugger Agent Workflow&lt;/a&gt; by Harshada Hole&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-11-preview-3/?utm_source=blog.peterritchie.com"&gt;.NET 11 Preview 3 is now available!&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/htmxrazor-v2-0-0-platform-and-dx/?utm_source=blog.peterritchie.com"&gt;htmxRazor v2.0.0: Platform and DX&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/suppressing-roslyn-analyzer-warnings-programmatically-using-diagnosticsuppressor.htm?utm_source=blog.peterritchie.com"&gt;Suppressing Roslyn Analyzer Warnings Programmatically using DiagnosticSuppressor&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/how-do-you-paywall-an-api/?utm_source=blog.peterritchie.com"&gt;How DO you Paywall an API?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/04/16/an-api-consumer-interoperability-mindset/?utm_source=blog.peterritchie.com"&gt;An API Consumer Interoperability Mindset&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/one-click-security-scanning-and-org-wide-alert-triage-come-to-advanced-security/?utm_source=blog.peterritchie.com"&gt;One-click security scanning and org-wide alert triage come to Advanced Security&lt;/a&gt; by Laura Jiang&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-update/?utm_source=blog.peterritchie.com"&gt;Stop juggling package managers—just run &lt;code&gt;azd update&lt;/code&gt;&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260415-00/?p=112235?utm_source=blog.peterritchie.com"&gt;Why is there a long delay between a thread exiting and the Wait­For­Single­Object returning?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/testing-needs-a-seam-not-an-interface/?utm_source=blog.peterritchie.com"&gt;Testing Needs a Seam, Not an Interface&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/how-software-developers-fail/?utm_source=blog.peterritchie.com"&gt;How Software Developers Fail&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/optimizing-ai-agents-with-progressive-disclosure/?utm_source=blog.peterritchie.com"&gt;Optimizing AI Agents with Progressive Disclosure&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/azure-mcp-tools-now-ship-built-into-visual-studio-2022-no-extension-required/?utm_source=blog.peterritchie.com"&gt;Azure MCP tools now ship built into Visual Studio 2022 — no extension required&lt;/a&gt; by Yun Jung Choi&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/running-ai-agents-with-customized-templates-in-docker-sandbox/?utm_source=blog.peterritchie.com"&gt;Running AI agents with customized templates using docker sandbox&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/a-useful-definition-at-the-right?utm_source=blog.peterritchie.com"&gt;A useful definition at the right time&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-12</id>
 		<title>Things That Caught My Attention Last Week - April 12</title>
@@ -1432,74 +1512,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 --&gt;
 &lt;h2 id="ai"&gt;AI&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-the-positive-power-of-llms?utm_source=blog.peterritchie.com"&gt;Shortwave: The Positive Power of LLMs&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-1</id>
-		<title>Things That Caught My Attention Last Week - December 1</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-1" />
-		<updated>2025-12-05T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://securityaffairs.com/185150/security/thousands-of-sensitive-secrets-published-on-jsonformatter-and-codebeautify.html?utm_source=blog.peterritchie.com"&gt;Thousands of sensitive secrets published on JSONFormatter and CodeBeautify&lt;/a&gt; by Pierluigi Paganini&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://about.gitlab.com/blog/gitlab-discovers-widespread-npm-supply-chain-attack/?utm_source=blog.peterritchie.com"&gt;GitLab discovers widespread npm supply chain attack&lt;/a&gt; by Daniel Abeles, Michael Henriksen&lt;/p&gt;
-&lt;!-- ## Open-source --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/vertical-slice-architecture-where-does-the-shared-logic-live?utm_source=blog.peterritchie.com"&gt;Vertical Slice Architecture: Where Does the Shared Logic Live?&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/efmigrationstherightway?utm_source=blog.peterritchie.com"&gt;You're Probably Doing EF Migrations wrong...&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-real-code-implementing-fowlers-ideas-in-c/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns, Real Code: Implementing Fowler's Ideas in C#&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-day-on-agentic-modernization-coming-soon/?utm_source=blog.peterritchie.com"&gt;.NET Day on Agentic Modernization Coming Soon&lt;/a&gt; by Matt Soucoup&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-built-for-the-speed-of-modern-development/?utm_source=blog.peterritchie.com"&gt;Visual Studio - Built for the Speed of Modern Development&lt;/a&gt; by Paul Chapman&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-boot-process-via-host-tracing/?utm_source=blog.peterritchie.com"&gt;Exploring the .NET boot process via host tracing&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/minimal-apis-cqrs-ddd-or-just-use-controllers/?utm_source=blog.peterritchie.com"&gt;Minimal APIs, CQRS, DDDΓÇª Or Just Use Controllers? - CodeOpinion&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!-- ## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
- --&gt;
-&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.psychologytoday.com/us/blog/our-invisible-work/202511/the-doer-delusion-mistaking-responsiveness-for-strategy?utm_source=blog.peterritchie.com"&gt;The Doer Delusion: Mistaking Responsiveness for Strategy&lt;/a&gt; by Janelle E. Wells, Ph.D., and Doreen MacAulay, Ph.D.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://hbr.org/2025/11/leaders-assume-employees-are-excited-about-ai-theyre-wrong?utm_source=blog.peterritchie.com"&gt;Leaders Assume Employees Are Excited About AI. They're Wrong.&lt;/a&gt; by Deborah Lovich, Stephan Meier and Chenault Taylor&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2025/11/24/capabilities-are-about-having-an-honest-conversation-about-control/?utm_source=blog.peterritchie.com"&gt;Capabilities Are About Having An Honest Conversation About Control&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-november-2025/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (November 2025)&lt;/a&gt; by Ronnie Geraghty&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.hanselman.com/blog/automatically-signing-a-windows-exe-with-azure-trusted-signing-dotnet-sign-and-github-actions?utm_source=blog.peterritchie.com"&gt;Automatically Signing a Windows EXE with Azure Trusted Signing, dotnet sign, and GitHub Actions&lt;/a&gt; by Scott Hanselman&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://theaxolot.wordpress.com/2025/11/18/dont-refactor-like-uncle-bob-second-edition/?utm_source=blog.peterritchie.com"&gt;Don't Refactor Like Uncle Bob (Second Edition)&lt;/a&gt; by Axolot&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/11/24/result-is-the-most-boring-sum-type/?utm_source=blog.peterritchie.com"&gt;Result is the most boring sum type&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251127-00/?p=111817?utm_source=blog.peterritchie.com"&gt;Message-only windows are for messaging, not as a convenient victim for hosting UI&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/update-local-git-branches-without-switching.htm?utm_source=blog.peterritchie.com"&gt;Update Local Git Branches Without Switching&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/11/24/api-anatomy-server-sent-events/?utm_source=blog.peterritchie.com"&gt;Anatomy of an API: three ways to stream with ServerSentEvents()&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;!-- ## Windows
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://futurism.com/artificial-intelligence/large-language-models-willnever-be-intelligent?utm_source=blog.peterritchie.com"&gt;Large Language Models Will Never Be Intelligent, Expert Says&lt;/a&gt; by Frank Landymore&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://tegabrain.com/Slop-Evader?utm_source=blog.peterritchie.com"&gt;Slop Evader&lt;/a&gt; by Tega Brain&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
