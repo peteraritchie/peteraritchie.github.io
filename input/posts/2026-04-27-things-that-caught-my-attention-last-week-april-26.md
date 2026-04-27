@@ -8,9 +8,9 @@ tags: ['Random']
 ---
 ![caught-my-i](../assets/caught-i.png)
 
-## Security
+<!-- ## Security
 
-<!-- ## Open-source
+## Open-source
 
 ## Domain-Driven Design, CQRS
  -->
@@ -20,9 +20,9 @@ tags: ['Random']
 
 [Just Use Postgres as a Queue?](https://codeopinion.com/just-use-postgres-as-a-queue/?utm_source=blog.peterritchie.com) by Derek Comartin
 
-## GitHib
+<!--## GitHib
 
-<!--## Presenting
+## Presenting
  -->
 ## .NET
 
