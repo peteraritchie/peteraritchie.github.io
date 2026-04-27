@@ -4,8 +4,92 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-04-22T18:53:40Z</updated>
+	<updated>2026-04-27T17:31:39Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26</id>
+		<title>Things That Caught My Attention Last Week - April 26</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26" />
+		<updated>2026-04-27T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;!-- ## Open-source
+
+## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://karoxi.dev/blog/kafka_not_an_event_store?utm_source=blog.peterritchie.com"&gt;Kafka Is Not An Event Store&lt;/a&gt; by karoxi&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/just-use-postgres-as-a-queue/?utm_source=blog.peterritchie.com"&gt;Just Use Postgres as a Queue?&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;h2 id="githib"&gt;GitHib&lt;/h2&gt;
+&lt;!--## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/resharper-made-vs-code-a-real-option-for-my-net-work/?utm_source=blog.peterritchie.com"&gt;ReSharper Made VS Code a Real Option for My .NET Work&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/display-project-attribute-c-319d?utm_source=blog.peterritchie.com"&gt;Display project Attribute (C#)&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/whats-new-for-dotnet-in-ubuntu-2604/?utm_source=blog.peterritchie.com"&gt;What's new for .NET in Ubuntu 26.04&lt;/a&gt; by Richard Lander&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/04/give-dotnet-its-props/?utm_source=blog.peterritchie.com"&gt;Give .NET Its Props - Central Package Management&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/04/22/like-vertical-slice-architecture-meet-wolverine-http/?utm_source=blog.peterritchie.com"&gt;Like Vertical Slice Architecture? Meet Wolverine.Http!&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-10-0-7-oob-security-update/?utm_source=blog.peterritchie.com"&gt;.NET 10.0.7 Out-of-Band Security Update&lt;/a&gt; by Rahul Bhandari (MSFT)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/04/21/ef-core-is-better-with-wolverine/?utm_source=blog.peterritchie.com"&gt;EF Core is Better with Wolverine – The Shade Tree Developer&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/removingbyte-array-allocations-in-dotnet-framework-using-readonlyspan-t/?utm_source=blog.peterritchie.com"&gt;Removing byte[] allocations in .NET Framework using ReadOnlySpan&lt;T&gt;&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/04/20/customizing-the-wolverine-code-generation-model/?utm_source=blog.peterritchie.com"&gt;Customizing the Wolverine Code Generation Model – The Shade Tree Developer&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+ --&gt;
+&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/product-management-and-genai/?utm_source=blog.peterritchie.com"&gt;Product Management with GenAI: What Changes and What Doesn't&lt;/a&gt; by Mark Levison&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/blog/2026/04/24/with-api-knowledge-comes-great-power/?utm_source=blog.peterritchie.com"&gt;With API Knowledge Comes Great Power&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-mcp-server-mcpb-support/?utm_source=blog.peterritchie.com"&gt;Azure MCP Server now available as an MCP Bundle (.mcpb)&lt;/a&gt; by Victor Colin Amador&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/axios-npm-supply-chain-compromise-guidance-for-azure-pipelines-customers/?utm_source=blog.peterritchie.com"&gt;Axios npm Supply Chain Compromise – Guidance for Azure Pipelines Customers&lt;/a&gt; by Josef Sin&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-multi-language-hooks/?utm_source=blog.peterritchie.com"&gt;Write azd hooks in Python, JavaScript, TypeScript, or .NET&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/7-tips-to-optimize-azure-cosmos-db-costs-for-ai-and-agentic-workloads/?utm_source=blog.peterritchie.com"&gt;7 tips to optimize Azure Cosmos DB costs for AI and agentic workloads&lt;/a&gt; by Michal Toiba&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/optimizing-git-policy-management-at-scale/?utm_source=blog.peterritchie.com"&gt;Optimizing Git policy management at scale&lt;/a&gt; by Azat Galiev&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-april-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (April 2026)&lt;/a&gt; by Ronnie Geraghty&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/general-availability-dynamic-data-masking-for-azure-cosmos-db/?utm_source=blog.peterritchie.com"&gt;General Availability: Dynamic Data Masking for Azure Cosmos DB&lt;/a&gt; by Sudhanshu Khera&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-mcp-server-april-update/?utm_source=blog.peterritchie.com"&gt;Azure DevOps MCP Server April Update&lt;/a&gt; by Dan Hellem&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-test-pyramid-is-a-lie-and-what-i-do-instead?utm_source=blog.peterritchie.com"&gt;The Test Pyramid Is a Lie (and What I Do Instead)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/git/highlights-from-git-2-54/?utm_source=blog.peterritchie.com"&gt;Highlights from Git 2.54&lt;/a&gt; by Taylor Blau&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.forbes.com/sites/jasonwingard/2026/04/23/vibe-coding-will-break-your-company/?utm_source=blog.peterritchie.com"&gt;Vibe Coding Will Break Your Company&lt;/a&gt; by Dr. Jason Wingard&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-ai-great-leap-forward-a-warning?utm_source=blog.peterritchie.com"&gt;The AI Great Leap Forward (a warning)&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/vibing-harness-and-ooda-loop?utm_source=blog.peterritchie.com"&gt;Vibing, Harness and OODA loop&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ardalis.com/setting-up-claude-code-agent-teams-with-wsl2-and-tmux-on-windows/?utm_source=blog.peterritchie.com"&gt;Setting Up Claude Code Agent Teams With Wsl2 and Tmux on Windows&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2026/04/20/are-we-the-parents-in-the-ai-agent-relationship?utm_source=blog.peterritchie.com"&gt;Are we the parents in the AI Agent relationship? The drama continues&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-copilot-integration/?utm_source=blog.peterritchie.com"&gt;GitHub Copilot meets Azure Developer CLI: AI-assisted project setup and error troubleshooting&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/company-news/changes-to-github-copilot-individual-plans/?utm_source=blog.peterritchie.com"&gt;Changes to GitHub Copilot Individual plans&lt;/a&gt; by Joe Binder&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-19</id>
 		<title>Things That Caught My Attention Last Week - April 19</title>
@@ -1444,74 +1528,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/discussions/windows11/microsoft-finally-admits-almost-all-major-windows-11-core-features-are-broken/4475930?utm_source=blog.peterritchie.com"&gt;Microsoft finally admits almost all major Windows 11 core features are broken&lt;/a&gt; by Theo Dalton&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.zdnet.com/article/why-ai-agents-failed-to-take-over-in-2025-story-as-old-as-time-deloitte/?utm_source=blog.peterritchie.com"&gt;Why AI agents failed to take over in 2025 - it's 'a story as old as time,' says Deloitte&lt;/a&gt; by Sabrina Ortiz&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.infoworld.com/article/4098925/is-vibe-coding-the-new-gateway-to-technical-debt.html?utm_source=blog.peterritchie.com"&gt;Is vibe coding the new gateway to technical debt?&lt;/a&gt; by Matthew Tyson&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-8</id>
-		<title>Things That Caught My Attention Last Week - December 8</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-8" />
-		<updated>2025-12-12T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
-
-## Software Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/debugging-entity-framework-core-8-real-world-query-anti-patterns-and-how-to-fix-them/?utm_source=blog.peterritchie.com"&gt;Debugging Entity Framework Core: 8 Real-World Query Anti=Patterns (and How to Fix Them)&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-conf-2025-recap/?utm_source=blog.peterritchie.com"&gt;.NET Conf 2025 Recap - Celebrating .NET 10, Visual Studio 2026, AI, Community, &amp;amp; More&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-november-update-visual-studio-2026-cloud-agent-preview-and-more/?utm_source=blog.peterritchie.com"&gt;Visual Studio 2026 November 2025 Update&lt;/a&gt; by Simona Liao&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ardalis.com/single-file-tests-in-dotnet-csharp/?utm_source=blog.peterritchie.com"&gt;Single File Test Suites in Dotnet Csharp&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/recent-updates-to-netescapaades-enumgenerators/?utm_source=blog.peterritchie.com"&gt;Recent updates to NetEscapades.EnumGenerators: [EnumMember] support, analyzers, and bug fixes&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/creating-a-custom-msbuild-sdk-to-reduce-boilerplate-in-dotnet-projects.htm?utm_source=blog.peterritchie.com"&gt;Creating a custom MSBuild SDK to reduce boilerplate in .NET projects&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/02/aspire-run-azure-functions/?utm_source=blog.peterritchie.com"&gt;How does Aspire launch the Azure Functions runtime when you call aspire run?&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2025/12/04/classic-net-domain-events-with-wolverine-and-ef-core/?utm_source=blog.peterritchie.com"&gt;&amp;quot;Classic&amp;quot; .NET Domain Events with Wolverine and EF Core&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2025/12/06/csadvent.html?utm_source=blog.peterritchie.com"&gt;C# Advent 2025 - St. Nicholas Goodies&lt;/a&gt; by sadukie&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/dbcontext-is-not-thread-safe-parallelizing-ef-core-queries-the-right-way?utm_source=blog.peterritchie.com"&gt;DbContext is Not Thread-Safe: Parallelizing EF Core Queries the Right Way&lt;/a&gt; by Milan Jovanovié&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/domain-driven-design-misconceptions/?utm_source=blog.peterritchie.com"&gt;Domain-Driven Design Misconceptions&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
-## Azure
-
- --&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.scrum.org/resources/blog/using-technical-debt-register-scrum?utm_source=blog.peterritchie.com"&gt;Using a &amp;quot;Technical Debt Register&amp;quot; in Scrum&lt;/a&gt; by Ian Mitchell&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/12/01/treat-test-code-like-production-code/?utm_source=blog.peterritchie.com"&gt;Treat test code like production code&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/thinking-in-systems?utm_source=blog.peterritchie.com"&gt;Thinking in Systems: A Retrospective on a Life Spent Trying to Understand How Things Fit Together (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;!-- ## Windows
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-the-positive-power-of-llms?utm_source=blog.peterritchie.com"&gt;Shortwave: The Positive Power of LLMs&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
