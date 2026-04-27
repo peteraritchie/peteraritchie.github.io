@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Mon, 27 Apr 2026 17:31:39 GMT</pubDate>
-		<lastBuildDate>Mon, 27 Apr 2026 17:31:39 GMT</lastBuildDate>
+		<pubDate>Mon, 27 Apr 2026 17:36:44 GMT</pubDate>
+		<lastBuildDate>Mon, 27 Apr 2026 17:36:44 GMT</lastBuildDate>
 		<item>
 			<title>Things That Caught My Attention Last Week - April 26</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26</link>
@@ -14,16 +14,18 @@
 			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26</guid>
 			<pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;!-- ## Open-source
+&lt;!-- ## Security
+
+## Open-source
 
 ## Domain-Driven Design, CQRS
  --&gt;
 &lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://karoxi.dev/blog/kafka_not_an_event_store?utm_source=blog.peterritchie.com"&gt;Kafka Is Not An Event Store&lt;/a&gt; by karoxi&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://codeopinion.com/just-use-postgres-as-a-queue/?utm_source=blog.peterritchie.com"&gt;Just Use Postgres as a Queue?&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;h2 id="githib"&gt;GitHib&lt;/h2&gt;
-&lt;!--## Presenting
+&lt;!--## GitHib
+
+## Presenting
  --&gt;
 &lt;h2 id="net"&gt;.NET&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.woodruff.dev/resharper-made-vs-code-a-real-option-for-my-net-work/?utm_source=blog.peterritchie.com"&gt;ReSharper Made VS Code a Real Option for My .NET Work&lt;/a&gt; by Chris Woodruff&lt;/p&gt;

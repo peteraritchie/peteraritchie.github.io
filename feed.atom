@@ -4,7 +4,7 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-04-27T17:31:39Z</updated>
+	<updated>2026-04-27T17:36:44Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26</id>
@@ -12,16 +12,18 @@
 		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26" />
 		<updated>2026-04-27T00:00:00Z</updated>
 		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;!-- ## Open-source
+&lt;!-- ## Security
+
+## Open-source
 
 ## Domain-Driven Design, CQRS
  --&gt;
 &lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://karoxi.dev/blog/kafka_not_an_event_store?utm_source=blog.peterritchie.com"&gt;Kafka Is Not An Event Store&lt;/a&gt; by karoxi&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://codeopinion.com/just-use-postgres-as-a-queue/?utm_source=blog.peterritchie.com"&gt;Just Use Postgres as a Queue?&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;h2 id="githib"&gt;GitHib&lt;/h2&gt;
-&lt;!--## Presenting
+&lt;!--## GitHib
+
+## Presenting
  --&gt;
 &lt;h2 id="net"&gt;.NET&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.woodruff.dev/resharper-made-vs-code-a-real-option-for-my-net-work/?utm_source=blog.peterritchie.com"&gt;ReSharper Made VS Code a Real Option for My .NET Work&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
