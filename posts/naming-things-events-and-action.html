@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Peter Ritchie&#x27;s Blog - Naming Things - Common Actions and Events</title>
+        <title>Peter Ritchie&#x27;s Blog</title>
         <meta name="description" content="Peter Ritchie" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,7 +28,7 @@
         <meta name="msapplication-tooltip" content="Peter Ritchie&#x27;s Blog" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Peter Ritchie&#x27;s Blog - Naming Things - Common Actions and Events" />
+        <meta property="og:title" content="Peter Ritchie&#x27;s Blog" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://blog.peterritchie.com/posts/naming-things-events-and-action" />
         <!-- TODO: More social graph meta tags -->
@@ -76,13 +76,9 @@
 
     
 <div class="post-heading">
-    <h1>Naming Things - Common Actions and Events</h1>
+    <h1></h1>
     <div class="meta">        
 Published on Thursday, September 1, 2022<br>    </div>
-        <div class="tags">
-                    <a role="button" href="/tags/Architecture" class="btn btn-default btn-xs">Architecture</a>
-                    <a role="button" href="/tags/Naming-Things" class="btn btn-default btn-xs">Naming Things</a>
-        </div>     
 </div>
                                         </div>
                                 </div>
@@ -95,17 +91,25 @@ Published on Thursday, September 1, 2022<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p>In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.</p>
+<p>—-
+layout: post
+title: 'Naming Things - Common Actions and Events'
+categories: ['Naming Things', 'Architecture']
+comments: true
+excerpt: &quot;One aspect of making it easier to name things is to settle on some common terms, avoiding confusing synonyms.  In this case common actions and events.&quot;
+tags: ['Naming Things', 'Architecture']
+—-
+In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts—in this case, common actions and events.</p>
 <p>What does Deleted mean? Is it the same as Removed or Destroyed? What if you want to support soft delete as well as hard delete?</p>
-<p>I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like &quot;soft delete&quot; and &quot;hard delete .&quot;The customer will probably refer to the most common form of delete as &quot;delete.&quot; An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.</p>
-<p>Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection--physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed--from a particular view or existence.</p>
+<p>I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like &quot;soft delete&quot; and &quot;hard delete&quot;. The customer will probably refer to the most common form of delete as &quot;delete.&quot; An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.</p>
+<p>Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection—physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed—from a particular view or existence.</p>
 <p>English allows us to reuse terms to mean many things. &quot;Delete&quot; and &quot;changed,&quot; for example. There are well-known terms that enable us to communicate intent and consequences easily. But, when we reuse these terms across different contexts with different intents and consequences, we introduce the possibility of confusion, making naming things seem difficult.</p>
 <p>It's important to understand the different intents and resulting consequences to data and attempt to get consensus on names and terms that adequately and uniquely represent these situations.</p>
 <p>&quot;Delete&quot; is a common point of confusion. There may be a need for <em>soft deletes</em> and <em>hard deletes</em>; both of WHICH make data inaccessible in a context. But, data may also be moved from one context to another, changing its accessibility but not making it <em>inaccessible</em>. To use a single term like &quot;delete&quot; for all of these situations leads to confusion and issues in naming things.</p>
-<!--
-An important aspect of naming: name the consistency boundary. What is a date? A year, month, and day. If we included time, is it still a date? Typically that would be called date/time.  
--->
-<p>Each domain can be different, but the situations I've just described are very common. For those, I start with unique terms for each and work with the subject matter experts to refine them (if needed):</p>
+<p>&lt;!—
+An important aspect of naming: name the consistency boundary. What is a date? A year, month, and day. If we included time, is it still a date? Typically that would be called date/time.<br />
+—&gt;
+Each domain can be different, but the situations I've just described are very common. For those, I start with unique terms for each and work with the subject matter experts to refine them (if needed):</p>
 <ul>
 <li><strong>Deleted</strong> means something is no longer accessible in some context.</li>
 <li><strong>Destroyed</strong> means removed from existence; no possible way to ever get it back.</li>
@@ -114,7 +118,7 @@ An important aspect of naming: name the consistency boundary. What is a date? A 
 <p>Inverse terms:</p>
 <ul>
 <li><strong>Created</strong> signifies something new has come into existence (rather than Added).</li>
-<li><strong>Added</strong>* signifies something has been added to a container or collection.</li>
+<li><strong>Added</strong> signifies something has been added to a container or collection.</li>
 </ul>
 <p>Mutating information seems like such a simple concept. But, we often need to know if data changes within the context of other data.  Unique data mutation terms I start out with when working with subject matter experts:</p>
 <ul>
@@ -135,7 +139,7 @@ An important aspect of naming: name the consistency boundary. What is a date? A 
 <div id="disqus_thread"></div>  
 <!--
     'naming-things-events-and-action'
-    'Naming Things - Common Actions and Events'
+    'Peter Ritchie&#x27;s Blog'
     'http://blog.peterritchie.com/posts/naming-things-events-and-action'
 -->
 <script type="text/javascript">
@@ -147,7 +151,7 @@ An important aspect of naming: name the consistency boundary. What is a date? A 
 
     var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
-    var disqus_title = 'Naming Things - Common Actions and Events';
+    var disqus_title = 'Peter Ritchie&#x27;s Blog';
     var disqus_url = 'http://blog.peterritchie.com/posts/naming-things-events-and-action';
 
     if(publishedDate < fromJekyllDate)
