@@ -1,18 +1,18 @@
----
+&mdash;-
 layout: post
 title: 'Naming Things - Common Actions and Events'
 categories: ['Naming Things', 'Architecture']
 comments: true
 excerpt: "One aspect of making it easier to name things is to settle on some common terms, avoiding confusing synonyms.  In this case common actions and events."
 tags: ['Naming Things', 'Architecture']
----
-In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts--in this case, common actions and events.
+&mdash;-
+In this multi-part series on Naming Things, I dig into the benefits of having a clear understanding of common terms and concepts&mdash;in this case, common actions and events.
 
 What does Deleted mean? Is it the same as Removed or Destroyed? What if you want to support soft delete as well as hard delete?
 
-I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like "soft delete" and "hard delete ."The customer will probably refer to the most common form of delete as "delete." An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.
+I want to be clear; these aren't developer decisions. They're developer problems based on a lack of clarity in the customer's domain. A customer likely won't use terms like "soft delete" and "hard delete". The customer will probably refer to the most common form of delete as "delete." An architect role is responsible for teasing out the nuances of meaning into terms that the subject matter experts agree upon and getting consensus on usage with the development team.
 
-Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection--physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed--from a particular view or existence.
+Every system involves mutating data and information, yet it can be a common source of confusion regarding naming things. There are multiple types of data changes. Systems can create new data and may add that new data to a collection&mdash;physical or logical. Systems may change data, or designers may change the structure of data. Data is often removed&mdash;from a particular view or existence.
 
 English allows us to reuse terms to mean many things. "Delete" and "changed," for example. There are well-known terms that enable us to communicate intent and consequences easily. But, when we reuse these terms across different contexts with different intents and consequences, we introduce the possibility of confusion, making naming things seem difficult.
 
@@ -20,9 +20,9 @@ It's important to understand the different intents and resulting consequences to
 
 "Delete" is a common point of confusion. There may be a need for _soft deletes_ and _hard deletes_; both of WHICH make data inaccessible in a context. But, data may also be moved from one context to another, changing its accessibility but not making it _inaccessible_. To use a single term like "delete" for all of these situations leads to confusion and issues in naming things.  
 
-<!--
+<!&mdash;
 An important aspect of naming: name the consistency boundary. What is a date? A year, month, and day. If we included time, is it still a date? Typically that would be called date/time.  
--->
+&mdash;>
 Each domain can be different, but the situations I've just described are very common. For those, I start with unique terms for each and work with the subject matter experts to refine them (if needed):
 
 - **Deleted** means something is no longer accessible in some context.
@@ -32,7 +32,7 @@ Each domain can be different, but the situations I've just described are very co
 Inverse terms:
 
 - **Created** signifies something new has come into existence (rather than Added).
-- **Added*** signifies something has been added to a container or collection.
+- **Added** signifies something has been added to a container or collection.
 
 Mutating information seems like such a simple concept. But, we often need to know if data changes within the context of other data.  Unique data mutation terms I start out with when working with subject matter experts:
 
