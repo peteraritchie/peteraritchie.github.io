@@ -4,8 +4,84 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-05-14T23:00:40Z</updated>
+	<updated>2026-05-15T20:58:50Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-10</id>
+		<title>Things That Caught My Attention Last Week - May 10</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-10" />
+		<updated>2026-05-15T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-oss-contributions/?utm_source=blog.peterritchie.com"&gt;GitHub for Beginners: Getting started with OSS contributions&lt;/a&gt; by Kedasha Kerr&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+--&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/dont-overestimate-domain-expertise?utm_source=blog.peterritchie.com"&gt;Don't overestimate domain expertise&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/debugging-event-driven-systems-5-problems-teams-create/?utm_source=blog.peterritchie.com"&gt;Debugging Event-Driven Systems: 5 Problems Teams Create&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/propagating-opentelemetry-context-in-dotnet.htm?utm_medium=social&amp;amp;utm_source=syndication?utm_source=blog.peterritchie.com"&gt;Propagating OpenTelemetry context in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/api-versioning-should-be-your-last-resort?utm_source=blog.peterritchie.com"&gt;API Versioning Should Be Your Last Resort&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.wildermuth.com/2026/05/07/pluralsight-course-updates/?utm_source=blog.peterritchie.com"&gt;I've Been Busy Updating My Pluralsight Courses&lt;/a&gt; by Shawn Wildemuth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/05/05/wolverine-middleware-and-some-random-observations/?utm_source=blog.peterritchie.com"&gt;Wolverine Middleware and Some Random Observations&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/blog/2026/05/11/83-of-the-fortune-100-have-a-developer-or-api-portal/?utm_source=blog.peterritchie.com"&gt;83 of the Fortune 100 Have a Developer or API Portal&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-curity-least-privilege-ai-agents/?utm_source=blog.peterritchie.com"&gt;Least privilege AI agents: A new azd template from Curity and Microsoft&lt;/a&gt; by Kristen Womack&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/scalable-ai-with-azure-cosmos-db-bringing-generative-ai-to-enterprise-scale-with-super-insight-by-avasoft/?utm_source=blog.peterritchie.com"&gt;Generative AI in Document Processing with Azure&lt;/a&gt; by Manish Sharma&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-shell-public-preview-ai-mcp-cli/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB Shell Public Preview: AI-Powered CLI&lt;/a&gt; by Sajeetharan Sinnathurai&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/policy-news-and-insights/why-age-assurance-laws-matter-for-developers/?utm_source=blog.peterritchie.com"&gt;Why age assurance laws matter for developers&lt;/a&gt; by Margaret Tucker&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/what-we-lost-the-last-time-code-got-cheap?utm_source=blog.peterritchie.com"&gt;What We Lost the Last Time Code Got Cheap&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/the-cost-of-always-having-the-answer?utm_source=blog.peterritchie.com"&gt;The cost of always having the answer&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blogs.newardassociates.com/blog/2026/titit-agents-as-ides.html?utm_source=blog.peterritchie.com"&gt;Things I Think I Think... about Coding Agents and IDEs&lt;/a&gt; by Ted Neward&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/?utm_source=blog.peterritchie.com"&gt;Improving token efficiency in GitHub Agentic Workflows&lt;/a&gt; by Landon Cox, Mara Kiefer&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/agent-pull-requests-are-everywhere-heres-how-to-review-them/?utm_source=blog.peterritchie.com"&gt;Agent pull requests are everywhere. Here's how to review them.&lt;/a&gt; by Andrea Griffiths&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/copilot-studio-dotnet-10-migration/?utm_source=blog.peterritchie.com"&gt;Copilot Studio gets faster with .NET 10 on WebAssembly&lt;/a&gt; by Daniel Roth&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/blog/2026/05/07/seeing-mcp/?utm_source=blog.peterritchie.com"&gt;Seeing MCP&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/validating-agentic-behavior-when-correct-isnt-deterministic/?utm_source=blog.peterritchie.com"&gt;Validating agentic behavior when “correct” isn’t deterministic&lt;/a&gt; by Gaurav Mittal, Reshabh Kumar Sharma&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+
+## Databases
+
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-april-26</id>
 		<title>Things That Caught My Attention Last Week - April 26</title>
@@ -1454,82 +1530,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;p&gt;&lt;a href="https://dev.to/yooi/beyond-coding-your-accountability-buddy-with-claude-code-skill-4omh?utm_source=blog.peterritchie.com"&gt;Beyond Coding: Your Accountability Buddy with Claude Code Skill&lt;/a&gt; by Ooi Yee Fei&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.404media.co/hack-reveals-the-a16z-backed-phone-farm-flooding-tiktok-with-ai-influencers/?utm_source=blog.peterritchie.com"&gt;Hack Reveals the a16z-Backed Phone Farm Flooding TikTok With AI Influencers&lt;/a&gt; by Emanuel Maiberg&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.blog/news-insights/policy-news-and-insights/the-future-of-ai-powered-software-optimization-and-how-it-can-help-your-team/?utm_source=blog.peterritchie.com"&gt;The future of AI-powered software optimization (and how it can help your team)&lt;/a&gt; by Paull Young&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-15</id>
-		<title>Things That Caught My Attention Last Week - December 16</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-december-15" />
-		<updated>2025-12-16T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
-
-## Software Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-minimal-api-service-layer-pattern-making-http-a-client-not-the-boss/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core Minimal API: Service Layer Pattern - Making HTTP a Client, Not the Boss&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/how-to-build-ios-widgets-with-dotnet-maui/?utm_source=blog.peterritchie.com"&gt;How to Build iOS Widgets with .NET MAUI&lt;/a&gt; by Toine de Boer&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/behind-the-scenes-of-the-visual-studio-feedback-system/?utm_source=blog.peterritchie.com"&gt;Behind the scenes of the Visual Studio feedback system&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/resolving-overload-ambiguity-with-collection-expressions.htm?utm_source=blog.peterritchie.com"&gt;Resolving Overload Ambiguity with Collection Expressions&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/08/aspire-docker-compose/?utm_source=blog.peterritchie.com"&gt;How Aspire composes itself: an overview of Aspire's Docker Compose integration&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-new-slnx-solution-format-migration-guide?utm_source=blog.peterritchie.com"&gt;The New .slnx Solution Format (migration guide)&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.pkgstore.io/publish?utm_source=blog.peterritchie.com"&gt;Publish - pkgstore&lt;/a&gt; by&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://chris-ayers.com/2025/12/11/aspire-cli-getting-started/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI - A Complete Guide&lt;/a&gt; by Chris Ayers&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/devlooped/nugetizer/?tab=readme-ov-file#-nugetizer?utm_source=blog.peterritchie.com"&gt;GitHub - devlooped/nugetizer: A simple to understand packing model for authoring NuGet packages&lt;/a&gt; by devlooped&lt;/p&gt;
-&lt;h2 id="conferences-and-speaking"&gt;Conferences and Speaking&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://dylanbeattie.net/2025/12/08/so-you-want-to-speak-at-software-conferences.html?utm_source=blog.peterritchie.com"&gt;So You Want To Speak At Software Conferences?&lt;/a&gt; by Sylan Beattie&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ndctoronto.com/?utm_source=blog.peterritchie.com"&gt;NDC Toronto 2026 | Conference for Software Developers&lt;/a&gt; by NDC&lt;/p&gt;
-&lt;h2 id="domain-driven-design"&gt;Domain Driven Design&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/aggregates-in-ddd-model-rules-not-relationships/?utm_source=blog.peterritchie.com"&gt;Aggregates in DDD: Model Rules, Not Relationships&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-blue-green-aca-deployment/?utm_source=blog.peterritchie.com"&gt;Blue-green deployment in Azure Container Apps using Azure Developer CLI&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-becoming-a-search-native-database/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB : Becoming a Search-Native Database&lt;/a&gt; by Hari Sudan S&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/announcing-azure-devops-server-general-availability/?utm_source=blog.peterritchie.com"&gt;Announcing Azure DevOps Server General Availability&lt;/a&gt; by Gloridel Morales&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2025/12/08/pattern-guards-for-a-protocol/?utm_source=blog.peterritchie.com"&gt;Pattern guards for a protocol&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20251215-00/?p=111869?utm_source=blog.peterritchie.com"&gt;The Windows clipboard automatic text conversion algorithm is path-dependent&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;!-- ## Windows
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-beyond-hallucinations-the?utm_source=blog.peterritchie.com"&gt;Shortwave: Beyond Hallucinations: The Illusion of Understanding&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.guru3d.com/story/windows-11-script-emerges-claiming-to-strip-all-ai-features-from-the-os/?utm_source=blog.peterritchie.com"&gt;Windows 11 Script Emerges Claiming to Strip All AI Features From the OS&lt;/a&gt; by Hilbert Hagedoorn&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://simonwillison.net/2025/Dec/12/openai-skills/?utm_source=blog.peterritchie.com"&gt;OpenAI are quietly adopting skills, now available in ChatGPT and Codex CLI&lt;/a&gt; by Simon Willison&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://techcommunity.microsoft.com/discussions/windows11/microsoft-finally-admits-almost-all-major-windows-11-core-features-are-broken/4475930?utm_source=blog.peterritchie.com"&gt;Microsoft finally admits almost all major Windows 11 core features are broken&lt;/a&gt; by Theo Dalton&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.zdnet.com/article/why-ai-agents-failed-to-take-over-in-2025-story-as-old-as-time-deloitte/?utm_source=blog.peterritchie.com"&gt;Why AI agents failed to take over in 2025 - it's 'a story as old as time,' says Deloitte&lt;/a&gt; by Sabrina Ortiz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.infoworld.com/article/4098925/is-vibe-coding-the-new-gateway-to-technical-debt.html?utm_source=blog.peterritchie.com"&gt;Is vibe coding the new gateway to technical debt?&lt;/a&gt; by Matthew Tyson&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
