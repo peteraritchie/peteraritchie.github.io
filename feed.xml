@@ -5,8 +5,92 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Wed, 20 May 2026 15:25:19 GMT</pubDate>
-		<lastBuildDate>Wed, 20 May 2026 15:25:19 GMT</lastBuildDate>
+		<pubDate>Mon, 08 Jun 2026 20:47:14 GMT</pubDate>
+		<lastBuildDate>Mon, 08 Jun 2026 20:47:14 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - June 7</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-7</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-7</guid>
+			<pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+## Open-source
+
+## Domain-Driven Design, CQRS
+--&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/modular-monolith-boundaries/?utm_source=blog.peterritchie.com"&gt;Modular Monolith Boundaries Done Wrong&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://antondevtips.com/blog/40-lessons-i-learned-in-12-years-as-a-dotnet-developer?utm_source=blog.peterritchie.com"&gt;40 Lessons I Learned in 12 Years as a .NET Developer&lt;/a&gt; by Anton Martyniuk&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/improving-csharp-memory-safety/?utm_source=blog.peterritchie.com"&gt;Improving C# Memory Safety&lt;/a&gt; by Richard Lander&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dotnetfoundation.org/board-elections/candidates?utm_source=blog.peterritchie.com"&gt;2026 Board Election Candidates&lt;/a&gt; by .NET Foundation&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/new-features-and-roslyn-analyzers-for-meziantou-framework-fullpath.htm?utm_source=blog.peterritchie.com"&gt;New features and Roslyn analyzers for Meziantou.Framework.FullPath&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c14-the-field-keyword-4i5j?utm_source=blog.peterritchie.com"&gt;C#14 The field keyword&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/06/04/the-codebase-is-the-prompt-wolverine-vertical-slices-and-ai-assisted-development/?utm_source=blog.peterritchie.com"&gt;The Codebase Is the Prompt: Wolverine, Vertical Slices, and AI-Assisted Development&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/whats-coming-next-in-visual-studio-our-microsoft-build-2026-announcements/?utm_source=blog.peterritchie.com"&gt;What's Coming Next in Visual Studio: Our Microsoft Build 2026 Announcements&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/pagination-in-entity-framework-core-why-skip-take-falls-apart-on-hot-tables/?utm_source=blog.peterritchie.com"&gt;Pagination in Entity Framework Core: Why Skip/Take Falls Apart on Hot Tables&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/union-types-are-finally-coming-to-csharp?utm_source=blog.peterritchie.com"&gt;Union Types Are Finally Coming to C#&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/doing-more-with-github-copilot/?utm_source=blog.peterritchie.com"&gt;Doing More with GitHub Copilot as a .NET Developer&lt;/a&gt; by Wendy Breiding (SHE/HER)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-may-update-plan-review-refine/?utm_source=blog.peterritchie.com"&gt;Visual Studio May Update – Plan, Review, Refine&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/05/25/higher-performance-dynamic-consistency-boundary-development-with-marten-9-0/?utm_source=blog.peterritchie.com"&gt;Higher Performance Dynamic Consistency Boundary Development with Marten 9.0&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+--&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/dry-is-the-most-misunderstood-rule-in-programming?utm_source=blog.peterritchie.com"&gt;DRY Is the Most Misunderstood Rule in Programming&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/05/roll-for-architecture/?utm_source=blog.peterritchie.com"&gt;Roll for Architecture: What D&amp;amp;D Taught Me About Software Design&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;!--## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/all-devtools-die/?utm_source=blog.peterritchie.com"&gt;All Devtools Die&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-and-github-journeying-into-the-ai-era/?utm_source=blog.peterritchie.com"&gt;Azure DevOps and GitHub: Journeying into the AI Era&lt;/a&gt; by Rajesh Ramamurthy&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/introducing-azure-functions-skills-ai-era-workspace/?utm_source=blog.peterritchie.com"&gt;Introducing azure-functions-skills: An AI-Era Workspace for Azure Functions (Preview)&lt;/a&gt; by Tsuyoshi Ushio&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-migration-assistant-rdbms-to-nosql-public-preview/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB Migration Assistant for RDBMS to NoSQL&lt;/a&gt; by Sergiy Smyrnov&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/announcing-general-availability-of-the-azure-cosmos-db-vnext-emulator/?utm_source=blog.peterritchie.com"&gt;Announcing General availability of the Azure Cosmos DB vNext emulator&lt;/a&gt; by Abhishek Gupta&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/how-microsoft-is-migrating-repositories-to-github/?utm_source=blog.peterritchie.com"&gt;How Microsoft is migrating repositories to GitHub&lt;/a&gt; by Poonam Gupta&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blogs.newardassociates.com/blog/2026/titit-llms-and-internet.html?utm_source=blog.peterritchie.com"&gt;Things I Think I Think... The New Internet Era&lt;/a&gt; by Ted Neward&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/stop-joining-tables-in-your-modular-monolith/?utm_source=blog.peterritchie.com"&gt;Stop Joining Tables In Your “Modular” Monolith&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://open.substack.com/pub/vasudhaprabhala/p/the-10x-ai-delusion-and-the-real?utm_source=blog.peterritchie.com"&gt;The 10x AI Delusion &amp;amp; The Real Bottlenecks&lt;/a&gt; by Vasudha Prabhala&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.searchenginejournal.com/ai-literacy-is-not-prompt-literacy-ann-handley-says-its-judgment-literacy/577322/?utm_source=blog.peterritchie.com"&gt;AI Literacy Is Not Prompt Literacy. Ann Handley Says It's Judgment Literacy&lt;/a&gt; by Greg Jarboe&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/the-agent-always-cost-this-much?utm_source=blog.peterritchie.com"&gt;The agent always cost this much&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blogs.newardassociates.com/blog/2026/rnd-whichlang.html?utm_source=blog.peterritchie.com"&gt;Research: &amp;quot;What's the Default Language of an LLM?&amp;quot;&lt;/a&gt; by Ted Neward&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/?utm_source=blog.peterritchie.com"&gt;GitHub Copilot app: The agent-native desktop experience&lt;/a&gt; by Mario Rodriguez&lt;/p&gt;
+&lt;!-- ## Social Media
+
+## Online Tools
+--&gt;
+&lt;h2 id="databases"&gt;Databases&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/how-soon-is-now-in-postgresql?utm_source=blog.peterritchie.com"&gt;How soon is now in PostgreSQL?&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;!--
+## Cloud
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - May 17</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-may-17</link>
@@ -1475,84 +1559,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
 &lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
 &lt;!-- Calendly inline widget end --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - January 5</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-5</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-5</guid>
-			<pubDate>Wed, 07 Jan 2026 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
- --&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/permissionlesstech/bitchat#?utm_source=blog.peterritchie.com"&gt;GitHub - permissionlesstech/bitchat: bluetooth mesh chat, IRC vibes&lt;/a&gt; by permissionlesstech&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/aleixrodriala/wa-tunnel?tab=readme-ov-file#wa-tunnel---tcp-tunneling-through-whatsapp?utm_source=blog.peterritchie.com"&gt;GitHub - aleixrodriala/wa-tunnel: Tunneling Internet traffic over Whatsapp&lt;/a&gt; by aleixrodriala&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/this-years-most-influential-open-source-projects/?utm_source=blog.peterritchie.com"&gt;This year's most influential open source projects&lt;/a&gt; by Lee Reilly&lt;/p&gt;
-&lt;!-- ## Software Architecture
-
-## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/01/04/critter-stack-and-jasperfx-retrospective-for-2025/?utm_source=blog.peterritchie.com"&gt;Critter Stack and JasperFx Retrospective for 2025&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/how-to-build-a-high-performance-cache-without-external-libraries?utm_source=blog.peterritchie.com"&gt;How to Build a High-Performance Cache Without External Libraries&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/asp-net-core-idisplaymetadataprovider-46al?utm_source=blog.peterritchie.com"&gt;ASP .NET Core IDisplayMetadataProvider&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://idunno.org/generating-sboms-for-net-apps-and-nuget-packages-with-microsoft-sbom-targets/?utm_source=blog.peterritchie.com"&gt;Generating SBOMs in NuGet packages with Microsoft.Sbom.Targets&lt;/a&gt; by Barry Dorrans&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/creating-provenance-attestations-for-nuget-packages-in-github-actions/?utm_source=blog.peterritchie.com"&gt;Creating provenance attestations for NuGet packages in GitHub Actions&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/CodingWithCalvin/VS-ProjectRenamifier?tab=readme-ov-file#project-renamifier?utm_source=blog.peterritchie.com"&gt;GitHub - CodingWithCalvin/VS-ProjectRenamifier: A Visual Studio extension that allows you to safely - and COMPLETELY - rename a Project from within Visual Studio!&lt;/a&gt; by CodingWithCalvin&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://chris-ayers.com/2025/12/11/aspire-cli-getting-started/?utm_source=blog.peterritchie.com"&gt;Getting Started with the Aspire CLI - A Complete Guide&lt;/a&gt; by Chris Ayers&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-minimal-api-identity-map-pattern/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core Minimal API: Identity Map Pattern&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/top-dotnet-videos-live-streams-of-2025/?utm_source=blog.peterritchie.com"&gt;Top .NET Videos &amp;amp; Live Streams of 2025&lt;/a&gt; by Jon Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/vs-live-2026-immersive-learning-for-vs2026/?utm_source=blog.peterritchie.com"&gt;Welcome to 2026, A Growth Year for All of Us&lt;/a&gt; by Jim Harrer&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
- --&gt;
- &lt;!-- ## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-vnext-emulator-query-and-observability-enhancements/?utm_source=blog.peterritchie.com"&gt;Azure Cosmos DB vNext Emulator: Query and Observability Enhancements&lt;/a&gt; by Abhishek Gupta&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/work-item-linking-for-advanced-security-alerts-now-available/?utm_source=blog.peterritchie.com"&gt;Work item linking for Advanced Security alerts now available&lt;/a&gt; by Laura Jiang&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/context-is-the-bottleneck-in-software-development/?utm_source=blog.peterritchie.com"&gt;Context Is the Bottleneck in Software Development&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/css-quote-attr/?utm_source=blog.peterritchie.com"&gt;CSS for markdown blockquote attribution&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2025/12/22/ansi-codes/?utm_source=blog.peterritchie.com"&gt;There's no escaping it: an exploration of ANSI codes&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/01/05/coupling-from-a-big-o-perspective/?utm_source=blog.peterritchie.com"&gt;Coupling from a big-O perspective&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260106-00/?p=111968?utm_source=blog.peterritchie.com"&gt;Swapping two blocks of memory that reside inside a larger block, in constant memory, refinement&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/reduce-github-actions-runner-cpu-usage.htm?utm_source=blog.peterritchie.com"&gt;Reduce GitHub Actions runner CPU usage&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/zero-pii-customer-intelligence-part1?utm_source=blog.peterritchie.com"&gt;Zero PII Customer Intelligence - Part 1: The Philosophy&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;!-- ## Windows
-
-## AI
---&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
 </content:encoded>
 		</item>
 	</channel>
