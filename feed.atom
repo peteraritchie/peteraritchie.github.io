@@ -4,8 +4,81 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-06-17T19:40:31Z</updated>
+	<updated>2026-06-24T19:34:00Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22</id>
+		<title>Things That Caught My Attention Last Week - June 22</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22" />
+		<updated>2026-06-24T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;h2 id="security"&gt;Security&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://marybranscombe.leaflet.pub/3moj3d3hdvc2g?utm_source=blog.peterritchie.com"&gt;What is npm doing to protect the JavaScript ecosystem – and is it enough?&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/how-pull-request-limits-are-cutting-down-the-noise/?utm_source=blog.peterritchie.com"&gt;How pull request limits are cutting down the noise&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;h2 id="domain-driven-design-cqrs"&gt;Domain-Driven Design, CQRS&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.michael-ploed.com/blog/the-anticorruption-layer-contains-it-does-not-cure?utm_source=blog.peterritchie.com"&gt;The Anticorruption Layer Contains, It Does Not Cure&lt;/a&gt; by Michael Plöd&lt;/p&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/event-driven-architecture-mistakes/?utm_source=blog.peterritchie.com"&gt;Stop Blaming Event-Driven Architecture&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/theme-colors-shipped?utm_source=blog.peterritchie.com"&gt;Theme colors, shipped&lt;/a&gt; by Mark Downie&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/06/19/kafka-support-improvements-in-wolverine-6-13/?utm_source=blog.peterritchie.com"&gt;Kafka Support Improvements in Wolverine 6.13&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/bulkmerge-upsert-in-ef-core-how-to-insert-or-update-without-the-headache/?utm_source=blog.peterritchie.com"&gt;BulkMerge (Upsert) in EF Core: How to Insert-or-Update Without the Headache&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/msbuild-binlog-mcp-server/?utm_source=blog.peterritchie.com"&gt;AI-Powered MSBuild Investigation with the Microsoft Binlog MCP Server&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/06/the-case-of-the-empty-deployment/?utm_source=blog.peterritchie.com"&gt;The Case of the Empty IIS Deployment&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.tabsoverspaces.com/233972-strongly-typed-generic-object-in-csharp?utm_source=blog.peterritchie.com"&gt;Strongly typed generic object in C#&lt;/a&gt; by Jiří Činčura&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/announcing-strictland-new-contract?utm_source=blog.peterritchie.com"&gt;Announcing Strictland - new contract testing library for message compatibility&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/new-lines-are-more-than-r-and-n.htm?utm_source=blog.peterritchie.com"&gt;New lines are more than \r and \n&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/make-visual-studio-look-the-way-you-want/?utm_source=blog.peterritchie.com"&gt;Make Visual Studio look the way you want&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/commitment-to-improvement-2co2?utm_source=blog.peterritchie.com"&gt;Commitment to improvement&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;h2 id="conferences-and-speaking"&gt;Conferences and Speaking&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2026/06/18/no-excuses-for-manels.html?utm_source=blog.peterritchie.com"&gt;No Excuses for Manels&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;!-- ## Domain Driven Design
+
+## DevOps
+
+--&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/the-modular-monolith-boundary-i-couldnt-take-back?utm_source=blog.peterritchie.com"&gt;The Modular Monolith Boundary I Couldn't Take Back&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!--## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/06/19/soundcloud-shows-what-programmatic-api-onboarding-should-look-like/?utm_source=blog.peterritchie.com"&gt;SoundCloud Shows What Programmatic API Onboarding Should Look Like&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/go-faster-with-hey-api/?utm_source=blog.peterritchie.com"&gt;Go Faster with HeyAPI&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/deep-agents-to-plan-act-verify-against-operational-data/?utm_source=blog.peterritchie.com"&gt;How to Use Deep Agents with Azure Cosmos DB&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/retirement-of-azure-devops-issuer-in-workload-identity-federation-service-connections/?utm_source=blog.peterritchie.com"&gt;Retirement of Azure DevOps issuer in Workload identity federation service connections&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;!-- ## Software Development
+
+## Windows
+ --&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=HF_Cw0_wtlM?utm_source=blog.peterritchie.com"&gt;AI Software Development Is Near-Impossible (video)&lt;/a&gt; by Zoran on C#&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/getting-more-from-each-token-how-copilot-improves-context-handling-and-model-routing/?utm_source=blog.peterritchie.com"&gt;Getting more from each token: How Copilot improves context handling and model routing&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/approved-by-management?utm_source=blog.peterritchie.com"&gt;Approved by Management #26-01&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-15</id>
 		<title>Things That Caught My Attention Last Week - June 15</title>
@@ -1437,76 +1510,6 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;p&gt;&lt;a href="https://cassidoo.co/post/code-wave-build-log/?utm_source=blog.peterritchie.com"&gt;Code Wave Build Log&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://mamund.substack.com/p/intelligence-without-a-witness?utm_source=blog.peterritchie.com"&gt;Intelligence without a witness&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://apievangelist.com/2026/01/17/agents-itis-all-apis-nothing-has-changed/?utm_source=blog.peterritchie.com"&gt;Agents. It Is All APIs. Nothing Has Changed&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-12</id>
-		<title>Things That Caught My Attention Last Week - January 12</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-12" />
-		<updated>2026-01-15T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
- --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/solving-message-ordering-from-first-principles?utm_source=blog.peterritchie.com"&gt;Solving Message Ordering from First Principles&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codewithmukesh.com/blog/dotnet-developer-roadmap/?utm_source=blog.peterritchie.com"&gt;The Ultimate .NET Developer Roadmap 2026 - AI, Backend, Blazor &amp;amp; Full-Stack&lt;/a&gt; by Mukesh Murugan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-front-controller-and-mvc-pattern/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core: Front Controller and MVC Pattern&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2026/01/10/generate-an-open-graph-profile-image-with-c-sharp?utm_source=blog.peterritchie.com"&gt;Generate an Open Graph Profile Image with C#&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/mongodb-efcore-provider-queryable-encryption-vector-search/?utm_source=blog.peterritchie.com"&gt;EF Core MongoDB Queryable Encryption and Vector Search Explained&lt;/a&gt; by Rishit Bhatia&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/updates-to-netescapaades-enumgenerators-new-apis-and-system-memory-support/?utm_source=blog.peterritchie.com"&gt;Recent updates to NetEscapades.EnumGenerators: new APIs and System.Memory support&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/zero-copy-binarydata-creation-from-memorystream-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;Zero-copy BinaryData creation from MemoryStream in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2026/01/08/publishing-activity-reporter/?utm_source=blog.peterritchie.com"&gt;Reporting for duty: the story of IPipelineActivityReporter&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/how-to-nuget-local-feeds-2nci?utm_source=blog.peterritchie.com"&gt;How to: NuGet local feeds&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/cosmos-db-mirroring-private-endpoints/?utm_source=blog.peterritchie.com"&gt;Public Preview: Cosmos DB Mirroring in Microsoft Fabric with Private Endpoints&lt;/a&gt; by Mark Brown&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://techcrunch.com/2026/01/05/hacktivist-deletes-white-supremacist-websites-live-on-stage-during-hacker-conference/?utm_source=blog.peterritchie.com"&gt;Hacktivist deletes white supremacist websites live onstage during hacker conference&lt;/a&gt; by Lorenzo Franceschi-Bicchierai&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/01/05/coupling-from-a-big-o-perspective/?utm_source=blog.peterritchie.com"&gt;Coupling from a big-O perspective&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/mcp-is-a-transport-not-an-architecture?utm_source=blog.peterritchie.com"&gt;MCP Is a Transport, Not an Architecture (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;!-- ## Windows
-
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://levelup.gitconnected.com/how-i-actually-use-claude-code-in-2026-and-why-it-still-needs-a-parent-f029824f4539?utm_source=blog.peterritchie.com"&gt;How I Actually Use Claude Code in 2026, and Why It Still Needs a Parent&lt;/a&gt; by David Lee&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/career-chat-ai-networking/?utm_source=blog.peterritchie.com"&gt;A career chat with students in the age of AI&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
