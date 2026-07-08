@@ -4,8 +4,82 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-06-24T22:36:45Z</updated>
+	<updated>2026-07-08T21:35:24Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-06-2026</id>
+		<title>Things That Caught My Attention Last Week - July 6</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-06-2026" />
+		<updated>2026-07-08T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/enterprise-software/governance-and-compliance/how-github-maintains-compliance-for-open-source-dependencies/?utm_source=blog.peterritchie.com"&gt;How GitHub maintains compliance for open source dependencies&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/security/6-security-settings-every-github-maintainer-should-enable-this-week/?utm_source=blog.peterritchie.com"&gt;6 security settings every GitHub maintainer should enable this week&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/addition-by-subtraction-in-software?utm_source=blog.peterritchie.com"&gt;Addition by subtraction in software design&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/06/fastendpoints-validation/?utm_source=blog.peterritchie.com"&gt;Validation in FastEndpoints: Pipelines, Pitfalls, and Patterns&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-11-preview-4-closed-class-hierarchies/?utm_source=blog.peterritchie.com"&gt;Closed class hierarchies&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-june-update-track-your-usage-trust-your-tools/?utm_source=blog.peterritchie.com"&gt;Visual Studio June Update - Track Your Usage, Trust Your Tools&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/06/30/a-big-week-for-the-critter-stack/?utm_source=blog.peterritchie.com"&gt;A Big Week for the Critter Stack&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/mcp-build-diagnostics-workflows/?utm_source=blog.peterritchie.com"&gt;MCP Beyond the Chat Window: Build Diagnostics in CI&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/5-ef-core-performance-anti-patterns-that-entity-framework-extensions-eliminates/?utm_source=blog.peterritchie.com"&gt;5 EF Core Performance Anti-Patterns That Entity Framework Extensions Eliminates&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.woodruff.dev/add-vs-addrange-in-ef-core-the-performance-myth-you-need-to-stop-repeating/?utm_source=blog.peterritchie.com"&gt;Add vs AddRange in EF Core: The Performance Myth You Need to Stop Repeating&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/build-your-own-vpn-with-tailscale?utm_source=blog.peterritchie.com"&gt;Build Your Own VPN With Tailscale&lt;/a&gt; by Milan Jovanovic&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/ef-core-useidentitycolumns-33pi?utm_source=blog.peterritchie.com"&gt;EF Core UseIdentityColumns&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+--&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/07/06/worse-is-better-json-versus-xml/?utm_source=blog.peterritchie.com"&gt;Worse is better: JSON versus XML&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;!--## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/http-query-is-here/?utm_source=blog.peterritchie.com"&gt;Query Is Here&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/07/04/bringing-legacy-standards-into-the-modern-api-age/?utm_source=blog.peterritchie.com"&gt;Bringing Legacy Standards Into the Modern API Age&lt;/a&gt; by Chris Woody Woodruff&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/07/05/api-governance-is-75-percent-people-work/?utm_source=blog.peterritchie.com"&gt;API Governance Is 75% People Work&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/upcoming-change-ntlm-removal-in-git-libcurl-impact-to-azure-devops-server-customers/?utm_source=blog.peterritchie.com"&gt;Upcoming Change: NTLM Removal in Git (libcurl)&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-june-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (June 2026)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/need-a-different-partition-key-in-azure-cosmos-db-pick-the-right-approach/?utm_source=blog.peterritchie.com"&gt;Need a different partition key in Azure Cosmos DB? Pick the right approach&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/see-our-new-azure-cosmos-db-design-patterns/?utm_source=blog.peterritchie.com"&gt;See our new Azure Cosmos DB Design Patterns&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://sadukie.com/2026/07/01/the-plight-of-women-in-tech.html?utm_source=blog.peterritchie.com"&gt;The Plight of Women in Tech 20+ Years Later&lt;/a&gt; by Sarah Dutkiewicz&lt;/p&gt;
+&lt;!-- ## Windows
+
+## AI
+
+## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-june-22-2026</id>
 		<title>Things That Caught My Attention Last Week - June 22</title>
@@ -1454,78 +1528,5 @@ I'm a freelance software architect. If you find this post useful and think I can
 &lt;!-- Calendly inline widget end --&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/dotnet-standard-errors.png" class="img-fluid" alt=".NET Standard compile errors"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-19</id>
-		<title>Things That Caught My Attention Last Week - January 19</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-19" />
-		<updated>2026-01-20T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
- --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://lassala.net/2026/01/10/cqrs-and-human-intent/?utm_source=blog.peterritchie.com"&gt;CQRS and Human Intent&lt;/a&gt; by Claudio Lassala&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/stop-building-spas-for-every-screen-htmx-asp-net-core-razor-pages-workshop-open/?utm_source=blog.peterritchie.com"&gt;Stop Building SPAs for Every Screen: htmx + ASP.NET Core Razor Pages Workshop (Open)&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/generating-sbom-for-nuget-packages.htm?utm_source=blog.peterritchie.com"&gt;Generating SBOM for NuGet packages&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=UdJE7LPy0dc?utm_source=blog.peterritchie.com"&gt;How to Run Azure Service Bus Locally using .NET Aspire - YouTube&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-january-2026-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework January 2026 servicing releases updates&lt;/a&gt; by Rahul Bhandari (MSFT)&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/copilot-memories/?utm_source=blog.peterritchie.com"&gt;Copilot Memories&lt;/a&gt; by Jessie Houghton&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/how-this-website-is-built.htm?utm_source=blog.peterritchie.com"&gt;How this website is built&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.safia.rocks/2026/01/14/aspire-functions-references/?utm_source=blog.peterritchie.com"&gt;How does Aspire expose resource connection info to the Azure Functions runtime?&lt;/a&gt; by Safia Abdalla&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/01/13/how-jasperfx-supports-our-customers/?utm_source=blog.peterritchie.com"&gt;How JasperFx Supports our Customers&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/solving-the-distributed-cache-invalidation-problem-with-redis-and-hybridcache?utm_source=blog.peterritchie.com"&gt;Solving the Distributed Cache Invalidation Problem with Redis and HybridCache&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/openapi-tools-relaunch/?utm_source=blog.peterritchie.com"&gt;A Shiny New OpenAPI Tools&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/building-your-first-serverless-http-api-on-azure-with-azure-functions-fastapi/?utm_source=blog.peterritchie.com"&gt;Part 1: Building Your First Serverless HTTP API on Azure with Azure Functions &amp;amp; FastAPI&lt;/a&gt; by Richa Gaur&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/whats-new-with-azure-repos/?utm_source=blog.peterritchie.com"&gt;What's New in Azure Repos: Recent Updates&lt;/a&gt; by Dan Hellem&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/01/12/two-regimes-of-git/?utm_source=blog.peterritchie.com"&gt;Two regimes of Git&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;!-- ## Windows
-
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/want-better-ai-outputs-try-context-engineering/?utm_source=blog.peterritchie.com"&gt;Want better AI outputs? Try context engineering.&lt;/a&gt; by Christina Warren&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/llms-fail-as-sensors?utm_source=blog.peterritchie.com"&gt;Why LLMs Fail as Sensors (and What Brains Get Right)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/code-wave-build-log/?utm_source=blog.peterritchie.com"&gt;Code Wave Build Log&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/intelligence-without-a-witness?utm_source=blog.peterritchie.com"&gt;Intelligence without a witness&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2026/01/17/agents-itis-all-apis-nothing-has-changed/?utm_source=blog.peterritchie.com"&gt;Agents. It Is All APIs. Nothing Has Changed&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
