@@ -4,8 +4,86 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-07-08T21:35:24Z</updated>
+	<updated>2026-08-13T18:21:42Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10-2026</id>
+		<title>Things That Caught My Attention Last Week - August 10</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10-2026" />
+		<updated>2026-08-09T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/stacked-sessions-and-pull-requests-in-the-github-copilot-app/?utm_source=blog.peterritchie.com"&gt;Stacked sessions and pull requests in the GitHub Copilot app&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/should-you-split-that-into-microservices-ask-these-5-questions-first?utm_source=blog.peterritchie.com"&gt;Should You Split That Into Microservices? Ask These 5 Questions First&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/?utm_source=blog.peterritchie.com"&gt;Don't stop early: Case-folding source code at memory speed&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/build-azure-skills-faster-with-cloud-academy-a-visual-studio-subscriber-benefit/?utm_source=blog.peterritchie.com"&gt;Build Azure Skills Faster with Cloud Academy, a Visual Studio Subscriber Benefit&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-11-preview-6-automatic-csrf-protection-based-on-fetch-metadata-http-headers/?utm_source=blog.peterritchie.com"&gt;Automatic CSRF protection based on Fetch Metadata headers&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/08/03/declarative-testing-helper-for-marten-or-polecat-projections/?utm_source=blog.peterritchie.com"&gt;Declarative Testing Helper for Marten or Polecat Projections&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/strengthening-nuget-supply-chain-security-reducing-api-key-lifetime/?utm_source=blog.peterritchie.com"&gt;Strengthening NuGet Supply Chain Security: Reducing API Key Lifetime&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/adding-a-clone-method-to-a-csharp-record.htm?utm_source=blog.peterritchie.com"&gt;Adding a Clone method to a C# record&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-moduleinitializerattribute-35m7?utm_source=blog.peterritchie.com"&gt;C# ModuleInitializerAttribute&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/polyglot-unit-testing-agent/?utm_source=blog.peterritchie.com"&gt;From generated code to trusted code with a unit-test agent&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/07/30/binary-event-serialization-for-marten/?utm_source=blog.peterritchie.com"&gt;Binary Event Serialization for Marten&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/07/multi-tenant-part-2/?utm_source=blog.peterritchie.com"&gt;Multi-Tenant .NET: Shared Database With Schema Separation&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/07/29/fast-web-services-with-marten-and-polecat/?utm_source=blog.peterritchie.com"&gt;Fast Web Services with Marten and Polecat&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://marybranscombe.leaflet.pub/3mrs2lpaiek2i?utm_source=blog.peterritchie.com"&gt;The rise of the agent runtime: The compute platform behind production agents&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/understanding-the-fetch-metadata-http-headers-sec-fetch-site-and-friends/?utm_source=blog.peterritchie.com"&gt;Understanding the Fetch Metadata HTTP headers: Sec-Fetch-Site and friends&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/announcing-v20-of-the-official-mcp-csharp-sdk/?utm_source=blog.peterritchie.com"&gt;Announcing v2.0 of the official MCP C# SDK&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/quick-expose-every-endpoint/?utm_source=blog.peterritchie.com"&gt;Quick: Expose Every Endpoint!&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/04/agents-dont-magically-understand-your-api/?utm_source=blog.peterritchie.com"&gt;Agents Don't Magically Understand Your API&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/04/mcp-is-last-mile-plumbing/?utm_source=blog.peterritchie.com"&gt;MCP Is Last-Mile Plumbing&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/02/openapi-overlays-for-governance-as-an-artifact/?utm_source=blog.peterritchie.com"&gt;OpenAPI Overlays for Governance as an Artifact, Not Enforcement&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-july-2026/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) July 2026&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-july-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (July 2026) &lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/security/supply-chain-security/tame-dependabot-group-your-updates-slow-the-cadence-keep-security-fast/?utm_source=blog.peterritchie.com"&gt;Tame Dependabot: Group your updates, slow the cadence, keep security fast&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/approved-by-management-99f?utm_source=blog.peterritchie.com"&gt;Approved by Management #26-06&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/03/my-current-stance-on-how-i-use-artificial-intelligence/?utm_source=blog.peterritchie.com"&gt;My Current Stance on How I Use Artificial Intelligence&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/ai-driven-api-design-goes-on-the?utm_source=blog.peterritchie.com"&gt;AI-Driven API Design goes on the road&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-july-06-2026</id>
 		<title>Things That Caught My Attention Last Week - July 6</title>
@@ -1485,48 +1563,5 @@
  --&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source</id>
-		<title>Introducing Pri.ProductivityExtensions.Source - A .NET Standard Package to Enable Modern C# Language Features</title>
-		<link href="http://blog.peterritchie.com/posts/Introducing-Pri.ProductivityExtensions.Source" />
-		<updated>2026-01-21T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/dotnet-standard-errors.png" class="img-fluid" alt=".NET Standard compile errors" /&gt;&lt;/p&gt;
-&lt;p&gt;Targeting .NET Standard for a class library means that the library will be compatible with applications designed for past versions of .NET. E.g., an application targeting .NET Framework 4.8 or .NET Core 2.1 will be able to load a class library targeting .NET Standard 2.0 because it can only rely on the same API surface that the application does.&lt;/p&gt;
-&lt;p&gt;There are a few reasons developers need to work in .NET Standard. A popular one is writing Roslyn analyzers, another is writing PowerShell modules (Cmdlets) in C#. .NET Standard is a formal specification of .NET APIs available across multiple .NET implementations. It's like a definition of a slice of APIs that are implemented across .NET versions. Designing for a slice of APIs allows you to design and deploy class libraries that will work across .NET implementations. The latest version of .NET Standard (2.1) was released in September 2020.&lt;/p&gt;
-&lt;p&gt;Paradoxically, .NET languages depend on base-class libraries for aspects of their implementation. For example, the C# language feature &lt;code&gt;foreach&lt;/code&gt; depends on the types &lt;code&gt;IEnumerable&lt;/code&gt;, &lt;code&gt;IEnumerable&amp;lt;T&amp;gt;&lt;/code&gt;, &lt;code&gt;IEnumerator&lt;/code&gt;, and &lt;code&gt;IEnumerator&amp;lt;T&amp;gt;&lt;/code&gt;. Specifications like .NET Standard enable C# language features across .NET implementations by including those dependent types in their specification. But languages evolve and improve over time, as do base class libraries.&lt;/p&gt;
-&lt;p&gt;Since .NET Standard was last updated in 2020, some new language features that depend on new types in the base class library have been introduced. Some of these new language features aren't necessarily supported in .NET Standard, even though you can use the latest compiler version when building .NET Standard class libraries. For example, Ranges and Indices are a feature added to C# 8.0, released in September 2019. Ranges and Indices depend upon the &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; types. But to write a PowerShell library that supports Windows PowerShell and PowerShell 7, you have to target .NET Standard 2.0, whose API surface was specified around August 2017--roughly two years before &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; existed. This means Ranges and Indices aren't supported out of the box in C# code targeting .NET Standard 2.0. &lt;code&gt;var lastWord = words[^1]&lt;/code&gt; or &lt;code&gt;var firstFourWords = words[0..3]&lt;/code&gt; will cause errors (&lt;code&gt;Predefined type 'System.Index' is not defined or imported&lt;/code&gt;, and &lt;code&gt;Predefined type 'System.Range' is not defined or imported&lt;/code&gt;, respectively).&lt;/p&gt;
-&lt;p&gt;Fortunately, the compiler is flexible about where those predefined types are defined. Someone can't simply create a .NET Standard 2.0 library with Range and Index as public types, because they will clash with modern versions of .NET (e.g., in an XUnit test project). But the .NET Standard 2.0 library can create internal versions of those classes that the compiler is happy to resolve to. But having everyone who authors a .NET Standard 2.0 library write their own &lt;code&gt;Range&lt;/code&gt; and &lt;code&gt;Index&lt;/code&gt; classes (as well as any other class that modern C# syntax requires, like &lt;code&gt;CallerArgumentExpressionAttribute&lt;/code&gt;, &lt;code&gt;DoesNotReturnAttribute&lt;/code&gt;, etc.) is &lt;em&gt;problematic&lt;/em&gt;, to say the least.&lt;/p&gt;
-&lt;h2 id="content-only-nuget-packages"&gt;Content-only NuGet Packages&lt;/h2&gt;
-&lt;p&gt;.NET and NuGet packages support content- or source-only packages. Source-only packages are NuGet packages that, instead of packaging binaries like DLLs, package source code. Source-only packages don't add any assembly dependencies that require deployment.&lt;/p&gt;
-&lt;p&gt;That's where Pri.ProductivityExtensions.Source comes in. Pri.ProductivityExtensions.Source is a source-only NuGet package that includes the source code for various types created after .NET Standard 2.x to support C# language features (and some helper extensions like &lt;code&gt;ArgumentException.ThrowIfNull&lt;/code&gt; that depend on those features) that aren't available in .NET Standard.&lt;/p&gt;
-&lt;p&gt;&amp;quot;Pri.ProductivityExtensions.Source&amp;quot; is also the ID of the package and can be found on NuGet.org &lt;a href="https://www.nuget.org/packages/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on NuGet.org"&gt;here&lt;/a&gt;. It can be added to a project via the .NET API: &lt;code&gt;dotnet add package Pri.ProductivityExtensions.Source&lt;/code&gt;, or via Package Manager Console: &lt;code&gt;Install-Package Pri.ProductivityExtensions.Source&lt;/code&gt;. It is open source, and the source code is available on &lt;a href="https://github.com/peteraritchie/Pri.ProductivityExtensions.Source" title="Pri.ProductivityExtensions.Source on GitHub"&gt;GitHub&lt;/a&gt;. For an example using Pri.ProductivityExtensions.Source see &lt;a href="https://github.com/peteraritchie/Pri.Essentials.DotnetPsCmds"&gt;Pri.Essentials.DotnetPsCmds&lt;/a&gt;. And if you install &lt;a href="https://www.powershellgallery.com/packages/Pri.Essentials.DotnetPsCmds/" title="Pri.Essentials.DotnetPsCmds in PowerShell Gallery"&gt;DotnetPsCmds&lt;/a&gt;, you can install Pri.ProductivityExtensions.Source in PowerShell: &lt;code&gt;Add-DotnetPackages Pri.ProductivityExtensions.Source&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;When you reference Pri.ProductivityExtensions.Source, it causes the content (source code) to be considered part of the target project. The source code remains in the &lt;code&gt;.nuget&lt;/code&gt; cache and is not copied alongside the rest of your source code so no new source code needs to be committed to revision control.&lt;/p&gt;
-&lt;p&gt;The types included in Pri.ProductivityExtensions.Source are &lt;code&gt;internal&lt;/code&gt;, so they won't clash if Pri.ProductivityExtensions.Source is referenced in a project targeting a modern .NET implementation. Although I don't recommend using Pri.ProductivityExtensions.Source in a .NET Standard class library that is targeting a modern .NET implementation because it will resolve to Pri.ProductivityExtensions.Source instead of the .NET implementation's.&lt;/p&gt;
-&lt;p&gt;If you've created a .NET Standard library and have wanted to use the latest version of the compiler but start receiving compiler errors like &lt;code&gt;The type or namespace name 'CallerArgumentExpressionAttribute' does not exist in the namespace 'System.Runtime.CompilerServices' (are you missing an assembly reference?)&lt;/code&gt; or the other aforementioned errors, fear not, you simply need to reference Pri.ProductivityExtensions.Source!&lt;/p&gt;
-&lt;p&gt;Pri.ProductivityExtensions.Source enables the following modern C# compiler features:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Ranges and indices&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[CallerArgumentExpression]&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-10.0/caller-argument-expression" title="Caller argument expression - C# feature specifications"&gt;🔗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[DoesNotReturn]&lt;/code&gt; &lt;a href="https://github.com/dotnet/roslyn/issues/127" title="Proposal: [DoesNotReturn]"&gt;🔗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;[NotNullWhen]&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/attributes/nullable-analysis" title="Attributes for null-state static analysis interpreted by the C# compiler"&gt;🔗&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Additionally, Pri.ProductivityExtensions.Source includes the following helper methods that otherwise depend on newer language-dependent types:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ArgumentException.ThrowIfNullOrWhiteSpace(string?, string?)&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentexception.throwifnullorwhitespace?view=net-10.0" title="ArgumentException.ThrowIfNullOrWhiteSpace(String, String) Method"&gt;🔗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ArgumentNullException.ThrowIfNull(object?, string?)&lt;/code&gt; &lt;a href="https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception.throwifnull?view=net-10.0" title="ArgumentNullException.ThrowIfNull Method"&gt;🔗&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="understanding-c-timeline-since-last.net-standard"&gt;Understanding C# Timeline Since Last .NET Standard&lt;/h2&gt;
-&lt;p&gt;The last version of .NET Standard (2.1) was released in 2020. Since 2020, C# versions 10, 11, 12, 13, and 14 have been released. A lot has changed across 5 versions of C#, including the use of numerous APIs to enable various features. There isn't a complete list of base-class APIs that the C# compiler depends on.&lt;/p&gt;
-&lt;blockquote class="blockquote"&gt;
-&lt;p&gt;&lt;strong&gt;If you find this useful&lt;/strong&gt;&lt;br /&gt;
-I'm a freelance software architect. If you find this post useful and think I can provide value to your team, please reach out to see how I can help. See &lt;a href="/about"&gt;About&lt;/a&gt; for information about the services I provide.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;!-- Calendly inline widget begin --&gt;
-&lt;div class="calendly-inline-widget" data-url="https://calendly.com/peterritchie/client-meet-greet-zoom" style="min-width:320px;height:700px;"&gt;&lt;/div&gt;
-&lt;script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async&gt;&lt;/script&gt;
-&lt;!-- Calendly inline widget end --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/dotnet-standard-errors.png" class="img-fluid" alt=".NET Standard compile errors"&gt;&lt;/p&gt;</summary>
 	</entry>
 </feed>
