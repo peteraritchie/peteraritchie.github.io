@@ -4,8 +4,80 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-08-13T18:21:42Z</updated>
+	<updated>2026-08-19T18:16:20Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17-2026</id>
+		<title>Things That Caught My Attention Last Week - August 17</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17-2026" />
+		<updated>2026-08-19T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+ --&gt;
+&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/your-contributors-are-ai-first-now-is-your-project/?utm_source=blog.peterritchie.com"&gt;Your contributors are AI-first now. Is your project?&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!-- ## Domain-Driven Design, CQRS
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/fractal-architecture-cognitive-load?utm_source=blog.peterritchie.com"&gt;Fractal Architecture, Cognitive Load, Vertical Slices and other terms that do(n't) fit your head&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/how-do-you-build-a-social-media-feed-system-design?utm_source=blog.peterritchie.com"&gt;How Do You Build a Social Media Feed? (System Design)&lt;/a&gt; by Milan Jovanovic&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://nick-tune.me/blog/2026-08-13-enforced-application-architecture-for-agents-and-humans/?utm_source=blog.peterritchie.com"&gt;Enforced application architecture for agents and humans&lt;/a&gt; by Nick Tune&lt;/p&gt;
+&lt;!--## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-exceptiondispatchinfo-class-1je2?utm_source=blog.peterritchie.com"&gt;C# ExceptionDispatchInfo Class&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/08/13/using-the-wolverine-side-effect-model-to-simplify-code/?utm_source=blog.peterritchie.com"&gt;Using the Wolverine “Side Effect” Model to Simplify Code&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/08/12/introducing-fisher-sqlite-backed-document-db-event-store-critter/?utm_source=blog.peterritchie.com"&gt;Introducing Fisher: Sqlite Backed Document Db &amp;amp; Event Store Critter&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-11-preview-7/?utm_source=blog.peterritchie.com"&gt;.NET 11 Preview 7 is now available!&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-august-2026-servicing-updates/?utm_source=blog.peterritchie.com"&gt;.NET and .NET Framework August 2026 servicing releases updates&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/managing-git-submodules-without-leaving-the-ide/?utm_source=blog.peterritchie.com"&gt;Today I will... manage Git Submodules without leaving the IDE&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+ --&gt;
+&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/17/your-internal-docs-need-the-same-scoring-discipline-as-your-public-apis/?utm_source=blog.peterritchie.com"&gt;Your Internal Docs Need the Same Scoring Discipline as Your Public APIs&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/17/openapi-overlays-for-compliance-and-redaction-profiles/?utm_source=blog.peterritchie.com"&gt;OpenAPI Overlays for Compliance and Redaction Profiles&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/16/apis-are-100x-more-important-and-still-uncool/?utm_source=blog.peterritchie.com"&gt;APIs Are 100x More Important Than Five Years Ago, and Still Uncool&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-extension-framework-ga/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI extension framework is GA: build dev workflows for apps using Azure&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/17/github-app-manifest-browser-to-credentials/?utm_source=blog.peterritchie.com"&gt;GitHub Quietly Built the Onboarding Flow Everyone Else Is Missing&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/what-50-open-source-projects-taught-us-about-security-in-the-ai-era/?utm_source=blog.peterritchie.com"&gt;What 50 open source projects taught us about security in the AI era&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/08/13/why-use-orms-if-llms-write-code/?utm_source=blog.peterritchie.com"&gt;Why use ORMs if LLMs write code?&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/company-news/github-availability-report-july-2026/?utm_source=blog.peterritchie.com"&gt;GitHub availability report: July 2026&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/developer-skills/career-growth/from-coder-to-orchestrator-how-agents-shift-the-role-of-a-developer/?utm_source=blog.peterritchie.com"&gt;From coder to orchestrator: How agents shift the role of a developer&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/instructions-hygiene-what-frontier-models-still-need-you-to-say/?utm_source=blog.peterritchie.com"&gt;Instructions Hygiene - What Frontier Models Still Need You to Say&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/approved-by-management-26-07#%3E?utm_source=blog.peterritchie.com"&gt;Approved by Management #26-07&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-10-2026</id>
 		<title>Things That Caught My Attention Last Week - August 10</title>
@@ -1475,77 +1547,6 @@
 &lt;p&gt;&lt;a href="https://hbr.org/2026/01/when-ai-amplifies-the-biases-of-its-users?utm_source=blog.peterritchie.com"&gt;When AI Amplifies the Biases of Its Users&lt;/a&gt; by Grace Chang and Heidi Grant&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-they-just-dont-work-yet?utm_source=blog.peterritchie.com"&gt;Shortwave: They Just DonΓÇÖt Work (Yet)&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://apievangelist.com/2026/02/02/why-do-i-need-agents-when-i-have-requests-cron-jobs-and-events/?utm_source=blog.peterritchie.com"&gt;Why Do I Need Agents When I Have Requests, CRON Jobs, and Events?&lt;/a&gt; by Kin Lane&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-26</id>
-		<title>Things That Caught My Attention Last Week - January 26</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-january-26" />
-		<updated>2026-01-26T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
- --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/systems-thinking-meets-simplicity-first-a-decision-framework-for-software-architects/?utm_source=blog.peterritchie.com"&gt;Systems Thinking Meets Simplicity-First: A Decision Framework for Software Architects&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/you-cant-future-proof-software-architecture/?utm_source=blog.peterritchie.com"&gt;You Can't Future-Proof Software Architecture&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/making-foreach-on-an-ienumerable-allocation-free-using-reflection-and-dynamic-methods/?utm_source=blog.peterritchie.com"&gt;Making foreach on an IEnumerable allocation-free using reflection and dynamic methods&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/enterprise-patterns-for-asp-net-core-minimal-api-data-transfer-object-pattern/?utm_source=blog.peterritchie.com"&gt;Enterprise Patterns for ASP.NET Core Minimal API: Data Transfer Object Pattern&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/simple-ocr-ner-extraction?utm_source=blog.peterritchie.com"&gt;Simple OCR and NER Feature Extraction in C# with ONNX&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-console-menus-with-actions-67n?utm_source=blog.peterritchie.com"&gt;C# Console menus with Actions&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/01/22/martens-aggregation-projection-subsystem/?utm_source=blog.peterritchie.com"&gt;Marten's Aggregation Projection Subsystem&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
- --&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/01/19/filtering-as-domain-logic/?utm_source=blog.peterritchie.com"&gt;Filtering as domain logic&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;!-- ## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-cosmos-db-tv-ep-110-mcp-toolkit-ai-agents/?utm_source=blog.peterritchie.com"&gt;AI Agents MCP Cosmos DB Transforming Development&lt;/a&gt; by Mark Brown&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-boards-additional-field-filters-private-preview/?utm_source=blog.peterritchie.com"&gt;Azure Boards Additional Field Filters in Preview&lt;/a&gt; by Dan Hellem&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260123-00/?p=112008?utm_source=blog.peterritchie.com"&gt;C++ has scope_exit for running code at scope exit. C# says &amp;quot;We have scope_exit at home.&amp;quot;&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/touch-on-ps/?utm_source=blog.peterritchie.com"&gt;Remaking the Linux &amp;quot;touch&amp;quot; command in PowerShell&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/signal-ping-code-is-easy-ownership?utm_source=blog.peterritchie.com"&gt;Signal ping : Code is easy; ownership is not&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://sadukie.com/2026/01/19/cleveland-tech-is-not-dead.html?utm_source=blog.peterritchie.com"&gt;Cleveland Tech is not Dead!&lt;/a&gt; by sadukie&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/a-practical-demo-of-zero-downtime-migrations-using-password-hashing?utm_source=blog.peterritchie.com"&gt;A Practical Demo of Zero-Downtime Migrations Using Password Hashing&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!-- ## Windows
-
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.blog/developer-skills/application-development/context-windows-plan-agent-and-tdd-what-i-learned-building-a-countdown-app-with-github-copilot/?utm_source=blog.peterritchie.com"&gt;Context windows, Plan agent, and TDD: What I learned building a countdown app with GitHub Copilot&lt;/a&gt; by Chris Reddington&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
