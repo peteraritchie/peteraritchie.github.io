@@ -4,8 +4,86 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-08-19T18:16:20Z</updated>
+	<updated>2026-08-31T19:08:14Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-31-2026</id>
+		<title>Things That Caught My Attention Last Week - August 31</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-31-2026" />
+		<updated>2026-08-31T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Domain-Driven Design, CQRS
+
+## Software Architecture
+
+## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/msbuild-warning-nu1510-419p?utm_source=blog.peterritchie.com"&gt;MSBuild warning NU1510&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/your-aspnetcore-endpoints-dont-have-a-timeout?utm_source=blog.peterritchie.com"&gt;Request Timeouts in ASP.NET Core&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/08/28/the-open-core-model-for-sustainable-oss-development-in-net/?utm_source=blog.peterritchie.com"&gt;The “Open Core” Model for Sustainable OSS Development in .NET&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/how-uno-platform-uses-dotnet-mcp-ai-to-build-high-quality-apps/?utm_source=blog.peterritchie.com"&gt;How Uno Platform uses .NET, MCP, and AI to build high quality apps&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/vslive-hq-content-sandiego-and-orlando-mentions/?utm_source=blog.peterritchie.com"&gt;VSLive! &amp;#64; Microsoft HQ: Developer Takeaways and Must-Watch Sessions&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/08/multi-tenant-moving-day/?utm_source=blog.peterritchie.com"&gt;Multi-Tenant .NET, Part 4: Moving Day&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/the-visual-studio-debugger-agentic-workflow-gets-a-test-driven-upgrade/?utm_source=blog.peterritchie.com"&gt;The Visual Studio Debugger Agentic Workflow Gets a Test-Driven Upgrade&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-conf-2026/?utm_source=blog.peterritchie.com"&gt;.NET Conf 2026 - Save the Date&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-august-update-work-smarter-across-models-and-branches/?utm_source=blog.peterritchie.com"&gt;Visual Studio August Update — Work Smarter Across Models and Branches&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/08/25/wolverine-6-30-optimized-at-least-once-delivery-with-native-acks/?utm_source=blog.peterritchie.com"&gt;Wolverine 6.30: Optimized at least once delivery with “Native Acks”&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/finding-the-total-number-of-processors-on-a-machine-with-dotnet/?utm_source=blog.peterritchie.com"&gt;Finding the total number of processors on a machine with .NET&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/unlocking-the-power-of-ai-for-every-developer-in-visual-studio-with-bring-your-own-model/?utm_source=blog.peterritchie.com"&gt;Unlocking the Power of AI for Every Developer in Visual Studio with Bring your Own Model&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/explore-csharp-15/?utm_source=blog.peterritchie.com"&gt;Explore new features available in C# 15 preview&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/limit-what-nuget-packages-can-do-in-your-project.htm?utm_source=blog.peterritchie.com"&gt;Limit what NuGet packages can do in your project&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-copy-files-done-right-3dfh?utm_source=blog.peterritchie.com"&gt;C# Copy files done right&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/30/inside-the-agent-readiness-score/?utm_source=blog.peterritchie.com"&gt;Inside the Agent-Readiness Score&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/08/28/bringing-coherence-to-sprawling-enterprise-api-estates/?utm_source=blog.peterritchie.com"&gt;Bringing Coherence to Sprawling Enterprise API Estates&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-august-2026/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) - August 2026 - Azure SDK Blog&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-devops-in-the-github-copilot-app/?utm_source=blog.peterritchie.com"&gt;Azure DevOps in the GitHub Copilot App&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/copilot-code-reviews-for-azure-repos-public-preview/?utm_source=blog.peterritchie.com"&gt;Copilot Code Reviews for Azure Repos (public preview)&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;!-- ## Software Development
+
+## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-automate-dependabot-pull-request-triage/?utm_source=blog.peterritchie.com"&gt;GitHub Copilot app for Beginners: Automate Dependabot pull request triage&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/llms/how-to-evaluate-llms-before-production/?utm_source=blog.peterritchie.com"&gt;How to evaluate LLMs before production&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/approved-by-management-26-09?utm_source=blog.peterritchie.com"&gt;Approved by Management #26-09&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-17-2026</id>
 		<title>Things That Caught My Attention Last Week - August 17</title>
@@ -1471,82 +1549,6 @@
 &lt;p&gt;&lt;a href="https://frontendmasters.com/blog/what-senior-engineers-need-to-know-about-ai-coding-tools/?utm_source=blog.peterritchie.com"&gt;What Senior Engineers Need to Know About AI Coding Tools&lt;/a&gt; by Marc Grabanski&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/?utm_source=blog.peterritchie.com"&gt;How to write a great agents.md: Lessons from over 2,500 repositories&lt;/a&gt; by Matt Nigh&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/continuous-ai-in-practice-what-developers-can-automate-today-with-agentic-ci/?utm_source=blog.peterritchie.com"&gt;Continuous AI in practice: What developers can automate today with agentic CI&lt;/a&gt; by GitHub Staff&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-1</id>
-		<title>Things That Caught My Attention Last Week - February 1</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-1" />
-		<updated>2026-02-03T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
- --&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.com/madskristensen/Modes?utm_source=blog.peterritchie.com"&gt;GitHub - madskristensen/Modes: A Visual Studio extension&lt;/a&gt; by madskristensen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/enable-debug-logging-in-the-github-cli-gh.htm?utm_source=blog.peterritchie.com"&gt;Enable debug logging in the GitHub CLI (gh)&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/patterns-of-distributed-systems-in-c-and-net-a-new-series-for-people-who-ship-real-systems/?utm_source=blog.peterritchie.com"&gt;Patterns of Distributed Systems in C# and .NET: A New Series for People Who Ship Real Systems&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.Modes?utm_source=blog.peterritchie.com"&gt;Modes - Visual Studio Marketplace&lt;/a&gt; by Mads Kristensen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.josephguadagno.net/2026/01/30/introducing-morespeakers-com?utm_source=blog.peterritchie.com"&gt;Introducing MoreSpeakers.com&lt;/a&gt; by Joseph Guadagno&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/join-us-at-ndc-london-2026/?utm_source=blog.peterritchie.com"&gt;Join Microsoft at NDC London 2026&lt;/a&gt; by .NET Team&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-january-update-enhanced-editor-experience/?utm_source=blog.peterritchie.com"&gt;Visual Studio January Update&lt;/a&gt; by Simona Liao&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/developer-skills/programming-languages-and-frameworks/7-learnings-from-anders-hejlsberg-the-architect-behind-c-and-typescript/?utm_source=blog.peterritchie.com"&gt;7 learnings from Anders Hejlsberg: The architect behind C# and TypeScript&lt;/a&gt; by Aaron Winston&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/creating-and-consuming-metrics-with-system-diagnostics-metrics-apis/?utm_source=blog.peterritchie.com"&gt;Creating and consuming metrics with System.Diagnostics.Metrics APIs&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/doomsummarizer-deep-research?utm_source=blog.peterritchie.com"&gt;DoomSummarizer: DocSummarizer's Younger, Smarter Brother (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-14-extension-blocks-1d6k?utm_source=blog.peterritchie.com"&gt;C# 14 extension blocks&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/01/26/wolverine-idioms-for-mediatr-users/?utm_source=blog.peterritchie.com"&gt;Wolverine Idioms for MediatR Users&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/containerize-your-dotnet-applications-without-a-dockerfile?utm_source=blog.peterritchie.com"&gt;Containerize Your .NET Applications Without a Dockerfile&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.stevejgordon.co.uk/the-grand-mystery-of-the-missing-18-bytes?utm_source=blog.peterritchie.com"&gt;The Grand Mystery of the Missing 18 Bytes&lt;/a&gt; by Steve Gordon&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-january-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (January 2026)&lt;/a&gt; by Ronnie Geraghty&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/github-copilot-cli-cosmos-db-agent-kit/?utm_source=blog.peterritchie.com"&gt;Accelerate Your Cosmos DB Infrastructure with GitHub Copilot CLI and Azure Cosmos DB Agent Kit&lt;/a&gt; by Sajeetharan Sinnathurai&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/css-corner-shape/?utm_source=blog.peterritchie.com"&gt;Making interesting borders with CSS corner-shape&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;!-- ## Windows
-
---&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.anthropic.com/research/disempowerment-patterns?utm_source=blog.peterritchie.com"&gt;Disempowerment patterns in real-world AI usage&lt;/a&gt; by Anthropic&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://hbr.org/2026/01/when-ai-amplifies-the-biases-of-its-users?utm_source=blog.peterritchie.com"&gt;When AI Amplifies the Biases of Its Users&lt;/a&gt; by Grace Chang and Heidi Grant&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-they-just-dont-work-yet?utm_source=blog.peterritchie.com"&gt;Shortwave: They Just DonΓÇÖt Work (Yet)&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://apievangelist.com/2026/02/02/why-do-i-need-agents-when-i-have-requests-cron-jobs-and-events/?utm_source=blog.peterritchie.com"&gt;Why Do I Need Agents When I Have Requests, CRON Jobs, and Events?&lt;/a&gt; by Kin Lane&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
