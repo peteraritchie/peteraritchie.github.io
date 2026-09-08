@@ -5,8 +5,80 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Mon, 31 Aug 2026 19:08:14 GMT</pubDate>
-		<lastBuildDate>Mon, 31 Aug 2026 19:08:14 GMT</lastBuildDate>
+		<pubDate>Tue, 08 Sep 2026 19:50:22 GMT</pubDate>
+		<lastBuildDate>Tue, 08 Sep 2026 19:50:22 GMT</lastBuildDate>
+		<item>
+			<title>Things That Caught My Attention Last Week - September 7</title>
+			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7-2026</link>
+			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
+			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-7-2026</guid>
+			<pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Domain-Driven Design, CQRS
+--&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/avoid-duke-nukem-forever-mode?utm_source=blog.peterritchie.com"&gt;Avoid Duke Nukem Forever Mode&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/domain-events-are-not-your-public-api/?utm_source=blog.peterritchie.com"&gt;Domain Events Are NOT Your Public API&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;!-- ## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/09/07/critter-stack-roadmap-for-september-2026/?utm_source=blog.peterritchie.com"&gt;Critter Stack Roadmap for September 2026&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/run-temporary-containers-in-dotnet-tests-with-meziantou-framework-temporaryconta.htm?utm_source=blog.peterritchie.com"&gt;Run temporary containers in .NET tests with Meziantou.Framework.TemporaryContainers&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/mstest-source-generation/?utm_source=blog.peterritchie.com"&gt;Test what you ship: MSTest and Native AOT&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/stop-alt-tabbing-into-the-wrong-visual-studio/?utm_source=blog.peterritchie.com"&gt;Stop alt-tabbing into the wrong Visual Studio&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/today-i-will-review-github-prs/?utm_source=blog.peterritchie.com"&gt;Today I will... review GitHub PRs&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-11-preview-7-the-pain-of-serializing-unions-and-closed-class-hierarchies-with-system-text-json/?utm_source=blog.peterritchie.com"&gt;The pain of serializing unions and closed class hierarchies with System.Text.Json&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+--&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/four-years-of-writing-every-week?utm_source=blog.peterritchie.com"&gt;Lessons From Four Years of Writing a Weekly Newsletter&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/09/07/microsoft-documented-its-openapi-extensions-for-a-decade-and-never-registered-them/?utm_source=blog.peterritchie.com"&gt;Microsoft Documented Its OpenAPI Extensions For A Decade And Never Registered Them&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/09/03/i-want-you-to-own-the-integration/?utm_source=blog.peterritchie.com"&gt;I Want You to Own the Integration&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/apis-are-having-a-moment/?utm_source=blog.peterritchie.com"&gt;APIs Are Having a Moment&lt;/a&gt; by Alexander Karan&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-august-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (August 2026)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;!-- ## Software Development
+
+## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/?utm_source=blog.peterritchie.com"&gt;Project HydraFusion: Frontier quality via multi-model orchestration&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://marybranscombe.leaflet.pub/3mundyrbc3c2k?utm_source=blog.peterritchie.com"&gt;Cedar: the access control building block that's perfectly timed for AI agents&lt;/a&gt; by&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/09/04/the-blog-was-the-retrieval-layer-all-along/?utm_source=blog.peterritchie.com"&gt;The Blog Was The Retrieval Layer All Along&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-run-several-agents-at-once/?utm_source=blog.peterritchie.com"&gt;GitHub Copilot app for Beginners: Run several agents at once&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/?utm_source=blog.peterritchie.com"&gt;Decoding the new AI lingo: Loops, harnesses, squads, hill climbing... oh my!&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/stochastic-agents-and-deterministic?utm_source=blog.peterritchie.com"&gt;Stochastic Traversal with Deterministic Results&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Things That Caught My Attention Last Week - August 31</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-august-31-2026</link>
@@ -1476,81 +1548,6 @@
 &lt;p&gt;&lt;a href="https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/?utm_source=blog.peterritchie.com"&gt;An AI Agent Published a Hit Piece on Me&lt;/a&gt; by Scott Shambaugh&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://ardalis.com/llms-need-mark-as-answer/?utm_source=blog.peterritchie.com"&gt;Llms Need Mark as Answer&lt;/a&gt; by Ardalis (Steve Smith)&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-human-centered-ai-is-not?utm_source=blog.peterritchie.com"&gt;Shortwave: Human-centered AI is not a new idea&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content:encoded>
-		</item>
-		<item>
-			<title>Things That Caught My Attention Last Week - February 8</title>
-			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-8</link>
-			<description>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</description>
-			<guid>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-8</guid>
-			<pubDate>Mon, 09 Feb 2026 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
- --&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://clemensv.github.io/stopwatch/?utm_source=blog.peterritchie.com"&gt;Stopwatch Overlay - Always-on-top timer for recordings &amp;amp; presentations&lt;/a&gt; by Clemens Vasters&lt;/p&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;!-- ## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-framework-3-5-moves-to-standalone-deployment-in-new-versions-of-windows/?utm_source=blog.peterritchie.com"&gt;.NET Framework 3.5 Moves to Standalone Deployment in new versions of Windows&lt;/a&gt; by Tara Overfield&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://developer.microsoft.com/blog/winget-configuration-set-up-your-dev-machine-in-one-command?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky?utm_source=blog.peterritchie.com"&gt;WinGet Configuration: Set up your dev machine in one command&lt;/a&gt; by Kayla Cinnamon&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/lease-pattern-in-net-a-lock-with-an-expiration-date-that-saves-your-data/?utm_source=blog.peterritchie.com"&gt;Lease Pattern in .NET: A Lock With an Expiration Date That Saves Your Data&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/roadmap-for-ai-in-visual-studio-february/?utm_source=blog.peterritchie.com"&gt;Roadmap for AI in Visual Studio (February)&lt;/a&gt; by Rhea Patel&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/creating-strongly-typed-metics-with-a-source-generator/?utm_source=blog.peterritchie.com"&gt;Exploring the (underwhelming) System.Diagnostics.Metrics source generators&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/02/02/building-a-greenfield-system-with-the-critter-stack/?utm_source=blog.peterritchie.com"&gt;Building a Greenfield System with the Critter Stack&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/integrate-keycloak-with-aspnetcore-using-oauth-2?utm_source=blog.peterritchie.com"&gt;Integrate Keycloak with ASP.NET Core Using OAuth 2.0&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.stevejgordon.co.uk/encrypting-properties-with-system-text-json-and-a-typeinforesolver-modifier-part-2?utm_source=blog.peterritchie.com"&gt;Encrypting Properties with System.Text.Json and a TypeInfoResolver Modifier (Part 2)&lt;/a&gt; by Steve Gordon&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
- --&gt;
-&lt;h2 id="project-managementadministration"&gt;Project Management/Administration&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.jsnover.com/blog/2026/02/01/welcome-to-the-room/?utm_source=blog.peterritchie.com"&gt;Welcome to the Room&lt;/a&gt; by Jeffrey Snove&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-when-institutions-stop?utm_source=blog.peterritchie.com"&gt;Shortwave: When institutions stop thinking for themselves&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/building-sustainable-apis/?utm_source=blog.peterritchie.com"&gt;Sustainable APIs&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-devcontainer-extensions/?utm_source=blog.peterritchie.com"&gt;Auto-install &lt;code&gt;azd&lt;/code&gt; extensions in dev containers&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/how-to-enable-microsoft-entra-id-for-azure-cosmos-db-nosql/?utm_source=blog.peterritchie.com"&gt;How to Enable Microsoft Entra ID for Azure Cosmos DB (NoSQL)&lt;/a&gt; by Sudhanshu Khera&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/azure-boards-integration-with-github-copilot-includes-custom-agent-support/?utm_source=blog.peterritchie.com"&gt;Azure Boards integration with GitHub Copilot includes custom agent support&lt;/a&gt; by Dan Hellem&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://lucisqr.substack.com/p/bjarnes-last-stand-how-the-father?utm_source=blog.peterritchie.com"&gt;Bjarne-s Last Stand: How the Father of C++ Is Fighting a Losing War Against Rust&lt;/a&gt; by Henrique Bucher&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/02/02/code-that-fits-in-a-context-window/?utm_source=blog.peterritchie.com"&gt;Code that fits in a context window&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/essential-rules-of-software-engineering.htm?utm_source=blog.peterritchie.com"&gt;Essential Rules of Software Engineering&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/your-idempotent-code-is-lying-to-you/?utm_source=blog.peterritchie.com"&gt;Your Idempotent Code Is Lying To You&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;h2 id="windows"&gt;Windows&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://tech.slashdot.org/story/26/02/05/0023249/microsoft-adds-sysmon-to-windows?utm_source=blog.peterritchie.com"&gt;Microsoft Adds Sysmon To Windows&lt;/a&gt; by Slashdot&lt;/p&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/gh-copilot-instructions/?utm_source=blog.peterritchie.com"&gt;Using personal instructions in GitHub Copilot Chat&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://frontendmasters.com/blog/what-senior-engineers-need-to-know-about-ai-coding-tools/?utm_source=blog.peterritchie.com"&gt;What Senior Engineers Need to Know About AI Coding Tools&lt;/a&gt; by Marc Grabanski&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/?utm_source=blog.peterritchie.com"&gt;How to write a great agents.md: Lessons from over 2,500 repositories&lt;/a&gt; by Matt Nigh&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/continuous-ai-in-practice-what-developers-can-automate-today-with-agentic-ci/?utm_source=blog.peterritchie.com"&gt;Continuous AI in practice: What developers can automate today with agentic CI&lt;/a&gt; by GitHub Staff&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
