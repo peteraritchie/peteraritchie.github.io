@@ -4,8 +4,88 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-09-15T15:09:47Z</updated>
+	<updated>2026-09-28T21:21:11Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28-2026</id>
+		<title>Things That Caught My Attention Last Week - September 28</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28-2026" />
+		<updated>2026-09-28T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Domain-Driven Design, CQRS
+
+## Software Architecture
+
+## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/build-agentic-ui-blazor/?utm_source=blog.peterritchie.com"&gt;Build Agentic UI with the new Blazor AI components&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.meziantou.net/adding-jsonpath-support-to-custom-object-models-in-dotnet.htm?utm_source=blog.peterritchie.com"&gt;Adding JsonPath support to custom object models in .NET&lt;/a&gt; by Gérald Barré&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-singleton-basics-1o9i?utm_source=blog.peterritchie.com"&gt;C# Singleton basics&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/09/27/critter-stack-round-up-for-the-past-2-weeks/?utm_source=blog.peterritchie.com"&gt;Critter Stack Round Up for the Past 2 Weeks&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/lucidresume-web-compiler?utm_source=blog.peterritchie.com"&gt;Compiling a Résumé from a Career Record: cJobML in Practice (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/speech-to-text-in-dotnet-with-assemblyai?utm_source=blog.peterritchie.com"&gt;Building a Speech-to-Text App in .NET With AssemblyAI&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/ag-ui-dotnet-sdk/?utm_source=blog.peterritchie.com"&gt;AG-UI Protocol now has a first-class .NET SDK&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lhotka.net/2026/09/25/Closing-The-Loop?utm_source=blog.peterritchie.com"&gt;Closing the Loop&lt;/a&gt; by Rockford Lhotka&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/09/24/logical-message-deduplication-with-wolverine/?utm_source=blog.peterritchie.com"&gt;Logical Message Deduplication with Wolverine&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeopinion.com/multi-tenant-best-practices-can-backfire/?utm_source=blog.peterritchie.com"&gt;Multi-Tenant Best Practices Can Backfire&lt;/a&gt; by Derek Comartin&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/combined-serilog-and-ef-core-logging-to-the-same-file-in-asp-net-core-1cl6?utm_source=blog.peterritchie.com"&gt;Combined Serilog and EF Core Logging to the Same File in ASP .NET Core&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/lucidresume-evidence-filler?utm_source=blog.peterritchie.com"&gt;Filling Job Forms from a JobML Career Record with Chrome's Local LLM (English)&lt;/a&gt; by&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/today-i-will-debug-a-production-crash/?utm_source=blog.peterritchie.com"&gt;Today I will... debug a production crash&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/creating-a-memory-dump-in-csharp/?utm_source=blog.peterritchie.com"&gt;Creating a memory dump in C#&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://andrewlock.net/exploring-the-dotnet-11-preview-8-experimental-support-for-device-bound-session-credentials-in-aspnetcore/#%3E?utm_source=blog.peterritchie.com"&gt;Experimental support for Device Bound Session Credentials (DBSC) in ASP.NET Core&lt;/a&gt; by Andrew Lock&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+## Software Design
+
+## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+## REST/APIs
+
+ --&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/using-azure-blob-storage-as-a-durable-filesystem-for-langchain-deep-agents-2/?utm_source=blog.peterritchie.com"&gt;Using Azure Blob Storage as a durable filesystem for LangChain Deep Agents&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/open-source/git/highlights-from-git-2-56/?utm_source=blog.peterritchie.com"&gt;Highlights from Git 2.56&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-how-to-build-custom-workflows-with-canvases/?utm_source=blog.peterritchie.com"&gt;GitHub Copilot app for Beginners: How to build custom workflows with canvases&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/microsoft-author-signing-certificate-update-2026/?utm_source=blog.peterritchie.com"&gt;Microsoft is updating its author-signing certificate starting September 23, 2026&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/09/28/the-standards-that-make-your-business-agent-ready/?utm_source=blog.peterritchie.com"&gt;The Standards That Make Your Business Agent-Ready&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/?utm_source=blog.peterritchie.com"&gt;When chat is the wrong UI&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/?utm_source=blog.peterritchie.com"&gt;AI-powered fuzzing with the GitHub Security Lab Taskflow Agent&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/engineering/user-experience/rendering-huge-pull-requests-in-the-github-copilot-app/?utm_source=blog.peterritchie.com"&gt;Rendering huge pull requests in the GitHub Copilot app&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.blog/news-insights/research/developers-want-more-efficient-software-heres-what-over-1000-github-users-told-us-they-need/?utm_source=blog.peterritchie.com"&gt;Developers want more efficient software. Here’s what over 1,000 GitHub users told us they need.&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/09/ai-wrote-the-code/?utm_source=blog.peterritchie.com"&gt;AI Wrote the Code. Now Who Owns the Architecture?&lt;/a&gt; by Barret Blake&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-14-2026</id>
 		<title>Things That Caught My Attention Last Week - September 14</title>
@@ -1476,73 +1556,6 @@
 &lt;p&gt;&lt;a href="https://garymarcus.substack.com/p/turns-out-generative-ai-was-a-scam?utm_source=blog.peterritchie.com"&gt;Turns out Generative AI was a scam &lt;/a&gt; by Gary Marcus&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/?utm_source=blog.peterritchie.com"&gt;We mourn our craft&lt;/a&gt; by Nolan Lawson&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://theconversation.com/using-ai-responsibly-means-knowing-when-not-to-use-it-274671?utm_source=blog.peterritchie.com"&gt;Using AI responsibly means knowing when not to use it&lt;/a&gt; by Sam Illingworth&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-22</id>
-		<title>Things That Caught My Attention Last Week - February 22</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-february-22" />
-		<updated>2026-02-23T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/passkeys/?utm_source=blog.peterritchie.com"&gt;How passkeys work&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.blog/open-source/maintainers/securing-the-ai-software-supply-chain-security-results-across-67-open-source-projects/?utm_source=blog.peterritchie.com"&gt;Securing the AI software supply chain: Security results across 67 open source projects&lt;/a&gt; by Gregg Cochran&lt;/p&gt;
-&lt;h2 id="domain-driven-design-cqrs"&gt;Domain-Driven Design, CQRS&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/read-replicas-are-not-cqrs-stop-confusing-this/?utm_source=blog.peterritchie.com"&gt;Read Replicas Are NOT CQRS (Stop Confusing This)&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/where-vertical-slices-fit-inside-the-modular-monolith-architecture?utm_source=blog.peterritchie.com"&gt;Where Vertical Slices Fit Inside the Modular Monolith Architecture&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;!--## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/02/19/using-the-azure-service-bus-emulator-for-local-wolverine-development/?utm_source=blog.peterritchie.com"&gt;Using the Azure Service Bus Emulator for Local Wolverine Development&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/validating-powershell-script-syntax-in-github-actions-workflows.htm?utm_source=blog.peterritchie.com"&gt;Validating PowerShell script syntax in GitHub Actions workflows&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/ef-core-hasqueryfilter-ii-39gf?utm_source=blog.peterritchie.com"&gt;EF Core HasQueryFilter II&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/creating-standard-and-observable-instruments/?utm_source=blog.peterritchie.com"&gt;Creating standard and &amp;quot;observable&amp;quot; instruments&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/custom-agents-in-visual-studio-built-in-and-build-your-own-agents/?utm_source=blog.peterritchie.com"&gt;Custom Agents in Visual Studio: Built in and Build-Your-Own agents&lt;/a&gt; by Rhea Patel&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
- --&gt;
-&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://apisyouwonthate.com/newsletter/rest-is-dead-again/?utm_source=blog.peterritchie.com"&gt;Is REST Dead... Again?&lt;/a&gt; by Alexander Karan&lt;/p&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-jmespath-query-support/?utm_source=blog.peterritchie.com"&gt;JMESPath support comes to azd JSON output&lt;/a&gt; by Scott Addie&lt;/p&gt;
-&lt;!-- ## Software Development
- --&gt;
-&lt;!-- ## Windows
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/shortwave-ai-fatigue-and-the-long?utm_source=blog.peterritchie.com"&gt;Shortwave: AI fatigue and the long middle of adoption&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.xda-developers.com/microsoft-backing-off-its-ai-everywhere-plan-is-too-little-too-late/?utm_source=blog.peterritchie.com"&gt;Microsoft's backing off on its &amp;quot;AI everywhere&amp;quot; plan is too little, too late&lt;/a&gt; by Simon Batt&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.cio.com/article/4129620/agentic-ai-fails-without-an-architecture-of-flow-to-eliminate-the-friction-tax.html?utm_source=blog.peterritchie.com"&gt;Agentic AI fails without an architecture of flow to eliminate the friction tax&lt;/a&gt; by David Smith&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
