@@ -4,8 +4,85 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-09-28T21:21:11Z</updated>
+	<updated>2026-10-05T19:50:04Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-05-2026</id>
+		<title>Things That Caught My Attention Last Week - October 5</title>
+		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-05-2026" />
+		<updated>2026-10-05T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
+&lt;!-- ## Security
+
+## Open-source
+
+## Domain-Driven Design, CQRS
+
+ --&gt;
+&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://milanjovanovic.tech/blog/github-copilot-rust-migration-hype-vs-reality?utm_source=blog.peterritchie.com"&gt;GitHub Copilot Runtime Rust Migration: Hype vs. Reality&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
+&lt;!-- ## GitHib
+
+## Presenting
+ --&gt;
+&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/open-source-a-relict-a-charity-or?utm_source=blog.peterritchie.com"&gt;Open Source, a relic, a charity or still the thing?&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/testing-uwp-and-winui-3-apps-with-mstest/?utm_source=blog.peterritchie.com"&gt;UWP and WinUI 3 apps: UI testing with MSTest&lt;/a&gt; by .NET Team&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/10/02/wolverines-community-is-busy/?utm_source=blog.peterritchie.com"&gt;Wolverine’s Community is Busy!&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mostlylucid.net/blog/stylomail-using-nimble-from-csharp?utm_source=blog.peterritchie.com"&gt;Using Nimble from C# (Part 2): local alternatives to Jev and a layered mail classifier (English)&lt;/a&gt; by Scott Galloway&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/c-file-globbing-tip-515?utm_source=blog.peterritchie.com"&gt;C# File globbing tip&lt;/a&gt; by Karen Payne&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/09/29/marten-just-crossed-20-million-downloads/?utm_source=blog.peterritchie.com"&gt;Marten Just Crossed 20 Million Downloads&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-september-update-power-your-workflow-with-your-model/?utm_source=blog.peterritchie.com"&gt;Visual Studio September Update - Power Your Workflow with Your Model&lt;/a&gt; by Visual Studio Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://minidump.net/the-hidden-trap-of-fixed-buffers-in-csharp/?utm_source=blog.peterritchie.com"&gt;The hidden trap of fixed buffers in C#&lt;/a&gt; by Kevin Gosse&lt;/p&gt;
+&lt;!-- ## Conferences and Speaking
+
+## Domain Driven Design
+
+## DevOps
+
+ --&gt;
+&lt;h2 id="software-design"&gt;Software Design&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://cassidoo.co/post/accessibility-and-the-internet/?utm_source=blog.peterritchie.com"&gt;Accessibility and the new model of the internet&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
+&lt;!-- ## Mobile
+
+## Agile/Work Life
+
+## Project Management/Administration
+
+ --&gt;
+&lt;h2 id="restapis"&gt;REST/APIs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://apievangelist.com/2026/10/05/one-in-ten-api-providers-still-publish-swagger/?utm_source=blog.peterritchie.com"&gt;One In Ten API Providers Still Publish Swagger&lt;/a&gt; by Kin Lane&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://apisyouwonthate.com/blog/openlint-picking-up-where-spectral-left-off/?utm_source=blog.peterritchie.com"&gt;OpenLint: picking up where Spectral left off&lt;/a&gt; by Phil Sturgeon&lt;/p&gt;
+&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/im-the-only-developer-on-this-project-do-i-really-need-rbac/?utm_source=blog.peterritchie.com"&gt;I’m the Only Developer on This Project. Do I Really Need RBAC?&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/translating-an-elasticsearch-search-request-to-azure-cosmos-db/?utm_source=blog.peterritchie.com"&gt;Translating an Elasticsearch Search Request to Azure Cosmos DB&lt;/a&gt; by Azure Cosmos DB Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/github-hosted-agents-with-pay-as-you-go-pricing-are-now-generally-available-in-azure-pipelines/?utm_source=blog.peterritchie.com"&gt;GitHub-hosted agents with Pay-as-you-Go pricing are now generally available in Azure Pipelines&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-september-2026/?utm_source=blog.peterritchie.com"&gt;Everything released in September 2026 for Azure Developer CLI&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/updates-to-copilot-code-reviews-for-azure-repos/?utm_source=blog.peterritchie.com"&gt;Updates to Copilot Code Reviews for Azure Repos&lt;/a&gt; by Azure DevOps Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-september-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (September 2026)&lt;/a&gt; by Azure SDK Blog&lt;/p&gt;
+&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/ai-is-rewriting-the-developer-career-ladder-heres-how-to-stand-out/?utm_source=blog.peterritchie.com"&gt;AI is changing developer work. Here are three skills to strengthen.&lt;/a&gt; by The GitHub Blog&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/10/02/redesign-without-fear/?utm_source=blog.peterritchie.com"&gt;Redesign without fear&lt;/a&gt; by Mark Seemann&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mamund.substack.com/p/approved-by-management-26-13?utm_source=blog.peterritchie.com"&gt;Approved by Management #26-13&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
+&lt;!-- ## Windows
+--&gt;
+&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.mitchelsellers.com/blog/article/one-repository-two-ai-assistants-structuring-guidance-for-github-copilot-and-claude-code?utm_source=blog.peterritchie.com"&gt;One Repository, Two AI Assistants: Structuring Guidance for GitHub Copilot and Claude Code&lt;/a&gt; by Mitchel Sellers&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.mitchelsellers.com/blog/article/your-coding-agent-needs-observability-too#%3E?utm_source=blog.peterritchie.com"&gt;Your Coding Agent Needs Observability, Too&lt;/a&gt; by Mitchel Sellers&lt;/p&gt;
+&lt;!--## Online Tools
+
+## Databases
+
+## Computing
+
+## Podcasts
+
+## Other Link Collections
+
+--&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-september-28-2026</id>
 		<title>Things That Caught My Attention Last Week - September 28</title>
@@ -1496,81 +1573,6 @@
 ## Other Link Collections
 
 --&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-1%20copy</id>
-		<title>Things That Caught My Attention Last Week - March 1</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-1%20copy" />
-		<updated>2026-03-04T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
-## Open-source
-
-## Domain-Driven Design, CQRS
- --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/fencing-tokens-and-generation-clock-in-net-stop-zombie-leaders-from-writing/?utm_source=rss&amp;amp;utm_medium=rss&amp;amp;utm_campaign=fencing-tokens-and-generation-clock-in-net-stop-zombie-leaders-from-writing?utm_source=blog.peterritchie.com"&gt;Fencing Tokens and Generation Clock in .NET: Stop Zombie Leaders From Writing&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://vladikk.com/2026/02/26/coupling-weighed/?utm_source=blog.peterritchie.com"&gt;Coupling Should Be Weighed, Not Counted&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
-&lt;!--## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-february-update/?utm_source=blog.peterritchie.com"&gt;Visual Studio February Update&lt;/a&gt; by Mark Downie&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://andrewlock.net/recording-metrics-in-process-using-meterlistener/?utm_source=blog.peterritchie.com"&gt;Recording metrics in-process using MeterListener&lt;/a&gt; by Andrew Lock&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/02/24/on-debugging-problems/?utm_source=blog.peterritchie.com"&gt;On Debugging Problems&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.nimblepros.com/blogs/validating-benchmarks/#sq_hshvked81h?utm_source=blog.peterritchie.com"&gt;Validating Benchmarks in .NET&lt;/a&gt; by Philippe Vaillancourt&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.tabsoverspaces.com/233961-is-it-faster-to-index-into-an-array-or-use-switch-statement-for-lookups?utm_source=paulomorgado.net&amp;amp;utm_medium=bluesky?utm_source=blog.peterritchie.com"&gt;Is it faster to index into an array or use switch statement for lookups?&lt;/a&gt; by Jiří Činčura&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile
-
-## Agile/Work Life
-
-## Project Management/Administration
-
-## REST/APIs
-
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/devops/updates-to-team-calendar-extension/?utm_source=blog.peterritchie.com"&gt;Updates to Team Calendar extension&lt;/a&gt; by Dan Hellem&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/cosmosdb/azure-documentdb-mongodb-compatible/?utm_source=blog.peterritchie.com"&gt;Azure DocumentDB: A Fully Managed MongoDB-Compatible Database&lt;/a&gt; by Khelan Modi&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-february-2026/?utm_source=blog.peterritchie.com"&gt;Azure SDK Release (February 2026)&lt;/a&gt; by Ronnie Geraghty&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-february-2026/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd) - February 2026: JMESPath Queries &amp;amp; Deployment Slots&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
-&lt;!-- ## Software Development
- --&gt;
-&lt;!-- ## Windows
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/from-idea-to-pull-request-a-practical-guide-to-building-with-github-copilot-cli/?utm_source=blog.peterritchie.com"&gt;From idea to pull request: A practical guide to building with GitHub Copilot CLI - The GitHub Blog&lt;/a&gt; by Ari LiVigni&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/whats-new-with-github-copilot-coding-agent/?utm_source=blog.peterritchie.com"&gt;What's new with GitHub Copilot coding agent - The GitHub Blog&lt;/a&gt; by Andrea Griffiths&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/vector-data-in-dotnet-building-blocks-for-ai-part-2/?utm_source=blog.peterritchie.com"&gt;Vector Data in .NET - Building Blocks for AI Part 2&lt;/a&gt; by Jeremy Likness&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/generative-ai/multi-agent-workflows-often-fail-heres-how-to-engineer-ones-that-dont/?utm_source=blog.peterritchie.com"&gt;Multi-agent workflows often fail. Here's how to engineer ones that don't.&lt;/a&gt; by Gwen Davis&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://garymarcus.substack.com/p/turns-out-generative-ai-was-a-scam?utm_source=blog.peterritchie.com"&gt;Turns out Generative AI was a scam &lt;/a&gt; by Gary Marcus&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/?utm_source=blog.peterritchie.com"&gt;We mourn our craft&lt;/a&gt; by Nolan Lawson&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://theconversation.com/using-ai-responsibly-means-knowing-when-not-to-use-it-274671?utm_source=blog.peterritchie.com"&gt;Using AI responsibly means knowing when not to use it&lt;/a&gt; by Sam Illingworth&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
- --&gt;
 </content>
 		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
 	</entry>
