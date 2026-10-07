@@ -4,8 +4,58 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-10-05T19:50:04Z</updated>
+	<updated>2026-10-07T21:40:14Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
+	<entry>
+		<id>http://blog.peterritchie.com/posts/ai-with-ddd-part-0</id>
+		<title>Software Delivery with AI from the Trenches: Leveraging Domain-Driven Design - Introduction</title>
+		<link href="http://blog.peterritchie.com/posts/ai-with-ddd-part-0" />
+		<updated>2026-10-07T00:00:00Z</updated>
+		<content>&lt;p&gt;&lt;img src="../assets/ddd-with-ai-0.jpg" class="img-fluid" alt="ai-in-context-map" /&gt;&lt;/p&gt;
+&lt;p&gt;Generative AI can generate slop, but with care and attention it also can generate useful information. Whether generative AI produces useful information comes down to how AI is used.&lt;/p&gt;
+&lt;p&gt;This post, the first in a series of in the trenches with DDD and AI, introduces AI's capabilities, limitations, and posits that Aspects of Domain-Driven Design are ideal for improving AI usage for generating code. The series will continue digging deeper into rethinking how to use AI agents through the lense of Domain-Driven Design.&lt;/p&gt;
+&lt;p&gt;Generative AI is a tool that can be leveraged to aid in the delivery of useful software. Any tool can be misinterpreted in the vein of the &lt;em&gt;golden hammer cognitive bias&lt;/em&gt; (&lt;a href="https://en.wikipedia.org/wiki/Law_of_the_instrument"&gt;Law of the Instrument&lt;/a&gt;): as the only-tool-you'll-ever-need. Or it can be included with other productive tools in a cohesive tool belt. The craftsperson that assembles a valuable tool belt knows each tool inside and out, including what the design purpose of the tool and its intended usage. Being productive with generative AI depends on having a high-level understanding of what it does and understanding its limitations.&lt;/p&gt;
+&lt;!-- how it works--&gt;
+&lt;p&gt;&amp;quot;AI&amp;quot; is an umbrella term that can mean several things. Contemporary &amp;quot;AI&amp;quot; means &lt;em&gt;agentic AI&lt;/em&gt; leveraging a large language model (LLM), specifically a generative pre-trained transformer (GPT) large language model. I.e., ChatGPT, Claude, Microsoft Copilot, Gemini, etc. A GPT is pre-trained on large datasets (in the realm of &amp;quot;all of the Internet&amp;quot;) and statistically predicts the next piece of information in a sequence. LLM/GPT &amp;quot;training&amp;quot; is essentially the process of extracting meaning of tokenized training data as vectorized data (embeddings). (use of &amp;quot;LLM&amp;quot; beyond this point means the GPT variant, to avoid confusion with ChatGPT) Agent input is also tokenized and vectorized. Vectors establish multidimensional relationships between the meaning of tokenized data (tokens), essentially allowing an agent to determine closeness (similarity) in meaning of input context to training data (attention). Based on the meaning of a sequence of information, and known information with similar meaning, an LLM can determine the statistical probability the next most likely element in the sequence. When performed iteratively, dozens to hundreds of times, an agent can determine a likely meaning of a prompt response and transform that meaning into a complex answer tailored to the input context.&lt;/p&gt;
+&lt;table class="table"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Note&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;A token is a representation of something that can have meaning and is not necessarily a &amp;quot;word&amp;quot;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;An &amp;quot;oversimplification&amp;quot; to say the least but suffice it to say LLMs are not magic, LLMs do not &amp;quot;reason&amp;quot; and factually verify, LLMs do not generate new meaning but recognize meaning patterns, response quality depends on input context cohesiveness, and inputs destined for the context may not fit in the context window and go through the lossy process of compaction to trim information.&lt;/p&gt;
+&lt;p&gt;So, effective use of LLMs means establishing a session context scoped to information as close to the same meaning as the ideal responses so it's not diluted. This is not an easy task, implying circular reasoning (begging the question) of needing to know the correct response to engineer the ideal prompt context. Establishing an ideal session context is a process that requires trial and error (turns) and iterative clarification and disambiguation of the context.&lt;/p&gt;
+&lt;p&gt;Additionally, the intent AI agent output should be the achievement of goals outlined in a product roadmap or strategy or contribute to product vision. Advancing such plans depends on breaking the goals into smaller goals and objectives often along enterprise lines like business objectives, product capabilities, and product operational tasks. Context Engineering depends on having these plans and how to measure progress against them. Measuring progress at any point in time with complex and numerous goals requires prioritizing and logically grouping them.&lt;/p&gt;
+&lt;!-- limitations --&gt;
+&lt;p&gt;LLM agents (chats) also have some inherent limitations. They are stateless: LLMs don't remember or immediately learn from any context you give them. A chat session's &amp;quot;memory&amp;quot; includes the chat history in the context--effectively replaying the chat on every turn, including what didn't work (compounding error). The context is of limited size, called a &amp;quot;window&amp;quot;. Agents don't fail when the context size becomes larger than the window, they discreetly compact it to remove information while trying not to affect the basic meaning.&lt;/p&gt;
+&lt;p&gt;Off-the-shelf LLMs are trained on publicly available information, they can't related meaning to Unknown information (proprietary or confidential information). For LLMs to utilize confidential information it must be provided in the context, as missing data can result in &amp;quot;hallucinations&amp;quot; where the only information with likely similar meaning is ambiguous and realistically unrelated.&lt;/p&gt;
+&lt;p&gt;While improving the effectiveness of AI agent usage and the applicability of their responses comes down to Context Engineering, Context Engineering is nuanced and complex. Context Engineering depends on managing a larger set of information, parts of which are selectively used in individual LLM sessions. It recognizes that multiple, unique sessions are required to progress dynamic plans, each tailored a measurable goal. Enterprise plans drive the prioritization of session invocation.&lt;/p&gt;
+&lt;p&gt;In other words,&lt;/p&gt;
+&lt;p&gt;Context Engineering depends on the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adapting to business plans: business process, business and product strategy, business and product objectives&lt;/li&gt;
+&lt;li&gt;Identifying, organizing, storing, sharing, and using an organization's collective information and expertise (Knowledge Management)&lt;/li&gt;
+&lt;li&gt;Managing business information: business behaviors, artifacts, roles, relationships, etc.&lt;/li&gt;
+&lt;li&gt;A structural direction to the implementation (frameworks, modules, components, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And Context Engineering involves:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Isolating context by breaking sessions down by goal or objective&lt;/li&gt;
+&lt;li&gt;Prioritizing session invocations&lt;/li&gt;
+&lt;li&gt;Scoping context to focus on meaning related to the session objective&lt;/li&gt;
+&lt;li&gt;Measuring whether and to what degree responses achieve the objective&lt;/li&gt;
+&lt;li&gt;Applying critical thinking to existing knowledge based on generated results and enabling knowledge refinement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In many ways leveraging agentic/generative AI has challenges similar to those that agile software development teams encounter. Those teams address those challenges with agile methodologies, complemented by Domain-Driven Design practices. Future posts in this series will dig into how to get started, gain traction, and how to use Domain-Driven Design techniques facilitate Context Engineering.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;&lt;img src="../assets/ddd-with-ai-0.jpg" class="img-fluid" alt="ai-in-context-map"&gt;&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-05-2026</id>
 		<title>Things That Caught My Attention Last Week - October 5</title>
@@ -1480,84 +1530,6 @@
 &lt;p&gt;&lt;a href="https://thenewstack.io/jetbrains-names-the-debt-ai-agents-leave-behind?utm_source=blog.peterritchie.com"&gt;JetBrains names the debt AI agents leave behind&lt;/a&gt; by Darryl K. Taft&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.blog/ai-and-ml/github-copilot/the-era-of-ai-as-text-is-over-execution-is-the-new-interface/?utm_source=blog.peterritchie.com"&gt;The era of “AI as text” is over. Execution is the new interface&lt;/a&gt; by Gwen Davis&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://futurism.com/future-society/ai-bubble-billionaires-burst?utm_source=blog.peterritchie.com"&gt;Tech Billionaires Are Quietly Rooting for AI Bubble to Collapse&lt;/a&gt; by Joe Wilkins&lt;/p&gt;
-&lt;!-- ## Social Media
-
-## Online Tools
-
-## Databases
-
-## Cloud
-
-## Computing
-
-## Podcasts
-
-## Other Link Collections
-
---&gt;
-</content>
-		<summary>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i"&gt;&lt;/p&gt;</summary>
-	</entry>
-	<entry>
-		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-8</id>
-		<title>Things That Caught My Attention Last Week - March 8</title>
-		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-march-8" />
-		<updated>2026-03-10T00:00:00Z</updated>
-		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;!-- ## Security
-
- --&gt;
-&lt;h2 id="open-source"&gt;Open-source&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.woodruff.dev/htmxrazor-1-2-0-toast-notifications-pagination-and-the-end-of-css-specificity-fights/?utm_source=blog.peterritchie.com"&gt;htmxRazor 1.2.0: Toast Notifications, Pagination, and the End of CSS Specificity Fights&lt;/a&gt; by Chris Woodruff&lt;/p&gt;
-&lt;!-- ## Domain-Driven Design, CQRS
- --&gt;
-&lt;h2 id="software-architecture"&gt;Software Architecture&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.milanjovanovic.tech/blog/5-architecture-tests-you-should-add-to-your-dotnet-projects?utm_source=blog.peterritchie.com"&gt;5 Architecture Tests You Should Add to Your .NET Projects&lt;/a&gt; by Milan Jovanović&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/parse-dont-guess?utm_source=blog.peterritchie.com"&gt;Parse, Don't Guess&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://codeopinion.com/vertical-slices-doesnt-mean-share-nothing/?utm_source=blog.peterritchie.com"&gt;Vertical Slices doesn't mean &amp;quot;Share Nothing&amp;quot;&lt;/a&gt; by Derek Comartin&lt;/p&gt;
-&lt;!--## Presenting
- --&gt;
-&lt;h2 id="net"&gt;.NET&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://irina.codes/async-does-not-mean-scalable/?utm_source=blog.peterritchie.com"&gt;Async Does Not Mean Scalable&lt;/a&gt; by Irina Scurtu&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://jeremydmiller.com/2026/03/06/fun-five-year-retrospective-on-marten-adoption/?utm_source=blog.peterritchie.com"&gt;Fun Five Year Retrospective on Marten Adoption&lt;/a&gt; by Jeremy D. Miller&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/visualstudio/visual-studio-dev-essentials-free-practical-tools-for-every-developer/?utm_source=blog.peterritchie.com"&gt;Visual Studio Dev Essentials: Free, Practical Tools for Every Developer&lt;/a&gt; by Jim Harrer&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/extend-your-coding-agent-with-dotnet-skills/?utm_source=blog.peterritchie.com"&gt;Extend your coding agent with .NET Skills&lt;/a&gt; by Tim Heuer&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/release-v10-of-the-official-mcp-csharp-sdk/?utm_source=blog.peterritchie.com"&gt;Release v1.0 of the official MCP C# SDK&lt;/a&gt; by Mike Kistler&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/essential-visual-studio-extensions-4loh?utm_source=blog.peterritchie.com"&gt;Essential Visual Studio Extensions&lt;/a&gt; by Karen Payne&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://barretblake.dev/posts/development/2026/03/value-of-immutability/?utm_source=blog.peterritchie.com"&gt;The Value of Immutability in .NET&lt;/a&gt; by Barret Blake&lt;/p&gt;
-&lt;!-- ## Conferences and Speaking
-
-## Domain Driven Design
-
-## DevOps
-
-## Software Design
-
-## Mobile --&gt;
-&lt;h2 id="agilework-life"&gt;Agile/Work Life&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://agilepainrelief.com/blog/product-backlog-refinement-hell-solutions/?utm_source=blog.peterritchie.com"&gt;Product Backlog Refinement Hell: 3 Problems and Solutions&lt;/a&gt; by Mark Levison&lt;/p&gt;
-&lt;!-- ## Project Management/Administration
-
-## REST/APIs
- --&gt;
-&lt;h2 id="azure"&gt;Azure&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/azure-sdk/azd-appservice-swap/?utm_source=blog.peterritchie.com"&gt;Azure Developer CLI (azd): One command to swap Azure App Service slots&lt;/a&gt; by PuiChee (PC) Chan&lt;/p&gt;
-&lt;h2 id="software-development"&gt;Software Development&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.poppastring.com/blog/we-are-still-engineers?utm_source=blog.peterritchie.com"&gt;We are still engineers&lt;/a&gt; by Mark Downie&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.meziantou.net/visualize-github-actions-runs-with-meziantou-githubactionstracing.htm?utm_source=blog.peterritchie.com"&gt;Visualize GitHub Actions runs with Meziantou.GitHubActionsTracing&lt;/a&gt; by Gérald Barré&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.blog/security/how-to-scan-for-vulnerabilities-with-github-security-labs-open-source-ai-powered-framework/?utm_source=blog.peterritchie.com"&gt;How to scan for vulnerabilities with GitHub Security Lab’s open source AI-powered framework&lt;/a&gt; by Man Yue Mo, Peter Stöckli&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260309-00/?p=112118?utm_source=blog.peterritchie.com"&gt;Learning to read C++ compiler errors: Ambiguous overloaded operator&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/oldnewthing/20260306-00/?p=112116?utm_source=blog.peterritchie.com"&gt;When Read­Directory­ChangesW reports that a deletion occurred, how can I learn more about the deleted thing?&lt;/a&gt; by Raymond Chen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cassidoo.co/post/css-wavy-art/?utm_source=blog.peterritchie.com"&gt;Making art with CSS gradients and corner-shape and skew, oh my&lt;/a&gt; by Cassidy Williams&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/03/03/in-defence-of-correctness/?utm_source=blog.peterritchie.com"&gt;In defence of correctness&lt;/a&gt; by Mark Seemann&lt;/p&gt;
-&lt;!-- ## Windows
- --&gt;
-&lt;h2 id="ai"&gt;AI&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://www.architecture-weekly.com/p/the-end-of-coding-wrong-question?utm_source=blog.peterritchie.com"&gt;The End of Coding? Wrong Question&lt;/a&gt; by Oskar Dudycz&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://vladikk.com/2026/03/10/ai-ooda/?utm_source=blog.peterritchie.com"&gt;The Missing Link in Vibe Coding: Feedback Loops&lt;/a&gt; by Vlad Khononov&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://nick-tune.me/blog/2026-03-04-event-sourced-claude-code-workflows/?utm_source=blog.peterritchie.com"&gt;Event-sourced Claude Code workflows&lt;/a&gt; by Nick Tune&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mamund.substack.com/p/signal-ping-skill-still-sets-the?utm_source=blog.peterritchie.com"&gt;Signal ping : Skill still sets the ceiling&lt;/a&gt; by Mike Amundsen&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.ploeh.dk/2026/03/09/which-of-these-languages-are-best-for-ai/?utm_source=blog.peterritchie.com"&gt;Which of these languages are best for AI?&lt;/a&gt; by Mark Seemann&lt;/p&gt;
 &lt;!-- ## Social Media
 
 ## Online Tools
