@@ -3,7 +3,7 @@ layout: post
 title: 'Software Delivery with AI from the Trenches: Leveraging Domain-Driven Design - Introduction'
 categories: ['Software Development', 'October 2026']
 comments: true
-excerpt: 'This post, the first in a series of in the trenches with DDD and AI, introduces AI's capabilities, limitations, and posits that Aspects of Domain-Driven Design are ideal for improving AI usage for generating code.'
+excerpt: 'This post, the first in a series of in the trenches with DDD and AI, introduces AI''s capabilities, limitations, and posits that Aspects of Domain-Driven Design are ideal for improving AI usage for generating code.'
 tags: ['AI', 'Domain-Driven Design', 'DDD']
 ---
 ![ai-in-context-map](../assets/ddd-with-ai-0.jpg)
