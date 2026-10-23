@@ -9,10 +9,9 @@ tags: ['Random']
 ![caught-my-i](../assets/caught-i.png)
 <!-- ## Security
 
- -->
 ## Open-source
 
-<!-- ## Domain-Driven Design, CQRS
+## Domain-Driven Design, CQRS
 
  -->
 ## Software Architecture
