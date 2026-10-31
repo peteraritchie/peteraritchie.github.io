@@ -1,15 +1,11 @@
 @{
     string Title = Model.WithoutSettings.String(BlogKeys.Title);
     string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
-    var blogKeys = string.Join("\n", typeof(BlogKeys)
-            .GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)
-            .Select(f => $"{f.Name}: \"{f.GetValue(null)}\""));
-    var sb = new System.Text.StringBuilder();
-    foreach (var item in ViewData)
+    string text = "No MetaImage";
+    if (Context.String("MetaImage") != null)
     {
-        sb.AppendLine($"{item.Key}: {item.Value}");
+        text = $"MetaImage: \"{Context.String("MetaImage")}\"";
     }
-    var text = sb.ToString();
 }
 
 <!DOCTYPE html>
