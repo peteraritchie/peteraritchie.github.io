@@ -5,8 +5,8 @@
 		<link>http://blog.peterritchie.com/</link>
 		<description>Peter Ritchie</description>
 		<copyright>2026</copyright>
-		<pubDate>Sat, 31 Oct 2026 13:28:41 GMT</pubDate>
-		<lastBuildDate>Sat, 31 Oct 2026 13:28:41 GMT</lastBuildDate>
+		<pubDate>Sat, 31 Oct 2026 13:49:27 GMT</pubDate>
+		<lastBuildDate>Sat, 31 Oct 2026 13:49:27 GMT</lastBuildDate>
 		<item>
 			<title>Things That Caught My Attention Last Week - October 26</title>
 			<link>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-october-26-2026</link>
@@ -30,7 +30,8 @@
 &lt;!-- ## GitHib
 
 ## Presenting
- --&gt;
+
+--&gt;
 &lt;h2 id="net"&gt;.NET&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://devblogs.microsoft.com/dotnet/dotnet-october-2026-oob-security-updates/?utm_source=blog.peterritchie.com"&gt;.NET October 2026 Out-of-Band Security Updates&lt;/a&gt; by .NET Team&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://dev.to/karenpayneoregon/adding-a-razor-page-with-entity-framework-core-to-an-aspnet-core-project-1p2g?utm_source=blog.peterritchie.com"&gt;Adding a Razor Page with Entity Framework Core to an ASP.NET Core Project&lt;/a&gt; by Karen Payne&lt;/p&gt;
