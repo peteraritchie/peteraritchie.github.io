@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
         <head>
-            <!-- blogkeys: f:Title, f:Image, f:Description, f:Intro, f:PostsPath, f:CaseInsensitiveTags, f:MarkdownConfiguration, f:MarkdownExtensionTypes, f:ProcessIncludes, f:IncludeDateInPostPath, f:MetaRefreshRedirects, f:NetlifyRedirects, f:IndexTemplate, f:IndexPath, f:RssPath, f:AtomPath, f:RdfPath, f:ValidateAbsoluteLinks, f:ValidateRelativeLinks, f:ValidateLinksAsError, f:TagPageSize, f:IndexPageSize, f:IndexPaging, f:IndexFullPosts, f:ArchivePageSize, f:ArchiveExcerpts, f:GenerateArchive, f:Published, f:Tags, f:Lead, f:Excerpt, f:ShowInNavbar, f:Posts, f:Tag, f:IgnoreFolders, f:MarkdownPrependLinkRoot -->
+            <!-- blogkeys: Title: &quot;Title&quot;&#xA;Image: &quot;Image&quot;&#xA;Description: &quot;Description&quot;&#xA;Intro: &quot;Intro&quot;&#xA;PostsPath: &quot;PostsPath&quot;&#xA;CaseInsensitiveTags: &quot;CaseInsensitiveTags&quot;&#xA;MarkdownConfiguration: &quot;MarkdownConfiguration&quot;&#xA;MarkdownExtensionTypes: &quot;MarkdownExtensionTypes&quot;&#xA;ProcessIncludes: &quot;ProcessIncludes&quot;&#xA;IncludeDateInPostPath: &quot;IncludeDateInPostPath&quot;&#xA;MetaRefreshRedirects: &quot;MetaRefreshRedirects&quot;&#xA;NetlifyRedirects: &quot;NetlifyRedirects&quot;&#xA;IndexTemplate: &quot;IndexTemplate&quot;&#xA;IndexPath: &quot;IndexPath&quot;&#xA;RssPath: &quot;RssPath&quot;&#xA;AtomPath: &quot;AtomPath&quot;&#xA;RdfPath: &quot;RdfPath&quot;&#xA;ValidateAbsoluteLinks: &quot;ValidateAbsoluteLinks&quot;&#xA;ValidateRelativeLinks: &quot;ValidateRelativeLinks&quot;&#xA;ValidateLinksAsError: &quot;ValidateLinksAsError&quot;&#xA;TagPageSize: &quot;TagPageSize&quot;&#xA;IndexPageSize: &quot;IndexPageSize&quot;&#xA;IndexPaging: &quot;IndexPaging&quot;&#xA;IndexFullPosts: &quot;IndexFullPosts&quot;&#xA;ArchivePageSize: &quot;ArchivePageSize&quot;&#xA;ArchiveExcerpts: &quot;ArchiveExcerpts&quot;&#xA;GenerateArchive: &quot;GenerateArchive&quot;&#xA;Published: &quot;Published&quot;&#xA;Tags: &quot;Tags&quot;&#xA;Lead: &quot;Lead&quot;&#xA;Excerpt: &quot;Excerpt&quot;&#xA;ShowInNavbar: &quot;ShowInNavbar&quot;&#xA;Posts: &quot;Posts&quot;&#xA;Tag: &quot;Tag&quot;&#xA;IgnoreFolders: &quot;IgnoreFolders&quot;&#xA;MarkdownPrependLinkRoot: &quot;MarkdownPrependLinkRoot&quot; -->
             <!-- ViewData: WyamDocument: @{&#xD;&#xA;    Layout = &quot;/_Layout.cshtml&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;@{&#xD;&#xA;    foreach(IGrouping&lt;int, IDocument&gt; group in Model.DocumentList(Keys.PageDocuments)&#xD;&#xA;        .Where(x =&gt; x.ContainsKey(BlogKeys.Published))&#xD;&#xA;        .OrderByDescending(x =&gt; x.Get&lt;DateTime&gt;(BlogKeys.Published))&#xD;&#xA;        .GroupBy(x =&gt; x.Get&lt;DateTime&gt;(BlogKeys.Published).Year)&#xD;&#xA;        .OrderByDescending(x =&gt; x.Key))&#xD;&#xA;    {&#xD;&#xA;        &lt;h1&gt;@group.Key&lt;/h1&gt;&#xD;&#xA;        &lt;hr /&gt;&#xD;&#xA;        @Html.Partial(&quot;_PostList&quot;, group);&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    &lt;ul class=&quot;pager&quot;&gt;&#xD;&#xA;        &lt;li class=&quot;previous&quot;&gt;                &#xD;&#xA;            @if(Model.Bool(Keys.HasPreviousPage))&#xD;&#xA;            {&#xD;&#xA;                &lt;a href=&quot;@(Context.GetLink(Model.Document(Keys.PreviousPage)))&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;larr;&lt;/span&gt; Newer&lt;/a&gt;&#xD;&#xA;            }                &#xD;&#xA;        &lt;/li&gt;&#xD;&#xA;        &lt;li class=&quot;next&quot;&gt;&#xD;&#xA;            @if(Model.Bool(Keys.HasNextPage))&#xD;&#xA;            {&#xD;&#xA;                &lt;a href=&quot;@(Context.GetLink(Model.Document(Keys.NextPage)))&quot;&gt;Older &lt;span aria-hidden=&quot;true&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&#xD;&#xA;            }&#xD;&#xA;        &lt;/li&gt;&#xD;&#xA;    &lt;/ul&gt;&#xD;&#xA;}&#xA;WyamExecutionContext: Wyam.Core.Execution.ExecutionContext&#xA; -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
@@ -931,26 +931,26 @@
             <p class="post-meta">Posted on Friday, May 2, 2014</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Windows-Store-production-mill">
-                <h3 class="post-title">Windows Store production mill</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, April 30, 2014</p>      
-        </div>   
-        <div class="post-list">
             <a href="/posts/Comparing-BackgroundWorker-and-async%2Fawait">
                 <h3 class="post-title">Comparing BackgroundWorker and async/await</h3>
             </a>
             <p class="post-meta">Posted on Wednesday, April 30, 2014</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/What-do-the-icons-on-your-Windows-Phone-8.1-mean%3F">
-                <h3 class="post-title">What do the icons on your Windows Phone 8.1 mean?</h3>
+            <a href="/posts/Windows-Store-production-mill">
+                <h3 class="post-title">Windows Store production mill</h3>
             </a>
-            <p class="post-meta">Posted on Tuesday, April 29, 2014</p>      
+            <p class="post-meta">Posted on Wednesday, April 30, 2014</p>      
         </div>   
         <div class="post-list">
             <a href="/posts/Getting-the-most-of-Windows-Phone-8.1-keyboard">
                 <h3 class="post-title">Getting the most of Windows Phone 8.1 keyboard</h3>
+            </a>
+            <p class="post-meta">Posted on Tuesday, April 29, 2014</p>      
+        </div>   
+        <div class="post-list">
+            <a href="/posts/What-do-the-icons-on-your-Windows-Phone-8.1-mean%3F">
+                <h3 class="post-title">What do the icons on your Windows Phone 8.1 mean?</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, April 29, 2014</p>      
         </div>   
@@ -1318,14 +1318,14 @@
             <p class="post-meta">Posted on Tuesday, June 7, 2011</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Robustness-with-RabbitMQ-in-.NET">
-                <h3 class="post-title">Robustness with RabbitMQ in .NET</h3>
+            <a href="/posts/Hosted-MongoDB">
+                <h3 class="post-title">Hosted MongoDB</h3>
             </a>
             <p class="post-meta">Posted on Sunday, May 22, 2011</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Hosted-MongoDB">
-                <h3 class="post-title">Hosted MongoDB</h3>
+            <a href="/posts/Robustness-with-RabbitMQ-in-.NET">
+                <h3 class="post-title">Robustness with RabbitMQ in .NET</h3>
             </a>
             <p class="post-meta">Posted on Sunday, May 22, 2011</p>      
         </div>   
@@ -1612,14 +1612,14 @@
             <p class="post-meta">Posted on Wednesday, March 11, 2009</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/It%E2%80%99s-More-Than-Syntax">
-                <h3 class="post-title">It&#x2019;s More Than Syntax</h3>
+            <a href="/posts/A-Upcoming-Pandemic-of-Domain-Anaemia">
+                <h3 class="post-title">A Upcoming Pandemic of Domain Anaemia</h3>
             </a>
             <p class="post-meta">Posted on Thursday, January 29, 2009</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/A-Upcoming-Pandemic-of-Domain-Anaemia">
-                <h3 class="post-title">A Upcoming Pandemic of Domain Anaemia</h3>
+            <a href="/posts/It%E2%80%99s-More-Than-Syntax">
+                <h3 class="post-title">It&#x2019;s More Than Syntax</h3>
             </a>
             <p class="post-meta">Posted on Thursday, January 29, 2009</p>      
         </div>   
@@ -1837,14 +1837,14 @@
             <p class="post-meta">Posted on Tuesday, July 15, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Received-Microsoft-MVP-Award-in-C%23-Again">
-                <h3 class="post-title">Received Microsoft MVP Award in C# Again</h3>
+            <a href="/posts/Sandcastle-Source-Code-Published">
+                <h3 class="post-title">Sandcastle Source Code Published</h3>
             </a>
             <p class="post-meta">Posted on Wednesday, July 2, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Sandcastle-Source-Code-Published">
-                <h3 class="post-title">Sandcastle Source Code Published</h3>
+            <a href="/posts/Received-Microsoft-MVP-Award-in-C%23-Again">
+                <h3 class="post-title">Received Microsoft MVP Award in C# Again</h3>
             </a>
             <p class="post-meta">Posted on Wednesday, July 2, 2008</p>      
         </div>   
@@ -1945,6 +1945,12 @@
             <p class="post-meta">Posted on Monday, March 31, 2008</p>      
         </div>   
         <div class="post-list">
+            <a href="/posts/.NET-2.0-Framework-License">
+                <h3 class="post-title">.NET 2.0 Framework License</h3>
+            </a>
+            <p class="post-meta">Posted on Friday, March 28, 2008</p>      
+        </div>   
+        <div class="post-list">
             <a href="/posts/Windows-XP-Professional-EULA">
                 <h3 class="post-title">Windows XP Professional EULA</h3>
             </a>
@@ -1953,12 +1959,6 @@
         <div class="post-list">
             <a href="/posts/Licences-for-Microsoft-products">
                 <h3 class="post-title">Licences for Microsoft products</h3>
-            </a>
-            <p class="post-meta">Posted on Friday, March 28, 2008</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/.NET-2.0-Framework-License">
-                <h3 class="post-title">.NET 2.0 Framework License</h3>
             </a>
             <p class="post-meta">Posted on Friday, March 28, 2008</p>      
         </div>   
@@ -1993,18 +1993,6 @@
             <p class="post-meta">Posted on Friday, February 8, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/In-progress">
-                <h3 class="post-title">In progress</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, February 6, 2008</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/Not-Knowing-Why-Something-is-Better-or-Worse-Means-You-Believe-it%E2%80%99s-Magic">
-                <h3 class="post-title">Not Knowing Why Something is Better or Worse Means You Believe it&#x2019;s Magic</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, February 6, 2008</p>      
-        </div>   
-        <div class="post-list">
             <a href="/posts/Testing-the-Units">
                 <h3 class="post-title">Testing the Units</h3>
             </a>
@@ -2013,6 +2001,18 @@
         <div class="post-list">
             <a href="/posts/Maxim%E2%80%99s-of-Object-Oriented-Design-%E2%80%93-Layers">
                 <h3 class="post-title">Maxim&#x2019;s of Object-Oriented Design &#x2013; Layers</h3>
+            </a>
+            <p class="post-meta">Posted on Wednesday, February 6, 2008</p>      
+        </div>   
+        <div class="post-list">
+            <a href="/posts/In-progress">
+                <h3 class="post-title">In progress</h3>
+            </a>
+            <p class="post-meta">Posted on Wednesday, February 6, 2008</p>      
+        </div>   
+        <div class="post-list">
+            <a href="/posts/Not-Knowing-Why-Something-is-Better-or-Worse-Means-You-Believe-it%E2%80%99s-Magic">
+                <h3 class="post-title">Not Knowing Why Something is Better or Worse Means You Believe it&#x2019;s Magic</h3>
             </a>
             <p class="post-meta">Posted on Wednesday, February 6, 2008</p>      
         </div>   
@@ -2047,14 +2047,14 @@
             <p class="post-meta">Posted on Friday, January 25, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Formatting%2Fparsing-for-a-specific-culture-redux">
-                <h3 class="post-title">Formatting/parsing for a specific culture redux</h3>
+            <a href="/posts/BDD-vs-TDD.">
+                <h3 class="post-title">BDD vs TDD.</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, January 22, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/BDD-vs-TDD.">
-                <h3 class="post-title">BDD vs TDD.</h3>
+            <a href="/posts/Formatting%2Fparsing-for-a-specific-culture-redux">
+                <h3 class="post-title">Formatting/parsing for a specific culture redux</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, January 22, 2008</p>      
         </div>   
@@ -2065,22 +2065,16 @@
             <p class="post-meta">Posted on Tuesday, January 15, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/How-do-I-derive-from-a-sealed-class%3F">
-                <h3 class="post-title">How do I derive from a sealed class?</h3>
-            </a>
-            <p class="post-meta">Posted on Monday, January 7, 2008</p>      
-        </div>   
-        <div class="post-list">
             <a href="/posts/Why-is-immutability-important.">
                 <h3 class="post-title">Why is immutability important.</h3>
             </a>
             <p class="post-meta">Posted on Monday, January 7, 2008</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Dependency-Inversion-Principle">
-                <h3 class="post-title">Dependency Inversion Principle</h3>
+            <a href="/posts/How-do-I-derive-from-a-sealed-class%3F">
+                <h3 class="post-title">How do I derive from a sealed class?</h3>
             </a>
-            <p class="post-meta">Posted on Thursday, January 3, 2008</p>      
+            <p class="post-meta">Posted on Monday, January 7, 2008</p>      
         </div>   
         <div class="post-list">
             <a href="/posts/Visual-C%23-Developer-Center-Article">
@@ -2091,6 +2085,12 @@
         <div class="post-list">
             <a href="/posts/Microsoft-Symbol-Server-EULA-Circa-VS-2005">
                 <h3 class="post-title">Microsoft Symbol Server EULA Circa VS 2005</h3>
+            </a>
+            <p class="post-meta">Posted on Thursday, January 3, 2008</p>      
+        </div>   
+        <div class="post-list">
+            <a href="/posts/Dependency-Inversion-Principle">
+                <h3 class="post-title">Dependency Inversion Principle</h3>
             </a>
             <p class="post-meta">Posted on Thursday, January 3, 2008</p>      
         </div>   
@@ -2200,14 +2200,14 @@
             <p class="post-meta">Posted on Wednesday, July 11, 2007</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/System.Collections-classes-are-obsolete">
-                <h3 class="post-title">System.Collections classes are obsolete</h3>
+            <a href="/posts/C%23-Design-Guidelines">
+                <h3 class="post-title">C# Design Guidelines</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, June 26, 2007</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/C%23-Design-Guidelines">
-                <h3 class="post-title">C# Design Guidelines</h3>
+            <a href="/posts/System.Collections-classes-are-obsolete">
+                <h3 class="post-title">System.Collections classes are obsolete</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, June 26, 2007</p>      
         </div>   
@@ -2224,14 +2224,14 @@
             <p class="post-meta">Posted on Sunday, June 17, 2007</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/DateTime.ToUniversalTime-_Should_-Throw-Exceptinos.">
-                <h3 class="post-title">DateTime.ToUniversalTime *Should* Throw Exceptinos.</h3>
+            <a href="/posts/Software-Design-Priniples-and-Terminology">
+                <h3 class="post-title">Software Design Priniples and Terminology</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, June 12, 2007</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Software-Design-Priniples-and-Terminology">
-                <h3 class="post-title">Software Design Priniples and Terminology</h3>
+            <a href="/posts/DateTime.ToUniversalTime-_Should_-Throw-Exceptinos.">
+                <h3 class="post-title">DateTime.ToUniversalTime *Should* Throw Exceptinos.</h3>
             </a>
             <p class="post-meta">Posted on Tuesday, June 12, 2007</p>      
         </div>   
@@ -2353,14 +2353,14 @@
         <hr />
 
         <div class="post-list">
-            <a href="/posts/Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything">
-                <h3 class="post-title">Visual Studio 2005 Clean doesn&#x2019;t clean everything</h3>
+            <a href="/posts/Dogfooding">
+                <h3 class="post-title">Dogfooding</h3>
             </a>
             <p class="post-meta">Posted on Thursday, November 16, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Dogfooding">
-                <h3 class="post-title">Dogfooding</h3>
+            <a href="/posts/Visual-Studio-2005-Clean-doesn%E2%80%99t-clean-everything">
+                <h3 class="post-title">Visual Studio 2005 Clean doesn&#x2019;t clean everything</h3>
             </a>
             <p class="post-meta">Posted on Thursday, November 16, 2006</p>      
         </div>   
@@ -2377,14 +2377,14 @@
             <p class="post-meta">Posted on Sunday, October 15, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Using-Toolbox-for-Code-Snippets-in-Visual-Studio-2005">
-                <h3 class="post-title">Using Toolbox for Code Snippets in Visual Studio 2005</h3>
+            <a href="/posts/%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6">
+                <h3 class="post-title">&#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;</h3>
             </a>
             <p class="post-meta">Posted on Friday, October 13, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/%E2%80%98System.Threading.Thread.Suspend()%E2%80%99-is-obsolete%3A-%E2%80%98Thread.Suspend-has-been-deprecated%E2%80%A6">
-                <h3 class="post-title">&#x2018;System.Threading.Thread.Suspend()&#x2019; is obsolete: &#x2018;Thread.Suspend has been deprecated&#x2026;</h3>
+            <a href="/posts/Using-Toolbox-for-Code-Snippets-in-Visual-Studio-2005">
+                <h3 class="post-title">Using Toolbox for Code Snippets in Visual Studio 2005</h3>
             </a>
             <p class="post-meta">Posted on Friday, October 13, 2006</p>      
         </div>   
@@ -2419,26 +2419,26 @@
             <p class="post-meta">Posted on Thursday, September 28, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/More-Windows-SDK-Functions-That-Are-Not-Safe">
-                <h3 class="post-title">More Windows SDK Functions That Are Not Safe</h3>
-            </a>
-            <p class="post-meta">Posted on Wednesday, September 27, 2006</p>      
-        </div>   
-        <div class="post-list">
             <a href="/posts/Schedule-at-Least-a-Three-Hours-When-Installing-Visual-Studio-2005-Service-Pack-1-Beta">
                 <h3 class="post-title">Schedule at Least a Three Hours When Installing Visual Studio 2005 Service Pack 1 Beta</h3>
             </a>
             <p class="post-meta">Posted on Wednesday, September 27, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Save-CBitmap-to-File">
-                <h3 class="post-title">Save CBitmap to File</h3>
+            <a href="/posts/More-Windows-SDK-Functions-That-Are-Not-Safe">
+                <h3 class="post-title">More Windows SDK Functions That Are Not Safe</h3>
             </a>
-            <p class="post-meta">Posted on Monday, September 25, 2006</p>      
+            <p class="post-meta">Posted on Wednesday, September 27, 2006</p>      
         </div>   
         <div class="post-list">
             <a href="/posts/Useful-Visual-Studio-2005-Find%2FFind-and-replace-Regular-Expressions">
                 <h3 class="post-title">Useful Visual Studio 2005 Find/Find-and-replace Regular Expressions</h3>
+            </a>
+            <p class="post-meta">Posted on Monday, September 25, 2006</p>      
+        </div>   
+        <div class="post-list">
+            <a href="/posts/Save-CBitmap-to-File">
+                <h3 class="post-title">Save CBitmap to File</h3>
             </a>
             <p class="post-meta">Posted on Monday, September 25, 2006</p>      
         </div>   
@@ -2521,14 +2521,14 @@
             <p class="post-meta">Posted on Wednesday, July 5, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/Sortable-Value-Type-Code-Snippet">
-                <h3 class="post-title">Sortable Value Type Code Snippet</h3>
+            <a href="/posts/A-code-snippet-for-Visual-Studio-2005-that-implements-a-skeleton-value-type-adhering-to-Framework-Design-Guidelines">
+                <h3 class="post-title">A code snippet for Visual Studio 2005 that implements a skeleton value type adhering to Framework Design Guidelines</h3>
             </a>
             <p class="post-meta">Posted on Saturday, March 25, 2006</p>      
         </div>   
         <div class="post-list">
-            <a href="/posts/A-code-snippet-for-Visual-Studio-2005-that-implements-a-skeleton-value-type-adhering-to-Framework-Design-Guidelines">
-                <h3 class="post-title">A code snippet for Visual Studio 2005 that implements a skeleton value type adhering to Framework Design Guidelines</h3>
+            <a href="/posts/Sortable-Value-Type-Code-Snippet">
+                <h3 class="post-title">Sortable Value Type Code Snippet</h3>
             </a>
             <p class="post-meta">Posted on Saturday, March 25, 2006</p>      
         </div>   
