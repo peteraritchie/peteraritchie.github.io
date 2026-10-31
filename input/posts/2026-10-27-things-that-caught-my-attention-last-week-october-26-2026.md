@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: mypost
 title: 'Things That Caught My Attention Last Week - October 26'
 categories: ['Uncategorized', 'October 2026']
 comments: true
@@ -31,7 +31,8 @@ tags: ['Random']
 <!-- ## GitHib
 
 ## Presenting
- -->
+
+-->
 ## .NET
 
 [.NET October 2026 Out-of-Band Security Updates](https://devblogs.microsoft.com/dotnet/dotnet-october-2026-oob-security-updates/?utm_source=blog.peterritchie.com) by .NET Team
