@@ -3,18 +3,20 @@
     string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
     var blogKeys = string.Join(", ", typeof(BlogKeys).GetProperties().Select(p => $"p:{p.Name}")
         .Concat(typeof(BlogKeys).GetFields().Select(f => $"f:{f.Name}")));
+    var text = typeof(BlogKeys).FullName;
 }
 
 <!DOCTYPE html>
 <html lang="en">
         <head>
-            <!-- @blogKeys -->
+            <!-- blogkeys: @blogKeys -->
+            <!-- type name: @text -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
         <title>@PageTitle</title>
         <meta name="description" content="@Context.String(BlogKeys.Description)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         @if (Context.String(BlogKeys.RssPath) != null) {
         <link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)" href="@Context.GetLink(Context.String(BlogKeys.RssPath))" />
@@ -49,7 +51,7 @@
 
         </head>
         <body>
-                
+
                 <!-- Navigation -->
                 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
                         <div class="container-fluid">
@@ -63,18 +65,18 @@
                                         </button>
                                         <a class="navbar-brand" href="@Context.GetLink("/")">@Context.String(BlogKeys.Title)</a>
                                 </div>
-                        
+
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="navbar-collapse">
                                         <ul class="nav navbar-nav navbar-right">
-                                                @Html.Partial("_Navbar") 
+                                                @Html.Partial("_Navbar")
                                         </ul>
                                 </div>
                                 <!-- /.navbar-collapse -->
                         </div>
                         <!-- /.container -->
                 </nav>
-                
+
                 <!-- Page Header -->
                 @{
                         string backgroundImage = null;
@@ -93,13 +95,13 @@
                                                 }
                                                 else
                                                 {
-                                                        @Html.Partial("_Header")                                            
+                                                        @Html.Partial("_Header")
                                                 }
                                         </div>
                                 </div>
                         </div>
                 </header>
-                
+
                 <!-- Main Content -->
                 <div class="container">
                         <div class="row">
@@ -108,17 +110,17 @@
                                 </div>
                         </div>
                 </div>
-                
+
                 <hr>
-                
+
                 <!-- Footer -->
                 <footer>
                         @Html.Partial("_Footer")
-                </footer> 
+                </footer>
 
                 <script src="@Context.GetLink("/assets/js/jquery.min.js")"></script>
-                <script src="@Context.GetLink("/assets/js/bootstrap.min.js")"></script>     
-                <script src="@Context.GetLink("/assets/js/highlight.pack.js")"></script>   
+                <script src="@Context.GetLink("/assets/js/bootstrap.min.js")"></script>
+                <script src="@Context.GetLink("/assets/js/highlight.pack.js")"></script>
                 <script src="@Context.GetLink("/assets/js/clean-blog.js")"></script>
                 <script src="@Context.GetLink("/assets/js/d3.v3.min.js")"></script>
                 <script src="@Context.GetLink("/assets/js/trianglify.min.js")"></script>
@@ -131,14 +133,14 @@
                         <script src="@Context.GetLink("/assets/js/html5shiv.js")"></script>
                         <script src="@Context.GetLink("/assets/js/respond.min.js")"></script>
                 <![endif]-->
-                
+
                 @Html.Partial("_Scripts")
                 <script>hljs.initHighlightingOnLoad();</script>
 
                 @if(Model.String(BlogKeys.Image) == null)
                 {
-                        <script type="text/javascript">                
-                                // Header background                        
+                        <script type="text/javascript">
+                                // Header background
                                 var colors = Please.make_color({
                                         colors_returned: 3,
                                         saturation: .6
@@ -149,7 +151,7 @@
                                 });
                                 var header = document.getElementById("intro-header");
                                 var pattern = t.generate(header.clientWidth, header.clientHeight);
-                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
+                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);
                         </script>
                 }
 
