@@ -1,9 +1,4 @@
 <div id="disqus_thread"></div>  
-<!--
-    '@Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath'
-    '@Model.String(BlogKeys.Title)'
-    '@Context.GetLink(Model, true)'
--->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 
@@ -11,7 +6,6 @@
     var publishedDate = new Date('@Model.String(BlogKeys.Published)');
     console.info('@Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath');
 
-    var disqus_identifier = '';
     var disqus_shortname = 'peterritchiesblog'; // required: replace example with your forum shortname
     var disqus_title = '@Model.String(BlogKeys.Title)';
     var disqus_url = '@Context.GetLink(Model, true)';
@@ -21,11 +15,6 @@
         disqus_url = disqus_url.replace('/posts', '');
         disqus_url = disqus_url + '/';
     }
-    else
-    {
-        //var disqus_identifier = '@Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath';
-    }
-    console.info(disqus_identifier);
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
