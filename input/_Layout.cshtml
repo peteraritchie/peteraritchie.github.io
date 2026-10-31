@@ -3,7 +3,7 @@
     string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
     var blogKeys = string.Join(", ", typeof(BlogKeys).GetProperties().Select(p => $"p:{p.Name}")
         .Concat(typeof(BlogKeys).GetFields().Select(f => $"f:{f.Name}")));
-    var text = typeof(BlogKeys).FullName;
+    var text = typeof(Context).FullName;
 }
 
 <!DOCTYPE html>
