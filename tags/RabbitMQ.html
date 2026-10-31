@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
         <head>
-            <!-- blogkeys: Title: &quot;Title&quot;&#xA;Image: &quot;Image&quot;&#xA;Description: &quot;Description&quot;&#xA;Intro: &quot;Intro&quot;&#xA;PostsPath: &quot;PostsPath&quot;&#xA;CaseInsensitiveTags: &quot;CaseInsensitiveTags&quot;&#xA;MarkdownConfiguration: &quot;MarkdownConfiguration&quot;&#xA;MarkdownExtensionTypes: &quot;MarkdownExtensionTypes&quot;&#xA;ProcessIncludes: &quot;ProcessIncludes&quot;&#xA;IncludeDateInPostPath: &quot;IncludeDateInPostPath&quot;&#xA;MetaRefreshRedirects: &quot;MetaRefreshRedirects&quot;&#xA;NetlifyRedirects: &quot;NetlifyRedirects&quot;&#xA;IndexTemplate: &quot;IndexTemplate&quot;&#xA;IndexPath: &quot;IndexPath&quot;&#xA;RssPath: &quot;RssPath&quot;&#xA;AtomPath: &quot;AtomPath&quot;&#xA;RdfPath: &quot;RdfPath&quot;&#xA;ValidateAbsoluteLinks: &quot;ValidateAbsoluteLinks&quot;&#xA;ValidateRelativeLinks: &quot;ValidateRelativeLinks&quot;&#xA;ValidateLinksAsError: &quot;ValidateLinksAsError&quot;&#xA;TagPageSize: &quot;TagPageSize&quot;&#xA;IndexPageSize: &quot;IndexPageSize&quot;&#xA;IndexPaging: &quot;IndexPaging&quot;&#xA;IndexFullPosts: &quot;IndexFullPosts&quot;&#xA;ArchivePageSize: &quot;ArchivePageSize&quot;&#xA;ArchiveExcerpts: &quot;ArchiveExcerpts&quot;&#xA;GenerateArchive: &quot;GenerateArchive&quot;&#xA;Published: &quot;Published&quot;&#xA;Tags: &quot;Tags&quot;&#xA;Lead: &quot;Lead&quot;&#xA;Excerpt: &quot;Excerpt&quot;&#xA;ShowInNavbar: &quot;ShowInNavbar&quot;&#xA;Posts: &quot;Posts&quot;&#xA;Tag: &quot;Tag&quot;&#xA;IgnoreFolders: &quot;IgnoreFolders&quot;&#xA;MarkdownPrependLinkRoot: &quot;MarkdownPrependLinkRoot&quot; -->
-            <!-- ViewData: WyamDocument: &lt;div class=&quot;container-sm-height&quot;&gt;&#xD;&#xA;    &lt;div class=&quot;row row-sm-height&quot;&gt;&#xD;&#xA;        &lt;div class=&quot;col-sm-8 right-border col-sm-height&quot;&gt;&#xD;&#xA;            @Html.Partial(&quot;_PostList&quot;, Model.DocumentList(Keys.PageDocuments).OrderByDescending(x =&gt; x.Get&lt;DateTime&gt;(BlogKeys.Published)))&#xD;&#xA;&#xD;&#xA;            &lt;nav&gt;&#xD;&#xA;                &lt;ul class=&quot;pager&quot;&gt;&#xD;&#xA;                    &lt;li class=&quot;previous&quot;&gt;                &#xD;&#xA;                        @if(Model.Bool(Keys.HasPreviousPage))&#xD;&#xA;                        {&#xD;&#xA;                            &lt;a href=&quot;@(Context.GetLink(Model.Document(Keys.PreviousPage)))&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;larr;&lt;/span&gt; Newer&lt;/a&gt;&#xD;&#xA;                        }                &#xD;&#xA;                    &lt;/li&gt;&#xD;&#xA;                    &lt;li class=&quot;next&quot;&gt;&#xD;&#xA;                        @if(Model.Bool(Keys.HasNextPage))&#xD;&#xA;                        {&#xD;&#xA;                            &lt;a href=&quot;@(Context.GetLink(Model.Document(Keys.NextPage)))&quot;&gt;Older &lt;span aria-hidden=&quot;true&quot;&gt;&amp;rarr;&lt;/span&gt;&lt;/a&gt;&#xD;&#xA;                        }&#xD;&#xA;                    &lt;/li&gt;&#xD;&#xA;                &lt;/ul&gt;&#xD;&#xA;            &lt;/nav&gt;&#xD;&#xA;            &lt;hr class=&quot;visible-xs-block&quot; /&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;        &lt;div class=&quot;col-sm-4 col-sm-height&quot;&gt;&#xD;&#xA;            @foreach (IDocument tagDocument in Documents[Blog.Tags]&#xD;&#xA;                .GroupBy(x =&gt; x.String(BlogKeys.Tag)).Select(x =&gt; x.Where(p =&gt; p.Get&lt;int&gt;(Keys.CurrentPage) == 1).First())&#xD;&#xA;                .OrderByDescending(x =&gt; x.Get&lt;int&gt;(Keys.TotalItems)))&#xD;&#xA;            {&#xD;&#xA;                string tagName = tagDocument.String(BlogKeys.Tag);&#xD;&#xA;                string postCount = tagDocument.String(Keys.TotalItems);&#xD;&#xA;                string buttonStyle = tagName == Model.String(BlogKeys.Tag) ? &quot;btn-primary&quot; : &quot;btn-default&quot;;&#xD;&#xA;                &lt;a role=&quot;button&quot; href=&quot;@Context.GetLink(tagDocument)&quot; class=&quot;btn @buttonStyle btn-xs&quot;&gt;@tagName (@postCount)&lt;/a&gt;&#xD;&#xA;            }&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;&lt;/div&gt;&#xA;WyamExecutionContext: Wyam.Core.Execution.ExecutionContext&#xA; -->
+            <!-- MetaImage?: No MetaImage -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
@@ -143,30 +142,28 @@
                 <a role="button" href="/tags/Software-Development-Principles" class="btn btn-default btn-xs">Software Development Principles (5)</a>
                 <a role="button" href="/tags/Windows-Store" class="btn btn-default btn-xs">Windows Store (5)</a>
                 <a role="button" href="/tags/Multithreaded" class="btn btn-default btn-xs">Multithreaded (5)</a>
+                <a role="button" href="/tags/AntiPattern" class="btn btn-default btn-xs">AntiPattern (5)</a>
                 <a role="button" href="/tags/OOD" class="btn btn-default btn-xs">OOD (5)</a>
                 <a role="button" href="/tags/Interesting-Find" class="btn btn-default btn-xs">Interesting Find (5)</a>
-                <a role="button" href="/tags/AntiPattern" class="btn btn-default btn-xs">AntiPattern (5)</a>
                 <a role="button" href="/tags/Code-Smells" class="btn btn-default btn-xs">Code Smells (4)</a>
                 <a role="button" href="/tags/Open-Source" class="btn btn-default btn-xs">Open Source (4)</a>
                 <a role="button" href="/tags/Windows-Phone" class="btn btn-default btn-xs">Windows Phone (4)</a>
-                <a role="button" href="/tags/NET-3x" class="btn btn-default btn-xs">.NET 3.x (4)</a>
-                <a role="button" href="/tags/WinForms" class="btn btn-default btn-xs">WinForms (4)</a>
-                <a role="button" href="/tags/Product-Bugs" class="btn btn-default btn-xs">Product Bugs (4)</a>
-                <a role="button" href="/tags/Resharper" class="btn btn-default btn-xs">Resharper (4)</a>
                 <a role="button" href="/tags/Visual-Studio-2012" class="btn btn-default btn-xs">Visual Studio 2012 (4)</a>
                 <a role="button" href="/tags/Unit-Testing" class="btn btn-default btn-xs">Unit Testing (4)</a>
                 <a role="button" href="/tags/DevTeach" class="btn btn-default btn-xs">DevTeach (4)</a>
                 <a role="button" href="/tags/Visual-Studio-vNext" class="btn btn-default btn-xs">Visual Studio vNext (4)</a>
                 <a role="button" href="/tags/Message-Oriented-Architectures" class="btn btn-default btn-xs">Message-Oriented Architectures (4)</a>
                 <a role="button" href="/tags/C%23-4" class="btn btn-default btn-xs">C# 4 (4)</a>
+                <a role="button" href="/tags/NET-3x" class="btn btn-default btn-xs">.NET 3.x (4)</a>
+                <a role="button" href="/tags/WinForms" class="btn btn-default btn-xs">WinForms (4)</a>
+                <a role="button" href="/tags/Product-Bugs" class="btn btn-default btn-xs">Product Bugs (4)</a>
+                <a role="button" href="/tags/Resharper" class="btn btn-default btn-xs">Resharper (4)</a>
                 <a role="button" href="/tags/Agile" class="btn btn-default btn-xs">Agile (3)</a>
                 <a role="button" href="/tags/Aspire" class="btn btn-default btn-xs">Aspire (3)</a>
                 <a role="button" href="/tags/Azure-Administrator-Associate-(AZ-104)" class="btn btn-default btn-xs">Azure Administrator Associate (AZ-104) (3)</a>
                 <a role="button" href="/tags/Software-Development-Practices" class="btn btn-default btn-xs">Software Development Practices (3)</a>
                 <a role="button" href="/tags/Security" class="btn btn-default btn-xs">Security (3)</a>
                 <a role="button" href="/tags/Windows-Phone-81" class="btn btn-default btn-xs">Windows Phone 8.1 (3)</a>
-                <a role="button" href="/tags/C%23-40" class="btn btn-default btn-xs">C# 4.0 (3)</a>
-                <a role="button" href="/tags/C&#x2B;&#x2B;" class="btn btn-default btn-xs">C&#x2B;&#x2B; (3)</a>
                 <a role="button" href="/tags/Windows-Phone-80" class="btn btn-default btn-xs">Windows Phone 8.0 (3)</a>
                 <a role="button" href="/tags/C%23-5" class="btn btn-default btn-xs">C# 5 (3)</a>
                 <a role="button" href="/tags/Concurrency" class="btn btn-default btn-xs">Concurrency (3)</a>
@@ -176,6 +173,8 @@
                 <a role="button" href="/tags/Distributed-Systems" class="btn btn-default btn-xs">Distributed Systems (3)</a>
                 <a role="button" href="/tags/MOM" class="btn btn-default btn-xs">MOM (3)</a>
                 <a role="button" href="/tags/WCF" class="btn btn-default btn-xs">WCF (3)</a>
+                <a role="button" href="/tags/C%23-40" class="btn btn-default btn-xs">C# 4.0 (3)</a>
+                <a role="button" href="/tags/C&#x2B;&#x2B;" class="btn btn-default btn-xs">C&#x2B;&#x2B; (3)</a>
                 <a role="button" href="/tags/Managing-Expectations" class="btn btn-default btn-xs">Managing Expectations (2)</a>
                 <a role="button" href="/tags/Software-Architecture" class="btn btn-default btn-xs">Software Architecture (2)</a>
                 <a role="button" href="/tags/Fundamentals" class="btn btn-default btn-xs">Fundamentals (2)</a>
@@ -196,14 +195,6 @@
                 <a role="button" href="/tags/Tips" class="btn btn-default btn-xs">Tips (2)</a>
                 <a role="button" href="/tags/XAML" class="btn btn-default btn-xs">XAML (2)</a>
                 <a role="button" href="/tags/Heartbleed" class="btn btn-default btn-xs">Heartbleed (2)</a>
-                <a role="button" href="/tags/ALTNET" class="btn btn-default btn-xs">ALT.NET (2)</a>
-                <a role="button" href="/tags/Visual-Studio-2008-SP1" class="btn btn-default btn-xs">Visual Studio 2008 SP1 (2)</a>
-                <a role="button" href="/tags/Framework-Bug" class="btn btn-default btn-xs">Framework Bug (2)</a>
-                <a role="button" href="/tags/Pop-Quiz" class="btn btn-default btn-xs">Pop Quiz (2)</a>
-                <a role="button" href="/tags/Poor-UI" class="btn btn-default btn-xs">Poor UI (2)</a>
-                <a role="button" href="/tags/MVP" class="btn btn-default btn-xs">MVP (2)</a>
-                <a role="button" href="/tags/C%23-30-Breaking-Changes" class="btn btn-default btn-xs">C# 3.0 Breaking Changes (2)</a>
-                <a role="button" href="/tags/C%23-Nugget" class="btn btn-default btn-xs">C# Nugget (2)</a>
                 <a role="button" href="/tags/Visual-Studio-2013" class="btn btn-default btn-xs">Visual Studio 2013 (2)</a>
                 <a role="button" href="/tags/Mobile" class="btn btn-default btn-xs">Mobile (2)</a>
                 <a role="button" href="/tags/Windows-Phone-71" class="btn btn-default btn-xs">Windows Phone 7.1 (2)</a>
@@ -215,6 +206,14 @@
                 <a role="button" href="/tags/SVN" class="btn btn-default btn-xs">SVN (2)</a>
                 <a role="button" href="/tags/DevTeach-YOW-2011" class="btn btn-default btn-xs">DevTeach YOW 2011 (2)</a>
                 <a role="button" href="/tags/Rant" class="btn btn-default btn-xs">Rant (2)</a>
+                <a role="button" href="/tags/ALTNET" class="btn btn-default btn-xs">ALT.NET (2)</a>
+                <a role="button" href="/tags/Visual-Studio-2008-SP1" class="btn btn-default btn-xs">Visual Studio 2008 SP1 (2)</a>
+                <a role="button" href="/tags/Framework-Bug" class="btn btn-default btn-xs">Framework Bug (2)</a>
+                <a role="button" href="/tags/Pop-Quiz" class="btn btn-default btn-xs">Pop Quiz (2)</a>
+                <a role="button" href="/tags/Poor-UI" class="btn btn-default btn-xs">Poor UI (2)</a>
+                <a role="button" href="/tags/MVP" class="btn btn-default btn-xs">MVP (2)</a>
+                <a role="button" href="/tags/C%23-30-Breaking-Changes" class="btn btn-default btn-xs">C# 3.0 Breaking Changes (2)</a>
+                <a role="button" href="/tags/C%23-Nugget" class="btn btn-default btn-xs">C# Nugget (2)</a>
                 <a role="button" href="/tags/AI" class="btn btn-default btn-xs">AI (1)</a>
                 <a role="button" href="/tags/PriProductivityExtensions" class="btn btn-default btn-xs">Pri.ProductivityExtensions (1)</a>
                 <a role="button" href="/tags/PriProductivityExtensionsSource" class="btn btn-default btn-xs">Pri.ProductivityExtensions.Source (1)</a>
@@ -264,6 +263,22 @@
                 <a role="button" href="/tags/Message-oriented" class="btn btn-default btn-xs">Message-oriented (1)</a>
                 <a role="button" href="/tags/LongPath" class="btn btn-default btn-xs">LongPath (1)</a>
                 <a role="button" href="/tags/Apps" class="btn btn-default btn-xs">Apps (1)</a>
+                <a role="button" href="/tags/GIT" class="btn btn-default btn-xs">GIT (1)</a>
+                <a role="button" href="/tags/SkyDrive" class="btn btn-default btn-xs">SkyDrive (1)</a>
+                <a role="button" href="/tags/Azure-Mobile-Services" class="btn btn-default btn-xs">Azure Mobile Services (1)</a>
+                <a role="button" href="/tags/C/C&#x2B;&#x2B;" class="btn btn-default btn-xs">C/C&#x2B;&#x2B; (1)</a>
+                <a role="button" href="/tags/Win32" class="btn btn-default btn-xs">Win32 (1)</a>
+                <a role="button" href="/tags/Productivity-Extensions" class="btn btn-default btn-xs">Productivity Extensions (1)</a>
+                <a role="button" href="/tags/async" class="btn btn-default btn-xs">async (1)</a>
+                <a role="button" href="/tags/health/fitness" class="btn btn-default btn-xs">health/fitness (1)</a>
+                <a role="button" href="/tags/Code-Contracts" class="btn btn-default btn-xs">Code Contracts (1)</a>
+                <a role="button" href="/tags/DbC" class="btn btn-default btn-xs">DbC (1)</a>
+                <a role="button" href="/tags/Visual-Studio-2011" class="btn btn-default btn-xs">Visual Studio 2011 (1)</a>
+                <a role="button" href="/tags/Windows-8" class="btn btn-default btn-xs">Windows 8 (1)</a>
+                <a role="button" href="/tags/RabbitMQ" class="btn btn-primary btn-xs">RabbitMQ (1)</a>
+                <a role="button" href="/tags/Opinion" class="btn btn-default btn-xs">Opinion (1)</a>
+                <a role="button" href="/tags/Usability" class="btn btn-default btn-xs">Usability (1)</a>
+                <a role="button" href="/tags/Unity-20" class="btn btn-default btn-xs">Unity 2.0 (1)</a>
                 <a role="button" href="/tags/Book-Review" class="btn btn-default btn-xs">Book Review (1)</a>
                 <a role="button" href="/tags/Refactoring" class="btn btn-default btn-xs">Refactoring (1)</a>
                 <a role="button" href="/tags/Refactoring-with-Visual-Studio-2010" class="btn btn-default btn-xs">Refactoring with Visual Studio 2010 (1)</a>
@@ -294,22 +309,6 @@
                 <a role="button" href="/tags/Visual-Studio-2005-Service-Pack-1-Beta" class="btn btn-default btn-xs">Visual Studio 2005 Service Pack 1 Beta (1)</a>
                 <a role="button" href="/tags/MFC" class="btn btn-default btn-xs">MFC (1)</a>
                 <a role="button" href="/tags/Humourous" class="btn btn-default btn-xs">Humourous (1)</a>
-                <a role="button" href="/tags/GIT" class="btn btn-default btn-xs">GIT (1)</a>
-                <a role="button" href="/tags/SkyDrive" class="btn btn-default btn-xs">SkyDrive (1)</a>
-                <a role="button" href="/tags/Azure-Mobile-Services" class="btn btn-default btn-xs">Azure Mobile Services (1)</a>
-                <a role="button" href="/tags/C/C&#x2B;&#x2B;" class="btn btn-default btn-xs">C/C&#x2B;&#x2B; (1)</a>
-                <a role="button" href="/tags/Win32" class="btn btn-default btn-xs">Win32 (1)</a>
-                <a role="button" href="/tags/Productivity-Extensions" class="btn btn-default btn-xs">Productivity Extensions (1)</a>
-                <a role="button" href="/tags/async" class="btn btn-default btn-xs">async (1)</a>
-                <a role="button" href="/tags/health/fitness" class="btn btn-default btn-xs">health/fitness (1)</a>
-                <a role="button" href="/tags/Code-Contracts" class="btn btn-default btn-xs">Code Contracts (1)</a>
-                <a role="button" href="/tags/DbC" class="btn btn-default btn-xs">DbC (1)</a>
-                <a role="button" href="/tags/Visual-Studio-2011" class="btn btn-default btn-xs">Visual Studio 2011 (1)</a>
-                <a role="button" href="/tags/Windows-8" class="btn btn-default btn-xs">Windows 8 (1)</a>
-                <a role="button" href="/tags/RabbitMQ" class="btn btn-primary btn-xs">RabbitMQ (1)</a>
-                <a role="button" href="/tags/Opinion" class="btn btn-default btn-xs">Opinion (1)</a>
-                <a role="button" href="/tags/Usability" class="btn btn-default btn-xs">Usability (1)</a>
-                <a role="button" href="/tags/Unity-20" class="btn btn-default btn-xs">Unity 2.0 (1)</a>
         </div>
     </div>
 </div>
