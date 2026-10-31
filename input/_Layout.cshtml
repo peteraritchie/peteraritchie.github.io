@@ -2,16 +2,20 @@
     string Title = Model.WithoutSettings.String(BlogKeys.Title);
     string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
     string text = "No MetaImage";
-    if (Context.String("MetaImage") != null)
+    if (Model.String("MetaImage") != null)
     {
-        text = $"MetaImage: \"{Context.String("MetaImage")}\"";
+        text = $"MetaImage: \"{Model.String("MetaImage")}\"";
     }
 }
 
 <!DOCTYPE html>
 <html lang="en">
         <head>
-            <!-- MetaImage?: @text -->
+            <!--
+            Context Type: @Context.GetType().FullName
+            Model Type: @Model.GetType().FullName
+            MetaImage?: @text
+            -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 

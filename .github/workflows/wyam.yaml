@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        quiet: true
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -19,7 +22,7 @@ jobs:
     - name: Install Wyam
       run: |
         export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
-        dotnet tool install --tool-path . wyam.tool
+        dotnet tool install --tool-path . wyam.tool --verbosity quiet
     - name: Publish blog
       run: |
         ./wyam -r blog -t CleanBlog
