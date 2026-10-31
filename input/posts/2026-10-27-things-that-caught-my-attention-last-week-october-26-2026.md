@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'Things That Caught My Attention Last Week - October 26'
+image: ../assets/caught-i.png
 categories: ['Uncategorized', 'October 2026']
 comments: true
 excerpt: 'Sites that I found interesting last week.'
