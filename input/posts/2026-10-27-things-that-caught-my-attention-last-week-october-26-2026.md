@@ -1,5 +1,5 @@
 ---
-layout: mypost
+layout: ../_MyPostLayout.cshtml
 title: 'Things That Caught My Attention Last Week - October 26'
 categories: ['Uncategorized', 'October 2026']
 comments: true
