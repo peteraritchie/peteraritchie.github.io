@@ -8,9 +8,9 @@ excerpt: 'Sites that I found interesting last week.'
 tags: ['Random']
 ---
 ![caught-my-i](../assets/caught-i.png)
-## Security
+<!-- ## Security
 
-<!-- ## Open-source
+## Open-source
 
 ## Domain-Driven Design, CQRS
 
