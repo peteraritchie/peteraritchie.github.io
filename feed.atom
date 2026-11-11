@@ -4,7 +4,7 @@
 	<title>Peter Ritchie's Blog</title>
 	<link rel="self" href="http://blog.peterritchie.com/" />
 	<rights>2026</rights>
-	<updated>2026-11-11T16:12:14Z</updated>
+	<updated>2026-11-11T16:23:47Z</updated>
 	<subtitle>Peter Ritchie</subtitle>
 	<entry>
 		<id>http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-09-2026</id>
@@ -12,8 +12,9 @@
 		<link href="http://blog.peterritchie.com/posts/things-that-caught-my-attention-last-week-november-09-2026" />
 		<updated>2026-11-10T00:00:00Z</updated>
 		<content>&lt;p&gt;&lt;img src="../assets/caught-i.png" class="img-fluid" alt="caught-my-i" /&gt;&lt;/p&gt;
-&lt;h2 id="security"&gt;Security&lt;/h2&gt;
-&lt;!-- ## Open-source
+&lt;!-- ## Security
+
+## Open-source
 
 ## Domain-Driven Design, CQRS
 
